@@ -8,7 +8,7 @@ Implementazione del gioco da tavolo [Eriantys](https://www.craniocreations.it/pr
 
 ### UML
 
-- [UML Iniziale](deliveries/UML/UML_Iniziale/UML4.jpg)
+- [UML Iniziale](deliveries/UML/UML_Iniziale/UML_Iniziale.jpg)
 
 ## Componenti del gruppo
 - [_Roberto Cialini_](https://github.com/RobertoCialini)
