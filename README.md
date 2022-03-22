@@ -1,21 +1,14 @@
 # Prova Finale di Ingegneria del Software - AA 2021-2022
 
-![alt text](src/main/deliveries/.jpg)
+![alt text](src/main/resources/Graphical_Assets/Eriantys_slider.jpg)
 
 Implementazione del gioco da tavolo [Eriantys](https://www.craniocreations.it/prodotto/eriantys/).
 
 ## Documentazione
 
 ### UML
-I seguenti diagrammi delle classi rappresentano rispettivamente il modello iniziale sviluppato durante la fase di progettazione e i diagrammi del prodotto finale nelle parti critiche riscontrate.
-- [UML Iniziale]()
 
-## Funzionalità
-### Funzionalità Sviluppate
-- Regole Complete
-- CLI
-- GUI
-- Socket
+- [UML Iniziale](deliveries/UML/UML_Iniziale/UML4.jpg)
 
 ## Componenti del gruppo
 - [_Roberto Cialini_](https://github.com/RobertoCialini)
