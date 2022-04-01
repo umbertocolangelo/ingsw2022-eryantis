@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class HallBagSwapCard implements ExpertCard, ExpertCard {
+public class HallBagSwapCard implements ExpertCard {
 
     /**
      * Default constructor

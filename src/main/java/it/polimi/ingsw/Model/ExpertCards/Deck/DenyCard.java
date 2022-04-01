@@ -1,11 +1,12 @@
 package Model.ExpertCards.Deck;
-
+import it.polimi.ingsw.Model.ExpertCards.Deck.*;
+import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
 import java.util.*;
 
 /**
  * 
  */
-public class DenyCard implements ExpertCard, ExpertCard, ExpertCard {
+public class DenyCard implements ExpertCard {
 
     /**
      * Default constructor

@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class StudentToIslandCard implements ExpertCard, ExpertCard, fixedObjectStudent, ExpertCard {
+public class StudentToIslandCard implements ExpertCard, fixedObjectStudent {
 
     /**
      * Default constructor

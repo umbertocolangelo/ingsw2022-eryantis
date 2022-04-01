@@ -1,11 +1,13 @@
 package Model.ExpertCards.Deck;
-
+import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.Pawns.Student;
 import java.util.*;
 
 /**
  * 
  */
-public class IngressCardSwapCard implements ExpertCard, ExpertCard, fixedObjectStudent, ExpertCard {
+public class IngressCardSwapCard implements ExpertCard, fixedObjectStudent {
 
     /**
      * Default constructor
@@ -28,7 +30,7 @@ public class IngressCardSwapCard implements ExpertCard, ExpertCard, fixedObjectS
     /**
      * @return
      */
-    public Int getCost() {
+    public Integer getCost() {
         // TODO implement here
         return null;
     }

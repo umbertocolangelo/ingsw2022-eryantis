@@ -5,7 +5,7 @@ import java.util.*;
 /**
  * 
  */
-public class TowerInfluenceCard implements ExpertCard, ExpertCard, ExpertCard, ExpertCard {
+public class TowerInfluenceCard implements ExpertCard {
 
     /**
      * Default constructor

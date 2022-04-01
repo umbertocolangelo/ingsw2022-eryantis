@@ -1,4 +1,4 @@
-package Model.PawnSuppliers;
+package Model.StudentSuppliers;
 
 import java.util.*;
 
@@ -16,27 +16,27 @@ public class Bag {
     /**
      * 
      */
-    private Int yellowStudentsNum;
+    private Integer yellowStudentsNum;
 
     /**
      * 
      */
-    private Int blueStudentsNum;
+    private Integer blueStudentsNum;
 
     /**
      * 
      */
-    private Int greenStudentsNum;
+    private Integer greenStudentsNum;
 
     /**
      * 
      */
-    private Int redStudentsNum;
+    private Integer redStudentsNum;
 
     /**
      * 
      */
-    private Int pinkStudentsNum;
+    private Integer pinkStudentsNum;
 
     /**
      * 
