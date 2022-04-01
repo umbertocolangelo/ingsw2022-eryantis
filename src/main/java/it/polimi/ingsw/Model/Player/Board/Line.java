@@ -22,7 +22,7 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * 
      */
-    private Student students[10];
+    private Student students[] = new Student[10];
 
     /**
      * 
