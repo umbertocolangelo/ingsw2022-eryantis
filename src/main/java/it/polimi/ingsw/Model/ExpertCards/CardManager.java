@@ -1,4 +1,4 @@
-package Model.ExpertCards;
+package it.polimi.ingsw.Model.ExpertCards;
 
 import java.util.*;
 

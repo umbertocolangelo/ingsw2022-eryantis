@@ -1,4 +1,4 @@
-package Model.ObjectTypes;
+package it.polimi.ingsw.Model.ObjectTypes;
 
 import java.util.*;
 

@@ -1,6 +1,4 @@
-package Model.PawnSuppliers;
-
-import java.util.*;
+package it.polimi.ingsw.Model.StudentSuppliers;
 
 /**
  * 

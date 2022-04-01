@@ -1,4 +1,4 @@
-package Model.Calculations.Influence;
+package it.polimi.ingsw.Model.Calculations.Influence;
 
 import java.util.*;
 
