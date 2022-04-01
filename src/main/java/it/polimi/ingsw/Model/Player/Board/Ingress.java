@@ -2,7 +2,6 @@ package it.polimi.ingsw.Model.Player.Board;
 
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Student;
-
 import java.util.*;
 
 /**
@@ -35,13 +34,6 @@ public class Ingress implements fixedObjectStudent {
      * 
      */
     private Collection<Student> students;
-
-    /**
-     * 
-     */
-    public void addRandomStudents() {
-        // TODO implement here
-    }
 
     /**
      * @return

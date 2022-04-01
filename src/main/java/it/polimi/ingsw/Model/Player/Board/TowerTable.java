@@ -2,7 +2,6 @@ package it.polimi.ingsw.Model.Player.Board;
 
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectTower;
 import it.polimi.ingsw.Model.Pawns.Tower;
-
 import java.util.*;
 
 /**
@@ -25,28 +24,6 @@ public class TowerTable implements fixedObjectTower {
      * 
      */
     private Boolean isThreePlayers;
-
-    /**
-     * 
-     */
-    public void addTowers() {
-        // TODO implement here
-    }
-
-    /**
-     * @param tower
-     */
-    public void removeTower(Tower tower) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Tower> getTowers() {
-        // TODO implement here
-        return null;
-    }
 
     /**
      * @return

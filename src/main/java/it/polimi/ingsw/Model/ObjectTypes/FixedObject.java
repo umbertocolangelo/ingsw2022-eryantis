@@ -9,14 +9,4 @@ import java.util.*;
  */
 public interface FixedObject {
 
-    /**
-     * 
-     */
-    public void Operation1();
-
-    /**
-     * @return
-     */
-    public LinkedList<Student> getStudents();
-
 }

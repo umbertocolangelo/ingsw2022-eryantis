@@ -1,7 +1,6 @@
 package it.polimi.ingsw.Model.Player.Board;
 
 import it.polimi.ingsw.Model.Enumerations.Color;
-
 import java.util.*;
 
 /**

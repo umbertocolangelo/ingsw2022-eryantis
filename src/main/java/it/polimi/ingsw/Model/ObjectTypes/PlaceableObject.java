@@ -27,10 +27,10 @@ public abstract class PlaceableObject {
     }
 
     /**
-     * @param FixedObject 
+     * @param position
      * @return
      */
-    public Boolean setPosition(void FixedObject) {
+    public Boolean setPosition(FixedObject position) {
         // TODO implement here
         return null;
     }

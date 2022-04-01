@@ -53,7 +53,7 @@ public interface GameInterface {
      * @param expertCard 
      * @param parameter
      */
-    public void playExpertCard(String expertCard, Object parameter);
+    public void playExpertCard(String expertCard, String parameter);
 
     /**
      * @param student 

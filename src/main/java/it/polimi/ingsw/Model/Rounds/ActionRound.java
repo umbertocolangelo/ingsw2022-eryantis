@@ -1,8 +1,6 @@
 package it.polimi.ingsw.Model.Rounds;
 
-import it.polimi.ingsw.Model.Pawns.Student;
 import it.polimi.ingsw.Model.Player.Player;
-
 import java.util.*;
 
 /**
@@ -19,11 +17,6 @@ public class ActionRound implements RoundInterface {
     /**
      * 
      */
-    private Integer nextPlayer;
-
-    /**
-     * 
-     */
     private Integer currentPlayer;
 
     /**
@@ -34,7 +27,7 @@ public class ActionRound implements RoundInterface {
     /**
      * 
      */
-    public ArrayList<Player> orderedPlayerList;
+    public Collection<Player> orderedPlayerList;
 
     /**
      * 
@@ -58,7 +51,7 @@ public class ActionRound implements RoundInterface {
     }
 
     /**
-     * @param student 
+     * @param student
      * @return
      */
     public Boolean moveStudentIngressToHall(String student) {
@@ -67,8 +60,8 @@ public class ActionRound implements RoundInterface {
     }
 
     /**
-     * @param student 
-     * @param island 
+     * @param student
+     * @param island
      * @return
      */
     public Boolean moveStudentIngressToIsland(String student, String island) {
@@ -77,7 +70,7 @@ public class ActionRound implements RoundInterface {
     }
 
     /**
-     * @param jumps 
+     * @param jumps
      * @return
      */
     public Boolean moveMotherNature(Integer jumps) {
@@ -86,7 +79,7 @@ public class ActionRound implements RoundInterface {
     }
 
     /**
-     * @param assistantCard 
+     * @param assistantCard
      * @return
      */
     public Boolean playAssistantCard(String assistantCard) {
@@ -95,27 +88,27 @@ public class ActionRound implements RoundInterface {
     }
 
     /**
-     * @param expertCard 
-     * @param parameter 
+     * @param expertCard
+     * @param parameter
      * @return
      */
-    public Boolean playExpertCard(String expertCard, Object parameter) {
+    public Boolean playExpertCard(String expertCard, String parameter) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param student 
+     * @param student
      * @return
      */
-    public Boolean moveStudentToBag(Student student) {
+    public Boolean moveStudentToBag(String student) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param student 
-     * @param island 
+     * @param student
+     * @param island
      * @return
      */
     public Boolean expertStudentToIsland(String student, String island) {
@@ -124,17 +117,17 @@ public class ActionRound implements RoundInterface {
     }
 
     /**
-     * @param student 
+     * @param student
      * @return
      */
-    public Boolean expertIngressCardSwap(Student student) {
+    public Boolean expertIngressCardSwap(String student) {
         // TODO implement here
         return null;
     }
 
     /**
-     * @param studentHall 
-     * @param studentIngress 
+     * @param studentHall
+     * @param studentIngress
      * @return
      */
     public Boolean expertIngressHallSwap(String studentHall, String studentIngress) {
@@ -143,7 +136,7 @@ public class ActionRound implements RoundInterface {
     }
 
     /**
-     * @param student 
+     * @param student
      * @return
      */
     public Boolean expertStudentToHall(String student) {
@@ -152,7 +145,7 @@ public class ActionRound implements RoundInterface {
     }
 
     /**
-     * @param cloud 
+     * @param cloud
      * @return
      */
     public Boolean chooseCloud(String cloud) {

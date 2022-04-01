@@ -1,6 +1,7 @@
 package it.polimi.ingsw.Model.Islands;
 
 import it.polimi.ingsw.Model.Enumerations.Color;
+import it.polimi.ingsw.Model.Enumerations.PlayerColor;
 
 import java.util.*;
 
@@ -66,7 +67,7 @@ public class IslandGroup implements IslandInterface {
     /**
      * @return
      */
-    public Int numOfTowers() {
+    public Integer numOfTowers() {
         // TODO implement here
         return null;
     }

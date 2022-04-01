@@ -2,7 +2,6 @@ package it.polimi.ingsw.Model.StudentSuppliers;
 
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Student;
-
 import java.util.*;
 
 /**

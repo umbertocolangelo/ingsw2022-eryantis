@@ -1,7 +1,6 @@
 package it.polimi.ingsw.Model.Rounds;
 
 import it.polimi.ingsw.Model.Pawns.Student;
-
 import java.util.*;
 
 /**
@@ -39,13 +38,13 @@ public interface RoundInterface {
      * @param parameter 
      * @return
      */
-    public Boolean playExpertCard(String expertCard, Object parameter);
+    public Boolean playExpertCard(String expertCard, String parameter);
 
     /**
      * @param student 
      * @return
      */
-    public Boolean moveStudentToBag(Student student);
+    public Boolean moveStudentToBag(String student);
 
     /**
      * @param student 
@@ -58,7 +57,7 @@ public interface RoundInterface {
      * @param student 
      * @return
      */
-    public Boolean expertIngressCardSwap(Student student);
+    public Boolean expertIngressCardSwap(String student);
 
     /**
      * @param studentHall 

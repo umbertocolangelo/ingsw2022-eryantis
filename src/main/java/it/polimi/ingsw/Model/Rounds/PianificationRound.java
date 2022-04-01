@@ -1,8 +1,6 @@
 package it.polimi.ingsw.Model.Rounds;
 
-import it.polimi.ingsw.Model.Pawns.Student;
 import it.polimi.ingsw.Model.Player.Player;
-
 import java.util.*;
 
 /**
@@ -19,7 +17,7 @@ public class PianificationRound implements RoundInterface {
     /**
      * 
      */
-    private ArrayList<Player> playerList;
+    private Collection<Player> playerList;
 
     /**
      * 
@@ -77,7 +75,7 @@ public class PianificationRound implements RoundInterface {
      * @param parameter 
      * @return
      */
-    public Boolean playExpertCard(String expertCard, Object parameter) {
+    public Boolean playExpertCard(String expertCard, String parameter) {
         // TODO implement here
         return null;
     }
@@ -86,7 +84,7 @@ public class PianificationRound implements RoundInterface {
      * @param student 
      * @return
      */
-    public Boolean moveStudentToBag(Student student) {
+    public Boolean moveStudentToBag(String student) {
         // TODO implement here
         return null;
     }
@@ -105,7 +103,7 @@ public class PianificationRound implements RoundInterface {
      * @param student 
      * @return
      */
-    public Boolean expertIngressCardSwap(Student student) {
+    public Boolean expertIngressCardSwap(String student) {
         // TODO implement here
         return null;
     }

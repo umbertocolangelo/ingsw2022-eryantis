@@ -28,12 +28,7 @@ public class Game implements GameInterface {
     /**
      * 
      */
-    private LinkedList<Island> islands;
-
-    /**
-     * 
-     */
-    private ArrayList<Cloud> clouds;
+    private Collection<Cloud> clouds;
 
     /**
      * 
@@ -49,11 +44,6 @@ public class Game implements GameInterface {
      * 
      */
     private RoundInterface currentRound;
-
-    /**
-     * 
-     */
-    private Collection<Player> actionPlayerOrder;
 
     /**
      * 
@@ -197,7 +187,7 @@ public class Game implements GameInterface {
      * @param expertCard 
      * @param parameter
      */
-    public void playExpertCard(String expertCard, Object parameter) {
+    public void playExpertCard(String expertCard, String parameter) {
         // TODO implement here
     }
 

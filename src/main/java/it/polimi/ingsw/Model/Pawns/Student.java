@@ -1,7 +1,6 @@
 package it.polimi.ingsw.Model.Pawns;
 
 import it.polimi.ingsw.Model.Enumerations.Color;
-
 import java.util.*;
 
 /**
@@ -23,13 +22,7 @@ public class Student extends ColoredPawn {
     /**
      * 
      */
-    public void getColor;
-
-    /**
-     * 
-     */
     private String id;
-
 
     /**
      * @return

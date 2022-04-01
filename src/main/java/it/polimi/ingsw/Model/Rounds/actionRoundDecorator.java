@@ -1,7 +1,5 @@
 package it.polimi.ingsw.Model.Rounds;
 
-import it.polimi.ingsw.Model.Pawns.Student;
-
 import java.util.*;
 
 /**
@@ -88,7 +86,7 @@ public abstract class actionRoundDecorator implements RoundInterface {
      * @param parameter 
      * @return
      */
-    public Boolean playExpertCard(String expertCard, Object parameter) {
+    public Boolean playExpertCard(String expertCard, String parameter) {
         // TODO implement here
         return null;
     }
@@ -97,7 +95,7 @@ public abstract class actionRoundDecorator implements RoundInterface {
      * @param student 
      * @return
      */
-    public Boolean moveStudentToBag(Student student) {
+    public Boolean moveStudentToBag(String student) {
         // TODO implement here
         return null;
     }
@@ -116,7 +114,7 @@ public abstract class actionRoundDecorator implements RoundInterface {
      * @param student 
      * @return
      */
-    public Boolean expertIngressCardSwap(Student student) {
+    public Boolean expertIngressCardSwap(String student) {
         // TODO implement here
         return null;
     }

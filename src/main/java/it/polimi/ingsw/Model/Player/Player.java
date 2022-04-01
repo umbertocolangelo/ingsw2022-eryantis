@@ -5,7 +5,6 @@ import it.polimi.ingsw.Model.Enumerations.AssistantCard;
 import it.polimi.ingsw.Model.Enumerations.PlayerColor;
 import it.polimi.ingsw.Model.Enumerations.PlayerPhase;
 import it.polimi.ingsw.Model.Enumerations.Wizard;
-
 import java.util.*;
 
 /**
@@ -117,9 +116,9 @@ public class Player {
     }
 
     /**
-     * @param PlayerColor
+     * @param color
      */
-    public void setPlayerColor(void PlayerColor) {
+    public void setPlayerColor(PlayerColor color) {
         // TODO implement here
     }
 
@@ -154,9 +153,9 @@ public class Player {
     }
 
     /**
-     * @param PlayerPhase
+     * @param phase
      */
-    public void setPlayerPhase(void PlayerPhase) {
+    public void setPlayerPhase(PlayerPhase phase) {
         // TODO implement here
     }
 

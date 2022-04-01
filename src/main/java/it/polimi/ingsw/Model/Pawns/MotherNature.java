@@ -5,7 +5,6 @@ import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.Islands.Island;
 import it.polimi.ingsw.Model.Islands.IslandInterface;
 import it.polimi.ingsw.Model.ObjectTypes.PlaceableObject;
-
 import java.util.*;
 
 /**
@@ -45,7 +44,7 @@ public class MotherNature extends PlaceableObject {
     /**
      * 
      */
-    public void setIsland() {
+    public void setIsland(Island island) {
         // TODO implement here
     }
 

@@ -6,7 +6,6 @@ import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Professor;
 import it.polimi.ingsw.Model.Pawns.Student;
 import it.polimi.ingsw.Model.Player.Player;
-
 import java.util.*;
 
 /**
