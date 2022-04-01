@@ -16,17 +16,12 @@ public class Lobby {
     /**
      * 
      */
-    private Int playerNumber;
+    private Integer playerNumber;
 
     /**
      * 
      */
     private Set<String> playerName;
-
-    /**
-     * 
-     */
-    public Game 1;
 
     /**
      * @param name

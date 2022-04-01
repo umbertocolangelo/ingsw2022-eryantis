@@ -1,4 +1,10 @@
-package Model.Player;
+package it.polimi.ingsw.Model.Player;
+
+import it.polimi.ingsw.Model.Player.Board.School;
+import it.polimi.ingsw.Model.Enumerations.AssistantCard;
+import it.polimi.ingsw.Model.Enumerations.PlayerColor;
+import it.polimi.ingsw.Model.Enumerations.PlayerPhase;
+import it.polimi.ingsw.Model.Enumerations.Wizard;
 
 import java.util.*;
 
@@ -46,7 +52,7 @@ public class Player {
     /**
      * 
      */
-    private Int coins;
+    private Integer coins;
 
     /**
      * 
@@ -56,29 +62,12 @@ public class Player {
     /**
      * 
      */
-    private Int cardValue;
+    private Integer cardValue;
 
     /**
      * 
      */
     private PlayerPhase phase;
-
-    /**
-     * 
-     */
-    public School 1;
-
-    /**
-     * 
-     */
-    public Wizard 1;
-
-    /**
-     * 
-     */
-    public AssistantCard 10;
-
-
 
     /**
      * @return
@@ -114,7 +103,7 @@ public class Player {
     /**
      * @return
      */
-    public Int getCoins() {
+    public Integer getCoins() {
         // TODO implement here
         return null;
     }

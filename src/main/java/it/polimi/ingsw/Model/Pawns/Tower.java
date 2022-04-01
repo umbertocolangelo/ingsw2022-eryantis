@@ -1,5 +1,8 @@
 package it.polimi.ingsw.Model.Pawns;
 
+import it.polimi.ingsw.Model.Enumerations.PlayerColor;
+import it.polimi.ingsw.Model.ObjectTypes.PlaceableObject;
+
 import java.util.*;
 
 /**
@@ -17,12 +20,6 @@ public class Tower extends PlaceableObject {
      * 
      */
     private PlayerColor color;
-
-    /**
-     * 
-     */
-    public void Attribute1;
-
 
     /**
      * @return

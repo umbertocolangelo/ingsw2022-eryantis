@@ -1,4 +1,6 @@
-package Model.Player.Board;
+package it.polimi.ingsw.Model.Player.Board;
+
+import it.polimi.ingsw.Model.Enumerations.Color;
 
 import java.util.*;
 
@@ -21,22 +23,7 @@ public class Hall {
     /**
      * 
      */
-    private <Collection>Line lines;
-
-    /**
-     * 
-     */
-    public School 1;
-
-    /**
-     * 
-     */
-    public Line 5;
-
-    /**
-     * 
-     */
-    public Line 5;
+    private Collection<Line> lines;
 
     /**
      * @param color 

@@ -1,5 +1,11 @@
 package it.polimi.ingsw.Model.Pawns;
 
+import it.polimi.ingsw.Model.Calculations.Influence.InfluenceCalculator;
+import it.polimi.ingsw.Model.Enumerations.Color;
+import it.polimi.ingsw.Model.Islands.Island;
+import it.polimi.ingsw.Model.Islands.IslandInterface;
+import it.polimi.ingsw.Model.ObjectTypes.PlaceableObject;
+
 import java.util.*;
 
 /**
@@ -27,13 +33,6 @@ public class MotherNature extends PlaceableObject {
      * 
      */
     private InfluenceCalculator influence;
-
-    /**
-     * 
-     */
-    public Game 1;
-
-
 
     /**
      * @return

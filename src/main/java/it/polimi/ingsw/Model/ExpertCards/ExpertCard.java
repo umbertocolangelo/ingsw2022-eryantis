@@ -10,7 +10,7 @@ public interface ExpertCard {
     /**
      * @return
      */
-    public Int getCost();
+    public Integer getCost();
 
     /**
      * 

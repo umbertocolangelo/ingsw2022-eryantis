@@ -1,7 +1,16 @@
 package it.polimi.ingsw.Model.Islands;
 
+import it.polimi.ingsw.Model.Enumerations.Color;
+import it.polimi.ingsw.Model.Enumerations.PlayerColor;
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectTower;
+import it.polimi.ingsw.Model.Pawns.MotherNature;
+import it.polimi.ingsw.Model.Pawns.Student;
+import it.polimi.ingsw.Model.Pawns.Tower;
+import it.polimi.ingsw.Model.Player.Player;
+
 import java.util.*;
-import it.polimi.ingsw.Model.ObjectTypes
+
 
 /**
  * 
@@ -102,7 +111,7 @@ public class Island implements fixedObjectStudent, fixedObjectTower, IslandInter
      * @param color 
      * @return
      */
-    public Int numOfStudents(Color color) {
+    public Integer numOfStudents(Color color) {
         // TODO implement here
         return null;
     }
@@ -117,7 +126,7 @@ public class Island implements fixedObjectStudent, fixedObjectTower, IslandInter
     /**
      * @return
      */
-    public LinkedList<Students> getStudents() {
+    public LinkedList<Student> getStudents() {
         // TODO implement here
         return null;
     }
@@ -167,7 +176,7 @@ public class Island implements fixedObjectStudent, fixedObjectTower, IslandInter
     /**
      * @return
      */
-    public ArrayList<Students> getStudents() {
+    public ArrayList<Student> getStudents() {
         // TODO implement here
         return null;
     }
@@ -205,7 +214,7 @@ public class Island implements fixedObjectStudent, fixedObjectTower, IslandInter
     /**
      * @return
      */
-    public Int numOfTowers() {
+    public Integer numOfTowers() {
         // TODO implement here
         return null;
     }
@@ -214,7 +223,7 @@ public class Island implements fixedObjectStudent, fixedObjectTower, IslandInter
      * @param color 
      * @return
      */
-    public Int numOfStudents(Color color) {
+    public Integer numOfStudents(Color color) {
         // TODO implement here
         return null;
     }
@@ -236,7 +245,7 @@ public class Island implements fixedObjectStudent, fixedObjectTower, IslandInter
     /**
      * @return
      */
-    public Int numOfTowers() {
+    public Integer numOfTowers() {
         // TODO implement here
         return null;
     }

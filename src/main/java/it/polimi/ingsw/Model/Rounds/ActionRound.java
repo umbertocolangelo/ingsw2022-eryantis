@@ -1,4 +1,7 @@
-package Model.Rounds;
+package it.polimi.ingsw.Model.Rounds;
+
+import it.polimi.ingsw.Model.Pawns.Student;
+import it.polimi.ingsw.Model.Player.Player;
 
 import java.util.*;
 
@@ -16,22 +19,17 @@ public class ActionRound implements RoundInterface {
     /**
      * 
      */
-    private Int nextPlayer;
+    private Integer nextPlayer;
 
     /**
      * 
      */
-    private Int currentPlayer;
+    private Integer currentPlayer;
 
     /**
      * 
      */
-    private Int studentsMoved;
-
-    /**
-     * 
-     */
-    public void Attribute1;
+    private Integer studentsMoved;
 
     /**
      * 
@@ -73,7 +71,7 @@ public class ActionRound implements RoundInterface {
      * @param island 
      * @return
      */
-    public Boolena moveStudentIngressToIsland(String student, String island) {
+    public Boolean moveStudentIngressToIsland(String student, String island) {
         // TODO implement here
         return null;
     }
@@ -82,7 +80,7 @@ public class ActionRound implements RoundInterface {
      * @param jumps 
      * @return
      */
-    public Boolean moveMotherNature(Int jumps) {
+    public Boolean moveMotherNature(Integer jumps) {
         // TODO implement here
         return null;
     }

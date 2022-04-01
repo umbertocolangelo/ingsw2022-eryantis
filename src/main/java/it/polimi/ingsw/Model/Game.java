@@ -1,5 +1,17 @@
 package it.polimi.ingsw.Model;
 
+import it.polimi.ingsw.Model.Enumerations.AssistantCard;
+import it.polimi.ingsw.Model.ExpertCards.CardManager;
+import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
+import it.polimi.ingsw.Model.Islands.Island;
+import it.polimi.ingsw.Model.Islands.IslandManager;
+import it.polimi.ingsw.Model.Pawns.MotherNature;
+import it.polimi.ingsw.Model.Pawns.Student;
+import it.polimi.ingsw.Model.Player.Player;
+import it.polimi.ingsw.Model.Rounds.RoundInterface;
+import it.polimi.ingsw.Model.StudentSuppliers.Bag;
+import it.polimi.ingsw.Model.StudentSuppliers.Cloud;
+
 import java.util.*;
 
 /**
@@ -81,236 +93,6 @@ public class Game implements GameInterface {
     /**
      * 
      */
-    public MotherNature 1;
-
-
-
-
-
-
-
-
-
-    /**
-     * 
-     */
-    public Lobby 1;
-
-
-
-    /**
-     * 
-     */
-    private void startGame() {
-        // TODO implement here
-    }
-
-    /**
-     * @param number
-     */
-    public void setPlayerNumber(Int number) {
-        // TODO implement here
-    }
-
-    /**
-     * @param name 
-     * @param playerNum
-     */
-    public void playerLogin(String name, Int playerNum) {
-        // TODO implement here
-    }
-
-    /**
-     * @param playerNum
-     */
-    public void startGame(Int playerNum) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void saveGame() {
-        // TODO implement here
-    }
-
-    /**
-     * @param player
-     */
-    public void endGame(Player player) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public Boolean isStarted() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param student
-     */
-    public void moveStudentIngressToHall(Student student) {
-        // TODO implement here
-    }
-
-    /**
-     * @param student 
-     * @param target
-     */
-    public void moveStudentIngressToIsland(Student student, Island target) {
-        // TODO implement here
-    }
-
-    /**
-     * @param jumps
-     */
-    public void moveMotherNature(Int jumps) {
-        // TODO implement here
-    }
-
-    /**
-     * @param assistantCard
-     */
-    public void playAssistantCard(AssistantCard assistantCard) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Player> getPlayers() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public void checkWinner() {
-        // TODO implement here
-    }
-
-    /**
-     * @param expertCard 
-     * @param Object parameter
-     */
-    public void playExpertCard(ExpertCard expertCard, void Object parameter) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public LinkedList<Island> getIslands() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @param student 
-     * @param island
-     */
-    public void expertStudentToIsland(Student student, Island island) {
-        // TODO implement here
-    }
-
-    /**
-     * @param student
-     */
-    public void expertIngressCardSwap(Student student) {
-        // TODO implement here
-    }
-
-    /**
-     * @param studentHall 
-     * @param studentIngress
-     */
-    public void expertIngressHallSwap(Student studentHall, Student studentIngress) {
-        // TODO implement here
-    }
-
-    /**
-     * @param student
-     */
-    public void expertStudentToHall(Student student) {
-        // TODO implement here
-    }
-
-    /**
-     * @param student
-     */
-    public void moveStudentToBag(Student student) {
-        // TODO implement here
-    }
-
-    /**
-     * @param cloud
-     */
-    public void chooseCloud(Cloud cloud) {
-        // TODO implement here
-    }
-
-    /**
-     * @param island
-     */
-    protected void removeIsland(Island island) {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public String getCurrentPlayer() {
-        // TODO implement here
-        return "";
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Cloud> getClouds() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<AssistantCard> getAssistantCard() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<ExpertCard> getExpertCards() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<ExpertCard> getExpertCards() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Island> getIslands() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
     private void restoreGame() {
         // TODO implement here
     }
@@ -356,14 +138,14 @@ public class Game implements GameInterface {
      * @param name 
      * @param playerNum
      */
-    public void playerLogin(String name, Int playerNum) {
+    public void playerLogin(String name, Integer playerNum) {
         // TODO implement here
     }
 
     /**
      * @param playerNum
      */
-    public void startGame(Int playerNum) {
+    public void startGame(Integer playerNum) {
         // TODO implement here
     }
 
@@ -400,7 +182,7 @@ public class Game implements GameInterface {
     /**
      * @param jumps
      */
-    public void moveMotherNature(Int jumps) {
+    public void moveMotherNature(Integer jumps) {
         // TODO implement here
     }
 

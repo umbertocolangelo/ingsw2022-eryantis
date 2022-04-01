@@ -1,5 +1,8 @@
 package it.polimi.ingsw.Model.Islands;
 
+import it.polimi.ingsw.Model.Enumerations.Color;
+import it.polimi.ingsw.Model.Enumerations.PlayerColor;
+
 import java.util.*;
 
 /**
@@ -11,7 +14,7 @@ public interface IslandInterface {
      * @param color 
      * @return
      */
-    public Int numOfStudents(Color color);
+    public Integer numOfStudents(Color color);
 
     /**
      * 
@@ -26,7 +29,7 @@ public interface IslandInterface {
     /**
      * @return
      */
-    public Int numOfTowers();
+    public Integer numOfTowers();
 
     /**
      * @return

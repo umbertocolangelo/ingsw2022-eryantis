@@ -21,7 +21,7 @@ public class IslandManager {
     /**
      * 
      */
-    private Int numOfGroups;
+    private Integer numOfGroups;
 
     /**
      * @return
@@ -41,7 +41,7 @@ public class IslandManager {
     /**
      * @return
      */
-    public Int numOfGoups() {
+    public Integer numOfGoups() {
         // TODO implement here
         return null;
     }

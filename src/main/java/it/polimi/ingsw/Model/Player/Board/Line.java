@@ -1,4 +1,11 @@
-package Model.Player.Board;
+package it.polimi.ingsw.Model.Player.Board;
+
+import it.polimi.ingsw.Model.Calculations.Professor.ProfessorCalculator;
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectProfessor;
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.Pawns.Professor;
+import it.polimi.ingsw.Model.Pawns.Student;
+import it.polimi.ingsw.Model.Player.Player;
 
 import java.util.*;
 
@@ -21,7 +28,7 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * 
      */
-    private Int studentsNum;
+    private Integer studentsNum;
 
     /**
      * 
@@ -37,56 +44,6 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      * 
      */
     private ProfessorCalculator professorCalculator;
-
-    /**
-     * 
-     */
-    public Hall 1;
-
-
-    /**
-     * @param student
-     */
-    public void addStudent(Student student) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void removeStudent() {
-        // TODO implement here
-    }
-
-    /**
-     * @param Professor
-     */
-    public void addProfessor(void Professor) {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void removeProfessor() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public Professor getProfessor() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Students> getStudents() {
-        // TODO implement here
-        return null;
-    }
 
     /**
      * 
@@ -133,7 +90,7 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * @return
      */
-    public ArrayList<Students> getStudents() {
+    public ArrayList<Student> getStudents() {
         // TODO implement here
         return null;
     }
@@ -141,7 +98,7 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * @return
      */
-    public Int numOfStudents() {
+    public Integer numOfStudents() {
         // TODO implement here
         return null;
     }

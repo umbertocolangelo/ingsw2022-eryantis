@@ -1,5 +1,8 @@
 package it.polimi.ingsw.Model.ExpertCards.Deck;
 
+import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.Pawns.Student;
 import java.util.*;
 
 /**
@@ -28,22 +31,7 @@ public class StudentToIslandCard implements ExpertCard, fixedObjectStudent {
     /**
      * @return
      */
-    public Int getCost() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public void incrementCost() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public Int getCost() {
+    public Integer getCost() {
         // TODO implement here
         return null;
     }
@@ -72,7 +60,7 @@ public class StudentToIslandCard implements ExpertCard, fixedObjectStudent {
     /**
      * @return
      */
-    public ArrayList<Students> getStudents() {
+    public ArrayList<Student> getStudents() {
         // TODO implement here
         return null;
     }
@@ -80,24 +68,9 @@ public class StudentToIslandCard implements ExpertCard, fixedObjectStudent {
     /**
      * @return
      */
-    public Int numOfStudents() {
+    public Integer numOfStudents() {
         // TODO implement here
         return null;
-    }
-
-    /**
-     * @return
-     */
-    public Int getCost() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public void incrementCost() {
-        // TODO implement here
     }
 
 }

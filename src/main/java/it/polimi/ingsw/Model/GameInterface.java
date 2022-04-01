@@ -11,12 +11,12 @@ public interface GameInterface {
      * @param name 
      * @param playerNum
      */
-    public void playerLogin(String name, Int playerNum);
+    public void playerLogin(String name, Integer playerNum);
 
     /**
      * @param playerNum
      */
-    public void startGame(Int playerNum);
+    public void startGame(Integer playerNum);
 
     /**
      * 
@@ -42,7 +42,7 @@ public interface GameInterface {
     /**
      * @param jumps
      */
-    public void moveMotherNature(Int jumps);
+    public void moveMotherNature(Integer jumps);
 
     /**
      * @param assistantCard

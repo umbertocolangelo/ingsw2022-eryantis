@@ -1,4 +1,4 @@
-package Model.Rounds;
+package it.polimi.ingsw.Model.Rounds;
 
 import java.util.*;
 

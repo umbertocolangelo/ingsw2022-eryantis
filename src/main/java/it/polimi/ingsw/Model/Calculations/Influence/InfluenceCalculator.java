@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.Calculations.Influence;
 
+import it.polimi.ingsw.Model.Player.Player;
+
 import java.util.*;
 
 /**

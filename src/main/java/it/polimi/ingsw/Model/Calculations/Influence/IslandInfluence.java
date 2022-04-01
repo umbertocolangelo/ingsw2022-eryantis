@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.Calculations.Influence;
 
+import it.polimi.ingsw.Model.Islands.IslandInterface;
+
 import java.util.*;
 
 /**

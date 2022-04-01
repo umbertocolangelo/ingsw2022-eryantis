@@ -1,4 +1,7 @@
-package Model.Player.Board;
+package it.polimi.ingsw.Model.Player.Board;
+
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectTower;
+import it.polimi.ingsw.Model.Pawns.Tower;
 
 import java.util.*;
 
@@ -16,7 +19,7 @@ public class TowerTable implements fixedObjectTower {
     /**
      * 
      */
-    private <Collection>Tower towers;
+    private Collection<Tower> towers;
 
     /**
      * 
@@ -26,19 +29,7 @@ public class TowerTable implements fixedObjectTower {
     /**
      * 
      */
-    public School 1;
-
-    /**
-     * 
-     */
     public void addTowers() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void Operation1() {
         // TODO implement here
     }
 
@@ -90,7 +81,7 @@ public class TowerTable implements fixedObjectTower {
     /**
      * @return
      */
-    public Int numOfTowers() {
+    public Integer numOfTowers() {
         // TODO implement here
         return null;
     }

@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.Islands;
 
+import it.polimi.ingsw.Model.Enumerations.Color;
+
 import java.util.*;
 
 /**
@@ -23,12 +25,6 @@ public class IslandGroup implements IslandInterface {
      */
     private Collection<Island> islands;
 
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
 
     /**
      * @param island
@@ -48,7 +44,7 @@ public class IslandGroup implements IslandInterface {
      * @param color 
      * @return
      */
-    public Int numOfStudents(Color color) {
+    public Integer numOfStudents(Color color) {
         // TODO implement here
         return null;
     }

@@ -1,4 +1,6 @@
-package Model.Rounds;
+package it.polimi.ingsw.Model.Rounds;
+
+import it.polimi.ingsw.Model.Pawns.Student;
 
 import java.util.*;
 
@@ -18,13 +20,13 @@ public interface RoundInterface {
      * @param island 
      * @return
      */
-    public Boolena moveStudentIngressToIsland(String student, String island);
+    public Boolean moveStudentIngressToIsland(String student, String island);
 
     /**
      * @param jumps 
      * @return
      */
-    public Boolean moveMotherNature(Int jumps);
+    public Boolean moveMotherNature(Integer jumps);
 
     /**
      * @param assistantCard 

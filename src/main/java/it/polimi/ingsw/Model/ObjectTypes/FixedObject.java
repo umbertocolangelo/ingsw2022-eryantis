@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.ObjectTypes;
 
+import it.polimi.ingsw.Model.Pawns.Student;
+
 import java.util.*;
 
 /**
@@ -15,21 +17,6 @@ public interface FixedObject {
     /**
      * @return
      */
-    public LinkedList<Students> getStudents();
-
-    /**
-     * 
-     */
-    public void Operation2();
-
-    /**
-     * 
-     */
-    public void Operation3();
-
-    /**
-     * 
-     */
-    private void Operation4();
+    public LinkedList<Student> getStudents();
 
 }

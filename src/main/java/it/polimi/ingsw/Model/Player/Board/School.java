@@ -1,4 +1,4 @@
-package Model.Player.Board;
+package it.polimi.ingsw.Model.Player.Board;
 
 import java.util.*;
 
@@ -26,27 +26,7 @@ public class School {
     /**
      * 
      */
-    private ProfessorsTable professorsTable;
-
-    /**
-     * 
-     */
     private TowerTable towerTable;
-
-    /**
-     * 
-     */
-    public Ingress 1;
-
-    /**
-     * 
-     */
-    public Hall 1;
-
-    /**
-     * 
-     */
-    public TowerTable 1;
 
     /**
      * @return
@@ -62,13 +42,6 @@ public class School {
     public Hall getHall() {
         // TODO implement here
         return null;
-    }
-
-    /**
-     * 
-     */
-    public void getProfessorsTable() {
-        // TODO implement here
     }
 
     /**

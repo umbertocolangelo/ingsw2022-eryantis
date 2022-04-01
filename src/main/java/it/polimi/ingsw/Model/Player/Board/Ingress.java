@@ -1,4 +1,7 @@
-package Model.Player.Board;
+package it.polimi.ingsw.Model.Player.Board;
+
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.Pawns.Student;
 
 import java.util.*;
 
@@ -21,7 +24,7 @@ public class Ingress implements fixedObjectStudent {
     /**
      * 
      */
-    private Int maxStudentsNum;
+    private Integer maxStudentsNum;
 
     /**
      * 
@@ -31,13 +34,7 @@ public class Ingress implements fixedObjectStudent {
     /**
      * 
      */
-    private <Collection>Student students;
-
-    /**
-     * 
-     */
-    public School 1;
-
+    private Collection<Student> students;
 
     /**
      * 
@@ -49,7 +46,7 @@ public class Ingress implements fixedObjectStudent {
     /**
      * @return
      */
-    public ArrayList<Students> getStudents() {
+    public ArrayList<Student> getStudents() {
         // TODO implement here
         return null;
     }
@@ -69,24 +66,9 @@ public class Ingress implements fixedObjectStudent {
     }
 
     /**
-     * @param student
-     */
-    public void removeStudent(Student student) {
-        // TODO implement here
-    }
-
-    /**
      * @return
      */
-    public ArrayList<Students> getStudents() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public Int numOfStudents() {
+    public Integer numOfStudents() {
         // TODO implement here
         return null;
     }

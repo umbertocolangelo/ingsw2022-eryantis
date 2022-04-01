@@ -1,5 +1,8 @@
 package it.polimi.ingsw.Model.StudentSuppliers;
 
+import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.Pawns.Student;
+
 import java.util.*;
 
 /**
@@ -21,50 +24,12 @@ public class Cloud implements fixedObjectStudent {
     /**
      * 
      */
-    private <Collection>Student students;
+    private Collection<Student> students;
 
     /**
      * 
      */
     private Boolean isFourPlayers;
-
-
-    /**
-     * 
-     */
-    public void removeStudent() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void resetStudents() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public void Operation1() {
-        // TODO implement here
-    }
-
-    /**
-     * @return
-     */
-    public ArrayList<Student> getStudents() {
-        // TODO implement here
-        return null;
-    }
-
-    /**
-     * @return
-     */
-    public LinkedList<Students> getStudents() {
-        // TODO implement here
-        return null;
-    }
 
     /**
      * @return
@@ -91,7 +56,7 @@ public class Cloud implements fixedObjectStudent {
     /**
      * @return
      */
-    public ArrayList<Students> getStudents() {
+    public ArrayList<Student> getStudents() {
         // TODO implement here
         return null;
     }
@@ -99,7 +64,7 @@ public class Cloud implements fixedObjectStudent {
     /**
      * @return
      */
-    public Int numOfStudents() {
+    public Integer numOfStudents() {
         // TODO implement here
         return null;
     }

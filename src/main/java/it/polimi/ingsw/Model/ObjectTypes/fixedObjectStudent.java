@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.ObjectTypes;
 
+import it.polimi.ingsw.Model.Pawns.Student;
+
 import java.util.*;
 
 /**
@@ -20,11 +22,11 @@ public interface fixedObjectStudent {
     /**
      * @return
      */
-    public ArrayList<Students> getStudents();
+    public ArrayList<Student> getStudents();
 
     /**
      * @return
      */
-    public Int numOfStudents();
+    public Integer numOfStudents();
 
 }

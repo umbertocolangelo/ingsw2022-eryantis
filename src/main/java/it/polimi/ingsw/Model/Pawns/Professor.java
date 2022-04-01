@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.Pawns;
 
+import it.polimi.ingsw.Model.Enumerations.Color;
+
 import java.util.*;
 
 /**

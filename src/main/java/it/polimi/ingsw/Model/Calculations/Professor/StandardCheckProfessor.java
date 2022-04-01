@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.Calculations.Professor;
 
+import it.polimi.ingsw.Model.Pawns.Professor;
+
 import java.util.*;
 
 /**
@@ -16,7 +18,7 @@ public class StandardCheckProfessor implements ProfessorCalculator {
     /**
      * 
      */
-    public Collection<Professor> professors;
+    private Collection<Professor> professors;
 
     /**
      * 

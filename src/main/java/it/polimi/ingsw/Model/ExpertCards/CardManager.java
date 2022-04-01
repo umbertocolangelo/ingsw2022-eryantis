@@ -1,5 +1,8 @@
 package it.polimi.ingsw.Model.ExpertCards;
 
+import it.polimi.ingsw.Model.Player.Player;
+import it.polimi.ingsw.Model.Pawns.MotherNature;
+import it.polimi.ingsw.Model.StudentSuppliers.Bag;
 import java.util.*;
 
 /**
@@ -31,7 +34,7 @@ public class CardManager {
     /**
      * 
      */
-    private ArrayList<ExpertCards> expertCards;
+    private ArrayList<ExpertCard> expertCards;
 
 
 

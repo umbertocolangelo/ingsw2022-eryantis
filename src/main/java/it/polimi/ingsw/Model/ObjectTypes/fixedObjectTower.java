@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.ObjectTypes;
 
+import it.polimi.ingsw.Model.Pawns.Tower;
+
 import java.util.*;
 
 /**
@@ -25,6 +27,6 @@ public interface fixedObjectTower {
     /**
      * @return
      */
-    public Int numOfTowers();
+    public Integer numOfTowers();
 
 }

@@ -1,5 +1,11 @@
 package it.polimi.ingsw.Model.StudentSuppliers;
 
+import it.polimi.ingsw.Model.Enumerations.Color;
+import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
+import it.polimi.ingsw.Model.Islands.Island;
+import it.polimi.ingsw.Model.Pawns.Student;
+import it.polimi.ingsw.Model.Player.Board.Ingress;
+
 /**
  * 
  */
@@ -14,36 +20,32 @@ public class Bag {
     /**
      * 
      */
-    private Int yellowStudentsNum;
+    private Integer yellowStudentsNum;
 
     /**
      * 
      */
-    private Int blueStudentsNum;
+    private Integer blueStudentsNum;
 
     /**
      * 
      */
-    private Int greenStudentsNum;
+    private Integer greenStudentsNum;
 
     /**
      * 
      */
-    private Int redStudentsNum;
+    private Integer redStudentsNum;
 
     /**
      * 
      */
-    private Int pinkStudentsNum;
+    private Integer pinkStudentsNum;
 
     /**
      * 
      */
     private String id;
-
-
-
-
 
     /**
      * @return
