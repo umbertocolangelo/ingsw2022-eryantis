@@ -1,0 +1,95 @@
+package Model;
+
+import java.util.*;
+
+/**
+ * 
+ */
+public interface GameInterface {
+
+    /**
+     * @param name 
+     * @param playerNum
+     */
+    public void playerLogin(String name, Int playerNum);
+
+    /**
+     * @param playerNum
+     */
+    public void startGame(Int playerNum);
+
+    /**
+     * 
+     */
+    public void saveGame();
+
+    /**
+     * @return
+     */
+    public Boolean isStarted();
+
+    /**
+     * @param student
+     */
+    public void moveStudentIngressToHall(String student);
+
+    /**
+     * @param student 
+     * @param island
+     */
+    public void moveStudentIngressToIsland(String student, String island);
+
+    /**
+     * @param jumps
+     */
+    public void moveMotherNature(Int jumps);
+
+    /**
+     * @param assistantCard
+     */
+    public void playAssistantCard(String assistantCard);
+
+    /**
+     * @param expertCard 
+     * @param parameter
+     */
+    public void playExpertCard(String expertCard, Object parameter);
+
+    /**
+     * @param student 
+     * @param island
+     */
+    public void expertStudentToIsland(String student, String island);
+
+    /**
+     * @param student
+     */
+    public void expertIngressCardSwap(String student);
+
+    /**
+     * @param studentHall 
+     * @param studentIngress
+     */
+    public void expertIngressHallSwap(String studentHall, String studentIngress);
+
+    /**
+     * @param student
+     */
+    public void expertStudentToHall(String student);
+
+    /**
+     * @param cloud
+     */
+    public void chooseCloud(String cloud);
+
+    /**
+     * @return
+     */
+    public Boolean chooseExpertMode();
+
+    /**
+     * @return
+     */
+    public String getCurrentPlayer();
+
+}
