@@ -1,4 +1,4 @@
-package Model.Calculations.Professor;
+package it.polimi.ingsw.Model.Calculations.Professor;
 
 import java.util.*;
 

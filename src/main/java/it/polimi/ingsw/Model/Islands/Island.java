@@ -1,6 +1,7 @@
-package Model.Islands;
+package it.polimi.ingsw.Model.Islands;
 
 import java.util.*;
+import it.polimi.ingsw.Model.ObjectTypes
 
 /**
  * 

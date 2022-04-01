@@ -1,4 +1,4 @@
-package Model.Islands;
+package it.polimi.ingsw.Model.Islands;
 
 import java.util.*;
 

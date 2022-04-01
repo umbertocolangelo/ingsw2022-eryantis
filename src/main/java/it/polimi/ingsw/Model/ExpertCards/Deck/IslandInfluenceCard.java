@@ -1,12 +1,11 @@
-package Model.ExpertCards.Deck;
-import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
-import it.polimi.ingsw.Model.Islands.Island;
+package it.polimi.ingsw.Model.ExpertCards.Deck;
+
 import java.util.*;
 
 /**
  * 
  */
-public class IslandInfluenceCard implements ExpertCard {
+public class IslandInfluenceCard implements ExpertCard, ExpertCard, ExpertCard {
 
     /**
      * Default constructor
@@ -29,7 +28,7 @@ public class IslandInfluenceCard implements ExpertCard {
     /**
      * @return
      */
-    public Integer getCost() {
+    public Int getCost() {
         // TODO implement here
         return null;
     }
@@ -44,7 +43,7 @@ public class IslandInfluenceCard implements ExpertCard {
     /**
      * @return
      */
-    public Integer getCost() {
+    public Int getCost() {
         // TODO implement here
         return null;
     }
@@ -59,7 +58,7 @@ public class IslandInfluenceCard implements ExpertCard {
     /**
      * @return
      */
-    public Integer getCost() {
+    public Int getCost() {
         // TODO implement here
         return null;
     }

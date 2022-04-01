@@ -1,11 +1,11 @@
-package Model.ExpertCards.Deck;
-import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
+package it.polimi.ingsw.Model.ExpertCards.Deck;
+
 import java.util.*;
 
 /**
  * 
  */
-public class IngressHallSwapCard implements ExpertCard {
+public class IngressHallSwapCard implements ExpertCard, ExpertCard {
 
     /**
      * Default constructor
@@ -28,7 +28,7 @@ public class IngressHallSwapCard implements ExpertCard {
     /**
      * @return
      */
-    public Integer getCost() {
+    public Int getCost() {
         // TODO implement here
         return null;
     }
@@ -43,7 +43,7 @@ public class IngressHallSwapCard implements ExpertCard {
     /**
      * @return
      */
-    public Integer getCost() {
+    public Int getCost() {
         // TODO implement here
         return null;
     }

@@ -1,4 +1,4 @@
-package Model.Pawns;
+package it.polimi.ingsw.Model.Pawns;
 
 import java.util.*;
 

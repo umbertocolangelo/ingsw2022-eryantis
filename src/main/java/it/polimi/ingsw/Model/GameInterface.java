@@ -1,4 +1,4 @@
-package Model;
+package it.polimi.ingsw.Model;
 
 import java.util.*;
 

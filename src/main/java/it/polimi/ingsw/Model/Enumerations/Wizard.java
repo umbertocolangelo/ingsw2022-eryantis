@@ -1,4 +1,4 @@
-package Model.Enumerations;
+package it.polimi.ingsw.Model.Enumerations;
 
 /**
  * 

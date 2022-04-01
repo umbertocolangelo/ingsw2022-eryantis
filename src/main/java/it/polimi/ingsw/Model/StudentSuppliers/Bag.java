@@ -1,6 +1,4 @@
-package Model.StudentSuppliers;
-
-import java.util.*;
+package it.polimi.ingsw.Model.StudentSuppliers;
 
 /**
  * 
@@ -16,27 +14,27 @@ public class Bag {
     /**
      * 
      */
-    private Integer yellowStudentsNum;
+    private Int yellowStudentsNum;
 
     /**
      * 
      */
-    private Integer blueStudentsNum;
+    private Int blueStudentsNum;
 
     /**
      * 
      */
-    private Integer greenStudentsNum;
+    private Int greenStudentsNum;
 
     /**
      * 
      */
-    private Integer redStudentsNum;
+    private Int redStudentsNum;
 
     /**
      * 
      */
-    private Integer pinkStudentsNum;
+    private Int pinkStudentsNum;
 
     /**
      * 
