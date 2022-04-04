@@ -37,7 +37,7 @@ public class StudentTest {
      * Tests the SetPosition() method
      */
     @Test
-    public void SetPositionTest()
+    public void setPositionTest()
     {
         Student student = new Student(Color.YELLOW,null);
         Island island = new Island();

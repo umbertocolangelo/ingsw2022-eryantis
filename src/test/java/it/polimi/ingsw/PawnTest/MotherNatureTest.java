@@ -12,7 +12,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class MotherNatureTest {
 
     @Test
-    public void GetIslandTest()
+    public void getIslandTest()
     {
         MotherNature motherNature = new MotherNature();
         Island island = new Island();
@@ -21,7 +21,7 @@ public class MotherNatureTest {
     }
 
     @Test
-    public void SetIslandTest()
+    public void setIslandTest()
     {
         MotherNature motherNature = new MotherNature();
         Island island = new Island();
@@ -29,6 +29,7 @@ public class MotherNatureTest {
         assertTrue(motherNature.getIsland()==island);
         IslandGroup islandGroup = new IslandGroup();
         motherNature.setIsland(islandGroup);
+        assertTrue(motherNature.getIsland()==islandGroup);
     }
 
 }

@@ -17,7 +17,7 @@ public class TowerTest {
      * Tests the GetColorTest() method
      */
     @Test
-    public void GetColorTest()
+    public void getColorTest()
     {
         Tower tower = new Tower(PlayerColor.WHITE,null);
         assertTrue(tower.getColor()==PlayerColor.WHITE);
@@ -27,7 +27,7 @@ public class TowerTest {
      * Tests the GetPosition() method
      */
     @Test
-    public void GetPositionTest()
+    public void getPositionTest()
     {
         TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
         Tower tower = new Tower(PlayerColor.WHITE,towerTable);
@@ -38,7 +38,7 @@ public class TowerTest {
      * Tests the SetPosition() method
      */
     @Test
-    public void SetPositionTest()
+    public void setPositionTest()
     {
         TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
         Tower tower = new Tower(PlayerColor.WHITE,null);

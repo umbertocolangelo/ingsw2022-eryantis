@@ -15,7 +15,7 @@ public class ProfessorTest {
      * Tests the GetColorTest() method
      */
     @Test
-    public void GetColorTest()
+    public void getColorTest()
     {
         Professor professor = new Professor(Color.YELLOW);
         assertTrue(professor.getColor()==Color.YELLOW);
@@ -25,7 +25,7 @@ public class ProfessorTest {
      * Tests the GetPosition() method
      */
     @Test
-    public void GetPositionTest()
+    public void getPositionTest()
     {
         Professor professor = new Professor(Color.YELLOW);
         assertTrue(professor.getPosition()==null);
@@ -35,7 +35,7 @@ public class ProfessorTest {
      * Tests the SetPosition() method
      */
     @Test
-    public void SetPositionTest()
+    public void setPositionTest()
     {
         Professor professor = new Professor(Color.YELLOW);
         Line line = new Line();
