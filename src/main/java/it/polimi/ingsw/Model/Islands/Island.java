@@ -3,7 +3,6 @@ package it.polimi.ingsw.Model.Islands;
 import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.Enumerations.PlayerColor;
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
-import it.polimi.ingsw.Model.ObjectTypes.fixedObjectTower;
 import it.polimi.ingsw.Model.Pawns.MotherNature;
 import it.polimi.ingsw.Model.Pawns.Student;
 import it.polimi.ingsw.Model.Pawns.Tower;
@@ -15,10 +14,13 @@ import java.util.*;
  */
 public class Island implements fixedObjectStudent, IslandInterface {
 
+
+
     /**
      * Default constructor
      */
     public Island() {
+
     }
 
     /**
@@ -29,83 +31,84 @@ public class Island implements fixedObjectStudent, IslandInterface {
     /**
      * 
      */
-    private Collection<Student> students;
+    private LinkedList<Student> students= new LinkedList<Student>();
 
     /**
      * 
      */
-    private Collection<Tower> towers;
+    private LinkedList<Tower> towers= new LinkedList<Tower>();
 
     /**
      * 
      */
     private Island nextIsland;
 
-    /**
-     * 
-     */
-    private MotherNature motherNature;
 
     /**
      * 
      */
-    private Boolean isGrouped;
+    private Boolean isGrouped=false;
 
     /**
      * 
      */
-    private Boolean isDenied;
+    private Boolean isDenied=false;
+
+
 
     /**
      * @param student
      */
+
     public void addStudent(Student student) {
-        // TODO implement here
+        if (!this.students.contains(student)) {
+            this.students.add(student);
+            }
     }
 
     /**
      * @param student
      */
     public void removeStudent(Student student) {
-        // TODO implement here
+        if (this.students.contains(student)) {
+            this.students.remove(this.students.indexOf(student));
+        }
     }
 
     /**
      * @return
      */
-    public ArrayList<Student> getStudents() {
-        // TODO implement here
-        return null;
+    public LinkedList<Student> getStudents() {
+        return this.students;
     }
 
     /**
      * @return
      */
     public Integer numOfStudents() {
-        // TODO implement here
-        return null;
+        return this.students.size();
     }
 
     /**
      * @param tower
      */
     public void addTower(Tower tower) {
-        // TODO implement here
+        this.towers.add(tower);
     }
 
     /**
      * @param tower
      */
     public void removeTower(Tower tower) {
-        // TODO implement here
+        this.towers.remove(0);
+
     }
 
     /**
      * @return
      */
-    public ArrayList<Tower> getTowers() {
-        // TODO implement here
-        return null;
+    public LinkedList<Tower> getTowers() {
+        return this.towers;
     }
 
     /**
@@ -113,37 +116,49 @@ public class Island implements fixedObjectStudent, IslandInterface {
      * @return
      */
     public Integer numOfStudents(Color color) {
-        // TODO implement here
-        return null;
+        int counter=0;
+        for (Student s: students )
+        {
+           if(s.getColor()==color){
+               counter++;
+             }
+        }
+        return counter;
     }
 
     /**
-     * 
+     *
      */
-    public void setDeny() {
-        // TODO implement here
+    public void setDeny() { isDenied=true;
     }
 
     /**
      * 
      */
     public void removeDeny() {
-        // TODO implement here
+        isDenied=false;
     }
 
     /**
      * @return
      */
     public Integer numOfTowers() {
-        // TODO implement here
-        return null;
+      if(this.towers.isEmpty()){
+          return 0;
+      }
+      else{
+          return 1;
+      }
+
     }
 
     /**
      * @return
      */
     public PlayerColor influenceColor() {
-        // TODO implement here
+        /**
+         *
+         */
         return null;
     }
 
