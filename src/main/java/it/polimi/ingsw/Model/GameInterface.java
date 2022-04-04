@@ -70,17 +70,17 @@ public interface GameInterface {
      * @param studentHall 
      * @param studentIngress
      */
-    public void expertIngressHallSwap(String studentHall, String studentIngress);
+    void expertIngressHallSwap(String studentHall, String studentIngress);
 
     /**
      * @param student
      */
-    public void expertStudentToHall(String student);
+    void expertStudentToHall(String student);
 
     /**
      * @param cloud
      */
-    public void chooseCloud(String cloud);
+    void chooseCloud(String cloud);
 
     /**
      * @return

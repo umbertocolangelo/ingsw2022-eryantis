@@ -12,7 +12,8 @@ public class Tower extends PlaceableObject {
     /**
      * Default constructor
      */
-    public Tower() {
+    public Tower(PlayerColor color) {
+        this.color = color;
     }
 
     /**
@@ -21,11 +22,10 @@ public class Tower extends PlaceableObject {
     private PlayerColor color;
 
     /**
-     * @return
+     * @return color
      */
     public PlayerColor getColor() {
-        // TODO implement here
-        return null;
+        return this.color;
     }
 
 }

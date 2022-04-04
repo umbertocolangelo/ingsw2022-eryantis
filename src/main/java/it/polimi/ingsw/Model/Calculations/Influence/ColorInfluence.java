@@ -35,7 +35,7 @@ public class ColorInfluence implements InfluenceCalculator {
     /**
      * 
      */
-    private void applyInfluence() {
+    public void applyInfluence() {
         // TODO implement here
     }
 

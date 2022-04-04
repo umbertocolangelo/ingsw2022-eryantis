@@ -1,6 +1,6 @@
 package it.polimi.ingsw.Model.Pawns;
 
-import it.polimi.ingsw.Model.Calculations.Influence.InfluenceCalculator;
+import it.polimi.ingsw.Model.Calculations.Influence.*;
 import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.Islands.Island;
 import it.polimi.ingsw.Model.Islands.IslandInterface;
@@ -29,58 +29,62 @@ public class MotherNature extends PlaceableObject {
     private IslandInterface island;
 
     /**
-     * 
+     *
      */
     private InfluenceCalculator influence;
 
     /**
-     * @return
+     * @return the Island/IslandGroup MotherNature is currently on
      */
-    public Island getIsland() {
-        // TODO implement here
-        return null;
+    public IslandInterface getIsland() {
+        return this.island;
     }
 
     /**
-     * 
+     *  Sets the current position of MotherNature on a specific Island
      */
-    public void setIsland(Island island) {
-        // TODO implement here
+    public void setIsland(IslandInterface island) {
+        this.island=island;
     }
 
     /**
-     * 
+     *  Starts the influence calculus by calling the calculateInfluence() method in the current Influence state
      */
     public void calculateInfluence() {
-        // TODO implement here
+        this.influence.calculateInfluence();
     }
 
     /**
-     * @param color
+     *  Sets the influence to ignore a specific student Color in the influence calculus
+     *
+     * @param color indicates the color to ignore in the influence calculus
      */
     public void setColorInfluence(Color color) {
-        // TODO implement here
+        this.influence = new ColorInfluence();
     }
 
     /**
-     * 
+     *  Sets the influence state to ignore towers in the influence calculus
      */
     public void setTowerInfluence() {
-        // TODO implement here
+        this.influence = new TowerInfluence();
     }
 
     /**
-     * @param island
+     *  Sets the influence state to calculate the influence on a different island instead of the island
+     *  MotherNature is currently on
+     *
+     * @param island indicates the island to calculate the influence ond
      */
     public void setIslandInfluence(Island island) {
-        // TODO implement here
+        this.influence = new IslandInfluence();
     }
 
     /**
-     * 
+     *  Sets the influence state to the standard one
      */
     public void setStandardInfluence() {
-        // TODO implement here
+        this.influence = new StandardInfluence();
     }
 
 }

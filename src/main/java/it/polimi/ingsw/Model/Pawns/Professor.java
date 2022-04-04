@@ -11,7 +11,8 @@ public class Professor extends ColoredPawn {
     /**
      * Default constructor
      */
-    public Professor() {
+    public Professor(Color color) {
+        this.color=color;
     }
 
     /**
@@ -25,11 +26,9 @@ public class Professor extends ColoredPawn {
     private String id;
 
     /**
-     * @return
+     * @return color
      */
     public Color getColor() {
-        // TODO implement here
-        return null;
+        return this.color;
     }
-
 }

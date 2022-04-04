@@ -18,7 +18,7 @@ public class TowerInfluence implements InfluenceCalculator {
     /**
      * 
      */
-    private MotherNature motherNature;
+    public MotherNature motherNature;
 
     /**
      * 
@@ -30,7 +30,7 @@ public class TowerInfluence implements InfluenceCalculator {
     /**
      * 
      */
-    private void applyInfluence() {
+    public void applyInfluence() {
         // TODO implement here
     }
 

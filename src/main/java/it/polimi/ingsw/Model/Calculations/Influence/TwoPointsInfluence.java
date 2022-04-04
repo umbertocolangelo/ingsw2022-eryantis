@@ -30,7 +30,7 @@ public class TwoPointsInfluence implements InfluenceCalculator {
     /**
      * 
      */
-    private void applyInfluence() {
+    public void applyInfluence() {
         // TODO implement here
     }
 

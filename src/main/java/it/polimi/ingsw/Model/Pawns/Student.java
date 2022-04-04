@@ -11,11 +11,12 @@ public class Student extends ColoredPawn {
     /**
      * Default constructor
      */
-    public Student() {
+    public Student(Color color) {
+        this.color = color;
     }
 
     /**
-     * 
+     * Indicates the color of the single student
      */
     private Color color;
 
@@ -25,11 +26,10 @@ public class Student extends ColoredPawn {
     private String id;
 
     /**
-     * @return
+     * @return color
      */
     public Color getColor() {
-        // TODO implement here
-        return null;
+        return this.color;
     }
 
 }
