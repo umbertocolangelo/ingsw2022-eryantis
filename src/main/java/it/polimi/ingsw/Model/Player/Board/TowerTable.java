@@ -1,5 +1,6 @@
 package it.polimi.ingsw.Model.Player.Board;
 
+import it.polimi.ingsw.Model.Enumerations.PlayerColor;
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectTower;
 import it.polimi.ingsw.Model.Pawns.Tower;
 import java.util.*;
@@ -12,7 +13,7 @@ public class TowerTable implements fixedObjectTower {
     /**
      * Default constructor
      */
-    public TowerTable() {
+    public TowerTable(PlayerColor color) {
     }
 
     /**

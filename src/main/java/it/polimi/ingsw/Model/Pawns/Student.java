@@ -14,8 +14,9 @@ public class Student implements PlaceableObject {
     /**
      * Default constructor
      */
-    public Student(Color color){
+    public Student(Color color, FixedObject position){
         this.color = color;
+        this.position = position;
     }
 
     /**
