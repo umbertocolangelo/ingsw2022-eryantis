@@ -89,7 +89,7 @@ public class IslandTest {
     public void setDenyTest(){
         Island island=new Island();
         island.setDeny();
-        assertTrue(island.);
+        assertTrue(island.getDeny()==true);
 
     }
 }

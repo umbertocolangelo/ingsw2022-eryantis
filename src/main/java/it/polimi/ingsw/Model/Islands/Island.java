@@ -133,6 +133,13 @@ public class Island implements fixedObjectStudent, IslandInterface {
     }
 
     /**
+     *
+     */
+    public boolean getDeny(){
+        return isDenied;
+    };
+
+    /**
      * 
      */
     public void removeDeny() {

@@ -89,7 +89,7 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * @return
      */
-    public ArrayList<Student> getStudents() {
+    public LinkedList<Student> getStudents() {
         // TODO implement here
         return null;
     }

@@ -34,6 +34,10 @@ public class Student implements PlaceableObject {
      */
     private String id;
 
+    public Student(Color color) {
+        this.color=color;
+    }
+
     /**
      * @return the color of the student
      */
