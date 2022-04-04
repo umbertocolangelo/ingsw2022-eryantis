@@ -58,7 +58,7 @@ public class TowerTableTest {
         }
 
         /**
-         * Test on numOfStudents.
+         * Test on numOfTowerTest
          */
 
         @Test

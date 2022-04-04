@@ -9,9 +9,15 @@ import java.util.*;
 public class Hall {
 
     /**
-     * Default constructor
+     * Constructor that create the lines in Hall
      */
     public Hall() {
+        for (Color c : Color.values()){
+            Line line=new Line(c);
+            this.lines.add(line);
+          }
+
+
 
     }
 
@@ -23,15 +29,22 @@ public class Hall {
     /**
      * 
      */
-    private Collection<Line> lines;
+    private LinkedList<Line> lines=new LinkedList<Line>();
 
     /**
      * @param color 
-     * @return
+     * @return Line Return the line with te specified color
      */
+
     public Line getLine(Color color) {
-        // TODO implement here
-        return null;
-    }
+        int i=0;
+        for (i=0;i<this.lines.size()-1;i++){
+            if(this.lines.get(i).getColor()==color){
+                break;
+                    }
+             }
+            return this.lines.get(i);
+         }
+
 
 }

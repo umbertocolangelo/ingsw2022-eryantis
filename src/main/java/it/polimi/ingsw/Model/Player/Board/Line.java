@@ -1,6 +1,7 @@
 package it.polimi.ingsw.Model.Player.Board;
 
 import it.polimi.ingsw.Model.Calculations.Professor.ProfessorCalculator;
+import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectProfessor;
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Professor;
@@ -16,8 +17,14 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * Default constructor
      */
-    public Line() {
+    public Line(Color color) {
+        this.color=color;
+
     }
+    /**
+     *
+     */
+    private Color color;
 
     /**
      * 
@@ -44,6 +51,7 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      */
     private ProfessorCalculator professorCalculator;
 
+
     /**
      * 
      */
@@ -56,6 +64,13 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      */
     private void checkProfessor() {
         // TODO implement here
+    }
+
+    /**
+     *
+     */
+    public Color getColor() {
+        return this.color;
     }
 
     /**
