@@ -13,8 +13,6 @@ public class HallTest {
     /**
      * Test the getLine function
      */
-
-
     @Test
     public void getLineTest(){
         Hall hall=new Hall();
