@@ -7,7 +7,7 @@ import java.util.*;
 /**
  * 
  */
-public interface fixedObjectStudent {
+public interface fixedObjectStudent extends FixedObject {
 
     /**
      * @param student
