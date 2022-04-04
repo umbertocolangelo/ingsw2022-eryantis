@@ -11,6 +11,9 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class IslandTest {
 
+    /**T
+     * Testing addStudent
+      */
     @Test
     public void addStudentTest(){
         Island island= new Island();
@@ -20,6 +23,9 @@ public class IslandTest {
 
     }
 
+    /**T
+     * Testing removeStudent
+     */
     @Test
     public void removeStudentTest(){
         Island island= new Island();
@@ -31,6 +37,10 @@ public class IslandTest {
 
     }
 
+    /**T
+     * Testing getStudent
+     */
+
     @Test
     public void getStudentTest(){
         Island island= new Island();
@@ -38,6 +48,10 @@ public class IslandTest {
         island.addStudent(student);
         assertTrue(island.getStudents().contains(student) && island.getStudents().size()==1);
     }
+
+    /**T
+     * Testing numOfStudent
+     */
 
     @Test
     public void numOfStudentsTest(){
@@ -92,4 +106,23 @@ public class IslandTest {
         assertTrue(island.getDeny()==true);
 
     }
+
+    @Test
+    public void removeDenyTest(){
+        Island island=new Island();
+        island.setDeny();
+        island.removeDeny();
+        assertTrue(island.getDeny()==false);
+    }
+
+    @Test
+    public void numOfTowersTest(){
+        Island island=new Island();
+        assertTrue(island.numOfTowers()==0);
+        Tower tower=new Tower(PlayerColor.WHITE);
+        island.addTower(tower);
+        assertTrue(island.numOfTowers()==1);
+    }
+
+
 }

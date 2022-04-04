@@ -162,10 +162,9 @@ public class Island implements fixedObjectStudent, IslandInterface {
     /**
      * @return
      */
-    public PlayerColor influenceColor() {
-        /**
-         *
-         */
+
+   public PlayerColor influenceColor() {
+       //To implement
         return null;
     }
 
