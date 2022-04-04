@@ -12,6 +12,7 @@ public class Hall {
      * Default constructor
      */
     public Hall() {
+
     }
 
     /**

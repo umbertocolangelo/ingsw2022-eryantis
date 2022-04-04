@@ -1,5 +1,7 @@
 package it.polimi.ingsw.Model.Player.Board;
 
+import it.polimi.ingsw.Model.Enumerations.PlayerColor;
+
 import java.util.*;
 
 /**
@@ -10,18 +12,19 @@ public class School {
     /**
      * Default constructor
      */
-    public School() {
+    public School(PlayerColor color) {
+        this.towerTable=new TowerTable(color);
     }
 
     /**
      * 
      */
-    private Ingress ingress;
+    private Ingress ingress=new Ingress();
 
     /**
      * 
      */
-    private Hall hall;
+    private Hall hall=new Hall();
 
     /**
      * 
@@ -29,27 +32,26 @@ public class School {
     private TowerTable towerTable;
 
     /**
-     * @return
+     * @return Ingress      Return the ingress of this school
      */
     public Ingress getIngress() {
-        // TODO implement here
-        return null;
+       return this.ingress;
+
     }
 
     /**
-     * @return
+     * @return Hall     Return th Hall of this school
      */
     public Hall getHall() {
-        // TODO implement here
-        return null;
+
+        return this.hall;
     }
 
     /**
-     * @return
+     * @return TowerTable       Return the TowerTable of this school
      */
     public TowerTable getTowerTable() {
-        // TODO implement here
-        return null;
+        return this.towerTable;
     }
 
 }

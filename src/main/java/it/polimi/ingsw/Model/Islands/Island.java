@@ -3,7 +3,6 @@ package it.polimi.ingsw.Model.Islands;
 import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.Enumerations.PlayerColor;
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
-import it.polimi.ingsw.Model.ObjectTypes.fixedObjectTower;
 import it.polimi.ingsw.Model.Pawns.MotherNature;
 import it.polimi.ingsw.Model.Pawns.Student;
 import it.polimi.ingsw.Model.Pawns.Tower;
@@ -11,139 +10,161 @@ import java.util.*;
 
 
 /**
- * 
+ *
  */
 public class Island implements fixedObjectStudent, IslandInterface {
+
+
 
     /**
      * Default constructor
      */
     public Island() {
+
     }
 
     /**
-     * 
+     *
      */
     private String id;
 
     /**
-     * 
+     *
      */
-    private Collection<Student> students;
+    private LinkedList<Student> students= new LinkedList<Student>();
 
     /**
-     * 
+     *
      */
-    private Collection<Tower> towers;
+    private LinkedList<Tower> towers= new LinkedList<Tower>();
 
     /**
-     * 
+     *
      */
     private Island nextIsland;
 
-    /**
-     * 
-     */
-    private MotherNature motherNature;
 
     /**
-     * 
+     *
      */
-    private Boolean isGrouped;
+    private Boolean isGrouped=false;
 
     /**
-     * 
+     *
      */
-    private Boolean isDenied;
+    private Boolean isDenied=false;
+
+
 
     /**
-     * @param student
+     * @param student   Add the student to the LinkedList
      */
+
     public void addStudent(Student student) {
-        // TODO implement here
+        if (!this.students.contains(student)) {
+            this.students.add(student);
+            }
     }
 
     /**
-     * @param student
+     * @param student       Remove the student from the LinkedList
      */
     public void removeStudent(Student student) {
-        // TODO implement here
+        if (this.students.contains(student)) {
+            this.students.remove(this.students.indexOf(student));
+        }
     }
 
     /**
-     * @return
+     * @return LinkedList<Student>      Return the LinkedList<Student>
      */
-    public ArrayList<Student> getStudents() {
-        // TODO implement here
-        return null;
+    public LinkedList<Student> getStudents() {
+        return this.students;
     }
 
     /**
-     * @return
+     * @return Integer      Return the Number of student
      */
     public Integer numOfStudents() {
-        // TODO implement here
-        return null;
+        return this.students.size();
     }
 
     /**
-     * @param tower
+     * @param tower     Add Tower to the LinkedList
      */
     public void addTower(Tower tower) {
-        // TODO implement here
+        this.towers.add(tower);
     }
 
     /**
-     * @param tower
+     * @param tower    Remove tower from the LinkedList
      */
     public void removeTower(Tower tower) {
-        // TODO implement here
+        this.towers.remove(0);
+
     }
 
     /**
-     * @return
+     * @return LinkedList<Tower>        Return the LinkedList of Towers
      */
-    public ArrayList<Tower> getTowers() {
-        // TODO implement here
-        return null;
+    public LinkedList<Tower> getTowers() {
+        return this.towers;
     }
 
     /**
-     * @param color 
-     * @return
+     * @param color
+     * @return Integer      Return the number of student who by color
      */
     public Integer numOfStudents(Color color) {
-        // TODO implement here
-        return null;
+        int counter=0;
+        for (Student s: students )
+        {
+           if(s.getColor()==color){
+               counter++;
+             }
+        }
+        return counter;
     }
 
     /**
-     * 
+     * Set the state of isDenied
      */
-    public void setDeny() {
-        // TODO implement here
+    public void setDeny() { isDenied=true;
     }
 
     /**
-     * 
+     * @return boolean      Return the state of isDenied
+     */
+    public boolean getDeny(){
+        return isDenied;
+    };
+
+    /**
+     * Set isDenied to false;
      */
     public void removeDeny() {
-        // TODO implement here
+        isDenied=false;
     }
 
     /**
-     * @return
+     * @return Integer      Return the number of towers
      */
     public Integer numOfTowers() {
-        // TODO implement here
-        return null;
+      if(this.towers.isEmpty()){
+          return 0;
+      }
+      else{
+          return 1;
+      }
+
     }
 
     /**
      * @return
      */
-    public PlayerColor influenceColor() {
-        // TODO implement here
+
+   public PlayerColor influenceColor() {
+       //To implement
         return null;
     }
 

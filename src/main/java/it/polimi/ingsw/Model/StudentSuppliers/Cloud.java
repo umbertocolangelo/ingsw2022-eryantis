@@ -55,7 +55,7 @@ public class Cloud implements fixedObjectStudent {
     /**
      * @return
      */
-    public ArrayList<Student> getStudents() {
+    public LinkedList<Student> getStudents() {
         // TODO implement here
         return null;
     }

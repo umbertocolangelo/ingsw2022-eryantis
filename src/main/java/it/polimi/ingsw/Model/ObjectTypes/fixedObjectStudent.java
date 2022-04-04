@@ -22,7 +22,7 @@ public interface fixedObjectStudent extends FixedObject {
     /**
      * @return
      */
-    public ArrayList<Student> getStudents();
+    public LinkedList<Student> getStudents();
 
     /**
      * @return

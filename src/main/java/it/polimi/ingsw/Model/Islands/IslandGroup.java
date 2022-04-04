@@ -15,6 +15,10 @@ public class IslandGroup implements IslandInterface {
      */
     public IslandGroup() {
     }
+    /**
+     *
+     */
+    private boolean isDenied;
 
     /**
      * 
@@ -55,6 +59,11 @@ public class IslandGroup implements IslandInterface {
      */
     public void setDeny() {
         // TODO implement here
+    }
+
+
+   public boolean getDeny(){
+        return isDenied;
     }
 
     /**

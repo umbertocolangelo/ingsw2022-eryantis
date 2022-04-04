@@ -22,6 +22,10 @@ public interface IslandInterface {
     public void setDeny();
 
     /**
+     *
+     */
+    public boolean getDeny();
+    /**
      * 
      */
     public void removeDeny();
