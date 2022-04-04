@@ -13,6 +13,7 @@ public class Ingress implements fixedObjectStudent {
      * Default constructor
      */
     public Ingress() {
+
     }
 
     /**
@@ -28,41 +29,43 @@ public class Ingress implements fixedObjectStudent {
     /**
      * 
      */
-    private Boolean isFourPlayers;
+    private Boolean isFourPlayers=false;
 
     /**
      * 
      */
-    private Collection<Student> students;
+    private LinkedList<Student> students=new LinkedList<>();
 
     /**
-     * @return
+     * @return LinkedList<Student>      Return a LinkedList of students that are in this ingress
      */
     public LinkedList<Student> getStudents() {
-        // TODO implement here
-        return null;
+
+        return this.students;
     }
 
     /**
-     * @param student
+     * @param student       Remove the student from the Ingress
      */
     public void removeStudent(Student student) {
-        // TODO implement here
+        if(this.students.contains(student)){
+            students.remove(students.indexOf(student));
+        }
     }
 
     /**
-     * @param student
+     * @param student       Add the student to the ingress
      */
     public void addStudent(Student student) {
-        // TODO implement here
+        this.students.add(student);
     }
 
     /**
-     * @return
+     * @return  Integer     Return the number of the students
      */
     public Integer numOfStudents() {
-        // TODO implement here
-        return null;
+
+        return this.students.size();
     }
 
 }
