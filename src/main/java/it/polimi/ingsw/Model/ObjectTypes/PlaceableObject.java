@@ -5,34 +5,17 @@ import java.util.*;
 /**
  * 
  */
-public abstract class PlaceableObject {
-
-    /**
-     * Default constructor
-     */
-    public PlaceableObject() {
-    }
-
-    /**
-     * 
-     */
-    private FixedObject position;
+public interface PlaceableObject {
 
     /**
      * @return
      */
-    public FixedObject getPosition() {
-        // TODO implement here
-        return null;
-    }
+    public FixedObject getPosition();
 
     /**
      * @param position
      * @return
      */
-    public Boolean setPosition(FixedObject position) {
-        // TODO implement here
-        return null;
-    }
+    public void setPosition(FixedObject position);
 
 }

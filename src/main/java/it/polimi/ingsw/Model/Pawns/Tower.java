@@ -1,13 +1,14 @@
 package it.polimi.ingsw.Model.Pawns;
 
 import it.polimi.ingsw.Model.Enumerations.PlayerColor;
+import it.polimi.ingsw.Model.ObjectTypes.FixedObject;
 import it.polimi.ingsw.Model.ObjectTypes.PlaceableObject;
 import java.util.*;
 
 /**
  * 
  */
-public class Tower extends PlaceableObject {
+public class Tower implements PlaceableObject {
 
     /**
      * Default constructor
@@ -15,6 +16,11 @@ public class Tower extends PlaceableObject {
     public Tower(PlayerColor color) {
         this.color = color;
     }
+
+    /**
+     *
+     */
+    private FixedObject position;
 
     /**
      * 
@@ -28,4 +34,15 @@ public class Tower extends PlaceableObject {
         return this.color;
     }
 
+    public FixedObject getPosition() {
+        return this.position;
+    }
+
+    /**
+     * @param position
+     * @return
+     */
+    public void setPosition(FixedObject position) {
+        this.position = position;
+    }
 }

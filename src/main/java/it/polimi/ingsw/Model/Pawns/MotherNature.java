@@ -4,13 +4,14 @@ import it.polimi.ingsw.Model.Calculations.Influence.*;
 import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.Islands.Island;
 import it.polimi.ingsw.Model.Islands.IslandInterface;
+import it.polimi.ingsw.Model.ObjectTypes.FixedObject;
 import it.polimi.ingsw.Model.ObjectTypes.PlaceableObject;
 import java.util.*;
 
 /**
  * 
  */
-public class MotherNature extends PlaceableObject {
+public class MotherNature implements PlaceableObject {
 
     /**
      * Default constructor
@@ -22,6 +23,12 @@ public class MotherNature extends PlaceableObject {
      * 
      */
     private String id;
+
+    /**
+     *
+     */
+    private FixedObject position;
+
 
     /**
      * 
@@ -45,6 +52,21 @@ public class MotherNature extends PlaceableObject {
      */
     public void setIsland(IslandInterface island) {
         this.island=island;
+    }
+
+    /**
+     * @return
+     */
+    public FixedObject getPosition(){
+        return this.position;
+    }
+
+    /**
+     * @param position
+     * @return
+     */
+    public void setPosition(FixedObject position) {
+        // TODO implement here
     }
 
     /**
