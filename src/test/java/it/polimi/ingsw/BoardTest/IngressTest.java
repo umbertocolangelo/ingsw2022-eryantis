@@ -62,6 +62,5 @@ public class IngressTest {
         ingress.addStudent(student1);
         assertTrue(ingress.numOfStudents()==2);
 
-
     }
 }

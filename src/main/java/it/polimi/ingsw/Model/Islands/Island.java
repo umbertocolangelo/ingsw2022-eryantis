@@ -97,7 +97,7 @@ public class Island implements fixedObjectStudent, IslandInterface {
     }
 
     /**
-     * @param tower    Remove tower from the LinkedList
+     *    Remove tower from the LinkedList
      */
     public void removeTower(Tower tower) {
         this.towers.remove(0);
