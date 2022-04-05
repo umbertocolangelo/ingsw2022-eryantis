@@ -1,14 +1,14 @@
 package it.polimi.ingsw.Model.ExpertCards.Deck;
 
 import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
-import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.ObjectTypes.FixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Student;
 import java.util.*;
 
 /**
  * 
  */
-public class StudentToIslandCard implements ExpertCard, fixedObjectStudent {
+public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
 
     /**
      * Default constructor

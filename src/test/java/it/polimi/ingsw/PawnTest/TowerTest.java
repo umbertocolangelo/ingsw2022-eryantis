@@ -19,7 +19,7 @@ public class TowerTest {
     @Test
     public void getColorTest()
     {
-        Tower tower = new Tower(PlayerColor.WHITE,null);
+        Tower tower = new Tower(PlayerColor.WHITE);
         assertTrue(tower.getColor()==PlayerColor.WHITE);
     }
 
@@ -29,9 +29,8 @@ public class TowerTest {
     @Test
     public void getPositionTest()
     {
-        TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
-        Tower tower = new Tower(PlayerColor.WHITE,towerTable);
-        assertTrue(tower.getPosition()==towerTable);
+        Tower tower = new Tower(PlayerColor.WHITE);
+        assertTrue(tower.getPosition()==null);
     }
 
     /**
@@ -41,7 +40,7 @@ public class TowerTest {
     public void setPositionTest()
     {
         TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
-        Tower tower = new Tower(PlayerColor.WHITE,null);
+        Tower tower = new Tower(PlayerColor.WHITE);
         tower.setPosition(towerTable);
         assertTrue(tower.getPosition()==towerTable);
     }

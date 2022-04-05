@@ -1,13 +1,13 @@
 package it.polimi.ingsw.Model.StudentSuppliers;
 
-import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.ObjectTypes.FixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Student;
 import java.util.*;
 
 /**
  * 
  */
-public class Cloud implements fixedObjectStudent {
+public class Cloud implements FixedObjectStudent {
 
     /**
      * Default constructor

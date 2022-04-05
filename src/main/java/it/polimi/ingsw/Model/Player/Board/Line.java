@@ -2,8 +2,8 @@ package it.polimi.ingsw.Model.Player.Board;
 
 import it.polimi.ingsw.Model.Calculations.Professor.ProfessorCalculator;
 import it.polimi.ingsw.Model.Enumerations.Color;
-import it.polimi.ingsw.Model.ObjectTypes.fixedObjectProfessor;
-import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.ObjectTypes.FixedObjectProfessor;
+import it.polimi.ingsw.Model.ObjectTypes.FixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Professor;
 import it.polimi.ingsw.Model.Pawns.Student;
 import it.polimi.ingsw.Model.Player.Player;
@@ -12,7 +12,7 @@ import java.util.*;
 /**
  * 
  */
-public class Line implements fixedObjectStudent, fixedObjectProfessor {
+public class Line implements FixedObjectStudent, FixedObjectProfessor {
 
     /**
      * Default constructor
@@ -97,7 +97,10 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      */
     public void addStudent(Student student) {
         if(student.getColor().equals(this.getColor())) {
-            //student.getPosition().remove(student);
+            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+                FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
+                position.removeStudent(student);
+            }
             student.setPosition(this);
             this.students.add(student);
         }

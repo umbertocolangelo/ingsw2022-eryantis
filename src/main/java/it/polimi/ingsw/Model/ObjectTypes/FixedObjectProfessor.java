@@ -1,12 +1,11 @@
 package it.polimi.ingsw.Model.ObjectTypes;
 
 import it.polimi.ingsw.Model.Pawns.Professor;
-import java.util.*;
 
 /**
  * 
  */
-public interface fixedObjectProfessor extends FixedObject{
+public interface FixedObjectProfessor extends FixedObject{
 
     /**
      * @param professor

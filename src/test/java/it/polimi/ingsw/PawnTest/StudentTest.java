@@ -18,7 +18,7 @@ public class StudentTest {
     @Test
     public void GetColorTest()
     {
-        Student student = new Student(Color.YELLOW,null);
+        Student student = new Student(Color.YELLOW);
         assertTrue(student.getColor()==Color.YELLOW);
     }
 
@@ -28,9 +28,8 @@ public class StudentTest {
     @Test
     public void GetPositionTest()
     {
-        Island island = new Island();
-        Student student = new Student(Color.YELLOW,island);
-        assertTrue(student.getPosition()==island);
+        Student student = new Student(Color.YELLOW);
+        assertTrue(student.getPosition()==null);
     }
 
     /**
@@ -39,7 +38,7 @@ public class StudentTest {
     @Test
     public void setPositionTest()
     {
-        Student student = new Student(Color.YELLOW,null);
+        Student student = new Student(Color.YELLOW);
         Island island = new Island();
         student.setPosition(island);
         assertTrue(student.getPosition()==island);

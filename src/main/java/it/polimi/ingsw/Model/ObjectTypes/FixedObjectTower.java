@@ -6,7 +6,7 @@ import java.util.*;
 /**
  * 
  */
-public interface fixedObjectTower extends FixedObject{
+public interface FixedObjectTower extends FixedObject{
 
     /**
      * @param tower

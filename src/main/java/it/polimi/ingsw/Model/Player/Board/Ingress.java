@@ -1,13 +1,13 @@
 package it.polimi.ingsw.Model.Player.Board;
 
-import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
+import it.polimi.ingsw.Model.ObjectTypes.FixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Student;
 import java.util.*;
 
 /**
  * 
  */
-public class Ingress implements fixedObjectStudent {
+public class Ingress implements FixedObjectStudent {
 
     /**
      * Default constructor

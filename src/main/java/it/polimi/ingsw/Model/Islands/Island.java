@@ -2,8 +2,7 @@ package it.polimi.ingsw.Model.Islands;
 
 import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.Enumerations.PlayerColor;
-import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
-import it.polimi.ingsw.Model.Pawns.MotherNature;
+import it.polimi.ingsw.Model.ObjectTypes.FixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Student;
 import it.polimi.ingsw.Model.Pawns.Tower;
 import java.util.*;
@@ -12,7 +11,7 @@ import java.util.*;
 /**
  *
  */
-public class Island implements fixedObjectStudent, IslandInterface {
+public class Island implements FixedObjectStudent, IslandInterface {
 
 
 

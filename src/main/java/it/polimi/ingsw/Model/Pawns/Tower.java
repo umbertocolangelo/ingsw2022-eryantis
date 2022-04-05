@@ -13,9 +13,8 @@ public class Tower implements PlaceableObject {
     /**
      * Default constructor
      */
-    public Tower(PlayerColor color, FixedObject position) {
+    public Tower(PlayerColor color) {
         this.color = color;
-        this.position = position;
     }
 
     /**
