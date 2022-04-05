@@ -1,4 +1,5 @@
 package it.polimi.ingsw.Model.StudentSuppliers;
+import java.util.Random;
 
 import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
@@ -19,29 +20,34 @@ public class Bag {
     }
 
     /**
-     * 
+     *
      */
-    private Integer yellowStudentsNum;
+
+
+    /**
+     *  Number of yellowStudents presents on the board
+     */
+    private Integer yellowStudentsNum=0;
+
+    /**
+     * Number of blueStudents presents on the board
+     */
+    private Integer blueStudentsNum=0;
 
     /**
      * 
      */
-    private Integer blueStudentsNum;
+    private Integer greenStudentsNum=0;
 
     /**
      * 
      */
-    private Integer greenStudentsNum;
+    private Integer redStudentsNum=0;
 
     /**
      * 
      */
-    private Integer redStudentsNum;
-
-    /**
-     * 
-     */
-    private Integer pinkStudentsNum;
+    private Integer pinkStudentsNum=0;
 
     /**
      * 
@@ -49,46 +55,93 @@ public class Bag {
     private String id;
 
     /**
-     * @return
+     * @return  student         Create a new student, use a fanction that return a random color, check if its not been created all the students of that color, if it isnt than create the student
      */
     public Student newStudent() {
-        // TODO implement here
-        return null;
+        Color c;
+        while(true) {
+            c = randomEnum(Color.class);
+            if(checkNumOfStudents(c))
+                break;
+            else{
+                System.out.println("No more " + c.name());
+            }
+        }
+        Student student= new Student(c);
+        addStudentsNumbers(c);
+
+        return student;
+    }
+
+    public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
+        Random rand = new Random();
+        int x = rand.nextInt(clazz.getEnumConstants().length);
+        return clazz.getEnumConstants()[x];
+    }
+
+    /**
+     * @return boolean      Check if the number of students of the color c is arrived at the maximum
+     */
+    public boolean checkNumOfStudents(Color c){
+        if((greenStudentsNum <26 && c.equals(Color.GREEN)) || (yellowStudentsNum <26 && c.equals(Color.YELLOW)) || (redStudentsNum <26 && c.equals(Color.RED)) || (blueStudentsNum <26 && c.equals(Color.BLUE)) || pinkStudentsNum <26 && c.equals(Color.PINK))
+            return true;
+            else
+                return false;
+    }
+
+    /**
+     * @param color         Increase the number of student present in the game
+     */
+    public void addStudentsNumbers(Color color) {
+        if(color.equals(Color.RED))
+            redStudentsNum++;
+        else if(color.equals(Color.PINK))
+            pinkStudentsNum++;
+        else if(color.equals(Color.BLUE))
+            blueStudentsNum++;
+        else if(color.equals(Color.YELLOW))
+            yellowStudentsNum++;
+        else if(color.equals(Color.GREEN))
+            greenStudentsNum++;
     }
 
     /**
      * @param island
      */
     public void addStudentsOnIsland(Island island) {
-        // TODO implement here
+        island.addStudent(newStudent());
     }
 
     /**
      * @param cloud
      */
     public void addStudentsOnCloud(Cloud cloud) {
-        // TODO implement here
+        cloud.addStudent(newStudent());
     }
 
     /**
      * @param ingress
      */
     public void addStudentOnIngress(Ingress ingress) {
-        // TODO implement here
+        ingress.addStudent(newStudent());
     }
 
     /**
      * @param color
      */
     public void reinsertStudent(Color color) {
-        // TODO implement here
+        /**
+         * To implent , dont know the task
+         */
     }
 
     /**
      * @param expertCard
      */
     public void addStudentOnCard(ExpertCard expertCard) {
-        // TODO implement here
+        /**
+         * To implement when there are experts card
+         */
     }
 
 }
