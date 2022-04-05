@@ -14,14 +14,14 @@ public interface fixedObjectTower extends FixedObject{
     public void addTower(Tower tower);
 
     /**
-     * @param tower
+     *
      */
     public void removeTower(Tower tower);
 
     /**
      * @return
      */
-    public ArrayList<Tower> getTowers();
+    public LinkedList<Tower> getTowers();
 
     /**
      * @return

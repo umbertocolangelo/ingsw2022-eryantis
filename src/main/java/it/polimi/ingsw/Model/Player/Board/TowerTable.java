@@ -11,20 +11,33 @@ import java.util.*;
 public class TowerTable implements fixedObjectTower {
 
     /**
-     * Default constructor
+     *
+     */
+    private LinkedList<Tower> towers= new LinkedList<Tower>();
+
+    /**
+     *
+     */
+    private Boolean isThreePlayers=true;
+
+
+    /**
+     * Create the towers in the TowerTable and define their color;
      */
     public TowerTable(PlayerColor color) {
+        if (isThreePlayers) {
+            for (int i = 0; i <6; i++) {
+                Tower tower = new Tower(color);
+                towers.add(tower);
+            }
+        } else {
+            for (int i = 0; i <8; i++) {
+                Tower tower = new Tower(color);
+                towers.add(tower);
+            }
+        }
     }
 
-    /**
-     * 
-     */
-    private Collection<Tower> towers;
-
-    /**
-     * 
-     */
-    private Boolean isThreePlayers;
 
     /**
      * @return
@@ -35,33 +48,34 @@ public class TowerTable implements fixedObjectTower {
     }
 
     /**
-     * @param tower
+     * @param tower         Add tower to the LinkedList
      */
     public void addTower(Tower tower) {
-        // TODO implement here
+        if( (isThreePlayers && towers.size()<6) || (towers.size()<8 && !isThreePlayers)){
+                this.towers.add(tower);
+        }
     }
 
     /**
-     * @param tower
+     * Remove tower from the LinkedList
      */
     public void removeTower(Tower tower) {
-        // TODO implement here
+        this.towers.remove(tower);
     }
 
     /**
-     * @return
+     * @return  LinkedList<Tower>       Return the list of the towers
      */
-    public ArrayList<Tower> getTowers() {
-        // TODO implement here
-        return null;
+    public LinkedList<Tower> getTowers() {
+
+        return  this.towers;
     }
 
     /**
-     * @return
+     * @return      Integer             Return the number of the towers present on this TowerTable
      */
     public Integer numOfTowers() {
-        // TODO implement here
-        return null;
+        return this.towers.size();
     }
 
 }

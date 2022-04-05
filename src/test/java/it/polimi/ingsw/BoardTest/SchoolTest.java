@@ -27,4 +27,6 @@ public class SchoolTest {
         School school= new School(PlayerColor.WHITE);
        // assertTrue(school.getTowerTable());
     }
+
+
 }

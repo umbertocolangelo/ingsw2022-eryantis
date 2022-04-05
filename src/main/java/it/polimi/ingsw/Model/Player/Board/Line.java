@@ -1,6 +1,7 @@
 package it.polimi.ingsw.Model.Player.Board;
 
 import it.polimi.ingsw.Model.Calculations.Professor.ProfessorCalculator;
+import it.polimi.ingsw.Model.Enumerations.Color;
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectProfessor;
 import it.polimi.ingsw.Model.ObjectTypes.fixedObjectStudent;
 import it.polimi.ingsw.Model.Pawns.Professor;
@@ -16,13 +17,19 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * Default constructor
      */
-    public Line() {
+    public Line(Color color) {
+        this.color=color;
+
     }
+    /**
+     *
+     */
+    private Color color;
 
     /**
      * 
      */
-    private Student students[] = new Student[10];
+    private LinkedList<Student> students=new LinkedList<>();
 
     /**
      * 
@@ -44,11 +51,17 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      */
     private ProfessorCalculator professorCalculator;
 
+
     /**
-     * 
+     * @return boolean      Check if the students make gain a coin and return true
      */
-    private void checkCoin() {
-        // TODO implement here
+    private boolean checkCoin() {
+        if(students.size()==2 || students.size()==5 || students.size()==8){
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 
     /**
@@ -56,6 +69,13 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      */
     private void checkProfessor() {
         // TODO implement here
+    }
+
+    /**
+     *
+     */
+    public Color getColor() {
+        return this.color;
     }
 
     /**
@@ -73,55 +93,61 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     }
 
     /**
-     * @param student
+     * @param student       Add the student to the LinkedList
      */
     public void addStudent(Student student) {
-        // TODO implement here
+        if(student.getColor().equals(this.getColor())) {
+            this.students.add(student);
+        }
     }
 
     /**
-     * @param student
+     * @param student       Remoe the student from the LinkedList
      */
     public void removeStudent(Student student) {
-        // TODO implement here
+        this.students.remove(students.indexOf(student));
     }
 
     /**
-     * @return
+     * @return LinkedList<Student>      Return LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
-        // TODO implement here
-        return null;
+       return this.students;
     }
 
     /**
-     * @return
+     * @return int          Return the number of students
      */
     public Integer numOfStudents() {
-        // TODO implement here
-        return null;
+        return students.size();
     }
 
     /**
-     * @param professor
+     * @param professor     Add the professor to the Line
      */
     public void addProfessor(Professor professor) {
-        // TODO implement here
+        if(professor.getColor().equals(this.getColor())) {
+            this.professor=professor;
+        }
     }
 
     /**
-     * @param professor
+     * @param professor         Remove the professor from the line
      */
     public void removeProfessor(Professor professor) {
-        // TODO implement here
+        this.professor=null;
     }
 
     /**
-     * @return
+     * @return boolean      Return if the professor is present on the line
      */
     public Boolean isProfessor() {
-        // TODO implement here
-        return null;
+        if(this.professor!=null){
+            return true;
+           }
+        else{
+            return false;
+             }
     }
 
 }

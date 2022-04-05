@@ -38,7 +38,7 @@ public class ProfessorTest {
     public void setPositionTest()
     {
         Professor professor = new Professor(Color.YELLOW);
-        Line line = new Line();
+        Line line = new Line(Color.RED);
         professor.setPosition(line);
         assertTrue(professor.getPosition()==line);
     }
