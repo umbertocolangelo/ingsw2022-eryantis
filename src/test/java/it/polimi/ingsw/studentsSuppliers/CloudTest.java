@@ -1,11 +1,9 @@
 package it.polimi.ingsw.studentsSuppliers;
 
-import it.polimi.ingsw.Model.Enumerations.Color;
-import it.polimi.ingsw.Model.Pawns.Student;
-import it.polimi.ingsw.Model.StudentSuppliers.Cloud;
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.studentSuppliers.Cloud;
 import org.junit.jupiter.api.Test;
-
-import java.awt.*;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

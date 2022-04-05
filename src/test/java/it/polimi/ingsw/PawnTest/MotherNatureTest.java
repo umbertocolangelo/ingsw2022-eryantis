@@ -1,10 +1,8 @@
 package it.polimi.ingsw.PawnTest;
 
-import it.polimi.ingsw.Model.Enumerations.Color;
-import it.polimi.ingsw.Model.Islands.Island;
-import it.polimi.ingsw.Model.Islands.IslandGroup;
-import it.polimi.ingsw.Model.Pawns.MotherNature;
-import it.polimi.ingsw.Model.Pawns.Student;
+import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandGroup;
+import it.polimi.ingsw.model.pawns.MotherNature;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

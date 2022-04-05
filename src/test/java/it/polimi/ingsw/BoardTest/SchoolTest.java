@@ -1,9 +1,7 @@
 package it.polimi.ingsw.BoardTest;
 
-import it.polimi.ingsw.Model.Enumerations.PlayerColor;
-import it.polimi.ingsw.Model.Player.Board.Ingress;
-import it.polimi.ingsw.Model.Player.Board.School;
-import it.polimi.ingsw.Model.Player.Board.TowerTable;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.player.board.School;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;

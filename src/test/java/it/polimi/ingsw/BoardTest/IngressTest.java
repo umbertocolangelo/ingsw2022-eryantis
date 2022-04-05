@@ -1,10 +1,8 @@
 package it.polimi.ingsw.BoardTest;
 
-import it.polimi.ingsw.Model.Enumerations.Color;
-import it.polimi.ingsw.Model.Enumerations.PlayerColor;
-import it.polimi.ingsw.Model.Pawns.Student;
-import it.polimi.ingsw.Model.Player.Board.Ingress;
-import it.polimi.ingsw.Model.Player.Player;
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.player.board.Ingress;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
