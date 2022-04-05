@@ -1,4 +1,4 @@
-package it.polimi.ingsw.PawnTest;
+package it.polimi.ingsw.pawnTest;
 
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandGroup;

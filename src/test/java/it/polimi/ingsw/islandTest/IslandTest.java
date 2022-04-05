@@ -1,4 +1,4 @@
-package it.polimi.ingsw.IslandTest;
+package it.polimi.ingsw.islandTest;
 
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;

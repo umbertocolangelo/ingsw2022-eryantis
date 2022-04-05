@@ -1,4 +1,4 @@
-package it.polimi.ingsw.IslandTest;
+package it.polimi.ingsw.islandTest;
 
 public class IslandManagerTest {
 }

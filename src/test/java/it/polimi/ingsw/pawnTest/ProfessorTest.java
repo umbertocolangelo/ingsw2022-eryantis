@@ -1,4 +1,4 @@
-package it.polimi.ingsw.PawnTest;
+package it.polimi.ingsw.pawnTest;
 
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.pawns.Professor;

@@ -1,4 +1,4 @@
-package it.polimi.ingsw.BoardTest;
+package it.polimi.ingsw.boardTest;
 
 
 import it.polimi.ingsw.model.enumerations.Color;
