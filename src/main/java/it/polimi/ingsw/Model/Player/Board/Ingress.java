@@ -41,7 +41,7 @@ public class Ingress implements fixedObjectStudent {
      */
     public LinkedList<Student> getStudents() {
 
-        return this.students;
+        return new LinkedList<>(this.students);
     }
 
     /**
@@ -49,6 +49,8 @@ public class Ingress implements fixedObjectStudent {
      */
     public void removeStudent(Student student) {
         if(this.students.contains(student)){
+            //remove il fixed object
+            student.setPosition(this);
             students.remove(students.indexOf(student));
         }
     }
@@ -57,6 +59,7 @@ public class Ingress implements fixedObjectStudent {
      * @param student       Add the student to the ingress
      */
     public void addStudent(Student student) {
+
         this.students.add(student);
     }
 

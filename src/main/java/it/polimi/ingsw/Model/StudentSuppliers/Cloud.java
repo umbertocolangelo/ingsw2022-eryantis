@@ -23,12 +23,12 @@ public class Cloud implements fixedObjectStudent {
     /**
      * 
      */
-    private Collection<Student> students;
+    private LinkedList<Student> students=new LinkedList<Student>();
 
     /**
      * 
      */
-    private Boolean isFourPlayers;
+    private Boolean isFourPlayers=false;
 
     /**
      * @return
@@ -42,30 +42,30 @@ public class Cloud implements fixedObjectStudent {
      * @param student
      */
     public void addStudent(Student student) {
-        // TODO implement here
+        if(!isFourPlayers && students.size()<4)
+        this.students.add(student);
     }
 
     /**
      * @param student
      */
     public void removeStudent(Student student) {
-        // TODO implement here
+        this.students.remove(this.students.indexOf(student));
     }
 
     /**
      * @return
      */
     public LinkedList<Student> getStudents() {
-        // TODO implement here
-        return null;
+        return new LinkedList<>(this.students);
     }
 
     /**
      * @return
      */
     public Integer numOfStudents() {
-        // TODO implement here
-        return null;
+
+        return this.students.size();
     }
 
 }

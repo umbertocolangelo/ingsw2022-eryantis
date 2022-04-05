@@ -43,7 +43,7 @@ public class Hall {
                 break;
                     }
              }
-            return this.lines.get(i);
+            return new Line(this.lines.get(i).getColor());
          }
 
 

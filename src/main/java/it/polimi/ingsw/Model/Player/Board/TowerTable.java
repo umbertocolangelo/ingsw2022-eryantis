@@ -52,6 +52,8 @@ public class TowerTable implements fixedObjectTower {
      */
     public void addTower(Tower tower) {
         if( (isThreePlayers && towers.size()<6) || (towers.size()<8 && !isThreePlayers)){
+            //Metodo remove position da student
+            tower.setPosition(this);
                 this.towers.add(tower);
         }
     }
@@ -68,7 +70,7 @@ public class TowerTable implements fixedObjectTower {
      */
     public LinkedList<Tower> getTowers() {
 
-        return  this.towers;
+        return  new LinkedList<>(this.towers);
     }
 
     /**

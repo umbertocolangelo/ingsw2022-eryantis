@@ -49,7 +49,7 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * 
      */
-    private ProfessorCalculator professorCalculator;
+    private static ProfessorCalculator professorCalculator;
 
 
     /**
@@ -81,14 +81,14 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
     /**
      * 
      */
-    public void setStandardCheck() {
+    public static void setStandardCheck() {
         // TODO implement here
     }
 
     /**
      * 
      */
-    public void setEqualCheck() {
+    public static void setEqualCheck() {
         // TODO implement here
     }
 
@@ -97,6 +97,8 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      */
     public void addStudent(Student student) {
         if(student.getColor().equals(this.getColor())) {
+            //student.getPosition().remove(student);
+            student.setPosition(this);
             this.students.add(student);
         }
     }
@@ -112,14 +114,14 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      * @return LinkedList<Student>      Return LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
-       return this.students;
+       return new LinkedList<>(this.students);
     }
 
     /**
      * @return int          Return the number of students
      */
     public Integer numOfStudents() {
-        return students.size();
+        return this.students.size();
     }
 
     /**
@@ -127,6 +129,7 @@ public class Line implements fixedObjectStudent, fixedObjectProfessor {
      */
     public void addProfessor(Professor professor) {
         if(professor.getColor().equals(this.getColor())) {
+            professor.setPosition(this);
             this.professor=professor;
         }
     }

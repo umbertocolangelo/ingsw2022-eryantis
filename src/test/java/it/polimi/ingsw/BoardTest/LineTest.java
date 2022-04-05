@@ -90,6 +90,8 @@ public class LineTest {
         assertTrue(line.isProfessor()==true);
         line.removeProfessor(professor);
         assertTrue(line.isProfessor()==false);
+        line.addProfessor(professor);
+        assertTrue(line.isProfessor()==true);
     }
 
     /**
