@@ -17,9 +17,16 @@ public class IslandTest {
     @Test
     public void addStudentTest(){
         Island island= new Island();
+        Island island1= new Island();
         Student student= new Student(Color.RED);
         island.addStudent(student);
-        assertTrue(island.getStudents().contains(student));
+        assertTrue(island.getStudents().contains(student)); //Checks that island contains student
+        assertTrue(student.getPosition()==island); //Checks that student is on island
+        island1.addStudent(student);
+        assertTrue(!island.getStudents().contains(student)); //Checks that island no longer contains student
+        assertTrue(student.getPosition()==island1); //Checks that student is on island1
+        assertTrue(island1.getStudents().contains(student)); //Checks that island1 contains student
+
 
     }
 
