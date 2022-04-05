@@ -38,6 +38,6 @@ public interface IslandInterface {
     /**
      * @return
      */
-    public PlayerColor influenceColor();
+    public PlayerColor getInfluenceColor();
 
 }

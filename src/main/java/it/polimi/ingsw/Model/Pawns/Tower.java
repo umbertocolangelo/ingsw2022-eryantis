@@ -28,10 +28,6 @@ public class Tower implements PlaceableObject {
      */
     private PlayerColor color;
 
-    public Tower(PlayerColor color) {
-        this.color=color;
-    }
-
     /**
      * @return color
      */
