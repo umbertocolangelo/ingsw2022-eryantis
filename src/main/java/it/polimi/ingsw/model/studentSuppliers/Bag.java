@@ -1,11 +1,11 @@
-package it.polimi.ingsw.Model.StudentSuppliers;
+package it.polimi.ingsw.model.studentSuppliers;
 import java.util.Random;
 
-import it.polimi.ingsw.Model.Enumerations.Color;
-import it.polimi.ingsw.Model.ExpertCards.ExpertCard;
-import it.polimi.ingsw.Model.Islands.Island;
-import it.polimi.ingsw.Model.Pawns.Student;
-import it.polimi.ingsw.Model.Player.Board.Ingress;
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.player.board.Ingress;
 import java.util.*;
 
 /**
