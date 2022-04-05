@@ -84,7 +84,7 @@ public class IslandGroup implements IslandInterface {
     /**
      * @return
      */
-    public PlayerColor influenceColor() {
+    public PlayerColor getInfluenceColor() {
         // TODO implement here
         return null;
     }

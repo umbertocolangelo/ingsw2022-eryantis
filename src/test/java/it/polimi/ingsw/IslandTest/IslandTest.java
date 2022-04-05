@@ -64,7 +64,7 @@ public class IslandTest {
     @Test
     public void addTowerTest(){
         Island island= new Island();
-      Tower tower= new Tower(PlayerColor.WHITE);
+      Tower tower= new Tower(PlayerColor.WHITE,null);
         island.addTower(tower);
         assertTrue(island.getTowers().contains(tower));
     }
@@ -72,7 +72,7 @@ public class IslandTest {
     @Test
     public void removeTowerTest(){
         Island island= new Island();
-        Tower tower= new Tower(PlayerColor.WHITE);
+        Tower tower= new Tower(PlayerColor.WHITE,null);
         island.addTower(tower);
         assertTrue(island.getTowers().contains(tower));
         island.removeTower(tower);
@@ -82,7 +82,7 @@ public class IslandTest {
     @Test
     public void getTowersTest(){
         Island island= new Island();
-        Tower tower= new Tower(PlayerColor.WHITE);
+        Tower tower= new Tower(PlayerColor.WHITE,null);
         island.addTower(tower);
         assertTrue(island.getTowers().contains(tower) && island.getTowers().size()==1);
     }
@@ -119,10 +119,16 @@ public class IslandTest {
     public void numOfTowersTest(){
         Island island=new Island();
         assertTrue(island.numOfTowers()==0);
-        Tower tower=new Tower(PlayerColor.WHITE);
+        Tower tower=new Tower(PlayerColor.WHITE,null);
         island.addTower(tower);
         assertTrue(island.numOfTowers()==1);
     }
 
+    @Test
+    public void influenceColorTest(){
+        Island island = new Island();
+        island.addTower(new Tower(PlayerColor.WHITE,null));
+        assertTrue(island.getInfluenceColor()==PlayerColor.WHITE);
+    }
 
 }

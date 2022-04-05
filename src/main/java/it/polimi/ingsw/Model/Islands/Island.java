@@ -79,7 +79,7 @@ public class Island implements fixedObjectStudent, IslandInterface {
      * @return LinkedList<Student>      Return the LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
-        return this.students;
+        return new LinkedList<Student>(this.students);
     }
 
     /**
@@ -108,7 +108,7 @@ public class Island implements fixedObjectStudent, IslandInterface {
      * @return LinkedList<Tower>        Return the LinkedList of Towers
      */
     public LinkedList<Tower> getTowers() {
-        return this.towers;
+        return new LinkedList<>(this.towers);
     }
 
     /**
@@ -163,9 +163,12 @@ public class Island implements fixedObjectStudent, IslandInterface {
      * @return
      */
 
-   public PlayerColor influenceColor() {
-       //To implement
-        return null;
-    }
+   public PlayerColor getInfluenceColor() {
+       if(this.towers.isEmpty()){
+           return null;
+       }else{
+        return towers.get(0).getColor();
+       }
+   }
 
 }
