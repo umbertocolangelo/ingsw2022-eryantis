@@ -6,8 +6,7 @@ import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.board.Ingress;
-import java.util.*;
-
+ import java.util.*;
 /**
  * 
  */
@@ -63,9 +62,6 @@ public class Bag {
             c = randomEnum(Color.class);
             if(checkNumOfStudents(c))
                 break;
-            else{
-                System.out.println("No more " + c.name());
-            }
         }
         Student student= new Student(c);
         addStudentsNumbers(c);
