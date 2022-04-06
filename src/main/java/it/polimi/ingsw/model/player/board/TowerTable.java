@@ -28,7 +28,7 @@ public class TowerTable implements FixedObjectTower {
     public TowerTable(PlayerColor color) {
         if (isThreePlayers) {
             for (int i = 0; i <6; i++) {
-                Tower tower = new Tower(color);
+                Tower tower = new Tower( color);
                 towers.add(tower);
             }
         } else {
