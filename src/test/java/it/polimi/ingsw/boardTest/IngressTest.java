@@ -27,9 +27,15 @@ public class IngressTest {
     @Test
     public void addStudentTest() {
         Ingress ingress = new Ingress();
+        Ingress ingress1 = new Ingress();
         Student student = new Student(Color.RED);
         ingress.addStudent(student);
         assertTrue(ingress.getStudents().contains(student));
+        assertTrue(student.getPosition()==ingress);
+        ingress1.addStudent(student);
+        assertTrue(!ingress.getStudents().contains(student));
+        assertTrue(ingress1.getStudents().contains(student));
+        assertTrue(student.getPosition()==ingress1);
 
     }
 

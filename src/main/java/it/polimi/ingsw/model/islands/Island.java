@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.islands;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
+import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
 import java.util.*;
@@ -11,7 +12,7 @@ import java.util.*;
 /**
  *
  */
-public class Island implements FixedObjectStudent, IslandInterface {
+public class Island implements FixedObjectStudent,FixedObjectTower, IslandInterface {
 
 
 
@@ -97,6 +98,11 @@ public class Island implements FixedObjectStudent, IslandInterface {
      * @param tower     Add Tower to the LinkedList
      */
     public void addTower(Tower tower) {
+        if(tower.getPosition()!=null){        // If the tower was on a FixedObject, this object is updated
+            FixedObjectTower position = (FixedObjectTower) tower.getPosition();
+            position.removeTower(tower);
+        }
+        tower.setPosition(this);
         this.towers.add(tower);
     }
 

@@ -59,8 +59,14 @@ public class Ingress implements FixedObjectStudent {
      * @param student       Add the student to the ingress
      */
     public void addStudent(Student student) {
-
-        this.students.add(student);
+        if (!this.students.contains(student)) {
+            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+                FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
+                position.removeStudent(student);
+            }
+            student.setPosition(this);
+            this.students.add(student);
+        }
     }
 
     /**
