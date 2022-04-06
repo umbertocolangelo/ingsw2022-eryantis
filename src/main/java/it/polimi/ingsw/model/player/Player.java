@@ -35,11 +35,6 @@ public class Player {
     private String id;
 
     /**
-     * Number of th cards that are in the deck
-     */
-    private Integer numOfCardsDeck=10;
-
-    /**
      *  Name of the player
      */
     private String name;
@@ -102,8 +97,24 @@ public class Player {
     /**
      *    When the player plays the card, that card is  removed;
      */
-    public void playAssistantCard(Enum<AssistantCard> card) {
+    public void playAssistantCard(AssistantCard card) {
         assistantCards.remove(assistantCards.indexOf(card));
+        this.cardValue=card.getValue();
+        this.playedCard=card;
+    }
+
+    /**
+     * @return  The value of the card that this player played.
+     */
+    public Integer getCardPlayedValue() {
+        return this.cardValue;
+    }
+
+    /**
+     * @return  The card that the player played
+     */
+    public AssistantCard getCardPlayed() {
+        return this.playedCard;
     }
 
     /**

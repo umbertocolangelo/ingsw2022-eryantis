@@ -30,14 +30,41 @@ public class PlayerTest {
     @Test
     public void playAssistantCardTest(){
         Player player=new Player("vittorio");
-        Enum<AssistantCard> assist= AssistantCard.TWO_CARD;
+        AssistantCard assist= AssistantCard.TWO_CARD;
         player.playAssistantCard(assist);
-        Enum<AssistantCard> assist1= AssistantCard.NINE_CARD;
+        AssistantCard assist1= AssistantCard.NINE_CARD;
         player.playAssistantCard(assist1);
-        Enum<AssistantCard> assist2= AssistantCard.FIVE_CARD;
+        AssistantCard assist2= AssistantCard.FIVE_CARD;
         player.playAssistantCard(assist2);
         assertTrue(player.getPlayedCards().size()==7);
+
+
     }
+
+    /**
+     * Test playAssistantCardValue function
+     */
+
+    @Test
+    public void getPlayedCardValue() {
+        Player player = new Player("vittorio");
+        AssistantCard assist = AssistantCard.TWO_CARD;
+        player.playAssistantCard(assist);
+        assertTrue(player.getCardPlayedValue()==assist.getValue());
+    }
+
+    /**
+     * Test playAssistantCard function
+     */
+
+    @Test
+    public void getPlayedValue() {
+        Player player = new Player("vittorio");
+        AssistantCard assist = AssistantCard.TWO_CARD;
+        player.playAssistantCard(assist);
+        assertTrue(player.getCardPlayed()==assist);
+    }
+
     /**
      * Test getName function
      */
@@ -99,25 +126,25 @@ public class PlayerTest {
     @Test
     public void isDeckEndedTest(){
         Player player = new Player("vittorio");
-        Enum<AssistantCard> assist= AssistantCard.TWO_CARD;
+        AssistantCard assist= AssistantCard.TWO_CARD;
         player.playAssistantCard(assist);
-        Enum<AssistantCard> assist1= AssistantCard.ONE_CARD;
+       AssistantCard assist1= AssistantCard.ONE_CARD;
         player.playAssistantCard(assist1);
-        Enum<AssistantCard> assist2= AssistantCard.THREE_CARD;
+        AssistantCard assist2= AssistantCard.THREE_CARD;
         player.playAssistantCard(assist2);
-        Enum<AssistantCard> assist3= AssistantCard.FOUR_CARD;
+        AssistantCard assist3= AssistantCard.FOUR_CARD;
         player.playAssistantCard(assist3);
-        Enum<AssistantCard> assist4= AssistantCard.FIVE_CARD;
+        AssistantCard assist4= AssistantCard.FIVE_CARD;
         player.playAssistantCard(assist4);
-        Enum<AssistantCard> assist5= AssistantCard.SIX_CARD;
+        AssistantCard assist5= AssistantCard.SIX_CARD;
         player.playAssistantCard(assist5);
-        Enum<AssistantCard> assist6= AssistantCard.SEVEN_CARD;
+        AssistantCard assist6= AssistantCard.SEVEN_CARD;
         player.playAssistantCard(assist6);
-        Enum<AssistantCard> assist7= AssistantCard.EIGHT_CARD;
+        AssistantCard assist7= AssistantCard.EIGHT_CARD;
         player.playAssistantCard(assist7);
-        Enum<AssistantCard> assist8= AssistantCard.NINE_CARD;
+        AssistantCard assist8= AssistantCard.NINE_CARD;
         player.playAssistantCard(assist8);
-        Enum<AssistantCard> assist9= AssistantCard.TEN_CARD;
+        AssistantCard assist9= AssistantCard.TEN_CARD;
         player.playAssistantCard(assist9);
         assertTrue(player.isDeckEnded());
 
