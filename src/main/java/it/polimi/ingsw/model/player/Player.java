@@ -13,136 +13,152 @@ import java.util.*;
 public class Player {
 
     /**
-     * Default constructor
+     * Constructor that require the username and set the deck
      */
-    public Player() {
+    public Player(String name) {
+        this.color = color;
+        this.name = name;
+        this.assistantCards.add(AssistantCard.ONE_CARD);
+        this.assistantCards.add(AssistantCard.TWO_CARD);
+        this.assistantCards.add(AssistantCard.THREE_CARD);
+        this.assistantCards.add(AssistantCard.FOUR_CARD);
+        this.assistantCards.add(AssistantCard.FIVE_CARD);
+        this.assistantCards.add(AssistantCard.SIX_CARD);
+        this.assistantCards.add(AssistantCard.SEVEN_CARD);
+        this.assistantCards.add(AssistantCard.EIGHT_CARD);
+        this.assistantCards.add(AssistantCard.NINE_CARD);
+        this.assistantCards.add(AssistantCard.TEN_CARD);
     }
-
     /**
      * 
      */
     private String id;
 
     /**
-     * 
+     * Number of th cards that are in the deck
+     */
+    private Integer numOfCardsDeck=10;
+
+    /**
+     *  Name of the player
      */
     private String name;
 
     /**
-     * 
+     *  Which wizard the player chose
      */
     private Wizard wizard;
 
     /**
-     * 
+     *  The player color
      */
     private PlayerColor color;
 
     /**
-     * 
+     * The deck of this player
      */
-    private Collection<AssistantCard> assistantCards;
+    private ArrayList<AssistantCard> assistantCards=new ArrayList<AssistantCard>();
 
     /**
-     * 
+     *  The card that the player played
      */
     private AssistantCard playedCard;
 
     /**
-     * 
+     *  Represent the number of coin own by this player
      */
-    private Integer coins;
+    private Integer coins=0;
 
     /**
-     * 
+     * Reference to the school of this player
      */
-    private School school;
+    private School school=new School(this.getPlayerColor());
 
     /**
-     * 
+     * The value of the card chose
      */
     private Integer cardValue;
 
     /**
-     * 
+     * The phase where this player is.
      */
     private PlayerPhase phase;
 
     /**
-     * @return
+     * @return  String        The name of this palyer
      */
     public String getName() {
-        // TODO implement here
-        return "";
+        return this.name;
     }
 
     /**
-     * @return
+     * @return      The wizard tht the player chose
      */
     public Wizard getWizard() {
-        // TODO implement here
-        return null;
+
+        return this.wizard;
     }
 
     /**
-     * 
+     *    When the player plays the card, that card is  removed;
      */
-    public void playAssistantCard() {
-        // TODO implement here
+    public void playAssistantCard(Enum<AssistantCard> card) {
+        assistantCards.remove(assistantCards.indexOf(card));
     }
 
     /**
-     * @return
+     * @return      The school of this player
      */
     public School getSchool() {
-        // TODO implement here
-        return null;
+        return this.school;
     }
 
     /**
-     * @return
+     * @return          The number of coins of this player
      */
     public Integer getCoins() {
-        // TODO implement here
-        return null;
+
+        return this.coins;
     }
 
     /**
-     * @return
-     */
-    public AssistantCard getPlayedCard() {
-        // TODO implement here
-        return null;
+     * @return          A copy of the deck of this player
+   */
+    public ArrayList<AssistantCard>getPlayedCards() {
+
+         return new ArrayList<AssistantCard>(this.assistantCards);
     }
 
     /**
-     * @param color
+     * @param color         Set the color of this player
      */
     public void setPlayerColor(PlayerColor color) {
-        // TODO implement here
+        this.color=color;
     }
 
     /**
-     * @return
+     * @return  PlayerColor     Return the player color
      */
     public PlayerColor getPlayerColor() {
-        // TODO implement here
-        return null;
+        return this.color;
     }
 
     /**
-     * @return
+     * @return boolean         Return true if the deck doesn't contain any cards, otherwise return false.
      */
     public Boolean isDeckEnded() {
-        // TODO implement here
-        return null;
+       if(this.assistantCards.size()==0)
+           return true;
+
+       else
+           return false;
     }
 
     /**
-     * 
+     *  Add one coin to this player
      */
     public void addCoin() {
-        // TODO implement here
+        this.coins++;
     }
 
     /**
