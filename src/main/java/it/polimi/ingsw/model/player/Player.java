@@ -160,7 +160,6 @@ public class Player {
     public Boolean isDeckEnded() {
        if(this.assistantCards.size()==0)
            return true;
-
        else
            return false;
     }
