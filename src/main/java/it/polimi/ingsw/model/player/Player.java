@@ -144,7 +144,7 @@ public class Player {
      * @param color         Set the color of this player
      */
     public void setPlayerColor(PlayerColor color) {
-        this.color=color;
+        this.color = color;
     }
 
     /**

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.model.player.board;
 
 import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.pawns.Tower;
 import java.util.*;
@@ -28,7 +27,7 @@ public class TowerTable implements FixedObjectTower {
     public TowerTable(PlayerColor color) {
         if (isThreePlayers) {
             for (int i = 0; i <6; i++) {
-                Tower tower = new Tower( color);
+                Tower tower = new Tower(color);
                 towers.add(tower);
             }
         } else {
@@ -53,12 +52,7 @@ public class TowerTable implements FixedObjectTower {
      */
     public void addTower(Tower tower) {
         if( (isThreePlayers && towers.size()<6) || (towers.size()<8 && !isThreePlayers)){
-            if(tower.getPosition()!=null){        // If the tower was on a FixedObject, this object is updated
-                FixedObjectTower position = (FixedObjectTower) tower.getPosition();
-                position.removeTower(tower);
-            }
-            tower.setPosition(this);
-            this.towers.add(tower);
+                this.towers.add(tower);
         }
     }
 
@@ -74,7 +68,7 @@ public class TowerTable implements FixedObjectTower {
      */
     public LinkedList<Tower> getTowers() {
 
-        return  new LinkedList<>(this.towers);
+        return  this.towers;
     }
 
     /**
