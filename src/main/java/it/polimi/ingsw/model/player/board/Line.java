@@ -132,6 +132,10 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
      */
     public void addProfessor(Professor professor) {
         if(professor.getColor().equals(this.getColor())) {
+            if(professor.getPosition()!=null){        // If the professor was on a FixedObject, this object is updated
+                FixedObjectProfessor position = (FixedObjectProfessor) professor.getPosition();
+                position.removeProfessor(professor);
+            }
             professor.setPosition(this);
             this.professor=professor;
         }
