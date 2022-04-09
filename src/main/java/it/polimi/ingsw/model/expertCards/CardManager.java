@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model.expertCards;
 
+import it.polimi.ingsw.model.expertCards.deck.*;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
@@ -11,84 +12,105 @@ import java.util.*;
 public class CardManager {
 
     /**
-     * Default constructor
+     * Constructor who receive the reference to motherNature,Players list and the Bag
      */
-    public CardManager() {
+    public CardManager(MotherNature motherNature,ArrayList<Player> playerList,Bag bag) {
+        this.motherNature=motherNature;
+        this.playerList=new ArrayList<>(playerList);
+        this.bag=bag;
+        expertCards.add(new ColorInfluenceCard());
+        expertCards.add(new DenyCard());
+        expertCards.add(new HallBagSwapCard());
+        expertCards.add(new IngressCardSwapCard());
+        expertCards.add(new IngressHallSwapCard());
+        expertCards.add(new IslandInfluenceCard());
+        expertCards.add(new ProfessorControlCard());
+        expertCards.add(new StudentToHallCard());
+        expertCards.add(new StudentToIslandCard());
+        expertCards.add(new TowerInfluenceCard());
+        expertCards.add(new TwoInfluenceCard());
+        expertCards.add(new TwoJumpCard());
     }
 
     /**
-     * 
+     *  Keep the reference to motherNature
      */
     private MotherNature motherNature;
 
     /**
-     * 
+     * Contains the player list
      */
-    private Collection<Player> playerList;
+    private ArrayList<Player> playerList;
 
     /**
-     * 
+     * Contains the reference of the bag
      */
     private Bag bag;
 
     /**
-     * 
+     * Contains the deck of the expertCards
      */
-    private ArrayList<ExpertCard> expertCards;
-
+    private LinkedList<ExpertCard> expertCards=new LinkedList<ExpertCard>();
 
 
     /**
-     * 
+     * Contains the deck of the expertCards
      */
-    public void currentCard() {
-        // TODO implement here
+    private ExpertCard currentCard;
+
+
+    /**
+     * Set the current card
+     */
+    public void setCurrentCard(ExpertCard expertCard) {
+        this.currentCard=expertCard;
+
     }
 
     /**
-     * @return
+     * @return ExpertCard     Return the current card
+     */
+    public ExpertCard getCurrentCard(){
+        return this.currentCard;
+    }
+
+    /**
+     * @return MotherNature     Return the reference to motherNature
      */
     public MotherNature getMotherNature() {
-        // TODO implement here
-        return null;
+        return this.motherNature;
     }
 
-    /**
-     * 
-     */
-    public void setupCards() {
-        // TODO implement here
-    }
+
 
     /**
-     * 
+     * Shuffle the deck and keep only 3 cards
      */
     public void getCards() {
-        // TODO implement here
+        Collections.shuffle(expertCards);
+        for(int i=11;i>2;i--)
+            expertCards.remove(i);
     }
 
     /**
-     * @return
+     * @return  Player      Return an array of the players.
      */
     public ArrayList<Player> getPlayerList() {
-        // TODO implement here
-        return null;
+        return new ArrayList<>(playerList);
     }
 
     /**
-     * @return
+     * @return Bag          Return a reference to the bag
      */
     public Bag getBag() {
-        // TODO implement here
-        return null;
+        return this.bag;
     }
 
     /**
-     * @return
+     * @return  ArrayList<ExpertCard>   Return the three ExpertCards
      */
-    public ArrayList<ExpertCard> getThreeExpertCards() {
-        // TODO implement here
-        return null;
+    public LinkedList<ExpertCard> getThreeExpertCards() {
+        return new LinkedList(this.expertCards);
     }
 
 }
