@@ -79,7 +79,7 @@ public class LineTest {
     @Test
     public void addProfessor() {
         Line line = new Line(Color.RED);
-        Professor professor=new Professor(Color.RED);
+        Professor professor=Professor.getProfessor(Color.RED);
         line.addProfessor(professor);
         assertTrue(line.isProfessor()==true);
     }
@@ -91,7 +91,7 @@ public class LineTest {
     @Test
     public void removeProfessor(){
         Line line = new Line(Color.RED);
-        Professor professor=new Professor(Color.RED);
+        Professor professor=Professor.getProfessor(Color.RED);
         line.addProfessor(professor);
         assertTrue(line.isProfessor()==true);
         line.removeProfessor(professor);
@@ -106,7 +106,7 @@ public class LineTest {
     @Test
     public void isProfessor(){
         Line line = new Line(Color.RED);
-        Professor professor=new Professor(Color.RED);
+        Professor professor=Professor.getProfessor(Color.RED);
         line.addProfessor(professor);
         assertTrue(line.isProfessor()==true);
         line.removeProfessor(professor);

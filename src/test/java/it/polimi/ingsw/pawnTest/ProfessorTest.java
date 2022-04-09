@@ -15,27 +15,42 @@ public class ProfessorTest {
     @Test
     public void getColorTest()
     {
-        Professor professor = new Professor(Color.YELLOW);
+        Professor professor = Professor.getProfessor(Color.YELLOW);
         assertTrue(professor.getColor()==Color.YELLOW);
     }
 
+
     /**
-     * Tests the GetPosition() method
+     * Tests the getProfessor() method
+     */
+    @Test
+    public void getProfessorTest()
+    {
+        Professor professor = Professor.getProfessor(Color.YELLOW);
+        Professor professor1 = Professor.getProfessor(Color.YELLOW);
+        assertTrue(professor==professor1);
+        professor = Professor.getProfessor(Color.GREEN);
+        professor1 = Professor.getProfessor(Color.GREEN);
+        assertTrue(professor==professor1);
+    }
+
+    /**
+     * Tests the getPosition() method
      */
     @Test
     public void getPositionTest()
     {
-        Professor professor = new Professor(Color.YELLOW);
+        Professor professor = Professor.getProfessor(Color.YELLOW);
         assertTrue(professor.getPosition()==null);
     }
 
     /**
-     * Tests the SetPosition() method
+     * Tests the setPosition() method
      */
     @Test
     public void setPositionTest()
     {
-        Professor professor = new Professor(Color.YELLOW);
+        Professor professor = Professor.getProfessor(Color.YELLOW);
         Line line = new Line(Color.RED);
         professor.setPosition(line);
         assertTrue(professor.getPosition()==line);
