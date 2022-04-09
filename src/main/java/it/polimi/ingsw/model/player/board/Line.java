@@ -18,7 +18,8 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
      * Default constructor
      */
     public Line(Color color) {
-        this.color = color;
+        this.color=color;
+
     }
     /**
      *
@@ -28,7 +29,7 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
     /**
      * 
      */
-    private LinkedList<Student> students = new LinkedList<>();
+    private LinkedList<Student> students=new LinkedList<>();
 
     /**
      * 
@@ -55,10 +56,10 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
      * @return boolean      Check if the students make gain a coin and return true
      */
     private boolean checkCoin() {
-        if (students.size()==2 || students.size()==5 || students.size()==8) {
+        if(students.size()==2 || students.size()==5 || students.size()==8){
             return true;
         }
-        else {
+        else{
             return false;
         }
     }
@@ -132,7 +133,7 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
     public void addProfessor(Professor professor) {
         if(professor.getColor().equals(this.getColor())) {
             professor.setPosition(this);
-            this.professor = professor;
+            this.professor=professor;
         }
     }
 
@@ -140,19 +141,19 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
      * @param professor         Remove the professor from the line
      */
     public void removeProfessor(Professor professor) {
-        this.professor = null;
+        this.professor=null;
     }
 
     /**
      * @return boolean      Return if the professor is present on the line
      */
     public Boolean isProfessor() {
-        if(this.professor!=null) {
+        if(this.professor!=null){
             return true;
-        }
-        else {
+           }
+        else{
             return false;
-        }
+             }
     }
 
 }

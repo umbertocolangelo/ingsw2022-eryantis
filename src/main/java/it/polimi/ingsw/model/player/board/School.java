@@ -11,18 +11,18 @@ public class School {
      * Default constructor
      */
     public School(PlayerColor color) {
-        this.towerTable = new TowerTable(color);
+        this.towerTable=new TowerTable(color);
     }
 
     /**
      * 
      */
-    private Ingress ingress = new Ingress();
+    private Ingress ingress=new Ingress();
 
     /**
      * 
      */
-    private Hall hall = new Hall();
+    private Hall hall=new Hall();
 
     /**
      * 
@@ -34,12 +34,14 @@ public class School {
      */
     public Ingress getIngress() {
        return this.ingress;
+
     }
 
     /**
      * @return Hall     Return th Hall of this school
      */
     public Hall getHall() {
+
         return this.hall;
     }
 

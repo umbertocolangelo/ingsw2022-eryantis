@@ -8,12 +8,12 @@ public interface PlaceableObject {
     /**
      * @return
      */
-    FixedObject getPosition();
+    public FixedObject getPosition();
 
     /**
      * @param position
      * @return
      */
-    void setPosition(FixedObject position);
+    public void setPosition(FixedObject position);
 
 }
