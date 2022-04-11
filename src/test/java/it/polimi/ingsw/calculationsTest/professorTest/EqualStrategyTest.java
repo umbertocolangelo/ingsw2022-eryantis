@@ -6,10 +6,18 @@ import it.polimi.ingsw.model.calculations.professor.ProfessorStrategy;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.pawns.Professor;
 import it.polimi.ingsw.model.player.board.Line;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class EqualStrategyTest {
+
+    @BeforeEach
+    public void resetProfessorPosition(){
+        for(Color color : Color.values()){
+            Professor.getProfessor(color).setPosition(null);
+        }
+    }
 
     @Test
     public void compareTest(){
