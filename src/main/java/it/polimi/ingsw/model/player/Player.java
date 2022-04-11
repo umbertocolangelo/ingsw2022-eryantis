@@ -16,7 +16,6 @@ public class Player {
      * Constructor that require the username and set the deck
      */
     public Player(String name) {
-        this.color = color;
         this.name = name;
         this.assistantCards.add(AssistantCard.ONE_CARD);
         this.assistantCards.add(AssistantCard.TWO_CARD);
@@ -141,10 +140,11 @@ public class Player {
     }
 
     /**
-     * @param color         Set the color of this player
+     * @param color     Sets the color of the player and instantiates its school
      */
     public void setPlayerColor(PlayerColor color) {
         this.color=color;
+        this.school = new School(color);
     }
 
     /**

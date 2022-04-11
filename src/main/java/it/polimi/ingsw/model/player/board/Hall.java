@@ -1,6 +1,8 @@
 package it.polimi.ingsw.model.player.board;
 
 import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.pawns.Student;
+
 import java.util.*;
 
 /**
@@ -12,13 +14,9 @@ public class Hall {
      * Constructor that create the lines in Hall
      */
     public Hall() {
-        for (Color c : Color.values()){
-            Line line=new Line(c);
-            this.lines.add(line);
+        for (Color color : Color.values()){
+            lines.put(color,new Line(color));
           }
-
-
-
     }
 
     /**
@@ -27,9 +25,9 @@ public class Hall {
     private String id;
 
     /**
-     * 
+     * Map that stores every Line by its respective Color
      */
-    private LinkedList<Line> lines=new LinkedList<Line>();
+    private Map<Color, Line> lines = new HashMap<>();
 
     /**
      * @param color 
@@ -37,14 +35,17 @@ public class Hall {
      */
 
     public Line getLine(Color color) {
-        int i=0;
-        for (i=0;i<this.lines.size()-1;i++){
-            if(this.lines.get(i).getColor()==color){
-                break;
-                    }
-             }
-            return new Line(this.lines.get(i).getColor());
-         }
+            return lines.get(color);
+    }
+
+    /**
+     * Adds a student on the corresponding color Line
+     * @param student is the student to be added to the Line
+     */
+    public void addStudent(Student student){
+        lines.get(student.getColor()).addStudent(student);
+    }
+
 
 
 }
