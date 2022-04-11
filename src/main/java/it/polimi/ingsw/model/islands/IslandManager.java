@@ -62,23 +62,13 @@ public class IslandManager {
      * @return number of islandGroup in islands linkedlist
      */
     public Integer numOfGoups() {
-        // int blackCounter=0, whiteCounter=0, greyCounter=0;
         if (islands.size() == 12) { numOfGroups = 0; }
         else if (islands.size()<12) {
             for (IslandInterface islandInterface: islands) {
                 if (islandInterface.isGrouped()) {
                     numOfGroups += 1;
-                    /*
-                    if (islandInterface.getInfluenceColor().toString().equals("BLACK")) {
-                        blackCounter += 1;
-                        if (blackCounter == 3) {checkWinner("BLACK"); }
-                    }
-                    else if (islandInterface.getInfluenceColor().toString().equals("WHITE")) { whiteCounter += 1; }
-                    else if (islandInterface.getInfluenceColor().toString().equals("GREY")) { greyCounter += 1; }
-                    */
                 }
             }
-
         }
         return numOfGroups;
     }
