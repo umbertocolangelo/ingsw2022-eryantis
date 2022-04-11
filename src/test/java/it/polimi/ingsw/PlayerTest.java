@@ -87,7 +87,7 @@ public class PlayerTest {
     @Test
     public void getSchoolTest() {
         Player player = new Player("vittorio");
-        Player player1 = new Player("vittorio1");
+        Player player1 = new Player("vittorio");
         assertTrue(player.getSchool()!=player1.getSchool());
     }
 
@@ -109,6 +109,7 @@ public class PlayerTest {
         Player player = new Player("vittorio");
         player.setPlayerColor(PlayerColor.WHITE);
         assertTrue(player.getPlayerColor()==PlayerColor.WHITE);
+        assertTrue(player.getSchool()!=null);
     }
 
     /**

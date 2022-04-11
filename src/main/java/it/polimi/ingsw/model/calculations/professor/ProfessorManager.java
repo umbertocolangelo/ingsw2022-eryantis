@@ -42,11 +42,13 @@ public class ProfessorManager {
                 if(player==currentPlayer){continue;}       //Do not consider the current player in the comparison
 
                 if(currentProfessor.getPosition()==null){  //If the prof has no position yet
-                    if(currentPlayerLine.numOfStudents() > 0){currentPlayerLine.addProfessor(currentProfessor);}
-                    return;
+                    if(currentPlayerLine.numOfStudents() > 0){
+                        currentPlayerLine.addProfessor(currentProfessor);
+                        continue;
+                    }
                 }
 
-                if(strategy.compare(currentPlayerLine.numOfStudents(),player.getSchool().getHall().getLine(color).numOfStudents())){    //If the currentPlayer should have the professor
+                if(strategy.compare(currentPlayerLine.numOfStudents(),player.getSchool().getHall().getLine(color).numOfStudents(),color)){    //If the currentPlayer should have the professor
                     currentPlayerLine.addProfessor(currentProfessor);
                 }
 
@@ -55,6 +57,19 @@ public class ProfessorManager {
 
     }
 
+    /**
+     *  Sets the strategy to the standard one (StandardStrategy)
+     */
+    public void setStandardCheck(){
+        strategy = new StandardStrategy();
+    }
+
+    /**
+     *  Sets the strategy to EqualStrategy after the relative expert card use
+     */
+    public void setEqualCheck(){
+        strategy = new EqualStrategy();
+    }
 
 }
 

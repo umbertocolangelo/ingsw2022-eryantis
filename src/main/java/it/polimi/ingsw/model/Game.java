@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.pawns.MotherNature;
@@ -75,6 +76,11 @@ public class Game implements GameInterface {
      * 
      */
     private IslandManager islandManager;
+
+    /**
+     *
+     */
+    private ProfessorManager professorManager;
 
     /**
      * 

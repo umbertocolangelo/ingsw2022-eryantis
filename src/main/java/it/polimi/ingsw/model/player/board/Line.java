@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model.player.board;
 
-import it.polimi.ingsw.model.calculations.professor.ProfessorCalculator;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.objectTypes.FixedObjectProfessor;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
@@ -47,12 +46,6 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
     private Player player;
 
     /**
-     * 
-     */
-    private static ProfessorCalculator professorCalculator;
-
-
-    /**
      * @return boolean      Check if the students make gain a coin and return true
      */
     private boolean checkCoin() {
@@ -65,32 +58,12 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
     }
 
     /**
-     * 
-     */
-    private void checkProfessor() {
-        // TODO implement here
-    }
-
-    /**
      *
      */
     public Color getColor() {
         return this.color;
     }
 
-    /**
-     * 
-     */
-    public static void setStandardCheck() {
-        // TODO implement here
-    }
-
-    /**
-     * 
-     */
-    public static void setEqualCheck() {
-        // TODO implement here
-    }
 
     /**
      * @param student       Add the student to the LinkedList
