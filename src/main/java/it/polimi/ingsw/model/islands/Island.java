@@ -3,7 +3,7 @@ package it.polimi.ingsw.model.islands;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
-import it.polimi.ingsw.model.pawns.MotherNature;
+import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
 import java.util.*;
@@ -12,7 +12,9 @@ import java.util.*;
 /**
  *
  */
-public class Island implements FixedObjectStudent, IslandInterface {
+public class Island implements FixedObjectStudent,FixedObjectTower, IslandInterface {
+
+
 
     /**
      * Default constructor
@@ -29,27 +31,30 @@ public class Island implements FixedObjectStudent, IslandInterface {
     /**
      *
      */
-    private LinkedList<Student> students = new LinkedList<Student>();
+    private LinkedList<Student> students= new LinkedList<Student>();
 
     /**
-     * non deve essere una lista perche ce n'è sempre solo 1
+     *
      */
-    private LinkedList<Tower> towers = new LinkedList<Tower>();
+    private LinkedList<Tower> towers= new LinkedList<Tower>();
 
     /**
      *
      */
     private Island nextIsland;
 
-    /**
-     *
-     */
-    private Boolean isGrouped = false;
 
     /**
      *
      */
-    private Boolean isDenied = false;
+    private Boolean isGrouped=false;
+
+    /**
+     *
+     */
+    private Boolean isDenied=false;
+
+
 
     /**
      * @param student   Add the student to the LinkedList
@@ -57,6 +62,11 @@ public class Island implements FixedObjectStudent, IslandInterface {
 
     public void addStudent(Student student) {
         if (!this.students.contains(student)) {
+            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+                FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
+                position.removeStudent(student);
+            }
+            student.setPosition(this);
             this.students.add(student);
             }
     }
@@ -74,7 +84,7 @@ public class Island implements FixedObjectStudent, IslandInterface {
      * @return LinkedList<Student>      Return the LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
-        return this.students;
+        return new LinkedList<Student>(this.students);
     }
 
     /**
@@ -88,6 +98,11 @@ public class Island implements FixedObjectStudent, IslandInterface {
      * @param tower     Add Tower to the LinkedList
      */
     public void addTower(Tower tower) {
+        if(tower.getPosition()!=null){        // If the tower was on a FixedObject, this object is updated
+            FixedObjectTower position = (FixedObjectTower) tower.getPosition();
+            position.removeTower(tower);
+        }
+        tower.setPosition(this);
         this.towers.add(tower);
     }
 
@@ -103,7 +118,7 @@ public class Island implements FixedObjectStudent, IslandInterface {
      * @return LinkedList<Tower>        Return the LinkedList of Towers
      */
     public LinkedList<Tower> getTowers() {
-        return this.towers;
+        return new LinkedList<>(this.towers);
     }
 
     /**
@@ -111,7 +126,7 @@ public class Island implements FixedObjectStudent, IslandInterface {
      * @return Integer      Return the number of student who by color
      */
     public Integer numOfStudents(Color color) {
-        int counter = 0;
+        int counter=0;
         for (Student s: students )
         {
            if(s.getColor()==color){
@@ -124,53 +139,46 @@ public class Island implements FixedObjectStudent, IslandInterface {
     /**
      * Set the state of isDenied
      */
-    public void setDeny() { this.isDenied = true; }
+    public void setDeny() { isDenied=true;
+    }
 
     /**
      * @return boolean      Return the state of isDenied
      */
     public boolean getDeny(){
-        return this.isDenied;
+        return isDenied;
     };
 
     /**
      * Set isDenied to false;
      */
     public void removeDeny() {
-        this.isDenied = false;
+        isDenied=false;
     }
 
     /**
      * @return Integer      Return the number of towers
      */
     public Integer numOfTowers() {
-      if(this.towers.isEmpty()) {
+      if(this.towers.isEmpty()){
           return 0;
       }
-      else {
+      else{
           return 1;
       }
+
     }
 
     /**
-     * @return current influenceColor
+     * @return
      */
+
    public PlayerColor getInfluenceColor() {
-       return this.getTowers().get(0).getColor();
-   }
-
-    /**
-     * @param newSet indicates new isGrouped status
-     */
-   public void setIsGrouped (boolean newSet) {
-       this.isGrouped = newSet;
-   }
-
-    /**
-     * @return current isGrouped status
-     */
-   public Boolean isGrouped() {
-       return this.isGrouped;
+       if(this.towers.isEmpty()){
+           return null;
+       }else{
+        return towers.get(0).getColor();
+       }
    }
 
 }

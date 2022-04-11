@@ -38,15 +38,4 @@ public interface IslandInterface {
      */
     public PlayerColor getInfluenceColor();
 
-    /**
-     *
-     * @param newSet indicates new isGrouped status
-     */
-    public void setIsGrouped (boolean newSet);
-
-    /**
-     * @return current isGrouped status
-     */
-    public Boolean isGrouped();
-
 }

@@ -144,7 +144,7 @@ public class Player {
      * @param color         Set the color of this player
      */
     public void setPlayerColor(PlayerColor color) {
-        this.color = color;
+        this.color=color;
     }
 
     /**
@@ -160,6 +160,7 @@ public class Player {
     public Boolean isDeckEnded() {
        if(this.assistantCards.size()==0)
            return true;
+
        else
            return false;
     }
