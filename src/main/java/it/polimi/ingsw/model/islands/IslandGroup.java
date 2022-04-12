@@ -36,17 +36,10 @@ public class IslandGroup implements IslandInterface {
     /**
      * @param newIsland indicates the new Island element of this islandGroup
      */
-    public void addIsland(Island newIsland) {
-        islandGroup.add(newIsland);
-    }
+    public void addIsland(Island newIsland) { islandGroup.add(newIsland); }
 
-    /**
-     * @param newIslandGroup indicates the new Island elements (originally in newIslandGroup) of this islandGroup
-     */
-    public void addIslandGroup(IslandGroup newIslandGroup) {
-        for (Island island: newIslandGroup.getIslandGroupElement()) {
-            islandGroup.add(island);
-        }
+    public void addIslandGroup (IslandGroup newIslandGroup) {
+        for (Island island: newIslandGroup.getIslandGroupElement()) { islandGroup.add(island); }
     }
 
     /**

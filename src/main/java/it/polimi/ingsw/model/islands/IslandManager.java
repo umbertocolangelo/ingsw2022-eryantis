@@ -47,15 +47,14 @@ public class IslandManager {
      * verify group conditions and eventually instantiate new islandGroup list
      */
     public void checkGroup() {
-        for (int i=0; i< islands.size(); i++) {
-            if (islands.get(i).getInfluenceColor().equals(islands.get(i+1).getInfluenceColor())) {
+        for (int i = 0; i < islands.size(); i++) {
+            if (islands.get(i).getInfluenceColor().equals(islands.get(i + 1).getInfluenceColor())) {
                 islandsUpdate(i);
             }
             // se avviene la creazione di un group rifaccio la verifica rispetto alla nuova rightIsland dell'elemento nuovo (perchè l'if precendente controlla solo la prima isola a destra)
-            if (isUpdated && islands.get(i).getInfluenceColor().equals(islands.get(i+1).getInfluenceColor())) {
+            if (isUpdated && islands.get(i).getInfluenceColor().equals(islands.get(i + 1).getInfluenceColor())) {
                 islandsUpdate(i);
-            }
-            else if (isUpdated && !islands.get(i).getInfluenceColor().equals(islands.get(i+1).getInfluenceColor())) {
+            } else if (isUpdated && !islands.get(i).getInfluenceColor().equals(islands.get(i + 1).getInfluenceColor())) {
                 isUpdated = false;
             }
 
@@ -73,10 +72,12 @@ public class IslandManager {
      * @return number of islandGroup in islands linkedlist
      */
     public Integer getNumOfGroups() {
-        if (islands.size() == 12) { numOfGroups = 0; }
-        else if (islands.size()<12) {
-            for (IslandInterface islandInterface: islands) {
-                if (islandInterface.isGrouped()) {
+        numOfGroups = 0;
+        if (islands.size() == 12) {
+            numOfGroups = 0;
+        } else if (islands.size() < 12) {
+            for (int i=0; i<islands.size(); i++) {
+                if (islands.get(i).isGrouped()) {
                     numOfGroups += 1;
                 }
             }
@@ -86,6 +87,7 @@ public class IslandManager {
 
     /**
      * Used only for methods test
+     *
      * @return this.islands
      */
     public LinkedList<IslandInterface> getIslands() {
@@ -93,33 +95,38 @@ public class IslandManager {
     }
 
     /**
-     * @param island
-     * @return left IslandInterface element in islands after param "island"
+     * @param islandInterface
+     * @return left param "island" IslandInterface element in islands
      */
-    private IslandInterface leftIsland(IslandInterface island) {
-        ListIterator<IslandInterface> islandIterator = islands.listIterator();
+    private IslandInterface leftIsland(IslandInterface islandInterface) {
         IslandInterface tempIslandInterface = null;
-        while (islandIterator.hasPrevious()) {
-            if (islandIterator.previous()==island) {
-                tempIslandInterface = islandIterator.previous();
+        if (islands.get(0).equals(islandInterface)) {
+            tempIslandInterface = islands.get(islands.size()-1); }
+        else {
+            for (int i= islands.size()-1; i>0; i--) {
+                if (islands.get(i).equals(islandInterface)) {
+                    tempIslandInterface = islands.get(i-1);
+                }
             }
-            else if (islandIterator.previous()==null) { tempIslandInterface = islands.get(islands.size()-1); }
         }
         return tempIslandInterface;
     }
 
     /**
-     * @param island
-     * @return right IslandInterface element in islands after param "island"
+     * @param islandInterface
+     * @return right param "island" IslandInterface element in islands
      */
-    private IslandInterface rightIsland(IslandInterface island) {
-        ListIterator<IslandInterface> islandIterator = islands.listIterator();
+    private IslandInterface rightIsland(IslandInterface islandInterface) {
         IslandInterface tempIslandInterface = null;
-        while (islandIterator.hasNext()) {
-            if (islandIterator.next()==island) {
-                tempIslandInterface = islandIterator.next();
+        if (islands.get(islands.size()-1).equals(islandInterface)) {
+            tempIslandInterface = islands.get(0);
+        }
+        else {
+            for (int i=0; i<islands.size()-1; i++) {
+                if (islands.get(i).equals(islandInterface)) {
+                    tempIslandInterface = islands.get(i+1);
+                }
             }
-            else if (islandIterator.next()==null) { tempIslandInterface = islands.get(0); }
         }
         return tempIslandInterface;
     }
@@ -127,13 +134,17 @@ public class IslandManager {
 
     /**
      * updates islands linkedlist after an island join, replacing islands.get(curr) and its right element with newGroup
+     *
      * @param curr is the old IslandInterface element in islands linkedlist
      */
-    private void islandsUpdate (Integer curr) {
+    private void islandsUpdate(Integer curr) {
         IslandGroup newGroup = new IslandGroup();
-        if (!islands.get(curr).isGrouped()) { setNewGroup(newGroup, (Island) islands.get(curr)); }
-        else { setNewGroup(newGroup, (IslandGroup) islands.get(curr)); }
-        for (int i=0; i<islands.size(); i++) {
+        if (!islands.get(curr).isGrouped()) {
+            setNewGroup(newGroup, (Island) islands.get(curr));
+        } else {
+            setNewGroup(newGroup, (IslandGroup) islands.get(curr));
+        }
+        for (int i = 0; i < islands.size(); i++) {
             if (islands.get(i).equals(newGroup.getIslandGroupElement().get(0))) {
                 for (int j=i; j<newGroup.getIslandGroupElement().size()+i; j++) {
                     islands.remove(j);
@@ -147,8 +158,9 @@ public class IslandManager {
 
     /**
      * sets in islandGroup all islandInterface elements interested in the same island join
+     *
      * @param newIslandGroup is the new group in which are set oldIsland and its right element in islands list
-     * @param oldIsland is the element in the IslandManager islands that will be replaced by newIslandGroup
+     * @param oldIsland      is the element in the IslandManager islands that will be replaced by newIslandGroup
      */
     private void setNewGroup(IslandGroup newIslandGroup, Island oldIsland) {
 
@@ -157,8 +169,7 @@ public class IslandManager {
             rightIsland(oldIsland).setIsGrouped(true);
             newIslandGroup.addIsland(oldIsland);
             newIslandGroup.addIsland((Island) rightIsland(oldIsland));
-        }
-        else {
+        } else {
             oldIsland.setIsGrouped(true);
             newIslandGroup.addIsland(oldIsland);
             newIslandGroup.addIslandGroup((IslandGroup) rightIsland(oldIsland));
@@ -167,6 +178,7 @@ public class IslandManager {
 
     /**
      * sets in islandGroup all islandInterface elements interested in the same island join
+     *
      * @param newIslandGroup is the new group in which are set oldIslandGroup and its right element in islands list
      * @param oldIslandGroup is the element in the old IslandManager islands that will be replaced by newIslandGroup
      */
@@ -176,12 +188,48 @@ public class IslandManager {
             rightIsland(oldIslandGroup).setIsGrouped(true);
             newIslandGroup.addIslandGroup(oldIslandGroup);
             newIslandGroup.addIsland((Island) rightIsland(oldIslandGroup));
-        }
-        else {
+        } else {
             newIslandGroup.addIslandGroup(oldIslandGroup);
             newIslandGroup.addIslandGroup((IslandGroup) rightIsland(oldIslandGroup));
         }
     }
 
-}
+    /**
+     * used only for test
+     *
+     * @param newIslandGroup
+     * @param oldIsland
+     */
+    public void setNewGroupTest(IslandGroup newIslandGroup, Island oldIsland) {
+        setNewGroup(newIslandGroup, oldIsland);
+    }
 
+    /**
+     * used only for test
+     *
+     * @param newIslandGroup
+     * @param oldIslandGroup
+     */
+    public void setNewGroupTest(IslandGroup newIslandGroup, IslandGroup oldIslandGroup) {
+        setNewGroup(newIslandGroup, oldIslandGroup);
+    }
+
+    /**
+     * used only for test
+     */
+    public void islandsUpdateTest(Integer curr) { islandsUpdate(curr); }
+
+    /**
+     * used only for test
+     */
+    public IslandInterface rightIslandTest(IslandInterface islandInterface) {
+        return rightIsland(islandInterface);
+    }
+
+    /**
+     * used only for test
+     */
+    public IslandInterface leftIslandTest(IslandInterface islandInterface) {
+        return leftIsland(islandInterface);
+    }
+}
