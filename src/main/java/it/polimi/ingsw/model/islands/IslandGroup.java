@@ -36,10 +36,12 @@ public class IslandGroup implements IslandInterface {
     /**
      * @param newIsland indicates the new Island element of this islandGroup
      */
-    public void addIsland(Island newIsland) { islandGroup.add(newIsland); }
+    public void addIsland(Island newIsland) {
+        islandGroup.add(newIsland);
+    }
 
     public void addIslandGroup (IslandGroup newIslandGroup) {
-        for (Island island: newIslandGroup.getIslandGroupElement()) { islandGroup.add(island); }
+        for (Island island: newIslandGroup.getIslandGroupElements()) { islandGroup.add(island); }
     }
 
     /**
@@ -88,7 +90,7 @@ public class IslandGroup implements IslandInterface {
     /**
      * @return copy of islandGroup linkedlist
      */
-    public LinkedList<Island> getIslandGroupElement() {
+    public LinkedList<Island> getIslandGroupElements() {
         return new LinkedList<>(this.islandGroup);
     }
 
@@ -104,17 +106,18 @@ public class IslandGroup implements IslandInterface {
     }
 
     /**
-     * @param newSet indicates new isGrouped status
+     * not used in islandGroup implementation
      */
-    public void setIsGrouped (boolean newSet) {
-        //da modificare: caso in cui si separano (impossibile)
-    }
+    public void setIsGrouped() {}
 
     /**
      * @return
      */
     public Boolean isGrouped() { return true; }
 
+    /**
+     * @return
+     */
     public Integer getSize() { return this.islandGroup.size(); }
 
 }

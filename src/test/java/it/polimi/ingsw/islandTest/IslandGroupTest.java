@@ -22,7 +22,7 @@ public class IslandGroupTest {
         Island island = new Island();
         IslandGroup islandGroup = new IslandGroup();
         islandGroup.addIsland(island);
-        assertTrue(islandGroup.getIslandGroupElement().contains(island));
+        assertTrue(islandGroup.getIslandGroupElements().contains(island));
     }
 
     /**T
@@ -40,7 +40,7 @@ public class IslandGroupTest {
         newIslandGroup.addIsland(island3);
         islandGroup.addIslandGroup(newIslandGroup);
         for (int i=0; i< newIslandGroup.getSize(); i++) {
-            assertTrue(islandGroup.getIslandGroupElement().contains(newIslandGroup.getIslandGroupElement().get(i)));
+            assertTrue(islandGroup.getIslandGroupElements().contains(newIslandGroup.getIslandGroupElements().get(i)));
         }
     }
 

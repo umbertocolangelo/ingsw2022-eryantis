@@ -52,6 +52,11 @@ public class Island implements FixedObjectStudent, IslandInterface {
     private Boolean isDenied = false;
 
     /**
+     *
+     */
+    private Integer size = 1;
+
+    /**
      * @param student   Add the student to the LinkedList
      */
 
@@ -164,10 +169,10 @@ public class Island implements FixedObjectStudent, IslandInterface {
     }
 
     /**
-     * @param newSet indicates new isGrouped status
+     *
      */
-    public void setIsGrouped (boolean newSet) {
-        this.isGrouped = newSet;
+    public void setIsGrouped() {
+        this.isGrouped = true;
     }
 
     /**
@@ -177,4 +182,15 @@ public class Island implements FixedObjectStudent, IslandInterface {
         return this.isGrouped;
     }
 
+    /**
+     * @return size
+     */
+    public Integer getSize() { return this.size; }
+
+    /**
+     *
+     */
+    public LinkedList<Island> getIslandGroupElements() {
+        return null;
+    }
 }

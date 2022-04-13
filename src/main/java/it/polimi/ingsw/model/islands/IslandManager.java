@@ -46,18 +46,23 @@ public class IslandManager {
     /**
      * verify group conditions and eventually instantiate new islandGroup list
      */
-    public void checkGroup() {
+    public void checkGroup(IslandInterface islandInterface) {
+        int j;
         for (int i = 0; i < islands.size(); i++) {
-            if (islands.get(i).getInfluenceColor().equals(islands.get(i + 1).getInfluenceColor())) {
-                islandsUpdate(i);
+            if (islands.get(i) == islandInterface) {
+                if (islandInterface.getInfluenceColor().equals(rightIsland(islandInterface)) && islandInterface.getInfluenceColor().equals(leftIsland(islandInterface))) {
+                    if (i-1 == -1) { j = islands.size()-1; }
+                    else { j = i-1; }
+                    islandsUpdate(j); //primo update unisce leftIsland a island
+                    islandsUpdate(j); //secondo update unisce il nuovo gruppo (con dentro leftIsland e island) a rightIsland
+                }
+                else if (islandInterface.getInfluenceColor().equals(leftIsland(islandInterface))) {
+                    islandsUpdate(i-1);
+                }
+                else if (islandInterface.getInfluenceColor().equals(rightIsland(islandInterface))) {
+                    islandsUpdate(i);
+                }
             }
-            // se avviene la creazione di un group rifaccio la verifica rispetto alla nuova rightIsland dell'elemento nuovo (perchè l'if precendente controlla solo la prima isola a destra)
-            if (isUpdated && islands.get(i).getInfluenceColor().equals(islands.get(i + 1).getInfluenceColor())) {
-                islandsUpdate(i);
-            } else if (isUpdated && !islands.get(i).getInfluenceColor().equals(islands.get(i + 1).getInfluenceColor())) {
-                isUpdated = false;
-            }
-
         }
     }
 
@@ -145,8 +150,8 @@ public class IslandManager {
             setNewGroup(newGroup, (IslandGroup) islands.get(curr));
         }
         for (int i = 0; i < islands.size(); i++) {
-            if (islands.get(i).equals(newGroup.getIslandGroupElement().get(0))) {
-                for (int j=i; j<newGroup.getIslandGroupElement().size()+i; j++) {
+            if (islands.get(i).equals(newGroup.getIslandGroupElements().get(0))) {
+                for (int j=i; j<newGroup.getIslandGroupElements().size()+i; j++) {
                     islands.remove(j);
                 }
                 islands.add(i, newGroup);
@@ -165,12 +170,12 @@ public class IslandManager {
     private void setNewGroup(IslandGroup newIslandGroup, Island oldIsland) {
 
         if (!rightIsland(oldIsland).isGrouped()) {
-            oldIsland.setIsGrouped(true);
-            rightIsland(oldIsland).setIsGrouped(true);
+            oldIsland.setIsGrouped();
+            rightIsland(oldIsland).setIsGrouped();
             newIslandGroup.addIsland(oldIsland);
             newIslandGroup.addIsland((Island) rightIsland(oldIsland));
         } else {
-            oldIsland.setIsGrouped(true);
+            oldIsland.setIsGrouped();
             newIslandGroup.addIsland(oldIsland);
             newIslandGroup.addIslandGroup((IslandGroup) rightIsland(oldIsland));
         }
@@ -185,7 +190,7 @@ public class IslandManager {
     private void setNewGroup(IslandGroup newIslandGroup, IslandGroup oldIslandGroup) {
 
         if (!rightIsland(oldIslandGroup).isGrouped()) {
-            rightIsland(oldIslandGroup).setIsGrouped(true);
+            rightIsland(oldIslandGroup).setIsGrouped();
             newIslandGroup.addIslandGroup(oldIslandGroup);
             newIslandGroup.addIsland((Island) rightIsland(oldIslandGroup));
         } else {

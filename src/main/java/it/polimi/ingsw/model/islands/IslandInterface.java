@@ -48,13 +48,23 @@ public interface IslandInterface {
 
     /**
      *
-     * @param newSet indicates new isGrouped status
      */
-    public void setIsGrouped (boolean newSet);
+    public void setIsGrouped();
 
     /**
      * @return current isGrouped status
      */
     public Boolean isGrouped();
+
+    /**
+     * used only in tests
+     * @return IslandInterface element size;
+     */
+    public Integer getSize();
+
+    /**
+     *
+     */
+    public LinkedList<Island> getIslandGroupElements();
 
 }
