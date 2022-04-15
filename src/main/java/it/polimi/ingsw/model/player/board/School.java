@@ -11,7 +11,7 @@ public class School {
      * Default constructor
      */
     public School(PlayerColor color) {
-        this.towerTable=new TowerTable(color);
+        this.towerTable=new TowerTable(color,false);
     }
 
     /**

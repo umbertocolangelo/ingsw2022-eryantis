@@ -19,34 +19,29 @@ public class TowerTable implements FixedObjectTower {
     /**
      *
      */
-    private Boolean isThreePlayers=true;
+    private Boolean isThreePlayers;
 
 
     /**
      * Create the towers in the TowerTable and define their color;
      */
-    public TowerTable(PlayerColor color) {
+    public TowerTable(PlayerColor color, Boolean isThreePlayers) {
         if (isThreePlayers) {
             for (int i = 0; i <6; i++) {
                 Tower tower = new Tower( color);
                 towers.add(tower);
+                tower.setPosition(this);
             }
         } else {
             for (int i = 0; i <8; i++) {
                 Tower tower = new Tower(color);
                 towers.add(tower);
+                tower.setPosition(this);
             }
         }
+        this.isThreePlayers = isThreePlayers;
     }
 
-
-    /**
-     * @return
-     */
-    public Boolean isThreePlayers() {
-        // TODO implement here
-        return null;
-    }
 
     /**
      * @param tower         Add tower to the LinkedList
@@ -73,7 +68,6 @@ public class TowerTable implements FixedObjectTower {
      * @return  LinkedList<Tower>       Return the list of the towers
      */
     public LinkedList<Tower> getTowers() {
-
         return  new LinkedList<>(this.towers);
     }
 

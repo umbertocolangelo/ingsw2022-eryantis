@@ -37,7 +37,7 @@ public class TowerTest {
     @Test
     public void setPositionTest()
     {
-        TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
+        TowerTable towerTable = new TowerTable(PlayerColor.WHITE, false);
         Tower tower = new Tower(PlayerColor.WHITE);
         tower.setPosition(towerTable);
         assertTrue(tower.getPosition()==towerTable);

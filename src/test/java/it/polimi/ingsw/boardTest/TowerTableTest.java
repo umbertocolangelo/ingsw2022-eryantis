@@ -17,9 +17,10 @@ public class TowerTableTest {
          */
         @Test
         public void getTowerTest() {
-            TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
-
-            assertEquals(towerTable.getTowers().size(), 6);
+            TowerTable towerTable = new TowerTable(PlayerColor.WHITE,false);
+            assertEquals(towerTable.getTowers().size(), 8);
+            TowerTable towerTable1 = new TowerTable(PlayerColor.WHITE,true);
+            assertEquals(towerTable1.getTowers().size(), 6);
 
         }
 
@@ -28,26 +29,18 @@ public class TowerTableTest {
          */
         @Test
         public void addTowerTest() {
-            TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
+            TowerTable towerTable = new TowerTable(PlayerColor.WHITE,false);
             Island island = new Island();
             Tower tower= towerTable.getTowers().get(0);
-            towerTable.removeTower(tower);
-            tower.setPosition(null);
-            assertTrue(!towerTable.getTowers().contains(tower));
-            towerTable.addTower(tower);
-            assertTrue(towerTable.getTowers().contains(tower));
-            assertTrue(tower.getPosition()==towerTable);
             island.addTower(tower);
             assertTrue(island.getTowers().contains(tower));
             assertTrue(tower.getPosition()==island);
+            assertTrue(!towerTable.getTowers().contains(tower));
             towerTable.addTower(tower);
             assertTrue(towerTable.getTowers().contains(tower));
+            System.out.println(tower.getPosition());
             assertTrue(tower.getPosition()==towerTable);
             assertTrue(!island.getTowers().contains(tower));
-
-
-
-
         }
 
         /**
@@ -55,7 +48,7 @@ public class TowerTableTest {
          */
         @Test
         public void removeTowerTest() {
-            TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
+            TowerTable towerTable = new TowerTable(PlayerColor.WHITE,false);
             Tower tower= towerTable.getTowers().get((2));
             towerTable.removeTower(tower);
             towerTable.addTower(tower);
@@ -71,13 +64,13 @@ public class TowerTableTest {
 
         @Test
         public void numOfTowerTest() {
-            TowerTable towerTable = new TowerTable(PlayerColor.WHITE);
+            TowerTable towerTable = new TowerTable(PlayerColor.WHITE, false);
 
-            assertEquals(towerTable.getTowers().size(), 6);
+            assertEquals(towerTable.getTowers().size(), 8);
             Tower tower= towerTable.getTowers().get((2));
             towerTable.removeTower(tower);
 
-            assertEquals(towerTable.getTowers().size(), 5);
+            assertEquals(towerTable.getTowers().size(), 7);
         }
     }
 

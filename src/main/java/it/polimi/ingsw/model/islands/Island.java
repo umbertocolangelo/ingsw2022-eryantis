@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.islands;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
+import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
@@ -12,7 +13,7 @@ import java.util.*;
 /**
  *
  */
-public class Island implements FixedObjectStudent, IslandInterface {
+public class Island implements FixedObjectStudent,FixedObjectTower, IslandInterface {
 
     /**
      * Default constructor
@@ -62,6 +63,11 @@ public class Island implements FixedObjectStudent, IslandInterface {
 
     public void addStudent(Student student) {
         if (!this.students.contains(student)) {
+            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+                FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
+                position.removeStudent(student);
+            }
+            student.setPosition(this);
             this.students.add(student);
         }
     }
@@ -79,7 +85,7 @@ public class Island implements FixedObjectStudent, IslandInterface {
      * @return LinkedList<Student>      Return the LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
-        return this.students;
+        return new LinkedList<Student>(this.students);
     }
 
     /**
@@ -93,7 +99,14 @@ public class Island implements FixedObjectStudent, IslandInterface {
      * @param tower     Add Tower to the LinkedList
      */
     public void addTower(Tower tower) {
-        this.towers.add(tower);
+        if(towers.size()==0) {
+            if (tower.getPosition() != null) {        // If the tower was on a FixedObject, this object is updated
+                FixedObjectTower position = (FixedObjectTower) tower.getPosition();
+                position.removeTower(tower);
+            }
+            tower.setPosition(this);
+            this.towers.add(tower);
+        }
     }
 
     /**
@@ -108,7 +121,7 @@ public class Island implements FixedObjectStudent, IslandInterface {
      * @return LinkedList<Tower>        Return the LinkedList of Towers
      */
     public LinkedList<Tower> getTowers() {
-        return this.towers;
+        return new LinkedList<>(this.towers);
     }
 
     /**
