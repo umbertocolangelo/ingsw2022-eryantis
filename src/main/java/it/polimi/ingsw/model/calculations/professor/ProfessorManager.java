@@ -40,7 +40,7 @@ public class ProfessorManager {
 
             if(currentProfessor.getPosition()==null){  //If the professor has no position yet
                 if(currentPlayerLine.numOfStudents() > 0){
-                    System.out.println(currentPlayer.getName()+" takes the "+color+" professor");
+                    //System.out.println(currentPlayer.getName()+" takes the "+color+" professor");
                     currentPlayerLine.addProfessor(currentProfessor);
                     continue;
                 }
@@ -49,7 +49,7 @@ public class ProfessorManager {
             int max = maxStudentNum(currentPlayer, color);
 
             if(strategy.compare(currentPlayerLine.numOfStudents(),max,color)){    //If the currentPlayer should have the professor
-                System.out.println(currentPlayer.getName()+" takes the "+color+" professor");
+                //System.out.println(currentPlayer.getName()+" takes the "+color+" professor");
                 currentPlayerLine.addProfessor(currentProfessor);
             }
 

@@ -136,10 +136,10 @@ public class ProfessorMangerTest {
     }
 
     /**
-     *
+     * Tests the checkProfessor method with three players with the equal strategy
      */
     @Test
-    public void checkProfessorsThreePlayers(){
+    public void checkProfessorsThreePlayersEqual(){
         Player player1 = new Player("A");
         player1.setPlayerColor(PlayerColor.BLACK);
         Player player2 = new Player("B");
@@ -184,7 +184,6 @@ public class ProfessorMangerTest {
 
         player2.getSchool().getHall().addStudent(new Student(Color.YELLOW)); //adds a second yellow student to player2's school
         professorManager.checkProfessor(player2);
-        System.out.println(Professor.getProfessor(Color.YELLOW).getPosition());
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player2.getSchool().getHall().getLine(Color.YELLOW)); //Check that no action is taken
         assertTrue(Professor.getProfessor(Color.BLUE).getPosition()==null);
         assertTrue(Professor.getProfessor(Color.GREEN).getPosition()==null);
@@ -193,7 +192,6 @@ public class ProfessorMangerTest {
 
         player1.getSchool().getHall().addStudent(new Student(Color.RED)); //adds a red student to player1's school
         professorManager.checkProfessor(player1);
-        System.out.println(Professor.getProfessor(Color.YELLOW).getPosition());
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player2.getSchool().getHall().getLine(Color.YELLOW)); //Check that yellow professor is still on player2's school
         assertTrue(Professor.getProfessor(Color.BLUE).getPosition()==null);
         assertTrue(Professor.getProfessor(Color.GREEN).getPosition()==null);
@@ -213,7 +211,7 @@ public class ProfessorMangerTest {
     }
 
     /**
-     *
+     * Tests the checkProfessor method with three players with the equal strategy
      */
     @Test
     public void checkProfessorsThreePlayersStandard(){
