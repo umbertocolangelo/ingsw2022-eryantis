@@ -80,7 +80,7 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor {
     }
 
     /**
-     * @param student       Remoe the student from the LinkedList
+     * @param student       Remove the student from the students list
      */
     public void removeStudent(Student student) {
         this.students.remove(students.indexOf(student));

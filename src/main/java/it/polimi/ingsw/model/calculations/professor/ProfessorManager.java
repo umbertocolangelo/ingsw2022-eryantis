@@ -38,23 +38,41 @@ public class ProfessorManager {
             Professor currentProfessor = Professor.getProfessor(color);
             Line currentPlayerLine = currentPlayer.getSchool().getHall().getLine(color);
 
-            for(Player player : players){
-                if(player==currentPlayer){continue;}       //Do not consider the current player in the comparison
-
-                if(currentProfessor.getPosition()==null){  //If the prof has no position yet
-                    if(currentPlayerLine.numOfStudents() > 0){
-                        currentPlayerLine.addProfessor(currentProfessor);
-                        continue;
-                    }
-                }
-
-                if(strategy.compare(currentPlayerLine.numOfStudents(),player.getSchool().getHall().getLine(color).numOfStudents(),color)){    //If the currentPlayer should have the professor
+            if(currentProfessor.getPosition()==null){  //If the professor has no position yet
+                if(currentPlayerLine.numOfStudents() > 0){
+                    System.out.println(currentPlayer.getName()+" takes the "+color+" professor");
                     currentPlayerLine.addProfessor(currentProfessor);
+                    continue;
                 }
-
             }
+
+            int max = maxStudentNum(currentPlayer, color);
+
+            if(strategy.compare(currentPlayerLine.numOfStudents(),max,color)){    //If the currentPlayer should have the professor
+                System.out.println(currentPlayer.getName()+" takes the "+color+" professor");
+                currentPlayerLine.addProfessor(currentProfessor);
+            }
+
         }
 
+
+    }
+
+    /**
+     *
+     * @param currentPlayer is the player to be compared
+     * @param color is the color of the students that will be counted
+     * @return the maximum number of student owned by every player except the currentPlayer
+     */
+    private int maxStudentNum(Player currentPlayer, Color color){
+        int max = 0;
+        for(Player player : players){
+            if(player==currentPlayer){continue;}       //Do not consider the current player in the comparison
+            if(max<player.getSchool().getHall().getLine(color).numOfStudents()){
+                max = player.getSchool().getHall().getLine(color).numOfStudents();
+            }
+        }
+        return max;
     }
 
     /**
