@@ -42,8 +42,10 @@ public class Cloud implements FixedObjectStudent {
      * @param student
      */
     public void addStudent(Student student) {
-        if(!isFourPlayers && students.size()<4)
-        this.students.add(student);
+        if(!isFourPlayers && students.size()<4) {
+            student.setPosition(this);
+            this.students.add(student);
+        }
     }
 
     /**

@@ -69,6 +69,13 @@ public class Bag {
         return student;
     }
 
+    /**
+     *
+     * @param clazz class
+     * @param <T>   Enumeration
+     * @return  A random object that is contain in the enumen
+     */
+
     public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
         Random rand = new Random();
         int x = rand.nextInt(clazz.getEnumConstants().length);

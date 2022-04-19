@@ -41,4 +41,16 @@ public class HallBagSwapCard implements ExpertCard {
         // TODO implement here
     }
 
+    @Override
+    public String getId() {
+        return this.id;
+
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id= id;
+
+    }
+
 }

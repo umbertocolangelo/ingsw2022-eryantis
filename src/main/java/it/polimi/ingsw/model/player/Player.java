@@ -183,15 +183,14 @@ public class Player {
      * @param phase
      */
     public void setPlayerPhase(PlayerPhase phase) {
-        // TODO implement here
+        this.phase=phase;
     }
 
     /**
      * @return
      */
     public PlayerPhase getPlayerPhase() {
-        // TODO implement here
-        return null;
+        return this.phase;
     }
 
     /**
@@ -200,6 +199,14 @@ public class Player {
     public Boolean isWinner() {
         // TODO implement here
         return null;
+    }
+
+    /**
+     *
+     */
+    public void setPlayedCard(AssistantCard assistantCard){
+        this.playedCard=assistantCard;
+
     }
 
 }
