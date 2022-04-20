@@ -1,10 +1,11 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.enumerations.Color;
 
 /**
- * 
+ * carta #9
  */
 public class ColorInfluenceCard implements ExpertCard {
 
@@ -20,25 +21,40 @@ public class ColorInfluenceCard implements ExpertCard {
     private String id;
 
     /**
+     *
+     */
+    private Integer cost = 3;
+
+    /**
+     *
+     */
+    private CardManager manager;
+
+    /**
+     *
+     */
+    private Color color;
+
+    /**
      * @param color
      */
     public void apply(Color color) {
-        // TODO implement here
+        manager.getMotherNature().setColorInfluence(color);
+        incrementCost();
     }
 
     /**
      * @return
      */
     public Integer getCost() {
-        // TODO implement here
-        return null;
+        return this.cost;
     }
 
     /**
      * 
      */
     public void incrementCost() {
-        // TODO implement here
+        cost = cost + 1;
     }
 
 }

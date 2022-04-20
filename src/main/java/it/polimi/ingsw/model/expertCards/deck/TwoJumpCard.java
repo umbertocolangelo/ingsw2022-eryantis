@@ -1,9 +1,13 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandInterface;
+import it.polimi.ingsw.model.islands.IslandManager;
 
 /**
- * 
+ * carta #4
  */
 public class TwoJumpCard implements ExpertCard {
 
@@ -19,25 +23,36 @@ public class TwoJumpCard implements ExpertCard {
     private String id;
 
     /**
-     * 
+     *
      */
-    public void apply() {
-        // TODO implement here
+    private Integer cost = 1;
+
+    /**
+     *
+     */
+    private CardManager manager;
+
+    /**
+     * this appliance enables to move motherNature up to 2 more position and sets the new motherNature position
+     */
+    public void apply(IslandInterface nextIsland, Integer assistantCardValue) {
+        Integer jumps = assistantCardValue+2;
+        manager.getIslandManager().nextIsland(manager.getMotherNature().getIsland(), nextIsland, jumps);
+        incrementCost();
     }
 
     /**
      * @return
      */
     public Integer getCost() {
-        // TODO implement here
-        return null;
+        return this.cost;
     }
 
     /**
      * 
      */
     public void incrementCost() {
-        // TODO implement here
+        cost = cost + 1;
     }
 
 }

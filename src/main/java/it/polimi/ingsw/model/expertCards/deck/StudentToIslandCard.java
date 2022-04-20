@@ -1,12 +1,17 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.rounds.RoundInterface;
+
 import java.util.*;
 
 /**
- * 
+ * carta #1
  */
 public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
 
@@ -14,6 +19,13 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
      * Default constructor
      */
     public StudentToIslandCard() {
+        students = new LinkedList<Student>();
+        for (int i=0; i<4; i++) {
+            Color color;
+            color = randomEnum(Color.class);
+            Student student = new Student(color);
+            this.students.add(student);
+        }
     }
 
     /**
@@ -22,55 +34,84 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
     private String id;
 
     /**
-     * 
+     *
      */
-    public void apply() {
-        // TODO implement here
+    private Integer cost = 1;
+
+    /**
+     *
+     */
+    private RoundInterface round;
+
+    /**
+     *
+     */
+    private Island island;
+
+    /**
+     *
+     */
+    private LinkedList<Student> students;
+
+    /**
+     * move student to island (student has to be chosen by player)
+     */
+    public void apply(Island island, Student student) {
+        round.expertStudentToIsland(island.getId(), student.getId());
+        removeStudent(student);
+        Color color;
+        color = randomEnum(Color.class);
+        Student randomStudent = new Student(color);
+        addStudent(randomStudent);
+        incrementCost();
     }
 
     /**
      * @return
      */
     public Integer getCost() {
-        // TODO implement here
-        return null;
+        return this.cost;
     }
 
     /**
      * 
      */
     public void incrementCost() {
-        // TODO implement here
+        cost = cost + 1;
     }
 
     /**
-     * @param student
+     * @param randomStudent
+     * add randomly a new student on the card after the appliance
      */
-    public void addStudent(Student student) {
-        // TODO implement here
+    public void addStudent(Student randomStudent) {
+        this.students.add(randomStudent);
     }
 
     /**
-     * @param student
+     * @param student is removed by the card
      */
     public void removeStudent(Student student) {
-        // TODO implement here
+        students.remove(student);
     }
 
     /**
      * @return
      */
     public LinkedList<Student> getStudents() {
-        // TODO implement here
-        return null;
+        return new LinkedList<Student>(this.students);
     }
 
     /**
      * @return
      */
     public Integer numOfStudents() {
-        // TODO implement here
-        return null;
+        return this.students.size();
     }
 
+    private static <T extends Enum<?>> T randomEnum(Class<T> clazz){
+        Random rand = new Random();
+        int x = rand.nextInt(clazz.getEnumConstants().length);
+        return clazz.getEnumConstants()[x];
+    }
 }

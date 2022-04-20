@@ -1,5 +1,6 @@
 package it.polimi.ingsw.expertCardsTest;
 
+import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.pawns.MotherNature;
@@ -37,7 +38,7 @@ public class CardManagerTest {
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             CardManager cardManager = new CardManager(motherNature, player, bag);
-            cardManager.getCards();
+            cardManager.getCardsTest();
             assertTrue(cardManager.getThreeExpertCards().size() == 3);
 
         }
@@ -53,7 +54,7 @@ public class CardManagerTest {
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             CardManager cardManager = new CardManager(motherNature, player, bag);
-            cardManager.getCards();
+            cardManager.getCardsTest();
             ExpertCard expertCard = cardManager.getThreeExpertCards().get(0);
             cardManager.setCurrentCard(expertCard);
             assertTrue(cardManager.getCurrentCard() == expertCard);
@@ -71,7 +72,7 @@ public class CardManagerTest {
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             CardManager cardManager = new CardManager(motherNature, player, bag);
-            cardManager.getCards();
+            cardManager.getCardsTest();
             ExpertCard expertCard = cardManager.getThreeExpertCards().get(0);
             cardManager.setCurrentCard(expertCard);
             assertTrue(cardManager.getCurrentCard() == expertCard);
@@ -118,7 +119,7 @@ public class CardManagerTest {
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             CardManager cardManager = new CardManager(motherNature, player, bag);
-            cardManager.getCards();
+            cardManager.getCardsTest();
             assertTrue(cardManager.getThreeExpertCards().size() == 3);
         }
 }

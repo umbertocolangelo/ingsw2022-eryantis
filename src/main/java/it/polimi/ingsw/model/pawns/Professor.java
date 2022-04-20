@@ -71,4 +71,10 @@ public class Professor implements PlaceableObject {
     public void setPosition(FixedObject position) {
         this.position = position;
     }
+
+    /**
+     *
+     */
+    public String getId() { return this.id; }
+
 }

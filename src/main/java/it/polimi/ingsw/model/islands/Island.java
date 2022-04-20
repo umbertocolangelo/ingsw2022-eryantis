@@ -13,7 +13,7 @@ import java.util.*;
 /**
  *
  */
-public class Island implements FixedObjectStudent,FixedObjectTower, IslandInterface {
+public class Island implements FixedObjectStudent, FixedObjectTower, IslandInterface {
 
     /**
      * Default constructor
@@ -205,5 +205,12 @@ public class Island implements FixedObjectStudent,FixedObjectTower, IslandInterf
      */
     public LinkedList<Island> getIslandGroupElements() {
         return null;
+    }
+
+    /**
+     *
+     */
+    public String getId() {
+        return this.id;
     }
 }

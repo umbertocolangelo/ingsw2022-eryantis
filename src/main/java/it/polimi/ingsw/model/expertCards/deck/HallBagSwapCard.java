@@ -1,10 +1,11 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.enumerations.Color;
 
 /**
- * 
+ * carta #12
  */
 public class HallBagSwapCard implements ExpertCard {
 
@@ -15,30 +16,39 @@ public class HallBagSwapCard implements ExpertCard {
     }
 
     /**
+     *
+     */
+    private Integer cost = 3;
+
+    /**
      * 
      */
     private String id;
 
     /**
+     *
+     */
+    private CardManager manager;
+
+    /**
      * @param color
      */
     public void apply(Color color) {
-        // TODO implement here
+
     }
 
     /**
      * @return
      */
     public Integer getCost() {
-        // TODO implement here
-        return null;
+        return this.cost;
     }
 
     /**
      * 
      */
     public void incrementCost() {
-        // TODO implement here
+        cost = cost + 1;
     }
 
 }

@@ -31,16 +31,21 @@ public class IslandManager {
     private Integer numOfGroups;
 
     /**
-     * indicates if there is a new update in islands list
-     */
-    private Boolean isUpdated = false;
-
-    /**
      * @return
      */
-    public Island nextIsland() {
-        //TODO implement after influence calculation
-        return null;
+    public IslandInterface nextIsland(IslandInterface currentIsland, IslandInterface nextIsland, Integer assistantCardValue) {
+        IslandInterface temp = null;
+        for (int i=0; i<islands.size(); i++) {
+            if (islands.get(i).equals(currentIsland)) {
+                for (int j=i; j<i+assistantCardValue; j++) {
+                    if (j==islands.size()) { j=0; } //reset position in islands list when it ends
+                    if (islands.get(j).equals(nextIsland)) {
+                        temp = islands.get(j);
+                    }
+                }
+            }
+        }
+        return temp;
     }
 
     /**
@@ -50,16 +55,16 @@ public class IslandManager {
         int j;
         for (int i = 0; i < islands.size(); i++) {
             if (islands.get(i) == islandInterface) {
-                if (islandInterface.getInfluenceColor().equals(rightIsland(islandInterface)) && islandInterface.getInfluenceColor().equals(leftIsland(islandInterface))) {
+                if (islandInterface.getInfluenceColor()==rightIsland(islandInterface).getInfluenceColor() && islandInterface.getInfluenceColor()==leftIsland(islandInterface).getInfluenceColor()) {
                     if (i-1 == -1) { j = islands.size()-1; }
                     else { j = i-1; }
                     islandsUpdate(j); //primo update unisce leftIsland a island
                     islandsUpdate(j); //secondo update unisce il nuovo gruppo (con dentro leftIsland e island) a rightIsland
                 }
-                else if (islandInterface.getInfluenceColor().equals(leftIsland(islandInterface))) {
+                else if (islandInterface.getInfluenceColor()==leftIsland(islandInterface).getInfluenceColor()) {
                     islandsUpdate(i-1);
                 }
-                else if (islandInterface.getInfluenceColor().equals(rightIsland(islandInterface))) {
+                else if (islandInterface.getInfluenceColor()==rightIsland(islandInterface).getInfluenceColor()) {
                     islandsUpdate(i);
                 }
             }
@@ -157,7 +162,6 @@ public class IslandManager {
                 islands.add(i, newGroup);
             }
         }
-        isUpdated = true;
     }
 
 
@@ -192,10 +196,14 @@ public class IslandManager {
         if (!rightIsland(oldIslandGroup).isGrouped()) {
             rightIsland(oldIslandGroup).setIsGrouped();
             newIslandGroup.addIslandGroup(oldIslandGroup);
-            newIslandGroup.addIsland((Island) rightIsland(oldIslandGroup));
+            Island tempIsland;
+            tempIsland = (Island) rightIsland(oldIslandGroup);
+            newIslandGroup.addIsland(tempIsland);
         } else {
             newIslandGroup.addIslandGroup(oldIslandGroup);
-            newIslandGroup.addIslandGroup((IslandGroup) rightIsland(oldIslandGroup));
+            IslandGroup tempGroup;
+            tempGroup = (IslandGroup) rightIsland(oldIslandGroup);
+            newIslandGroup.addIslandGroup(tempGroup);
         }
     }
 

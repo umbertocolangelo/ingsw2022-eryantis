@@ -1,10 +1,11 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 
 /**
- * 
+ * carta #3
  */
 public class IslandInfluenceCard implements ExpertCard {
 
@@ -20,25 +21,35 @@ public class IslandInfluenceCard implements ExpertCard {
     private String id;
 
     /**
+     *
+     */
+    private Integer cost = 3;
+
+    /**
+     *
+     */
+    private CardManager manager;
+
+    /**
      * @param island
      */
     public void apply(Island island) {
-        // TODO implement here
+        manager.getMotherNature().setIslandInfluence(island);
+        incrementCost();
     }
 
     /**
      * @return
      */
     public Integer getCost() {
-        // TODO implement here
-        return null;
+        return this.cost;
     }
 
     /**
      * 
      */
     public void incrementCost() {
-        // TODO implement here
+        cost = cost + 1;
     }
 
 }

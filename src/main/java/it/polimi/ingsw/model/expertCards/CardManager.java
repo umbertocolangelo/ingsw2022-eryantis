@@ -1,6 +1,15 @@
 package it.polimi.ingsw.model.expertCards;
 
+import it.polimi.ingsw.model.calculations.influence.*;
+import it.polimi.ingsw.model.calculations.professor.EqualStrategy;
+import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
+import it.polimi.ingsw.model.calculations.professor.ProfessorStrategy;
+import it.polimi.ingsw.model.calculations.professor.StandardStrategy;
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.expertCards.deck.*;
+import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
@@ -12,10 +21,12 @@ import java.util.*;
 public class CardManager {
 
     /**
-     * Constructor who receive the reference to motherNature,Players list and the Bag
+     * Constructor who receive the reference to motherNature,Players list, professorManager and the Bag
      */
-    public CardManager(MotherNature motherNature,ArrayList<Player> playerList,Bag bag) {
+    public CardManager(MotherNature motherNature, IslandManager islandManager, ProfessorManager professorManager, ArrayList<Player> playerList, Bag bag) {
         this.motherNature=motherNature;
+        this.professorManager = professorManager;
+        this.islandManager = islandManager;
         this.playerList=new ArrayList<>(playerList);
         this.bag=bag;
         expertCards.add(new ColorInfluenceCard());
@@ -50,14 +61,22 @@ public class CardManager {
     /**
      * Contains the deck of the expertCards
      */
-    private LinkedList<ExpertCard> expertCards=new LinkedList<ExpertCard>();
-
+    private LinkedList<ExpertCard> expertCards = new LinkedList<ExpertCard>();
 
     /**
      * Contains the deck of the expertCards
      */
     private ExpertCard currentCard;
 
+    /**
+     *
+     */
+    private ProfessorManager professorManager;
+
+    /**
+     *
+     */
+    private IslandManager islandManager;
 
     /**
      * Set the current card
@@ -81,15 +100,26 @@ public class CardManager {
         return this.motherNature;
     }
 
+    /**
+     * @return ProfessorManager     Return the reference to professorManager
+     */
+    public ProfessorManager getProfessorManager() { return this.professorManager; }
 
+    /**
+     * @return IslandManager        Return the reference to islandManager
+     */
+    public IslandManager getIslandManager() {
+        return this.islandManager;
+    }
 
     /**
      * Shuffle the deck and keep only 3 cards
      */
-    public void getCards() {
+    private void getCards() {
         Collections.shuffle(expertCards);
-        for(int i=11;i>2;i--)
+        for(int i=11;i>2;i--) {
             expertCards.remove(i);
+        }
     }
 
     /**
@@ -110,7 +140,14 @@ public class CardManager {
      * @return  ArrayList<ExpertCard>   Return the three ExpertCards
      */
     public LinkedList<ExpertCard> getThreeExpertCards() {
-        return new LinkedList(this.expertCards);
+        getCards();
+        return new LinkedList<ExpertCard>(this.expertCards);
     }
 
+    /**
+     *
+     */
+    public void getCardsTest() {
+        getCards();
+    }
 }

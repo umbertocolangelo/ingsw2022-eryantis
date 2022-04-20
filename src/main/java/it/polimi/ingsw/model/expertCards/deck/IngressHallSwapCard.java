@@ -1,9 +1,12 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.rounds.RoundInterface;
 
 /**
- * 
+ * carta #10
  */
 public class IngressHallSwapCard implements ExpertCard {
 
@@ -14,30 +17,45 @@ public class IngressHallSwapCard implements ExpertCard {
     }
 
     /**
+     * carta #10
+     */
+    private Integer cost = 1;
+
+    /**
      * 
      */
     private String id;
 
     /**
+     *
+     */
+    private CardManager manager;
+
+    /**
+     *
+     */
+    private RoundInterface round;
+
+    /**
      * 
      */
-    public void apply() {
-        // TODO implement here
+    public void apply(Student studentHall, Student studentIngress) {
+        round.expertIngressHallSwap(studentHall.getId(), studentIngress.getId());
+        incrementCost();
     }
 
     /**
      * @return
      */
     public Integer getCost() {
-        // TODO implement here
-        return null;
+        return this.cost;
     }
 
     /**
      * 
      */
     public void incrementCost() {
-        // TODO implement here
+        cost = cost + 1;
     }
 
 }

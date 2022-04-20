@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model.calculations.influence;
 
+import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 
 /**
@@ -10,7 +11,8 @@ public class IslandInfluence implements InfluenceCalculator {
     /**
      * Default constructor
      */
-    public IslandInfluence() {
+    public IslandInfluence(Island island) {
+        this.island = island;
     }
 
     /**

@@ -27,6 +27,11 @@ public class Tower implements PlaceableObject {
     private PlayerColor color;
 
     /**
+     *
+     */
+    private String id;
+
+    /**
      * @return color
      */
     public PlayerColor getColor() {
@@ -44,4 +49,10 @@ public class Tower implements PlaceableObject {
     public void setPosition(FixedObject position) {
         this.position = position;
     }
+
+    /**
+     *
+     */
+    public String getId() { return this.id; }
+
 }

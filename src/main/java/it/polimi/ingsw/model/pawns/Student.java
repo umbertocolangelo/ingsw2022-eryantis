@@ -53,4 +53,9 @@ public class Student implements PlaceableObject {
         this.position = position;
     }
 
+    /**
+     * @return id
+     */
+    public String getId() { return this.id; }
+
 }

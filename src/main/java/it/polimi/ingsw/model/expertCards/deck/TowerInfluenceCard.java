@@ -1,9 +1,10 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 
 /**
- * 
+ * carta #6
  */
 public class TowerInfluenceCard implements ExpertCard {
 
@@ -19,25 +20,35 @@ public class TowerInfluenceCard implements ExpertCard {
     private String id;
 
     /**
+     *
+     */
+    private Integer cost = 3;
+
+    /**
+     *
+     */
+    private CardManager manager;
+
+    /**
      * 
      */
     public void apply() {
-        // TODO implement here
+        manager.getMotherNature().setTowerInfluence();
+        incrementCost();
     }
 
     /**
      * @return
      */
     public Integer getCost() {
-        // TODO implement here
-        return null;
+        return this.cost;
     }
 
     /**
      *
      */
     public void incrementCost() {
-        // TODO implement here
+        cost = cost + 1;
     }
 
 }

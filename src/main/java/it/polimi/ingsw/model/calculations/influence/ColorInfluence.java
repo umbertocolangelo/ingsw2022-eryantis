@@ -11,7 +11,8 @@ public class ColorInfluence implements InfluenceCalculator {
     /**
      * Default constructor
      */
-    public ColorInfluence() {
+    public ColorInfluence(Color color) {
+        this.color = color;
     }
 
     /**

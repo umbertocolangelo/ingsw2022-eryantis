@@ -26,8 +26,6 @@ public class IslandTest {
         assertTrue(!island.getStudents().contains(student)); //Checks that island no longer contains student
         assertTrue(student.getPosition()==island1); //Checks that student is on island1
         assertTrue(island1.getStudents().contains(student)); //Checks that island1 contains student
-
-
     }
 
     /**T

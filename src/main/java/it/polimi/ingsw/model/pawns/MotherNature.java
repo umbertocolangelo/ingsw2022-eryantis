@@ -81,7 +81,7 @@ public class MotherNature implements PlaceableObject {
      * @param color indicates the color to ignore in the influence calculus
      */
     public void setColorInfluence(Color color) {
-        this.influence = new ColorInfluence();
+        this.influence = new ColorInfluence(color);
     }
 
     /**
@@ -98,7 +98,7 @@ public class MotherNature implements PlaceableObject {
      * @param island indicates the island to calculate the influence ond
      */
     public void setIslandInfluence(Island island) {
-        this.influence = new IslandInfluence();
+        this.influence = new IslandInfluence(island);
     }
 
     /**
@@ -107,5 +107,17 @@ public class MotherNature implements PlaceableObject {
     public void setStandardInfluence() {
         this.influence = new StandardInfluence();
     }
+
+    /**
+     * Sets the influence state to the standard one + 2 extra points
+     */
+    public void setTwoPointsInfluence(){
+        this.influence = new TwoPointsInfluence();
+    }
+
+    /**
+     * @return id
+     */
+    public String getId() { return this.id; }
 
 }

@@ -1,9 +1,10 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 
 /**
- * 
+ * carta #2
  */
 public class ProfessorControlCard implements ExpertCard {
 
@@ -19,25 +20,35 @@ public class ProfessorControlCard implements ExpertCard {
     private String id;
 
     /**
+     *
+     */
+    private Integer cost = 2;
+
+    /**
+     *
+     */
+    private CardManager manager;
+
+    /**
      * 
      */
     public void apply() {
-        // TODO implement here
+        manager.getProfessorManager().setEqualCheck();
+        incrementCost();
     }
 
     /**
-     * @return
+     * @return current cost of the card
      */
     public Integer getCost() {
-        // TODO implement here
-        return null;
+        return this.cost;
     }
 
     /**
      * 
      */
     public void incrementCost() {
-        // TODO implement here
+        cost = cost + 1;
     }
 
 }
