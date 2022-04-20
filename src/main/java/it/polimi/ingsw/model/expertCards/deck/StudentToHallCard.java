@@ -56,7 +56,7 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
      * 
      */
     public void apply(Student student) {
-        round.expertStudentToHall(student.getId());
+        round.expertStudentToHall(student);
         Color color;
         color = randomEnum(Color.class);
         addStudent(new Student(color));

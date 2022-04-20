@@ -3,12 +3,14 @@ package it.polimi.ingsw.expertCardsTest;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -23,7 +25,9 @@ public class CardManagerTest {
             ArrayList<Player> player = new ArrayList<Player>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            CardManager cardManager = new CardManager(motherNature, player, bag);
+            IslandManager islandManager = new IslandManager();
+            ProfessorManager professorManager = new ProfessorManager(player);
+            CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             assertTrue(cardManager.getMotherNature() == motherNature);
         }
 
@@ -37,9 +41,11 @@ public class CardManagerTest {
             ArrayList<Player> player = new ArrayList<Player>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            CardManager cardManager = new CardManager(motherNature, player, bag);
+            IslandManager islandManager = new IslandManager();
+            ProfessorManager professorManager = new ProfessorManager(player);
+            CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             cardManager.getCardsTest();
-            assertTrue(cardManager.getThreeExpertCards().size() == 3);
+            assertTrue(cardManager.getDeck().size() == 3);
 
         }
 
@@ -53,8 +59,9 @@ public class CardManagerTest {
             ArrayList<Player> player = new ArrayList<Player>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            CardManager cardManager = new CardManager(motherNature, player, bag);
-            cardManager.getCardsTest();
+            IslandManager islandManager = new IslandManager();
+            ProfessorManager professorManager = new ProfessorManager(player);
+            CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             ExpertCard expertCard = cardManager.getThreeExpertCards().get(0);
             cardManager.setCurrentCard(expertCard);
             assertTrue(cardManager.getCurrentCard() == expertCard);
@@ -64,15 +71,15 @@ public class CardManagerTest {
         /**
          * Test getCurrentCard method
          */
-
         @Test
         public void getCurrentCardTest() {
             MotherNature motherNature = new MotherNature();
             ArrayList<Player> player = new ArrayList<Player>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            CardManager cardManager = new CardManager(motherNature, player, bag);
-            cardManager.getCardsTest();
+            IslandManager islandManager = new IslandManager();
+            ProfessorManager professorManager = new ProfessorManager(player);
+            CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             ExpertCard expertCard = cardManager.getThreeExpertCards().get(0);
             cardManager.setCurrentCard(expertCard);
             assertTrue(cardManager.getCurrentCard() == expertCard);
@@ -89,21 +96,24 @@ public class CardManagerTest {
             ArrayList<Player> player = new ArrayList<Player>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            CardManager cardManager = new CardManager(motherNature, player, bag);
+            IslandManager islandManager = new IslandManager();
+            ProfessorManager professorManager = new ProfessorManager(player);
+            CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             assertTrue(cardManager.getPlayerList().get(0).getName() == "vittorio");
         }
 
         /**
          * Test the getBag method
          */
-
         @Test
         public void getBagTest() {
             MotherNature motherNature = new MotherNature();
             ArrayList<Player> player = new ArrayList<Player>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            CardManager cardManager = new CardManager(motherNature, player, bag);
+            IslandManager islandManager = new IslandManager();
+            ProfessorManager professorManager = new ProfessorManager(player);
+            CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             assertTrue(cardManager.getBag() == bag);
         }
 
@@ -118,9 +128,14 @@ public class CardManagerTest {
             ArrayList<Player> player = new ArrayList<Player>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            CardManager cardManager = new CardManager(motherNature, player, bag);
-            cardManager.getCardsTest();
-            assertTrue(cardManager.getThreeExpertCards().size() == 3);
+            IslandManager islandManager = new IslandManager();
+            ProfessorManager professorManager = new ProfessorManager(player);
+            CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
+            LinkedList<ExpertCard> newDeck = cardManager.getThreeExpertCards();
+            assertTrue(newDeck.size() == 3);
+            for (int i=0; i<3; i++) {
+                assertTrue(newDeck.get(i).equals(cardManager.getDeck().get(i)));
+            }
         }
 }
 

@@ -40,7 +40,7 @@ public class IngressHallSwapCard implements ExpertCard {
      * 
      */
     public void apply(Student studentHall, Student studentIngress) {
-        round.expertIngressHallSwap(studentHall.getId(), studentIngress.getId());
+        round.expertIngressHallSwap(studentHall, studentIngress);
         incrementCost();
     }
 

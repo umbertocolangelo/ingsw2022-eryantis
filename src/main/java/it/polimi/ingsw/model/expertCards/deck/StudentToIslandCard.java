@@ -57,7 +57,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
      * move student to island (student has to be chosen by player)
      */
     public void apply(Island island, Student student) {
-        round.expertStudentToIsland(island.getId(), student.getId());
+        round.expertStudentToIsland(student, island);
         removeStudent(student);
         Color color;
         color = randomEnum(Color.class);

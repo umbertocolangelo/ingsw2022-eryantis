@@ -56,9 +56,10 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
      *
      */
     public void apply(LinkedList<Student> studentsToMove) {
-        for (int i=0; i<studentsToMove.size(); i++) {
-            round.expertIngressCardSwap(studentsToMove.get(i).getId()); //poi salvo in una variabile temporanea gli studenti che viceversa devono essere messi sulla carta
-            removeStudent(studentsToMove.get(i));
+        Student ingress = new Student(Color.RED); //non ho capito a che serve
+        while (studentsToMove.size()>0) {
+            round.expertIngressCardSwap(studentsToMove.get(0), ingress); //poi salvo in una variabile temporanea gli studenti che viceversa devono essere messi sulla carta
+            removeStudent(studentsToMove.get(0));
         }
         //finita le n rimozioni ri aggiungo a this.students gli studenti precedentemente nell'ingresso
         //check this.students.size()==6

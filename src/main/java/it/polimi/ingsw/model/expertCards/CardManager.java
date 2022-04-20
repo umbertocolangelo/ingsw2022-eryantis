@@ -21,7 +21,7 @@ import java.util.*;
 public class CardManager {
 
     /**
-     * Constructor who receive the reference to motherNature,Players list, professorManager and the Bag
+     * Constructor who receive the reference to motherNature,Players list, professorManager, islandManager and the Bag
      */
     public CardManager(MotherNature motherNature, IslandManager islandManager, ProfessorManager professorManager, ArrayList<Player> playerList, Bag bag) {
         this.motherNature=motherNature;
@@ -83,7 +83,6 @@ public class CardManager {
      */
     public void setCurrentCard(ExpertCard expertCard) {
         this.currentCard=expertCard;
-
     }
 
     /**
@@ -137,17 +136,23 @@ public class CardManager {
     }
 
     /**
-     * @return  ArrayList<ExpertCard>   Return the three ExpertCards
+     * @return  ArrayList<ExpertCard>   Return the three ExpertCards for the game
      */
     public LinkedList<ExpertCard> getThreeExpertCards() {
         getCards();
-        return new LinkedList<ExpertCard>(this.expertCards);
+        return this.expertCards;
     }
 
     /**
-     *
+     * only used in tests
      */
     public void getCardsTest() {
         getCards();
     }
+
+    /**
+     * only used in tests
+     * @return
+     */
+    public LinkedList<ExpertCard> getDeck() {return this.expertCards;}
 }
