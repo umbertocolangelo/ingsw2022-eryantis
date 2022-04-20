@@ -77,6 +77,16 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
         cost = cost + 1;
     }
 
+    @Override
+    public String getId() {
+        return null;
+    }
+
+    @Override
+    public void setId(String id) {
+
+    }
+
     /**
      * @param student
      */

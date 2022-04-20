@@ -15,4 +15,14 @@ public interface ExpertCard {
      */
     public void incrementCost();
 
+    /**
+     *
+     */
+    public String getId();
+
+    /**
+     *
+     * @param id
+     */
+    public void setId(String id);
 }

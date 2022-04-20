@@ -78,6 +78,18 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
         cost = cost + 1;
     }
 
+    @Override
+    public String getId() {
+        return this.id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id=id;
+
+
+    }
+
     /**
      * @param student
      */

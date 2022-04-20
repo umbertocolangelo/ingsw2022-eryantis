@@ -1,5 +1,11 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.enumerations.AssistantCard;
+import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.player.Player;
+import it.polimi.ingsw.model.studentSuppliers.Cloud;
+
 /**
  * 
  */
@@ -29,13 +35,13 @@ public interface GameInterface {
     /**
      * @param student
      */
-    public void moveStudentIngressToHall(String student);
+    public void moveStudentIngressToHall(Student student);
 
     /**
-     * @param student 
+     * @param student
      * @param island
      */
-    public void moveStudentIngressToIsland(String student, String island);
+    public void moveStudentIngressToIsland(Student student, Island island);
 
     /**
      * @param jumps
@@ -45,40 +51,36 @@ public interface GameInterface {
     /**
      * @param assistantCard
      */
-    public void playAssistantCard(String assistantCard);
+    public void playAssistantCard(AssistantCard assistantCard);
+
 
     /**
-     * @param expertCard 
-     * @param parameter
-     */
-    public void playExpertCard(String expertCard, String parameter);
-
-    /**
-     * @param student 
+     * @param student
      * @param island
      */
-    public void expertStudentToIsland(String student, String island);
+    public void expertStudentToIsland(Student student, Island island);
 
     /**
-     * @param student
-     */
-    public void expertIngressCardSwap(String student);
-
-    /**
-     * @param studentHall 
+     * @param studentCard
      * @param studentIngress
      */
-    void expertIngressHallSwap(String studentHall, String studentIngress);
+    public void expertIngressCardSwap(Student studentCard, Student studentIngress);
+
+    /**
+     * @param studentHall
+     * @param studentIngress
+     */
+    void expertIngressHallSwap(Student studentHall, Student studentIngress);
 
     /**
      * @param student
      */
-    void expertStudentToHall(String student);
+    void expertStudentToHall(Student student);
 
     /**
      * @param cloud
      */
-    void chooseCloud(String cloud);
+    void chooseCloud(Cloud cloud);
 
     /**
      * @return
@@ -88,6 +90,6 @@ public interface GameInterface {
     /**
      * @return
      */
-    public String getCurrentPlayer();
+    public Player getCurrentPlayer();
 
 }
