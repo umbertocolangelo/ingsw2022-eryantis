@@ -6,6 +6,7 @@ import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.rounds.RoundInterface;
+import it.polimi.ingsw.model.studentSuppliers.Bag;
 
 import java.util.*;
 
@@ -17,13 +18,10 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     /**
      * Default constructor
      */
-    public IngressCardSwapCard() {
-        students = new LinkedList<Student>();
+    public IngressCardSwapCard(Bag bag) {
+       this.bag=bag;
         for (int i=0; i<6; i++) {
-            Color color;
-            color = randomEnum(Color.class);
-            Student student = new Student(color);
-            this.students.add(student);
+           students.add(this.bag.newStudent());
         }
     }
 
@@ -35,12 +33,17 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
+    private Bag bag;
+
+    /**
+     *
+     */
     private Integer cost = 1;
 
     /**
      *
      */
-    private LinkedList<Student> students;
+    private LinkedList<Student> students=new LinkedList<>();
 
     /**
      *
@@ -55,14 +58,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
-    public void apply(LinkedList<Student> studentsToMove) {
-        Student ingress = new Student(Color.RED); //non ho capito a che serve
-        while (studentsToMove.size()>0) {
-            round.expertIngressCardSwap(studentsToMove.get(0), ingress); //poi salvo in una variabile temporanea gli studenti che viceversa devono essere messi sulla carta
-            removeStudent(studentsToMove.get(0));
-        }
-        //finita le n rimozioni ri aggiungo a this.students gli studenti precedentemente nell'ingresso
-        //check this.students.size()==6
+    public void apply() {
     }
 
     /**
@@ -87,8 +83,6 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     @Override
     public void setId(String id) {
         this.id=id;
-
-
     }
 
     /**

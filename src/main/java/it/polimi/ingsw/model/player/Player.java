@@ -168,8 +168,8 @@ public class Player {
     /**
      *  Add one coin to this player
      */
-    public void addCoin() {
-        this.coins++;
+    public void setCoin(Integer value) {
+        this.coins=coins+value;
     }
 
     /**

@@ -22,7 +22,7 @@ public class CardManagerTest {
         @Test
         public void getMotherNatureTest() {
             MotherNature motherNature = new MotherNature();
-            ArrayList<Player> player = new ArrayList<Player>();
+            LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             IslandManager islandManager = new IslandManager();
@@ -38,7 +38,7 @@ public class CardManagerTest {
         @Test
         public void getCardsTest() {
             MotherNature motherNature = new MotherNature();
-            ArrayList<Player> player = new ArrayList<Player>();
+            LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             IslandManager islandManager = new IslandManager();
@@ -56,7 +56,7 @@ public class CardManagerTest {
         @Test
         public void setCurrentCardTest() {
             MotherNature motherNature = new MotherNature();
-            ArrayList<Player> player = new ArrayList<Player>();
+            LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             IslandManager islandManager = new IslandManager();
@@ -74,7 +74,7 @@ public class CardManagerTest {
         @Test
         public void getCurrentCardTest() {
             MotherNature motherNature = new MotherNature();
-            ArrayList<Player> player = new ArrayList<Player>();
+            LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             IslandManager islandManager = new IslandManager();
@@ -93,7 +93,7 @@ public class CardManagerTest {
         @Test
         public void getPlayerListTest() {
             MotherNature motherNature = new MotherNature();
-            ArrayList<Player> player = new ArrayList<Player>();
+            LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             IslandManager islandManager = new IslandManager();
@@ -108,7 +108,7 @@ public class CardManagerTest {
         @Test
         public void getBagTest() {
             MotherNature motherNature = new MotherNature();
-            ArrayList<Player> player = new ArrayList<Player>();
+            LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             IslandManager islandManager = new IslandManager();
@@ -125,7 +125,7 @@ public class CardManagerTest {
         @Test
         public void getThreeExpertCardTest() {
             MotherNature motherNature = new MotherNature();
-            ArrayList<Player> player = new ArrayList<Player>();
+            LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
             IslandManager islandManager = new IslandManager();

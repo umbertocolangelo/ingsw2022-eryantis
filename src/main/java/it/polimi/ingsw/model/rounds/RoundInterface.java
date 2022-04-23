@@ -1,8 +1,6 @@
 package it.polimi.ingsw.model.rounds;
 
-import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
@@ -64,12 +62,6 @@ public interface RoundInterface {
      */
     public Boolean playExpertCard(ExpertCard expertCard);
 
-    /**
-     *
-     * @param game
-     * @param color
-     */
-    public void expertMoveStudentToBag(Game game,Color color);
 
     /**
      * @param student
@@ -87,8 +79,9 @@ public interface RoundInterface {
 
     /**
      *
+     * @return
      */
-    public void finishExpertMove();
+    public Boolean finishExpertMove();
 
 
     /**

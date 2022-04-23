@@ -88,7 +88,7 @@ public class IngressHallSwapActionRound implements RoundInterface {
      * @param game
      * @param color
      */
-    @Override
+
     public void expertMoveStudentToBag(Game game, Color color) {
 
     }
@@ -115,11 +115,13 @@ public class IngressHallSwapActionRound implements RoundInterface {
 
     /**
      *Called by the controller if he wants to terminate the move
+     * @return
      */
-    @Override
-    public void finishExpertMove() {
+
+    public Boolean finishExpertMove() {
         studentsMoved=0;
         this.game.setRound(this.game.getPreviousRound());
+        return true;
     }
 
     /**
@@ -129,15 +131,11 @@ public class IngressHallSwapActionRound implements RoundInterface {
      */
     @Override
     public Boolean expertIngressHallSwap(Student studentHall, Student studentIngress) {
-        Player player= game.getCurrentPlayer();
-        player.getSchool().getIngress().addStudent((studentHall));
-        player.getSchool().getHall().getLine(studentIngress.getColor()).addStudent(studentIngress);
         studentsMoved++;
         if(studentsMoved==2){
-            finishExpertMove();
-            return true;
+            return finishExpertMove();
         }
-    return false;
+    return true;
     }
 
     /**

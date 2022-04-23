@@ -6,6 +6,7 @@ import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.rounds.RoundInterface;
+import it.polimi.ingsw.model.studentSuppliers.Bag;
 
 import java.util.*;
 
@@ -17,13 +18,11 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
     /**
      * Default constructor
      */
-    public StudentToHallCard() {
-        students = new LinkedList<Student>();
+    public StudentToHallCard(Bag bag) {
+      this.bag=bag;
         for (int i=0; i<4; i++) {
-            Color color;
-            color = randomEnum(Color.class);
-            Student student = new Student(color);
-            this.students.add(student);
+
+            this.students.add(this.bag.newStudent());
         }
     }
 
@@ -35,12 +34,16 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
+    private Bag bag;
+    /**
+     *
+     */
     private Integer cost = 2;
 
     /**
      *
      */
-    private LinkedList<Student> students;
+    private LinkedList<Student> students=new LinkedList<>();
 
     /**
      *
@@ -56,11 +59,7 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
      * 
      */
     public void apply(Student student) {
-        round.expertStudentToHall(student);
-        Color color;
-        color = randomEnum(Color.class);
-        addStudent(new Student(color));
-        incrementCost();
+
     }
 
     /**
@@ -115,9 +114,5 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
         return this.students.size();
     }
 
-    private static <T extends Enum<?>> T randomEnum(Class<T> clazz){
-        Random rand = new Random();
-        int x = rand.nextInt(clazz.getEnumConstants().length);
-        return clazz.getEnumConstants()[x];
-    }
+
 }

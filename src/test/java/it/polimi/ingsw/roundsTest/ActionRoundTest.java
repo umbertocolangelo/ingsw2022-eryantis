@@ -129,8 +129,8 @@ public class ActionRoundTest {
         game.setRound(new ActionRound(game));
         HallBagSwapCard hallBag = new HallBagSwapCard();
         hallBag.setId("3");
+        game.getCurrentPlayer().setCoin(5);
         game.playExpertCard(hallBag);
-
         assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
 
     }

@@ -86,14 +86,14 @@ public class ActionRound implements RoundInterface {
      * @return boolean          True if the student is moved correctly, false if it's not possible to move
      */
     public Boolean moveStudentIngressToHall(Student student) {
+        if(this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
+        return false;
+        this.studentsMoved++;
         if(this.studentsMoved==3) {
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
-            return false;
+            return true;
         }
-        if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
-            return false;
-        this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
-        this.studentsMoved++;
+
         return true;
     }
 
@@ -103,14 +103,14 @@ public class ActionRound implements RoundInterface {
      * @return              True if its not his last move
      */
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
-        if(this.studentsMoved==3) {
-            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
-            return false;
-        }
         if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
             return false;
-        island.addStudent(student);
         this.studentsMoved++;
+        if(this.studentsMoved==3) {
+            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
+            return true;
+        }
+
         return true;
     }
 
@@ -137,8 +137,12 @@ public class ActionRound implements RoundInterface {
      * @return
      */
     public Boolean playExpertCard(ExpertCard expertCard) {
+       game.getCardManager().setCurrentCard(expertCard);
+        currentPlayer.setCoin(-(expertCard.getCost()));
+        game.getCardManager().getCurrentCard().incrementCost();
        if(expertCard.getId().equals("4")) {
            this.game.setPreviousRound(this);
+
            this.game.setRound(this.game.setIngressCardSwapActionRound());
            return true;
        }
@@ -172,7 +176,7 @@ public class ActionRound implements RoundInterface {
      * @param game          The reference to the game
      * @param color         The reference to the color
      */
-    public void expertMoveStudentToBag(Game game, Color color) {
+     private void expertMoveStudentToBag(Game game, Color color) {
         LinkedList <Player> players=game.getOrderedPLayerList();
         for(Player player : players){
             LinkedList<Student> students=player.getSchool().getHall().getLine(color).getStudents();
@@ -180,6 +184,7 @@ public class ActionRound implements RoundInterface {
                 player.getSchool().getHall().getLine(color).removeStudent(students.removeLast());
             }
         }
+        this.game.getCardManager().setCurrentCard(null);
     }
 
 
@@ -204,10 +209,11 @@ public class ActionRound implements RoundInterface {
 
     /**
      *
+     * @return
      */
-    @Override
-    public void finishExpertMove() {
 
+    public Boolean finishExpertMove() {
+        return null;
     }
 
     /**
@@ -239,10 +245,7 @@ public class ActionRound implements RoundInterface {
             return false;
         if (cloud.getStudents().size() == 0)
             return false;
-        while (cloud.getStudents().size() != 0) {
-            this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
-        }
-        return checkRoundEnded();
+        return true;
 
     }
 

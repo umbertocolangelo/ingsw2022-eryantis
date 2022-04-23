@@ -1,14 +1,7 @@
 package it.polimi.ingsw.model.expertCards;
 
-import it.polimi.ingsw.model.calculations.influence.*;
-import it.polimi.ingsw.model.calculations.professor.EqualStrategy;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
-import it.polimi.ingsw.model.calculations.professor.ProfessorStrategy;
-import it.polimi.ingsw.model.calculations.professor.StandardStrategy;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.expertCards.deck.*;
-import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.pawns.MotherNature;
@@ -23,7 +16,7 @@ public class CardManager {
     /**
      * Constructor who receive the reference to motherNature,Players list, professorManager, islandManager and the Bag
      */
-    public CardManager(MotherNature motherNature, IslandManager islandManager, ProfessorManager professorManager, ArrayList<Player> playerList, Bag bag) {
+    public CardManager(MotherNature motherNature, IslandManager islandManager, ProfessorManager professorManager, LinkedList<Player> playerList, Bag bag) {
         this.motherNature=motherNature;
         this.professorManager = professorManager;
         this.islandManager = islandManager;
@@ -32,11 +25,11 @@ public class CardManager {
         expertCards.add(new ColorInfluenceCard());
         expertCards.add(new DenyCard());
         expertCards.add(new HallBagSwapCard());
-        expertCards.add(new IngressCardSwapCard());
+        expertCards.add(new IngressCardSwapCard(this.bag));
         expertCards.add(new IngressHallSwapCard());
         expertCards.add(new IslandInfluenceCard());
         expertCards.add(new ProfessorControlCard());
-        expertCards.add(new StudentToHallCard());
+        expertCards.add(new StudentToHallCard(this.bag));
         expertCards.add(new StudentToIslandCard());
         expertCards.add(new TowerInfluenceCard());
         expertCards.add(new TwoInfluenceCard());

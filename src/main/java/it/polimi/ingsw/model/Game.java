@@ -2,6 +2,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
+import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
@@ -12,6 +13,7 @@ import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.*;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
+import it.polimi.ingsw.model.expertCards.deck.*;
 
 import java.util.*;
 
@@ -92,7 +94,7 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private Bag bag;
+    private Bag bag=new Bag();
 
 
     /**
@@ -103,7 +105,17 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private CardManager cardManager;
+    private IslandManager islandManager=new IslandManager();
+
+    /**
+     *
+     */
+    private ProfessorManager professorManager=new ProfessorManager(pLayerList);
+
+    /**
+     *
+     */
+    private CardManager cardManager=new CardManager(motherNature,islandManager,professorManager,pLayerList,bag);
 
     /**
      *
@@ -114,16 +126,6 @@ public class Game implements GameInterface {
      *Keep track of the current player
      */
     private Player currentPlayer;
-
-    /**
-     *
-     */
-    private IslandManager islandManager;
-
-    /**
-     *
-     */
-    private ProfessorManager professorManager;
 
     /**
      *
@@ -219,7 +221,10 @@ public class Game implements GameInterface {
      * @param student       Move the student from the ingress to the hall
      */
     public void moveStudentIngressToHall(Student student) {
-        this.currentRound.moveStudentIngressToHall(student);
+        if(this.currentRound.moveStudentIngressToHall(student))
+            this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
+        if(!this.currentRound.moveStudentIngressToHall(student))
+            System.out.println("Move not possible");
     }
 
     /**
@@ -227,7 +232,11 @@ public class Game implements GameInterface {
      * @param island        Island where we want to move
      */
     public void moveStudentIngressToIsland(Student student, Island island) {
-        this.currentRound.moveStudentIngressToIsland(student,island);
+        if(this.currentRound.moveStudentIngressToIsland(student,island))
+            island.addStudent(student);
+        if (!this.currentRound.moveStudentIngressToIsland(student,island))
+            System.out.println("Move not possible");
+
     }
 
     /**
@@ -242,7 +251,9 @@ public class Game implements GameInterface {
      */
     @Override
     public void playAssistantCard(AssistantCard assistantCard) {
-        this.currentRound.playAssistantCard(assistantCard,this.currentPlayer);
+        this.currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        if(!this.currentRound.playAssistantCard(assistantCard,this.currentPlayer))
+            System.out.println("Card already played");
     }
 
 
@@ -250,9 +261,10 @@ public class Game implements GameInterface {
      * @param expertCard        Play the expert card
      */
     public Boolean playExpertCard(ExpertCard expertCard) {
+        if(expertCard.getCost()>currentPlayer.getCoins())
+            return false;
         this.currentRound.playExpertCard(expertCard);
         return true;
-
     }
 
     /**
@@ -260,7 +272,12 @@ public class Game implements GameInterface {
      * @param island                The island where we want to put hte student
      */
     public void expertStudentToIsland(Student student, Island island) {
-        this.currentRound.expertStudentToIsland(student,island);
+        if(this.currentRound.expertStudentToIsland(student,island)){
+            island.addStudent(student);
+            cardManager.getCurrentCard().removeStudent(student);
+            cardManager.getCurrentCard().addStudent(this.bag.newStudent());
+            cardManager.setCurrentCard(null);
+        }
     }
 
     /**
@@ -268,7 +285,14 @@ public class Game implements GameInterface {
      * @param studentIngress        The student from the ingress
      */
     public void expertIngressCardSwap(Student studentCard, Student studentIngress) {
-        this.currentRound.expertIngressCardSwap(studentCard, studentIngress);
+
+        if(this.currentRound.expertIngressCardSwap(studentCard, studentIngress)) {
+
+            this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
+            this.cardManager.getCurrentCard().removeStudent(studentCard);
+            this.cardManager.getCurrentCard().addStudent(studentIngress);
+        }
+
     }
 
     /**
@@ -276,14 +300,24 @@ public class Game implements GameInterface {
      * @param studentIngress        The student present on the ingress
      */
     public void expertIngressHallSwap(Student studentHall, Student studentIngress) {
-        this.currentRound.expertIngressHallSwap(studentHall,studentIngress);
+        if(this.currentRound.expertIngressHallSwap(studentHall,studentIngress)) {
+            currentPlayer.getSchool().getIngress().addStudent((studentHall));
+            currentPlayer.getSchool().getHall().getLine(studentIngress.getColor()).addStudent(studentIngress);
+        }
+
     }
 
     /**
      * @param student           The student we want to put in the Hall
      */
     public void expertStudentToHall(Student student) {
-        this.currentRound.expertStudentToHall(student);
+        if(this.currentRound.expertStudentToHall(student)) {
+            currentPlayer.getSchool().getHall().addStudent(student);
+            cardManager.getCurrentCard().removeStudent(student);
+            cardManager.getCurrentCard().addStudent(this.bag.newStudent());
+            cardManager.setCurrentCard(null);
+        }
+
     }
 
     /**
@@ -291,7 +325,12 @@ public class Game implements GameInterface {
      *                      Its not clear how we set the cloud we can get
      */
     public void chooseCloud(Cloud cloud) {
-        this.currentRound.chooseCloud(cloud);
+        if(this.currentRound.chooseCloud(cloud)) {
+            while (cloud.getStudents().size() != 0) {
+                this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
+            }
+        }
+        this.currentRound.checkRoundEnded();
     }
 
     /**

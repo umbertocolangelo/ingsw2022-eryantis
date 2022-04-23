@@ -97,7 +97,7 @@ public class PlayerTest {
     @Test
     public void getCoinsTest() {
         Player player = new Player("vittorio");
-        player.addCoin();
+        player.setCoin(1);
         assertTrue(player.getCoins()==1);
     }
 
@@ -157,7 +157,7 @@ public class PlayerTest {
     @Test
     public void addCoinsTest() {
         Player player = new Player("vittorio");
-        player.addCoin();
+        player.setCoin(1);
         assertTrue(player.getCoins()==1);
 
     }

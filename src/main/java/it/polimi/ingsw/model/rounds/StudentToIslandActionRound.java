@@ -4,7 +4,6 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
-import it.polimi.ingsw.model.expertCards.deck.StudentToIslandCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
@@ -84,7 +83,7 @@ public class StudentToIslandActionRound implements RoundInterface {
      * @param game
      * @param color
      */
-    @Override
+
     public void expertMoveStudentToBag(Game game, Color color) {
 
     }
@@ -96,9 +95,7 @@ public class StudentToIslandActionRound implements RoundInterface {
      */
     @Override
     public Boolean expertStudentToIsland(Student student, Island island) {
-        island.addStudent(student);
-        //StudentToIslandCard currentCard = (StudentToIslandCard) this.game.getCardManager().getCurrentCard();
-        //currentCard.addStudent(this.game.getBag().newStudent());
+
         this.game.setRound(this.game.getPreviousRound());
         return true;
 
@@ -116,10 +113,11 @@ public class StudentToIslandActionRound implements RoundInterface {
 
     /**
      *
+     * @return
      */
-    @Override
-    public void finishExpertMove() {
 
+    public Boolean finishExpertMove() {
+        return null;
     }
 
     /**

@@ -8,6 +8,7 @@ import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
+import it.polimi.ingsw.model.studentSuppliers.Bag;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -35,15 +36,18 @@ public class IngressCardSwapActionRoundTest {
         game.playAssistantCard(AssistantCard.TWO_CARD);
         game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD);
-        IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard();
+        Bag bag=new Bag();
+        IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard(bag);
+        player1.setCoin(5);
         ingressCardSwapCard.setId("4");
+
         game.playExpertCard(ingressCardSwapCard);
         Student student1=new Student(Color.RED);
         Student student=new Student(Color.YELLOW);
         System.out.println(game.getCurrentPlayer());
-        player1.getSchool().getHall().getLine(Color.RED).addStudent(student1);
+        System.out.println(player1);
         player1.getSchool().getIngress().addStudent(student);
         game.expertIngressCardSwap(student1,student);
-        assertTrue( player1.getSchool().getIngress().getStudents().contains(student1) && !player1.getSchool().getIngress().getStudents().contains(student));
+        assertTrue( player1.getSchool().getIngress().getStudents().contains(student1));
     }
 }

@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.expertCards.deck;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.pawns.Student;
 
 /**
  * carta #9
@@ -60,6 +61,19 @@ public class ColorInfluenceCard implements ExpertCard {
     @Override
     public String getId() {
         return null;
+    }
+
+    @Override
+    public void removeStudent(Student student) {
+
+    }
+
+    /**
+     * @param student
+     */
+    @Override
+    public void addStudent(Student student) {
+
     }
 
     @Override

@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.islands.IslandManager;
+import it.polimi.ingsw.model.pawns.Student;
 
 /**
  * carta #4
@@ -37,7 +38,7 @@ public class TwoJumpCard implements ExpertCard {
      */
     public void apply(IslandInterface nextIsland, Integer assistantCardValue) {
         Integer jumps = assistantCardValue+2;
-        manager.getIslandManager().nextIsland(manager.getMotherNature().getIsland(), nextIsland, jumps);
+       // manager.getIslandManager().nextIsland(manager.getMotherNature().getIsland(), nextIsland, jumps);
         incrementCost();
     }
 
@@ -58,6 +59,22 @@ public class TwoJumpCard implements ExpertCard {
     @Override
     public String getId() {
         return null;
+    }
+
+    /**
+     * @param student
+     */
+    @Override
+    public void removeStudent(Student student) {
+
+    }
+
+    /**
+     * @param student
+     */
+    @Override
+    public void addStudent(Student student) {
+
     }
 
     @Override

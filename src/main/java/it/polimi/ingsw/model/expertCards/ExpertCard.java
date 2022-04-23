@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model.expertCards;
 
+import it.polimi.ingsw.model.pawns.Student;
+
 /**
  * 
  */
@@ -19,6 +21,15 @@ public interface ExpertCard {
      *
      */
     public String getId();
+    /**
+     *
+     */
+    public void removeStudent(Student student);
+
+    /**
+     *
+     */
+    public void addStudent(Student student);
 
     /**
      *

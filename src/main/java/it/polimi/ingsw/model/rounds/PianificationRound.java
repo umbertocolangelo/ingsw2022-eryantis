@@ -165,10 +165,11 @@ public class PianificationRound implements RoundInterface {
 
     /**
      *
+     * @return
      */
-    @Override
-    public void finishExpertMove() {
 
+    public Boolean finishExpertMove() {
+        return null;
     }
 
     /**

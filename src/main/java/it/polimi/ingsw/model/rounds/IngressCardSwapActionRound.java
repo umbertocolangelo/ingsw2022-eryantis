@@ -2,7 +2,6 @@ package it.polimi.ingsw.model.rounds;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
@@ -83,15 +82,6 @@ public class IngressCardSwapActionRound  implements RoundInterface {
         return null;
     }
 
-    /**
-     *
-     * @param game
-     * @param color
-     */
-    @Override
-    public void expertMoveStudentToBag(Game game, Color color) {
-
-    }
 
     /**
      * @param student
@@ -110,13 +100,10 @@ public class IngressCardSwapActionRound  implements RoundInterface {
      */
     @Override
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress) {
-        this.game.getCurrentPlayer().getSchool().getIngress().removeStudent(Ingress);
-        this.game.getCurrentPlayer().getSchool().getIngress().addStudent(studentCard);
+
         studentsMoved++;
         if(studentsMoved==3){
-            studentsMoved=0;
-            this.game.setRound(this.game.getPreviousRound());
-            return true;
+            return finishExpertMove();
         }
         return true;
 
@@ -125,11 +112,13 @@ public class IngressCardSwapActionRound  implements RoundInterface {
 
     /**
      *Called by the controller if he wants to terminate the move
+     * @return
      */
-    @Override
-    public void finishExpertMove() {
+
+    public Boolean finishExpertMove() {
         studentsMoved=0;
         this.game.setRound(this.game.getPreviousRound());
+        return true;
     }
 
     /**

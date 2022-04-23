@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.expertCards.deck;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.pawns.Student;
 
 /**
  * carta #12
@@ -54,6 +55,22 @@ public class HallBagSwapCard implements ExpertCard {
     @Override
     public String getId() {
         return this.id;
+
+    }
+
+    /**
+     * @param student
+     */
+    @Override
+    public void removeStudent(Student student) {
+
+    }
+
+    /**
+     * @param student
+     */
+    @Override
+    public void addStudent(Student student) {
 
     }
 
