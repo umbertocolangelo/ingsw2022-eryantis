@@ -13,7 +13,8 @@ public class ColorInfluenceCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public ColorInfluenceCard() {
+    public ColorInfluenceCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
 
     /**

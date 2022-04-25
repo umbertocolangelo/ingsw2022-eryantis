@@ -6,6 +6,7 @@ import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandGroup;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.islands.IslandManager;
+import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Tower;
 import org.junit.jupiter.api.Test;
 
@@ -20,7 +21,8 @@ public class IslandManagerTest {
      */
     @Test
     public void checkGroup() {
-        IslandManager islandManager = new IslandManager();
+        MotherNature motherNature = new MotherNature();
+        IslandManager islandManager = new IslandManager(motherNature);
         Tower tower1 = new Tower(PlayerColor.WHITE);
         Tower tower2 = new Tower(PlayerColor.WHITE);
         Tower tower3 = new Tower(PlayerColor.BLACK);
@@ -37,7 +39,8 @@ public class IslandManagerTest {
      */
     @Test
     public void getNumOfGroups() {
-        IslandManager islandManager = new IslandManager();
+        MotherNature motherNature = new MotherNature();
+        IslandManager islandManager = new IslandManager(motherNature);
         islandManager.getNumOfGroups();
         assertTrue(islandManager.getNumOfGroups()==0);
         islandManager.getIslands().get(5).setIsGrouped();
@@ -52,7 +55,8 @@ public class IslandManagerTest {
      */
     @Test
     public void setNewGroup1() {
-        IslandManager islandManager = new IslandManager();
+        MotherNature motherNature = new MotherNature();
+        IslandManager islandManager = new IslandManager(motherNature);
         IslandGroup islandGroup = new IslandGroup();
         islandManager.setNewGroupTest(islandGroup, (Island) islandManager.getIslands().get(0));
         assertTrue(islandGroup.getIslandGroupElements().contains(islandManager.getIslands().get(0)));
@@ -65,7 +69,8 @@ public class IslandManagerTest {
      */
     @Test
     public void setNewGroup2() {
-        IslandManager islandManager = new IslandManager();
+        MotherNature motherNature = new MotherNature();
+        IslandManager islandManager = new IslandManager(motherNature);
         IslandGroup islandGroup = new IslandGroup();
         IslandGroup islandGroup1 = new IslandGroup();
         islandManager.setNewGroupTest(islandGroup1, (Island) islandManager.getIslands().get(0));
@@ -91,7 +96,8 @@ public class IslandManagerTest {
      */
     @Test
     public void rightIsland() {
-        IslandManager islandManager = new IslandManager();
+        MotherNature motherNature = new MotherNature();
+        IslandManager islandManager = new IslandManager(motherNature);
         assertTrue(islandManager.rightIslandTest(islandManager.getIslands().get(0)).equals(islandManager.getIslands().get(1)));
         assertTrue(islandManager.rightIslandTest(islandManager.getIslands().get(11)).equals(islandManager.getIslands().get(0)));
         islandManager.getIslands().remove(11);
@@ -105,7 +111,8 @@ public class IslandManagerTest {
      */
     @Test
     public void leftIsland() {
-        IslandManager islandManager = new IslandManager();
+        MotherNature motherNature = new MotherNature();
+        IslandManager islandManager = new IslandManager(motherNature);
         assertTrue(islandManager.leftIslandTest(islandManager.getIslands().get(0)).equals(islandManager.getIslands().get(11)));
         assertTrue(islandManager.leftIslandTest(islandManager.getIslands().get(5)).equals(islandManager.getIslands().get(4)));
         islandManager.getIslands().remove(11);
@@ -117,7 +124,8 @@ public class IslandManagerTest {
      */
     @Test
     public void islandUpdate() {
-        IslandManager islandManager = new IslandManager();
+        MotherNature motherNature = new MotherNature();
+        IslandManager islandManager = new IslandManager(motherNature);
         Island island = new Island();
         island = (Island) islandManager.getIslands().get(0);
         islandManager.islandsUpdateTest(0);

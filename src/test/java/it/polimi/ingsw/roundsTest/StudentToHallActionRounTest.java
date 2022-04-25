@@ -35,7 +35,7 @@ public class StudentToHallActionRounTest {
         game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD);
         Bag bag=new Bag();
-        IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard(bag);
+        IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard(game.getCardManager());
         player1.setCoin(5);
         ingressCardSwapCard.setId("8");
         game.playExpertCard(ingressCardSwapCard);

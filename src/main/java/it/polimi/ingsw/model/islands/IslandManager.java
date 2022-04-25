@@ -1,6 +1,8 @@
 package it.polimi.ingsw.model.islands;
 
 import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.pawns.MotherNature;
+
 import java.util.*;
 
 /**
@@ -11,7 +13,8 @@ public class IslandManager {
     /**
      * Default constructor instantiates the initial 12 Islands of the board into a linked list
      */
-    public IslandManager() {
+    public IslandManager(MotherNature motherNature) {
+        this.motherNature = motherNature;
         int size = 0;
         while (size < 12) {
             Island island = new Island();
@@ -28,21 +31,21 @@ public class IslandManager {
     /**
      *
      */
+    MotherNature motherNature;
+
+    /**
+     *
+     */
     private Integer numOfGroups;
 
     /**
      * @return
      */
-    public IslandInterface nextIsland(IslandInterface currentIsland, IslandInterface nextIsland, Integer assistantCardValue) {
+    public IslandInterface nextIsland(Integer assistantCardValue) {
         IslandInterface temp = null;
         for (int i=0; i<islands.size(); i++) {
-            if (islands.get(i).equals(currentIsland)) {
-                for (int j=i; j<i+assistantCardValue; j++) {
-                    if (j==islands.size()) { j=0; } //reset position in islands list when it ends
-                    if (islands.get(j).equals(nextIsland)) {
-                        temp = islands.get(j);
-                    }
-                }
+            if (islands.get(i).equals(motherNature.getIsland())) {
+                temp = islands.get(i+assistantCardValue);
             }
         }
         return temp;

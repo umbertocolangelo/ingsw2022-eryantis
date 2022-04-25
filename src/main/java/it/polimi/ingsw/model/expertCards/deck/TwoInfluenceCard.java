@@ -12,7 +12,8 @@ public class TwoInfluenceCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public TwoInfluenceCard() {
+    public TwoInfluenceCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
 
     /**

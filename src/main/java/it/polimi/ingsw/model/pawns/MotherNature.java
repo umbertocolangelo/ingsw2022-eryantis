@@ -120,4 +120,6 @@ public class MotherNature implements PlaceableObject {
      */
     public String getId() { return this.id; }
 
+    public InfluenceCalculator getInfluence() {return this.influence;}
+
 }
