@@ -35,7 +35,7 @@ public class IslandInfluenceCard implements ExpertCard {
      * @param island
      */
     public void apply(Island island) {
-        manager.getMotherNature().setIslandInfluence(island);
+        manager.getInfluenceManager().setIslandInfluence(island);
         incrementCost();
     }
 

@@ -120,4 +120,21 @@ public class IslandGroup implements IslandInterface {
      */
     public Integer getSize() { return this.islandGroup.size(); }
 
+    /**
+     *
+     * @param tower is the tower to add
+     */
+    public void addTower(Tower tower) {
+        for (Island island: islandGroup) {
+            if(island.getTowers().get(0)==null){
+                island.addTower(tower);
+                return;
+            }
+
+
+        }
+
+    }
+
+
 }

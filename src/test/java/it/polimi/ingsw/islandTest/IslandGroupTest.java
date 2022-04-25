@@ -14,7 +14,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class IslandGroupTest {
 
-    /**T
+    /**
+     * T
      * Testing addIsland
      */
     @Test
@@ -25,7 +26,8 @@ public class IslandGroupTest {
         assertTrue(islandGroup.getIslandGroupElements().contains(island));
     }
 
-    /**T
+    /**
+     * T
      * Testing addIslandGroup
      */
     @Test
@@ -39,12 +41,13 @@ public class IslandGroupTest {
         newIslandGroup.addIsland(island1);
         newIslandGroup.addIsland(island3);
         islandGroup.addIslandGroup(newIslandGroup);
-        for (int i=0; i< newIslandGroup.getSize(); i++) {
+        for (int i = 0; i < newIslandGroup.getSize(); i++) {
             assertTrue(islandGroup.getIslandGroupElements().contains(newIslandGroup.getIslandGroupElements().get(i)));
         }
     }
 
-    /**T
+    /**
+     * T
      * Testing numOfStudents
      */
     @Test
@@ -60,31 +63,34 @@ public class IslandGroupTest {
         island2.addStudent(student3);
         islandGroup.addIsland(island1);
         islandGroup.addIsland(island2);
-        assertTrue(islandGroup.numOfStudents(Color.YELLOW)==2);
-        assertTrue(islandGroup.numOfStudents(Color.RED)==1);
+        assertTrue(islandGroup.numOfStudents(Color.YELLOW) == 2);
+        assertTrue(islandGroup.numOfStudents(Color.RED) == 1);
     }
 
-    /**T
+    /**
+     * T
      * Testing setDeny
      */
     @Test
     public void setDeny() {
         IslandGroup islandGroup = new IslandGroup();
         islandGroup.setDeny();
-        assertTrue(islandGroup.getDeny()==true);
+        assertTrue(islandGroup.getDeny() == true);
     }
 
-    /**T
+    /**
+     * T
      * Testing removeDeny
      */
     @Test
     public void removeDeny() {
         IslandGroup islandGroup = new IslandGroup();
         islandGroup.removeDeny();
-        assertTrue(islandGroup.getDeny()==false);
+        assertTrue(islandGroup.getDeny() == false);
     }
 
-    /**T
+    /**
+     * T
      * Testing numOfTowers
      */
     @Test
@@ -96,10 +102,11 @@ public class IslandGroupTest {
         islandGroup.addIsland(island1);
         islandGroup.addIsland(island3);
         islandGroup.addIsland(island2);
-        assertTrue(islandGroup.numOfTowers()==3);
+        assertTrue(islandGroup.numOfTowers() == 3);
     }
 
-    /**T
+    /**
+     * T
      * Testing numOfTowers
      */
     @Test

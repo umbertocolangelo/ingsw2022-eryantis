@@ -40,7 +40,7 @@ public class ColorInfluenceCard implements ExpertCard {
      * @param color
      */
     public void apply(Color color) {
-        manager.getMotherNature().setColorInfluence(color);
+        manager.getInfluenceManager().setColorInfluence(color);
         incrementCost();
     }
 

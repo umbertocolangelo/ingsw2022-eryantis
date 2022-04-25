@@ -1,5 +1,7 @@
 package it.polimi.ingsw.model.expertCards;
 
+import it.polimi.ingsw.model.calculations.influence.InfluenceCalculator;
+import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.expertCards.deck.*;
 import it.polimi.ingsw.model.islands.IslandManager;
@@ -16,8 +18,8 @@ public class CardManager {
     /**
      * Constructor who receive the reference to motherNature,Players list, professorManager, islandManager and the Bag
      */
-    public CardManager(MotherNature motherNature, IslandManager islandManager, ProfessorManager professorManager, LinkedList<Player> playerList, Bag bag) {
-        this.motherNature=motherNature;
+    public CardManager(InfluenceManager influenceManager, IslandManager islandManager, ProfessorManager professorManager, LinkedList<Player> playerList, Bag bag) {
+        this.influenceManager = influenceManager;
         this.professorManager = professorManager;
         this.islandManager = islandManager;
         this.playerList=new ArrayList<>(playerList);
@@ -37,9 +39,9 @@ public class CardManager {
     }
 
     /**
-     *  Keep the reference to motherNature
+     *  Keep the reference to the InfluenceManager
      */
-    private MotherNature motherNature;
+    private InfluenceManager influenceManager;
 
     /**
      * Contains the player list
@@ -88,8 +90,8 @@ public class CardManager {
     /**
      * @return MotherNature     Return the reference to motherNature
      */
-    public MotherNature getMotherNature() {
-        return this.motherNature;
+    public InfluenceManager getInfluenceManager() {
+        return this.influenceManager;
     }
 
     /**

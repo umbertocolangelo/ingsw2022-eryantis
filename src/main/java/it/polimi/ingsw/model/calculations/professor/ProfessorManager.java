@@ -40,7 +40,6 @@ public class ProfessorManager {
 
             if(currentProfessor.getPosition()==null){  //If the professor has no position yet
                 if(currentPlayerLine.numOfStudents() > 0){
-                    //System.out.println(currentPlayer.getName()+" takes the "+color+" professor");
                     currentPlayerLine.addProfessor(currentProfessor);
                     continue;
                 }

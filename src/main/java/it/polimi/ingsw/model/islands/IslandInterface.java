@@ -37,6 +37,13 @@ public interface IslandInterface {
     public Integer numOfTowers();
 
     /**
+     *
+     * @param tower is the tower to add
+     */
+
+    public void addTower(Tower tower);
+
+    /**
      * @return
      */
     public PlayerColor getInfluenceColor();

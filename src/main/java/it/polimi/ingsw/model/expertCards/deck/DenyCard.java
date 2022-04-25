@@ -42,9 +42,16 @@ public class DenyCard implements ExpertCard {
     public void apply(Island island) {
         if (denyTokens>0) {
             island.setDeny();
-            denyTokens = denyTokens - 1;
+            denyTokens -= 1;
             incrementCost();
         }
+    }
+
+    /**
+     * Adds a token
+     */
+    public void addToken(){
+        denyTokens += 1;
     }
 
     /**

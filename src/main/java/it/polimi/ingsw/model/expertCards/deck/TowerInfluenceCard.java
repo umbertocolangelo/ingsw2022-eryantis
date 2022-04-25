@@ -34,7 +34,7 @@ public class TowerInfluenceCard implements ExpertCard {
      * 
      */
     public void apply() {
-        manager.getMotherNature().setTowerInfluence();
+        manager.getInfluenceManager().setTowerInfluence();
         incrementCost();
     }
 

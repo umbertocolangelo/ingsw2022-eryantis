@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.expertCards.deck;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.player.Player;
 
 /**
  * carta #8
@@ -13,7 +14,14 @@ public class TwoInfluenceCard implements ExpertCard {
      * Default constructor
      */
     public TwoInfluenceCard() {
+        //TODO
     }
+
+    /**
+     *
+     */
+    private Player player;
+
 
     /**
      * 
@@ -34,7 +42,7 @@ public class TwoInfluenceCard implements ExpertCard {
      * 
      */
     public void apply() {
-        manager.getMotherNature().setTwoPointsInfluence();
+        manager.getInfluenceManager().setTwoPointsInfluence(player);
         incrementCost();
     }
 
