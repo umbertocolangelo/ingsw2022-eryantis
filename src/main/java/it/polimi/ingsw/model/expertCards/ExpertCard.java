@@ -13,23 +13,9 @@ public interface ExpertCard {
     public Integer getCost();
 
     /**
-     * 
-     */
-    public void incrementCost();
-
-    /**
      *
      */
     public String getId();
-    /**
-     *
-     */
-    public void removeStudent(Student student);
-
-    /**
-     *
-     */
-    public void addStudent(Student student);
 
     /**
      *

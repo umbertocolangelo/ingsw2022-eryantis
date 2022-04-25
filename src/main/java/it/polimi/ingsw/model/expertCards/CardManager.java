@@ -24,18 +24,8 @@ public class CardManager {
         this.islandManager = islandManager;
         this.playerList=new ArrayList<>(playerList);
         this.bag=bag;
-        expertCards.add(new ColorInfluenceCard(this));
-        expertCards.add(new DenyCard(this));
-        expertCards.add(new HallBagSwapCard(this));
-        expertCards.add(new IngressCardSwapCard(this));
-        expertCards.add(new IngressHallSwapCard(this));
-        expertCards.add(new IslandInfluenceCard(this));
-        expertCards.add(new ProfessorControlCard(this));
-        expertCards.add(new StudentToHallCard(this));
-        expertCards.add(new StudentToIslandCard(this));
-        expertCards.add(new TowerInfluenceCard(this));
-        expertCards.add(new TwoInfluenceCard(this));
-        expertCards.add(new TwoJumpCard(this));
+        this.expertCards =  new LinkedList<ExpertCard>(getThreeExpertCards());
+
     }
 
     /**
@@ -56,7 +46,7 @@ public class CardManager {
     /**
      * Contains the deck of the expertCards
      */
-    private LinkedList<ExpertCard> expertCards = new LinkedList<ExpertCard>();
+    private LinkedList<ExpertCard> expertCards;
 
     /**
      * Contains the deck of the expertCards
@@ -106,15 +96,6 @@ public class CardManager {
         return this.islandManager;
     }
 
-    /**
-     * Shuffle the deck and keep only 3 cards
-     */
-    private void getCards() {
-        Collections.shuffle(expertCards);
-        for(int i=11;i>2;i--) {
-            expertCards.remove(i);
-        }
-    }
 
     /**
      * @return  Player      Return an array of the players.
@@ -134,20 +115,29 @@ public class CardManager {
      * @return  ArrayList<ExpertCard>   Return the three ExpertCards for the game
      */
     public LinkedList<ExpertCard> getThreeExpertCards() {
-        getCards();
-        return this.expertCards;
+        LinkedList<ExpertCard> expertCards = new LinkedList<ExpertCard>();
+        expertCards.add(new ColorInfluenceCard(this));
+        expertCards.add(new DenyCard(this));
+        expertCards.add(new HallBagSwapCard(this));
+        expertCards.add(new IngressCardSwapCard(this));
+        expertCards.add(new IngressHallSwapCard(this));
+        expertCards.add(new IslandInfluenceCard(this));
+        expertCards.add(new ProfessorControlCard(this));
+        expertCards.add(new StudentToHallCard(this));
+        expertCards.add(new StudentToIslandCard(this));
+        expertCards.add(new TowerInfluenceCard(this));
+        expertCards.add(new TwoInfluenceCard(this));
+        expertCards.add(new TwoJumpCard(this));
+        Collections.shuffle(expertCards);
+        for(int i=11;i>2;i--) {
+            expertCards.remove(i);
+        }
+        return expertCards;
     }
 
-    /**
-     * only used in tests
-     */
-    public void getCardsTest() {
-        getCards();
-    }
 
     /**
-     * only used in tests
-     * @return
+     * @return expert cards usable in this game
      */
     public LinkedList<ExpertCard> getDeck() {return this.expertCards;}
 }

@@ -48,10 +48,8 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
-    public void apply(Student studentCard, Student studentIngress) {
-        removeStudent(studentCard);
-        addStudent(studentIngress);
-        incrementCost(); //si deve applicare una sola volta!
+    public void apply() {
+        incrementCost();
     }
 
     /**
@@ -64,7 +62,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     /**
      * 
      */
-    public void incrementCost() {
+    private void incrementCost() {
         cost = cost + 1;
     }
 

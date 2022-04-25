@@ -46,16 +46,9 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
     private CardManager manager;
 
     /**
-     *
-     */
-    private RoundInterface round;
-
-    /**
      * 
      */
     public void apply(Student student) {
-        round.expertStudentToHall(student);
-        addStudent(manager.getBag().newStudent());
         incrementCost();
     }
 
@@ -69,15 +62,23 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
     /**
      * 
      */
-    public void incrementCost() {
+    private void incrementCost() {
         cost = cost + 1;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getId() {
         return this.id;
     }
 
+    /**
+     *
+     * @param id
+     */
     @Override
     public void setId(String id) {
         this.id = id;

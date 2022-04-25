@@ -39,11 +39,6 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
-    private RoundInterface round;
-
-    /**
-     *
-     */
     private CardManager manager;
 
     /**
@@ -54,10 +49,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
     /**
      * move student to island (student has to be chosen by player)
      */
-    public void apply(Island island, Student student) {
-        round.expertStudentToIsland(student, island);
-        removeStudent(student);
-        addStudent(manager.getBag().newStudent());
+    public void apply() {
         incrementCost();
     }
 
@@ -71,15 +63,21 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
     /**
      * 
      */
-    public void incrementCost() {
+    private void incrementCost() {
         cost = cost + 1;
     }
 
+    /**
+     * @return
+     */
     @Override
     public String getId() {
         return null;
     }
 
+    /**
+     * @param id
+     */
     @Override
     public void setId(String id) {
 

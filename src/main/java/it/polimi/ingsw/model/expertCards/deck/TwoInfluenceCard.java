@@ -13,15 +13,9 @@ public class TwoInfluenceCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public TwoInfluenceCard() {
-        //TODO
+    public TwoInfluenceCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
-
-    /**
-     *
-     */
-    private Player player;
-
 
     /**
      * 
@@ -41,7 +35,7 @@ public class TwoInfluenceCard implements ExpertCard {
     /**
      * 
      */
-    public void apply() {
+    public void apply(Player player) {
         manager.getInfluenceManager().setTwoPointsInfluence(player);
         incrementCost();
     }
@@ -56,31 +50,23 @@ public class TwoInfluenceCard implements ExpertCard {
     /**
      *
      */
-    public void incrementCost() {
+    private void incrementCost() {
         cost = cost + 1;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getId() {
         return null;
     }
 
     /**
-     * @param student
+     *
+     * @param id
      */
-    @Override
-    public void removeStudent(Student student) {
-
-    }
-
-    /**
-     * @param student
-     */
-    @Override
-    public void addStudent(Student student) {
-
-    }
-
     @Override
     public void setId(String id) {
 

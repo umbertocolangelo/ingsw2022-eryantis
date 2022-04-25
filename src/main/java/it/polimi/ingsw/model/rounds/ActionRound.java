@@ -24,7 +24,7 @@ public class ActionRound implements RoundInterface {
     public ActionRound(Game game) {
         this.game=game;
         this.game.setCurrentPlayer(this.game.getOrderedPLayerList().getFirst());
-        this. currentPlayer=this.game.getCurrentPlayer();
+        this.currentPlayer=this.game.getCurrentPlayer();
         this.currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
 
     }
@@ -139,7 +139,6 @@ public class ActionRound implements RoundInterface {
     public Boolean playExpertCard(ExpertCard expertCard) {
        game.getCardManager().setCurrentCard(expertCard);
         currentPlayer.setCoin(-(expertCard.getCost()));
-        game.getCardManager().getCurrentCard().incrementCost();
        if(expertCard.getId().equals("4")) {
            this.game.setPreviousRound(this);
 
@@ -240,7 +239,6 @@ public class ActionRound implements RoundInterface {
      * @return          True uf we can make the move
      */
     public Boolean chooseCloud(Cloud cloud) {
-        this.currentPlayer= game.getCurrentPlayer();
         if (this.currentPlayer.getPlayerPhase() != PlayerPhase.CHOOSING_CLOUD)
             return false;
         if (cloud.getStudents().size() == 0)

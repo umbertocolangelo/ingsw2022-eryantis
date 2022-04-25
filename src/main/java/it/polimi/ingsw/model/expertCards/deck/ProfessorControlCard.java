@@ -49,31 +49,23 @@ public class ProfessorControlCard implements ExpertCard {
     /**
      * 
      */
-    public void incrementCost() {
+    private void incrementCost() {
         cost = cost + 1;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getId() {
         return null;
     }
 
     /**
-     * @param student
+     *
+     * @param id
      */
-    @Override
-    public void removeStudent(Student student) {
-
-    }
-
-    /**
-     * @param student
-     */
-    @Override
-    public void addStudent(Student student) {
-
-    }
-
     @Override
     public void setId(String id) {
 

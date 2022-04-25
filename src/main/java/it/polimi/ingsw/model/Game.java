@@ -1,5 +1,6 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
@@ -7,6 +8,7 @@ import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandManager;
+import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
@@ -79,7 +81,7 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private MotherNature motherNature;
+    private MotherNature motherNature = new MotherNature();
 
     /**
      *Keep track of the round which is currently on
@@ -105,6 +107,11 @@ public class Game implements GameInterface {
     /**
      *
      */
+    private InfluenceManager influenceManager = new InfluenceManager(motherNature, pLayerList);
+
+    /**
+     *
+     */
     private IslandManager islandManager=new IslandManager(motherNature);
 
     /**
@@ -115,7 +122,7 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private CardManager cardManager=new CardManager(motherNature,islandManager,professorManager,pLayerList,bag);
+    private CardManager cardManager=new CardManager(influenceManager,islandManager,professorManager,pLayerList,bag);
 
     /**
      *
@@ -243,7 +250,11 @@ public class Game implements GameInterface {
      * @param jumps
      */
     public void moveMotherNature(Integer jumps) {
-        // TODO implement here
+        if(this.currentRound.moveMotherNature(jumps)) {
+            this.motherNature.setIsland(this.islandManager.nextIsland(jumps));
+        }
+        if (!this.currentRound.moveMotherNature(jumps))
+            System.out.println("Move not possible");
     }
 
     /**
@@ -274,8 +285,8 @@ public class Game implements GameInterface {
     public void expertStudentToIsland(Student student, Island island) {
         if(this.currentRound.expertStudentToIsland(student,island)){
             island.addStudent(student);
-            cardManager.getCurrentCard().removeStudent(student);
-            cardManager.getCurrentCard().addStudent(this.bag.newStudent());
+            FixedObjectStudent studentToIsland = (FixedObjectStudent) cardManager.getCurrentCard();
+            studentToIsland.addStudent(this.bag.newStudent());
             cardManager.setCurrentCard(null);
         }
     }
@@ -289,8 +300,8 @@ public class Game implements GameInterface {
         if(this.currentRound.expertIngressCardSwap(studentCard, studentIngress)) {
 
             this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
-            this.cardManager.getCurrentCard().removeStudent(studentCard);
-            this.cardManager.getCurrentCard().addStudent(studentIngress);
+            FixedObjectStudent studentToIsland = (FixedObjectStudent) cardManager.getCurrentCard();
+            studentToIsland.addStudent(studentIngress);
         }
 
     }
@@ -313,8 +324,8 @@ public class Game implements GameInterface {
     public void expertStudentToHall(Student student) {
         if(this.currentRound.expertStudentToHall(student)) {
             currentPlayer.getSchool().getHall().addStudent(student);
-            cardManager.getCurrentCard().removeStudent(student);
-            cardManager.getCurrentCard().addStudent(this.bag.newStudent());
+            FixedObjectStudent studentToIsland = (FixedObjectStudent) cardManager.getCurrentCard();
+            studentToIsland.addStudent(this.bag.newStudent());
             cardManager.setCurrentCard(null);
         }
 

@@ -40,8 +40,8 @@ public class IngressHallSwapCard implements ExpertCard {
     /**
      * 
      */
-    public void apply(Student studentHall, Student studentIngress) {
-
+    public void apply() {
+        incrementCost();
     }
 
     /**
@@ -54,31 +54,23 @@ public class IngressHallSwapCard implements ExpertCard {
     /**
      * 
      */
-    public void incrementCost() {
+    private void incrementCost() {
         cost = cost + 1;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getId() {
         return null;
     }
 
     /**
-     * @param student
+     *
+     * @param id
      */
-    @Override
-    public void removeStudent(Student student) {
-
-    }
-
-    /**
-     * @param student
-     */
-    @Override
-    public void addStudent(Student student) {
-
-    }
-
     @Override
     public void setId(String id) {
 
