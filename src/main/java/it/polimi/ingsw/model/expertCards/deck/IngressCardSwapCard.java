@@ -6,7 +6,6 @@ import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.rounds.RoundInterface;
-import it.polimi.ingsw.model.studentSuppliers.Bag;
 
 import java.util.*;
 
@@ -18,10 +17,11 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     /**
      * Default constructor
      */
-    public IngressCardSwapCard(Bag bag) {
-       this.bag=bag;
+    public IngressCardSwapCard(CardManager cardManager) {
+        this.manager=cardManager;
+        students = new LinkedList<Student>();
         for (int i=0; i<6; i++) {
-           students.add(this.bag.newStudent());
+            addStudent(manager.getBag().newStudent());
         }
     }
 
@@ -33,17 +33,12 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
-    private Bag bag;
-
-    /**
-     *
-     */
     private Integer cost = 1;
 
     /**
      *
      */
-    private LinkedList<Student> students=new LinkedList<>();
+    private LinkedList<Student> students;
 
     /**
      *
@@ -53,12 +48,10 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
-    private RoundInterface round;
-
-    /**
-     *
-     */
-    public void apply() {
+    public void apply(Student studentCard, Student studentIngress) {
+        removeStudent(studentCard);
+        addStudent(studentIngress);
+        incrementCost(); //si deve applicare una sola volta!
     }
 
     /**
@@ -74,6 +67,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
     public void incrementCost() {
         cost = cost + 1;
     }
+
 
     @Override
     public String getId() {
@@ -113,9 +107,4 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
         return this.students.size();
     }
 
-    private static <T extends Enum<?>> T randomEnum(Class<T> clazz){
-        Random rand = new Random();
-        int x = rand.nextInt(clazz.getEnumConstants().length);
-        return clazz.getEnumConstants()[x];
-    }
 }

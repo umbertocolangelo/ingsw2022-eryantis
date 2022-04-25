@@ -13,7 +13,8 @@ public class IslandInfluenceCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public IslandInfluenceCard() {
+    public IslandInfluenceCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
 
     /**

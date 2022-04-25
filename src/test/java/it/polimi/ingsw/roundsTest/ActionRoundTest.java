@@ -110,13 +110,12 @@ public class ActionRoundTest {
     }
 
     /**
-     * Testing expertMovetToBag function
+     * Testing expertMoveToBag function
      */
 
     @Test
-    public void expertMovetToBagFunction() {
+    public void expertMoveToBagFunction() {
         Player player = new Player("vittorio");
-        HallBagSwapCard expertCard = new HallBagSwapCard();
         Game game = new Game();
         game.setCurrentPlayer(player);
         LinkedList<Player> lista=new LinkedList<>();
@@ -127,7 +126,7 @@ public class ActionRoundTest {
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         game.setRound(new ActionRound(game));
-        HallBagSwapCard hallBag = new HallBagSwapCard();
+        HallBagSwapCard hallBag = new HallBagSwapCard(game.getCardManager());
         hallBag.setId("3");
         game.getCurrentPlayer().setCoin(5);
         game.playExpertCard(hallBag);

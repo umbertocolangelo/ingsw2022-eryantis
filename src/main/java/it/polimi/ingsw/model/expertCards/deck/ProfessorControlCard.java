@@ -12,7 +12,8 @@ public class ProfessorControlCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public ProfessorControlCard() {
+    public ProfessorControlCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
 
     /**

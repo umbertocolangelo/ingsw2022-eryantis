@@ -13,7 +13,8 @@ public class DenyCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public DenyCard() {
+    public DenyCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
 
     /**

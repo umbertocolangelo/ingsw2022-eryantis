@@ -13,7 +13,8 @@ public class HallBagSwapCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public HallBagSwapCard() {
+    public HallBagSwapCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
 
     /**

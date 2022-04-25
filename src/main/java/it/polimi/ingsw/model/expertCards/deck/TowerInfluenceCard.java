@@ -12,7 +12,8 @@ public class TowerInfluenceCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public TowerInfluenceCard() {
+    public TowerInfluenceCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
 
     /**

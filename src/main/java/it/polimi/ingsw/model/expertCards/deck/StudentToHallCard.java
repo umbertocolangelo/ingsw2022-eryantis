@@ -6,7 +6,6 @@ import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.rounds.RoundInterface;
-import it.polimi.ingsw.model.studentSuppliers.Bag;
 
 import java.util.*;
 
@@ -18,11 +17,11 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
     /**
      * Default constructor
      */
-    public StudentToHallCard(Bag bag) {
-      this.bag=bag;
+    public StudentToHallCard(CardManager cardManager) {
+        this.manager=cardManager;
+        students = new LinkedList<Student>();
         for (int i=0; i<4; i++) {
-
-            this.students.add(this.bag.newStudent());
+            addStudent(manager.getBag().newStudent());
         }
     }
 
@@ -34,16 +33,12 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
-    private Bag bag;
-    /**
-     *
-     */
     private Integer cost = 2;
 
     /**
      *
      */
-    private LinkedList<Student> students=new LinkedList<>();
+    private LinkedList<Student> students;
 
     /**
      *
@@ -59,7 +54,9 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
      * 
      */
     public void apply(Student student) {
-
+        round.expertStudentToHall(student);
+        addStudent(manager.getBag().newStudent());
+        incrementCost();
     }
 
     /**
@@ -78,12 +75,12 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
 
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 
     /**
@@ -113,6 +110,5 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
     public Integer numOfStudents() {
         return this.students.size();
     }
-
 
 }

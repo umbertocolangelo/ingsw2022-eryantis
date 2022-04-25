@@ -18,13 +18,11 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
     /**
      * Default constructor
      */
-    public StudentToIslandCard() {
+    public StudentToIslandCard(CardManager cardManager) {
+        this.manager = cardManager;
         students = new LinkedList<Student>();
         for (int i=0; i<4; i++) {
-            Color color;
-            color = randomEnum(Color.class);
-            Student student = new Student(color);
-            this.students.add(student);
+            addStudent(manager.getBag().newStudent());
         }
     }
 
@@ -32,10 +30,6 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
      * 
      */
     private String id;
-
-    /**
-     *
-     */
 
     /**
      *
@@ -50,7 +44,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
     /**
      *
      */
-    private Island island;
+    private CardManager manager;
 
     /**
      *
@@ -61,7 +55,10 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
      * move student to island (student has to be chosen by player)
      */
     public void apply(Island island, Student student) {
-
+        round.expertStudentToIsland(student, island);
+        removeStudent(student);
+        addStudent(manager.getBag().newStudent());
+        incrementCost();
     }
 
     /**
@@ -89,11 +86,10 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
     }
 
     /**
-     * @param randomStudent
-     * add randomly a new student on the card after the appliance
+     * @param student
      */
-    public void addStudent(Student randomStudent) {
-        this.students.add(randomStudent);
+    public void addStudent(Student student) {
+        this.students.add(student);
     }
 
     /**
@@ -117,9 +113,4 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
         return this.students.size();
     }
 
-    private static <T extends Enum<?>> T randomEnum(Class<T> clazz){
-        Random rand = new Random();
-        int x = rand.nextInt(clazz.getEnumConstants().length);
-        return clazz.getEnumConstants()[x];
-    }
 }

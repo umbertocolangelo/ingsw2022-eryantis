@@ -25,7 +25,7 @@ public class CardManagerTest {
             LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            IslandManager islandManager = new IslandManager();
+            IslandManager islandManager = new IslandManager(motherNature);
             ProfessorManager professorManager = new ProfessorManager(player);
             CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             assertTrue(cardManager.getMotherNature() == motherNature);
@@ -41,7 +41,7 @@ public class CardManagerTest {
             LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            IslandManager islandManager = new IslandManager();
+            IslandManager islandManager = new IslandManager(motherNature);
             ProfessorManager professorManager = new ProfessorManager(player);
             CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             cardManager.getCardsTest();
@@ -59,7 +59,7 @@ public class CardManagerTest {
             LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            IslandManager islandManager = new IslandManager();
+            IslandManager islandManager = new IslandManager(motherNature);
             ProfessorManager professorManager = new ProfessorManager(player);
             CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             ExpertCard expertCard = cardManager.getThreeExpertCards().get(0);
@@ -77,7 +77,7 @@ public class CardManagerTest {
             LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            IslandManager islandManager = new IslandManager();
+            IslandManager islandManager = new IslandManager(motherNature);
             ProfessorManager professorManager = new ProfessorManager(player);
             CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             ExpertCard expertCard = cardManager.getThreeExpertCards().get(0);
@@ -96,7 +96,7 @@ public class CardManagerTest {
             LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            IslandManager islandManager = new IslandManager();
+            IslandManager islandManager = new IslandManager(motherNature);
             ProfessorManager professorManager = new ProfessorManager(player);
             CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             assertTrue(cardManager.getPlayerList().get(0).getName() == "vittorio");
@@ -111,7 +111,7 @@ public class CardManagerTest {
             LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            IslandManager islandManager = new IslandManager();
+            IslandManager islandManager = new IslandManager(motherNature);
             ProfessorManager professorManager = new ProfessorManager(player);
             CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             assertTrue(cardManager.getBag() == bag);
@@ -128,7 +128,7 @@ public class CardManagerTest {
             LinkedList<Player> player = new LinkedList<>();
             player.add(new Player("vittorio"));
             Bag bag = new Bag();
-            IslandManager islandManager = new IslandManager();
+            IslandManager islandManager = new IslandManager(motherNature);
             ProfessorManager professorManager = new ProfessorManager(player);
             CardManager cardManager = new CardManager(motherNature, islandManager, professorManager, player, bag);
             LinkedList<ExpertCard> newDeck = cardManager.getThreeExpertCards();

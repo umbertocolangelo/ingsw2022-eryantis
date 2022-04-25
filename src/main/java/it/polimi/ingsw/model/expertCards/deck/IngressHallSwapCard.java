@@ -13,7 +13,8 @@ public class IngressHallSwapCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public IngressHallSwapCard() {
+    public IngressHallSwapCard(CardManager cardManager) {
+        this.manager=cardManager;
     }
 
     /**

@@ -16,7 +16,7 @@ import java.util.*;
 public class CardManager {
 
     /**
-     * Constructor who receive the reference to motherNature,Players list, professorManager, islandManager and the Bag
+     * Constructor who receive the reference to motherNature, Players list, professorManager, islandManager and the Bag
      */
     public CardManager(InfluenceManager influenceManager, IslandManager islandManager, ProfessorManager professorManager, LinkedList<Player> playerList, Bag bag) {
         this.influenceManager = influenceManager;
@@ -24,18 +24,18 @@ public class CardManager {
         this.islandManager = islandManager;
         this.playerList=new ArrayList<>(playerList);
         this.bag=bag;
-        expertCards.add(new ColorInfluenceCard());
-        expertCards.add(new DenyCard());
-        expertCards.add(new HallBagSwapCard());
-        expertCards.add(new IngressCardSwapCard(this.bag));
-        expertCards.add(new IngressHallSwapCard());
-        expertCards.add(new IslandInfluenceCard());
-        expertCards.add(new ProfessorControlCard());
-        expertCards.add(new StudentToHallCard(this.bag));
-        expertCards.add(new StudentToIslandCard());
-        expertCards.add(new TowerInfluenceCard());
-        expertCards.add(new TwoInfluenceCard());
-        expertCards.add(new TwoJumpCard());
+        expertCards.add(new ColorInfluenceCard(this));
+        expertCards.add(new DenyCard(this));
+        expertCards.add(new HallBagSwapCard(this));
+        expertCards.add(new IngressCardSwapCard(this));
+        expertCards.add(new IngressHallSwapCard(this));
+        expertCards.add(new IslandInfluenceCard(this));
+        expertCards.add(new ProfessorControlCard(this));
+        expertCards.add(new StudentToHallCard(this));
+        expertCards.add(new StudentToIslandCard(this));
+        expertCards.add(new TowerInfluenceCard(this));
+        expertCards.add(new TwoInfluenceCard(this));
+        expertCards.add(new TwoJumpCard(this));
     }
 
     /**

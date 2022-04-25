@@ -105,7 +105,7 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private IslandManager islandManager=new IslandManager();
+    private IslandManager islandManager=new IslandManager(motherNature);
 
     /**
      *
