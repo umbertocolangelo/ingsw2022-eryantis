@@ -64,7 +64,7 @@ public class IngressHallSwapCard implements ExpertCard {
      */
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     /**
@@ -73,7 +73,7 @@ public class IngressHallSwapCard implements ExpertCard {
      */
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 
 }

@@ -60,7 +60,7 @@ public class TwoInfluenceCard implements ExpertCard {
      */
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     /**
@@ -69,7 +69,7 @@ public class TwoInfluenceCard implements ExpertCard {
      */
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 
 }

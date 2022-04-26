@@ -204,7 +204,9 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
      *
      */
     public LinkedList<Island> getIslandGroupElements() {
-        return null;
+        LinkedList<Island> list = new LinkedList<>();
+        list.add(this);
+        return list;
     }
 
     /**
@@ -213,4 +215,9 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     public String getId() {
         return this.id;
     }
+
+    /**
+     *
+     */
+    public void setId(String id) { this.id = id; }
 }

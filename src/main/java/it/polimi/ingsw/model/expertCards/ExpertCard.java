@@ -11,7 +11,7 @@ public interface ExpertCard {
      * @return
      */
     public Integer getCost();
-
+    
     /**
      *
      */

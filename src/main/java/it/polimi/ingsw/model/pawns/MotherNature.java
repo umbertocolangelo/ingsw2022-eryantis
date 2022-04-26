@@ -36,11 +36,6 @@ public class MotherNature implements PlaceableObject {
     private IslandInterface island;
 
     /**
-     *
-     */
-    private InfluenceCalculator influence;
-
-    /**
      * @return the Island/IslandGroup MotherNature is currently on
      */
     public IslandInterface getIsland() {
@@ -73,7 +68,5 @@ public class MotherNature implements PlaceableObject {
      * @return id
      */
     public String getId() { return this.id; }
-
-    public InfluenceCalculator getInfluence() {return this.influence;}
 
 }

@@ -38,7 +38,7 @@ public class ColorInfluenceCard implements ExpertCard {
     private Color color;
 
     /**
-     * @param color
+     *
      */
     public void apply(Color color) {
         manager.getInfluenceManager().setColorInfluence(color);
@@ -65,7 +65,7 @@ public class ColorInfluenceCard implements ExpertCard {
      */
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     /**
@@ -74,7 +74,7 @@ public class ColorInfluenceCard implements ExpertCard {
      */
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 
 }

@@ -35,12 +35,9 @@ public class TwoJumpCard implements ExpertCard {
     private CardManager manager;
 
     /**
-     * @param currentAssistantCard is the value of current assistant card played
      * this appliance enables to move motherNature up to 2 more position and sets the new motherNature position
      */
-    public void apply(Integer currentAssistantCard) {
-        Integer jumps = currentAssistantCard+2;
-        manager.getIslandManager().nextIsland(jumps);
+    public void apply() {
         incrementCost();
     }
 
@@ -64,7 +61,7 @@ public class TwoJumpCard implements ExpertCard {
      */
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     /**
@@ -73,7 +70,7 @@ public class TwoJumpCard implements ExpertCard {
      */
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 
 }

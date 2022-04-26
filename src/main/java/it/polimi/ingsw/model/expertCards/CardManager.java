@@ -24,7 +24,7 @@ public class CardManager {
         this.islandManager = islandManager;
         this.playerList=new ArrayList<>(playerList);
         this.bag=bag;
-        this.expertCards =  new LinkedList<ExpertCard>(getThreeExpertCards());
+        this.expertCards =  new LinkedList<>(getThreeExpertCards());
 
     }
 
@@ -140,4 +140,13 @@ public class CardManager {
      * @return expert cards usable in this game
      */
     public LinkedList<ExpertCard> getDeck() {return this.expertCards;}
+
+    /**
+     *
+     */
+    public void setExpertCards(ExpertCard expertCard) {
+        this.expertCards.add(expertCard);
+        this.currentCard = expertCard;
+    }
+
 }

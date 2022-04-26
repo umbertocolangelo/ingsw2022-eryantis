@@ -48,7 +48,7 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent {
     /**
      * 
      */
-    public void apply(Student student) {
+    public void apply() {
         incrementCost();
     }
 

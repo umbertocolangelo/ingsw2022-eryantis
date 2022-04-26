@@ -88,5 +88,9 @@ public class ProfessorManager {
         strategy = new EqualStrategy();
     }
 
+    /**
+     * only used in tests
+     */
+    public ProfessorStrategy getStrategy() {return this.strategy;}
 }
 

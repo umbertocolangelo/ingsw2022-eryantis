@@ -153,9 +153,11 @@ public class IslandManager {
     private void islandsUpdate(Integer curr) {
         IslandGroup newGroup = new IslandGroup();
         if (!islands.get(curr).isGrouped()) {
-            setNewGroup(newGroup, (Island) islands.get(curr));
+            Island tempIsland = (Island) islands.get(curr);
+            setNewGroup(newGroup, tempIsland);
         } else {
-            setNewGroup(newGroup, (IslandGroup) islands.get(curr));
+            IslandGroup tempIslandGroup = (IslandGroup) islands.get(curr);
+            setNewGroup(newGroup, tempIslandGroup);
         }
         for (int i = 0; i < islands.size(); i++) {
             if (islands.get(i).equals(newGroup.getIslandGroupElements().get(0))) {
@@ -172,19 +174,19 @@ public class IslandManager {
      * sets in islandGroup all islandInterface elements interested in the same island join
      *
      * @param newIslandGroup is the new group in which are set oldIsland and its right element in islands list
-     * @param oldIsland      is the element in the IslandManager islands that will be replaced by newIslandGroup
+     * @param firstIsland      is the element in the IslandManager islands that will be replaced by newIslandGroup
      */
-    private void setNewGroup(IslandGroup newIslandGroup, Island oldIsland) {
+    private void setNewGroup(IslandGroup newIslandGroup, Island firstIsland) {
 
-        if (!rightIsland(oldIsland).isGrouped()) {
-            oldIsland.setIsGrouped();
-            rightIsland(oldIsland).setIsGrouped();
-            newIslandGroup.addIsland(oldIsland);
-            newIslandGroup.addIsland((Island) rightIsland(oldIsland));
+        if (!rightIsland(firstIsland).isGrouped()) {
+            firstIsland.setIsGrouped();
+            rightIsland(firstIsland).setIsGrouped();
+            newIslandGroup.addIsland(firstIsland);
+            newIslandGroup.addIsland((Island) rightIsland(firstIsland));
         } else {
-            oldIsland.setIsGrouped();
-            newIslandGroup.addIsland(oldIsland);
-            newIslandGroup.addIslandGroup((IslandGroup) rightIsland(oldIsland));
+            firstIsland.setIsGrouped();
+            newIslandGroup.addIsland(firstIsland);
+            newIslandGroup.addIslandGroup((IslandGroup) rightIsland(firstIsland));
         }
     }
 
@@ -192,20 +194,20 @@ public class IslandManager {
      * sets in islandGroup all islandInterface elements interested in the same island join
      *
      * @param newIslandGroup is the new group in which are set oldIslandGroup and its right element in islands list
-     * @param oldIslandGroup is the element in the old IslandManager islands that will be replaced by newIslandGroup
+     * @param firstIslandGroup is the element in the old IslandManager islands that will be replaced by newIslandGroup
      */
-    private void setNewGroup(IslandGroup newIslandGroup, IslandGroup oldIslandGroup) {
+    private void setNewGroup(IslandGroup newIslandGroup, IslandGroup firstIslandGroup) {
 
-        if (!rightIsland(oldIslandGroup).isGrouped()) {
-            rightIsland(oldIslandGroup).setIsGrouped();
-            newIslandGroup.addIslandGroup(oldIslandGroup);
+        if (!rightIsland(firstIslandGroup).isGrouped()) {
+            rightIsland(firstIslandGroup).setIsGrouped();
+            newIslandGroup.addIslandGroup(firstIslandGroup);
             Island tempIsland;
-            tempIsland = (Island) rightIsland(oldIslandGroup);
+            tempIsland = (Island) rightIsland(firstIslandGroup);
             newIslandGroup.addIsland(tempIsland);
         } else {
-            newIslandGroup.addIslandGroup(oldIslandGroup);
+            newIslandGroup.addIslandGroup(firstIslandGroup);
             IslandGroup tempGroup;
-            tempGroup = (IslandGroup) rightIsland(oldIslandGroup);
+            tempGroup = (IslandGroup) rightIsland(firstIslandGroup);
             newIslandGroup.addIslandGroup(tempGroup);
         }
     }
@@ -214,20 +216,20 @@ public class IslandManager {
      * used only for test
      *
      * @param newIslandGroup
-     * @param oldIsland
+     * @param island
      */
-    public void setNewGroupTest(IslandGroup newIslandGroup, Island oldIsland) {
-        setNewGroup(newIslandGroup, oldIsland);
+    public void setNewGroupTest(IslandGroup newIslandGroup, Island island) {
+        setNewGroup(newIslandGroup, island);
     }
 
     /**
      * used only for test
      *
      * @param newIslandGroup
-     * @param oldIslandGroup
+     * @param islandGroup
      */
-    public void setNewGroupTest(IslandGroup newIslandGroup, IslandGroup oldIslandGroup) {
-        setNewGroup(newIslandGroup, oldIslandGroup);
+    public void setNewGroupTest(IslandGroup newIslandGroup, IslandGroup islandGroup) {
+        setNewGroup(newIslandGroup, islandGroup);
     }
 
     /**

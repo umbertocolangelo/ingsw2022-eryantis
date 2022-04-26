@@ -130,11 +130,21 @@ public class IslandGroup implements IslandInterface {
                 island.addTower(tower);
                 return;
             }
-
-
         }
-
     }
 
+    /**
+     * @return id
+     */
+    public String getId() {
+        return this.id;
+    }
+
+    /**
+     *
+     */
+    public void setId(String id) {
+        this.id = id;
+    }
 
 }

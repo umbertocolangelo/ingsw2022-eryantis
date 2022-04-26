@@ -72,7 +72,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
      */
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     /**
@@ -80,7 +80,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
      */
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 
     /**

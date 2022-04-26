@@ -29,7 +29,7 @@ public class Student implements PlaceableObject {
     /**
      * 
      */
-    private String id;
+    private static String id;
 
     /**
      * @return the color of the student

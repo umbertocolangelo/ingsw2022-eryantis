@@ -43,7 +43,7 @@ public class DenyCard implements ExpertCard {
     public void apply(Island island) {
         if (denyTokens>0) {
             island.setDeny();
-            denyTokens -= 1;
+            this.denyTokens = denyTokens-1;
             incrementCost();
         }
     }
@@ -51,9 +51,14 @@ public class DenyCard implements ExpertCard {
     /**
      * Adds a token
      */
-    public void addToken(){
-        denyTokens += 1;
+    public void addToken() {
+        this.denyTokens = denyTokens+1;
     }
+
+    /**
+     *
+     */
+    public Integer getDenyTokens() {return this.denyTokens;}
 
     /**
      * @return
@@ -75,7 +80,7 @@ public class DenyCard implements ExpertCard {
      */
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     /**
@@ -84,7 +89,7 @@ public class DenyCard implements ExpertCard {
      */
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 
 }

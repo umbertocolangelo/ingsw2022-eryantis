@@ -102,4 +102,16 @@ public class InfluenceManager {
         }
 
     }
+
+    /**
+     * used only in tests
+     * @return
+     */
+    public MotherNature getMotherNature() {return this.motherNature;}
+
+    /**
+     * used only in tests
+     */
+    public InfluenceCalculator getInfluence() {return this.influence;}
+
 }

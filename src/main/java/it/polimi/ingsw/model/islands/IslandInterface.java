@@ -26,6 +26,7 @@ public interface IslandInterface {
      *
      */
     public boolean getDeny();
+
     /**
      *
      */
@@ -73,5 +74,6 @@ public interface IslandInterface {
      *
      */
     public LinkedList<Island> getIslandGroupElements();
+
 
 }

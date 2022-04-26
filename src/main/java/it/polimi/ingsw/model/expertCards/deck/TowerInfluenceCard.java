@@ -59,7 +59,7 @@ public class TowerInfluenceCard implements ExpertCard {
      */
     @Override
     public String getId() {
-        return null;
+        return this.id;
     }
 
     /**
@@ -68,7 +68,7 @@ public class TowerInfluenceCard implements ExpertCard {
      */
     @Override
     public void setId(String id) {
-
+        this.id = id;
     }
 
 }
