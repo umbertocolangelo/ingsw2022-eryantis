@@ -1,10 +1,9 @@
 package it.polimi.ingsw.model.rounds;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.expertCards.deck.*;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Student;
@@ -26,8 +25,13 @@ public class ActionRound implements RoundInterface {
         this.game.setCurrentPlayer(this.game.getOrderedPLayerList().getFirst());
         this.currentPlayer=this.game.getCurrentPlayer();
         this.currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
+        this.game.getCardManager().setCurrentCard(null);
 
     }
+    /**
+     * Keep the track if we already played a card in this round
+     */
+    private Boolean cardAlreadyPlayed=false;
 
     /**
      *Keep the reference to the current player
@@ -53,6 +57,10 @@ public class ActionRound implements RoundInterface {
     /**
      *
      */
+     public LinkedList<Cloud> clouds= new LinkedList<>();
+    /**
+     *
+     */
     private void checkWinner() {
         // TODO implement here
     }
@@ -64,11 +72,18 @@ public class ActionRound implements RoundInterface {
     @Override
     public Boolean checkRoundEnded() {
         if(this.game.getOrderedPLayerList().isEmpty()) {
-            LinkedList<Player> players=this.game.getOrderedPLayerList();
-            players.removeFirst();
-            this.game.setOrderedPLayerList(players);
+            /**
+             *Resetto le clouds, noin sono sicuro del due o 3 giocatori
+             */
+            clouds=game.getClouds();
+            for (int j = 0; j < game.getClouds().size(); j++) {
+                for (int i = 0; i < game.getClouds().size(); i++)
+                    clouds.get(j).addStudent(game.getBag().newStudent());
+            }
+            game.setCloud(clouds);
             this.game.setRound(this.game.setPianificationnRoundState());
-        return true;
+                return true;
+
         }
         if(this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD){
             LinkedList<Player> players=this.game.getOrderedPLayerList();
@@ -119,8 +134,11 @@ public class ActionRound implements RoundInterface {
      * @return
      */
     public Boolean moveMotherNature(Integer jumps) {
-        //Non capisco come funziona se le isole sono raggruppate
-        return null;
+       if(currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps)
+        return false;
+       else{
+           return true;
+       }
     }
 
     /**
@@ -136,47 +154,99 @@ public class ActionRound implements RoundInterface {
      * @param expertCard        We receive the expertCard and called the method needed for each expertCard
      * @return
      */
-    public Boolean playExpertCard(ExpertCard expertCard) {
-       game.getCardManager().setCurrentCard(expertCard);
-        currentPlayer.setCoin(-(expertCard.getCost()));
-       if(expertCard.getId().equals("4")) {
-           this.game.setPreviousRound(this);
-
-           this.game.setRound(this.game.setIngressCardSwapActionRound());
-           return true;
-       }
-     if(expertCard.getId().equals("5")){
-         game.setPreviousRound(this);
-         game.setRound(game.setIngressHallSwapState());
-         return true;
-     }
-        if(expertCard.getId().equals("8")){
-            game.setPreviousRound(this);
-            game.setRound(game.setStudentToHallState());
-            return true;
-        }
-        if(expertCard.getId().equals("9")){
+    public Boolean playExpertCard(ExpertCard expertCard,String string) {
+        if(expertCard.getCost()>currentPlayer.getCoins() || cardAlreadyPlayed) //Non si possono giocare più di una carta per round
+            return false;
+        cardAlreadyPlayed=true; //Setto che ho giocato una carta
+        game.getCardManager().setCurrentCard(expertCard);
+        this.currentPlayer.setCoin(-(expertCard.getCost()));
+        if(expertCard.getId().equals("1")){
+            StudentToIslandCard expertCard1=(StudentToIslandCard) game.getCardManager().getCurrentCard();
+            expertCard1.apply();
             game.setPreviousRound(this);
             game.setRound(this.game.setStudentToIslandState());
             return true;
         }
-        if(expertCard.getId().equals("3")){
-            expertMoveStudentToBag(this.game,Color.RED);
-            //Dovremmo mettere un attributo del colore degli studenti sulla carta
+        if (expertCard.getId().equals("2"))
+        {
+            ProfessorControlCard expertCard1= (ProfessorControlCard) game.getCardManager().getCurrentCard();
+            expertCard1.apply();
             return true;
         }
+        if(expertCard.getId().equals("3"))
+        {   Island island=new Island(); //lo chiediamo a id manager
+            IslandInfluenceCard islandInfluenceCard=(IslandInfluenceCard) game.getCardManager().getCurrentCard();
+             islandInfluenceCard.apply(island);
+        }
+        if(expertCard.getId().equals("4"))
+        {
+            TwoJumpCard expertCard1= (TwoJumpCard) game.getCardManager().getCurrentCard();
+            expertCard1.apply();
+            currentPlayer.twoMoreJumps();
+        }
+        if(expertCard.getId().equals("5")){
+            TwoJumpCard twoJumpCard=(TwoJumpCard) game.getCardManager().getCurrentCard();
+            twoJumpCard.apply();
+        }
 
+        if(expertCard.getId().equals("6"))
+        {
+            TowerInfluenceCard expertCard1= (TowerInfluenceCard) game.getCardManager().getCurrentCard();
+            expertCard1.apply();
+            return true;
+        }
+       if(expertCard.getId().equals("7")) {
+          IngressCardSwapCard expertCard1=(IngressCardSwapCard) game.getCardManager().getCurrentCard();
+           expertCard1.apply();
+           this.game.setPreviousRound(this);
+           this.game.setRound(this.game.setIngressCardSwapActionRound());
+           return true;
+       }
+       if(expertCard.getId().equals("8")){
+           Player player=new Player("Bo");
+           TwoInfluenceCard twoInfluenceCard=new TwoInfluenceCard(game.getCardManager());
+           twoInfluenceCard.apply(player);
+       }
+       if(expertCard.getId().equals("9")){
+           Color color= Color.YELLOW;
+           ColorInfluenceCard colorInfluenceCard= (ColorInfluenceCard) game.getCardManager().getCurrentCard();
+           colorInfluenceCard.apply(color);
+
+       }
+
+     if(expertCard.getId().equals("10")){
+        IngressHallSwapCard expertCard1=(IngressHallSwapCard) game.getCardManager().getCurrentCard();
+         expertCard1.apply();
+         game.setPreviousRound(this);
+         game.setRound(game.setIngressHallSwapState());
+         return true;
+     }
+        if(expertCard.getId().equals("11")){
+            StudentToHallCard expertCard1=(StudentToHallCard) game.getCardManager().getCurrentCard();
+            expertCard1.apply();
+            game.setPreviousRound(this);
+            game.setRound(game.setStudentToHallState());
+            return true;
+        }
+        if(expertCard.getId().equals("12")){
+            Color color =Color.RED;
+            HallBagSwapCard expertCard1=(HallBagSwapCard) game.getCardManager().getCurrentCard();
+            expertCard1.apply();
+            this.expertMoveStudentToBag(game,color);
+            return true;
+        }
+        //game.getCardManager().setCurrentCard(null);
         return false;
     }
 
 
     /**
      *
-     * @param game          The reference to the game
+     * @param game
      * @param color         The reference to the color
      */
-     private void expertMoveStudentToBag(Game game, Color color) {
-        LinkedList <Player> players=game.getOrderedPLayerList();
+      private void expertMoveStudentToBag(Game game, Color color) {
+        LinkedList <Player> players= this.game.getOrderedPLayerList();
         for(Player player : players){
             LinkedList<Student> students=player.getSchool().getHall().getLine(color).getStudents();
             for (int i=0 ; i<3 || students.isEmpty();i++){
@@ -184,6 +254,11 @@ public class ActionRound implements RoundInterface {
             }
         }
         this.game.getCardManager().setCurrentCard(null);
+    }
+
+    @Override
+    public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
+        return null;
     }
 
 
@@ -246,6 +321,7 @@ public class ActionRound implements RoundInterface {
         return true;
 
     }
+
 
     /**
      *Return the number of the students moved

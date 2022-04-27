@@ -1,9 +1,7 @@
 package it.polimi.ingsw.model.rounds;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
@@ -96,7 +94,7 @@ public class PianificationRound implements RoundInterface {
         int numOfTheCard=Integer.parseInt(onlyInt);*/
         if(assistantCards.isEmpty())
         {playerListOrdered.add(player);
-            player.setPlayedCard(assistantCard);
+            player.playAssistantCard(assistantCard);
             assistantCards.add(assistantCard);
             return true;
         }
@@ -109,27 +107,29 @@ public class PianificationRound implements RoundInterface {
                 Collections.swap(assistantCards,i,i+1);
                 playerListOrdered.add(i+1,player);
                 Collections.swap(playerListOrdered,i,i+1);
-                player.setPlayedCard(assistantCard);
+                player.playAssistantCard(assistantCard);
                 checkRoundEnded();
                 return true;
             }
         }
         assistantCards.add(assistantCard);
         playerListOrdered.add(player);
-        player.setPlayedCard(assistantCard);
+        player.playAssistantCard(assistantCard);
         checkRoundEnded();
         return true;
 
         /**
          * Manaca l'eccezzione se sono rimaste solo carte uguali da giocare
+         * E' piu comodo tenere play assistant card qui piuttosto che in game
          */
     }
 
     /**
      * @param expertCard
+     * @param string
      * @return
      */
-    public Boolean playExpertCard(ExpertCard expertCard) {
+    public Boolean playExpertCard(ExpertCard expertCard, String string) {
         return null;
     }
 
@@ -141,6 +141,11 @@ public class PianificationRound implements RoundInterface {
      */
     public void expertMoveStudentToBag(Game game, Color color) {
         // TODO implement here
+    }
+
+    @Override
+    public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
+        return null;
     }
 
     /**

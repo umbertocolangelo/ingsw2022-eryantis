@@ -1,12 +1,10 @@
 package it.polimi.ingsw.model.expertCards;
 
-import it.polimi.ingsw.model.calculations.influence.InfluenceCalculator;
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.expertCards.deck.*;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.player.Player;
-import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import java.util.*;
 
@@ -118,7 +116,7 @@ public class CardManager {
         LinkedList<ExpertCard> expertCards = new LinkedList<ExpertCard>();
         expertCards.add(new ColorInfluenceCard(this));
         expertCards.add(new DenyCard(this));
-        expertCards.add(new HallBagSwapCard(this));
+        expertCards.add(new HallBagSwapCard());
         expertCards.add(new IngressCardSwapCard(this));
         expertCards.add(new IngressHallSwapCard(this));
         expertCards.add(new IslandInfluenceCard(this));

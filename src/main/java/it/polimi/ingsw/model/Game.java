@@ -2,11 +2,11 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.MotherNature;
@@ -15,7 +15,6 @@ import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.*;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
-import it.polimi.ingsw.model.expertCards.deck.*;
 
 import java.util.*;
 
@@ -32,36 +31,44 @@ public class Game implements GameInterface {
         this.studentToIslandRound=new StudentToIslandActionRound(this);
         this.ingressCardSwap=new IngressCardSwapActionRound((this));
         this.studentToHallRound= new StudentToHallActionRound(this);
+        this.setUpRound= new SetUpRound(this);
+        setRound(this.setSetUpRound());
+
     }
     /**
      *Kepp the reference to ingressCArdSwap
      */
-    RoundInterface ingressCardSwap;
+    private RoundInterface ingressCardSwap;
 
     /**
      *Keep the reference to ingressHallSwap
      */
-    RoundInterface ingressHallSwap;
+    private RoundInterface ingressHallSwap;
 
     /**
      *Keep the reference to actionRound
      */
-    RoundInterface actionRound;
+    private RoundInterface actionRound;
 
     /**
      *Keep the reference to pianificationRound
      */
-    RoundInterface pianificationRound;
+    private RoundInterface pianificationRound;
 
     /**
      *Keep the reference to studentToIslandRound
      */
-    RoundInterface studentToIslandRound;
+    private RoundInterface studentToIslandRound;
 
     /**
      *Keep the reference to studentToHallRound
      */
-    RoundInterface studentToHallRound;
+    private RoundInterface studentToHallRound;
+
+    /**
+     *Keep the reference to studentToHallRound
+     */
+    private RoundInterface setUpRound;
 
     /**
      *
@@ -81,7 +88,7 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private MotherNature motherNature = new MotherNature();
+    private MotherNature motherNature=new MotherNature();
 
     /**
      *Keep track of the round which is currently on
@@ -98,16 +105,16 @@ public class Game implements GameInterface {
      */
     private Bag bag=new Bag();
 
+    /**
+     *
+     */
+    private InfluenceManager influenceManager=new InfluenceManager(motherNature,pLayerList);
+
 
     /**
      *
      */
     private Lobby lobby;
-
-    /**
-     *
-     */
-    private InfluenceManager influenceManager = new InfluenceManager(motherNature, pLayerList);
 
     /**
      *
@@ -144,8 +151,12 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private void inizializeGame() {
-        // TODO implement here
+    public void inizializeGame() {
+        for(int i = 0; i<pLayerList.size(); i++)
+        this.clouds.add(new Cloud());
+
+
+
     }
 
     /**
@@ -205,6 +216,14 @@ public class Game implements GameInterface {
     /**
      * @param playerNum
      */
+    @Override
+    public void startGame(LinkedList<Player> playerNum) {
+
+    }
+
+    /**
+     * @param playerNum
+     */
     public void startGame(Integer playerNum) {
         // TODO implement here
     }
@@ -250,11 +269,7 @@ public class Game implements GameInterface {
      * @param jumps
      */
     public void moveMotherNature(Integer jumps) {
-        if(this.currentRound.moveMotherNature(jumps)) {
-            this.motherNature.setIsland(this.islandManager.nextIsland(jumps));
-        }
-        if (!this.currentRound.moveMotherNature(jumps))
-            System.out.println("Move not possible");
+        // TODO implement here
     }
 
     /**
@@ -272,10 +287,7 @@ public class Game implements GameInterface {
      * @param expertCard        Play the expert card
      */
     public Boolean playExpertCard(ExpertCard expertCard) {
-        if(expertCard.getCost()>currentPlayer.getCoins())
-            return false;
-        this.currentRound.playExpertCard(expertCard);
-        return true;
+        return this.currentRound.playExpertCard(expertCard, null);
     }
 
     /**
@@ -285,9 +297,9 @@ public class Game implements GameInterface {
     public void expertStudentToIsland(Student student, Island island) {
         if(this.currentRound.expertStudentToIsland(student,island)){
             island.addStudent(student);
-            FixedObjectStudent studentToIsland = (FixedObjectStudent) cardManager.getCurrentCard();
-            studentToIsland.addStudent(this.bag.newStudent());
-            cardManager.setCurrentCard(null);
+            FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
+            expertCard.addStudent(this.bag.newStudent());
+            cardManager.setCurrentCard(null); //questa mossa si può fare una sola volta
         }
     }
 
@@ -296,12 +308,10 @@ public class Game implements GameInterface {
      * @param studentIngress        The student from the ingress
      */
     public void expertIngressCardSwap(Student studentCard, Student studentIngress) {
-
         if(this.currentRound.expertIngressCardSwap(studentCard, studentIngress)) {
-
             this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
-            FixedObjectStudent studentToIsland = (FixedObjectStudent) cardManager.getCurrentCard();
-            studentToIsland.addStudent(studentIngress);
+            FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
+            expertCard.addStudent(studentCard);
         }
 
     }
@@ -324,11 +334,10 @@ public class Game implements GameInterface {
     public void expertStudentToHall(Student student) {
         if(this.currentRound.expertStudentToHall(student)) {
             currentPlayer.getSchool().getHall().addStudent(student);
-            FixedObjectStudent studentToIsland = (FixedObjectStudent) cardManager.getCurrentCard();
-            studentToIsland.addStudent(this.bag.newStudent());
-            cardManager.setCurrentCard(null);
+            FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
+            expertCard.addStudent(this.bag.newStudent());
+            cardManager.setCurrentCard(null); //questa mossa si può fare una sola volta
         }
-
     }
 
     /**
@@ -344,6 +353,11 @@ public class Game implements GameInterface {
         this.currentRound.checkRoundEnded();
     }
 
+
+     //public void expertMoveStudentToBag( Color color) {
+
+    //}
+
     /**
      * @return
      */
@@ -357,6 +371,20 @@ public class Game implements GameInterface {
      */
     public Player getCurrentPlayer() {
         return this.currentPlayer;
+    }
+
+    @Override
+    public Boolean chooseColorAndDeck(PlayerColor color, Wizard wizard) {
+
+        if (this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard))
+        {
+            this.currentPlayer.setPlayerColor(color);
+            currentPlayer.setWizard(wizard);
+            return true;
+        }
+        if (!this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard))
+               return false;
+        return null;
     }
 
     /**
@@ -404,8 +432,6 @@ public class Game implements GameInterface {
         return (ActionRound) this.actionRound;
     }
 
-
-
     /**
      **@return studentToIslandRound Return the studentToIslandRound
      */
@@ -425,6 +451,14 @@ public class Game implements GameInterface {
      */
     public StudentToHallActionRound setStudentToHallState(){
        return (StudentToHallActionRound) this.studentToHallRound;
+    }
+
+    /**
+     *
+     * @return  setUpRound      Return the setUpRound
+     */
+    public SetUpRound setSetUpRound(){
+        return (SetUpRound) this.setUpRound;
     }
 
     /**
@@ -454,4 +488,22 @@ public class Game implements GameInterface {
     public void setPlayerList(LinkedList<Player> players){
         this.pLayerList=players;
     }
+
+    /**
+     *
+     * @return  clouds  A new linked list contenent the clouds
+     */
+    public LinkedList<Cloud> getClouds(){
+        return new LinkedList<>(this.clouds);
+    }
+
+    /**
+     *
+     * @param clouds        Set the clouds
+     */
+    public void setCloud(LinkedList<Cloud> clouds){
+        this.clouds=clouds;
+
+    }
+
 }

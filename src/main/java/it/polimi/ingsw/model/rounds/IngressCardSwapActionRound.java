@@ -2,6 +2,9 @@ package it.polimi.ingsw.model.rounds;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
@@ -75,10 +78,11 @@ public class IngressCardSwapActionRound  implements RoundInterface {
 
     /**
      * @param expertCard
+     * @param string
      * @return
      */
     @Override
-    public Boolean playExpertCard(ExpertCard expertCard) {
+    public Boolean playExpertCard(ExpertCard expertCard, String string) {
         return null;
     }
 
@@ -117,6 +121,7 @@ public class IngressCardSwapActionRound  implements RoundInterface {
 
     public Boolean finishExpertMove() {
         studentsMoved=0;
+        this.game.getCardManager().setCurrentCard(null);
         this.game.setRound(this.game.getPreviousRound());
         return true;
     }
@@ -146,6 +151,17 @@ public class IngressCardSwapActionRound  implements RoundInterface {
      */
     @Override
     public Boolean chooseCloud(Cloud cloud) {
+        return null;
+    }
+
+
+
+    private void expertMoveStudentToBag(Game game, Color color) {
+
+    }
+
+    @Override
+    public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
     }
 }

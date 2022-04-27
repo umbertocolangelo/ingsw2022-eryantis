@@ -125,12 +125,15 @@ public class ActionRoundTest {
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
-        game.setRound(new ActionRound(game));
-        HallBagSwapCard hallBag = new HallBagSwapCard(game.getCardManager());
-        hallBag.setId("3");
+        game.setRound(game.setActionRoundState());
+        HallBagSwapCard hallBag = new HallBagSwapCard();
+        hallBag.setId("12");
         game.getCurrentPlayer().setCoin(5);
         game.playExpertCard(hallBag);
+
+        System.out.println(player.getSchool().getHall().getLine(Color.RED).getStudents().size());
         assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
 
     }
+
 }

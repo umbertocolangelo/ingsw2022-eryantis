@@ -176,7 +176,8 @@ public class Player {
      * 
      */
     public void twoMoreJumps() {
-        // TODO implement here
+        this.cardValue=cardValue+2;
+
     }
 
     /**
@@ -201,12 +202,10 @@ public class Player {
         return null;
     }
 
-    /**
-     *
-     */
-    public void setPlayedCard(AssistantCard assistantCard){
-        this.playedCard=assistantCard;
-
+    public void setWizard(Wizard wizard){
+        this.wizard=wizard;
     }
+
+
 
 }

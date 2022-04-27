@@ -1,42 +1,67 @@
 package it.polimi.ingsw.model.rounds;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.Wizard;
+import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
-/**
- * 
- */
-public class IngressHallSwapActionRound implements RoundInterface {
+import java.util.Collections;
+import java.util.LinkedList;
 
+public class SetUpRound implements  RoundInterface{
     /**
-     * Default constructor
+     *
+     * @param game Pass the referement of game
      */
-    public IngressHallSwapActionRound(Game game) {
+    public SetUpRound(Game game) {
         this.game=game;
+        playersList=this.game.getPlayerList();
     }
     /**
      *
      */
-    Game game;
+    private LinkedList<Wizard> wizards=new LinkedList<>();
 
     /**
      *
      */
-    Integer studentsMoved=0;
+    private LinkedList<PlayerColor> colors=new LinkedList<>();
 
 
+    /**
+     *
+     */
+    private Game game;
+    /**
+     *
+     */
+    private LinkedList<Player> playersList=new LinkedList<Player>();
+    /**
+     * Card played
+     */
+    private LinkedList<AssistantCard> assistantCards=new LinkedList<>();
+    /**
+     *
+     */
+    private LinkedList<Player> playersListOrdered=new LinkedList<>();
+    /**
+     *
+     * @return
+     */
     @Override
     public Boolean checkRoundEnded() {
-        return null;
+        if (playersListOrdered.size()==playersList.size()) {
+            Collections.shuffle(playersListOrdered);
+            game.setOrderedPLayerList(playersListOrdered);
+            this.game.setRound(game.setPianificationnRoundState());
+            game.inizializeGame();
+        }
+        return true;
     }
+
 
     /**
      * @param student
@@ -87,21 +112,6 @@ public class IngressHallSwapActionRound implements RoundInterface {
     }
 
     /**
-     *
-     * @param game
-     * @param color
-     */
-
-    public void expertMoveStudentToBag(Game game, Color color) {
-
-    }
-
-    @Override
-    public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
-        return null;
-    }
-
-    /**
      * @param student
      * @param island
      * @return
@@ -122,29 +132,21 @@ public class IngressHallSwapActionRound implements RoundInterface {
     }
 
     /**
-     *Called by the controller if he wants to terminate the move
      * @return
      */
-
+    @Override
     public Boolean finishExpertMove() {
-        studentsMoved=0;
-        this.game.getCardManager().setCurrentCard(null);
-        this.game.setRound(this.game.getPreviousRound());
-        return true;
+        return null;
     }
 
     /**
-     * @param studentHall       The student present in the hall
-     * @param studentIngress    The student present in the Ingress
-     * @return                  True if the move is possible
+     * @param studentHall
+     * @param studentIngress
+     * @return
      */
     @Override
     public Boolean expertIngressHallSwap(Student studentHall, Student studentIngress) {
-        studentsMoved++;
-        if(studentsMoved==2){
-            return finishExpertMove();
-        }
-    return true;
+        return null;
     }
 
     /**
@@ -156,7 +158,6 @@ public class IngressHallSwapActionRound implements RoundInterface {
         return null;
     }
 
-
     /**
      * @param cloud
      * @return
@@ -165,4 +166,25 @@ public class IngressHallSwapActionRound implements RoundInterface {
     public Boolean chooseCloud(Cloud cloud) {
         return null;
     }
+
+    private void expertMoveStudentToBag(Game game, Color color) {
+
+    }
+
+    /**
+     *
+     * @param player        The player who is choosing
+     * @param color         The color we want
+     * @param wizard        The wizard we want
+     * @return              True if the parameters are acceptable, false instead
+     */
+    public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
+        if (colors.contains(color) || wizards.contains(wizard) || player.getPlayerPhase() != PlayerPhase.SET_UP_PHASE)
+            return false;
+        wizards.add(wizard);
+        colors.add(color);
+        playersListOrdered.add(player);
+        return checkRoundEnded();
+    }
+
 }

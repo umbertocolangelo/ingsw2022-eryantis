@@ -29,7 +29,7 @@ public class HallBagSwapCardTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        HallBagSwapCard hallBagSwapCard = new HallBagSwapCard(cardManager);
+        HallBagSwapCard hallBagSwapCard = new HallBagSwapCard();
         hallBagSwapCard.apply();
         assertTrue(hallBagSwapCard.getCost() == 4);
     }

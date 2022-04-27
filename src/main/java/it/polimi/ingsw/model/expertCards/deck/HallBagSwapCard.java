@@ -2,8 +2,6 @@ package it.polimi.ingsw.model.expertCards.deck;
 
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.pawns.Student;
 
 /**
  * carta #12
@@ -13,8 +11,8 @@ public class HallBagSwapCard implements ExpertCard {
     /**
      * Default constructor
      */
-    public HallBagSwapCard(CardManager cardManager) {
-        this.manager=cardManager;
+    public HallBagSwapCard() {
+
     }
 
     /**

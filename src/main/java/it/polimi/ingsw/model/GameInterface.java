@@ -1,10 +1,15 @@
 package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumerations.AssistantCard;
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
+
+import java.util.LinkedList;
 
 /**
  * 
@@ -20,7 +25,7 @@ public interface GameInterface {
     /**
      * @param playerNum
      */
-    public void startGame(Integer playerNum);
+    public void startGame(LinkedList<Player> playerNum);
 
     /**
      * 
@@ -82,6 +87,8 @@ public interface GameInterface {
      */
     void chooseCloud(Cloud cloud);
 
+
+
     /**
      * @return
      */
@@ -91,5 +98,13 @@ public interface GameInterface {
      * @return
      */
     public Player getCurrentPlayer();
+
+    /**
+     *
+     * @param color
+     * @param wizard
+     * @return
+     */
+    public Boolean chooseColorAndDeck(PlayerColor color, Wizard wizard);
 
 }
