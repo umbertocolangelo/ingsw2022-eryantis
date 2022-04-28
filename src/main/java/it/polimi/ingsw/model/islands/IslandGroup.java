@@ -34,14 +34,13 @@ public class IslandGroup implements IslandInterface {
     private LinkedList<Island> islandGroup = new LinkedList<Island>();
 
     /**
-     * @param newIsland indicates the new Island element of this islandGroup
+     * @param islandInterface indicates the new Island element of this islandGroup
      */
-    public void addIsland(Island newIsland) {
-        islandGroup.add(newIsland);
-    }
-
-    public void addIslandGroup (IslandGroup newIslandGroup) {
-        for (Island island: newIslandGroup.getIslandGroupElements()) { islandGroup.add(island); }
+    public void addIslandInterface(IslandInterface islandInterface) {
+        for (Island island: islandInterface.getIslandGroupElements()) {
+            this.islandGroup.add(island);
+            island.setIsGrouped();
+        }
     }
 
     /**

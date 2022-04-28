@@ -26,12 +26,34 @@ public class IslandManagerTest {
         Tower tower1 = new Tower(PlayerColor.WHITE);
         Tower tower2 = new Tower(PlayerColor.WHITE);
         Tower tower3 = new Tower(PlayerColor.BLACK);
-        IslandGroup islandGroup = new IslandGroup();
-        islandManager.getIslands().get(0).getTowers().add(tower1);
-        islandManager.getIslands().get(1).getTowers().add(tower2);
-        islandManager.getIslands().get(2).getTowers().add(tower2);
-        islandManager.getIslands().get(3).getTowers().add(tower1);
-        checkGroup();
+        islandManager.getIslands().get(0).addTower(tower1);
+        islandManager.getIslands().get(1).addTower(tower2);
+        islandManager.getIslands().get(2).addTower(tower2);
+        islandManager.getIslands().get(3).addTower(tower1);
+        islandManager.getIslands().get(4).addTower(tower3);
+        islandManager.getIslands().get(11).addTower(tower3);
+        System.out.println("Step 0");
+        System.out.println(islandManager.getIslands().size());
+        for (IslandInterface islandInterface: islandManager.getIslands()) {System.out.println(islandInterface);}
+        System.out.println(islandManager.getIslands().get(0).getInfluenceColor());
+        System.out.println(islandManager.getIslands().get(1).getInfluenceColor());
+        System.out.println(islandManager.getIslands().get(4).getInfluenceColor());
+
+        islandManager.checkGroup(islandManager.getIslands().get(1));
+        System.out.println();
+        System.out.println("Step 1");
+        System.out.println(islandManager.getIslands().size());
+        for (IslandInterface islandInterface: islandManager.getIslands()) {System.out.println(islandInterface);}
+        System.out.println(islandManager.getIslands().get(0).getInfluenceColor());
+        System.out.println(islandManager.getIslands().get(1).getInfluenceColor());
+        System.out.println(islandManager.getIslands().get(3).getInfluenceColor());
+
+        islandManager.checkGroup(islandManager.getIslands().get(1));
+        System.out.println();
+        System.out.println("Step 2");
+        System.out.println(islandManager.getIslands().size());
+        for (IslandInterface islandInterface: islandManager.getIslands()) {System.out.println(islandInterface);}
+
     }
 
     /**T
@@ -51,44 +73,57 @@ public class IslandManagerTest {
     }
 
     /**T
-     * Testing setNewGroup(IslandGroup, Island)
+     * Testing setNewGroup
      */
     @Test
-    public void setNewGroup1() {
+    public void setNewGroup() {
         MotherNature motherNature = new MotherNature();
         IslandManager islandManager = new IslandManager(motherNature);
         IslandGroup islandGroup = new IslandGroup();
-        islandManager.setNewGroupTest(islandGroup, (Island) islandManager.getIslands().get(0));
+        islandManager.setNewGroupTest(islandGroup, islandManager.getIslands().get(0));
         assertTrue(islandGroup.getIslandGroupElements().contains(islandManager.getIslands().get(0)));
         assertTrue(islandGroup.getIslandGroupElements().contains(islandManager.getIslands().get(1)));
         assertTrue(!islandGroup.getIslandGroupElements().contains(islandManager.getIslands().get(2)));
-    }
-
-    /**T
-     * Testing setNewGroup(IslandGroup, IslandGroup)
-     */
-    @Test
-    public void setNewGroup2() {
-        MotherNature motherNature = new MotherNature();
-        IslandManager islandManager = new IslandManager(motherNature);
-        IslandGroup islandGroup = new IslandGroup();
         IslandGroup islandGroup1 = new IslandGroup();
-        islandManager.setNewGroupTest(islandGroup1, (Island) islandManager.getIslands().get(0));
-        assertTrue(islandGroup1.getIslandGroupElements().contains(islandManager.getIslands().get(0)));
-        assertTrue(islandGroup1.getIslandGroupElements().contains(islandManager.getIslands().get(1)));
-        assertTrue(!islandGroup1.getIslandGroupElements().contains(islandManager.getIslands().get(2)));
-        assertTrue(islandGroup1.getIslandGroupElements().get(0).isGrouped());
+        IslandInterface temp0 = islandManager.getIslands().get(0);
         islandManager.getIslands().remove(0);
-        islandManager.getIslands().remove(1);
-        islandManager.getIslands().add(0, islandGroup1);
+        IslandInterface temp1 = islandManager.getIslands().get(0);
+        islandManager.getIslands().remove(0);
+        islandManager.getIslands().add(0, islandGroup);
+        islandGroup1.addIslandInterface(islandManager.getIslands().get(1));
+        islandGroup1.addIslandInterface(islandManager.getIslands().get(2));
+        /*
         System.out.println(islandManager.getIslands().size());
-        System.out.println(islandManager.getIslands().get(0));
-        System.out.println(islandManager.getIslands().get(1));
+        for (int i=0; i<islandManager.getIslands().size(); i++) {
+            System.out.println(islandManager.getIslands().get(i));
+        }
+         */
+        IslandInterface temp2 = islandManager.getIslands().get(1);
+        islandManager.getIslands().remove(1);
+        IslandInterface temp3 = islandManager.getIslands().get(1);
+        islandManager.getIslands().remove(1);
+        islandManager.getIslands().add(1, islandGroup1);
+        /*
+        System.out.println();
+        System.out.println(islandManager.getIslands().size());
+        for (int i=0; i<islandManager.getIslands().size(); i++) {
+            System.out.println(islandManager.getIslands().get(i));
+        }
+         */
+        assertTrue(islandGroup1.getIslandGroupElements().get(0).equals(temp2));
         islandManager.setNewGroupTest(islandGroup, islandGroup1);
-        //assertTrue(islandGroup.getIslandGroupElement().get(0).isGrouped());
-        //assertTrue(islandGroup.getIslandGroupElement().get(1).isGrouped());
-        //assertTrue(islandGroup.getIslandGroupElement().get(2).isGrouped());
-        //non capisco perche non va
+        assertTrue(islandGroup.getIslandGroupElements().get(0).equals(temp0));
+        assertTrue(islandGroup.getIslandGroupElements().get(2).equals(temp2));
+        /*
+        System.out.println("IslandGroup");
+        for (Island island: islandGroup.getIslandGroupElements()) {
+            System.out.println(island);
+        }
+        System.out.println("IslandGroup1");
+        for (Island island: islandGroup1.getIslandGroupElements()) {
+            System.out.println(island);
+        }
+         */
     }
 
     /**T
@@ -126,13 +161,61 @@ public class IslandManagerTest {
     public void islandUpdate() {
         MotherNature motherNature = new MotherNature();
         IslandManager islandManager = new IslandManager(motherNature);
-        Island island = new Island();
-        island = (Island) islandManager.getIslands().get(0);
+        System.out.println(islandManager.getIslands().size());
+        for (int i=0; i<islandManager.getIslands().size(); i++) {
+            System.out.println(islandManager.getIslands().get(i));
+        }
+
         islandManager.islandsUpdateTest(0);
+        System.out.println();
+        System.out.println(islandManager.getIslands().size());
+        for (int i=0; i<islandManager.getIslands().size(); i++) {
+            System.out.println(islandManager.getIslands().get(i));
+        }
         assertTrue(islandManager.getIslands().size()==11);
-        //islandManager.islandsUpdateTest(0);
-        //assertTrue(islandManager.getIslands().get(0).getSize()==3);
-        assertTrue(islandManager.getIslands().get(0).getIslandGroupElements().contains(island));
+
+        islandManager.islandsUpdateTest(10);
+        System.out.println();
+        System.out.println(islandManager.getIslands().size());
+        for (int i=0; i<islandManager.getIslands().size(); i++) {
+            System.out.println(islandManager.getIslands().get(i));
+        }
+        assertTrue(islandManager.getIslands().size()==10);
+
+        islandManager.islandsUpdateTest(0);
+        System.out.println();
+        System.out.println(islandManager.getIslands().size());
+        for (int i=0; i<islandManager.getIslands().size(); i++) {
+            System.out.println(islandManager.getIslands().get(i));
+        }
+        assertTrue(islandManager.getIslands().size()==9);
+
+        islandManager.islandsUpdateTest(0);
+        System.out.println();
+        System.out.println(islandManager.getIslands().size());
+        for (int i=0; i<islandManager.getIslands().size(); i++) {
+            System.out.println(islandManager.getIslands().get(i));
+        }
+        assertTrue(islandManager.getIslands().size()==8);
+
     }
+
+    /**
+     * Testing nextIsland
+     */
+    @Test
+    public void nextIslandTest() {
+
+        MotherNature motherNature = new MotherNature();
+        IslandManager islandManager = new IslandManager(motherNature);
+        motherNature.setIsland(islandManager.getIslands().get(0));
+        motherNature.setIsland(islandManager.nextIsland(5));
+        assertTrue(motherNature.getIsland()==islandManager.getIslands().get(5));
+        motherNature.setIsland(islandManager.getIslands().get(10));
+        motherNature.setIsland(islandManager.nextIsland(4));
+        assertTrue(motherNature.getIsland()==islandManager.getIslands().get(2));
+
+    }
+
 }
 
