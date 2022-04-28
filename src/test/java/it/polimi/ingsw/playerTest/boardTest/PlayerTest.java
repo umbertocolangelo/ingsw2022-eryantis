@@ -1,4 +1,4 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.playerTest.boardTest;
 
 import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.Color;

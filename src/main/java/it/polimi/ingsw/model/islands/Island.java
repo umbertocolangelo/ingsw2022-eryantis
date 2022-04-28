@@ -40,11 +40,6 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     /**
      *
      */
-    private Island nextIsland;
-
-    /**
-     *
-     */
     private Boolean isGrouped = false;
 
     /**
@@ -121,7 +116,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
      * @return LinkedList<Tower>        Return the LinkedList of Towers
      */
     public LinkedList<Tower> getTowers() {
-        return new LinkedList<>(this.towers);
+        return this.towers;
     }
 
     /**
@@ -220,4 +215,5 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
      *
      */
     public void setId(String id) { this.id = id; }
+
 }

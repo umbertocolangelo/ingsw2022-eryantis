@@ -20,8 +20,9 @@ public class ActionRound implements RoundInterface {
     /**
      * Every time is called he set the current player, the player phase e change the player getting from the orderedlist
      */
-    public ActionRound(Game game) {
+    public ActionRound(Game game, Integer maxStudents) {
         this.game=game;
+        this.maxStudents=maxStudents;
         this.game.setCurrentPlayer(this.game.getOrderedPLayerList().getFirst());
         this.currentPlayer=this.game.getCurrentPlayer();
         this.currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
@@ -43,7 +44,10 @@ public class ActionRound implements RoundInterface {
      */
     private Integer studentsMoved = 0;
 
-
+    /**
+     *
+     */
+    private Integer maxStudents;
     /**
      *
      */
@@ -75,21 +79,21 @@ public class ActionRound implements RoundInterface {
             /**
              *Resetto le clouds, noin sono sicuro del due o 3 giocatori
              */
-            clouds=game.getClouds();
-            for (int j = 0; j < game.getClouds().size(); j++) {
-                for (int i = 0; i < game.getClouds().size(); i++)
-                    clouds.get(j).addStudent(game.getBag().newStudent());
+            for(int i = 0; i< game.getPlayerList().size(); i++) {
+                Cloud cloud=new Cloud();
+                this.clouds.add(cloud);
+                for(int j=0;(maxStudents==4 && j<4) || (maxStudents==3 && j<3);j++)
+                    this.clouds.get(i).addStudent(this.game.getBag().newStudent());
             }
             game.setCloud(clouds);
             this.game.setRound(this.game.setPianificationnRoundState());
                 return true;
-
         }
         if(this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD){
             LinkedList<Player> players=this.game.getOrderedPLayerList();
         players.removeFirst();
         this.game.setOrderedPLayerList(players);
-            this.game.setRound(game.setActionRoundState());
+            this.game.setRound(game.setActionRoundState(maxStudents));
 
         return true;
         }
@@ -104,7 +108,7 @@ public class ActionRound implements RoundInterface {
         if(this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
         return false;
         this.studentsMoved++;
-        if(this.studentsMoved==3) {
+        if(this.studentsMoved==maxStudents) {
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
             return true;
         }
@@ -121,7 +125,7 @@ public class ActionRound implements RoundInterface {
         if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
             return false;
         this.studentsMoved++;
-        if(this.studentsMoved==3) {
+        if(this.studentsMoved==maxStudents) {
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
             return true;
         }

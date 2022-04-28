@@ -19,31 +19,20 @@ public class IslandGroupTest {
      * Testing addIsland
      */
     @Test
-    public void addIsland() {
+    public void addIslandInterface() {
         Island island = new Island();
         IslandGroup islandGroup = new IslandGroup();
-        islandGroup.addIsland(island);
-        assertTrue(islandGroup.getIslandGroupElements().contains(island));
-    }
-
-    /**
-     * T
-     * Testing addIslandGroup
-     */
-    @Test
-    public void addIslandGroup() {
-        IslandGroup islandGroup = new IslandGroup();
-        IslandGroup newIslandGroup = new IslandGroup();
+        IslandGroup islandGroup1 = new IslandGroup();
         Island island1 = new Island();
         Island island2 = new Island();
-        Island island3 = new Island();
-        islandGroup.addIsland(island2);
-        newIslandGroup.addIsland(island1);
-        newIslandGroup.addIsland(island3);
-        islandGroup.addIslandGroup(newIslandGroup);
-        for (int i = 0; i < newIslandGroup.getSize(); i++) {
-            assertTrue(islandGroup.getIslandGroupElements().contains(newIslandGroup.getIslandGroupElements().get(i)));
-        }
+        islandGroup1.addIslandInterface(island1);
+        islandGroup1.addIslandInterface(island2);
+        islandGroup.addIslandInterface(island);
+        islandGroup.addIslandInterface(islandGroup1);
+        assertTrue(islandGroup.getIslandGroupElements().contains(island));
+        assertTrue(islandGroup.getIslandGroupElements().contains(island1));
+        assertTrue(islandGroup.getIslandGroupElements().contains(island2));
+        assertTrue(islandGroup.getIslandGroupElements().get(2)==island2);
     }
 
     /**
@@ -61,8 +50,8 @@ public class IslandGroupTest {
         island1.addStudent(student1);
         island2.addStudent(student2);
         island2.addStudent(student3);
-        islandGroup.addIsland(island1);
-        islandGroup.addIsland(island2);
+        islandGroup.addIslandInterface(island1);
+        islandGroup.addIslandInterface(island2);
         assertTrue(islandGroup.numOfStudents(Color.YELLOW) == 2);
         assertTrue(islandGroup.numOfStudents(Color.RED) == 1);
     }
@@ -99,9 +88,9 @@ public class IslandGroupTest {
         Island island2 = new Island();
         Island island3 = new Island();
         IslandGroup islandGroup = new IslandGroup();
-        islandGroup.addIsland(island1);
-        islandGroup.addIsland(island3);
-        islandGroup.addIsland(island2);
+        islandGroup.addIslandInterface(island1);
+        islandGroup.addIslandInterface(island3);
+        islandGroup.addIslandInterface(island2);
         assertTrue(islandGroup.numOfTowers() == 3);
     }
 
@@ -118,8 +107,8 @@ public class IslandGroupTest {
         IslandGroup islandGroup = new IslandGroup();
         island1.addTower(tower1);
         island2.addTower(tower2);
-        islandGroup.addIsland(island1);
-        islandGroup.addIsland(island2);
+        islandGroup.addIslandInterface(island1);
+        islandGroup.addIslandInterface(island2);
         assertTrue(islandGroup.getInfluenceColor().equals(PlayerColor.WHITE));
         assertTrue(!islandGroup.getInfluenceColor().equals(PlayerColor.GREY));
     }

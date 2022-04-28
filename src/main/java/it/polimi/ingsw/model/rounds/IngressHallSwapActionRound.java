@@ -86,15 +86,6 @@ public class IngressHallSwapActionRound implements RoundInterface {
         return null;
     }
 
-    /**
-     *
-     * @param game
-     * @param color
-     */
-
-    public void expertMoveStudentToBag(Game game, Color color) {
-
-    }
 
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
