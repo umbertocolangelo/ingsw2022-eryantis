@@ -5,17 +5,13 @@ import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
-import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.expertCards.deck.HallBagSwapCard;
 import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
-import it.polimi.ingsw.model.rounds.ActionRound;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -32,6 +28,8 @@ public class ActionRoundTest {
         LinkedList <Player> lista=new LinkedList<>();
         lista.add(player1);
         lista.add(player);
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
         game.setPlayerList(lista);
         game.setRound(game.setPianificationnRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
@@ -47,7 +45,33 @@ public class ActionRoundTest {
         assertTrue( player1.getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
 
     }
-
+    /**
+     *
+     */
+    @Test
+    public void moveMotherNatureTest(){
+        Player player = new Player("elena");
+        Player player1 = new Player("vittorio");
+        Game game= new Game();
+        LinkedList <Player> lista=new LinkedList<>();
+        lista.add(player1);
+        lista.add(player);
+        game.setPlayerList(lista);
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
+        game.setRound(game.setPianificationnRoundState());
+        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        game.setCurrentPlayer(player1);
+        game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.setCurrentPlayer(player);
+        game.playAssistantCard(AssistantCard.THREE_CARD);
+        player.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
+        game.inizializeGame();
+        Island island= (Island) game.getMotherNature().getIsland();
+        game.moveMotherNature(1);
+        assertTrue((Island) game.getMotherNature().getIsland()==island);
+    }
     /**
      * Testing moveIngressToIsland function
      */
@@ -61,6 +85,8 @@ public class ActionRoundTest {
         lista.add(player1);
         lista.add(player);
         game.setPlayerList(lista);
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
         game.setRound(game.setPianificationnRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
@@ -73,8 +99,6 @@ public class ActionRoundTest {
         player1.getSchool().getIngress().addStudent(student);
         Island island =new Island();
         game.moveStudentIngressToIsland(student,island);
-
-
         assertTrue( island.getStudents().contains(student) && !player1.getSchool().getIngress().getStudents().contains(student));
     }
 
@@ -91,6 +115,8 @@ public class ActionRoundTest {
         lista.add(player1);
         lista.add(player);
         game.setPlayerList(lista);
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
         game.setRound(game.setPianificationnRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
@@ -120,6 +146,7 @@ public class ActionRoundTest {
         game.setCurrentPlayer(player);
         LinkedList<Player> lista=new LinkedList<>();
         lista.add(player);
+        player.setPlayerColor(PlayerColor.WHITE);
         game.setOrderedPLayerList(lista);
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
@@ -130,7 +157,6 @@ public class ActionRoundTest {
         hallBag.setId("12");
         game.getCurrentPlayer().setCoin(5);
         game.playExpertCard(hallBag);
-
         System.out.println(player.getSchool().getHall().getLine(Color.RED).getStudents().size());
         assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
 
