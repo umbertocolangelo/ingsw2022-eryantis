@@ -446,8 +446,8 @@ public class Game implements GameInterface {
     /**
      **@return actionRound Return the actionRound
      */
-    public ActionRound setActionRoundState(){
-        this.actionRound=new ActionRound(this);
+    public ActionRound setActionRoundState(Integer students){
+        this.actionRound=new ActionRound(this,students);
         return (ActionRound) this.actionRound;
     }
 
