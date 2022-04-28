@@ -13,7 +13,9 @@ public class Ingress implements FixedObjectStudent {
      * Default constructor
      */
     public Ingress() {
-
+        /** viene costruito in inizialize game
+         *
+         */
     }
 
     /**

@@ -6,7 +6,6 @@ import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.MotherNature;
@@ -73,7 +72,7 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private Collection<Cloud> clouds;
+    private LinkedList<Cloud> clouds=new LinkedList<>();
 
     /**
      *Keep track of the order in every  round, dinamically change itself, collect the first who became the current player and at the end of his turn gets removed from the list, start a new pianification round when the list is empty
@@ -83,7 +82,7 @@ public class Game implements GameInterface {
     /**
      *This list contains the order set for all the game, its needed for play assistant card
      */
-    private LinkedList <Player> pLayerList= new LinkedList<>();
+    private LinkedList <Player> playerList = new LinkedList<>();
 
     /**
      *
@@ -108,7 +107,12 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private InfluenceManager influenceManager=new InfluenceManager(motherNature,pLayerList);
+    private boolean isThree=false;
+
+    /**
+     *
+     */
+    private InfluenceManager influenceManager=new InfluenceManager(motherNature, playerList);
 
 
     /**
@@ -124,12 +128,12 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private ProfessorManager professorManager=new ProfessorManager(pLayerList);
+    private ProfessorManager professorManager=new ProfessorManager(playerList);
 
     /**
      *
      */
-    private CardManager cardManager=new CardManager(influenceManager,islandManager,professorManager,pLayerList,bag);
+    private CardManager cardManager=new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
 
     /**
      *
@@ -152,11 +156,26 @@ public class Game implements GameInterface {
      *
      */
     public void inizializeGame() {
-        for(int i = 0; i<pLayerList.size(); i++)
-        this.clouds.add(new Cloud());
-
-
-
+        for(int i = 0; i< playerList.size(); i++) {
+            Cloud cloud=new Cloud();
+            this.clouds.add(cloud);
+            for(int j=0;(isThree && j<4) || (!isThree && j<3);j++)
+                this.clouds.get(i).addStudent(this.bag.newStudent());
+        }
+        int randomNum = (int)Math.random() * ( 0 - 11 );
+        this.motherNature.setIsland(islandManager.getIslands().get(randomNum));
+        Island island= (Island) this.islandManager.nextIsland(6);
+        for(int i =0;i<11;i++) {
+            if (!(islandManager.getIslands().get(i) == this.motherNature.getIsland()) || !(islandManager.getIslands().get(i)==island)) {
+                Island island1 = (Island) islandManager.getIslands().get(i);
+                island1.addStudent(this.bag.newStudent());
+                }
+            }
+        for(int i = 0; i< playerList.size(); i++) {
+            for (int j = 0; (isThree && j<9) || (!isThree && j<7); j++){
+                playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
+        }
+        }
     }
 
     /**
@@ -187,7 +206,7 @@ public class Game implements GameInterface {
      * @param players playerList        Set the playerList
      */
     public void setPLayerList(LinkedList<Player> players) {
-        this.pLayerList=players;
+        this.playerList =players;
     }
 
     /**
@@ -421,7 +440,7 @@ public class Game implements GameInterface {
      *Return the PlayerList
      */
     public LinkedList<Player> getPlayerList() {
-        return this.pLayerList;
+        return this.playerList;
     }
 
     /**
@@ -486,7 +505,7 @@ public class Game implements GameInterface {
      * Set the Playerlist, only for dedubbing so far
      */
     public void setPlayerList(LinkedList<Player> players){
-        this.pLayerList=players;
+        this.playerList =players;
     }
 
     /**

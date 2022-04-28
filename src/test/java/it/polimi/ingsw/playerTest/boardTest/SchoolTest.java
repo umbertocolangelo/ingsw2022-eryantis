@@ -1,4 +1,4 @@
-package it.polimi.ingsw.boardTest;
+package it.polimi.ingsw.playerTest.boardTest;
 
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.player.board.School;
