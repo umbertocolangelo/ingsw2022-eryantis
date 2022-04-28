@@ -49,6 +49,11 @@ public class Player {
     private PlayerColor color;
 
     /**
+     * Indicates if the player plays a game with 2 or 3 players (default set to 2)
+     */
+    private Boolean isThreePlayers = false;
+
+    /**
      * The deck of this player
      */
     private ArrayList<AssistantCard> assistantCards=new ArrayList<AssistantCard>();
@@ -66,7 +71,7 @@ public class Player {
     /**
      * Reference to the school of this player
      */
-    private School school=new School(this.getPlayerColor());
+    private School school;
 
     /**
      * The value of the card chose
@@ -91,6 +96,13 @@ public class Player {
     public Wizard getWizard() {
 
         return this.wizard;
+    }
+
+    /**
+     * Sets isThreePlayers to true (called if the current game is for 3 players)
+     */
+    public void setThreePlayers(){
+        isThreePlayers = true;
     }
 
     /**
@@ -144,7 +156,7 @@ public class Player {
      */
     public void setPlayerColor(PlayerColor color) {
         this.color=color;
-        this.school = new School(color);
+        this.school = new School(color,isThreePlayers);
     }
 
     /**

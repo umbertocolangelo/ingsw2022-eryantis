@@ -61,7 +61,7 @@ public class MotherNature implements PlaceableObject {
      * @return
      */
     public void setPosition(FixedObject position) {
-        // TODO implement here
+        this.position = position;
     }
 
     /**

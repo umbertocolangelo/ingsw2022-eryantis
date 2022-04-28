@@ -17,9 +17,9 @@ public class ColorInfluence implements InfluenceCalculator {
 
     /**
      * Default constructor
-     * @param motherNature points to motherNature instance
+     * @param manager references the InfluenceManageerreg
      */
-    public ColorInfluence(Collection<Player> playerList, MotherNature motherNature, InfluenceManager manager, Color color) {
+    public ColorInfluence(Collection<Player> playerList, InfluenceManager manager, Color color) {
         this.motherNature = motherNature;
         this.players = new ArrayList<Player>(playerList);
         this.manager = manager;
@@ -49,8 +49,8 @@ public class ColorInfluence implements InfluenceCalculator {
     /**
      * Calculates the influence with the standard method
      */
-    public void calculateInfluence() {
-        IslandInterface island = motherNature.getIsland();
+    public void calculateInfluence(IslandInterface island) {
+
         Integer maxCount = null; // indicates if there is currently a draft
         Player winner = null; // references the winner if currently there is one
         Player oldWinner = null; //references the winner of the previous calculus
@@ -60,6 +60,7 @@ public class ColorInfluence implements InfluenceCalculator {
 
             if(player.getPlayerColor()==island.getInfluenceColor()){ //if the player has control over the island
                 oldWinner = player;
+                count = island.numOfTowers(); // add the number of tower to the points of the player
             }
 
 

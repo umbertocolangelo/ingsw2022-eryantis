@@ -14,7 +14,7 @@ public class SchoolTest {
     @Test
     public void getIngressTest(){
 
-        School school= new School(PlayerColor.WHITE);
+        School school= new School(PlayerColor.WHITE,false);
         //assertTrue(school.getIngress());
 
 
@@ -22,7 +22,7 @@ public class SchoolTest {
 
     @Test
     public void getTowerTablesTest(){
-        School school= new School(PlayerColor.WHITE);
+        School school= new School(PlayerColor.WHITE, false);
        // assertTrue(school.getTowerTable());
     }
 

@@ -17,10 +17,10 @@ public class TwoPointsInfluence implements InfluenceCalculator {
 
     /**
      * Default constructor
-     * @param motherNature points to motherNature instance
+     * @param manager references the InfluenceManager
+     * @param player references the player that benefits from the two bonus points
      */
-    public TwoPointsInfluence(Collection<Player> playerList, MotherNature motherNature, InfluenceManager manager, Player player) {
-        this.motherNature = motherNature;
+    public TwoPointsInfluence(Collection<Player> playerList,InfluenceManager manager, Player player) {
         this.players = new ArrayList<Player>(playerList);
         this.manager = manager;
         this.currentPlayer=player;
@@ -49,9 +49,7 @@ public class TwoPointsInfluence implements InfluenceCalculator {
     /**
      * Calculates the influence with the standard method
      */
-    public void calculateInfluence() {
-        IslandInterface island = motherNature.getIsland();
-
+    public void calculateInfluence(IslandInterface island) {
 
         Integer maxCount = null; // indicates if there is currently a draft
         Player winner = null; // references the winner if currently there is one
@@ -60,12 +58,13 @@ public class TwoPointsInfluence implements InfluenceCalculator {
         for(Player player : players){
             Integer count = 0;
 
-            if(player == currentPlayer){
+            if(player == currentPlayer){ // if it is the player who played the expert card
                 count += 2;
             }
 
             if(player.getPlayerColor()==island.getInfluenceColor()){ //if the player has control over the island
                 oldWinner = player;
+                count = island.numOfTowers(); // add the number of tower to the points of the player
             }
 
 

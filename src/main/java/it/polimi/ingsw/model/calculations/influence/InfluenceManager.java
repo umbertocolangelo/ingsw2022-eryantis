@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model.calculations.influence;
 
 import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.expertCards.deck.DenyCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.pawns.MotherNature;
@@ -12,7 +13,15 @@ import java.util.Collection;
 
 public class InfluenceManager {
 
+    /**
+     * references mother nature
+     */
     private MotherNature motherNature;
+
+    /**
+     * references the expert card DenyCard (if present)
+     */
+    private DenyCard denyCard;
 
     /**
      * Stores the players
@@ -31,46 +40,58 @@ public class InfluenceManager {
     public InfluenceManager(MotherNature motherNature, Collection<Player> players) {
         this.motherNature = motherNature;
         this.players = new ArrayList<Player>(players);
-        influence = new StandardInfluence(players,motherNature,this);
+        this.influence = new StandardInfluence(players,this);
     }
 
     /**
-     * Starts the influence calculus by calling the calculateInfluence() method in the current Influence state
+     * Starts the influence calculus (after mother nature is moved) by calling the calculateInfluence() method in the current Influence state
      */
     public void calculateInfluence() {
-        influence.calculateInfluence();
+        if(denyCard!=null){
+            if(!checkDeny(motherNature.getIsland())){
+                influence.calculateInfluence(motherNature.getIsland());
+            }
+            return;
+        }
+        influence.calculateInfluence(motherNature.getIsland());
     }
+
+    /**
+     * Starts the influence calculus on a specific island, decided by the current player after using the correspondent expert card
+     * @param island is where the influence will be calculated
+     */
+
+    public void calculateInfluence(IslandInterface island){
+        if(denyCard!=null){
+            if(!checkDeny(island)){
+                influence.calculateInfluence(island);
+            }
+            return;
+        }
+        influence.calculateInfluence(island);
+    }
+
 
     /**
      * Sets the influence to ignore a specific student Color in the influence calculus
      * @param color indicates the color to ignore in the influence calculus
      */
     public void setColorInfluence(Color color) {
-        influence = new ColorInfluence(players, motherNature, this, color);
+        influence = new ColorInfluence(players, this, color);
     }
 
     /**
      *  Sets the influence state to ignore towers in the influence calculus
      */
     public void setTowerInfluence() {
-        influence = new TowerInfluence(players, motherNature);
-    }
-
-    /**
-     *  Sets the influence state to calculate the influence on a different island instead of the island
-     *  MotherNature is currently on
-     *
-     * @param island indicates the island to calculate the influence ond
-     */
-    public void setIslandInfluence(Island island) {
-        influence = new IslandInfluence(players, island, this);
+        influence = new TowerInfluence(players,this);
     }
 
     /**
      *  Sets the influence state to the standard one
      */
     public void setStandardInfluence() {
-        this.influence = new StandardInfluence(players, motherNature,this);
+        this.influence = new StandardInfluence(players,this);
     }
 
     /**
@@ -78,7 +99,7 @@ public class InfluenceManager {
      * @param player indicates
      */
     public void setTwoPointsInfluence(Player player){
-        influence = new TwoPointsInfluence(players, motherNature, this, player);
+        influence = new TwoPointsInfluence(players, this, player);
     }
 
     /**
@@ -87,6 +108,11 @@ public class InfluenceManager {
     public void applyInfluence(Player oldPlayer, Player newPlayer, IslandInterface island) {
         Collection<Tower> towers = island.getTowers();
         Integer numOfTowers = island.numOfTowers();
+
+        if(island.numOfTowers()==0){ // if no one had the island before the calculus
+            island.addTower(newPlayer.getSchool().getTowerTable().getTowers().get(0));
+            return;
+        }
 
         for(Tower tower : towers){  // removes the current tower
             oldPlayer.getSchool().getTowerTable().addTower(tower);
@@ -101,6 +127,27 @@ public class InfluenceManager {
             return;
         }
 
+    }
+
+    /**
+     * Sets the instance of the DenyCard
+     * @param card
+     */
+    public void setDenyCard(DenyCard card){
+        denyCard = card;
+    }
+
+    /**
+     * return true if the island has a deny token on and removes it
+     * @param island
+     * @return
+     */
+    private boolean checkDeny(IslandInterface island){
+        if(island.getDeny()){
+            denyCard.addToken();
+            return true;
+        }
+        return false;
     }
 
     /**

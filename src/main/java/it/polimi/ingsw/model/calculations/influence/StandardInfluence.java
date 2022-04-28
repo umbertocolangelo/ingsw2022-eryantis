@@ -20,9 +20,9 @@ public class StandardInfluence implements InfluenceCalculator {
 
     /**
      * Default constructor
-     * @param motherNature points to motherNature instance
+     * @param manager references the InfluenceManager
      */
-    public StandardInfluence(Collection<Player> playerList, MotherNature motherNature, InfluenceManager manager) {
+    public StandardInfluence(Collection<Player> playerList, InfluenceManager manager) {
         this.motherNature = motherNature;
         this.players = new ArrayList<Player>(playerList);
         this.manager = manager;
@@ -46,19 +46,19 @@ public class StandardInfluence implements InfluenceCalculator {
     /**
      * Calculates the influence with the standard method
      */
-    public void calculateInfluence() {
-        IslandInterface island = motherNature.getIsland();
-
+    public void calculateInfluence(IslandInterface island) {
 
         Integer maxCount = null; // indicates if there is currently a draft
         Player winner = null; // references the winner if currently there is one
         Player oldWinner = null; //references the winner of the previous calculus
 
         for(Player player : players){
+
             Integer count = 0;
 
             if(player.getPlayerColor()==island.getInfluenceColor()){ //if the player has control over the island
                 oldWinner = player;
+                count = island.numOfTowers(); // add the number of tower to the points of the player
             }
 
 
@@ -87,7 +87,13 @@ public class StandardInfluence implements InfluenceCalculator {
             }
         }
 
-        if(winner!=null && island.getInfluenceColor()!=winner.getPlayerColor()){    //if towers have to be mover
+        if(winner!=null){    //if towers have to be mover
+
+            if(island.getInfluenceColor()!=null) { // if someone has control over the island
+                if (island.getInfluenceColor() != winner.getPlayerColor()) {
+                    manager.applyInfluence(oldWinner, winner, (Island) island); // apply changes
+                }
+            }
             manager.applyInfluence(oldWinner, winner, (Island) island); // apply changes
         }
 

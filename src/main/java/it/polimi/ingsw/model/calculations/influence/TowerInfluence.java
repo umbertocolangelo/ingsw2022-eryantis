@@ -17,10 +17,9 @@ import java.util.Collection;
 public class TowerInfluence implements InfluenceCalculator {
     /**
      * Default constructor
-     * @param motherNature points to motherNature instance
+     * @param manager references the InfluenceManager
      */
-    public TowerInfluence(Collection<Player> playerList, MotherNature motherNature) {
-        this.island = motherNature.getIsland();
+    public TowerInfluence(Collection<Player> playerList, InfluenceManager manager) {
         this.players = new ArrayList<Player>(playerList);
         this.manager=manager;
     }
@@ -43,7 +42,7 @@ public class TowerInfluence implements InfluenceCalculator {
     /**
      * Calculates the influence with the standard method
      */
-    public void calculateInfluence() {
+    public void calculateInfluence(IslandInterface island) {
 
         Integer maxCount = null; // indicates if there is currently a draft
         Player winner = null; // references the winner if currently there is one
@@ -53,7 +52,6 @@ public class TowerInfluence implements InfluenceCalculator {
             Integer count = 0;
 
             if(player.getPlayerColor()==island.getInfluenceColor()){ //if the player has control over the island
-                count = island.numOfTowers(); // add the number of tower to the points of the player
                 oldWinner = player;
             }
 

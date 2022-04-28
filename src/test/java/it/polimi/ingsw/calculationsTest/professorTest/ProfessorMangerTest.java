@@ -16,6 +16,10 @@ import java.util.Collection;
 
 public class ProfessorMangerTest {
 
+    /**
+     * resets the position of the professors
+      */
+
     @BeforeEach
     public void resetProfessorPosition(){
         for(Color color : Color.values()){

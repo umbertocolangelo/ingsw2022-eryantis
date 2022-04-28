@@ -33,7 +33,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     private LinkedList<Student> students = new LinkedList<Student>();
 
     /**
-     * non deve essere una lista perche ce n'è sempre solo 1
+     *
      */
     private LinkedList<Tower> towers = new LinkedList<Tower>();
 

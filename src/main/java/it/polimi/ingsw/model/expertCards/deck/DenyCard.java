@@ -15,6 +15,7 @@ public class DenyCard implements ExpertCard {
      */
     public DenyCard(CardManager cardManager) {
         this.manager=cardManager;
+        cardManager.getInfluenceManager().setDenyCard(this);
     }
 
     /**

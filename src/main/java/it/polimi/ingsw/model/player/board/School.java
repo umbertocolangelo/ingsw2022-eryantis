@@ -10,8 +10,8 @@ public class School {
     /**
      * Default constructor
      */
-    public School(PlayerColor color) {
-        this.towerTable=new TowerTable(color,false);
+    public School(PlayerColor color, Boolean isThreePlayers) {
+        this.towerTable=new TowerTable(color,isThreePlayers);
     }
 
     /**

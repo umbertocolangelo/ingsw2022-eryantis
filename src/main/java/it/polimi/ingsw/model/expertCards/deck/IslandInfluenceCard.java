@@ -36,7 +36,7 @@ public class IslandInfluenceCard implements ExpertCard {
      * @param island
      */
     public void apply(Island island) {
-        manager.getInfluenceManager().setIslandInfluence(island);
+        manager.getInfluenceManager().calculateInfluence(island); // the influence calculus is immediately applied on the chosen island
         incrementCost();
     }
 
