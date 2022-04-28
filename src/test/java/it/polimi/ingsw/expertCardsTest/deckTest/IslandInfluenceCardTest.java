@@ -2,9 +2,8 @@ package it.polimi.ingsw.expertCardsTest.deckTest;
 
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
-import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.expertCards.CardManager;
-import it.polimi.ingsw.model.expertCards.deck.ColorInfluenceCard;
 import it.polimi.ingsw.model.expertCards.deck.IslandInfluenceCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandManager;
@@ -27,6 +26,7 @@ public class IslandInfluenceCardTest {
     public void applyTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
+        players.get(0).setPlayerColor(PlayerColor.WHITE);
         Bag bag = new Bag();
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);

@@ -2,6 +2,7 @@ package it.polimi.ingsw.expertCardsTest;
 
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.IslandManager;
@@ -10,7 +11,6 @@ import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -129,6 +129,7 @@ public class CardManagerTest {
     public void getThreeExpertCardTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
+        players.get(0).setPlayerColor(PlayerColor.WHITE);
         Bag bag = new Bag();
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);

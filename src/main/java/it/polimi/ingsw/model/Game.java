@@ -182,9 +182,19 @@ public class Game implements GameInterface {
             for(int j=0;(isThree && j<4) || (!isThree && j<3);j++)
                 this.clouds.get(i).addStudent(this.bag.newStudent());
         }
-        int randomNum = random.
-        this.motherNature.setIsland(islandManager.getIslands().get(randomNum));
+        int max = 11;
+        int min = 0;
+        int range = max - min + 1;
+
+        // generate random numbers within 1 to 10
+
+            int rand = (int)(Math.random() * range) + min;
+        System.out.println(rand);
+
+        this.motherNature.setIsland(islandManager.getIslands().get(rand));
         Island island= (Island) this.islandManager.nextIsland(6);
+        for(int i=0;i<11;i++ )
+            System.out.println(islandManager.getIslands().get(i));
         for(int i =0;i<11;i++) {
             if (!(islandManager.getIslands().get(i) == this.motherNature.getIsland()) || !(islandManager.getIslands().get(i)==island)) {
                 Island island1 = (Island) islandManager.getIslands().get(i);
