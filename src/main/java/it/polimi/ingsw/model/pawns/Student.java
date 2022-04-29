@@ -14,6 +14,8 @@ public class Student implements PlaceableObject {
      */
     public Student(Color color){
         this.color = color;
+        this.id = idCounter.toString();
+        idCounter++;
     }
 
     /**
@@ -25,6 +27,12 @@ public class Student implements PlaceableObject {
      * Indicates the color of the single student
      */
     private Color color;
+
+    /**
+     * Stores the current available id
+     */
+    private static Integer idCounter = 53;
+
 
     /**
      * 
