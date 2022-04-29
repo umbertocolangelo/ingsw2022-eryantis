@@ -17,6 +17,8 @@ public class Player {
      */
     public Player(String name) {
         this.name = name;
+        this.id = idCounter.toString();
+        idCounter++;
         this.assistantCards.add(AssistantCard.ONE_CARD);
         this.assistantCards.add(AssistantCard.TWO_CARD);
         this.assistantCards.add(AssistantCard.THREE_CARD);
@@ -28,6 +30,12 @@ public class Player {
         this.assistantCards.add(AssistantCard.NINE_CARD);
         this.assistantCards.add(AssistantCard.TEN_CARD);
     }
+
+    /**
+     * Stores the current available id
+     */
+    private static Integer idCounter = 1;
+
     /**
      * 
      */
@@ -217,6 +225,12 @@ public class Player {
     public void setWizard(Wizard wizard){
         this.wizard=wizard;
     }
+
+    /**
+     *
+     * @return
+     */
+    public String getId() { return this.id; }
 
 
 

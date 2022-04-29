@@ -1,4 +1,4 @@
-package it.polimi.ingsw.playerTest.boardTest;
+package it.polimi.ingsw.playerTest;
 
 import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
@@ -161,6 +161,5 @@ public class PlayerTest {
         assertTrue(player.getCoins()==1);
 
     }
-
 
 }
