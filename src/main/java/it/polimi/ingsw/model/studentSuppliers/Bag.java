@@ -15,13 +15,9 @@ public class Bag {
     /**
      * Default constructor
      */
-    public Bag() {
+    public Bag(Boolean isThreePlayers) {
+        this.isThreePlayers = isThreePlayers;
     }
-
-    /**
-     *
-     */
-
 
     /**
      *  Number of yellowStudents presents on the board
@@ -47,6 +43,11 @@ public class Bag {
      * 
      */
     private Integer pinkStudentsNum=0;
+
+    /**
+     *
+     */
+    private Boolean isThreePlayers;
 
     /**
      * 
@@ -86,7 +87,7 @@ public class Bag {
      * @return boolean      Check if the number of students of the color c is arrived at the maximum
      */
     public boolean checkNumOfStudents(Color c){
-        if((greenStudentsNum <26 && c.equals(Color.GREEN)) || (yellowStudentsNum <26 && c.equals(Color.YELLOW)) || (redStudentsNum <26 && c.equals(Color.RED)) || (blueStudentsNum <26 && c.equals(Color.BLUE)) || pinkStudentsNum <26 && c.equals(Color.PINK))
+        if((greenStudentsNum<26 && c.equals(Color.GREEN)) || (yellowStudentsNum<26 && c.equals(Color.YELLOW)) || (redStudentsNum<26 && c.equals(Color.RED)) || (blueStudentsNum <26 && c.equals(Color.BLUE)) || pinkStudentsNum <26 && c.equals(Color.PINK))
             return true;
             else
                 return false;
@@ -119,7 +120,16 @@ public class Bag {
      * @param cloud
      */
     public void addStudentsOnCloud(Cloud cloud) {
-        cloud.addStudent(newStudent());
+        if (isThreePlayers) {
+            for (int i=0; i<4; i++) {
+                cloud.addStudent(newStudent());
+            }
+        }
+        else {
+            for (int i=0; i<3; i++) {
+                cloud.addStudent(newStudent());
+            }
+        }
     }
 
     /**

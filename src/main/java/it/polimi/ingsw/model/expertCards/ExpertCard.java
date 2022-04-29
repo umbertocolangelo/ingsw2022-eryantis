@@ -17,9 +17,4 @@ public interface ExpertCard {
      */
     public String getId();
 
-    /**
-     *
-     * @param id
-     */
-    public void setId(String id);
 }

@@ -6,19 +6,19 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.rounds.RoundInterface;
 
 /**
- * carta #10
+ * card #10
  */
 public class IngressHallSwapCard implements ExpertCard {
 
     /**
      * Default constructor
      */
-    public IngressHallSwapCard(CardManager cardManager) {
-        this.manager=cardManager;
+    public IngressHallSwapCard() {
+        this.id = "47";
     }
 
     /**
-     * carta #10
+     *
      */
     private Integer cost = 1;
 
@@ -26,16 +26,6 @@ public class IngressHallSwapCard implements ExpertCard {
      * 
      */
     private String id;
-
-    /**
-     *
-     */
-    private CardManager manager;
-
-    /**
-     *
-     */
-    private RoundInterface round;
 
     /**
      * 
@@ -59,7 +49,6 @@ public class IngressHallSwapCard implements ExpertCard {
     }
 
     /**
-     *
      * @return
      */
     @Override
@@ -67,13 +56,5 @@ public class IngressHallSwapCard implements ExpertCard {
         return this.id;
     }
 
-    /**
-     *
-     * @param id
-     */
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 
 }

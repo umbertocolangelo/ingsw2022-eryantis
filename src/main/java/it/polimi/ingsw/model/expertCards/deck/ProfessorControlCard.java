@@ -5,7 +5,7 @@ import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.pawns.Student;
 
 /**
- * carta #2
+ * card #2
  */
 public class ProfessorControlCard implements ExpertCard {
 
@@ -13,6 +13,7 @@ public class ProfessorControlCard implements ExpertCard {
      * Default constructor
      */
     public ProfessorControlCard(CardManager cardManager) {
+        this.id = "39";
         this.manager=cardManager;
     }
 
@@ -62,13 +63,5 @@ public class ProfessorControlCard implements ExpertCard {
         return this.id;
     }
 
-    /**
-     *
-     * @param id
-     */
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 
 }

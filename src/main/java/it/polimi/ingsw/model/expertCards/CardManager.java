@@ -118,14 +118,14 @@ public class CardManager {
         expertCards.add(new DenyCard(this));
         expertCards.add(new HallBagSwapCard());
         expertCards.add(new IngressCardSwapCard(this));
-        expertCards.add(new IngressHallSwapCard(this));
+        expertCards.add(new IngressHallSwapCard());
         expertCards.add(new IslandInfluenceCard(this));
         expertCards.add(new ProfessorControlCard(this));
         expertCards.add(new StudentToHallCard(this));
         expertCards.add(new StudentToIslandCard(this));
         expertCards.add(new TowerInfluenceCard(this));
         expertCards.add(new TwoInfluenceCard(this));
-        expertCards.add(new TwoJumpCard(this));
+        expertCards.add(new TwoJumpCard());
         Collections.shuffle(expertCards);
         for(int i=11;i>2;i--) {
             expertCards.remove(i);

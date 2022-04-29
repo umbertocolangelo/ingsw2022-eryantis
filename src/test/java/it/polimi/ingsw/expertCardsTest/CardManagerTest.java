@@ -24,7 +24,7 @@ public class CardManagerTest {
     public void getInfluenceManager() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
@@ -40,7 +40,7 @@ public class CardManagerTest {
     public void setCurrentCardTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
@@ -59,7 +59,7 @@ public class CardManagerTest {
     public void getProfessorManager() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
@@ -75,7 +75,7 @@ public class CardManagerTest {
     public void getCurrentCardTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
@@ -95,7 +95,7 @@ public class CardManagerTest {
     public void getPlayerListTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
@@ -111,7 +111,7 @@ public class CardManagerTest {
     public void getBagTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
@@ -131,7 +131,7 @@ public class CardManagerTest {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
         players.get(0).setPlayerColor(PlayerColor.WHITE);
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);

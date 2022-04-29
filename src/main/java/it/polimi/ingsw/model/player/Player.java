@@ -214,10 +214,17 @@ public class Player {
         return null;
     }
 
+    /**
+     * @param wizard
+     */
     public void setWizard(Wizard wizard){
         this.wizard=wizard;
     }
 
+    /**
+     *
+     */
+    public String getId() { return this.id; }
 
 
 }

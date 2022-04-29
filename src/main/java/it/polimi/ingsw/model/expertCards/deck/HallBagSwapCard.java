@@ -4,7 +4,7 @@ import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 
 /**
- * carta #12
+ * card #12
  */
 public class HallBagSwapCard implements ExpertCard {
 
@@ -12,7 +12,7 @@ public class HallBagSwapCard implements ExpertCard {
      * Default constructor
      */
     public HallBagSwapCard() {
-
+        this.id = "49";
     }
 
     /**
@@ -24,11 +24,6 @@ public class HallBagSwapCard implements ExpertCard {
      * 
      */
     private String id;
-
-    /**
-     *
-     */
-    private CardManager manager;
 
     /**
      *
@@ -58,15 +53,6 @@ public class HallBagSwapCard implements ExpertCard {
     @Override
     public String getId() {
         return this.id;
-    }
-
-    /**
-     *
-     * @param id
-     */
-    @Override
-    public void setId(String id) {
-        this.id= id;
     }
 
 }

@@ -23,13 +23,13 @@ public class IngressCardSwapCardTest {
     public void applyTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        IngressHallSwapCard ingressHallSwapCard = new IngressHallSwapCard(cardManager);
+        IngressHallSwapCard ingressHallSwapCard = new IngressHallSwapCard();
         ingressHallSwapCard.apply();
         assertTrue(ingressHallSwapCard.getCost() == 2);
     }

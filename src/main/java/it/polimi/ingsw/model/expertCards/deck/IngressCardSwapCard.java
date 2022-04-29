@@ -10,7 +10,7 @@ import it.polimi.ingsw.model.rounds.RoundInterface;
 import java.util.*;
 
 /**
- * carta #7
+ * card #7
  */
 public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
 
@@ -18,6 +18,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
      * Default constructor
      */
     public IngressCardSwapCard(CardManager cardManager) {
+        this.id = "44";
         this.manager=cardManager;
         students = new LinkedList<Student>();
         for (int i=0; i<6; i++) {
@@ -66,16 +67,14 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
         cost = cost + 1;
     }
 
-
+    /**
+     * @return
+     */
     @Override
     public String getId() {
         return this.id;
     }
 
-    @Override
-    public void setId(String id) {
-        this.id=id;
-    }
 
     /**
      * @param student
