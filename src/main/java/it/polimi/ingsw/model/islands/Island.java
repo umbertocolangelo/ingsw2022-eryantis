@@ -19,8 +19,14 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
      * Default constructor
      */
     public Island() {
-
+        this.id = idCounter.toString();
+        idCounter++;
     }
+
+    /**
+     * Stores the current available id
+     */
+    private static Integer idCounter = 26;
 
     /**
      *

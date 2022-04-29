@@ -13,7 +13,15 @@ public class Cloud implements FixedObjectStudent {
      * Default constructor
      */
     public Cloud() {
+        this.id = idCounter.toString();
+        idCounter++;
     }
+
+    /**
+     * Stores the current available id
+     */
+    private static Integer idCounter = 50;
+
 
     /**
      * 
@@ -69,5 +77,10 @@ public class Cloud implements FixedObjectStudent {
 
         return this.students.size();
     }
+
+    /**
+     *
+     */
+    public String getId(){ return this.id; }
 
 }
