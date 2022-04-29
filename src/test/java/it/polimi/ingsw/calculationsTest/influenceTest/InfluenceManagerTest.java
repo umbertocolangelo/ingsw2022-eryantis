@@ -46,6 +46,9 @@ public class InfluenceManagerTest {
         playerList.add(new Player("one"));
         playerList.add(new Player("two"));
         playerList.add(new Player("three"));
+        playerList.get(0).setThreePlayers();
+        playerList.get(1).setThreePlayers();
+        playerList.get(2).setThreePlayers();
         playerList.get(0).setPlayerColor(PlayerColor.WHITE);
         playerList.get(1).setPlayerColor(PlayerColor.BLACK);
         playerList.get(2).setPlayerColor(PlayerColor.GREY);
@@ -62,7 +65,7 @@ public class InfluenceManagerTest {
 
         assertTrue(((FixedObjectTower)island).getTowers().isEmpty()==true && ((Island) island).getInfluenceColor()==null );
 
-        // player one now has control over the blue professor
+        // player one now has control over the blue professor and gets control of the island
 
         playerList.get(0).getSchool().getHall().addStudent(new Student(Color.BLUE));
         professorManager.checkProfessor(playerList.get(0));
@@ -71,6 +74,38 @@ public class InfluenceManagerTest {
 
         assertTrue(((FixedObjectTower)island).getTowers().get(0).getColor()==playerList.get(0).getPlayerColor());
         assertTrue(((Island) island).getInfluenceColor()==PlayerColor.WHITE);
+
+        // player two has now two blue students (player one still has control of the island even if he lost the professor)
+
+        playerList.get(1).getSchool().getHall().addStudent(new Student(Color.BLUE));
+        playerList.get(1).getSchool().getHall().addStudent(new Student(Color.BLUE));
+        professorManager.checkProfessor(playerList.get(1));
+
+        influenceManager.calculateInfluence();
+
+        assertTrue(((FixedObjectTower)island).getTowers().get(0).getColor()==playerList.get(0).getPlayerColor());
+        assertTrue(((Island) island).getInfluenceColor()==PlayerColor.WHITE);
+
+        // player three has now 3 blue students and a student is added on the island (player three gets control over the professor and the island)
+
+        island.addStudent(new Student(Color.BLUE));
+        playerList.get(2).getSchool().getHall().addStudent(new Student(Color.BLUE));
+        playerList.get(2).getSchool().getHall().addStudent(new Student(Color.BLUE));
+        playerList.get(2).getSchool().getHall().addStudent(new Student(Color.BLUE));
+        professorManager.checkProfessor(playerList.get(2));
+
+        influenceManager.calculateInfluence();
+
+        //System.out.println(((FixedObjectTower)island).getTowers().get(0).getColor());
+
+        assertTrue(((FixedObjectTower)island).getTowers().get(0).getColor()==playerList.get(2).getPlayerColor());
+        assertTrue(((Island) island).getInfluenceColor()==PlayerColor.GREY);
+        assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size()==6);
+        assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size()==6);
+        assertTrue(playerList.get(2).getSchool().getTowerTable().getTowers().size()==5);
+
+
+
 
 
 
