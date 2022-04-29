@@ -1,7 +1,6 @@
 package it.polimi.ingsw.roundsTest;
 
-import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.enumerations.Wizard;

@@ -1,7 +1,6 @@
 package it.polimi.ingsw.playerTest.boardTest;
 
 import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.player.Player;
 import org.junit.jupiter.api.Test;
@@ -88,6 +87,7 @@ public class PlayerTest {
     public void getSchoolTest() {
         Player player = new Player("vittorio");
         Player player1 = new Player("vittorio");
+        player.setPlayerColor(PlayerColor.WHITE);
         assertTrue(player.getSchool()!=player1.getSchool());
     }
 

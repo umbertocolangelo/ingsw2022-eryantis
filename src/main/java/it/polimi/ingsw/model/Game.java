@@ -1,8 +1,12 @@
 package it.polimi.ingsw.model;
 
+import it.polimi.ingsw.listener.PropertyObserver;
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
-import it.polimi.ingsw.model.enumerations.*;
+import it.polimi.ingsw.model.enumerations.AssistantCard;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
@@ -15,7 +19,9 @@ import it.polimi.ingsw.model.rounds.*;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
-import java.util.*;
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+import java.util.LinkedList;
 
 /**
  *
@@ -32,8 +38,18 @@ public class Game implements GameInterface {
         this.studentToHallRound= new StudentToHallActionRound(this);
         this.setUpRound= new SetUpRound(this);
         setRound(this.setSetUpRound());
+        PropertyObserver observer=new PropertyObserver(this);
 
     }
+    /**
+     * Keep the reference to the observer
+     */
+    private PropertyObserver observer;
+    /**
+     *
+     */
+    private PropertyChangeSupport propertyChange= new PropertyChangeSupport(this);
+
     /**
      *Kepp the reference to ingressCArdSwap
      */
@@ -152,6 +168,10 @@ public class Game implements GameInterface {
         // TODO implement here
     }
 
+    public void addListener(PropertyChangeListener pc1){
+        propertyChange.addPropertyChangeListener(pc1);
+    }
+
     /**
      *
      */
@@ -162,9 +182,19 @@ public class Game implements GameInterface {
             for(int j=0;(isThree && j<4) || (!isThree && j<3);j++)
                 this.clouds.get(i).addStudent(this.bag.newStudent());
         }
-        int randomNum = (int)Math.random() * ( 0 - 11 );
-        this.motherNature.setIsland(islandManager.getIslands().get(randomNum));
+        int max = 11;
+        int min = 0;
+        int range = max - min + 1;
+
+        // generate random numbers within 1 to 10
+
+            int rand = (int)(Math.random() * range) + min;
+        System.out.println(rand);
+
+        this.motherNature.setIsland(islandManager.getIslands().get(rand));
         Island island= (Island) this.islandManager.nextIsland(6);
+        for(int i=0;i<11;i++ )
+            System.out.println(islandManager.getIslands().get(i));
         for(int i =0;i<11;i++) {
             if (!(islandManager.getIslands().get(i) == this.motherNature.getIsland()) || !(islandManager.getIslands().get(i)==island)) {
                 Island island1 = (Island) islandManager.getIslands().get(i);
@@ -173,7 +203,9 @@ public class Game implements GameInterface {
             }
         for(int i = 0; i< playerList.size(); i++) {
             for (int j = 0; (isThree && j<9) || (!isThree && j<7); j++){
+
                 playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
+
         }
         }
     }
@@ -266,29 +298,35 @@ public class Game implements GameInterface {
      * @param student       Move the student from the ingress to the hall
      */
     public void moveStudentIngressToHall(Student student) {
-        if(this.currentRound.moveStudentIngressToHall(student))
-            this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
         if(!this.currentRound.moveStudentIngressToHall(student))
             System.out.println("Move not possible");
+        if(this.currentRound.moveStudentIngressToHall(student))
+            this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
+        propertyChange.firePropertyChange("moveStudentIngress",  this.currentPlayer.getSchool().getHall().getLine(student.getColor()),student);
     }
 
     /**
      * @param student       Student in the ingress
-     * @param island        Island where we want to move
+     * @param island        Island where we want to move>>
      */
     public void moveStudentIngressToIsland(Student student, Island island) {
-        if(this.currentRound.moveStudentIngressToIsland(student,island))
-            island.addStudent(student);
         if (!this.currentRound.moveStudentIngressToIsland(student,island))
             System.out.println("Move not possible");
-
+        if(this.currentRound.moveStudentIngressToIsland(student,island))
+            island.addStudent(student);
+        propertyChange.firePropertyChange("moveStudentToIsland",island,student);
     }
 
     /**
      * @param jumps
      */
     public void moveMotherNature(Integer jumps) {
-        // TODO implement here
+        if(this.currentRound.moveMotherNature(jumps))
+            this.motherNature.setIsland(this.islandManager.nextIsland(jumps));
+        if(!this.currentRound.moveMotherNature(jumps))
+            System.out.println("Move not possible");
+        propertyChange.firePropertyChange("mmove mothernature",jumps,motherNature.getIsland());
+
     }
 
     /**
@@ -299,6 +337,8 @@ public class Game implements GameInterface {
         this.currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         if(!this.currentRound.playAssistantCard(assistantCard,this.currentPlayer))
             System.out.println("Card already played");
+        propertyChange.firePropertyChange("Play assistant card",null,assistantCard);
+
     }
 
 
@@ -306,6 +346,7 @@ public class Game implements GameInterface {
      * @param expertCard        Play the expert card
      */
     public Boolean playExpertCard(ExpertCard expertCard) {
+        //Manca l'observer
         return this.currentRound.playExpertCard(expertCard, null);
     }
 
@@ -319,6 +360,8 @@ public class Game implements GameInterface {
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
             cardManager.setCurrentCard(null); //questa mossa si può fare una sola volta
+            propertyChange.firePropertyChange("expert moveStudentToIsland",island,student);
+
         }
     }
 
@@ -331,6 +374,7 @@ public class Game implements GameInterface {
             this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(studentCard);
+            propertyChange.firePropertyChange("expert moveStudentToIsland",studentCard,studentIngress);
         }
 
     }
@@ -343,6 +387,7 @@ public class Game implements GameInterface {
         if(this.currentRound.expertIngressHallSwap(studentHall,studentIngress)) {
             currentPlayer.getSchool().getIngress().addStudent((studentHall));
             currentPlayer.getSchool().getHall().getLine(studentIngress.getColor()).addStudent(studentIngress);
+            propertyChange.firePropertyChange("expert IngressHallSwap",studentHall,studentIngress);
         }
 
     }
@@ -356,6 +401,7 @@ public class Game implements GameInterface {
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
             cardManager.setCurrentCard(null); //questa mossa si può fare una sola volta
+            propertyChange.firePropertyChange("expert moveStudentToHall",this.currentPlayer.getSchool().getHall(),student);
         }
     }
 
@@ -368,14 +414,14 @@ public class Game implements GameInterface {
             while (cloud.getStudents().size() != 0) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
             }
+            propertyChange.firePropertyChange("Choose cloud",this.clouds,cloud);
         }
+        propertyChange.firePropertyChange("Choose cloud",this.clouds,cloud);
         this.currentRound.checkRoundEnded();
     }
 
 
-     //public void expertMoveStudentToBag( Color color) {
 
-    //}
 
     /**
      * @return
@@ -399,11 +445,15 @@ public class Game implements GameInterface {
         {
             this.currentPlayer.setPlayerColor(color);
             currentPlayer.setWizard(wizard);
+            propertyChange.firePropertyChange("Finished expert move",currentPlayer,color);
             return true;
         }
         if (!this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard))
                return false;
         return null;
+
+
+
     }
 
     /**
@@ -483,8 +533,12 @@ public class Game implements GameInterface {
     /**
      *Used if the player wants to finish the move
      */
+
     public void finishExpertMove(){
         this.currentRound.finishExpertMove();
+        propertyChange.firePropertyChange("Finished expert move",getCardManager().getCurrentCard(),null);
+
+
     }
 
     /**
@@ -525,4 +579,11 @@ public class Game implements GameInterface {
 
     }
 
+    /**
+     * Only for testing so far
+     * @return
+     */
+    public MotherNature getMotherNature() {
+        return motherNature;
+    }
 }

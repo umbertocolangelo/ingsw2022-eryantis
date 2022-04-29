@@ -1,10 +1,10 @@
 package it.polimi.ingsw.roundsTest;
 
-import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.*;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
-import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
 import it.polimi.ingsw.model.expertCards.deck.StudentToIslandCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
@@ -30,6 +30,8 @@ public class StudentToIslandActionRound {
         lista.add(player1);
         lista.add(player);
         game.setPlayerList(lista);
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
         game.setRound(game.setPianificationnRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);

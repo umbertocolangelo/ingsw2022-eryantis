@@ -1,9 +1,8 @@
 package it.polimi.ingsw.model.islands;
 
-import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.pawns.MotherNature;
 
-import java.util.*;
+import java.util.LinkedList;
 
 /**
  *
@@ -45,7 +44,7 @@ public class IslandManager {
         IslandInterface temp = null;
         for (int i=0; i<islands.size(); i++) {
             if (islands.get(i).equals(motherNature.getIsland())) {
-                if (i+assistantCardValue>islands.size()) {
+                if (i+assistantCardValue>=islands.size()) {
                     temp = islands.get(i+assistantCardValue-islands.size()); //circular list
                 }
                 else {
