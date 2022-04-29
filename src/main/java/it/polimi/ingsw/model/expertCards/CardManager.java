@@ -20,9 +20,9 @@ public class CardManager {
         this.influenceManager = influenceManager;
         this.professorManager = professorManager;
         this.islandManager = islandManager;
-        this.playerList=new ArrayList<>(playerList);
-        this.bag=bag;
-        this.expertCards =  new LinkedList<>(getThreeExpertCards());
+        this.playerList = new ArrayList<>(playerList);
+        this.bag = bag;
+        this.expertCards = new LinkedList<>(getThreeExpertCards());
 
     }
 
@@ -112,7 +112,7 @@ public class CardManager {
     /**
      * @return  ArrayList<ExpertCard>   Return the three ExpertCards for the game
      */
-    public LinkedList<ExpertCard> getThreeExpertCards() {
+    private LinkedList<ExpertCard> getThreeExpertCards() {
         LinkedList<ExpertCard> expertCards = new LinkedList<ExpertCard>();
         expertCards.add(new ColorInfluenceCard(this));
         expertCards.add(new DenyCard(this));

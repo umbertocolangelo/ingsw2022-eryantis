@@ -46,7 +46,7 @@ public class CardManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        ExpertCard expertCard = cardManager.getThreeExpertCards().get(0);
+        ExpertCard expertCard = cardManager.getDeck().get(0);
         cardManager.setCurrentCard(expertCard);
         assertTrue(cardManager.getCurrentCard() == expertCard);
 
@@ -81,7 +81,7 @@ public class CardManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        ExpertCard expertCard = cardManager.getThreeExpertCards().get(0);
+        ExpertCard expertCard = cardManager.getDeck().get(0);
         cardManager.setCurrentCard(expertCard);
         assertTrue(cardManager.getCurrentCard() == expertCard);
 
@@ -127,6 +127,7 @@ public class CardManagerTest {
 
     @Test
     public void getThreeExpertCardTest() {
+
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
         players.get(0).setPlayerColor(PlayerColor.WHITE);
@@ -136,11 +137,9 @@ public class CardManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        LinkedList<ExpertCard> newDeck = cardManager.getThreeExpertCards();
-        assertTrue(newDeck.size() == 3);
-        for (int i=0; i<3; i++) {
-            assertTrue(newDeck.get(i).equals(cardManager.getDeck().get(i)));
-        }
+
+        assertTrue(cardManager.getDeck().size()==3);
+
     }
 }
 

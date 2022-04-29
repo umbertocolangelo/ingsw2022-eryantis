@@ -28,18 +28,20 @@ public class IslandManagerTest {
         Tower tower3 = new Tower(PlayerColor.BLACK);
         islandManager.getIslands().get(0).addTower(tower1);
         islandManager.getIslands().get(1).addTower(tower2);
-        islandManager.getIslands().get(2).addTower(tower2);
-        islandManager.getIslands().get(3).addTower(tower1);
+        islandManager.getIslands().get(2).addTower(new Tower(PlayerColor.WHITE));
+        islandManager.getIslands().get(3).addTower(new Tower(PlayerColor.WHITE));
         islandManager.getIslands().get(4).addTower(tower3);
-        islandManager.getIslands().get(11).addTower(tower3);
+        islandManager.getIslands().get(11).addTower(new Tower(PlayerColor.BLACK));
         System.out.println("Step 0");
         System.out.println(islandManager.getIslands().size());
         for (IslandInterface islandInterface: islandManager.getIslands()) {System.out.println(islandInterface);}
+        System.out.println();
         System.out.println(islandManager.getIslands().get(0).getInfluenceColor());
         System.out.println(islandManager.getIslands().get(1).getInfluenceColor());
         System.out.println(islandManager.getIslands().get(4).getInfluenceColor());
 
         islandManager.checkGroup(islandManager.getIslands().get(1));
+
         System.out.println();
         System.out.println("Step 1");
         System.out.println(islandManager.getIslands().size());
@@ -49,6 +51,7 @@ public class IslandManagerTest {
         System.out.println(islandManager.getIslands().get(3).getInfluenceColor());
 
         islandManager.checkGroup(islandManager.getIslands().get(1));
+
         System.out.println();
         System.out.println("Step 2");
         System.out.println(islandManager.getIslands().size());
