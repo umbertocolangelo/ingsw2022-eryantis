@@ -68,9 +68,4 @@ public class Cloud implements FixedObjectStudent {
      */
     public String getId() { return this.id; }
 
-    /**
-     *
-     */
-    public String getId(){ return this.id; }
-
 }
