@@ -1,7 +1,7 @@
 package it.polimi.ingsw.roundsTest;
 
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
@@ -40,7 +40,6 @@ public class IngressCardSwapActionRoundTest {
         game.playAssistantCard(AssistantCard.THREE_CARD);
         IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard(game.getCardManager());
         player1.setCoin(5);
-
         game.playExpertCard(ingressCardSwapCard);
         Student student1=new Student(Color.RED);
         Student student=new Student(Color.YELLOW);

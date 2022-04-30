@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model.rounds;
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;

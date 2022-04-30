@@ -1,6 +1,6 @@
 package it.polimi.ingsw.model.rounds;
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.expertCards.deck.*;
@@ -164,75 +164,75 @@ public class ActionRound implements RoundInterface {
         cardAlreadyPlayed=true; //Setto che ho giocato una carta
         game.getCardManager().setCurrentCard(expertCard);
         this.currentPlayer.setCoin(-(expertCard.getCost()));
-        if(expertCard.getId().equals("1")){
+        if(expertCard.getId().equals("38")){
             StudentToIslandCard expertCard1=(StudentToIslandCard) game.getCardManager().getCurrentCard();
             expertCard1.apply();
             game.setPreviousRound(this);
             game.setRound(this.game.setStudentToIslandState());
             return true;
         }
-        if (expertCard.getId().equals("2"))
+        if (expertCard.getId().equals("39"))
         {
             ProfessorControlCard expertCard1= (ProfessorControlCard) game.getCardManager().getCurrentCard();
             expertCard1.apply();
             return true;
         }
-        if(expertCard.getId().equals("3"))
+        if(expertCard.getId().equals("40"))
         {   Island island=new Island(); //lo chiediamo a id manager
             IslandInfluenceCard islandInfluenceCard=(IslandInfluenceCard) game.getCardManager().getCurrentCard();
              islandInfluenceCard.apply(island);
         }
-        if(expertCard.getId().equals("4"))
+        if(expertCard.getId().equals("41"))
         {
             TwoJumpCard expertCard1= (TwoJumpCard) game.getCardManager().getCurrentCard();
             expertCard1.apply();
             currentPlayer.twoMoreJumps();
         }
-        if(expertCard.getId().equals("5")){
+        if(expertCard.getId().equals("42")){
             TwoJumpCard twoJumpCard=(TwoJumpCard) game.getCardManager().getCurrentCard();
             twoJumpCard.apply();
         }
 
-        if(expertCard.getId().equals("6"))
+        if(expertCard.getId().equals("43"))
         {
             TowerInfluenceCard expertCard1= (TowerInfluenceCard) game.getCardManager().getCurrentCard();
             expertCard1.apply();
             return true;
         }
-       if(expertCard.getId().equals("7")) {
+       if(expertCard.getId().equals("44")) {
           IngressCardSwapCard expertCard1=(IngressCardSwapCard) game.getCardManager().getCurrentCard();
            expertCard1.apply();
            this.game.setPreviousRound(this);
            this.game.setRound(this.game.setIngressCardSwapActionRound());
            return true;
        }
-       if(expertCard.getId().equals("8")){
+       if(expertCard.getId().equals("45")){
            Player player=new Player("Bo");
            TwoInfluenceCard twoInfluenceCard=new TwoInfluenceCard(game.getCardManager());
            twoInfluenceCard.apply(player);
        }
-       if(expertCard.getId().equals("9")){
+       if(expertCard.getId().equals("46")){
            Color color= Color.YELLOW;
            ColorInfluenceCard colorInfluenceCard= (ColorInfluenceCard) game.getCardManager().getCurrentCard();
            colorInfluenceCard.apply(color);
 
        }
 
-     if(expertCard.getId().equals("10")){
+     if(expertCard.getId().equals("47")){
         IngressHallSwapCard expertCard1=(IngressHallSwapCard) game.getCardManager().getCurrentCard();
          expertCard1.apply();
          game.setPreviousRound(this);
          game.setRound(game.setIngressHallSwapState());
          return true;
      }
-        if(expertCard.getId().equals("11")){
+        if(expertCard.getId().equals("48")){
             StudentToHallCard expertCard1=(StudentToHallCard) game.getCardManager().getCurrentCard();
             expertCard1.apply();
             game.setPreviousRound(this);
             game.setRound(game.setStudentToHallState());
             return true;
         }
-        if(expertCard.getId().equals("12")){
+        if(expertCard.getId().equals("49")){
             Color color =Color.RED;
             HallBagSwapCard expertCard1=(HallBagSwapCard) game.getCardManager().getCurrentCard();
             expertCard1.apply();

@@ -1,7 +1,7 @@
 package it.polimi.ingsw.listener;
 
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.Game;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
