@@ -14,3 +14,16 @@ Implementazione del gioco da tavolo [Eriantys](https://www.craniocreations.it/pr
 - [_Roberto Cialini_](https://github.com/RobertoCialini)
 - [_Umberto Colangelo_](https://github.com/umbertocolangelo)
 - [_Vittorio La Ferla_](https://github.com/vittoriolaferla)
+
+## Funzionanlità implementate
+
+| Functionality   |                       State                        |
+|:----------------|:--------------------------------------------------:|
+| Basic rules     | 🟢 |
+| Complete rules  | 🟢 |
+| Character Cards | 🟡 |
+| Socket          | 🟡 |
+| GUI             | 🔴 |
+| CLI             | 🔴 |
+| Resilience      | 🔴 |
+| Persistence     | 🔴 |

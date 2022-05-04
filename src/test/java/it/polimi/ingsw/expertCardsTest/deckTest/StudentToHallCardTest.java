@@ -26,7 +26,7 @@ public class StudentToHallCardTest {
     public void applyTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);

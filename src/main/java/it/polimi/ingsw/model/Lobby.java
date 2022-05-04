@@ -2,7 +2,7 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.player.Player;
 
-import java.util.*;
+import java.util.LinkedList;
 
 /**
  * 

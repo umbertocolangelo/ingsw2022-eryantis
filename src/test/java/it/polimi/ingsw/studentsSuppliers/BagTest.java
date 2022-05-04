@@ -19,7 +19,7 @@ public class BagTest {
 
         @Test
     public  void newStudent() {
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         Student student=bag.newStudent();
         assertTrue(student instanceof Student);
 
@@ -27,7 +27,7 @@ public class BagTest {
 
     @Test
     public void addStudentOnIsland(){
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         Island island=new Island();
         bag.addStudentsOnIsland(island);
         assertTrue(island.getStudents().size()>0);
@@ -36,7 +36,7 @@ public class BagTest {
 
     @Test
     public void addStudentOnCloud(){
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         Cloud cloud=new Cloud();
         bag.addStudentsOnCloud(cloud);
         assertTrue(cloud.getStudents().size()>0);
@@ -44,7 +44,7 @@ public class BagTest {
 
     @Test
     public void addStudentOnIngress(){
-        Bag bag = new Bag();
+        Bag bag = new Bag(false);
         Ingress ingress=new Ingress();
         bag.addStudentOnIngress(ingress);
         assertTrue(ingress.getStudents().size()>0);

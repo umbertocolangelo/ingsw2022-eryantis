@@ -29,7 +29,7 @@ import java.util.LinkedList;
 public class Game implements GameInterface {
 
     /**
-     * Built already the istance of the Rounds
+     * Built already the instance of the Rounds
      */
     public Game() {
         this.ingressHallSwap=new IngressHallSwapActionRound(this);
@@ -118,12 +118,13 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private Bag bag=new Bag();
+    private Boolean isThree = false;
 
     /**
      *
      */
-    private boolean isThree=false;
+    private Bag bag = new Bag(isThree);
+
 
     /**
      *
@@ -168,9 +169,17 @@ public class Game implements GameInterface {
         // TODO implement here
     }
 
+    /**
+     * @param pc1
+     */
     public void addListener(PropertyChangeListener pc1){
         propertyChange.addPropertyChangeListener(pc1);
     }
+
+    /**
+     *
+     */
+    public void setIsThree() { isThree = true; }
 
     /**
      *

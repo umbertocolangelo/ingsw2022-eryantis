@@ -31,29 +31,17 @@ public class Cloud implements FixedObjectStudent {
     /**
      * 
      */
-    private LinkedList<Student> students=new LinkedList<Student>();
+    private LinkedList<Student> students = new LinkedList<Student>();
 
-    /**
-     * 
-     */
-    private Boolean isFourPlayers=false;
-
-    /**
-     * @return
-     */
-    public Boolean isFourPlayers() {
-        // TODO implement here
-        return null;
-    }
 
     /**
      * @param student
      */
     public void addStudent(Student student) {
-        if(!isFourPlayers && students.size()<4) {
-            student.setPosition(this);
-            this.students.add(student);
-        }
+
+        student.setPosition(this);
+        this.students.add(student);
+
     }
 
     /**
@@ -73,14 +61,11 @@ public class Cloud implements FixedObjectStudent {
     /**
      * @return
      */
-    public Integer numOfStudents() {
-
-        return this.students.size();
-    }
+    public Integer numOfStudents() { return this.students.size(); }
 
     /**
-     *
+     * @return
      */
-    public String getId(){ return this.id; }
+    public String getId() { return this.id; }
 
 }

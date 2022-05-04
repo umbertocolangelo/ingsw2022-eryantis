@@ -6,7 +6,7 @@ import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 
 /**
- * carta #3
+ * card #3
  */
 public class IslandInfluenceCard implements ExpertCard {
 
@@ -14,6 +14,7 @@ public class IslandInfluenceCard implements ExpertCard {
      * Default constructor
      */
     public IslandInfluenceCard(CardManager cardManager) {
+        this.id = "40";
         this.manager=cardManager;
     }
 
@@ -61,15 +62,6 @@ public class IslandInfluenceCard implements ExpertCard {
     @Override
     public String getId() {
         return this.id;
-    }
-
-    /**
-     *
-     * @param id
-     */
-    @Override
-    public void setId(String id) {
-        this.id = id;
     }
 
 }

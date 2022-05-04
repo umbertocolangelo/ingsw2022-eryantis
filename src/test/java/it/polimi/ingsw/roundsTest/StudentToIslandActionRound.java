@@ -1,6 +1,6 @@
 package it.polimi.ingsw.roundsTest;
 
-import it.polimi.ingsw.model.*;
+import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
@@ -39,10 +39,9 @@ public class StudentToIslandActionRound {
         game.playAssistantCard(AssistantCard.TWO_CARD);
         game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD);
-        Bag bag=new Bag();
+        Bag bag=new Bag(false);
         StudentToIslandCard ingressCardSwapCard = new StudentToIslandCard(game.getCardManager());
         player1.setCoin(5);
-        ingressCardSwapCard.setId("1");
         game.playExpertCard(ingressCardSwapCard);
         System.out.println(game.getPreviousRound());
         Student student1 = new Student(Color.RED);

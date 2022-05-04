@@ -11,7 +11,7 @@ import it.polimi.ingsw.model.rounds.RoundInterface;
 import java.util.*;
 
 /**
- * carta #1
+ * card #1
  */
 public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
 
@@ -19,6 +19,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
      * Default constructor
      */
     public StudentToIslandCard(CardManager cardManager) {
+        this.id = "38";
         this.manager = cardManager;
         students = new LinkedList<Student>();
         for (int i=0; i<4; i++) {
@@ -73,14 +74,6 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent {
     @Override
     public String getId() {
         return this.id;
-    }
-
-    /**
-     * @param id
-     */
-    @Override
-    public void setId(String id) {
-        this.id = id;
     }
 
     /**

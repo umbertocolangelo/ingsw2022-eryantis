@@ -7,9 +7,15 @@ import java.util.Map;
  * This enum contains all the possible colors of the students and professors pawns
  */
 public enum Color {
-    YELLOW("YELLOW"), BLUE("BLUE"), GREEN("GREEN"), RED("RED"), PINK("PINK");
+    YELLOW("YELLOW", "7"),
+    BLUE("BLUE", "8"),
+    GREEN("GREEN", "9"),
+    RED("RED", "10"),
+    PINK("PINK", "11");
 
     private final String text;
+
+    private final String id;
 
     private static final Map<Integer, Color> COLORBYNUMBER = new HashMap<>();
 
@@ -27,8 +33,9 @@ public enum Color {
     /**
      * @param text the string representation of the color.
      */
-    Color(String text) {
+    Color(String text, String id) {
         this.text = text;
+        this.id = id;
     }
 
     /**
@@ -48,4 +55,9 @@ public enum Color {
     public static Color getColor(Integer number){
         return COLORBYNUMBER.get(number);
     }
+
+    /**
+     *
+     */
+    public String getId() { return id; }
 }

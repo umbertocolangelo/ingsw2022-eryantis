@@ -8,15 +8,15 @@ import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.pawns.Student;
 
 /**
- * carta #4
+ * card #4
  */
 public class TwoJumpCard implements ExpertCard {
 
     /**
      * Default constructor
      */
-    public TwoJumpCard(CardManager cardManager) {
-        this.manager=cardManager;
+    public TwoJumpCard() {
+        this.id = "41";
     }
 
     /**
@@ -29,10 +29,6 @@ public class TwoJumpCard implements ExpertCard {
      */
     private Integer cost = 1;
 
-    /**
-     *
-     */
-    private CardManager manager;
 
     /**
      * this appliance enables to move motherNature up to 2 more position and sets the new motherNature position
@@ -64,13 +60,5 @@ public class TwoJumpCard implements ExpertCard {
         return this.id;
     }
 
-    /**
-     *
-     * @param id
-     */
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 
 }

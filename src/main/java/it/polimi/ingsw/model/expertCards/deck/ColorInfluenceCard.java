@@ -6,7 +6,7 @@ import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.pawns.Student;
 
 /**
- * carta #9
+ * card #9
  */
 public class ColorInfluenceCard implements ExpertCard {
 
@@ -14,6 +14,7 @@ public class ColorInfluenceCard implements ExpertCard {
      * Default constructor
      */
     public ColorInfluenceCard(CardManager cardManager) {
+        this.id = "46";
         this.manager=cardManager;
     }
 
@@ -68,13 +69,5 @@ public class ColorInfluenceCard implements ExpertCard {
         return this.id;
     }
 
-    /**
-     *
-     * @param id
-     */
-    @Override
-    public void setId(String id) {
-        this.id = id;
-    }
 
 }
