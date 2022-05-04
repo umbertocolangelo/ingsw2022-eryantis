@@ -2,17 +2,20 @@ package it.polimi.ingsw.listener;
 
 
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.server.Server;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
 public class PropertyObserver implements PropertyChangeListener {
 
-    public PropertyObserver(Game game)
+    public PropertyObserver(Game game, Server server)
     {
         this.game=game;
-        game.addListener(this);
+        this.server=server;
+
     }
+    private Server server;
 
     private Game game;
 

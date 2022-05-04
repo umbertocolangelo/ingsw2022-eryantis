@@ -38,7 +38,7 @@ public class Game implements GameInterface {
         this.studentToHallRound= new StudentToHallActionRound(this);
         this.setUpRound= new SetUpRound(this);
         setRound(this.setSetUpRound());
-        PropertyObserver observer=new PropertyObserver(this);
+
 
     }
     /**

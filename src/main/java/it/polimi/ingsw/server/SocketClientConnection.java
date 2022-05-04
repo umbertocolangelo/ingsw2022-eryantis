@@ -1,19 +1,13 @@
 package it.polimi.ingsw.server;
 
 
-
 import it.polimi.ingsw.listener.PropertyObserver;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.Wizard;
-import it.polimi.ingsw.model.message.MessageMethod;
-import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
-import java.util.Scanner;
 
 
 public class SocketClientConnection  implements ClientConnection, Runnable {

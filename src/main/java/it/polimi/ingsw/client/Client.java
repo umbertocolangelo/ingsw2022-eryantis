@@ -1,17 +1,11 @@
 package it.polimi.ingsw.client;
 
 
-
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
-import it.polimi.ingsw.model.enumerations.Wizard;
-import it.polimi.ingsw.model.message.MessageMethod;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;

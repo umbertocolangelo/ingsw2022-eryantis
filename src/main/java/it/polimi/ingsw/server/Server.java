@@ -6,9 +6,7 @@ import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.player.Player;
-import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
-import java.beans.PropertyChangeSupport;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -80,7 +78,7 @@ public class Server {
             //playingConnection.put(c2, c1);
 
              game = new Game();
-            propertyObserver=new PropertyObserver(this,game);
+            propertyObserver=new PropertyObserver(game,this);
             game.addListener(propertyObserver);
              executor.submit(new Thread() {
                                  public void run() {
