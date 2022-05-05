@@ -54,6 +54,7 @@ public class InfluenceManager {
             return;
         }
         influence.calculateInfluence(motherNature.getIsland());
+        setStandardInfluence();
     }
 
     /**
@@ -69,6 +70,7 @@ public class InfluenceManager {
             return;
         }
         influence.calculateInfluence(island);
+        setStandardInfluence();
     }
 
 
