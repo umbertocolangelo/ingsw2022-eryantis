@@ -4,12 +4,13 @@ import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.pawns.Tower;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  *
  */
-public class IslandGroup implements IslandInterface {
+public class IslandGroup implements IslandInterface, Serializable {
 
     /**
      * Default constructor

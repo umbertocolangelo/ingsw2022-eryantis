@@ -2,12 +2,14 @@ package it.polimi.ingsw.model.studentSuppliers;
 
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Cloud implements FixedObjectStudent {
+public class Cloud implements FixedObjectStudent, Serializable {
 
     /**
      * Default constructor

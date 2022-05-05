@@ -2,12 +2,14 @@ package it.polimi.ingsw.model.player.board;
 
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Ingress implements FixedObjectStudent {
+public class Ingress implements FixedObjectStudent, Serializable {
 
     /**
      * Default constructor

@@ -66,7 +66,7 @@ public class Client {
             public void run() {
                 try {
                     while (isActive()) {
-                        String inputLine = stdin.nextLine();
+
                         /**if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.SET_UP_PHASE) {
                             MessageMethod messageMethod = new MessageMethod("1");
                             messageMethod.setPlayerColor(PlayerColor.WHITE);
@@ -74,8 +74,7 @@ public class Client {
                             socketOut.writeObject(messageMethod);
                         }
                          */
-                        socketOut.writeObject(inputLine);
-                        socketOut.flush();
+
                     }
                 }catch(Exception e){
                     setActive(false);

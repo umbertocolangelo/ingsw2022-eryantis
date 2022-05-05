@@ -2,7 +2,9 @@ package it.polimi.ingsw.model.calculations.professor;
 
 import it.polimi.ingsw.model.enumerations.Color;
 
-public class StandardStrategy implements ProfessorStrategy{
+import java.io.Serializable;
+
+public class StandardStrategy implements ProfessorStrategy, Serializable {
 
     /**
      * Default constructor

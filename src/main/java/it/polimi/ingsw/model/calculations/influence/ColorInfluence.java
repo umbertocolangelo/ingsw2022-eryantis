@@ -7,13 +7,14 @@ import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Professor;
 import it.polimi.ingsw.model.player.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * 
  */
-public class ColorInfluence implements InfluenceCalculator {
+public class ColorInfluence implements InfluenceCalculator, Serializable {
 
     /**
      * Default constructor

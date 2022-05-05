@@ -3,12 +3,13 @@ package it.polimi.ingsw.model.expertCards.deck;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.pawns.Student;
+
+import java.io.Serializable;
 
 /**
  * card #3
  */
-public class IslandInfluenceCard implements ExpertCard {
+public class IslandInfluenceCard implements ExpertCard, Serializable {
 
     /**
      * Default constructor

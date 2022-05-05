@@ -21,12 +21,13 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  *
  */
-public class Game implements GameInterface {
+public class Game implements GameInterface, Serializable {
 
     /**
      * Built already the instance of the Rounds
@@ -131,11 +132,6 @@ public class Game implements GameInterface {
      */
     private InfluenceManager influenceManager=new InfluenceManager(motherNature, playerList);
 
-
-    /**
-     *
-     */
-    private Lobby lobby;
 
     /**
      *
@@ -449,7 +445,7 @@ public class Game implements GameInterface {
 
     @Override
     public Boolean chooseColorAndDeck(PlayerColor color, Wizard wizard) {
-
+            this.currentPlayer=playerList.getFirst();
         if (this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard))
         {
             this.currentPlayer.setPlayerColor(color);

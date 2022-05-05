@@ -2,10 +2,12 @@ package it.polimi.ingsw.model.player.board;
 
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public class School {
+public class School implements Serializable {
 
     /**
      * Default constructor

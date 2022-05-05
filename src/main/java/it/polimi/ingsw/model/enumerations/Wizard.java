@@ -1,9 +1,11 @@
 package it.polimi.ingsw.model.enumerations;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public enum Wizard {
+public enum Wizard implements Serializable {
     GREEN_WIZARD("12"),
     BLUE_WIZARD("13"),
     YELLOW_WIZARD("14"),

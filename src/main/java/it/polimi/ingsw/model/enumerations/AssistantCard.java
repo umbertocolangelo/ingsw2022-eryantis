@@ -1,9 +1,11 @@
 package it.polimi.ingsw.model.enumerations;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public enum AssistantCard {
+public enum AssistantCard implements Serializable {
     ONE_CARD(1, 1, "16"),
     TWO_CARD(1, 2, "17"),
     THREE_CARD(2, 3, "18"),

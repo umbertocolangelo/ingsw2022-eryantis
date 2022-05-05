@@ -5,12 +5,14 @@ import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.enumerations.Wizard;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Player {
+public class Player implements Serializable {
 
     /**
      * Constructor that require the username and set the deck

@@ -3,12 +3,13 @@ package it.polimi.ingsw.model.player.board;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.pawns.Student;
 
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Hall {
+public class Hall implements Serializable {
 
     /**
      * Constructor that create the lines in Hall

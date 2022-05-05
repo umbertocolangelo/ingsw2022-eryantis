@@ -1,16 +1,17 @@
 package it.polimi.ingsw.model.studentSuppliers;
-import java.util.Random;
 
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.board.Ingress;
- import java.util.*;
+
+import java.io.Serializable;
+import java.util.Random;
 /**
  * 
  */
-public class Bag {
+public class Bag implements Serializable {
 
     /**
      * Default constructor

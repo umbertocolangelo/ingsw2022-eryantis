@@ -5,10 +5,11 @@ import it.polimi.ingsw.model.pawns.Professor;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.player.board.Line;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class ProfessorManager {
+public class ProfessorManager implements Serializable {
 
     /**
      * Stores the players

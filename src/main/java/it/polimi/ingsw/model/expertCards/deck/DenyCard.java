@@ -3,12 +3,13 @@ package it.polimi.ingsw.model.expertCards.deck;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.pawns.Student;
+
+import java.io.Serializable;
 
 /**
  * card #5
  */
-public class DenyCard implements ExpertCard {
+public class DenyCard implements ExpertCard, Serializable {
 
     /**
      * Default constructor

@@ -2,12 +2,13 @@ package it.polimi.ingsw.model.islands;
 
 import it.polimi.ingsw.model.pawns.MotherNature;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  *
  */
-public class IslandManager {
+public class IslandManager implements Serializable {
 
     /**
      * Default constructor instantiates the initial 12 Islands of the board into a linked list

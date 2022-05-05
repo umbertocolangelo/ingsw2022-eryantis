@@ -118,7 +118,7 @@ public class Server {
     public void run(){
         int connections = 0;
         System.out.println("Server is running");
-        while(true){
+        while(true){ //Abbiamo un problema che il client si disconnetete se tutte due si connetono insieme e scrive il secondo client
             try {
                 Socket newSocket = serverSocket.accept();
                 connections++;
@@ -131,6 +131,12 @@ public class Server {
             }
         }
     }
+
+    /**
+     *
+     * @param username
+     * @return
+     */
 
 
     public Boolean equalName(String username) {

@@ -8,10 +8,11 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.LinkedList;
 
-public class SetUpRound implements  RoundInterface{
+public class SetUpRound implements  RoundInterface, Serializable {
     /**
      *
      * @param game Pass the referement of game
