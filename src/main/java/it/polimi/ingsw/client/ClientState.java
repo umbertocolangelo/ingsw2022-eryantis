@@ -1,8 +1,9 @@
 package it.polimi.ingsw.client;
 
 public enum ClientState {
+
     LOGIN,
-    CHOOSECOLOR,
+    CHOOSE_COLOR,
     SLEEPING
 
 

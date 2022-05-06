@@ -4,17 +4,47 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Controller implements Runnable{
+
+    /**
+     *
+     */
     private Scanner stdIn;
-    private Boolean isActive=false;
+
+    /**
+     *
+     */
+    private Boolean isActive = false;
+
+    /**
+     *
+     */
     private Client client;
+
+    /**
+     *
+     */
     private String input;
-    private ClientState clientState=ClientState.SLEEPING;
+
+    /**
+     *
+     */
+    private ClientState clientState = ClientState.SLEEPING;
+
+    /**
+     *
+     */
     private CLI cli;
 
-    public Controller(Client client){
-        this.client=client;
-        this.stdIn=client.getScanner();
-        cli=new CLI(client);
+    /**
+     *
+     * @param client
+     */
+    public Controller(Client client) {
+
+        this.client = client;
+        this.stdIn = client.getScanner();
+        cli = new CLI(client);
+
     }
 
 
@@ -32,16 +62,18 @@ public class Controller implements Runnable{
     @Override
     public void run() {
 
-           switch (clientState){
+           switch (clientState) {
+
                case LOGIN :
                    System.out.println("Dentro Login");
                    input = stdIn.nextLine();
                    write(input);
                    break;
-               case SLEEPING:
 
+               case SLEEPING:
                    break;
-               case CHOOSECOLOR:
+
+               case CHOOSE_COLOR:
                    cli.chooseColorAndDeck();
 
 /**
@@ -65,11 +97,13 @@ public class Controller implements Runnable{
 
 
             }
-            //  }
 
         }
 
-
+    /**
+     *
+     * @param object
+     */
     public void write(Object object){
         synchronized (client) {
             try {
@@ -83,6 +117,10 @@ public class Controller implements Runnable{
         }
     }
 
+    /**
+     *
+     * @param clientState
+     */
     public void setClientState(ClientState clientState){
         this.clientState=clientState;
     }
