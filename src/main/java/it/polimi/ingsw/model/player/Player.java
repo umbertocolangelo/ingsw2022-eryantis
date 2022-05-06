@@ -21,16 +21,8 @@ public class Player implements Serializable {
         this.name = name;
         this.id = idCounter.toString();
         idCounter++;
-        this.assistantCards.add(AssistantCard.ONE_CARD);
-        this.assistantCards.add(AssistantCard.TWO_CARD);
-        this.assistantCards.add(AssistantCard.THREE_CARD);
-        this.assistantCards.add(AssistantCard.FOUR_CARD);
-        this.assistantCards.add(AssistantCard.FIVE_CARD);
-        this.assistantCards.add(AssistantCard.SIX_CARD);
-        this.assistantCards.add(AssistantCard.SEVEN_CARD);
-        this.assistantCards.add(AssistantCard.EIGHT_CARD);
-        this.assistantCards.add(AssistantCard.NINE_CARD);
-        this.assistantCards.add(AssistantCard.TEN_CARD);
+       for (AssistantCard a: AssistantCard.values())
+           assistantCards.add(a);
     }
 
     /**
@@ -234,6 +226,10 @@ public class Player implements Serializable {
      */
     public String getId() { return this.id; }
 
+
+    public ArrayList<AssistantCard> getAssistantCard(){
+        return this.assistantCards;
+    }
 
 
 }

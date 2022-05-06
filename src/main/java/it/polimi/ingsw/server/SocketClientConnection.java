@@ -111,12 +111,12 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         try{
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
-
             SetUp setup = new SetUp();
            // System.out.println("si");
             send("Welcome!\nWhat is your name?");
-            send(setup);
+
             synchronized (server) { //si  sincronizza con il send
+                send(setup);
                 String read = (String) in.readObject();
                 while (server.equalName(read) || read.matches(".*\\d.*")) {
                     send("You inserted a number or the username is already used, insert another one");
@@ -124,7 +124,6 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
                     read = (String) in.readObject();
                     System.out.println(read);
                 }
-
                 name = read;
                 send(new SetName(name));
             }

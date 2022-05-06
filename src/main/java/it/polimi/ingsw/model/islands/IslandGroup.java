@@ -25,11 +25,6 @@ public class IslandGroup implements IslandInterface, Serializable {
     private boolean isDenied;
 
     /**
-     *
-     */
-    private String id;
-
-    /**
      * linked list of island in the same group
      */
     private LinkedList<Island> islandGroup = new LinkedList<Island>();
@@ -126,7 +121,7 @@ public class IslandGroup implements IslandInterface, Serializable {
      */
     public void addTower(Tower tower) {
         for (Island island: islandGroup) {
-            if(island.getTowers().get(0)==null){
+            if(island.getTowers().size()==0) {
                 island.addTower(tower);
                 return;
             }
@@ -134,17 +129,15 @@ public class IslandGroup implements IslandInterface, Serializable {
     }
 
     /**
-     * @return id
-     */
-    public String getId() {
-        return this.id;
-    }
-
-    /**
      *
+     * @param tower is the tower to remove in the correct island in islandGroup
      */
-    public void setId(String id) {
-        this.id = id;
+    public void removeTower(Tower tower) {
+        for (Island island: islandGroup) {
+            if (island.getTowers().get(0)==tower) {
+                island.removeTower(tower);
+            }
+        }
     }
 
 }

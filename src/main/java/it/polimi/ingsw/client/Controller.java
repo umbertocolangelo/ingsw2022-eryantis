@@ -6,7 +6,12 @@ import java.util.Scanner;
 public class Controller implements Runnable{
 
     /**
-     *
+     * Represent the Thread that will modify the game
+     */
+    private Thread t0;
+
+    /**
+     *Get the input from the keyboard
      */
     private Scanner stdIn;
 
@@ -16,22 +21,22 @@ public class Controller implements Runnable{
     private Boolean isActive = false;
 
     /**
-     *
+     *Keep the reference from Client
      */
     private Client client;
 
     /**
-     *
+     *The string we get from the Scanner
      */
     private String input;
 
     /**
-     *
+     *The clientState where the controller is now
      */
     private ClientState clientState = ClientState.SLEEPING;
 
     /**
-     *
+     *The CLI
      */
     private CLI cli;
 
@@ -61,60 +66,46 @@ public class Controller implements Runnable{
      */
     @Override
     public void run() {
-
            switch (clientState) {
-
                case LOGIN:
-                   System.out.println("Dentro Login");
+                  // System.out.println("Dentro Login");
                    input = stdIn.nextLine();
                    write(input);
+                   setClientState(ClientState.SLEEPING);
                    break;
 
                case SLEEPING:
                    break;
-
                case PLAYING:
                    switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
                        case SET_UP_PHASE :
-                           Thread t0 = cli.chooseColorAndDeck();
-                           try {
-                               t0.join();
-                           } catch (InterruptedException e) {
-                               e.printStackTrace();
-                           }
+                            t0= cli.chooseColorAndDeck();
+                            break;
+                       case CHOOSING_ASSISTANT:
+                           t0=cli.choosingAssistant();
+                           break;
+                   }
+                   try {
+                       t0.join();
+                       setClientState(ClientState.SLEEPING);
+                   } catch (InterruptedException e) {
+                       e.printStackTrace();
                    }
 /**
-                if (client.getGame() != null && client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.SET_UP_PHASE) {
-                        System.out.println("Siamo nella fase di scelta del deck e del colore\n Inizia a scegliere il colore seleziona da 0 al numero di wizard");
-                        System.out.println(((SetUpRound) client.getGame().getCurrentRound()).getWizards());
-                        String input = stdIn.nextLine();
-                        MessageMethod messageMethod = new ChooseColorAndDeck();
-                        messageMethod.setWizard(((SetUpRound) client.getGame().getCurrentRound()).getWizards().get(Integer.parseInt(input)));
-                        System.out.println("Scegli il colore\n");
-                        System.out.println(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor());
-                        input = stdIn.nextLine();
-                        messageMethod.setPlayerColor(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)));
-                        write(messageMethod);
-                    }else {
-                        System.out.println("Sono a comando da tastiera");
-                        input = stdIn.nextLine();
-                        write(input);
-                    }
  */
-
-
             }
 
         }
 
     /**
+     * This method write to the server socket synchronized with the read
      *
-     * @param object
+     * @param object the object we need to send
      */
     public void write(Object object){
         synchronized (client) {
             try {
-                System.out.println("scrivo");
+                System.out.println("metodo send nel controller");
                 client.getIn().writeObject(object);
                 client.getIn().flush();
 
@@ -124,9 +115,9 @@ public class Controller implements Runnable{
         }
     }
 
-    /**
+    /**Set the clientState
      *
-     * @param clientState
+     * @param clientState The client State we want to modify
      */
     public void setClientState(ClientState clientState){
         this.clientState=clientState;

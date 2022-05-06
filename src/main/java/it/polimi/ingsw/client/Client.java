@@ -13,6 +13,19 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Client {
+    /**
+     *
+     */
+    private  Socket socket;
+    /**
+     *
+     */
+    private ObjectInputStream socketIn;
+
+    /**
+     *
+     */
+    private Object object=new Object() ;
 
     /**
      *
@@ -107,9 +120,9 @@ public class Client {
                                     controller.setClientState(ClientState.PLAYING);
                                     controller.run();
                             } else if (inputObject instanceof SetUp) {
+                                System.out.println("ricevuto");
                                 controller.setClientState(ClientState.LOGIN);
                                 controller.run();
-                                System.out.println("ricevuto");
                             } else if (inputObject instanceof SetName)
                                 namePlayer = ((SetName) inputObject).getName();
                             else {
@@ -162,29 +175,31 @@ public class Client {
      * @throws IOException
      */
     public void run() throws IOException {
-        Socket socket = new Socket(ip, port);
-        System.out.println("Connection established");
-        ObjectInputStream socketIn = new ObjectInputStream(socket.getInputStream());
-        socketOut = new ObjectOutputStream(socket.getOutputStream());
-         stdin = new Scanner(System.in);
-         controller=new Controller(this);
+            socket = new Socket(ip, port);
+            System.out.println("Connection established");
+            socketIn = new ObjectInputStream(socket.getInputStream());
+            socketOut = new ObjectOutputStream(socket.getOutputStream());
+            stdin = new Scanner(System.in);
+            controller = new Controller(this);
 
-        try{
-            Thread t0 = asyncReadFromSocket(socketIn);
-            Thread t1 = asyncWriteToSocket(stdin, socketOut);
+            try {
+                Thread t0 = asyncReadFromSocket(socketIn);
+                Thread t1 = asyncWriteToSocket(stdin, socketOut);
 
-            t0.join();
-            //t1.join();
+                t0.join();
+                //t1.join();
 
-        } catch(InterruptedException | NoSuchElementException e){
-            System.out.println("Connection closed from the client side");
-        } finally {
-            stdin.close();
-            socketIn.close();
-            socketOut.close();
-            socket.close();
+            } catch (InterruptedException | NoSuchElementException e) {
+                System.out.println("Connection closed from the client side");
+            } finally {
+                stdin.close();
+                socketIn.close();
+                socketOut.close();
+                socket.close();
+            }
         }
-    }
+
+
 
     /**
      *

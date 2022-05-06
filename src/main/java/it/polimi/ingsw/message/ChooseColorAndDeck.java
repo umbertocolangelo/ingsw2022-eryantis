@@ -30,7 +30,7 @@ public class ChooseColorAndDeck implements MessageMethod, Serializable {
      *
      * @param playerColor
      */
-    @Override
+
     public void setPlayerColor(PlayerColor playerColor) {
         this.playerColor = playerColor;
     }
@@ -39,6 +39,5 @@ public class ChooseColorAndDeck implements MessageMethod, Serializable {
      *
      * @param coloredWizard
      */
-    @Override
     public void setWizard(Wizard coloredWizard) { this.wizard = coloredWizard; }
 }
