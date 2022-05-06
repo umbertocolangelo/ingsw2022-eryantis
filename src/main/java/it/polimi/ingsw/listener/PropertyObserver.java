@@ -9,14 +9,24 @@ import java.beans.PropertyChangeListener;
 
 public class PropertyObserver implements PropertyChangeListener {
 
-    public PropertyObserver(Game game, Server server)
-    {
-        this.game=game;
-        this.server=server;
-
+    /**
+     * default constructor
+     * @param game
+     * @param server
+     */
+    public PropertyObserver(Game game, Server server) {
+        this.game = game;
+        this.server = server;
     }
+
+    /**
+     *
+     */
     private Server server;
 
+    /**
+     *
+     */
     private Game game;
 
     /**
@@ -33,4 +43,5 @@ public class PropertyObserver implements PropertyChangeListener {
         System.out.println("Do something, probably will change the json");
         server.sendGame();
     }
+
 }
