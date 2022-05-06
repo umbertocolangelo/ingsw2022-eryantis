@@ -23,7 +23,7 @@ public class GameTests {
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
         game.setPLayerList(lista);
-        game.inizializeGame();
+        game.initializeGame();
 
 
         assertTrue(game.getClouds().get(1).getStudents().size()==3 );

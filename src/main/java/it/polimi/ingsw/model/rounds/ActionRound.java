@@ -87,7 +87,7 @@ public class ActionRound implements RoundInterface, Serializable {
                     this.clouds.get(i).addStudent(this.game.getBag().newStudent());
             }
             game.setCloud(clouds);
-            this.game.setRound(this.game.setPianificationnRoundState());
+            this.game.setRound(this.game.setPianificationRoundState());
                 return true;
         }
         if(this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD){

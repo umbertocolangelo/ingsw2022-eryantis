@@ -7,22 +7,38 @@ import it.polimi.ingsw.model.enumerations.Wizard;
 import java.io.Serializable;
 
 public class ChooseColorAndDeck implements MessageMethod, Serializable {
+
+    /**
+     *
+     */
     private PlayerColor playerColor;
 
+    /**
+     *
+     */
     private Wizard wizard;
 
+    /**
+     *
+     * @param game
+     */
     public void apply(Game game) {
-        game.chooseColorAndDeck(playerColor,wizard);
+        game.chooseColorAndDeck(playerColor, wizard);
     }
 
-
+    /**
+     *
+     * @param playerColor
+     */
     @Override
-    public void setPlayerColor(PlayerColor white) {
-        this.playerColor=white;
+    public void setPlayerColor(PlayerColor playerColor) {
+        this.playerColor = playerColor;
     }
 
+    /**
+     *
+     * @param coloredWizard
+     */
     @Override
-    public void setWizard(Wizard purpleWizard) {
-                this.wizard=purpleWizard;
-    }
+    public void setWizard(Wizard coloredWizard) { this.wizard = coloredWizard; }
 }
