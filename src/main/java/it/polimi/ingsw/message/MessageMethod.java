@@ -6,9 +6,22 @@ import it.polimi.ingsw.model.enumerations.Wizard;
 
 public interface MessageMethod {
 
+    /**
+     *
+     * @param game
+     */
     public void apply(Game game);
 
+    /**
+     *
+     * @param white
+     */
     void setPlayerColor(PlayerColor white);
 
+    /**
+     *
+     * @param purpleWizard
+     */
     void setWizard(Wizard purpleWizard);
+
 }

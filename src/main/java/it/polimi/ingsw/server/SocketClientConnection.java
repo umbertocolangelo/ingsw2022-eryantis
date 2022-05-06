@@ -24,15 +24,28 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
     private boolean active = true;
     private PropertyObserver observer;
 
+    /**
+     * default constructor
+     * @param socket
+     * @param server
+     */
     public SocketClientConnection(Socket socket, Server server) {
         this.socket = socket;
         this.server = server;
     }
 
+    /**
+     *
+     * @return
+     */
     private synchronized boolean isActive(){
-        return active;
+        return this.active;
     }
 
+    /**
+     *
+     * @param message
+     */
     public  void send(Object message) {
         synchronized (server) {
             try {
@@ -45,6 +58,9 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         }
     }
 
+    /**
+     *
+     */
     @Override
     public synchronized void closeConnection() {
         send("Connection closed!");
@@ -56,11 +72,18 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         active = false;
     }
 
+    /**
+     *
+     * @param observer
+     */
     @Override
     public void addObserver(PropertyObserver observer) {
             this.observer=observer;
     }
 
+    /**
+     *
+     */
     private void close() {
         closeConnection();
         System.out.println("Deregistering client...");
@@ -68,7 +91,10 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         System.out.println("Done!");
     }
 
-
+    /**
+     *
+     * @param message
+     */
     public void asyncSend(final Object message){
         new Thread(new Runnable() {
             @Override
@@ -86,7 +112,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
 
-            SetUp setup=new SetUp();
+            SetUp setup = new SetUp();
            // System.out.println("si");
             send("Welcome!\nWhat is your name?");
             send(setup);
@@ -106,7 +132,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
                 while (isActive()) {
                     Object object = in.readObject();
                     if (object instanceof MessageMethod) {
-                        Thread t1=new Thread( server.modifyGame(object));
+                        Thread t1 = new Thread( server.modifyGame(object));
                         t1.join();
                         System.out.println(object);
                     }
@@ -123,21 +149,31 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
 
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error! " + e.getMessage());
-        } catch (ClassNotFoundException e){
-                e.printStackTrace();
-            } catch (InterruptedException e) {
+
+        } catch (ClassNotFoundException e) {
             e.printStackTrace();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+
         } finally {
             close();
         }
 
-        //}
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName(){
         return  this.name;
     }
 
+    /**
+     *
+     * @return
+     */
     public ObjectInputStream getIn(){
         return this.in;
     }
