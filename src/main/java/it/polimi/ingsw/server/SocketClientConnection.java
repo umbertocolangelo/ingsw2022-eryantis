@@ -33,7 +33,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         return active;
     }
 
-    public synchronized void send(Object message) {
+    public  void send(Object message) {
         synchronized (server) {
             try {
                 out.reset();
@@ -78,6 +78,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         }).start();
     }
 
+
     @Override
     public void run() {
        // while(!Thread.currentThread().isInterrupted()){
@@ -89,7 +90,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
            // System.out.println("si");
             send("Welcome!\nWhat is your name?");
             send(setup);
-            synchronized (object) { //si  sincronizza con il send
+            synchronized (server) { //si  sincronizza con il send
                 String read = (String) in.readObject();
                 while (server.equalName(read) || read.matches(".*\\d.*")) {
                     send("You inserted a number or the username is already used, insert another one");
@@ -97,14 +98,18 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
                     read = (String) in.readObject();
                     System.out.println(read);
                 }
+
                 name = read;
                 send(new SetName(name));
+            }
                 server.lobby(this, name);
                 while (isActive()) {
                     Object object = in.readObject();
-                    if (object instanceof MessageMethod)
-                        server.modifyGame(object);
-                    System.out.println(read);
+                    if (object instanceof MessageMethod) {
+                        Thread t1=new Thread( server.modifyGame(object));
+                        t1.join();
+                        System.out.println(object);
+                    }
                     /** if(object instanceof MessageMethod)
                      {
 
@@ -115,7 +120,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
                      */
                     //  notify(read);
                 }
-            }
+
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error! " + e.getMessage());
         } catch (ClassNotFoundException e){

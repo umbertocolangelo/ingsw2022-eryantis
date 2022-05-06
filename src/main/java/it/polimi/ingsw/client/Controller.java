@@ -36,11 +36,11 @@ public class Controller implements Runnable{
     public void run() {
         while (true) {
             while (isActive) {
-                if(client.getGame()!=null)
-                System.out.println(client.getGame().getCurrentPlayer() + "   " +client.getNamePlayer() );
-                while (client.getGame()!=null && client.getGame().getCurrentPlayer().getName().equals(client.getNamePlayer())) {
-
-                    if (client.getGame() != null && client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.SET_UP_PHASE) {
+                if(client.getGame()!=null) {
+                    System.out.println(client.getGame().getCurrentPlayer().getName() + "   " + client.getNamePlayer());
+                    System.out.println(client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.SET_UP_PHASE);
+                }
+                if (client.getGame() != null && client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.SET_UP_PHASE) {
                         System.out.println("Siamo nella fase di scelta del deck e del colore\n Inizia a scegliere il colore seleziona da 0 al numero di wizard");
                         System.out.println(((SetUpRound) client.getGame().getCurrentRound()).getWizards());
                         String input = stdIn.nextLine();
@@ -51,12 +51,13 @@ public class Controller implements Runnable{
                         input = stdIn.nextLine();
                         messageMethod.setPlayerColor(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)));
                         write(messageMethod);
-                    }
-                }
-                    input = stdIn.nextLine();
-                    write(input);
+                    }else {
+                        System.out.println("Sono a comando da tastiera");
+                        input = stdIn.nextLine();
+                        write(input);
 
-                //isActive = false;
+                    }
+                isActive = false;
 
             }
             //  }

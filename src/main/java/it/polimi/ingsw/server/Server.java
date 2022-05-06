@@ -2,6 +2,7 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.listener.PropertyObserver;
+import it.polimi.ingsw.message.ChooseColorAndDeck;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.player.Player;
@@ -19,7 +20,7 @@ public class Server {
     private ServerSocket serverSocket;
     private ExecutorService executor = Executors.newFixedThreadPool(128);
     private Map<String, SocketClientConnection> waitingConnection = new HashMap<>();
-    private Map<String, ClientConnection> playingConnection = new HashMap<>();
+    private Map<String, SocketClientConnection> playingConnection = new HashMap<>();
     private LinkedList<SocketClientConnection> socketConnections=new LinkedList<>();
     private Integer numberOfPlayer=128;
     private Boolean gameMode; // true for expert mode, false for normal one
@@ -175,8 +176,14 @@ public class Server {
     }
 
     public void sendGame(){
-        for( ClientConnection c: playingConnection.values())
-        c.asyncSend(game);
+        System.out.println("Invio il gioco da server");
+        synchronized (this) {
+            for (SocketClientConnection c : playingConnection.values()) {
+                c.send(game);
+            }
+        }
+
+
     }
 
     public Game getGame(){
@@ -188,15 +195,20 @@ public class Server {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                synchronized (this) {
-                  //  game.chooseColorAndDeck(PlayerColor.WHITE, Wizard.PURPLE_WIZARD);
-                    game.setPlayerList(players);
-                    game.inizializeGame();
-                    System.out.println(game.getPlayerList());
-                    System.out.println(game.getCurrentPlayer().getName());
-                    sendGame();
 
-                }
+                    if(object instanceof Game) {
+                        game.setPlayerList(players);
+                        game.inizializeGame();
+                        System.out.println(game.getPlayerList());
+                        System.out.println(game.getCurrentPlayer().getName());
+                        sendGame();
+                    }
+                    if (object instanceof ChooseColorAndDeck) {
+                        ((ChooseColorAndDeck) object).apply(game);
+
+
+                    }
+
             }
         });
         t.start();

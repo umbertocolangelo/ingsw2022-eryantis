@@ -203,7 +203,7 @@ public class Game implements GameInterface, Serializable {
                 }
             }
         for(int i = 0; i< playerList.size(); i++) {
-            playerList.get(0).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
+            playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
             for (int j = 0; (isThree && j<9) || (!isThree && j<7); j++){
 
                 //playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
@@ -452,13 +452,18 @@ public class Game implements GameInterface, Serializable {
         {
             this.currentPlayer.setPlayerColor(color);
             currentPlayer.setWizard(wizard);
+            if(playerList.indexOf(currentPlayer)+1<playerList.size()) {
+                System.out.println("modify current player in game");
+                this.currentPlayer = playerList.get(playerList.indexOf(currentPlayer) + 1);
+            }
             propertyChange.firePropertyChange("Finished expert move",currentPlayer,color);
             return true;
         }
         if (!this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard))
                return false;
-        if(playerList.indexOf(currentPlayer)<playerList.size()-1)
-        this.currentPlayer=playerList.get(playerList.indexOf(currentPlayer)+1);
+
+
+
         return null;
 
 

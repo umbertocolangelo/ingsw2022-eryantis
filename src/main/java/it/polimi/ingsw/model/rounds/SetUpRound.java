@@ -65,6 +65,7 @@ public class SetUpRound implements  RoundInterface, Serializable {
 
         }
 
+
         return true;
     }
 
@@ -185,7 +186,7 @@ public class SetUpRound implements  RoundInterface, Serializable {
      * @return              True if the parameters are acceptable, false instead
      */
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
-        if (colors.contains(color) || wizards.contains(wizard) || player.getPlayerPhase() != PlayerPhase.SET_UP_PHASE)
+        if ( player.getPlayerPhase() != PlayerPhase.SET_UP_PHASE)
             return false;
         wizards.remove(wizard);
         colors.remove(color);
