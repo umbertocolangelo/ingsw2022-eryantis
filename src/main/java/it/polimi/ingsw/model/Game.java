@@ -590,7 +590,7 @@ public class Game implements GameInterface, Serializable {
      */
     public void finishExpertMove(){
         this.currentRound.finishExpertMove();
-        propertyChange.firePropertyChange("Finished expert move",getCardManager().getCurrentCard(),null);
+        propertyChange.firePropertyChange("Finished expert move",cardManager.getCurrentCard(),null);
     }
 
     /**
