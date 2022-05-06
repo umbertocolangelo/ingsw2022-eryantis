@@ -43,7 +43,7 @@ public class Controller implements Runnable{
 
         this.client = client;
         this.stdIn = client.getScanner();
-        cli = new CLI(client);
+        cli = new CLI(client,this);
 
     }
 
@@ -64,7 +64,7 @@ public class Controller implements Runnable{
 
            switch (clientState) {
 
-               case LOGIN :
+               case LOGIN:
                    System.out.println("Dentro Login");
                    input = stdIn.nextLine();
                    write(input);
@@ -73,9 +73,16 @@ public class Controller implements Runnable{
                case SLEEPING:
                    break;
 
-               case CHOOSE_COLOR:
-                   cli.chooseColorAndDeck();
-
+               case PLAYING:
+                   switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
+                       case SET_UP_PHASE :
+                           Thread t0 = cli.chooseColorAndDeck();
+                           try {
+                               t0.join();
+                           } catch (InterruptedException e) {
+                               e.printStackTrace();
+                           }
+                   }
 /**
                 if (client.getGame() != null && client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.SET_UP_PHASE) {
                         System.out.println("Siamo nella fase di scelta del deck e del colore\n Inizia a scegliere il colore seleziona da 0 al numero di wizard");

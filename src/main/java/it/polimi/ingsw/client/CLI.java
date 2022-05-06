@@ -9,14 +9,16 @@ import java.util.Scanner;
 public class CLI {
     private Client client;
     private Controller controller;
-    private Scanner scanner;
+    private Scanner scanner=new Scanner(System.in) ;
     public CLI(Client client, Controller controller){
         this.client=client;
         this.controller=controller;
     }
 
-    public void chooseColorAndDeck(Object lock) {
-        synchronized (controller) {
+    public Thread chooseColorAndDeck() {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
             System.out.println("Siamo nella fase di scelta del deck e del colore\n Inizia a scegliere il colore seleziona da 0 al numero di wizard");
             System.out.println(((SetUpRound) client.getGame().getCurrentRound()).getWizards());
             String input = scanner.nextLine();
@@ -27,8 +29,11 @@ public class CLI {
             input = scanner.nextLine();
             messageMethod.setPlayerColor(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)));
             controller.write(messageMethod);
-            controller.notify();
+            controller.setClientState(ClientState.SLEEPING);
         }
+    });
+        t.start();
+        return t;
     }
 
 }

@@ -104,7 +104,7 @@ public class Client {
                                 game = (Game) inputObject;
                                 System.out.println("ricevuto game al client");
                                 if (game.getCurrentPlayer().getName().equals(namePlayer))
-                                    controller.setClientState(ClientState.CHOOSE_COLOR);
+                                    controller.setClientState(ClientState.PLAYING);
                                     controller.run();
                             } else if (inputObject instanceof SetUp) {
                                 controller.setClientState(ClientState.LOGIN);
