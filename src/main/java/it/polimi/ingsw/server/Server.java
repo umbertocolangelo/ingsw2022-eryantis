@@ -2,9 +2,8 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.listener.PropertyObserver;
+import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.player.Player;
 
 import java.io.IOException;
@@ -26,6 +25,7 @@ public class Server {
     private Boolean gameMode; // true for expert mode, false for normal one
     private PropertyObserver propertyObserver;
     private Game game;
+    private SetUp setup=new SetUp();
 
     //Deregister connection
     public synchronized void deregisterConnection(SocketClientConnection c) {
@@ -44,20 +44,23 @@ public class Server {
     }
 
 
-    public synchronized void lobby(SocketClientConnection c, String name) throws IOException, ClassNotFoundException {
+    public synchronized void lobby(SocketClientConnection c, String name) throws IOException, ClassNotFoundException, InterruptedException {
+
         List<String> keys = new ArrayList<>(waitingConnection.keySet());
         System.out.println("New client " + name);
         waitingConnection.put(name, c);
         if (waitingConnection.size() == 1) {
             c.send("You are the first player");
+
             decideNumberOfPlayersAndGameMode(c);
         }
         c.send("waiting for other players");
         keys = new ArrayList<>(waitingConnection.keySet());
-        //System.out.println(waitingConnection.size());
+
         if (waitingConnection.size() == numberOfPlayer) {
+            System.out.println(waitingConnection.size() +" "+ numberOfPlayer);
             for (SocketClientConnection d : waitingConnection.values())
-                d.send("Players arrived, starting game..");
+                d.asyncSend("Players arrived, starting game..");
 
             //System.out.println("dentro");
             SocketClientConnection c1 = waitingConnection.get(keys.get(0));
@@ -72,31 +75,25 @@ public class Server {
                 Player player3 = new Player(c3.getName());
                 players.add(player3);
             }
-            System.out.println(players);
+           // System.out.println(players);
 
             //playingConnection.put(c1, c2);
             //playingConnection.put(c2, c1);
 
-             game = new Game();
+            game = new Game();
             propertyObserver=new PropertyObserver(game,this);
             game.addListener(propertyObserver);
-             executor.submit(new Thread() {
-                                 public void run() {
+            //System.out.println(game.getCurrentPlayer().getName());
+            //System.out.println(game.getPlayerList());
+            Thread t1=new Thread( modifyGame(game));
+            t1.join();
+            //c2.asyncSend(game);
+            //c1.asyncSend(game);
 
-                                     game.setPlayerList(players);
-                                     game.inizializeGame();
-                                 }
-
-                             });
-
-            c1.asyncSend(game);
-            c2.asyncSend(game);
             //System.out.println(game.getCurrentPlayer());
+
             playingConnection.putAll(waitingConnection);
             waitingConnection.clear();
-
-
-
 
             //c1.asyncSend(model.getBoardCopy());
             //c2.asyncSend(model.getBoardCopy());
@@ -125,7 +122,8 @@ public class Server {
                 System.out.println("Ready for the new connection - " + connections);
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
                 socketConnections.add(socketConnection);
-                executor.submit(socketConnection);
+                Thread t0=new Thread(socketConnection);
+                t0.start();
             } catch (IOException e) {
                 System.out.println("Connection Error!");
             }
@@ -149,19 +147,23 @@ public class Server {
 
     public void decideNumberOfPlayersAndGameMode(SocketClientConnection c) throws IOException, ClassNotFoundException {
         c.send("Decide the number of players, 2 or 3 ");
+        c.send(setup);
         String message=(String) c.getIn().readObject();
         while(!(message.equals("2") || message.equals("3"))) {
             c.send("You must select 2 or 3 ->");
+            c.send(setup);
             message=(String) c.getIn().readObject(); // Read user input
         }
         numberOfPlayer= Integer.valueOf(message);
         System.out.println("number of players selected "+ numberOfPlayer);
 
         c.send("Decide the gameMode, 1for expert and 0 for normal");
+        c.send(setup);
         message=(String) c.getIn().readObject(); // Read user input
 
         while(!(message.equals("0") || message.equals("1"))) {
             c.send("You must select 0 or 1 ");
+            c.send(setup);
             message=(String) c.getIn().readObject(); // Read user input
         }
         if(message.equals("1"))
@@ -181,14 +183,24 @@ public class Server {
         return game;
     }
 
-    public void modifyGame(Object object){
-        new Thread() {
+    //Sincronizza la modifica e l'invio con la lettura in socketclientCOnnection su metodo asynread
+    public Thread modifyGame(Object object){
+        Thread t = new Thread(new Runnable() {
+            @Override
             public void run() {
-                synchronized (game) {
-                    game.chooseColorAndDeck(PlayerColor.WHITE, Wizard.PURPLE_WIZARD);
+                synchronized (this) {
+                  //  game.chooseColorAndDeck(PlayerColor.WHITE, Wizard.PURPLE_WIZARD);
+                    game.setPlayerList(players);
+                    game.inizializeGame();
+                    System.out.println(game.getPlayerList());
+                    System.out.println(game.getCurrentPlayer().getName());
+                    sendGame();
+
                 }
             }
-        }.start();
+        });
+        t.start();
+        return t;
     }
 }
 

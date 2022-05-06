@@ -1,6 +1,8 @@
 package it.polimi.ingsw.client;
 
 
+import it.polimi.ingsw.message.SetName;
+import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
 
 import java.io.IOException;
@@ -18,6 +20,9 @@ public class Client {
     private Scanner stdin;
     private String namePlayer;
     private Object inputObject;
+    private Controller controller;
+    private  ObjectOutputStream socketOut;
+
 
     public Client(String ip, int port){
         this.ip = ip;
@@ -38,21 +43,30 @@ public class Client {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                try {
-                    while (isActive()) {
-                        inputObject = socketIn.readObject();
-                        if(inputObject instanceof String) {
-                            System.out.println((String) inputObject);
-                        }else if (inputObject instanceof Game){
-                            game= (Game) inputObject;
-                           System.out.println(game.getPlayerList().get(0).getPlayerColor());
+                synchronized (this) {
+                    try {
 
-                        } else {
-                            throw new IllegalArgumentException();
+                        while (isActive()) {
+                            inputObject = socketIn.readObject();
+                            if (inputObject instanceof String) {
+                                System.out.println((String) inputObject);
+                            } else if (inputObject instanceof Game) {
+                                game = (Game) inputObject;
+                                System.out.println("ricevuto game al client");
+                                if (game.getCurrentPlayer().getName().equals(namePlayer))
+                                    controller.setActive(true);
+                            } else if (inputObject instanceof SetUp) {
+                                controller.setActive(true);
+                                System.out.println("ricevutoi");
+                            } else if (inputObject instanceof SetName)
+                                namePlayer = ((SetName) inputObject).getName();
+                            else {
+                                throw new IllegalArgumentException();
+                            }
                         }
+                    } catch (Exception e) {
+                        setActive(false);
                     }
-                } catch (Exception e){
-                    setActive(false);
                 }
             }
         });
@@ -89,14 +103,17 @@ public class Client {
         Socket socket = new Socket(ip, port);
         System.out.println("Connection established");
         ObjectInputStream socketIn = new ObjectInputStream(socket.getInputStream());
-        ObjectOutputStream socketOut = new ObjectOutputStream(socket.getOutputStream());
+        socketOut = new ObjectOutputStream(socket.getOutputStream());
          stdin = new Scanner(System.in);
+         controller=new Controller(this);
 
         try{
             Thread t0 = asyncReadFromSocket(socketIn);
             Thread t1 = asyncWriteToSocket(stdin, socketOut);
+            controller.run();
             t0.join();
-            t1.join();
+            //t1.join();
+
         } catch(InterruptedException | NoSuchElementException e){
             System.out.println("Connection closed from the client side");
         } finally {
@@ -111,8 +128,16 @@ public class Client {
         return stdin;
     }
 
-    public void setNamePlayer(String name){
-        this.namePlayer=name;
+    public String getNamePlayer(){
+        return this.namePlayer;
+    }
+
+    public ObjectOutputStream getIn(){
+        return socketOut;
+    }
+
+    public Game getGame(){
+        return this.game;
     }
 
 }

@@ -20,6 +20,10 @@ public class SetUpRound implements  RoundInterface, Serializable {
     public SetUpRound(Game game) {
         this.game=game;
         playersList=this.game.getPlayerList();
+        for (Wizard c : Wizard.values())
+            wizards.add(c);
+        for (PlayerColor c: PlayerColor.values())
+            colors.add(c);
     }
     /**
      *
@@ -58,8 +62,9 @@ public class SetUpRound implements  RoundInterface, Serializable {
             Collections.shuffle(playersListOrdered);
             game.setOrderedPLayerList(playersListOrdered);
             this.game.setRound(game.setPianificationnRoundState());
-            game.inizializeGame();
+
         }
+
         return true;
     }
 
@@ -182,10 +187,19 @@ public class SetUpRound implements  RoundInterface, Serializable {
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         if (colors.contains(color) || wizards.contains(wizard) || player.getPlayerPhase() != PlayerPhase.SET_UP_PHASE)
             return false;
-        wizards.add(wizard);
-        colors.add(color);
+        wizards.remove(wizard);
+        colors.remove(color);
         playersListOrdered.add(player);
+
         return checkRoundEnded();
+    }
+
+    public LinkedList<PlayerColor> getplayerColor(){
+        return this.colors;
+    }
+
+    public LinkedList<Wizard> getWizards(){
+        return this.wizards;
     }
 
 }

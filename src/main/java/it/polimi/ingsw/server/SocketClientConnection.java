@@ -2,6 +2,9 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.listener.PropertyObserver;
+import it.polimi.ingsw.message.MessageMethod;
+import it.polimi.ingsw.message.SetName;
+import it.polimi.ingsw.message.SetUp;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -12,7 +15,7 @@ import java.util.NoSuchElementException;
 
 public class SocketClientConnection  implements ClientConnection, Runnable {
 
-
+    private Object object=new Object();
     private Socket socket;
     private ObjectOutputStream out;
     private Server server;
@@ -31,14 +34,15 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
     }
 
     public synchronized void send(Object message) {
+        synchronized (server) {
             try {
                 out.reset();
                 out.writeObject(message);
                 out.flush();
-            } catch(IOException e){
+            } catch (IOException e) {
                 System.err.println(e.getMessage());
             }
-
+        }
     }
 
     @Override
@@ -64,7 +68,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         System.out.println("Done!");
     }
 
-
+    //Si potrebbe modificare mettendo semplicemente una gui
     public void asyncSend(final Object message){
         new Thread(new Runnable() {
             @Override
@@ -76,40 +80,53 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
 
     @Override
     public void run() {
+       // while(!Thread.currentThread().isInterrupted()){
         try{
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
+
+            SetUp setup=new SetUp();
            // System.out.println("si");
             send("Welcome!\nWhat is your name?");
-            String read =(String) in.readObject();
-            while (server.equalName(read) ||  read.matches(".*\\d.*")) {
-                send("You inserted a number or the username is already used, insert another one");
-                read = (String) in.readObject();
-                System.out.println(read);
-            }
-            name = read;
-            server.lobby(this, name);
-            while(isActive()){
-                Object object=  in.readObject();
-                server.modifyGame(object);
-                System.out.println(read);
-               /** if(object instanceof MessageMethod)
-                {
-
-                    if (  ((MessageMethod) object).getId().equals("1")){
-                        server.getGame().chooseColorAndDeck(((MessageMethod) object).getPlayerColor(),((MessageMethod) object).getWizard());
-                    }
+            send(setup);
+            synchronized (object) { //si  sincronizza con il send
+                String read = (String) in.readObject();
+                while (server.equalName(read) || read.matches(".*\\d.*")) {
+                    send("You inserted a number or the username is already used, insert another one");
+                    send(setup);
+                    read = (String) in.readObject();
+                    System.out.println(read);
                 }
-*/
-              //  notify(read);
+                name = read;
+                send(new SetName(name));
+                server.lobby(this, name);
+                while (isActive()) {
+                    Object object = in.readObject();
+                    if (object instanceof MessageMethod)
+                        server.modifyGame(object);
+                    System.out.println(read);
+                    /** if(object instanceof MessageMethod)
+                     {
+
+                     if (  ((MessageMethod) object).getId().equals("1")){
+                     server.getGame().chooseColorAndDeck(((MessageMethod) object).getPlayerColor(),((MessageMethod) object).getWizard());
+                     }
+                     }
+                     */
+                    //  notify(read);
+                }
             }
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error! " + e.getMessage());
-        } catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e){
+                e.printStackTrace();
+            } catch (InterruptedException e) {
             e.printStackTrace();
-        } finally{
+        } finally {
             close();
         }
+
+        //}
     }
 
     public String getName(){
