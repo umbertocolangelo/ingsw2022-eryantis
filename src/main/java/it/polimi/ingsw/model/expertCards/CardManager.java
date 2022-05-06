@@ -67,7 +67,7 @@ public class CardManager implements Serializable {
      * Set the current card
      */
     public void setCurrentCard(ExpertCard expertCard) {
-        this.currentCard=expertCard;
+        this.currentCard = expertCard;
     }
 
     /**
@@ -76,6 +76,11 @@ public class CardManager implements Serializable {
     public ExpertCard getCurrentCard(){
         return this.currentCard;
     }
+
+    /**
+     *
+     */
+    public void resetCurrentCard() { this.currentCard = null; }
 
     /**
      * @return MotherNature     Return the reference to motherNature

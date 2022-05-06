@@ -15,7 +15,6 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class IslandGroupTest {
 
     /**
-     * T
      * Testing addIsland
      */
     @Test
@@ -36,7 +35,6 @@ public class IslandGroupTest {
     }
 
     /**
-     * T
      * Testing numOfStudents
      */
     @Test
@@ -57,7 +55,6 @@ public class IslandGroupTest {
     }
 
     /**
-     * T
      * Testing setDeny
      */
     @Test
@@ -68,7 +65,6 @@ public class IslandGroupTest {
     }
 
     /**
-     * T
      * Testing removeDeny
      */
     @Test
@@ -79,7 +75,6 @@ public class IslandGroupTest {
     }
 
     /**
-     * T
      * Testing numOfTowers
      */
     @Test
@@ -95,7 +90,6 @@ public class IslandGroupTest {
     }
 
     /**
-     * T
      * Testing numOfTowers
      */
     @Test
@@ -113,5 +107,58 @@ public class IslandGroupTest {
         assertTrue(!islandGroup.getInfluenceColor().equals(PlayerColor.GREY));
     }
 
-    //the other methods in IslandGroup are correct because I already used them in other tests
+    /**
+     * Testing getTower
+     */
+    @Test
+    public void getTowerTest() {
+        Tower tower1 = new Tower(PlayerColor.WHITE);
+        Tower tower2 = new Tower(PlayerColor.WHITE);
+        Island island1 = new Island();
+        Island island2 = new Island();
+        IslandGroup islandGroup = new IslandGroup();
+        island1.addTower(tower1);
+        island2.addTower(tower2);
+        islandGroup.addIslandInterface(island1);
+        islandGroup.addIslandInterface(island2);
+        assertTrue(islandGroup.getTowers().contains(tower1));
+        assertTrue(islandGroup.getTowers().contains(tower2));
+    }
+
+    /**
+     * Testing addTower
+     */
+    @Test
+    public void addTowerTest() {
+        Tower tower1 = new Tower(PlayerColor.WHITE);
+        Tower tower2 = new Tower(PlayerColor.WHITE);
+        Island island1 = new Island();
+        Island island2 = new Island();
+        IslandGroup islandGroup = new IslandGroup();
+        islandGroup.addIslandInterface(island1);
+        islandGroup.addIslandInterface(island2);
+        islandGroup.addTower(tower1);
+        islandGroup.addTower(tower2);
+        assertTrue(island1.getTowers().contains(tower1));
+        assertTrue(island2.getTowers().contains(tower2));
+    }
+
+
+    /**
+     * Testing removeTower
+     */
+    @Test
+    public void removeTowerTest() {
+        Tower tower1 = new Tower(PlayerColor.WHITE);
+        Tower tower2 = new Tower(PlayerColor.WHITE);
+        Island island1 = new Island();
+        Island island2 = new Island();
+        IslandGroup islandGroup = new IslandGroup();
+        island1.addTower(tower1);
+        island2.addTower(tower2);
+        islandGroup.addIslandInterface(island1);
+        islandGroup.addIslandInterface(island2);
+        islandGroup.removeTower(tower1);
+        assertTrue(!island1.getTowers().contains(tower1));
+    }
 }
