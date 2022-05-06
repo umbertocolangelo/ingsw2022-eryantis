@@ -143,7 +143,6 @@ public class IslandGroupTest {
         assertTrue(island2.getTowers().contains(tower2));
     }
 
-
     /**
      * Testing removeTower
      */
@@ -161,4 +160,5 @@ public class IslandGroupTest {
         islandGroup.removeTower(tower1);
         assertTrue(!island1.getTowers().contains(tower1));
     }
+
 }
