@@ -2,7 +2,7 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.listener.PropertyObserver;
-import it.polimi.ingsw.message.ChooseColorAndDeck;
+import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.player.Player;
@@ -88,11 +88,6 @@ public class Server {
                 Player player3 = new Player(c3.getName());
                 players.add(player3);
             }
-           // System.out.println(players);
-
-            //playingConnection.put(c1, c2);
-            //playingConnection.put(c2, c1);
-
             game = new Game();
             propertyObserver=new PropertyObserver(game,this);
             game.addListener(propertyObserver);
@@ -134,7 +129,7 @@ public class Server {
     public void run(){
         int connections = 0;
         System.out.println("Server is running");
-        while(true){ //Abbiamo un problema che il client si disconnetete se tutte due si connetono insieme e scrive il secondo client
+        while(true ){ //Abbiamo un problema che il client si disconnetete se tutte due si connetono insieme e scrive il secondo client
             try {
                 Socket newSocket = serverSocket.accept();
                 connections++;
@@ -233,8 +228,8 @@ public class Server {
                     System.out.println(game.getCurrentPlayer().getName());
                     sendGame();
                 }
-                if (object instanceof ChooseColorAndDeck) {
-                    ((ChooseColorAndDeck) object).apply(game);
+                if (object instanceof MessageMethod) {
+                   ((MessageMethod) object).apply(game);
                 }
             }
         });
