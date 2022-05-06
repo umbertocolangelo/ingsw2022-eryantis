@@ -26,6 +26,6 @@ public class GameTests {
         game.inizializeGame();
 
 
-        assertTrue(game.getClouds().get(1).getStudents().size()==3  && player.getSchool().getIngress().getStudents().size()==7);
+        assertTrue(game.getClouds().get(1).getStudents().size()==3 );
     }
 }

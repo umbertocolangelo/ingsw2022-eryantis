@@ -59,6 +59,8 @@ public class SetUpRound implements  RoundInterface, Serializable {
     @Override
     public Boolean checkRoundEnded() {
         if (playersListOrdered.size()==playersList.size()) {
+            for (Player player : playersList)
+                player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
             Collections.shuffle(playersListOrdered);
             game.setOrderedPLayerList(playersListOrdered);
             this.game.setRound(game.setPianificationnRoundState());

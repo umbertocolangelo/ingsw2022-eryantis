@@ -68,7 +68,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         System.out.println("Done!");
     }
 
-    //Si potrebbe modificare mettendo semplicemente una gui
+
     public void asyncSend(final Object message){
         new Thread(new Runnable() {
             @Override

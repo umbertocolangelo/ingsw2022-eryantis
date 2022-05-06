@@ -1,10 +1,5 @@
 package it.polimi.ingsw.client;
 
-import it.polimi.ingsw.message.ChooseColorAndDeck;
-import it.polimi.ingsw.message.MessageMethod;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
-import it.polimi.ingsw.model.rounds.SetUpRound;
-
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -13,11 +8,13 @@ public class Controller implements Runnable{
     private Boolean isActive=false;
     private Client client;
     private String input;
-
+    private ClientState clientState=ClientState.SLEEPING;
+    private CLI cli;
 
     public Controller(Client client){
         this.client=client;
         this.stdIn=client.getScanner();
+        cli=new CLI(client);
     }
 
 
@@ -34,12 +31,20 @@ public class Controller implements Runnable{
      */
     @Override
     public void run() {
-        while (true) {
-            while (isActive) {
-                if(client.getGame()!=null) {
-                    System.out.println(client.getGame().getCurrentPlayer().getName() + "   " + client.getNamePlayer());
-                    System.out.println(client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.SET_UP_PHASE);
-                }
+
+           switch (clientState){
+               case LOGIN :
+                   System.out.println("Dentro Login");
+                   input = stdIn.nextLine();
+                   write(input);
+                   break;
+               case SLEEPING:
+
+                   break;
+               case CHOOSECOLOR:
+                   cli.chooseColorAndDeck();
+
+/**
                 if (client.getGame() != null && client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.SET_UP_PHASE) {
                         System.out.println("Siamo nella fase di scelta del deck e del colore\n Inizia a scegliere il colore seleziona da 0 al numero di wizard");
                         System.out.println(((SetUpRound) client.getGame().getCurrentRound()).getWizards());
@@ -55,20 +60,19 @@ public class Controller implements Runnable{
                         System.out.println("Sono a comando da tastiera");
                         input = stdIn.nextLine();
                         write(input);
-
                     }
-                isActive = false;
+ */
+
 
             }
             //  }
 
         }
-    }
+
 
     public void write(Object object){
         synchronized (client) {
             try {
-
                 System.out.println("scrivo");
                 client.getIn().writeObject(object);
                 client.getIn().flush();
@@ -79,8 +83,8 @@ public class Controller implements Runnable{
         }
     }
 
-    public void setActive(Boolean bol){
-        this.isActive=bol;
+    public void setClientState(ClientState clientState){
+        this.clientState=clientState;
     }
 
 }

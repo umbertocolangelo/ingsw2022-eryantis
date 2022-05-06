@@ -16,7 +16,6 @@ public class ChooseColorAndDeck implements MessageMethod, Serializable {
     }
 
 
-
     @Override
     public void setPlayerColor(PlayerColor white) {
         this.playerColor=white;

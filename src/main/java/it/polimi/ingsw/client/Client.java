@@ -45,7 +45,6 @@ public class Client {
             public void run() {
                 synchronized (this) {
                     try {
-
                         while (isActive()) {
                             inputObject = socketIn.readObject();
                             if (inputObject instanceof String) {
@@ -54,10 +53,12 @@ public class Client {
                                 game = (Game) inputObject;
                                 System.out.println("ricevuto game al client");
                                 if (game.getCurrentPlayer().getName().equals(namePlayer))
-                                    controller.setActive(true);
+                                    controller.setClientState(ClientState.CHOOSECOLOR);
+                                    controller.run();
                             } else if (inputObject instanceof SetUp) {
-                                controller.setActive(true);
-                                System.out.println("ricevutoi");
+                                controller.setClientState(ClientState.LOGIN);
+                                controller.run();
+                                System.out.println("ricevuto");
                             } else if (inputObject instanceof SetName)
                                 namePlayer = ((SetName) inputObject).getName();
                             else {
@@ -110,7 +111,7 @@ public class Client {
         try{
             Thread t0 = asyncReadFromSocket(socketIn);
             Thread t1 = asyncWriteToSocket(stdin, socketOut);
-            controller.run();
+
             t0.join();
             //t1.join();
 
