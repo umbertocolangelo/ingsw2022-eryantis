@@ -8,6 +8,7 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
@@ -15,7 +16,7 @@ import java.util.LinkedList;
 /**
  *
  */
-public class PianificationRound implements RoundInterface {
+public class PianificationRound implements RoundInterface, Serializable {
 
 
     /**
@@ -51,6 +52,7 @@ public class PianificationRound implements RoundInterface {
             this.game.setRound(this.game.setActionRoundState(playerListOrdered.size()+1));
             return true;
         }
+
         return false;
     }
 

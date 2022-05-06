@@ -1,9 +1,11 @@
 package it.polimi.ingsw.model.enumerations;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public enum PlayerPhase {
+public enum PlayerPhase implements Serializable {
     SET_UP_PHASE,
     DECK_PHASE,
     COLOR_PHASE,

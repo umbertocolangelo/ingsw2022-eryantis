@@ -1,15 +1,16 @@
 package it.polimi.ingsw.model.player.board;
 
 import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.pawns.Tower;
-import java.util.*;
+
+import java.io.Serializable;
+import java.util.LinkedList;
 
 /**
  * 
  */
-public class TowerTable implements FixedObjectTower {
+public class TowerTable implements FixedObjectTower, Serializable {
 
     /**
      *

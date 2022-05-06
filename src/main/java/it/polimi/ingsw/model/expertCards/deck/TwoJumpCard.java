@@ -1,16 +1,13 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
-import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
-import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.islands.IslandInterface;
-import it.polimi.ingsw.model.islands.IslandManager;
-import it.polimi.ingsw.model.pawns.Student;
+
+import java.io.Serializable;
 
 /**
  * card #4
  */
-public class TwoJumpCard implements ExpertCard {
+public class TwoJumpCard implements ExpertCard, Serializable {
 
     /**
      * Default constructor

@@ -4,10 +4,12 @@ import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.objectTypes.FixedObject;
 import it.polimi.ingsw.model.objectTypes.PlaceableObject;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public class Student implements PlaceableObject {
+public class Student implements PlaceableObject, Serializable {
 
     /**
      * Default constructor

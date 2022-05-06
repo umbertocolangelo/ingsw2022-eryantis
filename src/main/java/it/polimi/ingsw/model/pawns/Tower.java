@@ -4,10 +4,12 @@ import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.objectTypes.FixedObject;
 import it.polimi.ingsw.model.objectTypes.PlaceableObject;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public class Tower implements PlaceableObject {
+public class Tower implements PlaceableObject, Serializable {
 
     /**
      * Default constructor

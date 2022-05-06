@@ -8,10 +8,11 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
+import java.io.Serializable;
 import java.util.Collections;
 import java.util.LinkedList;
 
-public class SetUpRound implements  RoundInterface{
+public class SetUpRound implements  RoundInterface, Serializable {
     /**
      *
      * @param game Pass the referement of game
@@ -19,6 +20,10 @@ public class SetUpRound implements  RoundInterface{
     public SetUpRound(Game game) {
         this.game=game;
         playersList=this.game.getPlayerList();
+        for (Wizard c : Wizard.values())
+            wizards.add(c);
+        for (PlayerColor c: PlayerColor.values())
+            colors.add(c);
     }
     /**
      *
@@ -57,8 +62,10 @@ public class SetUpRound implements  RoundInterface{
             Collections.shuffle(playersListOrdered);
             game.setOrderedPLayerList(playersListOrdered);
             this.game.setRound(game.setPianificationnRoundState());
-            game.inizializeGame();
+
         }
+
+
         return true;
     }
 
@@ -179,12 +186,21 @@ public class SetUpRound implements  RoundInterface{
      * @return              True if the parameters are acceptable, false instead
      */
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
-        if (colors.contains(color) || wizards.contains(wizard) || player.getPlayerPhase() != PlayerPhase.SET_UP_PHASE)
+        if ( player.getPlayerPhase() != PlayerPhase.SET_UP_PHASE)
             return false;
-        wizards.add(wizard);
-        colors.add(color);
+        wizards.remove(wizard);
+        colors.remove(color);
         playersListOrdered.add(player);
+
         return checkRoundEnded();
+    }
+
+    public LinkedList<PlayerColor> getplayerColor(){
+        return this.colors;
+    }
+
+    public LinkedList<Wizard> getWizards(){
+        return this.wizards;
     }
 
 }

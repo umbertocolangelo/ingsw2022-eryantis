@@ -3,7 +3,9 @@ package it.polimi.ingsw.model.calculations.professor;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.pawns.Professor;
 
-public class EqualStrategy implements ProfessorStrategy{
+import java.io.Serializable;
+
+public class EqualStrategy implements ProfessorStrategy, Serializable {
 
     /**
      * Default constructor

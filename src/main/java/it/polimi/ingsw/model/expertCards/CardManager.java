@@ -6,12 +6,14 @@ import it.polimi.ingsw.model.expertCards.deck.*;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class CardManager {
+public class CardManager implements Serializable {
 
     /**
      * Constructor who receive the reference to motherNature, Players list, professorManager, islandManager and the Bag

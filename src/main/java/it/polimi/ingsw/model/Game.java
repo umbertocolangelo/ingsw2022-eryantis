@@ -21,12 +21,13 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  *
  */
-public class Game implements GameInterface {
+public class Game implements GameInterface, Serializable {
 
     /**
      * Built already the instance of the Rounds
@@ -38,7 +39,7 @@ public class Game implements GameInterface {
         this.studentToHallRound= new StudentToHallActionRound(this);
         this.setUpRound= new SetUpRound(this);
         setRound(this.setSetUpRound());
-        PropertyObserver observer=new PropertyObserver(this);
+
 
     }
     /**
@@ -135,11 +136,6 @@ public class Game implements GameInterface {
     /**
      *
      */
-    private Lobby lobby;
-
-    /**
-     *
-     */
     private IslandManager islandManager=new IslandManager(motherNature);
 
     /**
@@ -160,7 +156,7 @@ public class Game implements GameInterface {
     /**
      *Keep track of the current player
      */
-    private Player currentPlayer;
+    private Player currentPlayer=new Player("ciao");
 
     /**
      *
@@ -191,19 +187,15 @@ public class Game implements GameInterface {
             for(int j=0;(isThree && j<4) || (!isThree && j<3);j++)
                 this.clouds.get(i).addStudent(this.bag.newStudent());
         }
-        int max = 11;
-        int min = 0;
-        int range = max - min + 1;
 
-        // generate random numbers within 1 to 10
 
-            int rand = (int)(Math.random() * range) + min;
-        System.out.println(rand);
+        // generate random numbers within 1 to 12
+
+            int rand = (int)(Math.random() * 12) ;
 
         this.motherNature.setIsland(islandManager.getIslands().get(rand));
         Island island= (Island) this.islandManager.nextIsland(6);
-        for(int i=0;i<11;i++ )
-            System.out.println(islandManager.getIslands().get(i));
+
         for(int i =0;i<11;i++) {
             if (!(islandManager.getIslands().get(i) == this.motherNature.getIsland()) || !(islandManager.getIslands().get(i)==island)) {
                 Island island1 = (Island) islandManager.getIslands().get(i);
@@ -214,10 +206,11 @@ public class Game implements GameInterface {
             playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
             for (int j = 0; (isThree && j<9) || (!isThree && j<7); j++){
 
-                playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
+                //playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
 
         }
         }
+            this.currentPlayer=playerList.getFirst();
     }
 
     /**
@@ -257,6 +250,10 @@ public class Game implements GameInterface {
     private Player endGame() {
         // TODO implement here
         return null;
+    }
+
+    public RoundInterface getCurrentRound(){
+        return this.currentRound;
     }
 
     /**
@@ -455,11 +452,18 @@ public class Game implements GameInterface {
         {
             this.currentPlayer.setPlayerColor(color);
             currentPlayer.setWizard(wizard);
+            if(playerList.indexOf(currentPlayer)+1<playerList.size()) {
+                System.out.println("modify current player in game");
+                this.currentPlayer = playerList.get(playerList.indexOf(currentPlayer) + 1);
+            }
             propertyChange.firePropertyChange("Finished expert move",currentPlayer,color);
             return true;
         }
         if (!this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard))
                return false;
+
+
+
         return null;
 
 

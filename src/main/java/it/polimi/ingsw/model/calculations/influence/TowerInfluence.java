@@ -3,18 +3,17 @@ package it.polimi.ingsw.model.calculations.influence;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
-import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Professor;
-import it.polimi.ingsw.model.pawns.Tower;
 import it.polimi.ingsw.model.player.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
 /**
  * 
  */
-public class TowerInfluence implements InfluenceCalculator {
+public class TowerInfluence implements InfluenceCalculator, Serializable {
     /**
      * Default constructor
      * @param manager references the InfluenceManager

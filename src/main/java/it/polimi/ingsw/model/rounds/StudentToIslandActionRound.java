@@ -11,10 +11,12 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public class StudentToIslandActionRound implements RoundInterface {
+public class StudentToIslandActionRound implements RoundInterface, Serializable {
 
     /**
      * Default constructor

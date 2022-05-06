@@ -10,12 +10,13 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
+import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
  * 
  */
-public class ActionRound implements RoundInterface {
+public class ActionRound implements RoundInterface, Serializable {
 
     /**
      * Every time is called he set the current player, the player phase e change the player getting from the orderedlist

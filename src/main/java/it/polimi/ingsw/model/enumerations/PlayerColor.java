@@ -1,9 +1,11 @@
 package it.polimi.ingsw.model.enumerations;
 
+import java.io.Serializable;
+
 /**
  * 
  */
-public enum PlayerColor {
+public enum PlayerColor implements Serializable {
     BLACK("BLACK", "4"), WHITE("WHITE", "5"), GREY("GREY", "6");
 
     /**

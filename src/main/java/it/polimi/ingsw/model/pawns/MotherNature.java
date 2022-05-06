@@ -1,17 +1,15 @@
 package it.polimi.ingsw.model.pawns;
 
-import it.polimi.ingsw.model.calculations.influence.*;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.objectTypes.FixedObject;
 import it.polimi.ingsw.model.objectTypes.PlaceableObject;
-import it.polimi.ingsw.model.player.Player;
+
+import java.io.Serializable;
 
 /**
  * 
  */
-public class MotherNature implements PlaceableObject {
+public class MotherNature implements PlaceableObject, Serializable {
 
     /**
      * Default constructor

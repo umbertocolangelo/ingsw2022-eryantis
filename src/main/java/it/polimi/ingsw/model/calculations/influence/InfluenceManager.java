@@ -2,16 +2,16 @@ package it.polimi.ingsw.model.calculations.influence;
 
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.expertCards.deck.DenyCard;
-import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Tower;
 import it.polimi.ingsw.model.player.Player;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class InfluenceManager {
+public class InfluenceManager implements Serializable {
 
     /**
      * references mother nature
@@ -54,6 +54,7 @@ public class InfluenceManager {
             return;
         }
         influence.calculateInfluence(motherNature.getIsland());
+        setStandardInfluence();
     }
 
     /**
@@ -69,6 +70,7 @@ public class InfluenceManager {
             return;
         }
         influence.calculateInfluence(island);
+        setStandardInfluence();
     }
 
 

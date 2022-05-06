@@ -2,12 +2,13 @@ package it.polimi.ingsw.model.expertCards.deck;
 
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
-import it.polimi.ingsw.model.pawns.Student;
+
+import java.io.Serializable;
 
 /**
  * card #6
  */
-public class TowerInfluenceCard implements ExpertCard {
+public class TowerInfluenceCard implements ExpertCard, Serializable {
 
     /**
      * Default constructor

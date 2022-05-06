@@ -1,12 +1,13 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
-import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+
+import java.io.Serializable;
 
 /**
  * card #12
  */
-public class HallBagSwapCard implements ExpertCard {
+public class HallBagSwapCard implements ExpertCard, Serializable {
 
     /**
      * Default constructor

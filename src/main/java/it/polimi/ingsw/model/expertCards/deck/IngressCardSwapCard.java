@@ -1,18 +1,17 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
-import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
-import it.polimi.ingsw.model.rounds.RoundInterface;
 
-import java.util.*;
+import java.io.Serializable;
+import java.util.LinkedList;
 
 /**
  * card #7
  */
-public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent {
+public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Serializable {
 
     /**
      * Default constructor

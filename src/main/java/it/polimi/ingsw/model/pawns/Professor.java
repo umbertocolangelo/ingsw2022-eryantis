@@ -4,13 +4,12 @@ import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.objectTypes.FixedObject;
 import it.polimi.ingsw.model.objectTypes.PlaceableObject;
 
-import java.util.ArrayList;
-import java.util.Collection;
+import java.io.Serializable;
 
 /**
  * 
  */
-public class Professor implements PlaceableObject {
+public class Professor implements PlaceableObject, Serializable {
 
     /**
      * Returns the unique instance of the professor for the choosen color

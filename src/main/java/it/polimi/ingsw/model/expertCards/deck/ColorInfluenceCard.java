@@ -1,14 +1,15 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.pawns.Student;
+
+import java.io.Serializable;
 
 /**
  * card #9
  */
-public class ColorInfluenceCard implements ExpertCard {
+public class ColorInfluenceCard implements ExpertCard, Serializable {
 
     /**
      * Default constructor

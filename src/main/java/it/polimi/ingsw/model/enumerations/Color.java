@@ -1,12 +1,13 @@
 package it.polimi.ingsw.model.enumerations;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * This enum contains all the possible colors of the students and professors pawns
  */
-public enum Color {
+public enum Color implements Serializable {
     YELLOW("YELLOW", "7"),
     BLUE("BLUE", "8"),
     GREEN("GREEN", "9"),

@@ -6,12 +6,14 @@ import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Professor;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
+
+import java.io.Serializable;
 import java.util.*;
 
 /**
  * 
  */
-public class Line implements FixedObjectStudent, FixedObjectProfessor {
+public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializable {
 
     /**
      * Default constructor
