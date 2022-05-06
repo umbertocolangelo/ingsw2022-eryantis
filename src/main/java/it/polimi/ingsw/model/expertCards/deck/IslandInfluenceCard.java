@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.expertCards.deck;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandInterface;
 
 import java.io.Serializable;
 
@@ -37,7 +38,7 @@ public class IslandInfluenceCard implements ExpertCard, Serializable {
     /**
      * @param island
      */
-    public void apply(Island island) {
+    public void apply(IslandInterface island) {
         manager.getInfluenceManager().calculateInfluence(island); // the influence calculus is immediately applied on the chosen island
         incrementCost();
     }

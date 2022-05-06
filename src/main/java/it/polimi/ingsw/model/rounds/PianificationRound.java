@@ -128,10 +128,9 @@ public class PianificationRound implements RoundInterface, Serializable {
 
     /**
      * @param expertCard
-     * @param string
      * @return
      */
-    public Boolean playExpertCard(ExpertCard expertCard, String string) {
+    public Boolean playExpertCard(ExpertCard expertCard) {
         return null;
     }
 

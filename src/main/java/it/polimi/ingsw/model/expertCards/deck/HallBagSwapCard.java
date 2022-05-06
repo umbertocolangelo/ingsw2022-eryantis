@@ -1,8 +1,14 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.player.Player;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.LinkedList;
 
 /**
  * card #12
@@ -12,9 +18,15 @@ public class HallBagSwapCard implements ExpertCard, Serializable {
     /**
      * Default constructor
      */
-    public HallBagSwapCard() {
+    public HallBagSwapCard(CardManager cardManager) {
         this.id = "49";
+        this.cardManager = cardManager;
     }
+
+    /**
+     *
+     */
+    private CardManager cardManager;
 
     /**
      *
@@ -29,8 +41,15 @@ public class HallBagSwapCard implements ExpertCard, Serializable {
     /**
      *
      */
-    public void apply() {
+    public void apply(Color color) {
         incrementCost();
+        ArrayList<Player> players = cardManager.getPlayerList();
+        for(Player player : players){
+            LinkedList<Student> students=player.getSchool().getHall().getLine(color).getStudents();
+            for (int i=0 ; i<3 || students.isEmpty();i++){
+                player.getSchool().getHall().getLine(color).removeStudent(students.removeLast());
+            }
+        }
     }
 
     /**

@@ -3,13 +3,12 @@ package it.polimi.ingsw.model;
 import it.polimi.ingsw.listener.PropertyObserver;
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
-import it.polimi.ingsw.model.enumerations.Wizard;
+import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.expertCards.deck.*;
 import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.MotherNature;
@@ -354,9 +353,59 @@ public class Game implements GameInterface, Serializable {
     /**
      * @param expertCard        Play the expert card
      */
-    public Boolean playExpertCard(ExpertCard expertCard) {
-        //Manca l'observer
-        return this.currentRound.playExpertCard(expertCard, null);
+    public void playExpertCard(ExpertCard expertCard, Object parameter) {
+        if(currentRound.playExpertCard(expertCard).equals(true)){ // if the card can be played
+            currentPlayer.setCoin(-(expertCard.getCost())); // update the card cost
+            cardManager.setCurrentCard(expertCard);
+            switch (expertCard.getId()) {
+                case "38":
+                    ((StudentToIslandCard) expertCard).apply();
+                    setPreviousRound(currentRound);
+                    setRound(studentToIslandRound);
+                    break;
+                case "39":
+                    ((ProfessorControlCard) expertCard).apply();
+                    break;
+                case "40":
+                    ((IslandInfluenceCard) expertCard).apply((IslandInterface) parameter);
+                    break;
+                case "41":
+                    ((TwoJumpCard) expertCard).apply();
+                    currentPlayer.twoMoreJumps();
+                    break;
+                case "42":
+                    ((DenyCard) expertCard).apply((Island) parameter);
+                    break;
+                case "43":
+                    ((TowerInfluenceCard) expertCard).apply();
+                    break;
+                case "44":
+                    ((IngressCardSwapCard) expertCard).apply();
+                    setPreviousRound(currentRound);
+                    setRound(ingressCardSwap);
+                    break;
+                case "45":
+                    ((TwoInfluenceCard) expertCard).apply((Player) parameter);
+                    break;
+                case "46":
+                    ((ColorInfluenceCard) expertCard).apply((Color) parameter);
+                    break;
+                case "47":
+                    ((IngressHallSwapCard) expertCard).apply();
+                    setPreviousRound(currentRound);
+                    setRound(ingressHallSwap);
+                    break;
+                case "48":
+                    ((StudentToHallCard) expertCard).apply();
+                    setPreviousRound(currentRound);
+                    setRound(studentToHallRound);
+                    break;
+                case "49":
+                    ((HallBagSwapCard) expertCard).apply((Color) parameter);
+                    break;
+            }
+            propertyChange.firePropertyChange("Play expert card", null, expertCard);
+        }
     }
 
     /**

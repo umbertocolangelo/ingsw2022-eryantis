@@ -62,10 +62,9 @@ public interface RoundInterface {
 
     /**
      * @param expertCard
-     * @param string
      * @return
      */
-    public Boolean playExpertCard(ExpertCard expertCard, String string);
+    public Boolean playExpertCard(ExpertCard expertCard);
 
 
     /**

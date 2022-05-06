@@ -118,7 +118,7 @@ public class CardManager implements Serializable {
         LinkedList<ExpertCard> expertCards = new LinkedList<ExpertCard>();
         expertCards.add(new ColorInfluenceCard(this));
         expertCards.add(new DenyCard(this));
-        expertCards.add(new HallBagSwapCard());
+        expertCards.add(new HallBagSwapCard(this));
         expertCards.add(new IngressCardSwapCard(this));
         expertCards.add(new IngressHallSwapCard());
         expertCards.add(new IslandInfluenceCard(this));

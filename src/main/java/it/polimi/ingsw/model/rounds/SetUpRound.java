@@ -112,11 +112,10 @@ public class SetUpRound implements  RoundInterface, Serializable {
 
     /**
      * @param expertCard
-     * @param string
      * @return
      */
     @Override
-    public Boolean playExpertCard(ExpertCard expertCard, String string) {
+    public Boolean playExpertCard(ExpertCard expertCard) {
         return null;
     }
 
