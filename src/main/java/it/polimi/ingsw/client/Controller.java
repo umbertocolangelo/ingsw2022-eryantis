@@ -4,19 +4,48 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Controller implements Runnable{
+
+    /**
+     *
+     */
     private Scanner stdIn;
-    private Boolean isActive=false;
+
+    /**
+     *
+     */
+    private Boolean isActive = false;
+
+    /**
+     *
+     */
     private Client client;
+
+    /**
+     *
+     */
     private String input;
-    private ClientState clientState=ClientState.SLEEPING;
+
+    /**
+     *
+     */
+    private ClientState clientState = ClientState.SLEEPING;
+
+    /**
+     *
+     */
     private CLI cli;
 
-    public Controller(Client client){
-        this.client=client;
-        this.stdIn=client.getScanner();
-        cli=new CLI(client,this );
+    /**
+     *
+     * @param client
+     */
+    public Controller(Client client) {
+
+        this.client = client;
+        this.stdIn = client.getScanner();
+        cli = new CLI(client);
+
     }
-    public Object lock;
 
 
     /**
@@ -32,18 +61,21 @@ public class Controller implements Runnable{
      */
     @Override
     public void run() {
-           switch (clientState){
+
+           switch (clientState) {
+
                case LOGIN :
                    System.out.println("Dentro Login");
                    input = stdIn.nextLine();
                    write(input);
                    break;
+
                case SLEEPING:
                    break;
-               case PLAYING:
-                   synchronized (this) {
-                       cli.chooseColorAndDeck(lock);
-                   }
+
+               case CHOOSE_COLOR:
+                   cli.chooseColorAndDeck();
+
 /**
                 if (client.getGame() != null && client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.SET_UP_PHASE) {
                         System.out.println("Siamo nella fase di scelta del deck e del colore\n Inizia a scegliere il colore seleziona da 0 al numero di wizard");
@@ -65,11 +97,13 @@ public class Controller implements Runnable{
 
 
             }
-            //  }
 
         }
 
-
+    /**
+     *
+     * @param object
+     */
     public void write(Object object){
         synchronized (client) {
             try {
@@ -83,6 +117,10 @@ public class Controller implements Runnable{
         }
     }
 
+    /**
+     *
+     * @param clientState
+     */
     public void setClientState(ClientState clientState){
         this.clientState=clientState;
     }

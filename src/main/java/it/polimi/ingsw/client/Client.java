@@ -14,31 +14,82 @@ import java.util.Scanner;
 
 public class Client {
 
+    /**
+     *
+     */
     private String ip;
+
+    /**
+     *
+     */
     private int port;
+
+    /**
+     *
+     */
     private Game game;
+
+    /**
+     *
+     */
     private Scanner stdin;
+
+    /**
+     *
+     */
     private String namePlayer;
+
+    /**
+     *
+     */
     private Object inputObject;
+
+    /**
+     *
+     */
     private Controller controller;
+
+    /**
+     *
+     */
     private  ObjectOutputStream socketOut;
 
+    /**
+     *
+     */
+    private Boolean active = true;
 
-    public Client(String ip, int port){
+    /**
+     * default constructor
+     * @param ip
+     * @param port
+     */
+    public Client(String ip, int port) {
         this.ip = ip;
         this.port = port;
     }
 
-    private boolean active = true;
-
+    /**
+     *
+     * @return
+     */
     public synchronized boolean isActive(){
         return active;
     }
 
-    public synchronized void setActive(boolean active){
+    /**
+     *
+     * @param active
+     */
+    public synchronized void setActive(Boolean active){
         this.active = active;
     }
 
+    /**
+     *
+     * @param socketIn
+     * @return
+     */
     public Thread asyncReadFromSocket(final ObjectInputStream socketIn){
         Thread t = new Thread(new Runnable() {
             @Override
@@ -52,10 +103,9 @@ public class Client {
                             } else if (inputObject instanceof Game) {
                                 game = (Game) inputObject;
                                 System.out.println("ricevuto game al client");
-                                if (game.getCurrentPlayer().getName().equals(namePlayer)) {
-                                    controller.setClientState(ClientState.PLAYING);
+                                if (game.getCurrentPlayer().getName().equals(namePlayer))
+                                    controller.setClientState(ClientState.CHOOSE_COLOR);
                                     controller.run();
-                                }
                             } else if (inputObject instanceof SetUp) {
                                 controller.setClientState(ClientState.LOGIN);
                                 controller.run();
@@ -76,6 +126,12 @@ public class Client {
         return t;
     }
 
+    /**
+     *
+     * @param stdin
+     * @param socketOut
+     * @return
+     */
     public Thread asyncWriteToSocket(final Scanner stdin, final ObjectOutputStream socketOut){
         Thread t = new Thread(new Runnable() {
             @Override
@@ -101,6 +157,10 @@ public class Client {
         return t;
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void run() throws IOException {
         Socket socket = new Socket(ip, port);
         System.out.println("Connection established");
@@ -126,18 +186,34 @@ public class Client {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Scanner getScanner(){
         return stdin;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNamePlayer(){
         return this.namePlayer;
     }
 
+    /**
+     *
+     * @return
+     */
     public ObjectOutputStream getIn(){
         return socketOut;
     }
 
+    /**
+     *
+     * @return
+     */
     public Game getGame(){
         return this.game;
     }

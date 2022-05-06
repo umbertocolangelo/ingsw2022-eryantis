@@ -50,6 +50,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.RED).getPosition()==null);
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
+        professorManager.setEqualCheck();
         player1.getSchool().getHall().addStudent(new Student(Color.YELLOW)); //adds a yellow student to player1's school
         professorManager.checkProfessor(player1);
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player1.getSchool().getHall().getLine(Color.YELLOW)); //Checks that only yellow professor is on player1's school
@@ -58,6 +59,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.RED).getPosition()==null);
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
+        professorManager.setEqualCheck();
         player2.getSchool().getHall().addStudent(new Student(Color.YELLOW)); //adds a yellow student to player2's school
         professorManager.checkProfessor(player2);
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player2.getSchool().getHall().getLine(Color.YELLOW)); //Check that the yellow professor has been moved
@@ -66,6 +68,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.RED).getPosition()==null);
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
+        professorManager.setEqualCheck();
         player2.getSchool().getHall().addStudent(new Student(Color.YELLOW)); //adds a second yellow student to player2's school
         professorManager.checkProfessor(player2);
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player2.getSchool().getHall().getLine(Color.YELLOW)); //Check that no action is taken
@@ -74,6 +77,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.RED).getPosition()==null);
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
+        professorManager.setEqualCheck();
         player1.getSchool().getHall().addStudent(new Student(Color.RED)); //adds a red student to player1's school
         professorManager.checkProfessor(player1);
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player2.getSchool().getHall().getLine(Color.YELLOW)); //Check that yellow professor is still on player2's school
@@ -165,7 +169,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
 
-
+        professorManager.setEqualCheck();
         player1.getSchool().getHall().addStudent(new Student(Color.YELLOW)); //adds a yellow student to player1's school
         professorManager.checkProfessor(player1);
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player1.getSchool().getHall().getLine(Color.YELLOW)); //Checks that only yellow professor is on player1's school
@@ -175,7 +179,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
 
-
+        professorManager.setEqualCheck();
         player2.getSchool().getHall().addStudent(new Student(Color.YELLOW)); //adds a yellow student to player2's school
         professorManager.checkProfessor(player2);
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player2.getSchool().getHall().getLine(Color.YELLOW)); //Check that the yellow professor has been moved
@@ -185,7 +189,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
 
-
+        professorManager.setEqualCheck();
         player2.getSchool().getHall().addStudent(new Student(Color.YELLOW)); //adds a second yellow student to player2's school
         professorManager.checkProfessor(player2);
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player2.getSchool().getHall().getLine(Color.YELLOW)); //Check that no action is taken
@@ -194,6 +198,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.RED).getPosition()==null);
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
+        professorManager.setEqualCheck();
         player1.getSchool().getHall().addStudent(new Student(Color.RED)); //adds a red student to player1's school
         professorManager.checkProfessor(player1);
         assertTrue(Professor.getProfessor(Color.YELLOW).getPosition()==player2.getSchool().getHall().getLine(Color.YELLOW)); //Check that yellow professor is still on player2's school
@@ -202,6 +207,7 @@ public class ProfessorMangerTest {
         assertTrue(Professor.getProfessor(Color.RED).getPosition()==player1.getSchool().getHall().getLine(Color.RED)); // Check that red professor is now on player1's school
         assertTrue(Professor.getProfessor(Color.PINK).getPosition()==null);
 
+        professorManager.setEqualCheck();
         player3.getSchool().getHall().addStudent(new Student(Color.BLUE));
         player3.getSchool().getHall().addStudent(new Student(Color.BLUE));
         player3.getSchool().getHall().addStudent(new Student(Color.BLUE)); //adds three blue students to player3's school

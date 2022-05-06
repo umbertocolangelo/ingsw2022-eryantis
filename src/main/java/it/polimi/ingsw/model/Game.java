@@ -342,9 +342,15 @@ public class Game implements GameInterface, Serializable {
     @Override
     public void playAssistantCard(AssistantCard assistantCard) {
 
-        if(!this.currentRound.playAssistantCard(assistantCard,this.currentPlayer))
-            System.out.println("Card already played");
-        propertyChange.firePropertyChange("Play assistant card",null,assistantCard);
+        if(!this.currentRound.playAssistantCard(assistantCard,this.currentPlayer)){
+            System.out.println("Card already played");}
+
+        if(playerList.indexOf(currentPlayer)+1<playerList.size()) {
+            System.out.println("modify current player in game");
+            this.currentPlayer = playerList.get(playerList.indexOf(currentPlayer) + 1);
+        }
+
+        propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
 
     }
 
