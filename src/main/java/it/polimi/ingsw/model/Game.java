@@ -211,6 +211,7 @@ public class Game implements GameInterface {
                 }
             }
         for(int i = 0; i< playerList.size(); i++) {
+            playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
             for (int j = 0; (isThree && j<9) || (!isThree && j<7); j++){
 
                 playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
