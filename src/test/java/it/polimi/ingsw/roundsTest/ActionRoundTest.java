@@ -31,7 +31,7 @@ public class ActionRoundTest {
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
         game.setPlayerList(lista);
-        game.setRound(game.setPianificationnRoundState());
+        game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
@@ -59,7 +59,7 @@ public class ActionRoundTest {
         game.setPlayerList(lista);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
-        game.setRound(game.setPianificationnRoundState());
+        game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
@@ -67,7 +67,7 @@ public class ActionRoundTest {
         game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD);
         player.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
-        game.inizializeGame();
+        game.initializeGame();
         Island island= (Island) game.getMotherNature().getIsland();
         game.moveMotherNature(1);
         assertTrue((Island) game.getMotherNature().getIsland()==island);
@@ -87,7 +87,7 @@ public class ActionRoundTest {
         game.setPlayerList(lista);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
-        game.setRound(game.setPianificationnRoundState());
+        game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
@@ -117,7 +117,7 @@ public class ActionRoundTest {
         game.setPlayerList(lista);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
-        game.setRound(game.setPianificationnRoundState());
+        game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);

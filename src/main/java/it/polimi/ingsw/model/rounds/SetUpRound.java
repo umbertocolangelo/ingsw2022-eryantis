@@ -63,7 +63,7 @@ public class SetUpRound implements  RoundInterface, Serializable {
                 player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
             Collections.shuffle(playersListOrdered);
             game.setOrderedPLayerList(playersListOrdered);
-            this.game.setRound(game.setPianificationnRoundState());
+            this.game.setRound(game.setPianificationRoundState());
 
         }
 

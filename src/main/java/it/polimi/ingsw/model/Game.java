@@ -124,29 +124,28 @@ public class Game implements GameInterface, Serializable {
     /**
      *
      */
-    private Bag bag = new Bag(isThree);
+    private Bag bag = new Bag(this.isThree);
+
+    /**
+     *
+     */
+    private InfluenceManager influenceManager = new InfluenceManager(motherNature, playerList);
 
 
     /**
      *
      */
-    private InfluenceManager influenceManager=new InfluenceManager(motherNature, playerList);
-
-
-    /**
-     *
-     */
-    private IslandManager islandManager=new IslandManager(motherNature);
+    private IslandManager islandManager = new IslandManager(motherNature);
 
     /**
      *
      */
-    private ProfessorManager professorManager=new ProfessorManager(playerList);
+    private ProfessorManager professorManager = new ProfessorManager(playerList);
 
     /**
      *
      */
-    private CardManager cardManager=new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
+    private CardManager cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
 
     /**
      *
@@ -156,7 +155,7 @@ public class Game implements GameInterface, Serializable {
     /**
      *Keep track of the current player
      */
-    private Player currentPlayer=new Player("ciao");
+    private Player currentPlayer = new Player("ciao");
 
     /**
      *
@@ -175,12 +174,12 @@ public class Game implements GameInterface, Serializable {
     /**
      *
      */
-    public void setIsThree() { isThree = true; }
+    public void setIsThree() { this.isThree = true; }
 
     /**
      *
      */
-    public void inizializeGame() {
+    public void initializeGame() {
         for(int i = 0; i< playerList.size(); i++) {
             Cloud cloud=new Cloud();
             this.clouds.add(cloud);
@@ -188,44 +187,41 @@ public class Game implements GameInterface, Serializable {
                 this.clouds.get(i).addStudent(this.bag.newStudent());
         }
 
-
         // generate random numbers within 1 to 12
 
-            int rand = (int)(Math.random() * 12) ;
+        int rand = (int)(Math.random() * 12) ;
 
         this.motherNature.setIsland(islandManager.getIslands().get(rand));
-        Island island= (Island) this.islandManager.nextIsland(6);
+        Island island = (Island) this.islandManager.nextIsland(6);
 
         for(int i =0;i<11;i++) {
-            if (!(islandManager.getIslands().get(i) == this.motherNature.getIsland()) || !(islandManager.getIslands().get(i)==island)) {
+            if (!(islandManager.getIslands().get(i)==this.motherNature.getIsland()) || !(islandManager.getIslands().get(i)==island)) {
                 Island island1 = (Island) islandManager.getIslands().get(i);
                 island1.addStudent(this.bag.newStudent());
-                }
             }
-        for(int i = 0; i< playerList.size(); i++) {
+        }
+
+        for(int i=0; i<playerList.size(); i++) {
             playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
-            for (int j = 0; (isThree && j<9) || (!isThree && j<7); j++){
-
+            for (int j=0; (isThree && j<9) || (!isThree && j<7); j++){
                 //playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
-
+            }
         }
-        }
-            this.currentPlayer=playerList.getFirst();
+        this.currentPlayer=playerList.getFirst();
     }
 
     /**
      * @param round     Set the current round
      */
     public void setRound(RoundInterface round) {
-       this.currentRound=round;
+       this.currentRound = round;
     }
 
     /**
      * @param round     Set the previous round
      */
     public void setPreviousRound(RoundInterface round) {
-        this.previousRound=round;
-
+        this.previousRound = round;
     }
 
     /**
@@ -241,7 +237,7 @@ public class Game implements GameInterface, Serializable {
      * @param players playerList        Set the playerList
      */
     public void setPLayerList(LinkedList<Player> players) {
-        this.playerList =players;
+        this.playerList = players;
     }
 
     /**
@@ -433,9 +429,6 @@ public class Game implements GameInterface, Serializable {
         this.currentRound.checkRoundEnded();
     }
 
-
-
-
     /**
      * @return
      */
@@ -451,11 +444,16 @@ public class Game implements GameInterface, Serializable {
         return this.currentPlayer;
     }
 
+    /**
+     *
+     * @param color
+     * @param wizard
+     * @return
+     */
     @Override
     public Boolean chooseColorAndDeck(PlayerColor color, Wizard wizard) {
 
-        if (this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard))
-        {
+        if (this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard)) {
             this.currentPlayer.setPlayerColor(color);
             currentPlayer.setWizard(wizard);
             if(playerList.indexOf(currentPlayer)+1<playerList.size()) {
@@ -465,15 +463,8 @@ public class Game implements GameInterface, Serializable {
             propertyChange.firePropertyChange("Finished expert move",currentPlayer,color);
             return true;
         }
-        if (!this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard))
-               return false;
-
-
-
-        return null;
-
-
-
+        else
+            return false;
     }
 
     /**
@@ -490,19 +481,18 @@ public class Game implements GameInterface, Serializable {
         this.orderedPLayerList=playerList;
     }
 
-
     /**
      *@return ingressHallSwap Return the IngressHallSwap
      */
-    public IngressHallSwapActionRound setIngressHallSwapState(){
+    public IngressHallSwapActionRound setIngressHallSwapState() {
         return (IngressHallSwapActionRound) this.ingressHallSwap;
     }
 
     /**
      *@return pianificationRound Return the pianificationRound
      */
-    public PianificationRound setPianificationnRoundState(){
-        this.pianificationRound=new PianificationRound(this);
+    public PianificationRound setPianificationRoundState(){
+        this.pianificationRound = new PianificationRound(this);
         return (PianificationRound) this.pianificationRound;
     }
 
@@ -517,7 +507,7 @@ public class Game implements GameInterface, Serializable {
      **@return actionRound Return the actionRound
      */
     public ActionRound setActionRoundState(Integer students){
-        this.actionRound=new ActionRound(this,students);
+        this.actionRound = new ActionRound(this,students);
         return (ActionRound) this.actionRound;
     }
 
@@ -553,12 +543,9 @@ public class Game implements GameInterface, Serializable {
     /**
      *Used if the player wants to finish the move
      */
-
     public void finishExpertMove(){
         this.currentRound.finishExpertMove();
         propertyChange.firePropertyChange("Finished expert move",getCardManager().getCurrentCard(),null);
-
-
     }
 
     /**
@@ -595,7 +582,7 @@ public class Game implements GameInterface, Serializable {
      * @param clouds        Set the clouds
      */
     public void setCloud(LinkedList<Cloud> clouds){
-        this.clouds=clouds;
+        this.clouds = clouds;
 
     }
 
@@ -604,6 +591,7 @@ public class Game implements GameInterface, Serializable {
      * @return
      */
     public MotherNature getMotherNature() {
-        return motherNature;
+        return this.motherNature;
     }
+
 }

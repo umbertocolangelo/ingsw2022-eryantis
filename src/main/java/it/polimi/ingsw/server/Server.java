@@ -228,7 +228,7 @@ public class Server {
             public void run() {
                 if(object instanceof Game) {
                     game.setPlayerList(players);
-                    game.inizializeGame();
+                    game.initializeGame();
                     System.out.println(game.getPlayerList());
                     System.out.println(game.getCurrentPlayer().getName());
                     sendGame();
