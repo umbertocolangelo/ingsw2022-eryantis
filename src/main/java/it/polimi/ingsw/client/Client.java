@@ -52,9 +52,10 @@ public class Client {
                             } else if (inputObject instanceof Game) {
                                 game = (Game) inputObject;
                                 System.out.println("ricevuto game al client");
-                                if (game.getCurrentPlayer().getName().equals(namePlayer))
-                                    controller.setClientState(ClientState.CHOOSECOLOR);
+                                if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                    controller.setClientState(ClientState.PLAYING);
                                     controller.run();
+                                }
                             } else if (inputObject instanceof SetUp) {
                                 controller.setClientState(ClientState.LOGIN);
                                 controller.run();
