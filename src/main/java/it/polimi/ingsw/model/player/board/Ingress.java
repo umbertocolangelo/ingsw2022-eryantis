@@ -15,9 +15,7 @@ public class Ingress implements FixedObjectStudent, Serializable {
      * Default constructor
      */
     public Ingress() {
-        /** viene costruito in inizialize game
-         *
-         */
+
     }
 
     /**

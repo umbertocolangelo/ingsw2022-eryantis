@@ -14,12 +14,13 @@ public class School implements Serializable {
      */
     public School(PlayerColor color, Boolean isThreePlayers) {
         this.towerTable=new TowerTable(color,isThreePlayers);
+        this.ingress =new Ingress();
     }
 
     /**
      * 
      */
-    private Ingress ingress=new Ingress();
+    private Ingress ingress;
 
     /**
      * 

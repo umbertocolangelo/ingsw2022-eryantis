@@ -17,6 +17,7 @@ import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.*;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
+import it.polimi.ingsw.utils.SavingManager;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -179,6 +180,9 @@ public class Game implements GameInterface, Serializable {
      *
      */
     public void initializeGame() {
+
+        // clouds
+
         for(int i = 0; i< playerList.size(); i++) {
             Cloud cloud=new Cloud();
             this.clouds.add(cloud);
@@ -283,10 +287,12 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     *
+     * Save the current state of the game
      */
     public void saveGame() {
-        // TODO implement here
+        if(!SavingManager.getInstance().saveGame(this)){
+            System.out.println("Failed to save game");
+        }
     }
 
     /**
