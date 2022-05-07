@@ -33,4 +33,14 @@ public class SavingManagerTest {
         assertTrue(gameLoaded.getPlayerList().get(0).getName().equals("One"));
 
     }
+
+    @Test
+    public void deleteSavedGameTest(){
+
+        Game game = new Game();
+        game.saveGame();
+        SavingManager.getInstance().deleteSavedGame();
+
+    }
+
 }

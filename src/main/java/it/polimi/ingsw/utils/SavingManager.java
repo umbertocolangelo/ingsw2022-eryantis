@@ -3,6 +3,7 @@ package it.polimi.ingsw.utils;
 import it.polimi.ingsw.model.Game;
 
 import java.io.*;
+import java.nio.file.Files;
 
 public class SavingManager {
 
@@ -15,6 +16,8 @@ public class SavingManager {
      * Stores the unique instance
      */
     private static SavingManager instance;
+
+    private String path = "eriantys.save";
 
     /**
      *
@@ -30,10 +33,10 @@ public class SavingManager {
     /**
      * Saves the current state of the game on a file
      * @param game
-     * @return
+     * @return true if succeeded
      */
     public Boolean saveGame(Game game){
-        try (FileOutputStream fileOutputStream = new FileOutputStream(new File("eriantys.save"))) {
+        try (FileOutputStream fileOutputStream = new FileOutputStream(new File(path))) {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(game);
             return true;
@@ -44,11 +47,11 @@ public class SavingManager {
 
     /**
      * Loads a saved game
-     * @return
+     * @return the loaded instance of Game
      */
     public Game loadGame(){
         Game game;
-        try (FileInputStream fileInputStream = new FileInputStream(new File("eriantys.save"))) {
+        try (FileInputStream fileInputStream = new FileInputStream(new File(path))) {
             ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
             return (Game) objectInputStream.readObject();
 
@@ -58,6 +61,18 @@ public class SavingManager {
         return null;
     }
 
-
-
+    /**
+     * Deletes the saved game file
+     * @return true if succeeded
+     */
+    public Boolean deleteSavedGame() {
+        File file = new File(path);
+        try {
+            Files.deleteIfExists(file.toPath());
+            return true;
+        } catch (IOException e) {
+            System.out.println("Failed to delete file");
+        }
+        return false;
+    }
 }
