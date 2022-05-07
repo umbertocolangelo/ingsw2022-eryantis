@@ -40,7 +40,7 @@ public class IngressCardSwapActionRoundTest {
         game.playAssistantCard(AssistantCard.THREE_CARD);
         IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard(game.getCardManager());
         player1.setCoin(5);
-        game.playExpertCard(ingressCardSwapCard);
+        game.playExpertCard(ingressCardSwapCard,null);
         Student student1=new Student(Color.RED);
         Student student=new Student(Color.YELLOW);
         System.out.println(game.getCurrentPlayer());

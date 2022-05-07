@@ -42,7 +42,7 @@ public class StudentToIslandActionRound {
         Bag bag=new Bag(false);
         StudentToIslandCard ingressCardSwapCard = new StudentToIslandCard(game.getCardManager());
         player1.setCoin(5);
-        game.playExpertCard(ingressCardSwapCard);
+        game.playExpertCard(ingressCardSwapCard,null);
         System.out.println(game.getPreviousRound());
         Student student1 = new Student(Color.RED);
         Student student = new Student(Color.YELLOW);

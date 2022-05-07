@@ -153,9 +153,9 @@ public class ActionRoundTest {
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         game.setRound(game.setActionRoundState(3));
-        HallBagSwapCard hallBag = new HallBagSwapCard();
+        HallBagSwapCard hallBag = new HallBagSwapCard(game.getCardManager());
         game.getCurrentPlayer().setCoin(5);
-        game.playExpertCard(hallBag);
+        game.playExpertCard(hallBag,null);
         System.out.println(player.getSchool().getHall().getLine(Color.RED).getStudents().size());
         assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
 
