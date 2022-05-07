@@ -2,10 +2,7 @@ package it.polimi.ingsw.utils;
 
 import it.polimi.ingsw.model.Game;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 
 public class SavingManager {
 
@@ -43,6 +40,22 @@ public class SavingManager {
         } catch (IOException e) {
             return false;
         }
+    }
+
+    /**
+     * Loads a saved game
+     * @return
+     */
+    public Game loadGame(){
+        Game game;
+        try (FileInputStream fileInputStream = new FileInputStream(new File("eriantys.save"))) {
+            ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
+            return (Game) objectInputStream.readObject();
+
+        }
+        catch (IOException e) {System.out.println("File not found");}
+        catch (ClassNotFoundException e) {}
+        return null;
     }
 
 
