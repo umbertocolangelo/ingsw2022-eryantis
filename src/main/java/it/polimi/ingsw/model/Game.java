@@ -400,10 +400,7 @@ public class Game implements GameInterface, Serializable {
                     setRound(studentToHallRound);
                     break;
                 case "49":
-
                     ((HallBagSwapCard) expertCard).apply((Color) parameter);
-
-
                     break;
             }
             propertyChange.firePropertyChange("Play expert card", null, expertCard);
