@@ -30,7 +30,9 @@ public class ActionRoundTest {
         lista.add(player);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
+
         game.setPlayerList(lista);
+        game.initializeGame();
         game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
@@ -59,6 +61,7 @@ public class ActionRoundTest {
         game.setPlayerList(lista);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
+        game.initializeGame();
         game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
@@ -87,6 +90,7 @@ public class ActionRoundTest {
         game.setPlayerList(lista);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
+        game.initializeGame();
         game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
@@ -117,6 +121,7 @@ public class ActionRoundTest {
         game.setPlayerList(lista);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
+        game.initializeGame();
         game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
@@ -142,20 +147,24 @@ public class ActionRoundTest {
     @Test
     public void expertMoveToBagFunction() {
         Player player = new Player("vittorio");
+
         Game game = new Game();
-        game.setCurrentPlayer(player);
         LinkedList<Player> lista=new LinkedList<>();
         lista.add(player);
         player.setPlayerColor(PlayerColor.WHITE);
         game.setOrderedPLayerList(lista);
+        game.setPLayerList(lista);
+        game.initializeGame();
+
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         game.setRound(game.setActionRoundState(3));
         HallBagSwapCard hallBag = new HallBagSwapCard(game.getCardManager());
+        game.setCurrentPlayer(player);
         game.getCurrentPlayer().setCoin(5);
-        game.playExpertCard(hallBag,null);
+        game.playExpertCard(hallBag,Color.RED);
         System.out.println(player.getSchool().getHall().getLine(Color.RED).getStudents().size());
         assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
 

@@ -29,8 +29,10 @@ public class IngressCardSwapActionRoundTest {
         lista.add(player1);
         lista.add(player);
         game.setPlayerList(lista);
+
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
+        game.initializeGame();
         game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);

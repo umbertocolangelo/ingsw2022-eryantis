@@ -1,9 +1,11 @@
 package it.polimi.ingsw.model.rounds;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.*;
+import it.polimi.ingsw.model.enumerations.AssistantCard;
+import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
-import it.polimi.ingsw.model.expertCards.deck.*;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Student;
@@ -165,7 +167,7 @@ public class ActionRound implements RoundInterface, Serializable {
         if(expertCard.getCost()>currentPlayer.getCoins() || cardAlreadyPlayed) // If the current player can't play the card
             return false;
         cardAlreadyPlayed=true;
-        return false;
+        return true;
     }
 
 

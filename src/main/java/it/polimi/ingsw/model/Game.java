@@ -144,7 +144,7 @@ public class Game implements GameInterface, Serializable {
     /**
      *
      */
-    private CardManager cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
+    private CardManager cardManager;
 
     /**
      *
@@ -206,6 +206,7 @@ public class Game implements GameInterface, Serializable {
                 //playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
             }
         }
+        cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
     }
 
@@ -354,6 +355,7 @@ public class Game implements GameInterface, Serializable {
         if(currentRound.playExpertCard(expertCard).equals(true)){ // if the card can be played
             currentPlayer.setCoin(-(expertCard.getCost())); // update the card cost
             cardManager.setCurrentCard(expertCard);
+
             switch (expertCard.getId()) {
                 case "38":
                     ((StudentToIslandCard) expertCard).apply();
@@ -398,7 +400,10 @@ public class Game implements GameInterface, Serializable {
                     setRound(studentToHallRound);
                     break;
                 case "49":
+
                     ((HallBagSwapCard) expertCard).apply((Color) parameter);
+
+
                     break;
             }
             propertyChange.firePropertyChange("Play expert card", null, expertCard);
@@ -628,7 +633,6 @@ public class Game implements GameInterface, Serializable {
      */
     public void setCloud(LinkedList<Cloud> clouds){
         this.clouds = clouds;
-
     }
 
     /**

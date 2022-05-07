@@ -32,6 +32,8 @@ public class StudentToIslandActionRound {
         game.setPlayerList(lista);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
+        game.initializeGame();
+        game.initializeGame();
         game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
