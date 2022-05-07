@@ -1,4 +1,4 @@
-package it.polimi.ingsw;
+package it.polimi.ingsw.utils;
 
 import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.Color;
