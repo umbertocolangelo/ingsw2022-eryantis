@@ -14,35 +14,37 @@ import java.util.NoSuchElementException;
 
 public class SocketClientConnection  implements  Runnable {
 
-
     /**
      * Keep the reference to the socket
      */
     private Socket socket;
+
     /**
      * Keep the reference to the outputStream
      */
     private ObjectOutputStream out;
+
     /**
      * Keep the reference to the server
      */
     private Server server;
+
     /**
      * Keep the reference to the playerName
      */
     private String name;
+
     /**
      * Keep the reference to the inputStream
      */
     private ObjectInputStream in;
+
     /**
      * Keep the reference to the active status
      */
     private boolean active = true;
 
-
     /**
-     *
      * @param socket        The socket we want to hande
      * @param server        The reference to the server
      */
@@ -52,8 +54,8 @@ public class SocketClientConnection  implements  Runnable {
     }
 
     /**
-     *
-     * @return active       This boolean is needed to close the connection when its needed
+     * This boolean is needed to close the connection when its needed
+     * @return active
      */
     private synchronized boolean isActive(){
         return this.active;
@@ -76,9 +78,8 @@ public class SocketClientConnection  implements  Runnable {
     }
 
     /**
-     *This method is needed when we want to close the connection, close the socket and set active to false
+     * This method is needed when we want to close the connection, close the socket and set active to false
      */
-
     public synchronized void closeConnection() {
         send("Connection closed!");
         try {
@@ -105,11 +106,10 @@ public class SocketClientConnection  implements  Runnable {
     /**
      * This run is always open and keep listening to the client and send the message to the server
      */
-
     @Override
     public void run() {
        // while(!Thread.currentThread().isInterrupted()){
-        try{
+        try {
             synchronized (server) {
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());

@@ -602,21 +602,26 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return     Its needed for the rounds when the pick a student from an expert card they put another one, they need to access to current card
+     * @return     It's needed for the rounds where after picks a student from an expert card they put another one, they need to access to current card
      */
     public CardManager getCardManager(){
         return this.cardManager;
     }
 
     /**
-     * @return  Bag     Return the istance of the Bag
+     * @return the instance of IslandManager
+     */
+    public IslandManager getIslandManager() { return this.islandManager; }
+
+    /**
+     * @return  Bag     Return the instance of the Bag
      */
     public Bag getBag(){
         return this.bag;
     }
 
     /**
-     * Set the Playerlist, only for dedubbing so far
+     * Set the Playerlist, only for debugging so far
      */
     public void setPlayerList(LinkedList<Player> players){
         this.playerList =players;
@@ -624,7 +629,7 @@ public class Game implements GameInterface, Serializable {
 
     /**
      *
-     * @return  clouds  A new linked list contenent the clouds
+     * @return  new linked list of clouds
      */
     public LinkedList<Cloud> getClouds(){
         return new LinkedList<>(this.clouds);

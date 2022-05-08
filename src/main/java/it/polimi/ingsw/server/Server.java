@@ -22,12 +22,12 @@ public class Server {
     private ExecutorService executor = Executors.newFixedThreadPool(128);
     private Map<String, SocketClientConnection> waitingConnection = new HashMap<>();
     private Map<String, SocketClientConnection> playingConnection = new HashMap<>();
-    private LinkedList<SocketClientConnection> socketConnections=new LinkedList<>();
-    private Integer numberOfPlayer=128;
+    private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
+    private Integer numberOfPlayer = 128;
     private Boolean gameMode; // true for expert mode, false for normal one
     private PropertyObserver propertyObserver;
     private Game game;
-    private SetUp setup=new SetUp();
+    private SetUp setup = new SetUp();
 
 
     /**
@@ -198,7 +198,7 @@ public class Server {
     }
 
     /**
-     * This method is called from observer  , after its modified we sent the game to the client
+     * This method is called from observer, after its modified we sent the game to the client
      */
     public void sendGame(){
         System.out.println("Invio il gioco da server");
@@ -240,6 +240,7 @@ public class Server {
         t.start();
         return t;
     }
+
 }
 
 

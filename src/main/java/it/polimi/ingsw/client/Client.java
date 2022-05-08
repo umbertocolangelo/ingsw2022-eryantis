@@ -13,10 +13,12 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Client {
+
     /**
      * Keep the reference to the socket
      */
     private  Socket socket;
+
     /**
      *  Keep the reference to InputStream
      */
@@ -25,7 +27,7 @@ public class Client {
     /**
      *  Keep the reference to
      */
-    private Object object=new Object() ;
+    private Object object = new Object();
 
     /**
      * Keep the ip port
@@ -53,7 +55,7 @@ public class Client {
     private String namePlayer;
 
     /**
-     *It's a semaphore needed to synchronized with the output
+     * It's a semaphore needed to synchronized with the output
      */
     private Object inputObject;
 
@@ -73,7 +75,6 @@ public class Client {
     private Boolean active = true;
 
     /**
-     *
      * @param ip        The ip address
      * @param port      the port
      */
@@ -86,7 +87,7 @@ public class Client {
      *
      * @return  active      Get the active variable
      */
-    public synchronized boolean isActive(){
+    public synchronized boolean isActive() {
         return active;
     }
 
@@ -94,7 +95,7 @@ public class Client {
      *
      * @param active        Set the active variable
      */
-    public synchronized void setActive(Boolean active){
+    public synchronized void setActive(Boolean active) {
         this.active = active;
     }
 
@@ -103,7 +104,7 @@ public class Client {
      * @param socketIn The inputStream
      * @return Thread  Return the thread who will keep read and once he read it will run the controller and wait for his termination
      */
-    public Thread asyncReadFromSocket(final ObjectInputStream socketIn){
+    public Thread asyncReadFromSocket(final ObjectInputStream socketIn) {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
@@ -115,12 +116,12 @@ public class Client {
                                 System.out.println((String) inputObject);
                             } else if (inputObject instanceof Game) {
                                 game = (Game) inputObject;
-                                System.out.println("ricevuto game al client");
+                                System.out.println("Client received Game.");
                                 if (game.getCurrentPlayer().getName().equals(namePlayer))
                                     controller.setClientState(ClientState.PLAYING);
                                     controller.run();
                             } else if (inputObject instanceof SetUp) {
-                                System.out.println("ricevuto");
+                                System.out.println("Set Up received.");
                                 controller.setClientState(ClientState.LOGIN);
                                 controller.run();
                             } else if (inputObject instanceof SetName)
@@ -145,45 +146,42 @@ public class Client {
      * @throws IOException
      */
     public void run() throws IOException {
-            socket = new Socket(ip, port);
-            System.out.println("Connection established");
-            socketIn = new ObjectInputStream(socket.getInputStream());
-            socketOut = new ObjectOutputStream(socket.getOutputStream());
-            stdin = new Scanner(System.in);
-            controller = new Controller(this);
+        socket = new Socket(ip, port);
+        System.out.println("Connection established.");
+        socketIn = new ObjectInputStream(socket.getInputStream());
+        socketOut = new ObjectOutputStream(socket.getOutputStream());
+        stdin = new Scanner(System.in);
+        controller = new Controller(this);
 
-            try {
-                Thread t0 = asyncReadFromSocket(socketIn);
-               // Thread t1 = asyncWriteToSocket(stdin, socketOut);
+        try {
+            Thread t0 = asyncReadFromSocket(socketIn);
+           // Thread t1 = asyncWriteToSocket(stdin, socketOut);
 
-                t0.join();
-                //t1.join();
+            t0.join();
+            //t1.join();
 
-            } catch (InterruptedException | NoSuchElementException e) {
-                System.out.println("Connection closed from the client side");
-            } finally {
-                stdin.close();
-                socketIn.close();
-                socketOut.close();
-                socket.close();
-            }
+        } catch (InterruptedException | NoSuchElementException e) {
+            System.out.println("Connection closed from the client side");
+
+        } finally {
+            stdin.close();
+            socketIn.close();
+            socketOut.close();
+            socket.close();
         }
-
-
+    }
 
     /**
      *
      * @return stdIn        The scanner of the keyboard
      */
-    public Scanner getScanner(){
-        return stdin;
-    }
+    public Scanner getScanner() { return stdin; }
 
     /**
      *
      * @return
      */
-    public String getNamePlayer(){
+    public String getNamePlayer() {
         return this.namePlayer;
     }
 

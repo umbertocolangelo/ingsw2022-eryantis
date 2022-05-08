@@ -3,7 +3,7 @@ package it.polimi.ingsw.client;
 import java.io.IOException;
 import java.util.Scanner;
 
-public class Controller implements Runnable{
+public class Controller implements Runnable {
 
     /**
      * Represent the Thread that will modify the game
@@ -41,15 +41,14 @@ public class Controller implements Runnable{
     private CLI cli;
 
     /**
-     *Keep the reference to the client
+     * Default constructor
+     * Keep the reference to the client
      * @param client
      */
     public Controller(Client client) {
-
         this.client = client;
         this.stdIn = client.getScanner();
         cli = new CLI(client,this);
-
     }
 
 
@@ -58,43 +57,59 @@ public class Controller implements Runnable{
      */
     @Override
     public void run() {
-           switch (clientState) {
-               case LOGIN:
-                  // System.out.println("Dentro Login");
-                   input = stdIn.nextLine();
-                   write(input);
+        switch (clientState) {
+
+            case LOGIN:
+                // System.out.println("Inside Login");
+                input = stdIn.nextLine();
+                write(input);
+                setClientState(ClientState.SLEEPING);
+                break;
+
+            case SLEEPING:
+                break;
+
+            case PLAYING:
+
+                switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
+
+                    case SET_UP_PHASE :
+                        t0 = cli.chooseColorAndDeck();
+                        break;
+
+
+                    case CHOOSING_ASSISTANT:
+                        t0 = cli.choosingAssistant();
+                        break;
+
+
+                    case MOVING_STUDENTS:
+                        t0 = cli.movingStudentsFromIngress();
+                        break;
+
+                    case MOVING_MOTHERNATURE:
+                        t0 = cli.movingMotherNature();
+                        break;
+
+                    case CHOOSING_CLOUD:
+                       t0 = cli.choosingStudentsFromClouds();
+                       break;
+               }
+               try {
+                   t0.join();
                    setClientState(ClientState.SLEEPING);
-                   break;
-
-               case SLEEPING:
-                   break;
-               case PLAYING:
-                   switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
-                       case SET_UP_PHASE :
-                            t0= cli.chooseColorAndDeck();
-                            break;
-                       case CHOOSING_ASSISTANT:
-                           t0=cli.choosingAssistant();
-                           break;
-                   }
-                   try {
-                       t0.join();
-                       setClientState(ClientState.SLEEPING);
-                   } catch (InterruptedException e) {
-                       e.printStackTrace();
-                   }
-/**
- */
-            }
-
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
         }
+
+    }
 
     /**
      * This method write to the server socket synchronized with the read
-     *
      * @param object the object we need to send
      */
-    public void write(Object object){
+    public void write(Object object) {
         synchronized (client) {
             try {
                 System.out.println("metodo send nel controller");
@@ -107,12 +122,12 @@ public class Controller implements Runnable{
         }
     }
 
-    /**Set the clientState
-     *
+    /**
+     * Set the clientState
      * @param clientState The client State we want to modify
      */
-    public void setClientState(ClientState clientState){
-        this.clientState=clientState;
+    public void setClientState(ClientState clientState) {
+        this.clientState = clientState;
     }
 
 }

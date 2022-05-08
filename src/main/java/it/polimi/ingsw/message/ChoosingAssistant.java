@@ -6,18 +6,27 @@ import it.polimi.ingsw.model.enumerations.AssistantCard;
 import java.io.Serializable;
 
 public class ChoosingAssistant implements MessageMethod, Serializable {
-    /**
-     * @param game  This apply call the method playAssistantCArd in game
-     */
 
+    /**
+     *
+     */
     private AssistantCard assistantCard;
+
+    /**
+     * @param game
+     */
     @Override
     public void apply(Game game) {
         game.playAssistantCard(assistantCard);
 
     }
 
+    /**
+     *
+     * @param assistantCard
+     */
     public void setAssistantCard(AssistantCard assistantCard){
-        this.assistantCard=assistantCard;
+        this.assistantCard = assistantCard;
     }
+
 }
