@@ -41,7 +41,7 @@ public class Controller implements Runnable{
     private CLI cli;
 
     /**
-     *
+     *Keep the reference to the client
      * @param client
      */
     public Controller(Client client) {
@@ -54,15 +54,7 @@ public class Controller implements Runnable{
 
 
     /**
-     * When an object implementing interface {@code Runnable} is used
-     * to create a thread, starting the thread causes the object's
-     * {@code run} method to be called in that separately executing
-     * thread.
-     * <p>
-     * The general contract of the method {@code run} is that it may
-     * take any action whatsoever.
-     *
-     * @see Thread#run()
+     * We receive the clientState and decide what to do
      */
     @Override
     public void run() {

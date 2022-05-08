@@ -20,12 +20,12 @@ public class PropertyObserver implements PropertyChangeListener {
     }
 
     /**
-     *
+     * Keep the reference to the server
      */
     private Server server;
 
     /**
-     *
+     * Keep the reference to the game
      */
     private Game game;
 

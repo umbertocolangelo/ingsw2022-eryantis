@@ -35,7 +35,7 @@ public class Server {
      * @param c
      */
     public synchronized void deregisterConnection(SocketClientConnection c) {
-        ClientConnection opponent = playingConnection.get(c);
+        SocketClientConnection opponent = playingConnection.get(c);
         if(opponent != null) {
             opponent.closeConnection();
         }
@@ -51,11 +51,11 @@ public class Server {
 
     /**
      *
-     * @param c
-     * @param name
+     * @param c         The socketConnection which is currently running
+     * @param name         The name of the player
      * @throws IOException
      * @throws ClassNotFoundException
-     * @throws InterruptedException
+     * @throws InterruptedException     Thrown when the modifyGame doesn't end
      */
     public synchronized void lobby(SocketClientConnection c, String name) throws IOException, ClassNotFoundException, InterruptedException {
 
@@ -73,7 +73,7 @@ public class Server {
         if (waitingConnection.size()==numberOfPlayer) {
             System.out.println(waitingConnection.size() +" "+ numberOfPlayer);
             for (SocketClientConnection d : waitingConnection.values())
-                d.asyncSend("Players arrived, starting game..");
+                d.send("Players arrived, starting game..");
 
             //System.out.println("dentro");
             SocketClientConnection c1 = waitingConnection.get(keys.get(0));
@@ -129,15 +129,18 @@ public class Server {
     public void run(){
         int connections = 0;
         System.out.println("Server is running");
-        while(true ){ //Abbiamo un problema che il client si disconnetete se tutte due si connetono insieme e scrive il secondo client
+        while(!Thread.currentThread().isInterrupted() ){ //Abbiamo un problema che il client si disconnetete se tutte due si connetono insieme e scrive il secondo client
             try {
+
                 Socket newSocket = serverSocket.accept();
                 connections++;
                 System.out.println("Ready for the new connection - " + connections);
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
                 socketConnections.add(socketConnection);
                 Thread t0 = new Thread(socketConnection);
-                t0.start();
+
+                  t0.start();
+
             } catch (IOException e) {
                 System.out.println("Connection Error!");
             }
@@ -146,8 +149,8 @@ public class Server {
 
     /**
      *
-     * @param username
-     * @return
+     * @param username  The name of the player who is calling this method
+     * @return  boolean     True if the name is not already chosen, false instead
      */
     public Boolean equalName(String username) {
         for (int i =0;i<socketConnections.size()-1;i++) {
@@ -159,8 +162,8 @@ public class Server {
 
     /**
      *
-     * @param c
-     * @throws IOException
+     * @param c         The socketConnection which is the first player
+     * @throws IOException  Thrown if occurs problems with the socket
      * @throws ClassNotFoundException
      */
     public void decideNumberOfPlayersAndGameMode(SocketClientConnection c) throws IOException, ClassNotFoundException {
@@ -195,7 +198,7 @@ public class Server {
     }
 
     /**
-     *
+     * This method is called from observer  , after its modified we sent the game to the client
      */
     public void sendGame(){
         System.out.println("Invio il gioco da server");
@@ -208,12 +211,12 @@ public class Server {
 
     /**
      *
-     * @return
+     * @return  game    The reference to the game
      */
     public Game getGame(){ return this.game; }
 
     /**
-     * Sincronizza la modifica e l'invio con la lettura in socketclientCOnnection su metodo asynread
+     * Synchronized the modifying in game with the other threads
      * @param object
      * @return
      */
@@ -222,6 +225,7 @@ public class Server {
             @Override
             public void run() {
                 if(object instanceof Game) {
+                    //Dovremmo mettere un messaggio per fare questa azione
                     game.setPlayerList(players);
                     game.initializeGame();
                     System.out.println(game.getPlayerList());

@@ -14,11 +14,7 @@ public interface ClientConnection{
      */
     void addObserver(PropertyObserver observer);
 
-    /**
-     *
-     * @param message
-     */
-    void asyncSend(Object message);
+
 
 
 }

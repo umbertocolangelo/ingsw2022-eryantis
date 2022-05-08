@@ -1,7 +1,6 @@
 package it.polimi.ingsw.server;
 
 
-import it.polimi.ingsw.listener.PropertyObserver;
 import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.SetName;
 import it.polimi.ingsw.message.SetUp;
@@ -13,21 +12,39 @@ import java.net.Socket;
 import java.util.NoSuchElementException;
 
 
-public class SocketClientConnection  implements ClientConnection, Runnable {
+public class SocketClientConnection  implements  Runnable {
 
-    private Object object=new Object();
-    private Socket socket;
-    private ObjectOutputStream out;
-    private Server server;
-    private String name;
-    private ObjectInputStream in;
-    private boolean active = true;
-    private PropertyObserver observer;
 
     /**
-     * default constructor
-     * @param socket
-     * @param server
+     * Keep the reference to the socket
+     */
+    private Socket socket;
+    /**
+     * Keep the reference to the outputStream
+     */
+    private ObjectOutputStream out;
+    /**
+     * Keep the reference to the server
+     */
+    private Server server;
+    /**
+     * Keep the reference to the playerName
+     */
+    private String name;
+    /**
+     * Keep the reference to the inputStream
+     */
+    private ObjectInputStream in;
+    /**
+     * Keep the reference to the active status
+     */
+    private boolean active = true;
+
+
+    /**
+     *
+     * @param socket        The socket we want to hande
+     * @param server        The reference to the server
      */
     public SocketClientConnection(Socket socket, Server server) {
         this.socket = socket;
@@ -36,14 +53,14 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
 
     /**
      *
-     * @return
+     * @return active       This boolean is needed to close the connection when its needed
      */
     private synchronized boolean isActive(){
         return this.active;
     }
 
     /**
-     *
+     * This method send the message synchronized with the reading
      * @param message
      */
     public  void send(Object message) {
@@ -59,9 +76,9 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
     }
 
     /**
-     *
+     *This method is needed when we want to close the connection, close the socket and set active to false
      */
-    @Override
+
     public synchronized void closeConnection() {
         send("Connection closed!");
         try {
@@ -72,17 +89,9 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         active = false;
     }
 
-    /**
-     *
-     * @param observer
-     */
-    @Override
-    public void addObserver(PropertyObserver observer) {
-            this.observer=observer;
-    }
 
     /**
-     *
+     *Calls the close connection and close the connection also in the server
      */
     private void close() {
         closeConnection();
@@ -91,31 +100,24 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
         System.out.println("Done!");
     }
 
-    /**
-     *
-     * @param message
-     */
-    public void asyncSend(final Object message){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                send(message);
-            }
-        }).start();
-    }
 
+
+    /**
+     * This run is always open and keep listening to the client and send the message to the server
+     */
 
     @Override
     public void run() {
        // while(!Thread.currentThread().isInterrupted()){
         try{
+            synchronized (server) {
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
             SetUp setup = new SetUp();
            // System.out.println("si");
             send("Welcome!\nWhat is your name?");
 
-            synchronized (server) { //si  sincronizza con il send
+             //si  sincronizza con il send
                 send(setup);
                 String read = (String) in.readObject();
                 while (server.equalName(read) || read.matches(".*\\d.*")) {
@@ -135,15 +137,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
                         t1.join();
                         System.out.println(object);
                     }
-                    /** if(object instanceof MessageMethod)
-                     {
 
-                     if (  ((MessageMethod) object).getId().equals("1")){
-                     server.getGame().chooseColorAndDeck(((MessageMethod) object).getPlayerColor(),((MessageMethod) object).getWizard());
-                     }
-                     }
-                     */
-                    //  notify(read);
                 }
 
         } catch (IOException | NoSuchElementException e) {
@@ -163,7 +157,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
 
     /**
      *
-     * @return
+     * @return name     Return the playerName
      */
     public String getName(){
         return  this.name;
@@ -171,7 +165,7 @@ public class SocketClientConnection  implements ClientConnection, Runnable {
 
     /**
      *
-     * @return
+     * @return in       Return the inputStream
      */
     public ObjectInputStream getIn(){
         return this.in;

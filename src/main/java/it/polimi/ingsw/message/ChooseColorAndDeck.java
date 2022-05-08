@@ -9,18 +9,18 @@ import java.io.Serializable;
 public class ChooseColorAndDeck implements MessageMethod, Serializable {
 
     /**
-     *
+     * The player Color the player selected
      */
     private PlayerColor playerColor;
 
     /**
-     *
+     * The Wizard that the palyer selected
      */
     private Wizard wizard;
 
     /**
      *
-     * @param game
+     * @param game This apply call the method chooseColorAndDeck on game
      */
     public void apply(Game game) {
         game.chooseColorAndDeck(playerColor, wizard);
@@ -28,7 +28,7 @@ public class ChooseColorAndDeck implements MessageMethod, Serializable {
 
     /**
      *
-     * @param playerColor
+     * @param playerColor   Set the playerColor
      */
 
     public void setPlayerColor(PlayerColor playerColor) {
@@ -37,7 +37,7 @@ public class ChooseColorAndDeck implements MessageMethod, Serializable {
 
     /**
      *
-     * @param coloredWizard
+     * @param coloredWizard Set the Wizard
      */
     public void setWizard(Wizard coloredWizard) { this.wizard = coloredWizard; }
 }

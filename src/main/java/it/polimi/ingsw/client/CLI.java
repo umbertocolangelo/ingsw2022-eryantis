@@ -28,8 +28,8 @@ public class CLI {
 
     /**
      *
-     * @param client
-     * @param controller
+     * @param client        Keep the reference to the client
+     * @param controller    Keep the reference to the controller
      */
     public CLI(Client client, Controller controller){
         this.client=client;

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 public class ChoosingAssistant implements MessageMethod, Serializable {
     /**
-     * @param game
+     * @param game  This apply call the method playAssistantCArd in game
      */
 
     private AssistantCard assistantCard;

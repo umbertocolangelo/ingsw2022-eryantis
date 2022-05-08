@@ -14,68 +14,68 @@ import java.util.Scanner;
 
 public class Client {
     /**
-     *
+     * Keep the reference to the socket
      */
     private  Socket socket;
     /**
-     *
+     *  Keep the reference to InputStream
      */
     private ObjectInputStream socketIn;
 
     /**
-     *
+     *  Keep the reference to
      */
     private Object object=new Object() ;
 
     /**
-     *
+     * Keep the ip port
      */
     private String ip;
 
     /**
-     *
+     *Keep the reference to the port
      */
     private int port;
 
     /**
-     *
+     * Keep the reference to the game
      */
     private Game game;
 
     /**
-     *
+     * Keep the reference to the Scanner
      */
     private Scanner stdin;
 
     /**
-     *
+     * Keep the reference to the namePlayer
      */
     private String namePlayer;
 
     /**
-     *
+     *It's a semaphore needed to synchronized with the output
      */
     private Object inputObject;
 
     /**
-     *
+     * Keep the reference to the controller
      */
     private Controller controller;
 
     /**
-     *
+     * Keep the reference to the OutputStream
      */
     private  ObjectOutputStream socketOut;
 
     /**
-     *
+     * Set if the player is active to read or not
      */
     private Boolean active = true;
 
     /**
-     * default constructor
-     * @param ip
-     * @param port
+     *
+     * @param ip        The ip address
+     * @param port      the port
      */
     public Client(String ip, int port) {
         this.ip = ip;
@@ -84,7 +84,7 @@ public class Client {
 
     /**
      *
-     * @return
+     * @return  active      Get the active variable
      */
     public synchronized boolean isActive(){
         return active;
@@ -92,7 +92,7 @@ public class Client {
 
     /**
      *
-     * @param active
+     * @param active        Set the active variable
      */
     public synchronized void setActive(Boolean active){
         this.active = active;
@@ -100,8 +100,8 @@ public class Client {
 
     /**
      *
-     * @param socketIn
-     * @return
+     * @param socketIn The inputStream
+     * @return Thread  Return the thread who will keep read and once he read it will run the controller and wait for his termination
      */
     public Thread asyncReadFromSocket(final ObjectInputStream socketIn){
         Thread t = new Thread(new Runnable() {
@@ -139,39 +139,9 @@ public class Client {
         return t;
     }
 
-    /**
-     *
-     * @param stdin
-     * @param socketOut
-     * @return
-     */
-    public Thread asyncWriteToSocket(final Scanner stdin, final ObjectOutputStream socketOut){
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (isActive()) {
-
-                        /**if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.SET_UP_PHASE) {
-                            MessageMethod messageMethod = new MessageMethod("1");
-                            messageMethod.setPlayerColor(PlayerColor.WHITE);
-                            messageMethod.setWizard(Wizard.PURPLE_WIZARD);
-                            socketOut.writeObject(messageMethod);
-                        }
-                         */
-
-                    }
-                }catch(Exception e){
-                    setActive(false);
-                }
-            }
-        });
-        t.start();
-        return t;
-    }
 
     /**
-     *
+     *  When the client is running start the thread for reading and wait until that thread die
      * @throws IOException
      */
     public void run() throws IOException {
@@ -184,7 +154,7 @@ public class Client {
 
             try {
                 Thread t0 = asyncReadFromSocket(socketIn);
-                Thread t1 = asyncWriteToSocket(stdin, socketOut);
+               // Thread t1 = asyncWriteToSocket(stdin, socketOut);
 
                 t0.join();
                 //t1.join();
@@ -203,7 +173,7 @@ public class Client {
 
     /**
      *
-     * @return
+     * @return stdIn        The scanner of the keyboard
      */
     public Scanner getScanner(){
         return stdin;
@@ -219,7 +189,7 @@ public class Client {
 
     /**
      *
-     * @return
+     * @return socketOut        The inputStream
      */
     public ObjectOutputStream getIn(){
         return socketOut;
@@ -227,7 +197,7 @@ public class Client {
 
     /**
      *
-     * @return
+     * @return game     The refrence to the game in the client
      */
     public Game getGame(){
         return this.game;
