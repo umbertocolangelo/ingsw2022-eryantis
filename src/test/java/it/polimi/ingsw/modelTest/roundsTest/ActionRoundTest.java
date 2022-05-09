@@ -7,6 +7,7 @@ import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
+import it.polimi.ingsw.utils.IdManager;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -142,20 +143,21 @@ public class ActionRoundTest {
         Game game = new Game();
         LinkedList<Player> lista=new LinkedList<>();
         lista.add(player);
-        player.setPlayerColor(PlayerColor.WHITE);
-        game.setOrderedPLayerList(lista);
+        lista.add(new Player("two"));
+        game.setExpertMode();
         game.setPLayerList(lista);
         game.initializeGame();
-
+        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.BLUE_WIZARD);
+        game.playAssistantCard(AssistantCard.ONE_CARD);
+        game.playAssistantCard(AssistantCard.THREE_CARD);
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
-        game.setRound(game.setActionRoundState());
-        HallBagSwapCard hallBag = new HallBagSwapCard(game.getCardManager());
-        game.setCurrentPlayer(player);
+        //game.setCurrentPlayer(player);
         game.getCurrentPlayer().setCoin(5);
-        game.playExpertCard(hallBag,Color.RED);
+        game.playExpertCard(IdManager.getInstance().getExpertCard("49"), Color.RED);
         System.out.println(player.getSchool().getHall().getLine(Color.RED).getStudents().size());
         assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
 
