@@ -22,19 +22,12 @@ public class SetUpRoundTest {
         LinkedList<Player> lista=new LinkedList<>();
         lista.add(player);
         lista.add(player1);
-        player.setPlayerPhase(PlayerPhase.SET_UP_PHASE);
-        game.setOrderedPLayerList(lista);
-        game.setRound(game.setSetUpRound());
+        game.setPlayerList(lista);
+        game.initializeGame();
         game.chooseColorAndDeck( PlayerColor.WHITE, Wizard.BLUE_WIZARD);
-        assertTrue(game.getCurrentPlayer().getPlayerColor()==PlayerColor.WHITE && game.getCurrentPlayer().getWizard()== Wizard.BLUE_WIZARD);
-        //game.setCurrentPlayer(player1);
-        //game.chooseColorAndDeck( PlayerColor.BLACK, Wizard.BLUE_WIZARD);
-        //assertTrue(game.getCurrentPlayer().getPlayerColor()==null&& game.getCurrentPlayer().getWizard()== null);
-        //game.getCurrentPlayer().setPlayerPhase(PlayerPhase.SET_UP_PHASE);
-        //game.chooseColorAndDeck( PlayerColor.WHITE, Wizard.BLUE_WIZARD);
-        //assertTrue(game.getCurrentPlayer().getPlayerColor()==null && game.getCurrentPlayer().getWizard()== null);
+        assertTrue(player.getPlayerColor()==PlayerColor.WHITE && player.getWizard()== Wizard.BLUE_WIZARD);
         game.chooseColorAndDeck( PlayerColor.BLACK, Wizard.GREEN_WIZARD);
-        assertTrue(game.getCurrentPlayer().getPlayerColor()==PlayerColor.BLACK && game.getCurrentPlayer().getWizard()== Wizard.GREEN_WIZARD);
+        assertTrue(player1.getPlayerColor()==PlayerColor.BLACK && player1.getWizard()== Wizard.GREEN_WIZARD);
     }
 
 
