@@ -1,8 +1,6 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.message.*;
-import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.rounds.SetUpRound;
 
 import java.util.Scanner;
@@ -111,19 +109,20 @@ public class CLI {
             for (int i=0; i<3; i++) {
                 System.out.println(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents());
                 input = scanner.nextLine();
-                while (input=="" || !input.matches("[0-8]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
+                while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!");
                     input = scanner.nextLine();
                 }
                 System.out.println("Where do you want to move this student? 0 Hall 1 Island");
                 input1 = scanner.nextLine();
-                while (input1 !="0" || input1 !="1") {
+                while (!(input1.equals("1") || input1.equals("0"))) {
                     System.out.println("Ops! You entered a wrong value!");
                     input1 = scanner.nextLine();
                 }
                 if (input1.equals("0")) {
                     MessageMethod hallMessageMethod = new MovingStudentsFromIngressToHall();
-                    ((MovingStudentsFromIngressToHall) hallMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)));
+                    System.out.println(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
+                    ((MovingStudentsFromIngressToHall) hallMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
                     controller.write(hallMessageMethod);
                 }
                 else if (input1.equals("1")) {
@@ -135,6 +134,7 @@ public class CLI {
                         input1 = scanner.nextLine();
                     }
                     MessageMethod islandMessageMethod = new MovingStudentFromIngressToIsland();
+
                     ((MovingStudentFromIngressToIsland) islandMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)));
                     if ((client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).isGrouped())) {
                         System.out.println("On which island of this group do you want to move the student to?");

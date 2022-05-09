@@ -39,7 +39,7 @@ public interface GameInterface {
     /**
      * @param student
      */
-    public void moveStudentIngressToHall(Student student);
+    public void moveStudentIngressToHall(String string);
 
     /**
      * @param student

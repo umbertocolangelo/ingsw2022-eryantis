@@ -17,6 +17,7 @@ import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.*;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
+import it.polimi.ingsw.utils.IdManager;
 import it.polimi.ingsw.utils.SavingManager;
 
 import java.beans.PropertyChangeListener;
@@ -299,9 +300,10 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param student       Move the student from the ingress to the hall
+     * @param string       Move the student from the ingress to the hall
      */
-    public void moveStudentIngressToHall(Student student) {
+    public void moveStudentIngressToHall(String string) {
+        Student student= IdManager.getInstance().getStudent(string);
         if(!this.currentRound.moveStudentIngressToHall(student))
             System.out.println("Move not possible");
         if(this.currentRound.moveStudentIngressToHall(student))
@@ -342,15 +344,19 @@ public class Game implements GameInterface, Serializable {
         if(this.currentRound.playAssistantCard(assistantCard,this.currentPlayer)) {
             currentPlayer.playAssistantCard(assistantCard);
             System.out.println("Assistant card played");
-
-            if (playerList.indexOf(currentPlayer) < playerList.size() - 1) {
+            System.out.println(playerList.indexOf(currentPlayer));
+            if (playerList.indexOf(currentPlayer) <= playerList.size() && orderedPLayerList.isEmpty()) {
+                System.out.println(getCurrentPlayer().getName());
                 System.out.println("Modify current player in game");
                 this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
+                System.out.println(getCurrentPlayer().getName());
             }
 
             propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
         }else{
             System.out.println("Assistant card already played");
+            propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
+
         }
     }
 
@@ -511,8 +517,11 @@ public class Game implements GameInterface, Serializable {
             this.currentPlayer.setPlayerColor(color);
             System.out.println(this.currentPlayer.getName());
             currentPlayer.setWizard(wizard);
-            for (int i = 0; (isThree & i < 9) || (!isThree && i < 7); i++)
+            for (int i = 0; (isThree & i < 9) || (!isThree && i < 7); i++) {
                 this.currentPlayer.getSchool().getIngress().addStudent(bag.newStudent());
+                System.out.println(currentPlayer.getSchool().getIngress().getStudents().get(i).getId());
+            }
+            System.out.println(playerList.indexOf(currentPlayer));
             if(playerList.indexOf(currentPlayer)<playerList.size()-1) {
                 System.out.println("modify current player in game");
                 this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
@@ -521,6 +530,7 @@ public class Game implements GameInterface, Serializable {
             else {
                 Collections.shuffle(playerList);
                 currentPlayer=playerList.getFirst();
+                System.out.println(this.currentPlayer.getName());
             }
             propertyChange.firePropertyChange("Finished choose color and deck",currentRound,color);
             return true;
@@ -562,7 +572,7 @@ public class Game implements GameInterface, Serializable {
      *Return the PlayerList
      */
     public LinkedList<Player> getPlayerList() {
-        return this.playerList;
+        return new LinkedList<>(playerList);
     }
 
     /**

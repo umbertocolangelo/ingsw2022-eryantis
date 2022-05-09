@@ -43,7 +43,7 @@ public class ActionRoundTest {
         Student student = new Student(Color.RED);
         player.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
         player1.getSchool().getIngress().addStudent(student);
-        game.moveStudentIngressToHall(student);
+        game.moveStudentIngressToHall(student.getId());
         assertTrue( player1.getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
 
     }

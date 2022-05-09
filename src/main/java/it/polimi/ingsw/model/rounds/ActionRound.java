@@ -7,7 +7,6 @@ import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
@@ -51,10 +50,7 @@ public class ActionRound implements RoundInterface, Serializable {
      *
      */
     private Integer maxStudents;
-    /**
-     *
-     */
-    private MotherNature motherNature;
+
 
     /**
      * Keep the reference to mothernature
