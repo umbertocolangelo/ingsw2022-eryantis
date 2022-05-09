@@ -160,7 +160,7 @@ public class ActionRoundTest {
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
-        game.setRound(game.setActionRoundState(3));
+        game.setRound(game.setActionRoundState());
         HallBagSwapCard hallBag = new HallBagSwapCard(game.getCardManager());
         game.setCurrentPlayer(player);
         game.getCurrentPlayer().setCoin(5);
