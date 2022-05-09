@@ -37,15 +37,15 @@ public interface GameInterface {
     public Boolean isStarted();
 
     /**
-     * @param student
+     * @param string
      */
     public void moveStudentIngressToHall(String string);
 
     /**
-     * @param student
-     * @param island
+     * @param student1
+     * @param island1
      */
-    public void moveStudentIngressToIsland(Student student, Island island);
+    public void moveStudentIngressToIsland(String student1, String island1);
 
     /**
      * @param jumps

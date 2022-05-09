@@ -1,9 +1,6 @@
 package it.polimi.ingsw.message;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.islands.IslandInterface;
-import it.polimi.ingsw.model.pawns.Student;
 
 import java.io.Serializable;
 
@@ -12,12 +9,12 @@ public class MovingStudentFromIngressToIsland implements MessageMethod, Serializ
     /**
      *
      */
-    private Student student;
+    private String student;
 
     /**
      *
      */
-    private Island island;
+    private String island;
 
     /**
      *
@@ -31,7 +28,7 @@ public class MovingStudentFromIngressToIsland implements MessageMethod, Serializ
      *
      * @param student
      */
-    public void setStudent(Student student) {
+    public void setStudent(String student) {
         this.student = student;
     }
 
@@ -39,7 +36,7 @@ public class MovingStudentFromIngressToIsland implements MessageMethod, Serializ
      *
      * @param island
      */
-    public void setIsland(Island island) {
+    public void setIsland(String island) {
         this.island = island;
     }
 

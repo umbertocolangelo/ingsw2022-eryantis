@@ -33,7 +33,7 @@ public class ActionRoundTest {
         Student student = new Student(Color.RED);
         player.getSchool().getIngress().addStudent(student);
         System.out.println(player.getSchool().getIngress().numOfStudents());
-        game.moveStudentIngressToHall(student);
+        game.moveStudentIngressToHall(student.getId());
         System.out.println(game.getOrderedPLayerList());
         assertTrue( player.getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
 
@@ -93,7 +93,7 @@ public class ActionRoundTest {
         player.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
         player1.getSchool().getIngress().addStudent(student);
         Island island =new Island();
-        game.moveStudentIngressToIsland(student,island);
+        game.moveStudentIngressToIsland(student.getId(),island.getId());
         assertTrue( island.getStudents().contains(student) && !player1.getSchool().getIngress().getStudents().contains(student));
     }
 

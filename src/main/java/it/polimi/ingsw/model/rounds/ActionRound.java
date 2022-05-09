@@ -60,7 +60,7 @@ public class ActionRound implements RoundInterface, Serializable {
     /**
      *
      */
-    private Boolean isThreePlayers;
+    private Boolean isThreePlayers=false;
 
     /**
      *
@@ -84,6 +84,7 @@ public class ActionRound implements RoundInterface, Serializable {
                 game.getBag().addStudentsOnCloud(clouds.get(i));
             }
             this.game.setRound(this.game.setPianificationRoundState());
+
             game.getCardManager().resetCurrentCard();
             return true;
         }
@@ -92,8 +93,6 @@ public class ActionRound implements RoundInterface, Serializable {
             players.removeFirst();
             this.game.setOrderedPLayerList(players);
             this.game.setRound(game.setActionRoundState());
-
-
         return true;
         }
         return false;
@@ -106,12 +105,6 @@ public class ActionRound implements RoundInterface, Serializable {
     public Boolean moveStudentIngressToHall(Student student) {
         if(this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student)){
             return false;}
-        this.studentsMoved++;
-        if((isThreePlayers.equals(true) && studentsMoved==4) || (isThreePlayers.equals(false) && studentsMoved==3)) {
-            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
-            return true;
-        }
-
         return true;
     }
 
@@ -123,11 +116,6 @@ public class ActionRound implements RoundInterface, Serializable {
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
         if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
             return false;
-        this.studentsMoved++;
-        if((isThreePlayers.equals(true) && studentsMoved==4) || (isThreePlayers.equals(false) && studentsMoved==3)) {
-            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
-            return true;
-        }
 
         return true;
     }
@@ -140,6 +128,7 @@ public class ActionRound implements RoundInterface, Serializable {
        if(currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps)
         return false;
        else{
+
            return true;
        }
     }
@@ -227,6 +216,7 @@ public class ActionRound implements RoundInterface, Serializable {
             return false;
         if (cloud.getStudents().size() == 0)
             return false;
+        checkRoundEnded();
         return true;
 
     }

@@ -129,6 +129,7 @@ public class Client {
                             else {
                                 throw new IllegalArgumentException();
                             }
+
                         }
                     } catch (Exception e) {
                         setActive(false);

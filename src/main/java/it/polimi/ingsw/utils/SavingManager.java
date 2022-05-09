@@ -5,7 +5,7 @@ import it.polimi.ingsw.model.Game;
 import java.io.*;
 import java.nio.file.Files;
 
-public class SavingManager {
+public class SavingManager implements Serializable{
 
     /**
      * Default constructor

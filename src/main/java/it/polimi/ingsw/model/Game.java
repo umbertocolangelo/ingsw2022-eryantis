@@ -17,6 +17,7 @@ import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.*;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
+import it.polimi.ingsw.utils.IdManager;
 import it.polimi.ingsw.utils.SavingManager;
 
 import java.beans.PropertyChangeListener;
@@ -167,6 +168,11 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
+     *
+     */
+    private Integer studentsMoved=0;
+
+    /**
      * @param pc1
      */
     public void addListener(PropertyChangeListener pc1){
@@ -301,26 +307,44 @@ public class Game implements GameInterface, Serializable {
         return null;
     }
 
+
     /**
-     * @param student       Move the student from the ingress to the hall
+     * @param string       Move the student from the ingress to the hall
      */
-    public void moveStudentIngressToHall(Student student) {
+    public void moveStudentIngressToHall(String string) {
+        Student student= IdManager.getInstance().getStudent(string);
+
         if(!this.currentRound.moveStudentIngressToHall(student))
             System.out.println("Move not possible");
-        if(this.currentRound.moveStudentIngressToHall(student))
+        if(this.currentRound.moveStudentIngressToHall(student)) {
             this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
+            studentsMoved++;
+        }
+        if((isThree.equals(true) && studentsMoved==4) || (isThree.equals(false) && studentsMoved==3)) {
+            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
+
+        }
+        System.out.println(currentPlayer.getName());
+        System.out.println(currentPlayer.getSchool().getIngress().getStudents().size());
         propertyChange.firePropertyChange("moveStudentIngress",  this.currentPlayer.getSchool().getHall().getLine(student.getColor()),student);
     }
 
     /**
-     * @param student       Student in the ingress
-     * @param island        Island where we want to move>>
+     * @param student1       Student in the ingress
+     * @param island1        Island where we want to move>>
      */
-    public void moveStudentIngressToIsland(Student student, Island island) {
+    public void moveStudentIngressToIsland(String student1, String island1) {
+        Student student=IdManager.getInstance().getStudent(student1);
+        Island island=IdManager.getInstance().getIsland(island1);
         if (!this.currentRound.moveStudentIngressToIsland(student,island))
             System.out.println("Move not possible");
-        if(this.currentRound.moveStudentIngressToIsland(student,island))
+        if(this.currentRound.moveStudentIngressToIsland(student,island)) {
             island.addStudent(student);
+            studentsMoved++;
+        }
+        if((isThree.equals(true) && studentsMoved==4) || (isThree.equals(false) && studentsMoved==3)) {
+            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
+        }
         propertyChange.firePropertyChange("moveStudentToIsland",island,student);
     }
 
@@ -328,10 +352,13 @@ public class Game implements GameInterface, Serializable {
      * @param jumps
      */
     public void moveMotherNature(Integer jumps) {
-        if(this.currentRound.moveMotherNature(jumps))
+        if(this.currentRound.moveMotherNature(jumps)) {
             this.motherNature.setIsland(this.islandManager.nextIsland(jumps));
+            currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
+        }
         if(!this.currentRound.moveMotherNature(jumps))
-            System.out.println("Move not possible");
+        System.out.println("Move not possible");
+
         propertyChange.firePropertyChange("mmove mothernature",jumps,motherNature.getIsland());
 
     }
@@ -346,7 +373,7 @@ public class Game implements GameInterface, Serializable {
             currentPlayer.playAssistantCard(assistantCard);
             System.out.println("Assistant card played");
 
-            if (playerList.indexOf(currentPlayer) < playerList.size() - 1) {
+            if (playerList.indexOf(currentPlayer) < playerList.size() - 1 && orderedPLayerList.isEmpty()) {
                 System.out.println("Modify current player in game");
                 this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
             }
@@ -354,6 +381,7 @@ public class Game implements GameInterface, Serializable {
             propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
         }else{
             System.out.println("Assistant card already played");
+            propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
         }
     }
 
