@@ -524,7 +524,7 @@ public class Game implements GameInterface, Serializable {
             }
             else {
                 Collections.shuffle(playerList);
-                currentPlayer = playerList.getFirst();
+                currentPlayer=playerList.getFirst();
             }
             propertyChange.firePropertyChange("Finished choose color and deck",currentRound,color);
             return true;

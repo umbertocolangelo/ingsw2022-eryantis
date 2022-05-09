@@ -61,6 +61,7 @@ public class SetUpRound implements  RoundInterface, Serializable {
             System.out.println("FInisco set round");
             for (Player player : playersListOrdered)
                 player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+
             this.game.setRound(game.setPianificationRoundState());
 
         }
@@ -173,6 +174,9 @@ public class SetUpRound implements  RoundInterface, Serializable {
         return null;
     }
 
+    private void expertMoveStudentToBag(Game game, Color color) {
+
+    }
 
     /**
      *
