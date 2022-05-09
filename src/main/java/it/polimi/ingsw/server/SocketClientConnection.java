@@ -114,7 +114,7 @@ public class SocketClientConnection  implements  Runnable {
     public void run() {
        // while(!Thread.currentThread().isInterrupted()){
         try {
-            synchronized (server) {
+
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
             SetUp setup = new SetUp();
@@ -132,11 +132,9 @@ public class SocketClientConnection  implements  Runnable {
                         read = (String) in.readObject();
                         System.out.println(read);
                     }
-
                 server.getSemaphore().release();
                 name = read;
                 send(new SetName(name));
-            }
                 server.lobby(this, name);
                 while (isActive()) {
                     Object object = in.readObject();
@@ -145,9 +143,7 @@ public class SocketClientConnection  implements  Runnable {
                         t1.join();
                         System.out.println(object);
                     }
-
                 }
-
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error! " + e.getMessage());
 

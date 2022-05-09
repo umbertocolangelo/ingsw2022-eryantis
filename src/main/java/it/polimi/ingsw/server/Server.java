@@ -11,17 +11,13 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.*;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
 public class Server {
 
     private LinkedList<Player> players=new LinkedList<>();
     private static final int PORT = 12345;
-    private ServerSocket serverSocket;
-    private ExecutorService executor = Executors.newFixedThreadPool(128);
-    private Map<String, SocketClientConnection> waitingConnection = new HashMap<>();
+    private ServerSocket serverSocket;private Map<String, SocketClientConnection> waitingConnection = new HashMap<>();
     private Map<String, SocketClientConnection> playingConnection = new HashMap<>();
     private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
     private Integer numberOfPlayer = 128;
