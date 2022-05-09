@@ -24,10 +24,10 @@ public class SavingManager {
      * @return the unique instance of SavingManager
      */
     public static SavingManager getInstance(){
-        if(instance!=null){
-            return instance;
+        if(instance==null){
+            instance = new SavingManager();
         }
-        return new SavingManager();
+        return instance;
     }
 
     /**
