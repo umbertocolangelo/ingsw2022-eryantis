@@ -39,7 +39,7 @@ public class PianificationRound implements RoundInterface, Serializable {
     private Game game;
 
     /**
-     *  Contains the assistantCards card sorted;
+     *  Contains the played assistantCards card sorted;
      */
     private ArrayList<AssistantCard> assistantCards=new ArrayList<AssistantCard>();
 
@@ -92,16 +92,15 @@ public class PianificationRound implements RoundInterface, Serializable {
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player) {
         if(player.getPlayerPhase()!= PlayerPhase.CHOOSING_ASSISTANT)
             return false;
-        /*String onlyInt=assistantCard.replaceAll("[^0-9]", "");
-        int numOfTheCard=Integer.parseInt(onlyInt);*/
-        if(assistantCards.isEmpty())
-        {playerListOrdered.add(player);
+
+        if(assistantCards.isEmpty()){
+            playerListOrdered.add(player);
             player.playAssistantCard(assistantCard);
             assistantCards.add(assistantCard);
             return true;
         }
         for(int i=0;i<assistantCards.size();i++) {
-            if (assistantCards.get(i).getNum()==(assistantCard.getNum())) {
+            if (assistantCards.get(i).getNum()==(assistantCard.getNum())) { // if the current player plays a card already played}
                 return false;
             }
             else if (assistantCard.getNum() < assistantCards.get(i).getNum()) {

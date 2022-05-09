@@ -346,9 +346,6 @@ public class Game implements GameInterface, Serializable {
             System.out.println("modify current player in game");
             this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
         }
-        else
-            Collections.shuffle(playerList);
-
 
         propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
 

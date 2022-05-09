@@ -19,10 +19,23 @@ public class IdManager {
         idMap = new HashMap<>();
     }
 
+    private static IdManager instance;
+
     /**
      *
      */
     private static HashMap<String, Object> idMap;
+
+    /**
+     *
+     * @return the unique instance of IdManager
+     */
+    public static IdManager getInstance(){
+        if(instance!=null){
+            return new IdManager();
+        }
+        return instance;
+    }
 
     /**
      * @param player
