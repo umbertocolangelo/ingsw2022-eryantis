@@ -34,10 +34,6 @@ public class Game implements GameInterface, Serializable {
      * Built already the instance of the Rounds
      */
     public Game() {
-        this.ingressHallSwap=new IngressHallSwapActionRound(this);
-        this.studentToIslandRound=new StudentToIslandActionRound(this);
-        this.ingressCardSwap=new IngressCardSwapActionRound((this));
-        this.studentToHallRound= new StudentToHallActionRound(this);
         this.setUpRound= new SetUpRound(this);
         setRound(this.setSetUpRound());
 
@@ -371,7 +367,7 @@ public class Game implements GameInterface, Serializable {
                 case "38":
                     ((StudentToIslandCard) expertCard).apply();
                     setPreviousRound(currentRound);
-                    setRound(studentToIslandRound);
+                    setRound(new StudentToIslandActionRound(this));
                     break;
                 case "39":
                     ((ProfessorControlCard) expertCard).apply();
@@ -392,7 +388,7 @@ public class Game implements GameInterface, Serializable {
                 case "44":
                     ((IngressCardSwapCard) expertCard).apply();
                     setPreviousRound(currentRound);
-                    setRound(ingressCardSwap);
+                    setRound(new IngressCardSwapActionRound((this)));
                     break;
                 case "45":
                     ((TwoInfluenceCard) expertCard).apply((Player) parameter);
@@ -403,12 +399,12 @@ public class Game implements GameInterface, Serializable {
                 case "47":
                     ((IngressHallSwapCard) expertCard).apply();
                     setPreviousRound(currentRound);
-                    setRound(ingressHallSwap);
+                    setRound(new IngressHallSwapActionRound(this));
                     break;
                 case "48":
                     ((StudentToHallCard) expertCard).apply();
                     setPreviousRound(currentRound);
-                    setRound(studentToHallRound);
+                    setRound(new StudentToHallActionRound(this));
                     break;
                 case "49":
                     ((HallBagSwapCard) expertCard).apply((Color) parameter);
