@@ -52,21 +52,26 @@ public class PianificationRoundTest {
     public void getPlayerListOrderedTest() {
         Player player = new Player("elena");
         Player player1 = new Player("vittorio");
+        Player player2 = new Player("");
         Game game= new Game();
         LinkedList <Player> lista=new LinkedList<>();
         lista.add(player1);
+        lista.add(player2);
         lista.add(player);
         game.setPlayerList(lista);
         game.initializeGame();
         game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        player2.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
-        game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.playAssistantCard(AssistantCard.FOUR_CARD);
         game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.setCurrentPlayer(player2);
+        game.playAssistantCard(AssistantCard.TWO_CARD);
 
-        assertTrue(game.getOrderedPLayerList().get(0)==player1 && game.getOrderedPLayerList().get(1)==player);
+        assertTrue(game.getOrderedPLayerList().get(0)==player2 && game.getOrderedPLayerList().get(1)==player && game.getOrderedPLayerList().get(2)==player1);
     }
 
     @Test
