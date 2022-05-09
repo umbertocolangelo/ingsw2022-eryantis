@@ -122,7 +122,7 @@ public class Game implements GameInterface, Serializable {
     /**
      *
      */
-    private Bag bag = new Bag(this.isThree);
+    private Bag bag;
 
     /**
      *
@@ -169,15 +169,13 @@ public class Game implements GameInterface, Serializable {
         propertyChange.addPropertyChangeListener(pc1);
     }
 
-    /**
-     *
-     */
-    public void setIsThree() { this.isThree = true; }
 
     /**
      *
      */
     public void initializeGame() {
+
+        bag = new Bag(this.isThree);
 
         // clouds
 
@@ -486,7 +484,6 @@ public class Game implements GameInterface, Serializable {
             }
             propertyChange.firePropertyChange("Choose cloud",this.clouds,cloud);
         }
-        propertyChange.firePropertyChange("Choose cloud",this.clouds,cloud);
         this.currentRound.checkRoundEnded();
     }
 
@@ -578,8 +575,8 @@ public class Game implements GameInterface, Serializable {
     /**
      **@return actionRound Return the actionRound
      */
-    public ActionRound setActionRoundState(Integer students){
-        this.actionRound = new ActionRound(this,students);
+    public ActionRound setActionRoundState(){
+        this.actionRound = new ActionRound(this,isThree);
         return (ActionRound) this.actionRound;
     }
 
@@ -644,6 +641,13 @@ public class Game implements GameInterface, Serializable {
      */
     public void setPlayerList(LinkedList<Player> players){
         this.playerList =players;
+        if(players.size()==3){
+            isThree = true;
+            for(Player p : players){
+                p.setThreePlayers();
+            }
+        }
+
     }
 
     /**

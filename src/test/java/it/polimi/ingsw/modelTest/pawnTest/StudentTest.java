@@ -41,4 +41,10 @@ public class StudentTest {
         assertTrue(student.getPosition()==island);
     }
 
+    @Test
+    public void getIdTest(){
+        Student student = new Student(Color.YELLOW);
+        System.out.println(student.getId());
+    }
+
 }
