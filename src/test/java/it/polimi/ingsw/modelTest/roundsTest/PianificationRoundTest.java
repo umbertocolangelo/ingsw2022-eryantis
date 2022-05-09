@@ -18,7 +18,7 @@ public class PianificationRoundTest {
      *Testing playAssistantCard function
      */
     @Test
-    public void playAssistantCArdTest() {
+    public void playAssistantCardTest() {
         Player player = new Player("elena");
         Player player1 = new Player("vittorio");
         Game game= new Game();
@@ -29,19 +29,13 @@ public class PianificationRoundTest {
         game.initializeGame();
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
-      game.setRound(game.setPianificationRoundState());
+        game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-       game.setCurrentPlayer(player1);
-       game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.setCurrentPlayer(player1);
+        game.playAssistantCard(AssistantCard.TWO_CARD);
         game.setCurrentPlayer(player);
-       game.playAssistantCard(AssistantCard.THREE_CARD);
-
-
-
-
-
-
+        game.playAssistantCard(AssistantCard.THREE_CARD);
 
          /**System.out.println(pianificationRound.getAssistantCards().get(1));
          System.out.println(pianificationRound.getAssistantCards().get(2));

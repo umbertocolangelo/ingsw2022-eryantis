@@ -95,12 +95,19 @@ public class PianificationRound implements RoundInterface, Serializable {
 
         if(assistantCards.isEmpty()){
             playerListOrdered.add(player);
-            player.playAssistantCard(assistantCard);
             assistantCards.add(assistantCard);
             return true;
         }
         for(int i=0;i<assistantCards.size();i++) {
             if (assistantCards.get(i).getNum()==(assistantCard.getNum())) { // if the current player plays a card already played
+                if(playerListOrdered.size()==2 && player.getAssistantCard().size()==2){ // if two players have already played a card and the current player has two cards
+                    if(player.getAssistantCard().contains(assistantCards.get(0)) && player.getAssistantCard().contains(assistantCards.get(1))){
+                        playerListOrdered.add(player);
+                        assistantCards.add(assistantCard);
+                        return true;
+                    }
+
+                }
                 return false;
             }
             else if (assistantCard.getNum() < assistantCards.get(i).getNum()) {
@@ -108,15 +115,14 @@ public class PianificationRound implements RoundInterface, Serializable {
                 Collections.swap(assistantCards,i,i+1);
                 playerListOrdered.add(i+1,player);
                 Collections.swap(playerListOrdered,i,i+1);
-                player.playAssistantCard(assistantCard);
                 checkRoundEnded();
                 return true;
             }
         }
         assistantCards.add(assistantCard);
-        playerListOrdered.add(player);
         player.playAssistantCard(assistantCard);
         checkRoundEnded();
+        playerListOrdered.add(player);
         return true;
 
         /**
