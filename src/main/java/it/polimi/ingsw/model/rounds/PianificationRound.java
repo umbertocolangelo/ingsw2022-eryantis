@@ -100,7 +100,7 @@ public class PianificationRound implements RoundInterface, Serializable {
             return true;
         }
         for(int i=0;i<assistantCards.size();i++) {
-            if (assistantCards.get(i).getNum()==(assistantCard.getNum())) { // if the current player plays a card already played}
+            if (assistantCards.get(i).getNum()==(assistantCard.getNum())) { // if the current player plays a card already played
                 return false;
             }
             else if (assistantCard.getNum() < assistantCards.get(i).getNum()) {

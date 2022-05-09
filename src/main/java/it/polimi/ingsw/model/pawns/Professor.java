@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.pawns;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.objectTypes.FixedObject;
 import it.polimi.ingsw.model.objectTypes.PlaceableObject;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 

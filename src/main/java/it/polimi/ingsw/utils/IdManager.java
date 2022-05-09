@@ -19,10 +19,13 @@ public class IdManager {
         idMap = new HashMap<>();
     }
 
+    /**
+     * Stores the unique instance of IdManager
+     */
     private static IdManager instance;
 
     /**
-     *
+     * Associates every object with an id
      */
     private static HashMap<String, Object> idMap;
 
@@ -32,7 +35,8 @@ public class IdManager {
      */
     public static IdManager getInstance(){
         if(instance!=null){
-            return new IdManager();
+            instance = new IdManager();
+            return instance;
         }
         return instance;
     }
