@@ -104,8 +104,8 @@ public class ActionRound implements RoundInterface, Serializable {
      * @return boolean  True if the student is moved correctly, false if it's not possible to move
      */
     public Boolean moveStudentIngressToHall(Student student) {
-        if(this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
-        return false;
+        if(this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student)){
+            return false;}
         this.studentsMoved++;
         if((isThreePlayers.equals(true) && studentsMoved==4) || (isThreePlayers.equals(false) && studentsMoved==3)) {
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);

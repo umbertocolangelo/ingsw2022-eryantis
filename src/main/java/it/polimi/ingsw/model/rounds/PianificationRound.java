@@ -24,8 +24,6 @@ public class PianificationRound implements RoundInterface, Serializable {
      */
     public PianificationRound(Game game) {
         this.game=game;
-        //Questo forse non necessario
-        this.game.setOrderedPLayerList(new LinkedList<>());
     }
 
     /**

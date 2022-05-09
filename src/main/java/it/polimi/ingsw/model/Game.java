@@ -305,11 +305,12 @@ public class Game implements GameInterface, Serializable {
      * @param student       Move the student from the ingress to the hall
      */
     public void moveStudentIngressToHall(Student student) {
-        if(!this.currentRound.moveStudentIngressToHall(student))
-            System.out.println("Move not possible");
-        if(this.currentRound.moveStudentIngressToHall(student))
+        if(this.currentRound.moveStudentIngressToHall(student)) {
             this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
-        propertyChange.firePropertyChange("moveStudentIngress",  this.currentPlayer.getSchool().getHall().getLine(student.getColor()),student);
+            propertyChange.firePropertyChange("moveStudentIngress", this.currentPlayer.getSchool().getHall().getLine(student.getColor()), student);
+            return;
+        }
+        System.out.println("Move not possible");
     }
 
     /**
@@ -346,7 +347,7 @@ public class Game implements GameInterface, Serializable {
             currentPlayer.playAssistantCard(assistantCard);
             System.out.println("Assistant card played");
 
-            if (playerList.indexOf(currentPlayer) < playerList.size() - 1) {
+            if (playerList.indexOf(currentPlayer) < playerList.size() - 1 && orderedPLayerList.isEmpty()) {
                 System.out.println("Modify current player in game");
                 this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
             }
@@ -564,7 +565,7 @@ public class Game implements GameInterface, Serializable {
      *Return the PlayerList
      */
     public LinkedList<Player> getPlayerList() {
-        return this.playerList;
+        return new LinkedList<>(playerList);
     }
 
     /**

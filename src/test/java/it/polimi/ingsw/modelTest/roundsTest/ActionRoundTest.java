@@ -1,10 +1,7 @@
 package it.polimi.ingsw.modelTest.roundsTest;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.deck.HallBagSwapCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
@@ -22,29 +19,23 @@ public class ActionRoundTest {
      */
     @Test
     public void moveIngressToHallTest() {
-        Player player = new Player("elena");
-        Player player1 = new Player("vittorio");
         Game game= new Game();
-        LinkedList <Player> lista=new LinkedList<>();
-        lista.add(player1);
+        LinkedList <Player> lista = new LinkedList<>();
+        Player player = new Player("elena");
         lista.add(player);
-        player.setPlayerColor(PlayerColor.WHITE);
-        player1.setPlayerColor(PlayerColor.GREY);
-
+        lista.add(lista.size(), new Player("vittorio"));
         game.setPlayerList(lista);
         game.initializeGame();
-        game.setRound(game.setPianificationRoundState());
-        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        game.setCurrentPlayer(player1);
+        game.chooseColorAndDeck(PlayerColor.GREY, Wizard.BLUE_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.WHITE, Wizard.GREEN_WIZARD);
         game.playAssistantCard(AssistantCard.TWO_CARD);
-        game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD);
         Student student = new Student(Color.RED);
-        player.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
-        player1.getSchool().getIngress().addStudent(student);
+        player.getSchool().getIngress().addStudent(student);
+        System.out.println(player.getSchool().getIngress().numOfStudents());
         game.moveStudentIngressToHall(student);
-        assertTrue( player1.getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
+        System.out.println(game.getOrderedPLayerList());
+        assertTrue( player.getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
 
     }
     /**
