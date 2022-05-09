@@ -22,6 +22,7 @@ import it.polimi.ingsw.utils.SavingManager;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.io.Serializable;
+import java.util.Collections;
 import java.util.LinkedList;
 
 /**
@@ -206,9 +207,7 @@ public class Game implements GameInterface, Serializable {
 
         for(int i=0; i<playerList.size(); i++) {
             playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
-            for (int j=0; (isThree && j<9) || (!isThree && j<7); j++){
-                //playerList.get(i).getSchool().getIngress().addStudent(this.bag.newStudent());
-            }
+
         }
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
@@ -347,6 +346,12 @@ public class Game implements GameInterface, Serializable {
         if(!this.currentRound.playAssistantCard(assistantCard,this.currentPlayer)){
             System.out.println("Card already played");
         }
+        if(playerList.indexOf(currentPlayer)<playerList.size()-1) {
+            System.out.println("modify current player in game");
+            this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
+        }
+        else
+            Collections.shuffle(playerList);
 
 
         propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
@@ -508,10 +513,18 @@ public class Game implements GameInterface, Serializable {
     public Boolean chooseColorAndDeck(PlayerColor color, Wizard wizard) {
         if (this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard)) {
             this.currentPlayer.setPlayerColor(color);
+            System.out.println(this.currentPlayer.getName());
             currentPlayer.setWizard(wizard);
-            if(playerList.indexOf(currentPlayer)+1<playerList.size()) {
+            for (int i = 0; (isThree & i < 9) || (!isThree && i < 7); i++)
+                this.currentPlayer.getSchool().getIngress().addStudent(bag.newStudent());
+            if(playerList.indexOf(currentPlayer)<playerList.size()-1) {
                 System.out.println("modify current player in game");
-                this.currentPlayer = playerList.get(playerList.indexOf(currentPlayer) + 1);
+                this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
+                System.out.println(currentPlayer.getName());
+            }
+            else {
+                Collections.shuffle(playerList);
+                currentPlayer = playerList.getFirst();
             }
             propertyChange.firePropertyChange("Finished choose color and deck",currentRound,color);
             return true;
@@ -650,5 +663,6 @@ public class Game implements GameInterface, Serializable {
     public MotherNature getMotherNature() {
         return this.motherNature;
     }
+
 
 }

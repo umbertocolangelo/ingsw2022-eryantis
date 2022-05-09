@@ -228,8 +228,6 @@ public class Server {
                     //Dovremmo mettere un messaggio per fare questa azione
                     game.setPlayerList(players);
                     game.initializeGame();
-                    System.out.println(game.getPlayerList());
-                    System.out.println(game.getCurrentPlayer().getName());
                     sendGame();
                 }
                 if (object instanceof MessageMethod) {

@@ -159,6 +159,7 @@ public class Player implements Serializable {
     public void setPlayerColor(PlayerColor color) {
         this.color=color;
         this.school = new School(color,isThreePlayers);
+
     }
 
     /**

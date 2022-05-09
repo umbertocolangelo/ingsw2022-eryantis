@@ -9,7 +9,6 @@ import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.io.Serializable;
-import java.util.Collections;
 import java.util.LinkedList;
 
 public class SetUpRound implements  RoundInterface, Serializable {
@@ -62,9 +61,6 @@ public class SetUpRound implements  RoundInterface, Serializable {
             System.out.println("FInisco set round");
             for (Player player : playersListOrdered)
                 player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-            Collections.shuffle(playersListOrdered);
-            game.setPlayerList(playersListOrdered);
-            game.setCurrentPlayer(playersListOrdered.get(0));
             this.game.setRound(game.setPianificationRoundState());
 
         }
@@ -177,9 +173,6 @@ public class SetUpRound implements  RoundInterface, Serializable {
         return null;
     }
 
-    private void expertMoveStudentToBag(Game game, Color color) {
-
-    }
 
     /**
      *

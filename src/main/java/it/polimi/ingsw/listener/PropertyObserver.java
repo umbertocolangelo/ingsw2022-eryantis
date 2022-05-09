@@ -40,7 +40,6 @@ public class PropertyObserver implements PropertyChangeListener {
         System.out.println("Old value   " + evt.getPropertyName());
         System.out.println("Value changed   " + evt.getOldValue());
         System.out.println("New value    " + evt.getNewValue());
-        System.out.println("Do something, probably will change the json");
         server.sendGame();
     }
 
