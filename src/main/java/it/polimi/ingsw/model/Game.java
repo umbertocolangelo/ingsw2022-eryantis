@@ -455,7 +455,6 @@ public class Game implements GameInterface, Serializable {
             island.addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
-            cardManager.setCurrentCard(null); //questa mossa si può fare una sola volta
             propertyChange.firePropertyChange("expert moveStudentToIsland",island,student);
 
         }

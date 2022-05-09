@@ -5,8 +5,7 @@ import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
-import it.polimi.ingsw.model.expertCards.deck.StudentToIslandCard;
-import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.expertCards.deck.StudentToHallCard;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
@@ -16,23 +15,21 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class StudentToIslandActionRound {
+public class StudentToHallActionRoundTest {
     /**
-     * Testing expertStudentToHall function
+     * Testing experStudentToHall function
      */
-
     @Test
-    public void expertStudentToIslandTest() {
+        public void expertStudentToHallTest(){
         Player player = new Player("elena");
         Player player1 = new Player("vittorio");
-        Game game = new Game();
-        LinkedList<Player> lista = new LinkedList<>();
+        Game game= new Game();
+        LinkedList<Player> lista=new LinkedList<>();
         lista.add(player1);
         lista.add(player);
         game.setPlayerList(lista);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
-        game.initializeGame();
         game.initializeGame();
         game.setRound(game.setPianificationRoundState());
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
@@ -42,18 +39,13 @@ public class StudentToIslandActionRound {
         game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD);
         Bag bag=new Bag(false);
-        StudentToIslandCard ingressCardSwapCard = new StudentToIslandCard(game.getCardManager());
+        StudentToHallCard ingressCardSwapCard=new StudentToHallCard(game.getCardManager());
         player1.setCoin(5);
         game.playExpertCard(ingressCardSwapCard,null);
-        System.out.println(game.getPreviousRound());
-        Student student1 = new Student(Color.RED);
-        Student student = new Student(Color.YELLOW);
+        Student student1=new Student(Color.RED);
+        Student student=new Student(Color.YELLOW);
         System.out.println(game.getCurrentPlayer());
-        player1.getSchool().getHall().getLine(Color.RED).addStudent(student1);
-        Island island = new Island();
-        System.out.println(game.getCardManager().getCurrentCard());
-        game.expertStudentToIsland(student,island);
-        assertTrue(island.getStudents().contains(student));
+        game.expertStudentToHall(student1);
+        assertTrue( player1.getSchool().getHall().getLine(Color.RED).getStudents().contains(student1) );
     }
-
 }
