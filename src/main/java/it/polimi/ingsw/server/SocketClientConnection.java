@@ -13,6 +13,10 @@ import java.util.NoSuchElementException;
 
 
 public class SocketClientConnection  implements  Runnable {
+    /**
+     *
+     */
+    private Boolean isFirst=false;
 
     /**
      * Keep the reference to the socket
@@ -120,12 +124,16 @@ public class SocketClientConnection  implements  Runnable {
              //si  sincronizza con il send
                 send(setup);
                 String read = (String) in.readObject();
-                while (server.equalName(read) || read.matches(".*\\d.*")) {
-                    send("You inserted a number or the username is already used, insert another one");
-                    send(setup);
-                    read = (String) in.readObject();
-                    System.out.println(read);
-                }
+
+                    while ( (read.matches(".*\\d.*") || server.equalName(read,isFirst))) {
+
+                        send("You inserted a number or the username is already used, insert another one");
+                        send(setup);
+                        read = (String) in.readObject();
+                        System.out.println(read);
+                    }
+
+                server.getSemaphore().release();
                 name = read;
                 send(new SetName(name));
             }
@@ -170,5 +178,11 @@ public class SocketClientConnection  implements  Runnable {
     public ObjectInputStream getIn(){
         return this.in;
     }
+
+    public void setIsFirst(){
+        isFirst=true;
+    }
+
+
 
 }

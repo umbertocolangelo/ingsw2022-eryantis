@@ -13,6 +13,7 @@ import java.net.Socket;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Semaphore;
 
 public class Server {
 
@@ -28,6 +29,7 @@ public class Server {
     private PropertyObserver propertyObserver;
     private Game game;
     private SetUp setup = new SetUp();
+    private Semaphore semaphore=new Semaphore(1);
 
 
     /**
@@ -95,23 +97,10 @@ public class Server {
             //System.out.println(game.getPlayerList());
             Thread t1=new Thread( modifyGame(game));
             t1.join();
-            //c2.asyncSend(game);
-            //c1.asyncSend(game);
-
-            //System.out.println(game.getCurrentPlayer());
 
             playingConnection.putAll(waitingConnection);
             waitingConnection.clear();
 
-            //c1.asyncSend(model.getBoardCopy());
-            //c2.asyncSend(model.getBoardCopy());
-            //if(model.getBoardCopy().)
-            // if(model.isPlayerTurn(player1)){
-            //   c1.asyncSend(gameMessage.moveMessage);
-            // c2.asyncSend(gameMessage.waitMessage);
-            //} else {
-            //  c2.asyncSend(gameMessage.moveMessage);
-            //c1.asyncSend(gameMessage.waitMessage);
         }
     }
 
@@ -124,26 +113,35 @@ public class Server {
     }
 
     /**
-     *
+     * This thread is always open uses a semphore to handle the connections, once he gets on he waits for the semphore and start the thread
      */
     public void run(){
         int connections = 0;
         System.out.println("Server is running");
+
         while(!Thread.currentThread().isInterrupted() ){ //Abbiamo un problema che il client si disconnetete se tutte due si connetono insieme e scrive il secondo client
+
             try {
 
                 Socket newSocket = serverSocket.accept();
                 connections++;
                 System.out.println("Ready for the new connection - " + connections);
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
+                if(socketConnections.isEmpty())
+                    socketConnection.setIsFirst();
                 socketConnections.add(socketConnection);
                 Thread t0 = new Thread(socketConnection);
+                semaphore.acquire();//utilizza un semaforo per far gestire le connessioni iniziali
+                t0.start();
 
-                  t0.start();
 
             } catch (IOException e) {
                 System.out.println("Connection Error!");
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
+
+
         }
     }
 
@@ -152,7 +150,9 @@ public class Server {
      * @param username  The name of the player who is calling this method
      * @return  boolean     True if the name is not already chosen, false instead
      */
-    public Boolean equalName(String username) {
+    public Boolean equalName(String username,Boolean isFirst) {
+        if(isFirst)
+            return false;
         for (int i =0;i<socketConnections.size()-1;i++) {
             if (socketConnections.get(i).getName().equals(username))
                 return true;
@@ -237,6 +237,10 @@ public class Server {
         });
         t.start();
         return t;
+    }
+
+    public Semaphore getSemaphore(){
+        return this.semaphore;
     }
 
 }
