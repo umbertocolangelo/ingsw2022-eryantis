@@ -146,6 +146,11 @@ public class Game implements GameInterface, Serializable {
     private CardManager cardManager;
 
     /**
+     * Stores the game mode, the default mode is normal (false)
+     */
+    private Boolean expertMode = false;
+
+    /**
      *
      */
     private Boolean isStarted;
@@ -363,6 +368,7 @@ public class Game implements GameInterface, Serializable {
      * @param expertCard        Play the expert card
      */
     public void playExpertCard(ExpertCard expertCard, Object parameter) {
+        if(expertMode==false){ return;}
         if(currentRound.playExpertCard(expertCard).equals(true)){ // if the card can be played
             currentPlayer.setCoin(-(expertCard.getCost())); // update the card cost
             cardManager.setCurrentCard(expertCard);
@@ -488,11 +494,10 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return
+     * Sets the game in expert mode
      */
-    public Boolean chooseExpertMode() {
-        // TODO implement here
-        return null;
+    public void setExpertMode() {
+        expertMode = true;
     }
 
     /**

@@ -92,7 +92,7 @@ public interface GameInterface {
     /**
      * @return
      */
-    public Boolean chooseExpertMode();
+    public void setExpertMode();
 
     /**
      * @return
