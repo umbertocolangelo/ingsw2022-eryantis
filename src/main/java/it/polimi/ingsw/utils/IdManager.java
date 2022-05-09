@@ -17,6 +17,20 @@ public class IdManager {
 
     public IdManager() {
         idMap = new HashMap<>();
+
+        // Adds the enumerations to idMap
+        for(Color color : Color.values()){
+            addColor(color);
+        }
+        for(PlayerColor playerColor : PlayerColor.values()){
+            addPlayerColor(playerColor);
+        }
+        for(AssistantCard card : AssistantCard.values()){
+            addAssistantCard(card);
+        }
+        for(Wizard wizard : Wizard.values()){
+            addWizard(wizard);
+        }
     }
 
     /**

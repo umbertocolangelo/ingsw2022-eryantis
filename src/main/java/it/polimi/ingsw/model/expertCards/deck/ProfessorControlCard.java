@@ -2,6 +2,7 @@ package it.polimi.ingsw.model.expertCards.deck;
 
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 
@@ -16,6 +17,7 @@ public class ProfessorControlCard implements ExpertCard, Serializable {
     public ProfessorControlCard(CardManager cardManager) {
         this.id = "39";
         this.manager=cardManager;
+        IdManager.getInstance().addExpertCard(this);
     }
 
     /**

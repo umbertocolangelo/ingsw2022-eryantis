@@ -2,6 +2,7 @@ package it.polimi.ingsw.model.studentSuppliers;
 
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 import java.util.*;
@@ -16,6 +17,7 @@ public class Cloud implements FixedObjectStudent, Serializable {
      */
     public Cloud() {
         this.id = idCounter.toString();
+        IdManager.getInstance().addCloud(this);
         idCounter++;
     }
 

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 
@@ -14,6 +15,7 @@ public class IngressHallSwapCard implements ExpertCard, Serializable {
      */
     public IngressHallSwapCard() {
         this.id = "47";
+        IdManager.getInstance().addExpertCard(this);
     }
 
     /**

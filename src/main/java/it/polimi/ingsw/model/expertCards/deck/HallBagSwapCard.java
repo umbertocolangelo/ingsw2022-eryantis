@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class HallBagSwapCard implements ExpertCard, Serializable {
     public HallBagSwapCard(CardManager cardManager) {
         this.id = "49";
         this.cardManager = cardManager;
+        IdManager.getInstance().addExpertCard(this);
     }
 
     /**
