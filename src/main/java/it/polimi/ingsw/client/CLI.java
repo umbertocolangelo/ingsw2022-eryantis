@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.message.*;
+import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.rounds.SetUpRound;
@@ -46,8 +47,11 @@ public class CLI {
     public Thread chooseColorAndDeck() {
 
         Thread t = new Thread(() -> {
-            System.out.println("Before starting, choose your deck and your wizard!\nSelect a color from 0 to the number of wizard(s) available.");
-            System.out.println(((SetUpRound) client.getGame().getCurrentRound()).getWizards());
+            System.out.println("Before starting, choose your deck and your wizard!");
+            for (Wizard wizard: ((SetUpRound) client.getGame().getCurrentRound()).getWizards()) {
+                System.out.println(wizard.getColor() + " Wizard");
+            }
+            System.out.println("Select a color from 0 to the number of wizard(s) available");
             input = scanner.nextLine();
             while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>((SetUpRound) client.getGame().getCurrentRound()).getWizards().size()-1)
             {

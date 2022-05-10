@@ -6,10 +6,10 @@ import java.io.Serializable;
  * 
  */
 public enum Wizard implements Serializable {
-    GREEN_WIZARD("12"),
-    BLUE_WIZARD("13"),
-    YELLOW_WIZARD("14"),
-    PURPLE_WIZARD("15");
+    GREEN_WIZARD("GREEN", "12"),
+    BLUE_WIZARD("BLUE", "13"),
+    YELLOW_WIZARD("YELLOW", "14"),
+    PURPLE_WIZARD("PURPLE", "15");
 
     /**
      *
@@ -17,14 +17,26 @@ public enum Wizard implements Serializable {
     private final String id;
 
     /**
+     *
+     */
+    private final String text;
+
+    /**
      * @param id
      */
-    Wizard(String id) {
+    Wizard(String text, String id) {
+        this.text = text;
         this.id = id;
     }
 
     /**
      *
      */
-    public String getId() { return id; }
+    public String getId() { return this.id; }
+
+    /**
+     *
+     */
+    public String getColor() { return this.text; }
+
 }
