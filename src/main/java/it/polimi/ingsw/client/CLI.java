@@ -48,8 +48,6 @@ public class CLI {
     public Thread chooseColorAndDeck() {
 
         Thread t = new Thread(() -> {
-            System.out.println(client.getGame().getClouds().get(0).getId());
-            System.out.println(client.getGame().getClouds().get(0).getStudents().get(0).getId());
             System.out.println("Before starting, choose your deck and your wizard!\nSelect a color from 0 to the number of wizard(s) available.");
             System.out.println(((SetUpRound) client.getGame().getCurrentRound()).getWizards());
             input = scanner.nextLine();
