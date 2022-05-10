@@ -137,7 +137,7 @@ public class CLI {
                     System.out.println("On which island do you want to move the student to?");
                     int ind0 = 0;
                     for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\n Tower " + islandInterface.getTowers().get(0).getId() + " color: " + islandInterface.getTowers().get(0).getColor() + "\n");
+                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\n Tower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
                         ind0++;
                     }
                     input1 = scanner.nextLine();
