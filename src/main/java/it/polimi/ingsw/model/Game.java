@@ -37,8 +37,6 @@ public class Game implements GameInterface, Serializable {
     public Game() {
         this.setUpRound= new SetUpRound(this);
         setRound(this.setSetUpRound());
-
-
     }
     /**
      * Keep the reference to the observer
