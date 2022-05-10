@@ -373,7 +373,7 @@ public class Game implements GameInterface, Serializable {
     public void playAssistantCard(String assistant) {
         AssistantCard assistantCard=IdManager.getInstance().getAssistantCard(assistant);
         if(this.currentRound.playAssistantCard(assistantCard,this.currentPlayer)) {
-            currentPlayer.playAssistantCard(assistantCard);
+
             System.out.println("Assistant card played");
 
             if (playerList.indexOf(currentPlayer) < playerList.size() - 1 && orderedPLayerList.isEmpty()) {
