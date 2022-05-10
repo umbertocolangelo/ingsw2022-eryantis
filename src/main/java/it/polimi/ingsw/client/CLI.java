@@ -3,11 +3,8 @@ package it.polimi.ingsw.client;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
-import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.rounds.SetUpRound;
-import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CLI {
@@ -185,7 +182,7 @@ public class CLI {
             System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (you have at least" + client.getGame().getCurrentPlayer().getCardPlayedValue() + "jumps available)");
             System.out.println(client.getGame().getIslandManager().getIslands());
             input = scanner.nextLine();
-            while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue()) {
+            while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input=="0") {
                 System.out.println("Ops! You entered a wrong or too high value, choose again!");
                 input = scanner.nextLine();
             }
