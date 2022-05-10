@@ -251,7 +251,7 @@ public class Game implements GameInterface, Serializable {
     /**
      * Checks if there is a winner, if so returns the winner player
      */
-    private void endGame() {
+    private void checkWinner() {
 
         // If the bag is empty
 
@@ -384,8 +384,8 @@ public class Game implements GameInterface, Serializable {
         }
         if(!this.currentRound.moveMotherNature(jumps))
         System.out.println("Move not possible");
-
-        propertyChange.firePropertyChange("mmove mothernature",jumps,motherNature.getIsland());
+        checkWinner();
+        propertyChange.firePropertyChange("move mothernature",jumps,motherNature.getIsland());
 
     }
 
