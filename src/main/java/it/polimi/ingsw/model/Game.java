@@ -321,7 +321,7 @@ public class Game implements GameInterface, Serializable {
             studentsMoved++;
         }
         if((isThree.equals(true) && studentsMoved==4) || (isThree.equals(false) && studentsMoved==3)) {
-
+            studentsMoved=0;
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
 
         }
@@ -344,7 +344,7 @@ public class Game implements GameInterface, Serializable {
             studentsMoved++;
         }
         if((isThree.equals(true) && studentsMoved==4) || (isThree.equals(false) && studentsMoved==3)) {
-
+            studentsMoved=0;
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
         }
         propertyChange.firePropertyChange("moveStudentToIsland",island,student);
@@ -356,7 +356,7 @@ public class Game implements GameInterface, Serializable {
     public void moveMotherNature(Integer jumps) {
         if(this.currentRound.moveMotherNature(jumps)) {
             this.motherNature.setIsland(this.islandManager.nextIsland(jumps));
-            studentsMoved=0;
+
             currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         }
         if(!this.currentRound.moveMotherNature(jumps))
