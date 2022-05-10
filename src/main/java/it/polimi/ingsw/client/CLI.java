@@ -4,9 +4,7 @@ import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.rounds.SetUpRound;
-import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
-import java.util.LinkedList;
 import java.util.Scanner;
 
 public class CLI {
@@ -137,7 +135,7 @@ public class CLI {
                     System.out.println("On which island do you want to move the student to?");
                     int ind0 = 0;
                     for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                        System.out.println("Island " + islandInterface.getId() + " Number " + ind0);
+                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\n Tower " + islandInterface.getTowers().get(0).getId() + " color: " + islandInterface.getTowers().get(0).getColor() + "\n");
                         ind0++;
                     }
                     input1 = scanner.nextLine();
@@ -151,7 +149,7 @@ public class CLI {
                         System.out.println("On which island of this group do you want to move the student to?");
                         int ind1 = 0;
                         for (Island island: client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements()) {
-                            System.out.println("Island " + island.getId() + " GroupNumber " + ind1);
+                            System.out.println("Island " + island.getId() + "\nGroupNumber " + ind1 + "\nCurrent students: " + island.getStudents() + "\n Tower " + island.getTowers().get(0).getId() + " color: " + island.getTowers().get(0).getColor() + "\n");
                             ind1++;
                         }
                         input2 = scanner.nextLine();
@@ -182,7 +180,7 @@ public class CLI {
             System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (you have at least" + client.getGame().getCurrentPlayer().getCardPlayedValue() + "jumps available)");
             System.out.println(client.getGame().getIslandManager().getIslands());
             input = scanner.nextLine();
-            while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue()) {
+            while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input=="0") {
                 System.out.println("Ops! You entered a wrong or too high value, choose again!");
                 input = scanner.nextLine();
             }

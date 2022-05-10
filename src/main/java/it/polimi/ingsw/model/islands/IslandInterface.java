@@ -2,6 +2,7 @@ package it.polimi.ingsw.model.islands;
 
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
 
 import java.util.LinkedList;
@@ -70,6 +71,10 @@ public interface IslandInterface {
      */
     public Integer getSize();
 
+    /**
+     *
+     * @return
+     */
     public String getId();
 
     /**
@@ -77,5 +82,9 @@ public interface IslandInterface {
      */
     public LinkedList<Island> getIslandGroupElements();
 
+    /**
+     *
+     */
+    public LinkedList<Student> getStudents();
 
 }

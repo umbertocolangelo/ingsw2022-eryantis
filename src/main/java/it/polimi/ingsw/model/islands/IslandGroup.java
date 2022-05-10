@@ -2,6 +2,7 @@ package it.polimi.ingsw.model.islands;
 
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
 
 import java.io.Serializable;
@@ -115,6 +116,10 @@ public class IslandGroup implements IslandInterface, Serializable {
      */
     public Integer getSize() { return this.islandGroup.size(); }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public String getId() {
         return null;
@@ -143,6 +148,19 @@ public class IslandGroup implements IslandInterface, Serializable {
                 island.removeTower(tower);
             }
         }
+    }
+
+    /**
+     *
+     */
+    public LinkedList<Student> getStudents() {
+        LinkedList<Student> students = new LinkedList<>();
+        for (Island island: islandGroup) {
+            for (int i=0; i<island.getStudents().size(); i++) {
+                students.add(island.getStudents().get(i));
+            }
+        }
+        return students;
     }
 
 }
