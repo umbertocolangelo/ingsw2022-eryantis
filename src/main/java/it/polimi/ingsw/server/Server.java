@@ -69,7 +69,6 @@ public class Server {
         keys = new ArrayList<>(waitingConnection.keySet());
 
         if (waitingConnection.size()==numberOfPlayer) {
-            System.out.println(waitingConnection.size() +" "+ numberOfPlayer);
             for (SocketClientConnection d : waitingConnection.values())
                 d.send("Players arrived, starting game..");
 
@@ -149,10 +148,9 @@ public class Server {
     public Boolean equalName(String username,Boolean isFirst) {
         if(isFirst)
             return false;
-        //for (int i =0;i<socketConnections.size()-1;i++) {
-          //  if (socketConnections.get(i).getName().equals(username))
-            //    return true;
-      //  }
+        for (int i =0;i<socketConnections.size()-1;i++) {
+            if (socketConnections.get(i).getName().equals(username))
+               return true;}
         return false;
     }
 

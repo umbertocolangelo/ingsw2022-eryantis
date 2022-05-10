@@ -146,7 +146,7 @@ public class Game implements GameInterface, Serializable {
     /**
      * Stores the game mode, the default mode is normal (false)
      */
-    private Boolean expertMode = false;
+    private Boolean expertMode = true;
 
     /**
      *
