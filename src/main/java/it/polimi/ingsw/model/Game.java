@@ -249,10 +249,10 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return
+     * @return the winner, returns null if not present
      */
     private Player endGame() {
-        // TODO implement here
+
         return null;
     }
 

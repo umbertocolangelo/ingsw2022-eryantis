@@ -7,7 +7,7 @@ import java.io.IOException;
 public class ClientApp
 {
     public static void main(String[] args){
-        Client client = new Client("localhost", 12345);
+        Client client = new Client("192.168.1.207", 12345);
         try{
             client.run();
         }catch (IOException e){
