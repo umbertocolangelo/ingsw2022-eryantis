@@ -127,7 +127,7 @@ public class Server {
                     socketConnection.setIsFirst();
                 socketConnections.add(socketConnection);
                 Thread t0 = new Thread(socketConnection);
-                semaphore.acquire();//utilizza un semaforo per far gestire le connessioni iniziali
+               semaphore.acquire();//utilizza un semaforo per far gestire le connessioni iniziali
                 t0.start();
 
 

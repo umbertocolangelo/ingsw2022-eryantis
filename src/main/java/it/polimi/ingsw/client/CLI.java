@@ -205,9 +205,9 @@ public class CLI {
                 input = scanner.nextLine();
             }
 
-            Integer index=client.getGame().getClouds().indexOf(clouds.get(Integer.parseInt(input)));
+
             MessageMethod messageMethod = new ChooseStudentsFromCloud();
-            ((ChooseStudentsFromCloud) messageMethod).setCloud(client.getGame().getClouds().get(index));
+            ((ChooseStudentsFromCloud) messageMethod).setCloud(client.getGame().getClouds().get(Integer.parseInt(input)));
             controller.write(messageMethod);
         });
         t.start();
