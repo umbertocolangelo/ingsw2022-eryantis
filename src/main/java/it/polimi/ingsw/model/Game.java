@@ -367,11 +367,11 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param assistantCard     Play playAssistantCard on the currentRound
+     * @param assistant     Play playAssistantCard on the currentRound
      */
     @Override
-    public void playAssistantCard(AssistantCard assistantCard) {
-
+    public void playAssistantCard(String assistant) {
+        AssistantCard assistantCard=IdManager.getInstance().getAssistantCard(assistant);
         if(this.currentRound.playAssistantCard(assistantCard,this.currentPlayer)) {
             currentPlayer.playAssistantCard(assistantCard);
             System.out.println("Assistant card played");

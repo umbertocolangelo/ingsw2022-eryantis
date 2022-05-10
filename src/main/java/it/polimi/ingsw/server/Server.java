@@ -149,10 +149,10 @@ public class Server {
     public Boolean equalName(String username,Boolean isFirst) {
         if(isFirst)
             return false;
-        for (int i =0;i<socketConnections.size()-1;i++) {
-            if (socketConnections.get(i).getName().equals(username))
-                return true;
-        }
+        //for (int i =0;i<socketConnections.size()-1;i++) {
+          //  if (socketConnections.get(i).getName().equals(username))
+            //    return true;
+      //  }
         return false;
     }
 
@@ -198,10 +198,9 @@ public class Server {
      */
     public void sendGame(){
         System.out.println("Invio il gioco da server");
-        synchronized (this) {
             for (SocketClientConnection c : playingConnection.values()) {
                 c.send(game);
-            }
+
         }
     }
 

@@ -25,8 +25,8 @@ public class StudentToIslandActionRoundTest {
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
         game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.BLUE_WIZARD);
-        game.playAssistantCard(AssistantCard.ONE_CARD);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.playAssistantCard(AssistantCard.ONE_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         player1.setCoin(5);
         game.playExpertCard(IdManager.getInstance().getExpertCard("38"),null);
         System.out.println(game.getPreviousRound());

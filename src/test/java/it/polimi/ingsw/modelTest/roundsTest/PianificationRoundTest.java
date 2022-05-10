@@ -33,9 +33,9 @@ public class PianificationRoundTest {
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
-        game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.setCurrentPlayer(player);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
 
          /**System.out.println(pianificationRound.getAssistantCards().get(1));
          System.out.println(pianificationRound.getAssistantCards().get(2));
@@ -65,9 +65,9 @@ public class PianificationRoundTest {
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player2.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        game.playAssistantCard(AssistantCard.FOUR_CARD);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
-        game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.playAssistantCard(AssistantCard.FOUR_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
 
         assertTrue(game.getOrderedPLayerList().get(0)==player2 && game.getOrderedPLayerList().get(1)==player && game.getOrderedPLayerList().get(2)==player1);
     }

@@ -2,7 +2,6 @@ package it.polimi.ingsw.modelTest.roundsTest;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.*;
-import it.polimi.ingsw.model.expertCards.deck.HallBagSwapCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
@@ -29,8 +28,8 @@ public class ActionRoundTest {
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.GREY, Wizard.BLUE_WIZARD);
         game.chooseColorAndDeck(PlayerColor.WHITE, Wizard.GREEN_WIZARD);
-        game.playAssistantCard(AssistantCard.TWO_CARD);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
         player.getSchool().getIngress().addStudent(student);
         System.out.println(player.getSchool().getIngress().numOfStudents());
@@ -58,9 +57,9 @@ public class ActionRoundTest {
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
-        game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.setCurrentPlayer(player);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         player.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
         game.initializeGame();
         Island island= (Island) game.getMotherNature().getIsland();
@@ -87,9 +86,9 @@ public class ActionRoundTest {
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
-        game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.setCurrentPlayer(player);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
         player.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
         player1.getSchool().getIngress().addStudent(student);
@@ -118,9 +117,9 @@ public class ActionRoundTest {
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
-        game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.setCurrentPlayer(player);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         Cloud cloud=new Cloud();
@@ -149,8 +148,8 @@ public class ActionRoundTest {
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
         game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.BLUE_WIZARD);
-        game.playAssistantCard(AssistantCard.ONE_CARD);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.playAssistantCard(AssistantCard.ONE_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
