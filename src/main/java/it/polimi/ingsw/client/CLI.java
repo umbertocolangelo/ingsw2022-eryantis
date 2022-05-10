@@ -111,7 +111,7 @@ public class CLI {
             for (int i=0; i<3; i++) {
                 System.out.println(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents());
                 input = scanner.nextLine();
-                while (input=="" || !input.matches("[0-8]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
+                while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!");
                     input = scanner.nextLine();
                 }
