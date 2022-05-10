@@ -21,7 +21,7 @@ import java.util.LinkedList;
 public class ActionRound implements RoundInterface, Serializable {
 
     /**
-     * Every time is called he set the current player, the player phase e change the player getting from the orderedlist
+     * Every time is called he set the current player, the player phase e change the player ing from the orderedlist
      */
     public ActionRound(Game game, Boolean isThreePlayers) {
         this.game=game;
@@ -230,5 +230,9 @@ public class ActionRound implements RoundInterface, Serializable {
      */
     public Integer getStudentsMoved(){
         return this.studentsMoved;
+    }
+
+    public Boolean getCardAlreadyPlayed(){
+        return cardAlreadyPlayed;
     }
 }

@@ -223,6 +223,8 @@ public class Server {
                     //Dovremmo mettere un messaggio per fare questa azione
                     game.setPlayerList(players);
                     game.initializeGame();
+                    for(int i =0;i<game.getPlayerList().size();i++)//Necessario per far giocare le play expertCArd
+                        game.getPlayerList().get(i).setCoin(5);
                     sendGame();
                 }
                 if (object instanceof MessageMethod) {

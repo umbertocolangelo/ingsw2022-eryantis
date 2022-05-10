@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
+import it.polimi.ingsw.model.rounds.ActionRound;
 import it.polimi.ingsw.model.rounds.SetUpRound;
 
 import java.util.Scanner;
@@ -85,9 +86,6 @@ public class CLI {
     public Thread choosingAssistant() {
 
         Thread t = new Thread(() -> {
-            for (int i =0; i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
-                System.out.println(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getId());
-            }
             System.out.println("All right! Now pick the assistant card to use in this turn.");
             System.out.println((client.getGame().getCurrentPlayer()).getAssistantCard());
             input = scanner.nextLine();
@@ -141,7 +139,7 @@ public class CLI {
                 System.out.println("On which island do you want to move the student to?");
                 int ind0 = 0;
                 for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                    if (islandInterface.getTowers().isEmpty()) {
+                    if (islandInterface.getTowers()==null) {
                         System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
                     }
                     else
@@ -241,21 +239,31 @@ public class CLI {
     public Thread choosingExpertCardOrMoving() {
 
         Thread t = new Thread(() -> {
-            System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1 to move the student");
-            input = scanner.nextLine();
-            while (!(input.equals("1") || input.equals("0"))) {
-                System.out.println("Ops! You entered a wrong value!");
+            if(((ActionRound)client.getGame().getCurrentRound()).getCardAlreadyPlayed()==true){
+                System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round");
+            }
+            else {
+                System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1 to move the student");
                 input = scanner.nextLine();
-            }
-            if (input.equals("0")){
-                System.out.println("Select expertCard");
-            }
-            else{
-                Thread d= movingStudentsFromIngress();
-                try {
-                    d.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                while (!(input.equals("1") || input.equals("0"))) {
+                    System.out.println("Ops! You entered a wrong value!");
+                    input = scanner.nextLine();
+                }
+                if (input.equals("0")) {
+                    System.out.println("Select expertCard");
+                    Thread g = playExpertCard();
+                    try {
+                        g.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Thread d = movingStudentsFromIngress();
+                    try {
+                        d.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -268,30 +276,42 @@ public class CLI {
         Boolean tooPoor=true;
         int i=0;
         while(tooPoor) {
-        System.out.println("Those are the ExpertCard available, select one if you want to play it : ");
         for(ExpertCard expertCard : client.getGame().getCardManager().getDeck()) {
-            System.out.println("Expert Card " +i+ " " + expertCard + " this card costs " + expertCard.getId());
+            System.out.println("Expert Card " +i+ " " + expertCard + " this card costs " + expertCard.getCost());
             i++;
         }
 
+            System.out.println("Those are the ExpertCard available, select one if you want to play it , if you changed your mind and want to move the student write exit: ");
+
             input = scanner.nextLine();
-            while (!(input.equals("1") || input.equals("0")) || (input.equals("2"))) {
+            while (!(input.equals("1") || input.equals("0") || (input.equals("2")) || input.equals("exit"))) {
                 System.out.println("Ops! You entered a wrong value!");
                 input = scanner.nextLine();
             }
-            if (client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getCost() > client.getGame().getCurrentPlayer().getCoins()) {
-                System.out.println("This card costs too much , you can't afford it");
-
-            } else {
-
-                //Qui probabilmente si gioca la carte
-                tooPoor = false;
-                System.out.println("Hai giocato questa Carta " + client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)));
-                MessageMethod messageMethod= new PlayExpertCard();
-                ((PlayExpertCard)messageMethod).setExpertCard(client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId());
+            if(input.equals("exit")) {
+                tooPoor=false;
+                Thread f = movingStudentsFromIngress();
+                try {
+                    f.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
             }
+            else {
+                if (client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getCost() > client.getGame().getCurrentPlayer().getCoins()) {
+                    System.out.println("This card costs too much , you can't afford it\n\n");
 
+                } else {
 
+                    //Qui probabilmente si gioca la carte
+                    tooPoor = false;
+                    System.out.println("Hai giocato questa Carta " + client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)));
+                    MessageMethod messageMethod = new PlayExpertCard();
+                    ((PlayExpertCard) messageMethod).setExpertCard(client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId());
+                    controller.write(messageMethod);
+                }
+
+            }
 
         }
 
