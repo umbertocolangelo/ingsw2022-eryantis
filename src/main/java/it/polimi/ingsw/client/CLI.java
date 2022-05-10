@@ -287,8 +287,8 @@ public class CLI {
                 //Qui probabilmente si gioca la carte
                 tooPoor = false;
                 System.out.println("Hai giocato questa Carta " + client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)));
-
-
+                MessageMethod messageMethod= new PlayExpertCard();
+                ((PlayExpertCard)messageMethod).setExpertCard(client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId());
             }
 
 

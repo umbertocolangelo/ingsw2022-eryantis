@@ -411,9 +411,11 @@ public class Game implements GameInterface, Serializable {
 
 
     /**
-     * @param expertCard        Play the expert card
+     * @param expert        Play the expert card
      */
-    public void playExpertCard(ExpertCard expertCard, Object parameter) {
+    public void playExpertCard(String expert, String object) {
+        ExpertCard expertCard= IdManager.getInstance().getExpertCard(expert);
+
         if(expertMode==false){ return;}
         if(currentRound.playExpertCard(expertCard).equals(true)){ // if the card can be played
             currentPlayer.setCoin(-(expertCard.getCost())); // update the card cost
@@ -429,6 +431,7 @@ public class Game implements GameInterface, Serializable {
                     ((ProfessorControlCard) expertCard).apply();
                     break;
                 case "40":
+                    IslandInterface parameter=IdManager.getInstance().getIsland(object);
                     ((IslandInfluenceCard) expertCard).apply((IslandInterface) parameter);
                     break;
                 case "41":
@@ -436,7 +439,8 @@ public class Game implements GameInterface, Serializable {
                     currentPlayer.twoMoreJumps();
                     break;
                 case "42":
-                    ((DenyCard) expertCard).apply((Island) parameter);
+                    Island island=IdManager.getInstance().getIsland(object);
+                    ((DenyCard) expertCard).apply((Island) island);
                     break;
                 case "43":
                     ((TowerInfluenceCard) expertCard).apply();
@@ -447,10 +451,12 @@ public class Game implements GameInterface, Serializable {
                     setRound(new IngressCardSwapActionRound((this)));
                     break;
                 case "45":
-                    ((TwoInfluenceCard) expertCard).apply((Player) parameter);
+                    Player player=IdManager.getInstance().getPlayer(object);
+                    ((TwoInfluenceCard) expertCard).apply((Player) player);
                     break;
                 case "46":
-                    ((ColorInfluenceCard) expertCard).apply((Color) parameter);
+                    Color color=IdManager.getInstance().getColor(object);
+                    ((ColorInfluenceCard) expertCard).apply((Color) color);
                     break;
                 case "47":
                     ((IngressHallSwapCard) expertCard).apply();
@@ -463,7 +469,8 @@ public class Game implements GameInterface, Serializable {
                     setRound(new StudentToHallActionRound(this));
                     break;
                 case "49":
-                    ((HallBagSwapCard) expertCard).apply((Color) parameter);
+                    Color color1=IdManager.getInstance().getColor(object);
+                    ((HallBagSwapCard) expertCard).apply((Color) color1);
                     break;
             }
             propertyChange.firePropertyChange("Play expert card", null, expertCard);
