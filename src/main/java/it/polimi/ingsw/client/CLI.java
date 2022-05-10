@@ -139,7 +139,7 @@ public class CLI {
                     System.out.println("On which island do you want to move the student to?");
                     int ind0 = 0;
                     for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                        System.out.println("Island " + islandInterface + " Number " + ind0);
+                        System.out.println("Island " + islandInterface.getId() + " Number " + ind0);
                         ind0++;
                     }
                     input1 = scanner.nextLine();
@@ -153,7 +153,7 @@ public class CLI {
                         System.out.println("On which island of this group do you want to move the student to?");
                         int ind1 = 0;
                         for (Island island: client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements()) {
-                            System.out.println("Island " + island + " GroupNumber " + ind1);
+                            System.out.println("Island " + island.getId() + " GroupNumber " + ind1);
                             ind1++;
                         }
                         input2 = scanner.nextLine();
