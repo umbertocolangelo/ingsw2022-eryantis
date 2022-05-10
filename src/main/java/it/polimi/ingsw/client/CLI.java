@@ -114,7 +114,7 @@ public class CLI {
             String input2;
             System.out.println("It's your turn!\nChoose 3 students in your ingress and place each one or in the hall or on an island!");
                 for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
-                   // System.out.println("Studente  "+ client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(0) + );
+                   System.out.println("Studente  " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i) + "numero " + i+"\n");
                 }
                 input = scanner.nextLine();
                 while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
