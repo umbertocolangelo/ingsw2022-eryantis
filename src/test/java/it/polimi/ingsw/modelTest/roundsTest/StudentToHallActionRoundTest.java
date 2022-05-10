@@ -35,9 +35,9 @@ public class StudentToHallActionRoundTest {
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
-        game.playAssistantCard(AssistantCard.TWO_CARD);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.setCurrentPlayer(player);
-        game.playAssistantCard(AssistantCard.THREE_CARD);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Bag bag=new Bag(false);
         StudentToHallCard ingressCardSwapCard=new StudentToHallCard(game.getCardManager());
         player1.setCoin(5);

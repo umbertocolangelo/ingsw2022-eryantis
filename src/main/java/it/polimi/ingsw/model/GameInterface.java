@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.islands.Island;
@@ -55,7 +54,7 @@ public interface GameInterface {
     /**
      * @param assistantCard
      */
-    public void playAssistantCard(AssistantCard assistantCard);
+    public void playAssistantCard(String assistantCard);
 
 
     /**

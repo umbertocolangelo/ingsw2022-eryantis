@@ -118,7 +118,6 @@ public class PianificationRound implements RoundInterface, Serializable {
             }
         }
         assistantCards.add(assistantCard);
-        player.playAssistantCard(assistantCard);
         checkRoundEnded();
         playerListOrdered.add(player);
         return true;

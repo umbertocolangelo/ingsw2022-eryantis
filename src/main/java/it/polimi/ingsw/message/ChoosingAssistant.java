@@ -1,7 +1,6 @@
 package it.polimi.ingsw.message;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
 
 import java.io.Serializable;
 
@@ -10,7 +9,7 @@ public class ChoosingAssistant implements MessageMethod, Serializable {
     /**
      *
      */
-    private AssistantCard assistantCard;
+    private String assistantCard;
 
     /**
      * @param game
@@ -25,7 +24,7 @@ public class ChoosingAssistant implements MessageMethod, Serializable {
      *
      * @param assistantCard
      */
-    public void setAssistantCard(AssistantCard assistantCard){
+    public void setAssistantCard(String assistantCard){
         this.assistantCard = assistantCard;
     }
 
