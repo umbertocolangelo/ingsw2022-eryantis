@@ -79,7 +79,7 @@ public class ActionRound implements RoundInterface, Serializable {
      */
     @Override
     public Boolean checkRoundEnded() {
-        if(this.game.getOrderedPLayerList().size()==1) {
+        if(this.game.getOrderedPLayerList().isEmpty()) {
             for(int i = 0; i< game.getPlayerList().size(); i++) {
                 game.getBag().addStudentsOnCloud(clouds.get(i));
             }
@@ -93,6 +93,8 @@ public class ActionRound implements RoundInterface, Serializable {
         if(this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD){
             LinkedList<Player> players=this.game.getOrderedPLayerList();
             players.removeFirst();
+            if(players.isEmpty())
+                checkRoundEnded();
             this.game.setOrderedPLayerList(players);
             this.game.setRound(game.setActionRoundState());
         return true;
