@@ -4,6 +4,7 @@ import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -19,6 +20,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     public IngressCardSwapCard(CardManager cardManager) {
         this.id = "44";
         this.manager=cardManager;
+        IdManager.getInstance().addExpertCard(this);
         students = new LinkedList<Student>();
         for (int i=0; i<6; i++) {
             addStudent(manager.getBag().newStudent());

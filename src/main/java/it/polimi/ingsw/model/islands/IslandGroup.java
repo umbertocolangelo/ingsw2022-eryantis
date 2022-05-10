@@ -115,6 +115,11 @@ public class IslandGroup implements IslandInterface, Serializable {
      */
     public Integer getSize() { return this.islandGroup.size(); }
 
+    @Override
+    public String getId() {
+        return null;
+    }
+
     /**
      *
      * @param tower is the tower to add

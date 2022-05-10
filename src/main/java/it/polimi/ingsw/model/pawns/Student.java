@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.pawns;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.objectTypes.FixedObject;
 import it.polimi.ingsw.model.objectTypes.PlaceableObject;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 
@@ -16,8 +17,11 @@ public class Student implements PlaceableObject, Serializable {
      */
     public Student(Color color){
         this.color = color;
-        this.id = idCounter.toString();
-        idCounter++;
+        id=idCounter.toString();
+        IdManager.getInstance().addStudent(this);
+        idCounter++;;
+
+
     }
 
     /**
@@ -39,7 +43,8 @@ public class Student implements PlaceableObject, Serializable {
     /**
      * 
      */
-    private static String id;
+    private  String id;
+
 
     /**
      * @return the color of the student
@@ -66,6 +71,7 @@ public class Student implements PlaceableObject, Serializable {
     /**
      * @return id
      */
-    public String getId() { return this.id; }
+    public String getId() { return id; }
+
 
 }

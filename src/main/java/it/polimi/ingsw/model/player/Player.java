@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.enumerations.Wizard;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 import java.util.*;
@@ -20,6 +21,7 @@ public class Player implements Serializable {
     public Player(String name) {
         this.name = name;
         this.id = idCounter.toString();
+        IdManager.getInstance().addPlayer(this);
         idCounter++;
        for (AssistantCard a: AssistantCard.values())
            assistantCards.add(a);

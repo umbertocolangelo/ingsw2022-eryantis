@@ -112,7 +112,6 @@ public class Controller implements Runnable {
     public void write(Object object) {
         synchronized (client) {
             try {
-                System.out.println("metodo send nel controller");
                 client.getIn().writeObject(object);
                 client.getIn().flush();
 

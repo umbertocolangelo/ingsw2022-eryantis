@@ -4,6 +4,7 @@ import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 
@@ -18,6 +19,7 @@ public class IslandInfluenceCard implements ExpertCard, Serializable {
     public IslandInfluenceCard(CardManager cardManager) {
         this.id = "40";
         this.manager=cardManager;
+        IdManager.getInstance().addExpertCard(this);
     }
 
     /**

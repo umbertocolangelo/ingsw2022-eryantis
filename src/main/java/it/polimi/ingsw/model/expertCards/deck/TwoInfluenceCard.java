@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.expertCards.deck;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.player.Player;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 
@@ -17,6 +18,7 @@ public class TwoInfluenceCard implements ExpertCard, Serializable {
     public TwoInfluenceCard(CardManager cardManager) {
         this.id = "45";
         this.manager=cardManager;
+        IdManager.getInstance().addExpertCard(this);
     }
 
     /**

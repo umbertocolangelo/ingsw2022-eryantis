@@ -1,7 +1,6 @@
 package it.polimi.ingsw.message;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.pawns.Student;
 
 import java.io.Serializable;
 
@@ -10,7 +9,7 @@ public class MovingStudentsFromIngressToHall implements MessageMethod, Serializa
     /**
      *
      */
-    private Student student;
+    private String student;
 
     /**
      *
@@ -24,7 +23,7 @@ public class MovingStudentsFromIngressToHall implements MessageMethod, Serializa
      *
      * @param student
      */
-    public void setStudent(Student student) {
+    public void setStudent(String student) {
         this.student = student;
     }
 

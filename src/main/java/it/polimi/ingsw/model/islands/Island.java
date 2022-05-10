@@ -6,6 +6,7 @@ import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 import java.util.LinkedList;
@@ -21,6 +22,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
      */
     public Island() {
         this.id = idCounter.toString();
+        IdManager.getInstance().addIsland(this);
         idCounter++;
     }
 
@@ -222,5 +224,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
      *
      */
     public void setId(String id) { this.id = id; }
+
+
 
 }

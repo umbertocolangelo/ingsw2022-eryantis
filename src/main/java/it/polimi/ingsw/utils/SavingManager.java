@@ -5,7 +5,7 @@ import it.polimi.ingsw.model.Game;
 import java.io.*;
 import java.nio.file.Files;
 
-public class SavingManager {
+public class SavingManager implements Serializable{
 
     /**
      * Default constructor
@@ -24,10 +24,10 @@ public class SavingManager {
      * @return the unique instance of SavingManager
      */
     public static SavingManager getInstance(){
-        if(instance!=null){
-            return instance;
+        if(instance==null){
+            instance = new SavingManager();
         }
-        return new SavingManager();
+        return instance;
     }
 
     /**

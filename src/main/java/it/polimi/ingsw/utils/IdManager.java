@@ -10,19 +10,50 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
+import java.io.Serializable;
 import java.util.HashMap;
 
 
-public class IdManager {
+public class IdManager implements Serializable {
 
     public IdManager() {
         idMap = new HashMap<>();
+
+        // Adds the enumerations to idMap
+        for(Color color : Color.values()){
+            addColor(color);
+        }
+        for(PlayerColor playerColor : PlayerColor.values()){
+            addPlayerColor(playerColor);
+        }
+        for(AssistantCard card : AssistantCard.values()){
+            addAssistantCard(card);
+        }
+        for(Wizard wizard : Wizard.values()){
+            addWizard(wizard);
+        }
     }
 
     /**
-     *
+     * Stores the unique instance of IdManager
+     */
+    private static IdManager instance;
+
+    /**
+     * Associates every object with an id
      */
     private static HashMap<String, Object> idMap;
+
+    /**
+     *
+     * @return the unique instance of IdManager
+     */
+    public static IdManager getInstance(){
+        if(instance==null){
+            instance = new IdManager();
+        }
+        return instance;
+    }
 
     /**
      * @param player

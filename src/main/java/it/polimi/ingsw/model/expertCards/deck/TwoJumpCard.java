@@ -1,6 +1,7 @@
 package it.polimi.ingsw.model.expertCards.deck;
 
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 
@@ -14,6 +15,7 @@ public class TwoJumpCard implements ExpertCard, Serializable {
      */
     public TwoJumpCard() {
         this.id = "41";
+        IdManager.getInstance().addExpertCard(this);
     }
 
     /**

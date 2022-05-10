@@ -70,6 +70,8 @@ public interface IslandInterface {
      */
     public Integer getSize();
 
+    public String getId();
+
     /**
      *
      */

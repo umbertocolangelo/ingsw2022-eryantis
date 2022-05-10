@@ -3,6 +3,7 @@ package it.polimi.ingsw.model.expertCards.deck;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 
@@ -17,6 +18,7 @@ public class DenyCard implements ExpertCard, Serializable {
     public DenyCard(CardManager cardManager) {
         this.id = "42";
         this.manager=cardManager;
+        IdManager.getInstance().addExpertCard(this);
         cardManager.getInfluenceManager().setDenyCard(this);
     }
 

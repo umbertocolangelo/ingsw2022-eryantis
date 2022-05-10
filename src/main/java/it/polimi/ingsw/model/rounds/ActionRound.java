@@ -23,14 +23,14 @@ public class ActionRound implements RoundInterface, Serializable {
     /**
      * Every time is called he set the current player, the player phase e change the player getting from the orderedlist
      */
-    public ActionRound(Game game, Integer maxStudents) {
+    public ActionRound(Game game, Boolean isThreePlayers) {
         this.game=game;
-        this.maxStudents=maxStudents;
+        this.isThreePlayers=isThreePlayers;
         this.game.setCurrentPlayer(this.game.getOrderedPLayerList().getFirst());
         this.currentPlayer=this.game.getCurrentPlayer();
         this.currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
         this.game.getCardManager().setCurrentCard(null);
-
+        this.clouds= new LinkedList<>(game.getClouds());
     }
     /**
      * Keep the track if we already played a card in this round
@@ -50,16 +50,17 @@ public class ActionRound implements RoundInterface, Serializable {
     /**
      *
      */
-    private Integer maxStudents;
-    /**
-     *
-     */
     private MotherNature motherNature;
 
     /**
-     * Keep the reference to mothernature
+     * Keep the reference to mother nature
      */
     private Game game;
+
+    /**
+     *
+     */
+    private Boolean isThreePlayers=false;
 
     /**
      *
@@ -79,61 +80,44 @@ public class ActionRound implements RoundInterface, Serializable {
     @Override
     public Boolean checkRoundEnded() {
         if(this.game.getOrderedPLayerList().isEmpty()) {
-            /**
-             *Resetto le clouds, noin sono sicuro del due o 3 giocatori
-             */
             for(int i = 0; i< game.getPlayerList().size(); i++) {
-                Cloud cloud=new Cloud();
-                this.clouds.add(cloud);
-                for(int j=0;(maxStudents==4 && j<4) || (maxStudents==3 && j<3);j++)
-                    this.clouds.get(i).addStudent(this.game.getBag().newStudent());
+                game.getBag().addStudentsOnCloud(clouds.get(i));
             }
-            game.setCloud(clouds);
+            for(int i=0;i<game.getPlayerList().size();i++)
+                this.game.getPlayerList().get(i).setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+            this.game.setCurrentPlayer(game.getPlayerList().getFirst());
             this.game.setRound(this.game.setPianificationRoundState());
             game.getCardManager().resetCurrentCard();
             return true;
         }
         if(this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD){
             LinkedList<Player> players=this.game.getOrderedPLayerList();
-        players.removeFirst();
-        this.game.setOrderedPLayerList(players);
-            this.game.setRound(game.setActionRoundState(maxStudents));
-
-
+            players.removeFirst();
+            this.game.setOrderedPLayerList(players);
+            this.game.setRound(game.setActionRoundState());
         return true;
         }
         return false;
     }
 
     /**
-     * @param student   The student present in the hall that we want to move
-     * @return boolean          True if the student is moved correctly, false if it's not possible to move
+     * @param student   The student present in the hall that has to be moved
+     * @return boolean  True if the student is moved correctly, false if it's not possible to move
      */
     public Boolean moveStudentIngressToHall(Student student) {
-        if(this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
-        return false;
-        this.studentsMoved++;
-        if(this.studentsMoved==maxStudents) {
-            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
-            return true;
-        }
-
+        if(this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student)){
+            return false;}
         return true;
     }
 
     /**
      * @param student       Student in the ingress
      * @param island        Island we want to put the student
-     * @return              True if its not his last move
+     * @return              True if it's not his last move
      */
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
         if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
             return false;
-        this.studentsMoved++;
-        if(this.studentsMoved==maxStudents) {
-            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
-            return true;
-        }
 
         return true;
     }
@@ -146,6 +130,7 @@ public class ActionRound implements RoundInterface, Serializable {
        if(currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps)
         return false;
        else{
+
            return true;
        }
     }
@@ -233,6 +218,7 @@ public class ActionRound implements RoundInterface, Serializable {
             return false;
         if (cloud.getStudents().size() == 0)
             return false;
+        checkRoundEnded();
         return true;
 
     }
