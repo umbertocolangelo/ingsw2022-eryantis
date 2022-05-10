@@ -1,6 +1,8 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.message.*;
+import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.rounds.SetUpRound;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
@@ -82,7 +84,7 @@ public class CLI {
     public Thread choosingAssistant() {
 
         Thread t = new Thread(() -> {
-            for(int i =0; i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++){
+            for (int i =0; i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
                 System.out.println(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getId());
             }
             System.out.println("All right! Now pick the assistant card to use in this turn.");
@@ -112,9 +114,9 @@ public class CLI {
         Thread t = new Thread(( ) -> {
             String input1;
             String input2;
-            System.out.println("It's your turn!\nChoose 3 students in your ingress and place each one or in the hall or on an island!");
+            System.out.println("It's your turn, " + client.getGame().getCurrentPlayer().getName() + "\nChoose 3 students in your ingress and place each one or in the hall or on an island!");
                 for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
-                   System.out.println("Studente  " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + "numero " + i+"\n");
+                   System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
                 }
                 input = scanner.nextLine();
                 while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
@@ -135,18 +137,25 @@ public class CLI {
                 }
                 else if (input1.equals("1")) {
                     System.out.println("On which island do you want to move the student to?");
-                    System.out.println(client.getGame().getIslandManager().getIslands());
+                    int ind0 = 0;
+                    for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
+                        System.out.println("Island " + islandInterface + " Number " + ind0);
+                        ind0++;
+                    }
                     input1 = scanner.nextLine();
                     while (input1 =="" || Integer.parseInt(input1)>client.getGame().getIslandManager().getIslands().size()-1) {
                         System.out.println("Ops! You entered a wrong or too high value, choose again!");
                         input1 = scanner.nextLine();
                     }
                     MessageMethod islandMessageMethod = new MovingStudentFromIngressToIsland();
-
                     ((MovingStudentFromIngressToIsland) islandMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
                     if ((client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).isGrouped())) {
                         System.out.println("On which island of this group do you want to move the student to?");
-                        System.out.println(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements());
+                        int ind1 = 0;
+                        for (Island island: client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements()) {
+                            System.out.println("Island " + island + " GroupNumber " + ind1);
+                            ind1++;
+                        }
                         input2 = scanner.nextLine();
                         while (input2=="" || Integer.parseInt(input2)>client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getSize()-1) {
                             System.out.println("Ops! You entered a wrong or too high value, choose again!");
@@ -194,17 +203,14 @@ public class CLI {
     public Thread choosingStudentsFromClouds() {
 
         Thread t = new Thread(() -> {
-            LinkedList<Cloud> clouds = new LinkedList<>();
-            System.out.println("Now you can choose the group of students you want among the available clouds!");
             System.out.println(client.getGame().getClouds());
+            System.out.println("Now you can choose the group of students you want among the available clouds!");
             input = scanner.nextLine();
-
 
             while (input=="" || Integer.parseInt(input)>client.getGame().getClouds().size()-1 || client.getGame().getClouds().get( Integer.parseInt(input)).getStudents().isEmpty()) {
                 System.out.println("Ops! You entered a wrong or too high value or the cloud is empty, choose again!");
                 input = scanner.nextLine();
             }
-
 
             MessageMethod messageMethod = new ChooseStudentsFromCloud();
             ((ChooseStudentsFromCloud) messageMethod).setCloud(client.getGame().getClouds().get(Integer.parseInt(input)));

@@ -23,7 +23,7 @@ public class Player implements Serializable {
         this.id = idCounter.toString();
         IdManager.getInstance().addPlayer(this);
         idCounter++;
-       for (AssistantCard a: AssistantCard.values())
+        for (AssistantCard a: AssistantCard.values())
            assistantCards.add(a);
     }
 
@@ -60,7 +60,7 @@ public class Player implements Serializable {
     /**
      * The deck of this player
      */
-    private ArrayList<AssistantCard> assistantCards=new ArrayList<AssistantCard>();
+    private ArrayList<AssistantCard> assistantCards = new ArrayList<AssistantCard>();
 
     /**
      *  The card that the player played
@@ -70,7 +70,7 @@ public class Player implements Serializable {
     /**
      *  Represent the number of coin own by this player
      */
-    private Integer coins=0;
+    private Integer coins = 0;
 
     /**
      * Reference to the school of this player
@@ -88,7 +88,7 @@ public class Player implements Serializable {
     private PlayerPhase phase;
 
     /**
-     * @return  String        The name of this palyer
+     * @return  String        The name of this player
      */
     public String getName() {
         return this.name;
@@ -98,7 +98,6 @@ public class Player implements Serializable {
      * @return      The wizard tht the player chose
      */
     public Wizard getWizard() {
-
         return this.wizard;
     }
 
@@ -110,12 +109,12 @@ public class Player implements Serializable {
     }
 
     /**
-     *    When the player plays the card, that card is  removed;
+     * When the player plays the card, that card is  removed;
      */
     public void playAssistantCard(AssistantCard card) {
+        this.cardValue = card.getValue();
+        this.playedCard = card;
         assistantCards.remove(assistantCards.indexOf(card));
-        this.cardValue=card.getValue();
-        this.playedCard=card;
     }
 
     /**
@@ -143,7 +142,6 @@ public class Player implements Serializable {
      * @return          The number of coins of this player
      */
     public Integer getCoins() {
-
         return this.coins;
     }
 
@@ -151,7 +149,6 @@ public class Player implements Serializable {
      * @return          A copy of the deck of this player
    */
     public ArrayList<AssistantCard>getPlayedCards() {
-
          return new ArrayList<AssistantCard>(this.assistantCards);
     }
 
@@ -159,9 +156,8 @@ public class Player implements Serializable {
      * @param color     Sets the color of the player and instantiates its school
      */
     public void setPlayerColor(PlayerColor color) {
-        this.color=color;
-        this.school = new School(color,isThreePlayers);
-
+        this.color = color;
+        this.school = new School(color, isThreePlayers);
     }
 
     /**
@@ -177,7 +173,6 @@ public class Player implements Serializable {
     public Boolean isDeckEnded() {
        if(this.assistantCards.size()==0)
            return true;
-
        else
            return false;
     }
@@ -193,8 +188,7 @@ public class Player implements Serializable {
      * 
      */
     public void twoMoreJumps() {
-        this.cardValue=cardValue+2;
-
+        this.cardValue = cardValue+2;
     }
 
     /**
@@ -220,19 +214,19 @@ public class Player implements Serializable {
     }
 
     public void setWizard(Wizard wizard){
-        this.wizard=wizard;
+        this.wizard = wizard;
     }
 
     /**
-     *
      * @return
      */
     public String getId() { return this.id; }
 
-
+    /**
+     * @return
+     */
     public ArrayList<AssistantCard> getAssistantCard(){
         return this.assistantCards;
     }
-
 
 }
