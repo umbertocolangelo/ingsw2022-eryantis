@@ -91,13 +91,8 @@ public class ActionRound implements RoundInterface, Serializable {
             return true;
         }
         if(this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD){
-            LinkedList<Player> players=this.game.getOrderedPLayerList();
-            players.removeFirst();
-            if(players.isEmpty())
-                checkRoundEnded();
-            this.game.setOrderedPLayerList(players);
             this.game.setRound(game.setActionRoundState());
-        return true;
+            return true;
         }
         return false;
     }
@@ -220,6 +215,10 @@ public class ActionRound implements RoundInterface, Serializable {
             return false;
         if (cloud.getStudents().size() == 0)
             return false;
+        LinkedList<Player> players=this.game.getOrderedPLayerList();
+        players.removeFirst();
+        this.game.setOrderedPLayerList(players);
+
         checkRoundEnded();
         return true;
 
