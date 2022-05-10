@@ -3,6 +3,7 @@ package it.polimi.ingsw.client;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
+import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.rounds.SetUpRound;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
@@ -139,7 +140,7 @@ public class CLI {
                     System.out.println("On which island do you want to move the student to?");
                     int ind0 = 0;
                     for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                        System.out.println("Island " + islandInterface.getId() + " Number " + ind0);
+                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\n Tower " + islandInterface.getTowers().get(0).getId() + " color: " + islandInterface.getTowers().get(0).getColor() + "\n");
                         ind0++;
                     }
                     input1 = scanner.nextLine();
@@ -153,7 +154,7 @@ public class CLI {
                         System.out.println("On which island of this group do you want to move the student to?");
                         int ind1 = 0;
                         for (Island island: client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements()) {
-                            System.out.println("Island " + island.getId() + " GroupNumber " + ind1);
+                            System.out.println("Island " + island.getId() + "\nGroupNumber " + ind1 + "\nCurrent students: " + island.getStudents() + "\n Tower " + island.getTowers().get(0).getId() + " color: " + island.getTowers().get(0).getColor() + "\n");
                             ind1++;
                         }
                         input2 = scanner.nextLine();
