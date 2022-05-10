@@ -2,6 +2,7 @@ package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.enumerations.Wizard;
+import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.rounds.SetUpRound;
@@ -232,6 +233,73 @@ public class CLI {
             ((ChooseStudentsFromCloud) messageMethod).setCloud(client.getGame().getClouds().get(Integer.parseInt(input)));
             controller.write(messageMethod);
         });
+        t.start();
+        return t;
+    }
+
+
+    public Thread choosingExpertCardOrMoving() {
+
+        Thread t = new Thread(() -> {
+            System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1 to move the student");
+            input = scanner.nextLine();
+            while (!(input.equals("1") || input.equals("0"))) {
+                System.out.println("Ops! You entered a wrong value!");
+                input = scanner.nextLine();
+            }
+            if (input.equals("0")){
+                System.out.println("Select expertCard");
+            }
+            else{
+                Thread d= movingStudentsFromIngress();
+                try {
+                    d.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+        t.start();
+        return t;
+    }
+
+    public Thread playExpertCard(){
+    Thread t = new Thread(() -> {
+        Boolean tooPoor=true;
+        int i=0;
+        while(tooPoor) {
+        System.out.println("Those are the ExpertCard available, select one if you want to play it : ");
+        for(ExpertCard expertCard : client.getGame().getCardManager().getDeck()) {
+            System.out.println("Expert Card " +i+ " " + expertCard + " this card costs " + expertCard.getId());
+            i++;
+        }
+
+            input = scanner.nextLine();
+            while (!(input.equals("1") || input.equals("0")) || (input.equals("2"))) {
+                System.out.println("Ops! You entered a wrong value!");
+                input = scanner.nextLine();
+            }
+            if (client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getCost() > client.getGame().getCurrentPlayer().getCoins()) {
+                System.out.println("This card costs too much , you can't afford it");
+
+            } else {
+
+                //Qui probabilmente si gioca la carte
+                tooPoor = false;
+                System.out.println("Hai giocato questa Carta " + client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)));
+
+
+            }
+
+
+
+        }
+
+
+
+
+
+    });
         t.start();
         return t;
     }
