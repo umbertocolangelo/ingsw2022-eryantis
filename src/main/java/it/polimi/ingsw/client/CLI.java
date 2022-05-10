@@ -112,60 +112,68 @@ public class CLI {
         Thread t = new Thread(( ) -> {
             String input1;
             String input2;
-            System.out.println("It's your turn, " + client.getGame().getCurrentPlayer().getName() + "\nChoose 3 students in your ingress and place each one or in the hall or on an island!");
-                for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
-                   System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
-                }
+            System.out.println("It's your turn, " + client.getGame().getCurrentPlayer().getName() + " Here's your school:");
+            for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
+               System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
+            }
+            System.out.println("Choose 3 students in your ingress and place each one or in the hall or on an island!");
+            input = scanner.nextLine();
+            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
+                System.out.println("Ops! You entered a wrong or too high value, choose again!");
                 input = scanner.nextLine();
-                while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
-                    System.out.println("Ops! You entered a wrong or too high value, choose again!");
-                    input = scanner.nextLine();
-                }
-                System.out.println("Where do you want to move this student? 0 Hall 1 Island");
+            }
+            System.out.println("Where do you want to move this student? 0 Hall 1 Island");
+            input1 = scanner.nextLine();
+            while (!(input1.equals("1") || input1.equals("0"))) {
+                System.out.println("Ops! You entered a wrong value!");
                 input1 = scanner.nextLine();
-                while (!(input1.equals("1") || input1.equals("0"))) {
-                    System.out.println("Ops! You entered a wrong value!");
-                    input1 = scanner.nextLine();
-                }
-                if (input1.equals("0")) {
-                    MessageMethod hallMessageMethod = new MovingStudentsFromIngressToHall();
-                    System.out.println(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
-                    ((MovingStudentsFromIngressToHall) hallMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
-                    controller.write(hallMessageMethod);
-                }
-                else if (input1.equals("1")) {
-                    System.out.println("On which island do you want to move the student to?");
-                    int ind0 = 0;
-                    for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\n Tower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
-                        ind0++;
+            }
+            if (input1.equals("0")) {
+                MessageMethod hallMessageMethod = new MovingStudentsFromIngressToHall();
+                System.out.println(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
+                ((MovingStudentsFromIngressToHall) hallMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
+                controller.write(hallMessageMethod);
+            }
+            else if (input1.equals("1")) {
+                System.out.println("On which island do you want to move the student to?");
+                int ind0 = 0;
+                for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
+                    if (islandInterface.getTowers().isEmpty()) {
+                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
                     }
+                    else
+                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
+                    ind0++;
+                }
+                input1 = scanner.nextLine();
+                while (input1 =="" || Integer.parseInt(input1)>client.getGame().getIslandManager().getIslands().size()-1) {
+                    System.out.println("Ops! You entered a wrong or too high value, choose again!");
                     input1 = scanner.nextLine();
-                    while (input1 =="" || Integer.parseInt(input1)>client.getGame().getIslandManager().getIslands().size()-1) {
+                }
+                MessageMethod islandMessageMethod = new MovingStudentFromIngressToIsland();
+                ((MovingStudentFromIngressToIsland) islandMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
+                if ((client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).isGrouped())) {
+                    System.out.println("On which island of this group do you want to move the student to?");
+                    int ind1 = 0;
+                    for (Island island: client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements()) {
+                        if (island.getTowers().isEmpty()) {
+                            System.out.println("Island " + island.getId() + "\nGroupNumber " + ind1 + "\nCurrent students: " + island.getStudents() + "\nNo tower\n");
+                        }
+                        System.out.println("Island " + island.getId() + "\nGroupNumber " + ind1 + "\nCurrent students: " + island.getStudents() + "\n Tower " + island.getTowers().get(0).getId() + " color: " + island.getTowers().get(0).getColor() + "\n");
+                        ind1++;
+                    }
+                    input2 = scanner.nextLine();
+                    while (input2=="" || Integer.parseInt(input2)>client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getSize()-1) {
                         System.out.println("Ops! You entered a wrong or too high value, choose again!");
-                        input1 = scanner.nextLine();
-                    }
-                    MessageMethod islandMessageMethod = new MovingStudentFromIngressToIsland();
-                    ((MovingStudentFromIngressToIsland) islandMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
-                    if ((client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).isGrouped())) {
-                        System.out.println("On which island of this group do you want to move the student to?");
-                        int ind1 = 0;
-                        for (Island island: client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements()) {
-                            System.out.println("Island " + island.getId() + "\nGroupNumber " + ind1 + "\nCurrent students: " + island.getStudents() + "\n Tower " + island.getTowers().get(0).getId() + " color: " + island.getTowers().get(0).getColor() + "\n");
-                            ind1++;
-                        }
                         input2 = scanner.nextLine();
-                        while (input2=="" || Integer.parseInt(input2)>client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getSize()-1) {
-                            System.out.println("Ops! You entered a wrong or too high value, choose again!");
-                            input2 = scanner.nextLine();
-                        }
-                        ((MovingStudentFromIngressToIsland) islandMessageMethod).setIsland(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements().get(Integer.parseInt(input2)).getId());
                     }
-                    else {
-                        ((MovingStudentFromIngressToIsland) islandMessageMethod).setIsland(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements().get(0).getId());
-                    }
-                    controller.write(islandMessageMethod);
+                    ((MovingStudentFromIngressToIsland) islandMessageMethod).setIsland(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements().get(Integer.parseInt(input2)).getId());
                 }
+                else {
+                    ((MovingStudentFromIngressToIsland) islandMessageMethod).setIsland(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements().get(0).getId());
+                }
+                controller.write(islandMessageMethod);
+            }
 
         });
         t.start();
@@ -179,8 +187,16 @@ public class CLI {
     public Thread movingMotherNature() {
 
         Thread t = new Thread(() -> {
-            System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (you have at least" + client.getGame().getCurrentPlayer().getCardPlayedValue() + "jumps available)");
-            System.out.println(client.getGame().getIslandManager().getIslands());
+            System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (max " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
+            int ind = 0;
+            for (IslandInterface islandInterface : client.getGame().getIslandManager().getIslands()) {
+                if (islandInterface.getTowers().isEmpty()) {
+                    System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
+                }
+                else
+                    System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind + "\nCurrent students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers().get(0).getId() + " color: " + islandInterface.getTowers() + "\n");
+                ind++;
+            }
             input = scanner.nextLine();
             while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input=="0") {
                 System.out.println("Ops! You entered a wrong or too high value, choose again!");

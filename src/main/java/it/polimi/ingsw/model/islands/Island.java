@@ -125,7 +125,10 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
      * @return LinkedList<Tower>        Return the LinkedList of Towers
      */
     public LinkedList<Tower> getTowers() {
-        return this.towers;
+        if (this.towers.isEmpty())
+            return null;
+        else
+            return this.towers;
     }
 
     /**
