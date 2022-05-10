@@ -88,6 +88,11 @@ public class Player implements Serializable {
     private PlayerPhase phase;
 
     /**
+     * True if the player is the winner
+     */
+    private Boolean isWinner = false;
+
+    /**
      * @return  String        The name of this player
      */
     public String getName() {
@@ -208,9 +213,8 @@ public class Player implements Serializable {
     /**
      * @return
      */
-    public Boolean isWinner() {
-        // TODO implement here
-        return null;
+    public void isWinner() {
+        isWinner = true;
     }
 
     public void setWizard(Wizard wizard){

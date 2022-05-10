@@ -247,11 +247,34 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return
+     * Checks if there is a winner, if so returns the winner player
      */
-    private Player endGame() {
-        // TODO implement here
-        return null;
+    private void checkWinner() {
+
+        // If the bag is empty
+
+        Boolean isEmpty = true;
+        for(Color color : Color.values()){
+             if(bag.checkNumOfStudents(color)){
+                 isEmpty = false;
+                 break;
+             }
+        }
+        if(isEmpty == true){
+            currentPlayer.isWinner();
+        }
+
+        // If a player has placed all the towers
+
+        for(Player p : playerList){
+            if(p.getSchool().getTowerTable().numOfTowers()==0){
+                p.isWinner();
+                break;
+            }
+        }
+
+        // If there are 3 island groups
+        // TODO
     }
 
     public RoundInterface getCurrentRound(){
@@ -359,8 +382,8 @@ public class Game implements GameInterface, Serializable {
         }
         if(!this.currentRound.moveMotherNature(jumps))
         System.out.println("Move not possible");
-
-        propertyChange.firePropertyChange("mmove mothernature",jumps,motherNature.getIsland());
+        checkWinner();
+        propertyChange.firePropertyChange("move mothernature",jumps,motherNature.getIsland());
 
     }
 
