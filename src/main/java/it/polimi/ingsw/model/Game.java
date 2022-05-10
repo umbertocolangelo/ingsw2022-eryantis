@@ -249,11 +249,34 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return the winner, returns null if not present
+     * Checks if there is a winner, if so returns the winner player
      */
-    private Player endGame() {
+    private void endGame() {
 
-        return null;
+        // If the bag is empty
+
+        Boolean isEmpty = true;
+        for(Color color : Color.values()){
+             if(bag.checkNumOfStudents(color)){
+                 isEmpty = false;
+                 break;
+             }
+        }
+        if(isEmpty == true){
+            currentPlayer.isWinner();
+        }
+
+        // If a player has placed all the towers
+
+        for(Player p : playerList){
+            if(p.getSchool().getTowerTable().numOfTowers()==0){
+                p.isWinner();
+                break;
+            }
+        }
+
+        // If there are 3 island groups
+        // TODO
     }
 
     public RoundInterface getCurrentRound(){
