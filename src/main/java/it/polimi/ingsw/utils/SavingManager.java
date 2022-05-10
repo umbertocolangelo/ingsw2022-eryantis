@@ -10,13 +10,18 @@ public class SavingManager implements Serializable{
     /**
      * Default constructor
      */
-    public SavingManager(){}
+    public SavingManager(){
+
+    }
 
     /**
      * Stores the unique instance
      */
     private static SavingManager instance;
 
+    /**
+     * Path
+     */
     private String path = "eriantys.save";
 
     /**

@@ -136,7 +136,7 @@ public class CLI {
                 System.out.println("On which island do you want to move the student to?");
                 System.out.println(client.getGame().getIslandManager().getIslands());
                 input1 = scanner.nextLine();
-                while (input1 =="" || Integer.parseInt(input1)>client.getGame().getIslandManager().getIslands().size()-1) {
+                while (input1 =="" || !input.matches("[0-9]+") || Integer.parseInt(input1)>client.getGame().getIslandManager().getIslands().size()-1) {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!");
                     input1 = scanner.nextLine();
                 }
@@ -146,7 +146,7 @@ public class CLI {
                     System.out.println("On which island of this group do you want to move the student to?");
                     System.out.println(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements());
                     input2 = scanner.nextLine();
-                    while (input2=="" || Integer.parseInt(input2)>client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getSize()-1) {
+                    while (input2=="" || !input.matches("[0-9]+") || Integer.parseInt(input2)>client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getSize()-1) {
                         System.out.println("Ops! You entered a wrong or too high value, choose again!");
                         input2 = scanner.nextLine();
                     }
@@ -172,7 +172,7 @@ public class CLI {
             System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (you have at least" + client.getGame().getCurrentPlayer().getCardPlayedValue() + "jumps available)");
             System.out.println(client.getGame().getIslandManager().getIslands());
             input = scanner.nextLine();
-            while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue()) {
+            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue()) {
                 System.out.println("Ops! You entered a wrong or too high value, choose again!");
                 input = scanner.nextLine();
             }
@@ -195,7 +195,7 @@ public class CLI {
             System.out.println("Now you can choose the group of students you want among the available clouds!");
             System.out.println(client.getGame().getClouds());
             input = scanner.nextLine();
-            while (input=="" || Integer.parseInt(input)>client.getGame().getClouds().size()-1 || client.getGame().getClouds().get(Integer.parseInt(input)).getStudents().isEmpty()) {
+            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getClouds().size()-1 || client.getGame().getClouds().get(Integer.parseInt(input)).getStudents().isEmpty()) {
                 System.out.println("Ops! You entered a wrong or too high value, choose again!");
                 input = scanner.nextLine();
             }
