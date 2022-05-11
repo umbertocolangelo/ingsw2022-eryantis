@@ -26,7 +26,7 @@ public interface IslandInterface {
     /**
      *
      */
-    public boolean getDeny();
+    public Integer getDeny();
 
     /**
      *

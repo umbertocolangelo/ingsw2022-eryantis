@@ -21,9 +21,9 @@ public class IslandGroup implements IslandInterface, Serializable {
     }
 
     /**
-     *
+     * Stores the number of denyTokens on the IslandGroup
      */
-    private boolean isDenied;
+    private Integer denyTokens = 0;
 
     /**
      * linked list of island in the same group
@@ -53,24 +53,23 @@ public class IslandGroup implements IslandInterface, Serializable {
     }
 
     /**
-     * set isDenied
+     * Adds one deny token to the IslandGroup
      */
-    public void setDeny() {
-        this.isDenied = true;
-    }
+    public void setDeny() { denyTokens++; }
 
     /**
-     * @return this.isDenied
+     * @return the number of denyTokens on the IslandGroup
      */
-    public boolean getDeny() { return this.isDenied; }
+    public Integer getDeny() { return denyTokens; }
 
     /**
-     *
+     * Removes one deny token from the IslandGroup
      */
     public void removeDeny() {
-        this.isDenied = false;
+        if(denyTokens>0){
+            denyTokens--;
+        }
     }
-
     /**
      * @return towers number of the group
      */
@@ -131,7 +130,7 @@ public class IslandGroup implements IslandInterface, Serializable {
      */
     public void addTower(Tower tower) {
         for (Island island: islandGroup) {
-            if(island.getTowers().size()==0) {
+            if(island.getTowers()==null) {
                 island.addTower(tower);
                 return;
             }

@@ -61,7 +61,7 @@ public class IslandGroupTest {
     public void setDeny() {
         IslandGroup islandGroup = new IslandGroup();
         islandGroup.setDeny();
-        assertTrue(islandGroup.getDeny() == true);
+        assertTrue(islandGroup.getDeny() == 1);
     }
 
     /**
@@ -71,7 +71,11 @@ public class IslandGroupTest {
     public void removeDeny() {
         IslandGroup islandGroup = new IslandGroup();
         islandGroup.removeDeny();
-        assertTrue(islandGroup.getDeny() == false);
+        assertTrue(islandGroup.getDeny() == 0);
+        islandGroup.setDeny();
+        assertTrue(islandGroup.getDeny() == 1);
+        islandGroup.removeDeny();
+        assertTrue(islandGroup.getDeny() == 0);
     }
 
     /**
@@ -158,7 +162,7 @@ public class IslandGroupTest {
         islandGroup.addIslandInterface(island1);
         islandGroup.addIslandInterface(island2);
         islandGroup.removeTower(tower1);
-        assertTrue(!island1.getTowers().contains(tower1));
+        assertTrue(island1.getTowers()==null);
     }
 
 }

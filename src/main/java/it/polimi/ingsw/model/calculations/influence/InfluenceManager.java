@@ -145,8 +145,9 @@ public class InfluenceManager implements Serializable {
      * @return
      */
     private boolean checkDeny(IslandInterface island){
-        if(island.getDeny()){
+        if(island.getDeny()!=0){
             denyCard.addToken();
+            island.removeDeny();
             return true;
         }
         return false;

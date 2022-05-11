@@ -35,7 +35,12 @@ public class DenyCardTest {
         Island island = new Island();
         denyCard.apply(island);
         assertTrue(denyCard.getCost()==3);
-        assertTrue(island.getDeny());
+        assertTrue(island.getDeny()==1);
         assertTrue(denyCard.getDenyTokens()==3);
+
+        denyCard.apply(island);
+        assertTrue(denyCard.getCost()==4);
+        assertTrue(island.getDeny()==2);
+        assertTrue(denyCard.getDenyTokens()==2);
     }
 }
