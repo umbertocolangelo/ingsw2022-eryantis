@@ -40,7 +40,7 @@ public class TowerTableTest {
             assertTrue(towerTable.getTowers().contains(tower));
             System.out.println(tower.getPosition());
             assertTrue(tower.getPosition()==towerTable);
-            assertTrue(!island.getTowers().contains(tower));
+            assertTrue(island.getTowers()==null);
         }
 
         /**

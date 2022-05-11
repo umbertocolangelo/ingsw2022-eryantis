@@ -62,7 +62,7 @@ public class InfluenceManagerTest {
         island.addStudent(new Student(Color.BLUE));
         influenceManager.calculateInfluence();
 
-        assertTrue(((FixedObjectTower) island).getTowers().isEmpty() == true && ((Island) island).getInfluenceColor() == null);
+        assertTrue(((FixedObjectTower) island).getTowers()==null && ((Island) island).getInfluenceColor() == null);
         assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size() == 6);
         assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size() == 6);
         assertTrue(playerList.get(2).getSchool().getTowerTable().getTowers().size() == 6);
@@ -157,7 +157,7 @@ public class InfluenceManagerTest {
         island.addStudent(new Student(Color.BLUE));
         influenceManager.calculateInfluence();
 
-        assertTrue(((FixedObjectTower) island).getTowers().isEmpty() == true && ((Island) island).getInfluenceColor() == null);
+        assertTrue(((FixedObjectTower) island).getTowers()==null && ((Island) island).getInfluenceColor() == null);
         assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size() == 8);
         assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size() == 8);
 
@@ -247,7 +247,7 @@ public class InfluenceManagerTest {
         island.addStudent(new Student(Color.BLUE));
         influenceManager.calculateInfluence();
 
-        assertTrue(((FixedObjectTower) island).getTowers().isEmpty() == true && ((Island) island).getInfluenceColor() == null);
+        assertTrue(((FixedObjectTower) island).getTowers()==null && ((Island) island).getInfluenceColor() == null);
         assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size() == 6);
         assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size() == 6);
         assertTrue(playerList.get(2).getSchool().getTowerTable().getTowers().size() == 6);
@@ -356,7 +356,7 @@ public class InfluenceManagerTest {
         island.addStudent(new Student(Color.BLUE));
         influenceManager.calculateInfluence();
 
-        assertTrue(((FixedObjectTower) island).getTowers().isEmpty() == true && ((Island) island).getInfluenceColor() == null);
+        assertTrue(((FixedObjectTower) island).getTowers()==null && ((Island) island).getInfluenceColor() == null);
         assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size() == 8);
         assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size() == 8);
 
@@ -456,7 +456,7 @@ public class InfluenceManagerTest {
         island.addStudent(new Student(Color.BLUE));
         influenceManager.calculateInfluence();
 
-        assertTrue(((FixedObjectTower) island).getTowers().isEmpty() == true && ((Island) island).getInfluenceColor() == null);
+        assertTrue(((FixedObjectTower) island).getTowers()==null && ((Island) island).getInfluenceColor() == null);
         assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size() == 6);
         assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size() == 6);
         assertTrue(playerList.get(2).getSchool().getTowerTable().getTowers().size() == 6);
@@ -629,7 +629,7 @@ public class InfluenceManagerTest {
         island.addStudent(new Student(Color.BLUE));
         influenceManager.calculateInfluence();
 
-        assertTrue(((FixedObjectTower) island).getTowers().isEmpty() == true && ((Island) island).getInfluenceColor() == null);
+        assertTrue(((FixedObjectTower) island).getTowers()==null && ((Island) island).getInfluenceColor() == null);
         assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size() == 6);
         assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size() == 6);
         assertTrue(playerList.get(2).getSchool().getTowerTable().getTowers().size() == 6);
@@ -725,7 +725,7 @@ public class InfluenceManagerTest {
         island.addStudent(new Student(Color.BLUE));
         influenceManager.calculateInfluence();
 
-        assertTrue(((FixedObjectTower) island).getTowers().isEmpty() == true && ((Island) island).getInfluenceColor() == null);
+        assertTrue(((FixedObjectTower) island).getTowers()==null && ((Island) island).getInfluenceColor() == null);
         assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size() == 8);
         assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size() == 8);
 
