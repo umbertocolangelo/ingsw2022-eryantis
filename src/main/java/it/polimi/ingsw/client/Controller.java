@@ -84,7 +84,7 @@ public class Controller implements Runnable {
 
 
                     case MOVING_STUDENTS:
-                        t0 = cli.movingStudentsFromIngress();
+                        t0 = cli.choosingExpertCardOrMoving();
                         break;
 
                     case MOVING_MOTHERNATURE:

@@ -28,7 +28,7 @@ public class StudentToIslandActionRoundTest {
         game.playAssistantCard(AssistantCard.ONE_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         player1.setCoin(5);
-        game.playExpertCard(IdManager.getInstance().getExpertCard("38"),null);
+        game.playExpertCard(IdManager.getInstance().getExpertCard("38").getId(),null);
         System.out.println(game.getPreviousRound());
         Student student1 = new Student(Color.RED);
         Student student = new Student(Color.YELLOW);

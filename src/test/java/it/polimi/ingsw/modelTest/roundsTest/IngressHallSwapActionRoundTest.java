@@ -41,7 +41,7 @@ public class IngressHallSwapActionRoundTest {
         Bag bag=new Bag(false);
         IngressHallSwapCard ingressCardSwapCard = new IngressHallSwapCard();
         player1.setCoin(5);
-        game.playExpertCard(ingressCardSwapCard,null);
+        game.playExpertCard(ingressCardSwapCard.getId(),null);
         Student student1 = new Student(Color.RED);
         Student student = new Student(Color.YELLOW);
         System.out.println(game.getCurrentPlayer());

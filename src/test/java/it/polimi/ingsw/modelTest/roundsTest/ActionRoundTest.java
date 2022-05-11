@@ -156,7 +156,7 @@ public class ActionRoundTest {
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         //game.setCurrentPlayer(player);
         game.getCurrentPlayer().setCoin(5);
-        game.playExpertCard(IdManager.getInstance().getExpertCard("49"), Color.RED);
+        game.playExpertCard(IdManager.getInstance().getExpertCard("49").getId(), Color.RED.getId());
         System.out.println(player.getSchool().getHall().getLine(Color.RED).getStudents().size());
         assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
 

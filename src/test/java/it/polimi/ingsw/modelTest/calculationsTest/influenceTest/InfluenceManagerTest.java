@@ -15,7 +15,6 @@ import it.polimi.ingsw.model.player.Player;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.util.Collection;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -553,7 +552,7 @@ public class InfluenceManagerTest {
         island.addStudent(new Student(Color.BLUE));
         influenceManager.calculateInfluence();
 
-        assertTrue(((FixedObjectTower) island).getTowers().isEmpty() == true && ((Island) island).getInfluenceColor() == null);
+        assertTrue(((FixedObjectTower) island).getTowers()==null && ((Island) island).getInfluenceColor() == null);
         assertTrue(playerList.get(0).getSchool().getTowerTable().getTowers().size() == 8);
         assertTrue(playerList.get(1).getSchool().getTowerTable().getTowers().size() == 8);
 
