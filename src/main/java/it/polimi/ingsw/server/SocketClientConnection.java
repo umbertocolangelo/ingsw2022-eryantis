@@ -12,11 +12,11 @@ import java.net.Socket;
 import java.util.NoSuchElementException;
 
 
-public class SocketClientConnection  implements  Runnable {
+public class SocketClientConnection implements Runnable {
     /**
      *
      */
-    private Boolean isFirst=false;
+    private Boolean isFirst = false;
 
     /**
      * Keep the reference to the socket
@@ -94,7 +94,6 @@ public class SocketClientConnection  implements  Runnable {
         active = false;
     }
 
-
     /**
      *Calls the close connection and close the connection also in the server
      */
@@ -105,45 +104,43 @@ public class SocketClientConnection  implements  Runnable {
         System.out.println("Done!");
     }
 
-
-
     /**
      * This run is always open and keep listening to the client and send the message to the server
      */
     @Override
     public void run() {
-       // while(!Thread.currentThread().isInterrupted()){
+        // while(!Thread.currentThread().isInterrupted()){
         try {
-
             out = new ObjectOutputStream(socket.getOutputStream());
             in = new ObjectInputStream(socket.getInputStream());
             SetUp setup = new SetUp();
-           // System.out.println("si");
+            // System.out.println("si");
             send("Welcome!\nWhat is your name?");
 
-             //si  sincronizza con il send
+            //si  sincronizza con il send
+            send(setup);
+            String read = (String) in.readObject();
+
+            while ( (read.matches(".*\\d.*") || server.equalName(read,isFirst))) {
+                send("You inserted a number or the username is already used, please try again");
                 send(setup);
-                String read = (String) in.readObject();
+                read = (String) in.readObject();
+                System.out.println(read);
+            }
 
-                    while ( (read.matches(".*\\d.*") || server.equalName(read,isFirst))) {
+            server.getSemaphore().release();
+            name = read;
+            send(new SetName(name));
+            server.lobby(this, name);
 
-                        send("You inserted a number or the username is already used, insert another one");
-                        send(setup);
-                        read = (String) in.readObject();
-                        System.out.println(read);
-                    }
-                server.getSemaphore().release();
-                name = read;
-                send(new SetName(name));
-                server.lobby(this, name);
-                while (isActive()) {
-                    Object object = in.readObject();
-                    if (object instanceof MessageMethod) {
-                        Thread t1 = new Thread( server.modifyGame(object));
-                        t1.join();
-                        System.out.println(object);
-                    }
+            while (isActive()) {
+                Object object = in.readObject();
+                if (object instanceof MessageMethod) {
+                    Thread t1 = new Thread( server.modifyGame(object));
+                    t1.join();
+                    System.out.println(object);
                 }
+            }
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error! " + e.getMessage());
 
@@ -175,10 +172,11 @@ public class SocketClientConnection  implements  Runnable {
         return this.in;
     }
 
+    /**
+     *
+     */
     public void setIsFirst(){
         isFirst=true;
     }
-
-
 
 }
