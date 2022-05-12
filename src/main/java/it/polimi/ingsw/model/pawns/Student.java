@@ -19,9 +19,7 @@ public class Student implements PlaceableObject, Serializable {
         this.color = color;
         id=idCounter.toString();
         IdManager.getInstance().addStudent(this);
-        idCounter++;;
-
-
+        idCounter++;
     }
 
     /**

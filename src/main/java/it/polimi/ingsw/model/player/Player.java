@@ -23,6 +23,7 @@ public class Player implements Serializable {
         this.id = idCounter.toString();
         IdManager.getInstance().addPlayer(this);
         idCounter++;
+        if(idCounter==4){idCounter=1;}
         for (AssistantCard a: AssistantCard.values())
            assistantCards.add(a);
     }

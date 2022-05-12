@@ -2,10 +2,7 @@ package it.polimi.ingsw.modelTest.roundsTest;
 
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
@@ -30,24 +27,23 @@ public class IngressCardSwapActionRoundTest {
         lista.add(player);
         game.setPlayerList(lista);
 
-        player.setPlayerColor(PlayerColor.WHITE);
-        player1.setPlayerColor(PlayerColor.GREY);
         game.initializeGame();
-        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        game.setCurrentPlayer(player1);
+        System.out.println("First player is " + game.getCurrentPlayer().getName());
+        game.chooseColorAndDeck(PlayerColor.GREY, Wizard.BLUE_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
+        System.out.println("First player is " + game.getCurrentPlayer().getName());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
-        game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard(game.getCardManager());
-        player1.setCoin(5);
+        System.out.println("First player is " + game.getCurrentPlayer().getName());
+        game.getCurrentPlayer().setCoin(5);
         game.playExpertCard(ingressCardSwapCard.getId(),null);
         Student student1=new Student(Color.RED);
         Student student=new Student(Color.YELLOW);
         System.out.println(game.getCurrentPlayer());
         System.out.println(player1);
-        player1.getSchool().getIngress().addStudent(student);
+        game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
         game.expertIngressCardSwap(student1.getId(),student.getId());
-        assertTrue( player1.getSchool().getIngress().getStudents().contains(student1));
+        assertTrue( game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(student1));
     }
 }

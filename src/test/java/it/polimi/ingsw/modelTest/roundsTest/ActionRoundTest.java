@@ -3,6 +3,7 @@ package it.polimi.ingsw.modelTest.roundsTest;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
@@ -75,26 +76,19 @@ public class ActionRoundTest {
         Player player = new Player("elena");
         Player player1 = new Player("vittorio");
         Game game= new Game();
-        LinkedList <Player> lista=new LinkedList<>();
+        LinkedList <Player> lista = new LinkedList<>();
         lista.add(player1);
         lista.add(player);
         game.setPlayerList(lista);
-        player.setPlayerColor(PlayerColor.WHITE);
-        player1.setPlayerColor(PlayerColor.GREY);
         game.initializeGame();
-        game.setRound(game.setPianificationRoundState());
-        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        game.setCurrentPlayer(player1);
+        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.BLACK,Wizard.BLUE_WIZARD);
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
-        game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
-        player.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
-        player1.getSchool().getIngress().addStudent(student);
-        Island island =new Island();
-        game.moveStudentIngressToIsland(student.getId(),island.getId());
-        assertTrue( island.getStudents().contains(student) && !player1.getSchool().getIngress().getStudents().contains(student));
+        game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
+        game.moveStudentIngressToIsland(student.getId(),"30");
+        assertTrue( IdManager.getInstance().getIsland("30").getStudents().contains(student) && !game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(student));
     }
 
     /**
@@ -110,25 +104,23 @@ public class ActionRoundTest {
         lista.add(player1);
         lista.add(player);
         game.setPlayerList(lista);
-        player.setPlayerColor(PlayerColor.WHITE);
-        player1.setPlayerColor(PlayerColor.GREY);
         game.initializeGame();
-        game.setRound(game.setPianificationRoundState());
-        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        game.setCurrentPlayer(player1);
+        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.BLACK,Wizard.BLUE_WIZARD);
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
-        game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
-        Student student = new Student(Color.RED);
-        player1.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
-        Cloud cloud=new Cloud();
-        cloud.addStudent(student);
-        game.chooseCloud(cloud);
-
-
-        assertTrue( player1.getSchool().getIngress().getStudents().contains(student));
-
+        System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
+        game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
+        System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
+        LinkedList<Student> students = game.getClouds().get(0).getStudents();
+        game.chooseCloud(game.getClouds().get(0));
+        game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
+        System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
+        game.chooseCloud(game.getClouds().get(1));
+        System.out.println(game.getCurrentPlayer().getName() + "is the current player");
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(0)));
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(1)));
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(2)));
     }
 
     /**

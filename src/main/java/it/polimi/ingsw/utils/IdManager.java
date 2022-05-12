@@ -211,7 +211,7 @@ public class IdManager implements Serializable {
      * @return
      */
     public Student getStudent(String id) {
-        if (Integer.parseInt(id)>52 && Integer.parseInt(id)<173)
+        if (Integer.parseInt(id)>52)
             return (Student) idMap.get(id);
         else
             return null;
