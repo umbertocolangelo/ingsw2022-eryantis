@@ -2,7 +2,6 @@ package it.polimi.ingsw.model.rounds;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
@@ -24,6 +23,11 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     public IngressCardSwapActionRound(Game game) {
         this.game=game;
     }
+
+    /**
+     * Id to know which round we are
+     */
+    private Integer id=0;
 
     /**
      *
@@ -157,12 +161,14 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
 
 
 
-    private void expertMoveStudentToBag(Game game, Color color) {
-
-    }
 
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
     }
 }

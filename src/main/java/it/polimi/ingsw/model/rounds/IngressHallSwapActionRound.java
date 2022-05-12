@@ -29,6 +29,11 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     Game game;
 
     /**
+     * Id to know which round we are
+     */
+    private Integer id=1;
+
+    /**
      *
      */
     Integer studentsMoved=0;
@@ -90,6 +95,11 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
     }
 
     /**

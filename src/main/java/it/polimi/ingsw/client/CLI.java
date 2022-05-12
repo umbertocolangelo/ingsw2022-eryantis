@@ -4,6 +4,7 @@ import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
+import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.player.Player;
@@ -138,14 +139,14 @@ public class CLI {
                 controller.write(hallMessageMethod);
             }
             else if (input1.equals("1")) {
-                System.out.println("On which island do you want to move the student to?");
+                System.out.println("On which island do you want to move the student to? Select the Group Number\n");
                 int ind0 = 0;
                 for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
                     if (islandInterface.getTowers()==null) {
-                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
+                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "        Current students: " + islandInterface.getStudents() + "\nNo tower\n");
                     }
                     else
-                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
+                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "        Current students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
                     ind0++;
                 }
                 input1 = scanner.nextLine();
@@ -258,7 +259,7 @@ public class CLI {
                     input = scanner.nextLine();
                 }
                 if (input.equals("0")) {
-                    System.out.println("Select expertCard");
+                    System.out.println("You have " + client.getGame().getCurrentPlayer().getCoins() + " coins");
                     Thread g = playExpertCard();
                     try {
                         g.join();
@@ -282,6 +283,7 @@ public class CLI {
     public Thread playExpertCard(){
     Thread t = new Thread(() -> {
         Boolean tooPoor=true;
+        Boolean playedCard=false;
         int i=0;
         while(tooPoor) {
             for (ExpertCard expertCard : client.getGame().getCardManager().getDeck()) {
@@ -309,7 +311,6 @@ public class CLI {
                     System.out.println("This card costs too much , you can't afford it\n\n");
 
                 } else {
-
                     //Qui probabilmente si gioca la carte
                     tooPoor = false;
                     System.out.println("Hai giocato questa Carta " + client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)));
@@ -327,9 +328,10 @@ public class CLI {
                             input = scanner.nextLine();
                         }
                         ((PlayExpertCard) messageMethod).setParameter(Color.getColor(Integer.parseInt(input)).getId());
+                        playedCard=true;
                     }
 
-                    if (client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals( "47")) {
+                    if (!playedCard && client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals( "47") ) {
                         int ind0 = 0;
                         System.out.println("This card needs a island to be selected where we put the deny token, select the island\n");
                         for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
@@ -347,15 +349,16 @@ public class CLI {
                             input = scanner.nextLine();
                         }
                         ((PlayExpertCard) messageMethod).setParameter(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input)).getId());
+                        playedCard=true;
 
                     }
 
-                    if(client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals( "40"))
+                    if( !playedCard && client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals( "40"))
                     {
                         //Da capire island interface nella carta prima era solo un island
                     }
 
-                    if(client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals("45")) {
+                    if(!playedCard && client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals("45")) {
                         System.out.println("This card need a player to select, select one\n");
                         int c = 0;
                         for (Player p : client.getGame().getPlayerList())
@@ -372,17 +375,66 @@ public class CLI {
                     controller.write(messageMethod);
                 }
 
-
-
             }
         }
-
-
-
 
     });
         t.start();
         return t;
     }
+
+
+    public Thread ingressCardSwap() {
+        Thread t = new Thread(() -> {
+            System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card\n");
+            System.out.println("Select the player from your ingress \n");
+            for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
+                System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
+            }
+            input = scanner.nextLine();
+            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
+                System.out.println("Ops! You entered a wrong or too high value, choose again!");
+                input = scanner.nextLine();
+            }
+            System.out.println("Select a player from the Card \n");
+            for(int i=0;i<((IngressCardSwapCard)client.getGame().getCardManager().getCurrentCard()).getStudents().size()-1;i++) {
+                System.out.println("Student " +((IngressCardSwapCard)client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
+            }
+            input = scanner.nextLine();
+            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
+                System.out.println("Ops! You entered a wrong or too high value, choose again!");
+                input = scanner.nextLine();
+            }
+
+        });
+        t.start();
+        return t;
+    }
+
+
+
+    public Thread ingressHallSwap() {
+        Thread t = new Thread(() -> {
+        });
+        t.start();
+        return t;
+    }
+
+    public Thread studentToHall() {
+        Thread t = new Thread(() -> {
+        });
+        t.start();
+        return t;
+    }
+
+
+    public Thread studentToIsland() {
+        Thread t = new Thread(() -> {
+        });
+        t.start();
+        return t;
+    }
+
+
 
 }

@@ -30,6 +30,11 @@ public class StudentToIslandActionRound implements RoundInterface, Serializable 
      */
     private Game game;
 
+    /**
+     * Id to know which round we are
+     */
+    private Integer id=3;
+
     @Override
     public Boolean checkRoundEnded() {
         return null;
@@ -97,6 +102,11 @@ public class StudentToIslandActionRound implements RoundInterface, Serializable 
         return null;
     }
 
+    @Override
+    public Integer getId() {
+        return id;
+    }
+
     /**
      * @param student       The student we want to the put in the island
      * @param island        The island we want to add the student
@@ -155,4 +165,6 @@ public class StudentToIslandActionRound implements RoundInterface, Serializable 
     public Boolean chooseCloud(Cloud cloud) {
         return null;
     }
+
+
 }

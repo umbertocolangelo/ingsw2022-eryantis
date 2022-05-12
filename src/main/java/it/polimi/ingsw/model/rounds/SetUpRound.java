@@ -194,6 +194,11 @@ public class SetUpRound implements  RoundInterface, Serializable {
         return true;
     }
 
+    @Override
+    public Integer getId() {
+        return null;
+    }
+
     public LinkedList<PlayerColor> getplayerColor(){
         return this.colors;
     }

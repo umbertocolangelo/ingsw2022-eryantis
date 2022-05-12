@@ -120,4 +120,6 @@ public interface RoundInterface {
      * @return
      */
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard);
+
+    Integer getId();
 }

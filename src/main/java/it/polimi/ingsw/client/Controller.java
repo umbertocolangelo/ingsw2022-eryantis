@@ -84,6 +84,14 @@ public class Controller implements Runnable {
 
 
                     case MOVING_STUDENTS:
+                        if(client.getGame().getCurrentRound().getId()==0)
+                            t0=cli.ingressCardSwap();
+                        if(client.getGame().getCurrentRound().getId()==1)
+                            t0=cli.ingressHallSwap();
+                        if(client.getGame().getCurrentRound().getId()==2)
+                            t0=cli.studentToHall();
+                        if(client.getGame().getCurrentRound().getId()==3)
+                            t0=cli.studentToIsland();
                         t0 = cli.choosingExpertCardOrMoving();
                         break;
 

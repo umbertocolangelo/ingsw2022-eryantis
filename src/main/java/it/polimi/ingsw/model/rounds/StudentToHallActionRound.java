@@ -29,6 +29,11 @@ public class StudentToHallActionRound implements RoundInterface, Serializable {
  */
    private Game game;
 
+    /**
+     * Id to know which round we are
+     */
+    private Integer id=2;
+
     @Override
     public Boolean checkRoundEnded() {
         return null;
@@ -93,6 +98,11 @@ public class StudentToHallActionRound implements RoundInterface, Serializable {
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
+    }
+
+    @Override
+    public Integer getId() {
+        return id;
     }
 
     /**
