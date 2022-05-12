@@ -547,9 +547,10 @@ public class Game implements GameInterface, Serializable {
             while (cloud.getStudents().size() != 0) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
             }
+            this.currentRound.checkRoundEnded();
             propertyChange.firePropertyChange("Choose cloud",this.clouds,cloud);
         }
-        this.currentRound.checkRoundEnded();
+
     }
 
     /**
