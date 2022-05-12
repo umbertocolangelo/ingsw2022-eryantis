@@ -47,7 +47,7 @@ public class IngressCardSwapActionRoundTest {
         System.out.println(game.getCurrentPlayer());
         System.out.println(player1);
         player1.getSchool().getIngress().addStudent(student);
-        game.expertIngressCardSwap(student1,student);
+        game.expertIngressCardSwap(student1.getId(),student.getId());
         assertTrue( player1.getSchool().getIngress().getStudents().contains(student1));
     }
 }

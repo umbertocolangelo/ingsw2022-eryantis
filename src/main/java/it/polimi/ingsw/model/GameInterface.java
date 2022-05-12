@@ -64,16 +64,16 @@ public interface GameInterface {
     public void expertStudentToIsland(Student student, Island island);
 
     /**
-     * @param studentCard
-     * @param studentIngress
+     * @param student1
+     * @param student2
      */
-    public void expertIngressCardSwap(Student studentCard, Student studentIngress);
+    public void expertIngressCardSwap(String student1, String student2);
 
     /**
-     * @param studentHall
-     * @param studentIngress
+     * @param studentHall1
+     * @param studentIngress1
      */
-    void expertIngressHallSwap(Student studentHall, Student studentIngress);
+    void expertIngressHallSwap(String studentHall1, String studentIngress1);
 
     /**
      * @param student

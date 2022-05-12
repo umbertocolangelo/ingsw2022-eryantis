@@ -4,11 +4,12 @@ import it.polimi.ingsw.model.Game;
 
 import java.io.Serializable;
 
-public class IngressCardSwap implements Serializable,MessageMethod {
+public class IngressHallSwap implements Serializable,MessageMethod {
+
     /**
      *
      */
-    private String studentCard;
+    private String studentIngress;
 
     /**
      *
@@ -21,15 +22,15 @@ public class IngressCardSwap implements Serializable,MessageMethod {
      */
     @Override
     public void apply(Game game) {
-        game.expertIngressCardSwap( studentCard,studentHall);
-
+        game.expertIngressHallSwap(studentHall,studentIngress);
     }
 
-    public void setStudentCard(String student){
-        this.studentCard=student;
+
+    public void setStudentIngress(String student){
+        this.studentIngress=student;
     }
 
-    public void setStudentIngress(String studentHall){
+    public void setStudentHall(String studentHall){
         this.studentHall=studentHall;
     }
 }

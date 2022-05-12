@@ -82,19 +82,23 @@ public class Controller implements Runnable {
                         t0 = cli.choosingAssistant();
                         break;
 
-
                     case MOVING_STUDENTS:
-                        if(client.getGame().getCurrentRound().getId()==0)
-                            t0=cli.ingressCardSwap();
-                        if(client.getGame().getCurrentRound().getId()==1)
-                            t0=cli.ingressHallSwap();
-                        if(client.getGame().getCurrentRound().getId()==2)
-                            t0=cli.studentToHall();
-                        if(client.getGame().getCurrentRound().getId()==3)
-                            t0=cli.studentToIsland();
-                        t0 = cli.choosingExpertCardOrMoving();
-                        break;
+                        if(client.getGame().getCurrentRound().getId()==null)
+                            t0=cli.choosingExpertCardOrMoving();
+                        else {
+                            switch (client.getGame().getCurrentRound().getId()) {
+                                case 0:
+                                    t0 = cli.ingressCardSwap();
+                                case 1:
+                                    t0 = cli.ingressHallSwap();
+                                case 2:
+                                    t0 = cli.studentToHall();
+                                case 3:
+                                    t0 = cli.studentToIsland();
+                            }
+                        }
 
+                        break;
                     case MOVING_MOTHERNATURE:
                         t0 = cli.movingMotherNature();
                         break;

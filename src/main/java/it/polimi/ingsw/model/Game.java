@@ -492,28 +492,32 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param studentCard           The studentCard from the ExpertCard
-     * @param studentIngress        The student from the ingress
+     * @param student1           The studentCard from the ExpertCard
+     * @param student2        The student from the ingress
      */
-    public void expertIngressCardSwap(Student studentCard, Student studentIngress) {
-        if(this.currentRound.expertIngressCardSwap(studentCard, studentIngress)) {
+    public void expertIngressCardSwap(String student1, String student2) {
+        Student studentCard=IdManager.getInstance().getStudent(student1);
+        Student studentHall=IdManager.getInstance().getStudent(student2);
+        if(this.currentRound.expertIngressCardSwap(studentCard, studentHall)) {
             this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
-            expertCard.addStudent(studentCard);
-            propertyChange.firePropertyChange("expert moveStudentToIsland",studentCard,studentIngress);
+            expertCard.addStudent(studentHall);
+            propertyChange.firePropertyChange("expert moveStudentToIsland", student1, student2);
         }
 
     }
 
     /**
-     * @param studentHall           The student present in the hall
-     * @param studentIngress        The student present on the ingress
+     * @param studentHall1           The student present in the hall
+     * @param studentIngress1        The student present on the ingress
      */
-    public void expertIngressHallSwap(Student studentHall, Student studentIngress) {
-        if(this.currentRound.expertIngressHallSwap(studentHall,studentIngress)) {
+    public void expertIngressHallSwap(String studentHall1, String studentIngress1) {
+        Student studentHall=IdManager.getInstance().getStudent(studentHall1);
+        Student studentIngress=IdManager.getInstance().getStudent(studentIngress1);
+        if(this.currentRound.expertIngressHallSwap(studentHall, studentIngress)) {
             currentPlayer.getSchool().getIngress().addStudent((studentHall));
             currentPlayer.getSchool().getHall().getLine(studentIngress.getColor()).addStudent(studentIngress);
-            propertyChange.firePropertyChange("expert IngressHallSwap",studentHall,studentIngress);
+            propertyChange.firePropertyChange("expert IngressHallSwap", studentHall1, studentIngress1);
         }
 
     }

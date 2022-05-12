@@ -47,7 +47,7 @@ public class IngressHallSwapActionRoundTest {
         System.out.println(game.getCurrentPlayer());
         player1.getSchool().getHall().getLine(Color.RED).addStudent(student1);
         player1.getSchool().getIngress().addStudent(student);
-        game.expertIngressHallSwap(student1, student);
+        game.expertIngressHallSwap(student1.getId(), student.getId());
         assertTrue(player1.getSchool().getIngress().getStudents().contains(student1) && !player1.getSchool().getIngress().getStudents().contains(student) && player1.getSchool().getHall().getLine(Color.YELLOW).getStudents().contains(student) && !player1.getSchool().getHall().getLine(Color.RED).getStudents().contains(student1));
     }
 }

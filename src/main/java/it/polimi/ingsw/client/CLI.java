@@ -116,7 +116,7 @@ public class CLI {
         Thread t = new Thread(( ) -> {
             String input1;
             String input2;
-            System.out.println("It's your turn, " + client.getGame().getCurrentPlayer().getName() + " Here's your school:");
+            System.out.println("It's your turn, " + client.getGame().getCurrentPlayer().getName() + " Here's your Ingress:");
             for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
                System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
             }
@@ -194,7 +194,7 @@ public class CLI {
             System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (max " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
             int ind = 0;
             for (IslandInterface islandInterface : client.getGame().getIslandManager().getIslands()) {
-                if (islandInterface.getTowers().isEmpty()) {
+                if (islandInterface.getTowers()==null) {
                     System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
                 }
                 else
@@ -331,7 +331,7 @@ public class CLI {
                         playedCard=true;
                     }
 
-                    if (!playedCard && client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals( "47") ) {
+                    if (!playedCard && client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals( "42") ) {
                         int ind0 = 0;
                         System.out.println("This card needs a island to be selected where we put the deny token, select the island\n");
                         for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
@@ -386,25 +386,37 @@ public class CLI {
 
     public Thread ingressCardSwap() {
         Thread t = new Thread(() -> {
-            System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card\n");
-            System.out.println("Select the player from your ingress \n");
-            for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
-                System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
-            }
+            System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card , \nif you want to end the effect of this cart press exit otherwise press enter\n");
+            MessageMethod messageMethod;
             input = scanner.nextLine();
-            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
-                System.out.println("Ops! You entered a wrong or too high value, choose again!");
+            if(input=="exit") {
+                messageMethod = new RoundEnd();
+            }
+            else {
+                messageMethod = new IngressCardSwap();
+                System.out.println("Select the player from your ingress \n");
+                for (int i = 0; i < client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size(); i++) {
+                    System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
+                }
                 input = scanner.nextLine();
-            }
-            System.out.println("Select a player from the Card \n");
-            for(int i=0;i<((IngressCardSwapCard)client.getGame().getCardManager().getCurrentCard()).getStudents().size()-1;i++) {
-                System.out.println("Student " +((IngressCardSwapCard)client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
-            }
-            input = scanner.nextLine();
-            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
-                System.out.println("Ops! You entered a wrong or too high value, choose again!");
+                while (input == "" || !input.matches("[0-9]+") || Integer.parseInt(input) > client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size() - 1) {
+                    System.out.println("Ops! You entered a wrong or too high value, choose again!");
+                    input = scanner.nextLine();
+                }
+                ((IngressCardSwap)messageMethod).setStudentIngress(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get( Integer.parseInt(input)).getId());
+                System.out.println("Select a player from the Card \n");
+                for (int i = 0; i < ((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size() - 1; i++) {
+                    System.out.println("Student " + ((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
+                }
                 input = scanner.nextLine();
+                while (input == "" || !input.matches("[0-9]+") || Integer.parseInt(input) >( ((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size()- 1 )){
+                    System.out.println("Ops! You entered a wrong or too high value, choose again!");
+                    input = scanner.nextLine();
+                }
+                ((IngressCardSwap)messageMethod).setStudentCard(((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get( Integer.parseInt(input)).getId());
             }
+            controller.write(messageMethod);
+
 
         });
         t.start();
@@ -415,6 +427,51 @@ public class CLI {
 
     public Thread ingressHallSwap() {
         Thread t = new Thread(() -> {
+                System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card , \nif you want to end the effect of this cart press exit otherwise press enter\n");
+                MessageMethod messageMethod;
+                 input = scanner.nextLine();
+                if(input=="exit") {
+                    messageMethod = new RoundEnd();
+                }
+                else {
+                    messageMethod = new IngressHallSwap();
+                    System.out.println("Select the player from your ingress  \n");
+                    for (int i = 0; i < client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size(); i++) {
+                        System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
+                    }
+                    input = scanner.nextLine();
+                    while (input == "" || !input.matches("[0-9]+") || Integer.parseInt(input) > client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size() - 1) {
+                        System.out.println("Ops! You entered a wrong or too high value, choose again!");
+                        input = scanner.nextLine();
+                    }
+                    ((IngressHallSwap)messageMethod).setStudentIngress(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get( Integer.parseInt(input)).getId());
+                    System.out.println("Select a player from your Hall \n");
+                    System.out.println("First you have to select the color of the line, YELLOW=0  BLUE=1  GREEN=2  RED=3  PINK=4\n");
+                    for(Color c : Color.values()) {
+
+                        for (int i = 0; i < client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().size();i++) {
+                            System.out.println("Student " +  client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getColor() + " Number " + i + "\n");
+                        }
+                        System.out.println("\n");
+                    }
+                    System.out.println("Select the color of the line, YELLOW=0  BLUE=1  GREEN=2  RED=3  PINK=4 \n");
+                    input = scanner.nextLine();
+                    while (!(input.equals("0") || input.equals("1") || (input.equals("2")) || input.equals("3") || input.equals("4"))) {
+                        System.out.println("Ops! You entered a wrong value!");
+                        input = scanner.nextLine();
+                    }
+                    System.out.println("Write the number of the student in the correspondent line");
+                    String input1=scanner.nextLine();
+                    while(input1 == "" || !input1.matches("[0-9]+") || Integer.parseInt(input1) > client.getGame().getCurrentPlayer().getSchool().getHall().getLine(Color.getColor(Integer.parseInt(input))).getStudents().size() - 1) {
+                        System.out.println("Ops! You entered a wrong value!");
+                        input1 = scanner.nextLine();
+                    }
+                    ((IngressHallSwap)messageMethod).setStudentHall(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(Color.getColor(Integer.parseInt(input))).getStudents().get(Integer.parseInt(input1)).getId());
+                }
+                controller.write(messageMethod);
+
+
+
         });
         t.start();
         return t;
@@ -422,6 +479,9 @@ public class CLI {
 
     public Thread studentToHall() {
         Thread t = new Thread(() -> {
+
+
+
         });
         t.start();
         return t;

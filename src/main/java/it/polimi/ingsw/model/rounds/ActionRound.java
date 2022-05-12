@@ -158,6 +158,11 @@ public class ActionRound implements RoundInterface, Serializable {
         return null;
     }
 
+    @Override
+    public Integer getId() {
+        return null;
+    }
+
 
     /**
      * @param student
