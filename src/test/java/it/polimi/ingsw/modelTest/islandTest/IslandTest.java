@@ -81,7 +81,7 @@ public class IslandTest {
         island.addTower(tower);
         assertTrue(island.getTowers().contains(tower));
         island.removeTower(tower);
-        assertTrue(island.getTowers().isEmpty());
+        assertTrue(island.getTowers()==null);
     }
 
     @Test
@@ -108,7 +108,7 @@ public class IslandTest {
     public void setDenyTest(){
         Island island=new Island();
         island.setDeny();
-        assertTrue(island.getDeny()==true);
+        assertTrue(island.getDeny()==1);
 
     }
 
@@ -117,7 +117,7 @@ public class IslandTest {
         Island island=new Island();
         island.setDeny();
         island.removeDeny();
-        assertTrue(island.getDeny()==false);
+        assertTrue(island.getDeny()==0);
     }
 
     @Test

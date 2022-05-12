@@ -52,9 +52,9 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     private Boolean isGrouped = false;
 
     /**
-     *
+     * Stores the number of deny tokens on the island
      */
-    private Boolean isDenied = false;
+    private Integer denyTokens = 0;
 
     /**
      *
@@ -147,22 +147,24 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
-     * Set the state of isDenied
+     * Adds one deny token to the island
      */
-    public void setDeny() { this.isDenied = true; }
+    public void setDeny() { denyTokens++; }
 
     /**
-     * @return boolean      Return the state of isDenied
+     * @return the number of denyTokens on the island
      */
-    public boolean getDeny(){
-        return this.isDenied;
+    public Integer getDeny(){
+        return denyTokens;
     };
 
     /**
-     * Set isDenied to false;
+     * Removes one deny token from the island
      */
     public void removeDeny() {
-        this.isDenied = false;
+        if(denyTokens>0){
+            denyTokens--;
+        }
     }
 
     /**
