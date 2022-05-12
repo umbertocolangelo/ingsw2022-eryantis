@@ -36,7 +36,7 @@ public class StudentToIslandActionRoundTest {
         player1.getSchool().getHall().getLine(Color.RED).addStudent(student1);
         Island island = new Island();
         System.out.println(game.getCardManager().getCurrentCard());
-        game.expertStudentToIsland(student,island);
+        game.expertStudentToIsland(student.getId(),island.getId());
         assertTrue(island.getStudents().contains(student));
     }
 

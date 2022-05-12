@@ -2,8 +2,6 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.Wizard;
-import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
@@ -61,7 +59,7 @@ public interface GameInterface {
      * @param student
      * @param island
      */
-    public void expertStudentToIsland(Student student, Island island);
+    public void expertStudentToIsland(String student, String island);
 
     /**
      * @param student1
@@ -76,9 +74,9 @@ public interface GameInterface {
     void expertIngressHallSwap(String studentHall1, String studentIngress1);
 
     /**
-     * @param student
+     * @param student1
      */
-    void expertStudentToHall(Student student);
+    void expertStudentToHall(String student1);
 
     /**
      * @param cloud

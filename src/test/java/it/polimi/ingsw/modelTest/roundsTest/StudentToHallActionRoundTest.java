@@ -45,7 +45,7 @@ public class StudentToHallActionRoundTest {
         Student student1=new Student(Color.RED);
         Student student=new Student(Color.YELLOW);
         System.out.println(game.getCurrentPlayer());
-        game.expertStudentToHall(student1);
+        game.expertStudentToHall(student1.getId());
         assertTrue( player1.getSchool().getHall().getLine(Color.RED).getStudents().contains(student1) );
     }
 }

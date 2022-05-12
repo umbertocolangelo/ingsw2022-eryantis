@@ -29,7 +29,7 @@ public class ActionRound implements RoundInterface, Serializable {
         this.game.setCurrentPlayer(this.game.getOrderedPLayerList().getFirst());
         this.currentPlayer=this.game.getCurrentPlayer();
         this.currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
-        this.game.getCardManager().setCurrentCard(null);
+
         this.clouds= new LinkedList<>(game.getClouds());
     }
     /**

@@ -89,12 +89,16 @@ public class Controller implements Runnable {
                             switch (client.getGame().getCurrentRound().getId()) {
                                 case 0:
                                     t0 = cli.ingressCardSwap();
+                                    break;
                                 case 1:
                                     t0 = cli.ingressHallSwap();
+                                    break;
                                 case 2:
                                     t0 = cli.studentToHall();
+                                    break;
                                 case 3:
                                     t0 = cli.studentToIsland();
+                                    break;
                             }
                         }
 

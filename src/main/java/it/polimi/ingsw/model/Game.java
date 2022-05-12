@@ -478,10 +478,12 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param student               The student we want to put on the island
-     * @param island                The island where we want to put hte student
+     * @param student1             The student we want to put on the island
+     * @param island1                The island where we want to put hte student
      */
-    public void expertStudentToIsland(Student student, Island island) {
+    public void expertStudentToIsland(String student1, String island1) {
+        Student student=IdManager.getInstance().getStudent(student1);
+        Island island=IdManager.getInstance().getIsland(island1);
         if(this.currentRound.expertStudentToIsland(student,island)){
             island.addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
@@ -523,9 +525,10 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param student           The student we want to put in the Hall
+     * @param student1           The student we want to put in the Hall
      */
-    public void expertStudentToHall(Student student) {
+    public void expertStudentToHall(String student1) {
+        Student student=IdManager.getInstance().getStudent(student1);
         if(this.currentRound.expertStudentToHall(student)) {
             currentPlayer.getSchool().getHall().addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
