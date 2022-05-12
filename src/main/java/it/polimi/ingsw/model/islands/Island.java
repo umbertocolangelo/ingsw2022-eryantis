@@ -24,6 +24,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
         this.id = idCounter.toString();
         IdManager.getInstance().addIsland(this);
         idCounter++;
+        if(idCounter==38){idCounter=26;}
     }
 
     /**
