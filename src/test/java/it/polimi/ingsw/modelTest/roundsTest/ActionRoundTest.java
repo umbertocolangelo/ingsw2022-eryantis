@@ -32,11 +32,11 @@ public class ActionRoundTest {
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
-        player.getSchool().getIngress().addStudent(student);
-        System.out.println(player.getSchool().getIngress().numOfStudents());
+        game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
+        System.out.println(game.getCurrentPlayer().getSchool().getIngress().numOfStudents());
         game.moveStudentIngressToHall(student.getId());
         System.out.println(game.getOrderedPLayerList());
-        assertTrue( player.getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
+        assertTrue( game.getCurrentPlayer().getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
 
     }
     /**
