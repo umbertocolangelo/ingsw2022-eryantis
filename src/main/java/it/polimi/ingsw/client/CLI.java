@@ -151,16 +151,21 @@ public class CLI {
                 int ind0 = 0;
                 for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
                     if (islandInterface.getTowers()==null) {
-                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                        System.out.print("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
                         for(int k=0;k<islandInterface.getStudents().size();k++) {
-                            System.out.println(islandInterface.getStudents().get(k).getColor() + "   ");
+                            System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
                         }
-                        System.out.println( "No tower\n");
+                        if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                            System.out.println("Mothernature is here !");
+                        System.out.println( "\nNo tower\n");
                     }
                     else {
+                        System.out.print("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
                         for(int k=0;k<islandInterface.getStudents().size()-1;k++)
                             System.out.println(islandInterface.getStudents().get(k).getColor() + "   " );
-                        System.out.println(  "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
+                        if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                            System.out.println("Mothernature is here !");
+                        System.out.print(  "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
 
                     }
                         ind0++;
