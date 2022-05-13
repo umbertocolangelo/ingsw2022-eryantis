@@ -216,6 +216,8 @@ public class Server {
                     game.initializeGame();
                     for (int i =0; i<game.getPlayerList().size(); i++) //Necessario per far giocare le play expertCArd
                         game.getPlayerList().get(i).setCoin(5);
+                    if(gameMode==false)
+                        game.setNormalMode();
                     sendGame();
                 }
                 if (object instanceof MessageMethod) {

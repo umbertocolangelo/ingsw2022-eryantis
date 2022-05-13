@@ -196,7 +196,7 @@ public class Game implements GameInterface, Serializable {
 
         // generate random numbers within 1 to 12
 
-        int rand = (int)(Math.random() * 12) ;
+        int rand = (int)(Math.random() * 11) ;
 
         this.motherNature.setIsland(islandManager.getIslands().get(rand));
         Island island = (Island) this.islandManager.nextIsland(6);
@@ -597,6 +597,16 @@ public class Game implements GameInterface, Serializable {
         }
         else
             return false;
+    }
+
+    @Override
+    public void setNormalMode() {
+        this.expertMode=false;
+    }
+
+    @Override
+    public Boolean getGameMode() {
+        return expertMode;
     }
 
     /**

@@ -216,14 +216,28 @@ public class CLI {
 
         Thread t = new Thread(() -> {
             System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (max " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
-            int ind = 0;
-            for (IslandInterface islandInterface : client.getGame().getIslandManager().getIslands()) {
+            int ind0 = 0;
+            for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
                 if (islandInterface.getTowers()==null) {
-                    System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
+                    System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                    for(int k=0;k<islandInterface.getStudents().size();k++) {
+                        System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
+                    }
+                    System.out.println( "\nNo tower");
+                    if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                        System.out.println("Mothernature is here !");
                 }
-                else
-                    System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind + "\nCurrent students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers().get(0).getId() + " color: " + islandInterface.getTowers() + "\n");
-                ind++;
+                else {
+                    System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                    for(int k=0;k<islandInterface.getStudents().size()-1;k++)
+                        System.out.println(islandInterface.getStudents().get(k).getColor() + "   " );
+                    if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                        System.out.println("\nMothernature is here !");
+                    System.out.print(  "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers());
+
+
+                }
+                ind0++;
             }
             input = scanner.nextLine();
             while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input=="0") {
@@ -267,47 +281,65 @@ public class CLI {
 
         Thread t = new Thread(() -> {
             Thread d;
-            if(client.getGame().getCardManager().getCurrentCard()!=null){
-                System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round");
-                Thread k = movingStudentsFromIngress();
+            Thread k;
+            if (client.getGame().getGameMode()) {
+                if (client.getGame().getCardManager().getCurrentCard() != null) {
+                    System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round");
+                    if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS)
+                        k = movingStudentsFromIngress();
+                    else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE)
+                        k = movingMotherNature();
+                    else
+                        k = choosingStudentsFromClouds();
+                    try {
+                        k.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1");
+                    input = scanner.nextLine();
+                    while (!(input.equals("1") || input.equals("0"))) {
+                        System.out.println("Ops! You entered a wrong value!");
+                        input = scanner.nextLine();
+                    }
+                    if (input.equals("0")) {
+                        System.out.println("You have " + client.getGame().getCurrentPlayer().getCoins() + " coins");
+                        Thread g = playExpertCard();
+                        try {
+                            g.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE) {
+                            d = movingMotherNature();
+                        } else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+                            d = movingStudentsFromIngress();
+
+                        } else {
+                            d = choosingStudentsFromClouds();
+                        }
+                        try {
+                            d.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }else{
+                if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS)
+                    k = movingStudentsFromIngress();
+                else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE)
+                    k = movingMotherNature();
+                else
+                    k = choosingStudentsFromClouds();
                 try {
                     k.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
-            else {
-                System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1");
-                input = scanner.nextLine();
-                while (!(input.equals("1") || input.equals("0"))) {
-                    System.out.println("Ops! You entered a wrong value!");
-                    input = scanner.nextLine();
-                }
-                if (input.equals("0")) {
-                    System.out.println("You have " + client.getGame().getCurrentPlayer().getCoins() + " coins");
-                    Thread g = playExpertCard();
-                    try {
-                        g.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    if(client.getGame().getCurrentPlayer().getPlayerPhase()== PlayerPhase.MOVING_MOTHERNATURE) {
-                         d = movingMotherNature();
-                    }
-                    else if(client.getGame().getCurrentPlayer().getPlayerPhase()== PlayerPhase.MOVING_STUDENTS){
-                        d = movingStudentsFromIngress();
 
-                    }
-                    else{
-                        d=choosingStudentsFromClouds();
-                    }
-                    try {
-                        d.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
             }
         });
         t.start();
