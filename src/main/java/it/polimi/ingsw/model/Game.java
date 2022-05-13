@@ -136,7 +136,7 @@ public class Game implements GameInterface, Serializable {
     /**
      *
      */
-    private ProfessorManager professorManager = new ProfessorManager(playerList);
+    private ProfessorManager professorManager;
 
     /**
      *
@@ -212,6 +212,7 @@ public class Game implements GameInterface, Serializable {
             playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
 
         }
+        professorManager= new ProfessorManager(playerList);
         influenceManager= new InfluenceManager(motherNature, playerList);
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
