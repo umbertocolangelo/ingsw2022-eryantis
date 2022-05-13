@@ -723,6 +723,8 @@ public class Game implements GameInterface, Serializable {
             for(Player p : players){
                 p.setThreePlayers();
             }
+        }else{
+            isThree=false;
         }
 
     }
