@@ -201,7 +201,7 @@ public class Game implements GameInterface, Serializable {
         this.motherNature.setIsland(islandManager.getIslands().get(rand));
         Island island = (Island) this.islandManager.nextIsland(6);
 
-        for(int i =0;i<11;i++) {
+        for(int i =0;i<12;i++) {
             if (!(islandManager.getIslands().get(i)==this.motherNature.getIsland()|| (islandManager.getIslands().get(i)==island))) {
                 Island island1 = (Island) islandManager.getIslands().get(i);
                 island1.addStudent(this.bag.newStudent());
