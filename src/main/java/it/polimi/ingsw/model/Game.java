@@ -543,9 +543,10 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param cloud is the cloud we want to select
+     * @param cloudId is the cloud we want to select
      */
-    public void chooseCloud(Cloud cloud) {
+    public void chooseCloud(String cloudId) {
+        Cloud cloud = IdManager.getInstance().getCloud(cloudId);
         if(this.currentRound.chooseCloud(cloud)) {
             while (cloud.getStudents().size() != 0) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
