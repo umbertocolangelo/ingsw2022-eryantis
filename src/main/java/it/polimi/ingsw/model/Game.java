@@ -340,6 +340,7 @@ public class Game implements GameInterface, Serializable {
         if(this.currentRound.moveStudentIngressToHall(student)) {
             this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
             studentsMoved++;
+            professorManager.checkProfessor(currentPlayer);
         }
         if((isThree.equals(true) && studentsMoved==4) || (isThree.equals(false) && studentsMoved==3)) {
             studentsMoved=0;
@@ -377,7 +378,8 @@ public class Game implements GameInterface, Serializable {
     public void moveMotherNature(Integer jumps) {
         if(this.currentRound.moveMotherNature(jumps)) {
             this.motherNature.setIsland(this.islandManager.nextIsland(jumps));
-
+            influenceManager.calculateInfluence();
+            //Bisognerebbe selezionare un tasto TODO
             currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         }
         if(!this.currentRound.moveMotherNature(jumps))
