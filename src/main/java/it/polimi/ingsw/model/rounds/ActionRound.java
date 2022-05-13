@@ -75,11 +75,12 @@ public class ActionRound implements RoundInterface, Serializable {
             }
             this.game.setCurrentPlayer(game.getPlayerList().getFirst());
             this.game.setRound(this.game.setPianificationRoundState());
-            game.getCardManager().resetCurrentCard();
+
             return true;
         }
         if(this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD){
             this.game.setRound(game.setActionRoundState());
+            game.getCardManager().resetCurrentCard();
             return true;
         }
         return false;
