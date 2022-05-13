@@ -3,6 +3,7 @@ package it.polimi.ingsw.modelTest.playerTest.boardTest;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.board.Ingress;
+import it.polimi.ingsw.model.studentSuppliers.Cloud;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -65,6 +66,21 @@ public class IngressTest {
         ingress.addStudent(student);
         ingress.addStudent(student1);
         assertTrue(ingress.numOfStudents()==2);
+
+    }
+
+    /**
+     *
+     */
+    @Test
+    public void test(){
+        Ingress ingress = new Ingress();
+        Student student = new Student(Color.RED);
+        Student student1 = new Student(Color.RED);
+        Cloud cloud=new Cloud();
+        cloud.addStudent(student);
+        ingress.addStudent(cloud.getStudents().get(0));
+        System.out.println(cloud.getStudents().size());
 
     }
 }

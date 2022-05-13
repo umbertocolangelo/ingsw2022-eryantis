@@ -68,6 +68,8 @@ public class ActionRound implements RoundInterface, Serializable {
     @Override
     public Boolean checkRoundEnded() {
         if(this.game.getOrderedPLayerList().isEmpty()) {
+            for(Cloud d: game.getClouds())
+            game.getBag().addStudentsOnCloud(d);
             for(int i=0;i<game.getPlayerList().size();i++){
                 this.game.getPlayerList().get(i).setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
             }
