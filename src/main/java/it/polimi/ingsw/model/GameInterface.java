@@ -3,7 +3,6 @@ package it.polimi.ingsw.model;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.player.Player;
-import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.util.LinkedList;
 
@@ -81,7 +80,7 @@ public interface GameInterface {
     /**
      * @param cloud
      */
-    void chooseCloud(Cloud cloud);
+    void chooseCloud(String cloud);
 
     public void finishExpertMove();
 

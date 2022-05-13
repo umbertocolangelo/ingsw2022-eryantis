@@ -262,7 +262,7 @@ public class CLI {
     public Thread choosingStudentsFromClouds() {
 
         Thread t = new Thread(() -> {
-            System.out.println(client.getGame().getClouds().get(0).getStudents().isEmpty());
+            System.out.println(client.getGame().getClouds());
             System.out.println("Now you can choose the group of students you want among the available clouds!");
             input = scanner.nextLine();
 
@@ -272,7 +272,7 @@ public class CLI {
             }
 
             MessageMethod messageMethod = new ChooseStudentsFromCloud();
-            ((ChooseStudentsFromCloud) messageMethod).setCloud(client.getGame().getClouds().get(Integer.parseInt(input)));
+            ((ChooseStudentsFromCloud) messageMethod).setCloud(client.getGame().getClouds().get(Integer.parseInt(input)).getId());
             controller.write(messageMethod);
         });
         t.start();

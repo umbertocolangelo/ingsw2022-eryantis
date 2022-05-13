@@ -1,7 +1,6 @@
 package it.polimi.ingsw.message;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.io.Serializable;
 
@@ -10,7 +9,7 @@ public class ChooseStudentsFromCloud implements MessageMethod, Serializable {
     /**
      *
      */
-    private Cloud cloud;
+    private String cloud;
 
     /**
      *
@@ -24,7 +23,7 @@ public class ChooseStudentsFromCloud implements MessageMethod, Serializable {
      *
      * @param cloud
      */
-    public void setCloud(Cloud cloud) {
+    public void setCloud(String cloud) {
         this.cloud = cloud;
     }
 
