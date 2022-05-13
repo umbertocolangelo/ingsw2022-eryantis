@@ -543,8 +543,7 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param cloud         The cloud we want to select
-     *                      Its not clear how we set the cloud we can get
+     * @param cloud is the cloud we want to select
      */
     public void chooseCloud(Cloud cloud) {
         if(this.currentRound.chooseCloud(cloud)) {
