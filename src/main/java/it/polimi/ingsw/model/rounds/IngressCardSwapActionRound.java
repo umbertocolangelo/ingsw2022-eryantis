@@ -126,8 +126,7 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
 
     public Boolean finishExpertMove() {
         studentsMoved=0;
-        this.game.getCardManager().setCurrentCard(null);
-        this.game.setRound(this.game.getPreviousRound());
+
         return true;
     }
 
@@ -170,5 +169,9 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     @Override
     public Integer getId() {
         return id;
+    }
+
+    public Integer getStudent(){
+        return studentsMoved;
     }
 }

@@ -1,8 +1,6 @@
 package it.polimi.ingsw.model.rounds;
 
-import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
@@ -104,4 +102,6 @@ public interface RoundInterface {
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard);
 
     Integer getId();
+
+
 }

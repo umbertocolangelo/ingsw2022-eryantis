@@ -492,6 +492,7 @@ public class Game implements GameInterface, Serializable {
             island.addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
+
             propertyChange.firePropertyChange("expert moveStudentToIsland",island,student);
 
         }
@@ -508,6 +509,8 @@ public class Game implements GameInterface, Serializable {
             this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(studentHall);
+            if(((IngressCardSwapActionRound)currentRound).getStudent()==0)
+                finishExpertMove();
             propertyChange.firePropertyChange("expert moveStudentToIsland", student1, student2);
         }
 
@@ -523,6 +526,8 @@ public class Game implements GameInterface, Serializable {
         if(this.currentRound.expertIngressHallSwap(studentHall, studentIngress)) {
             currentPlayer.getSchool().getIngress().addStudent((studentHall));
             currentPlayer.getSchool().getHall().getLine(studentIngress.getColor()).addStudent(studentIngress);
+            if(((IngressHallSwapActionRound)currentRound).getStudent()==0)
+                finishExpertMove();
             propertyChange.firePropertyChange("expert IngressHallSwap", studentHall1, studentIngress1);
         }
 
@@ -690,7 +695,8 @@ public class Game implements GameInterface, Serializable {
      *Used if the player wants to finish the move
      */
     public void finishExpertMove(){
-        this.currentRound.finishExpertMove();
+        cardManager.setCurrentCard(null);
+        setRound(previousRound);
         propertyChange.firePropertyChange("Finished expert move",cardManager.getCurrentCard(),null);
     }
 
@@ -752,6 +758,8 @@ public class Game implements GameInterface, Serializable {
     public MotherNature getMotherNature() {
         return this.motherNature;
     }
+
+
 
 
 }

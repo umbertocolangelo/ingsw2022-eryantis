@@ -166,4 +166,8 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     public Boolean chooseCloud(Cloud cloud) {
         return null;
     }
+
+    public Integer getStudent(){
+        return studentsMoved;
+    }
 }
