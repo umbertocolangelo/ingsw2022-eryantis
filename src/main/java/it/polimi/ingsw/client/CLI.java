@@ -2,6 +2,7 @@ package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
@@ -151,21 +152,23 @@ public class CLI {
                 int ind0 = 0;
                 for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
                     if (islandInterface.getTowers()==null) {
-                        System.out.print("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                        System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
                         for(int k=0;k<islandInterface.getStudents().size();k++) {
                             System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
                         }
+                        System.out.println( "\nNo tower");
                         if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
                             System.out.println("Mothernature is here !");
-                        System.out.println( "\nNo tower\n");
                     }
                     else {
-                        System.out.print("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                        System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
                         for(int k=0;k<islandInterface.getStudents().size()-1;k++)
                             System.out.println(islandInterface.getStudents().get(k).getColor() + "   " );
                         if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
-                            System.out.println("Mothernature is here !");
-                        System.out.print(  "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
+                            System.out.println("\nMothernature is here !");
+                        System.out.print(  "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers());
+                        System.out.println("\nMothernature is here !");
+
 
                     }
                         ind0++;
@@ -263,6 +266,7 @@ public class CLI {
     public Thread choosingExpertCardOrMoving() {
 
         Thread t = new Thread(() -> {
+            Thread d;
             if(client.getGame().getCardManager().getCurrentCard()!=null){
                 System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round");
                 Thread k = movingStudentsFromIngress();
@@ -273,7 +277,7 @@ public class CLI {
                 }
             }
             else {
-                System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1 to move the student");
+                System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1");
                 input = scanner.nextLine();
                 while (!(input.equals("1") || input.equals("0"))) {
                     System.out.println("Ops! You entered a wrong value!");
@@ -288,7 +292,16 @@ public class CLI {
                         e.printStackTrace();
                     }
                 } else {
-                    Thread d = movingStudentsFromIngress();
+                    if(client.getGame().getCurrentPlayer().getPlayerPhase()== PlayerPhase.MOVING_MOTHERNATURE) {
+                         d = movingMotherNature();
+                    }
+                    else if(client.getGame().getCurrentPlayer().getPlayerPhase()== PlayerPhase.MOVING_STUDENTS){
+                        d = movingStudentsFromIngress();
+
+                    }
+                    else{
+                        d=choosingStudentsFromClouds();
+                    }
                     try {
                         d.join();
                     } catch (InterruptedException e) {

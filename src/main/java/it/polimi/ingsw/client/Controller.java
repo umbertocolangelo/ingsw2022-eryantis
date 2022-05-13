@@ -104,11 +104,11 @@ public class Controller implements Runnable {
 
                         break;
                     case MOVING_MOTHERNATURE:
-                        t0 = cli.movingMotherNature();
+                        t0 = cli.choosingExpertCardOrMoving();
                         break;
 
                     case CHOOSING_CLOUD:
-                       t0 = cli.choosingStudentsFromClouds();
+                       t0 = cli.choosingExpertCardOrMoving();
                        break;
                }
                try {
