@@ -21,20 +21,6 @@ public interface RoundInterface {
     public Boolean  checkRoundEnded();
 
     /**
-     *
-     */
-    private void setPianificationRound() {
-
-    }
-
-    /**
-     *
-     */
-    private void setActionRound() {
-
-    }
-
-    /**
      * @param student
      * @return
      */
@@ -106,10 +92,6 @@ public interface RoundInterface {
      * @return
      */
     public Boolean chooseCloud(Cloud cloud);
-
-    private void expertMoveStudentToBag(Game game, Color color) {
-
-    }
 
     /**
      *

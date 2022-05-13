@@ -1,5 +1,7 @@
-package it.polimi.ingsw.client;
+package it.polimi.ingsw.client.view;
 
+import it.polimi.ingsw.client.Client;
+import it.polimi.ingsw.client.Controller;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.Wizard;

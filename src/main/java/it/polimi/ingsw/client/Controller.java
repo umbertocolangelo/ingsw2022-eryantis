@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client;
 
+import it.polimi.ingsw.client.view.CLI;
+
 import java.io.IOException;
 import java.util.Scanner;
 
