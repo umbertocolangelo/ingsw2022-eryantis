@@ -144,9 +144,22 @@ public class Bag implements Serializable {
      * @param color
      */
     public void reinsertStudent(Color color) {
-        /**
-         * To implent , dont know the task
-         */
+        switch (color){
+            case YELLOW:
+                yellowStudentsNum--;
+                break;
+            case GREEN:
+                greenStudentsNum--;
+                break;
+            case BLUE:
+                blueStudentsNum--;
+                break;
+            case RED:
+                redStudentsNum--;
+                break;
+            case PINK:
+                pinkStudentsNum--;
+        }
     }
 
     /**
