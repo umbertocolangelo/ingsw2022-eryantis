@@ -121,17 +121,9 @@ public class CLI {
         Thread t = new Thread(( ) -> {
             String input1;
             String input2;
+            showIsland();
             System.out.println("\nIt's your turn, " + client.getGame().getCurrentPlayer().getName() + " here's you Hall:\n" );
-            for(Color c :Color.values()){
-                    System.out.println("In the " + c +"  line you have " + client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().size() + " student");
-                    if(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).isProfessor())
-                        System.out.println("You have the professor for the color  " + c);
-            }
-
-            System.out.println("\nHere's your Ingress:\n ");
-            for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
-               System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i );
-            }
+            showSchool();
             System.out.println("Choose 3 students in your ingress and place each one or in the hall or on an island!");
             input = scanner.nextLine();
             while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1) {
@@ -152,30 +144,7 @@ public class CLI {
             }
             else if (input1.equals("1")) {
                 System.out.println("On which island do you want to move the student to? Select the Group Number\n");
-                int ind0 = 0;
-                for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                    if (islandInterface.getTowers()==null) {
-                        System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
-                        for(int k=0;k<islandInterface.getStudents().size();k++) {
-                            System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
-                        }
-                        System.out.println( "\nNo tower");
-                        if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
-                            System.out.println("Mothernature is here !");
-                    }
-                    else {
-                        System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
-                        for(int k=0;k<islandInterface.getStudents().size()-1;k++)
-                            System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
-                        if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
-                            System.out.println("\nMothernature is here !");
-                        for(Tower h : islandInterface.getTowers())
-                        System.out.print(  "Tower " + h.getColor() + "  " +"\n");
-
-
-                    }
-                        ind0++;
-                }
+                showIsland();
                 input1 = scanner.nextLine();
                 while (input1 =="" || Integer.parseInt(input1)>client.getGame().getIslandManager().getIslands().size()-1) {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!");
@@ -218,30 +187,9 @@ public class CLI {
     public Thread movingMotherNature() {
 
         Thread t = new Thread(() -> {
+            showSchool();
             System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (max " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
-            int ind0 = 0;
-            for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                if (islandInterface.getTowers()==null) {
-                    System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
-                    for(int k=0;k<islandInterface.getStudents().size();k++) {
-                        System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
-                    }
-                    System.out.println( "\nNo tower");
-                    if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
-                        System.out.println("Mothernature is here !");
-                }
-                else {
-                    System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
-                    for(int k=0;k<islandInterface.getStudents().size()-1;k++)
-                        System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
-                    if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
-                        System.out.println("\nMothernature is here !");
-                    for(Tower h : islandInterface.getTowers())
-                        System.out.print(  "Tower " + h.getColor() + "  " +"\n");
-
-                }
-                ind0++;
-            }
+            showIsland();
             input = scanner.nextLine();
             while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input=="0") {
                 System.out.println("Ops! You entered a wrong or too high value, choose again!");
@@ -401,16 +349,9 @@ public class CLI {
                     }
 
                     if (!playedCard && client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals( "42") ) {
-                        int ind0 = 0;
+
                         System.out.println("This card needs a island to be selected where we put the deny token, select the island\n");
-                        for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                            if (islandInterface.getTowers()==null) {
-                                System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
-                            }
-                            else
-                                System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
-                            ind0++;
-                        }
+                         showIsland();
                         System.out.println("On which island do you want to move the student to?");
                         input = scanner.nextLine();
                         while (input =="" || Integer.parseInt(input)>client.getGame().getIslandManager().getIslands().size()-1) {
@@ -464,9 +405,7 @@ public class CLI {
             else {
                 messageMethod = new IngressCardSwap();
                 System.out.println("Select the player from your ingress \n");
-                for (int i = 0; i < client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size(); i++) {
-                    System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
-                }
+                showSchool();
                 input = scanner.nextLine();
                 while (input == "" || !input.matches("[0-9]+") || Integer.parseInt(input) > client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size() - 1) {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!");
@@ -584,14 +523,7 @@ public class CLI {
 
             System.out.println("On which island do you want to put the student?");
 
-            for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
-                if (islandInterface.getTowers()==null) {
-                    System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
-                }
-                else
-                    System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
-                ind0++;
-            }
+            showIsland();
             System.out.println("On which island do you want to move the student to?");
             input = scanner.nextLine();
             while (input =="" || Integer.parseInt(input)>client.getGame().getIslandManager().getIslands().size()-1) {
@@ -606,6 +538,47 @@ public class CLI {
         });
         t.start();
         return t;
+    }
+
+
+    private void showIsland(){
+        int ind0=0;
+        for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
+            if (islandInterface.getTowers()==null) {
+                System.out.print("\nIsland " + ind0 + "\nCurrent students:  ");
+                for(int k=0;k<islandInterface.getStudents().size();k++) {
+                    System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
+                }
+                System.out.println( "\nNo tower");
+                if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                    System.out.println("Mothernature is here !");
+            }
+            else {
+                System.out.print("\nIsland " + ind0 + "\nCurrent students:  ");
+                for(int k=0;k<islandInterface.getStudents().size();k++)
+                    System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
+                if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                    System.out.println("\nMothernature is here !");
+                for(Tower h : islandInterface.getTowers())
+                    System.out.print(  "Tower " + h.getColor() + "  " +"\n");
+
+            }
+            ind0++;
+        }
+    }
+
+
+    private void showSchool(){
+        for(Color c :Color.values()){
+            System.out.println("In the " + c +"  line you have " + client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().size() + " student");
+            if(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).isProfessor())
+                System.out.println("You have the professor for the color  " + c);
+        }
+
+        System.out.println("\nHere's your Ingress:\n ");
+        for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
+            System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i );
+        }
     }
 
 
