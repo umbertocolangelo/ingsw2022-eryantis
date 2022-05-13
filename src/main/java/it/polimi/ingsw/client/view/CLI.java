@@ -549,7 +549,7 @@ public class CLI {
     public Thread studentToHall() {
         Thread t = new Thread(() -> {
             System.out.println("You have to select the student from the card you want to put in the Hall, those are the students present on the card\n");
-            for (int i = 0; i < ((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size() - 1; i++) {
+            for (int i = 0; i < ((StudentToHallCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size() - 1; i++) {
                 System.out.println("Student " + ((StudentToHallCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
             }
             input = scanner.nextLine();
