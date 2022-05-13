@@ -104,4 +104,14 @@ public interface GameInterface {
      */
     public Boolean chooseColorAndDeck(PlayerColor color, Wizard wizard);
 
+    /**
+     *
+     */
+    public void setNormalMode();
+
+    public Boolean getGameMode();
+
+
+
+
 }

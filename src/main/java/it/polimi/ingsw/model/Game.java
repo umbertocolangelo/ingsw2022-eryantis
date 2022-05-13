@@ -125,7 +125,7 @@ public class Game implements GameInterface, Serializable {
     /**
      *
      */
-    private InfluenceManager influenceManager = new InfluenceManager(motherNature, playerList);
+    private InfluenceManager influenceManager;
 
 
     /**
@@ -196,7 +196,7 @@ public class Game implements GameInterface, Serializable {
 
         // generate random numbers within 1 to 12
 
-        int rand = (int)(Math.random() * 12) ;
+        int rand = (int)(Math.random() * 11) ;
 
         this.motherNature.setIsland(islandManager.getIslands().get(rand));
         Island island = (Island) this.islandManager.nextIsland(6);
@@ -212,6 +212,7 @@ public class Game implements GameInterface, Serializable {
             playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
 
         }
+        influenceManager= new InfluenceManager(motherNature, playerList);
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
     }
@@ -340,14 +341,16 @@ public class Game implements GameInterface, Serializable {
         if(this.currentRound.moveStudentIngressToHall(student)) {
             this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
             studentsMoved++;
+            professorManager.checkProfessor(currentPlayer);
         }
         if((isThree.equals(true) && studentsMoved==4) || (isThree.equals(false) && studentsMoved==3)) {
             studentsMoved=0;
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
 
         }
+        System.out.println(student.getPosition());
         System.out.println(currentPlayer.getName());
-        System.out.println(currentPlayer.getSchool().getIngress().getStudents().size());
+        System.out.println(currentPlayer.getSchool().getIngress());
         propertyChange.firePropertyChange("moveStudentIngress",  this.currentPlayer.getSchool().getHall().getLine(student.getColor()),student);
     }
 
@@ -377,7 +380,8 @@ public class Game implements GameInterface, Serializable {
     public void moveMotherNature(Integer jumps) {
         if(this.currentRound.moveMotherNature(jumps)) {
             this.motherNature.setIsland(this.islandManager.nextIsland(jumps));
-
+            influenceManager.calculateInfluence();
+            //Bisognerebbe selezionare un tasto TODO
             currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         }
         if(!this.currentRound.moveMotherNature(jumps))
@@ -547,9 +551,10 @@ public class Game implements GameInterface, Serializable {
             while (cloud.getStudents().size() != 0) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
             }
+            this.currentRound.checkRoundEnded();
             propertyChange.firePropertyChange("Choose cloud",this.clouds,cloud);
         }
-        this.currentRound.checkRoundEnded();
+
     }
 
     /**
@@ -594,6 +599,16 @@ public class Game implements GameInterface, Serializable {
         }
         else
             return false;
+    }
+
+    @Override
+    public void setNormalMode() {
+        this.expertMode=false;
+    }
+
+    @Override
+    public Boolean getGameMode() {
+        return expertMode;
     }
 
     /**

@@ -4,6 +4,7 @@ import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.Controller;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
@@ -11,6 +12,7 @@ import it.polimi.ingsw.model.expertCards.deck.StudentToHallCard;
 import it.polimi.ingsw.model.expertCards.deck.StudentToIslandCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
+import it.polimi.ingsw.model.pawns.Tower;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.SetUpRound;
 
@@ -119,9 +121,16 @@ public class CLI {
         Thread t = new Thread(( ) -> {
             String input1;
             String input2;
-            System.out.println("It's your turn, " + client.getGame().getCurrentPlayer().getName() + " Here's your Ingress:");
+            System.out.println("\nIt's your turn, " + client.getGame().getCurrentPlayer().getName() + " here's you Hall:\n" );
+            for(Color c :Color.values()){
+                    System.out.println("In the " + c +"  line you have " + client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().size() + " student");
+                    if(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).isProfessor())
+                        System.out.println("You have the professor for the color  " + c);
+            }
+
+            System.out.println("\nHere's your Ingress:\n ");
             for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
-               System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i + "\n");
+               System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i );
             }
             System.out.println("Choose 3 students in your ingress and place each one or in the hall or on an island!");
             input = scanner.nextLine();
@@ -146,11 +155,26 @@ public class CLI {
                 int ind0 = 0;
                 for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
                     if (islandInterface.getTowers()==null) {
-                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "        Current students: " + islandInterface.getStudents() + "\nNo tower\n");
+                        System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                        for(int k=0;k<islandInterface.getStudents().size();k++) {
+                            System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
+                        }
+                        System.out.println( "\nNo tower");
+                        if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                            System.out.println("Mothernature is here !");
                     }
-                    else
-                        System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind0 + "        Current students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers() + "\n");
-                    ind0++;
+                    else {
+                        System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                        for(int k=0;k<islandInterface.getStudents().size()-1;k++)
+                            System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
+                        if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                            System.out.println("\nMothernature is here !");
+                        for(Tower h : islandInterface.getTowers())
+                        System.out.print(  "Tower " + h.getColor() + "  " +"\n");
+
+
+                    }
+                        ind0++;
                 }
                 input1 = scanner.nextLine();
                 while (input1 =="" || Integer.parseInt(input1)>client.getGame().getIslandManager().getIslands().size()-1) {
@@ -195,14 +219,28 @@ public class CLI {
 
         Thread t = new Thread(() -> {
             System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (max " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
-            int ind = 0;
-            for (IslandInterface islandInterface : client.getGame().getIslandManager().getIslands()) {
+            int ind0 = 0;
+            for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
                 if (islandInterface.getTowers()==null) {
-                    System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind + "\nCurrent students: " + islandInterface.getStudents() + "\nNo tower\n");
+                    System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                    for(int k=0;k<islandInterface.getStudents().size();k++) {
+                        System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
+                    }
+                    System.out.println( "\nNo tower");
+                    if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                        System.out.println("Mothernature is here !");
                 }
-                else
-                    System.out.println("Island " + islandInterface.getId() + "\nGroupNumber " + ind + "\nCurrent students: " + islandInterface.getStudents() + "\nTower " + islandInterface.getTowers().get(0).getId() + " color: " + islandInterface.getTowers() + "\n");
-                ind++;
+                else {
+                    System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
+                    for(int k=0;k<islandInterface.getStudents().size()-1;k++)
+                        System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
+                    if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                        System.out.println("\nMothernature is here !");
+                    for(Tower h : islandInterface.getTowers())
+                        System.out.print(  "Tower " + h.getColor() + "  " +"\n");
+
+                }
+                ind0++;
             }
             input = scanner.nextLine();
             while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input=="0") {
@@ -224,11 +262,11 @@ public class CLI {
     public Thread choosingStudentsFromClouds() {
 
         Thread t = new Thread(() -> {
-            System.out.println(client.getGame().getClouds());
+            System.out.println(client.getGame().getClouds().get(0).getStudents().isEmpty());
             System.out.println("Now you can choose the group of students you want among the available clouds!");
             input = scanner.nextLine();
 
-            while (input=="" || Integer.parseInt(input)>client.getGame().getClouds().size()-1 || client.getGame().getClouds().get( Integer.parseInt(input)).getStudents().isEmpty()) {
+            while (input=="" || Integer.parseInt(input)>client.getGame().getClouds().size()-1 || client.getGame().getClouds().get(Integer.parseInt(input)).getStudents().isEmpty()) {
                 System.out.println("Ops! You entered a wrong or too high value or the cloud is empty, choose again!");
                 input = scanner.nextLine();
             }
@@ -245,38 +283,66 @@ public class CLI {
     public Thread choosingExpertCardOrMoving() {
 
         Thread t = new Thread(() -> {
-            if(client.getGame().getCardManager().getCurrentCard()!=null){
-                System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round");
-                Thread k = movingStudentsFromIngress();
+            Thread d;
+            Thread k;
+            if (client.getGame().getGameMode()) {
+                if (client.getGame().getCardManager().getCurrentCard() != null) {
+                    System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round");
+                    if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS)
+                        k = movingStudentsFromIngress();
+                    else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE)
+                        k = movingMotherNature();
+                    else
+                        k = choosingStudentsFromClouds();
+                    try {
+                        k.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1");
+                    input = scanner.nextLine();
+                    while (!(input.equals("1") || input.equals("0"))) {
+                        System.out.println("Ops! You entered a wrong value!");
+                        input = scanner.nextLine();
+                    }
+                    if (input.equals("0")) {
+                        System.out.println("You have " + client.getGame().getCurrentPlayer().getCoins() + " coins");
+                        Thread g = playExpertCard();
+                        try {
+                            g.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    } else {
+                        if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE) {
+                            d = movingMotherNature();
+                        } else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+                            d = movingStudentsFromIngress();
+
+                        } else {
+                            d = choosingStudentsFromClouds();
+                        }
+                        try {
+                            d.join();
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }else{
+                if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS)
+                    k = movingStudentsFromIngress();
+                else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE)
+                    k = movingMotherNature();
+                else
+                    k = choosingStudentsFromClouds();
                 try {
                     k.join();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-            }
-            else {
-                System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1 to move the student");
-                input = scanner.nextLine();
-                while (!(input.equals("1") || input.equals("0"))) {
-                    System.out.println("Ops! You entered a wrong value!");
-                    input = scanner.nextLine();
-                }
-                if (input.equals("0")) {
-                    System.out.println("You have " + client.getGame().getCurrentPlayer().getCoins() + " coins");
-                    Thread g = playExpertCard();
-                    try {
-                        g.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                } else {
-                    Thread d = movingStudentsFromIngress();
-                    try {
-                        d.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
+
             }
         });
         t.start();

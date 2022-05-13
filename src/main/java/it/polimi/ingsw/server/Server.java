@@ -142,7 +142,9 @@ public class Server {
     public Boolean equalName(String username,Boolean isFirst) {
         if(isFirst)
             return false;
-        for (int i =0; i<socketConnections.size()-1; i++) {
+        for (int i = 0; i<socketConnections.size()-1; i++) {
+            if(socketConnections.get(i).getName() == null)
+                return false;
             if (socketConnections.get(i).getName().equals(username))
                return true;
         }
@@ -216,6 +218,8 @@ public class Server {
                     game.initializeGame();
                     for (int i =0; i<game.getPlayerList().size(); i++) //Necessario per far giocare le play expertCArd
                         game.getPlayerList().get(i).setCoin(5);
+                    if(gameMode==false)
+                        game.setNormalMode();
                     sendGame();
                 }
                 if (object instanceof MessageMethod) {
