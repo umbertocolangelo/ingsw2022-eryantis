@@ -557,10 +557,10 @@ public class CLI {
                 System.out.print("\nIsland " + ind0 + "\nCurrent students:  ");
                 for(int k=0;k<islandInterface.getStudents().size();k++)
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
-                if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
-                    System.out.println("\nMothernature is here !");
                 for(Tower h : islandInterface.getTowers())
-                    System.out.print(  "Tower " + h.getColor() + "  " +"\n");
+                    System.out.println(  "\nTower " + h.getColor());
+                if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                    System.out.println("Mothernature is here !");
 
             }
             ind0++;
