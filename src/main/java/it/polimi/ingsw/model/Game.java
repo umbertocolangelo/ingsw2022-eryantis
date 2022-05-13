@@ -543,11 +543,10 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param cloud1         The cloud we want to select
-     *                      Its not clear how we set the cloud we can get
+     * @param cloudId         The cloud we want to select3
      */
-    public void chooseCloud(String cloud1) {
-        Cloud cloud= IdManager.getInstance().getCloud(cloud1);
+    public void chooseCloud(String cloudId) {
+        Cloud cloud= IdManager.getInstance().getCloud(cloudId);
         if(this.currentRound.chooseCloud(cloud)) {
             while (cloud.getStudents().size() != 0) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());

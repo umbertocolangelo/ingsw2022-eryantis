@@ -3,10 +3,8 @@ package it.polimi.ingsw.modelTest.roundsTest;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.islands.Island;
-import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
-import it.polimi.ingsw.model.studentSuppliers.Cloud;
 import it.polimi.ingsw.utils.IdManager;
 import org.junit.jupiter.api.Test;
 
@@ -113,10 +111,10 @@ public class ActionRoundTest {
         game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
         LinkedList<Student> students = game.getClouds().get(0).getStudents();
-        game.chooseCloud(game.getClouds().get(0));
+        game.chooseCloud(game.getClouds().get(0).getId());
         game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
-        game.chooseCloud(game.getClouds().get(1));
+        game.chooseCloud(game.getClouds().get(1).getId());
         System.out.println(game.getCurrentPlayer().getName() + "is the current player");
         assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(0)));
         assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(1)));
