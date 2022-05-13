@@ -57,6 +57,8 @@ public class Controller implements Runnable {
      */
     @Override
     public void run() {
+
+
         switch (clientState) {
 
             case LOGIN:
@@ -70,6 +72,10 @@ public class Controller implements Runnable {
                 break;
 
             case PLAYING:
+                for(int i = 0; i < 50; i++)
+                {
+                    System.out.println("\b");
+                }
 
                 switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
 

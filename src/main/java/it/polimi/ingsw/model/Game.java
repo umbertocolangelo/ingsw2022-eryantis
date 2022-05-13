@@ -125,7 +125,7 @@ public class Game implements GameInterface, Serializable {
     /**
      *
      */
-    private InfluenceManager influenceManager = new InfluenceManager(motherNature, playerList);
+    private InfluenceManager influenceManager;
 
 
     /**
@@ -212,6 +212,7 @@ public class Game implements GameInterface, Serializable {
             playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
 
         }
+        influenceManager= new InfluenceManager(motherNature, playerList);
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
     }
@@ -347,8 +348,9 @@ public class Game implements GameInterface, Serializable {
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
 
         }
+        System.out.println(student.getPosition());
         System.out.println(currentPlayer.getName());
-        System.out.println(currentPlayer.getSchool().getIngress().getStudents().size());
+        System.out.println(currentPlayer.getSchool().getIngress());
         propertyChange.firePropertyChange("moveStudentIngress",  this.currentPlayer.getSchool().getHall().getLine(student.getColor()),student);
     }
 

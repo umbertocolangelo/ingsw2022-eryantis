@@ -161,7 +161,10 @@ public class SocketClientConnection implements Runnable {
      * @return name     Return the playerName
      */
     public String getName(){
+        if(name!=null)
         return  this.name;
+        else
+            return null;
     }
 
     /**

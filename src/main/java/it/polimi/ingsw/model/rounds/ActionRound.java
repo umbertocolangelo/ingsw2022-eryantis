@@ -25,12 +25,9 @@ public class ActionRound implements RoundInterface, Serializable {
      */
     public ActionRound(Game game, Boolean isThreePlayers) {
         this.game=game;
-        this.isThreePlayers=isThreePlayers;
         this.game.setCurrentPlayer(this.game.getOrderedPLayerList().getFirst());
         this.currentPlayer=this.game.getCurrentPlayer();
         this.currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
-
-        this.clouds= new LinkedList<>(game.getClouds());
     }
     /**
      * Keep the track if we already played a card in this round
@@ -60,15 +57,6 @@ public class ActionRound implements RoundInterface, Serializable {
     /**
      *
      */
-    private Boolean isThreePlayers=false;
-
-    /**
-     *
-     */
-     public LinkedList<Cloud> clouds= new LinkedList<>();
-    /**
-     *
-     */
     private void checkWinner() {
         // TODO implement here
     }
@@ -80,9 +68,6 @@ public class ActionRound implements RoundInterface, Serializable {
     @Override
     public Boolean checkRoundEnded() {
         if(this.game.getOrderedPLayerList().isEmpty()) {
-            for(int i = 0; i< game.getPlayerList().size(); i++) {
-                game.getBag().addStudentsOnCloud(clouds.get(i));
-            }
             for(int i=0;i<game.getPlayerList().size();i++){
                 this.game.getPlayerList().get(i).setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
             }

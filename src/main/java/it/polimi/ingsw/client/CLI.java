@@ -10,6 +10,7 @@ import it.polimi.ingsw.model.expertCards.deck.StudentToHallCard;
 import it.polimi.ingsw.model.expertCards.deck.StudentToIslandCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandInterface;
+import it.polimi.ingsw.model.pawns.Tower;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.SetUpRound;
 
@@ -163,11 +164,11 @@ public class CLI {
                     else {
                         System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
                         for(int k=0;k<islandInterface.getStudents().size()-1;k++)
-                            System.out.println(islandInterface.getStudents().get(k).getColor() + "   " );
+                            System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
                         if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
                             System.out.println("\nMothernature is here !");
-                        System.out.print(  "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers());
-                        System.out.println("\nMothernature is here !");
+                        for(Tower h : islandInterface.getTowers())
+                        System.out.print(  "Tower " + h.getColor() + "  " +"\n");
 
 
                     }
@@ -230,11 +231,11 @@ public class CLI {
                 else {
                     System.out.print("\nIsland " + islandInterface.getId() + "\nGroupNumber " + ind0 + "\nCurrent students:  ");
                     for(int k=0;k<islandInterface.getStudents().size()-1;k++)
-                        System.out.println(islandInterface.getStudents().get(k).getColor() + "   " );
+                        System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
                     if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
                         System.out.println("\nMothernature is here !");
-                    System.out.print(  "\nTower " + islandInterface.getTowers() + " color: " + islandInterface.getTowers());
-
+                    for(Tower h : islandInterface.getTowers())
+                        System.out.print(  "Tower " + h.getColor() + "  " +"\n");
 
                 }
                 ind0++;
@@ -259,11 +260,11 @@ public class CLI {
     public Thread choosingStudentsFromClouds() {
 
         Thread t = new Thread(() -> {
-            System.out.println(client.getGame().getClouds());
+            System.out.println(client.getGame().getClouds().get(0).getStudents().isEmpty());
             System.out.println("Now you can choose the group of students you want among the available clouds!");
             input = scanner.nextLine();
 
-            while (input=="" || Integer.parseInt(input)>client.getGame().getClouds().size()-1 || client.getGame().getClouds().get( Integer.parseInt(input)).getStudents().isEmpty()) {
+            while (input=="" || Integer.parseInt(input)>client.getGame().getClouds().size()-1 || client.getGame().getClouds().get(Integer.parseInt(input)).getStudents().isEmpty()) {
                 System.out.println("Ops! You entered a wrong or too high value or the cloud is empty, choose again!");
                 input = scanner.nextLine();
             }
