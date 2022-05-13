@@ -113,10 +113,10 @@ public class ActionRoundTest {
         game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
         LinkedList<Student> students = game.getClouds().get(0).getStudents();
-        game.chooseCloud(game.getClouds().get(0));
+        game.chooseCloud(game.getClouds().get(0).getId());
         game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
-        game.chooseCloud(game.getClouds().get(1));
+        game.chooseCloud(game.getClouds().get(1).getId());
         System.out.println(game.getCurrentPlayer().getName() + "is the current player");
         assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(0)));
         assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(1)));
