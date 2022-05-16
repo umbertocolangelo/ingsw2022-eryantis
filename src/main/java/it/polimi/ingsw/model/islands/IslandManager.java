@@ -150,7 +150,6 @@ public class IslandManager implements Serializable {
      * @param curr is the old IslandInterface element in islands linkedlist
      */
     private void islandsUpdate(Integer curr) {
-
         IslandGroup newGroup = new IslandGroup();
         setNewGroup(newGroup, islands.get(curr));
 
@@ -163,7 +162,6 @@ public class IslandManager implements Serializable {
             islands.add(curr, newGroup);
             islands.remove(curr+1);
             islands.remove(curr+1);
-
         }
     }
 

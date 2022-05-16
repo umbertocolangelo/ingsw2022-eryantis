@@ -384,12 +384,13 @@ public class Game implements GameInterface, Serializable {
             influenceManager.calculateInfluence();
             //Bisognerebbe selezionare un tasto TODO
             currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
+            this.getIslandManager().checkGroup(this.motherNature.getIsland());
+            checkWinner();
         }
-        if(!this.currentRound.moveMotherNature(jumps))
-        System.out.println("Move not possible");
-        checkWinner();
-        propertyChange.firePropertyChange("move mothernature",jumps,motherNature.getIsland());
-
+        if(!this.currentRound.moveMotherNature(jumps)) {
+            System.out.println("Move not possible");
+        }
+        propertyChange.firePropertyChange("move MotherNature",jumps,motherNature.getIsland());
     }
 
     /**
@@ -493,7 +494,6 @@ public class Game implements GameInterface, Serializable {
             island.addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
-            cardManager.setCurrentCard(null);
             propertyChange.firePropertyChange("expert moveStudentToIsland",island,student);
 
         }
@@ -543,8 +543,6 @@ public class Game implements GameInterface, Serializable {
             currentPlayer.getSchool().getHall().addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
-            cardManager.setCurrentCard(null); //questa mossa si può fare una sola volta
-            cardManager.setCurrentCard(null);
             propertyChange.firePropertyChange("expert moveStudentToHall",this.currentPlayer.getSchool().getHall(),student);
         }
     }
@@ -698,7 +696,6 @@ public class Game implements GameInterface, Serializable {
      *Used if the player wants to finish the move
      */
     public void finishExpertMove(){
-        cardManager.setCurrentCard(null);
         setRound(previousRound);
         propertyChange.firePropertyChange("Finished expert move",cardManager.getCurrentCard(),null);
     }
