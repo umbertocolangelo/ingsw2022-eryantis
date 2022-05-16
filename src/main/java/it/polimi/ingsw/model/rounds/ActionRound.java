@@ -114,7 +114,7 @@ public class ActionRound implements RoundInterface, Serializable {
      * @return
      */
     public Boolean moveMotherNature(Integer jumps) {
-       if(currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps)
+       if(currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps || jumps<1)
         return false;
        else{
 
