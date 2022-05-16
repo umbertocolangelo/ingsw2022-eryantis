@@ -82,6 +82,7 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent, Serial
      */
     public void addStudent(Student student) {
         this.students.add(student);
+        student.setPosition(this);
     }
 
     /**
