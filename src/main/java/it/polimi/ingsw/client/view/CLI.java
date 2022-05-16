@@ -390,7 +390,7 @@ public class CLI {
                 System.out.println("You entered a wrong value, insert again");
                 input=scanner.nextLine();
             }
-            if(input=="0") {
+            if(input.equals("0")) {
                 messageMethod = new RoundEnd();
             }
             else {
@@ -435,7 +435,7 @@ public class CLI {
                      System.out.println("You entered a wrong value, insert again");
                      input=scanner.nextLine();
                  }
-                if(input=="0") {
+                if(input.equals("0")) {
                     messageMethod = new RoundEnd();
                 }
                 else {
