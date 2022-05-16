@@ -211,18 +211,18 @@ public class CLI {
     public Thread choosingStudentsFromClouds() {
 
         Thread t = new Thread(() -> {
-            int index=0;
-            int index1;
+            int index = 0;
             for (Cloud cloud: client.getGame().getClouds()) {
-                index1=0;
-                System.out.println("Cloud " + index +"\nStudents:");
-                for (Student student: cloud.getStudents()) {
-                    System.out.println("Student " + student.getColor() + " Number " + index1 );
-                    index1++;
+                if (cloud.getStudents().size()==0) {
+                    System.out.println(index + ": Cloud\n");
+                } else {
+                    System.out.println(index + ": Cloud\n");
+                    for (Student student: cloud.getStudents()) {
+                        System.out.println(student.getColor() + "Student");
+                    }
                 }
-                index++;
             }
-            System.out.println(client.getGame().getClouds().get(0));
+            System.out.println("\n");
             System.out.println("Now you can choose the group of students you want among the available clouds!");
             input = scanner.nextLine();
 

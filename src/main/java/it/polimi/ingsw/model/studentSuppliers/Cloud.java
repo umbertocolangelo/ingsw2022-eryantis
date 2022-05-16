@@ -29,7 +29,6 @@ public class Cloud implements FixedObjectStudent, Serializable {
      */
     private static Integer idCounter = 50;
 
-
     /**
      * 
      */
@@ -45,10 +44,8 @@ public class Cloud implements FixedObjectStudent, Serializable {
      * @param student
      */
     public void addStudent(Student student) {
-
         student.setPosition(this);
         this.students.add(student);
-
     }
 
     /**
