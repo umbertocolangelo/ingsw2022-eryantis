@@ -380,7 +380,7 @@ public class CLI {
      *
      * @return
      */
-    // Resetta la carta manca
+
     public Thread ingressCardSwap() {
         Thread t = new Thread(() -> {
             System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card , \nif you want to end the effect of this cart press 0 otherwise press 1\n");
@@ -394,7 +394,6 @@ public class CLI {
                 messageMethod = new RoundEnd();
             }
             else {
-
                 messageMethod = new IngressCardSwap();
                 System.out.println("Select the player from your ingress \n");
                 showSchool();

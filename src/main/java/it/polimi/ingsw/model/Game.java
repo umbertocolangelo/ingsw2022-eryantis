@@ -493,7 +493,6 @@ public class Game implements GameInterface, Serializable {
             island.addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
-            cardManager.setCurrentCard(null);
             propertyChange.firePropertyChange("expert moveStudentToIsland",island,student);
 
         }
@@ -543,8 +542,6 @@ public class Game implements GameInterface, Serializable {
             currentPlayer.getSchool().getHall().addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
-            cardManager.setCurrentCard(null); //questa mossa si può fare una sola volta
-            cardManager.setCurrentCard(null);
             propertyChange.firePropertyChange("expert moveStudentToHall",this.currentPlayer.getSchool().getHall(),student);
         }
     }
@@ -697,7 +694,6 @@ public class Game implements GameInterface, Serializable {
      *Used if the player wants to finish the move
      */
     public void finishExpertMove(){
-        cardManager.setCurrentCard(null);
         setRound(previousRound);
         propertyChange.firePropertyChange("Finished expert move",cardManager.getCurrentCard(),null);
     }
