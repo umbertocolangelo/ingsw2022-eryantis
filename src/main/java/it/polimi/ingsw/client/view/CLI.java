@@ -231,22 +231,11 @@ public class CLI {
     public Thread choosingExpertCardOrMoving() {
 
         Thread t = new Thread(() -> {
-            Thread d;
-            Thread k;
+
             if (client.getGame().getGameMode()) {
                 if (client.getGame().getCardManager().getCurrentCard() != null) {
                     System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round");
-                    if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS)
-                        k = movingStudentsFromIngress();
-                    else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE)
-                        k = movingMotherNature();
-                    else
-                        k = choosingStudentsFromClouds();
-                    try {
-                        k.join();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                  goBack();
                 } else {
                     System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1");
                     input = scanner.nextLine();
@@ -263,33 +252,11 @@ public class CLI {
                             e.printStackTrace();
                         }
                     } else {
-                        if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE) {
-                            d = movingMotherNature();
-                        } else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
-                            d = movingStudentsFromIngress();
-
-                        } else {
-                            d = choosingStudentsFromClouds();
-                        }
-                        try {
-                            d.join();
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                       goBack();
                     }
                 }
             }else{
-                if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS)
-                    k = movingStudentsFromIngress();
-                else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE)
-                    k = movingMotherNature();
-                else
-                    k = choosingStudentsFromClouds();
-                try {
-                    k.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+               goBack();
 
             }
         });
@@ -317,12 +284,7 @@ public class CLI {
             }
             if (input.equals("exit")) {
                 tooPoor = false;
-                Thread f = movingStudentsFromIngress();
-                try {
-                    f.join();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+               goBack();
             } else {
                 if (client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getCost() > client.getGame().getCurrentPlayer().getCoins()) {
                     System.out.println("This card costs too much , you can't afford it\n\n");
@@ -371,9 +333,10 @@ public class CLI {
                     if(!playedCard && client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId().equals("45")) {
                         System.out.println("This card need a player to select, select one\n");
                         int c = 0;
-                        for (Player p : client.getGame().getPlayerList())
+                        for (Player p : client.getGame().getPlayerList()) {
                             System.out.println("To select the player named " + p.getName() + " you need to write " + c + "\n");
-                        c++;
+                            c++;
+                        }
                         input = scanner.nextLine();
                         while ((!(input.equals("0") || input.equals("1")) && client.getGame().getPlayerList().size() == 2) || (!((input.equals("0")) || input.equals("1") || input.equals("2")) && client.getGame().getPlayerList().size() == 3)) {
                             System.out.println("Ops! You entered a wrong value!");
@@ -393,16 +356,22 @@ public class CLI {
         return t;
     }
 
+    // Resetta la carta manca
 
     public Thread ingressCardSwap() {
         Thread t = new Thread(() -> {
-            System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card , \nif you want to end the effect of this cart press exit otherwise press enter\n");
+            System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card , \nif you want to end the effect of this cart press 0 otherwise press 1\n");
             MessageMethod messageMethod;
             input = scanner.nextLine();
-            if(input=="exit") {
+            while(!(input.equals("0") || input.equals("1"))){
+                System.out.println("You entered a wrong value, insert again");
+                input=scanner.nextLine();
+            }
+            if(input=="0") {
                 messageMethod = new RoundEnd();
             }
             else {
+
                 messageMethod = new IngressCardSwap();
                 System.out.println("Select the player from your ingress \n");
                 showSchool();
@@ -435,10 +404,14 @@ public class CLI {
 
     public Thread ingressHallSwap() {
         Thread t = new Thread(() -> {
-                System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card , \nif you want to end the effect of this cart press exit otherwise press enter\n");
+                System.out.println("You select the card that allow to swap the student present in the ingress with a student present in the card , \nif you want to end the effect of this cart press 0 otherwise press 1\n");
                 MessageMethod messageMethod;
                  input = scanner.nextLine();
-                if(input=="exit") {
+                 while(!(input.equals("0") || input.equals("1"))){
+                     System.out.println("You entered a wrong value, insert again");
+                     input=scanner.nextLine();
+                 }
+                if(input=="0") {
                     messageMethod = new RoundEnd();
                 }
                 else {
@@ -478,8 +451,6 @@ public class CLI {
                 }
                 controller.write(messageMethod);
 
-
-
         });
         t.start();
         return t;
@@ -507,9 +478,9 @@ public class CLI {
 
     public Thread studentToIsland() {
         Thread t = new Thread(() -> {
-            Integer ind0=0;
+
             System.out.println("You have to select the student from the card");
-            for (int i = 0; i < ((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size() - 1; i++) {
+            for (int i = 0; i < ((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size() - 1; i++) {
                 System.out.println("Student " + ((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
             }
             input = scanner.nextLine();
@@ -561,10 +532,10 @@ public class CLI {
                 System.out.print("\nIsland " + ind0 + "\nCurrent students:  ");
                 for(int k=0;k<islandInterface.getStudents().size();k++)
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
-                if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
-                    System.out.println("\nMothernature is here !");
                 for(Tower h : islandInterface.getTowers())
-                    System.out.print(  "Tower " + h.getColor() + "  " +"\n");
+                    System.out.println(  "\nTower " + h.getColor());
+                if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
+                    System.out.println("Mothernature is here !");
 
             }
             ind0++;
@@ -582,6 +553,23 @@ public class CLI {
         System.out.println("\nHere's your Ingress:\n ");
         for(int i=0;i<client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size();i++) {
             System.out.println("Student " + client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor() + " Number " + i );
+        }
+    }
+
+    private void goBack(){
+        Thread d;
+        if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE) {
+            d = movingMotherNature();
+        } else if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+            d = movingStudentsFromIngress();
+
+        } else {
+            d = choosingStudentsFromClouds();
+        }
+        try {
+            d.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
         }
     }
 
