@@ -365,10 +365,8 @@ public class CLI {
                         }
                         ((PlayExpertCard) messageMethod).setParameter(client.getGame().getPlayerList().get(Integer.parseInt(input)).getId());
                     }
-
                     controller.write(messageMethod);
                 }
-
             }
         }
 
@@ -492,6 +490,7 @@ public class CLI {
      * @return
      */
     public Thread studentToHall() {
+
         Thread t = new Thread(() -> {
             System.out.println("You have to select the student from the card you want to put in the Hall, those are the students present on the card\n");
             for (int i = 0; i < ((StudentToHallCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size() - 1; i++) {
@@ -516,8 +515,8 @@ public class CLI {
      * @return
      */
     public Thread studentToIsland() {
-        Thread t = new Thread(() -> {
 
+        Thread t = new Thread(() -> {
             System.out.println("You have to select the student from the card");
             for (int i=0; i<((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size()-1; i++) {
                 System.out.println("Student " + ((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
