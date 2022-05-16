@@ -542,10 +542,14 @@ public class CLI {
 
 
     private void showIsland(){
-        int ind0=0;
-        for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) {
+        int ind0 = 0;
+        for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) { // for every islandInterface element
             if (islandInterface.getTowers()==null) {
-                System.out.print("\nIsland " + ind0 + "\nCurrent students:  ");
+                if(!islandInterface.isGrouped()){ // if the islandInterface element is an Island
+                    System.out.print("\n" + ind0 + ": Island " + "\nStudents: ");
+                }else{
+                    System.out.print("\n" + ind0 +  ": Group of island " + "\nStudents: ");
+                }
                 for(int k=0;k<islandInterface.getStudents().size();k++) {
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
                 }
