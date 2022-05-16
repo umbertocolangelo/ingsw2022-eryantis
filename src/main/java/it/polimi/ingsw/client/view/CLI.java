@@ -160,7 +160,7 @@ public class CLI {
                         if (island.getTowers().isEmpty()) {
                             System.out.println("Island " + island.getId() + "\nGroupNumber " + ind1 + "\nCurrent students: " + island.getStudents() + "\nNo tower\n");
                         }
-                        System.out.println("Island " + island.getId() + "\nGroupNumber " + ind1 + "\nCurrent students: " + island.getStudents() + "\n Tower " + island.getTowers().get(0).getId() + " color: " + island.getTowers().get(0).getColor() + "\n");
+                        System.out.println("Island " + island.getId() + "\nGroupNumber " + ind1 + "\nCurrent students: " + island.getStudents() + "\nTower " + island.getTowers().get(0).getId() + " color: " + island.getTowers().get(0).getColor() + "\n");
                         ind1++;
                     }
                     input2 = scanner.nextLine();
@@ -189,7 +189,9 @@ public class CLI {
 
         Thread t = new Thread(() -> {
             showSchool();
-            System.out.println("Now you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (you have from 1 to " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
+            System.out.println("\n");
+            showIsland();
+            System.out.println("\nNow you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (you have from 1 to " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
             input = scanner.nextLine();
             while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input=="0") {
                 System.out.println("Ops! You entered a wrong or too high value, choose again!\nHow many jumps do you want Mother Nature to do? (you have from 1 to " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
@@ -213,11 +215,11 @@ public class CLI {
             int index = 0;
             for (Cloud cloud: client.getGame().getClouds()) {
                 if (cloud.getStudents().size()==0) {
-                    System.out.println(index + ": Cloud\n");
+                    System.out.println(index + ": Cloud (Already selected)");
                 } else {
-                    System.out.println(index + ": Cloud\n");
+                    System.out.println(index + ": Cloud");
                     for (Student student: cloud.getStudents()) {
-                        System.out.println(student.getColor() + "Student");
+                        System.out.println(student.getColor() + " Student");
                     }
                 }
             }
@@ -294,7 +296,7 @@ public class CLI {
                 i++;
             }
 
-            System.out.println("Those are the ExpertCard available, select one if you want to play it , if you changed your mind and want to move the student write exit: ");
+            System.out.println("Those are the ExpertCard available, select one if you want to play it, if you changed your mind and want to move the student write exit: ");
 
             input = scanner.nextLine();
             while (!(input.equals("1") || input.equals("0") || (input.equals("2")) || input.equals("exit"))) {
@@ -311,7 +313,7 @@ public class CLI {
                 } else {
                     //Qui probabilmente si gioca la carte
                     tooPoor = false;
-                    System.out.println("Hai giocato questa Carta " + client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)));
+                    System.out.println("Card selected: " + client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)));
                     MessageMethod messageMethod = new PlayExpertCard();
                     ((PlayExpertCard) messageMethod).setExpertCard(client.getGame().getCardManager().getDeck().get(Integer.parseInt(input)).getId());
 
@@ -548,7 +550,7 @@ public class CLI {
         int ind0 = 0;
         for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) { // for every islandInterface element
             if (islandInterface.getTowers()==null) {
-                System.out.print("\n" + ind0 + ":Island " + "\nCurrent students:  ");
+                System.out.print("\n" + ind0 + ": Island " + "\nCurrent students:  ");
                 for(int k=0;k<islandInterface.getStudents().size();k++) {
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
                 }
@@ -561,12 +563,12 @@ public class CLI {
                 if(!islandInterface.isGrouped()){ // if the islandInterface element is an Island
                     System.out.print("\n" + ind0 + ": Island " + "\nCurrent students: ");
                 }else{
-                    System.out.print("\n" + ind0 +  ": Group of island " + "\nCurrent students: ");
+                    System.out.print("\n" + ind0 + ": Group of island " + "\nCurrent students: ");
                 }
                 for(int k=0;k<islandInterface.getStudents().size();k++)
-                    System.out.print(islandInterface.getStudents().get(k).getColor() + "   " );
+                    System.out.print(islandInterface.getStudents().get(k).getColor() + "    " );
                 for(Tower h : islandInterface.getTowers())
-                    System.out.println(  "\nTower " + h.getColor());
+                    System.out.println("Towers: " + islandInterface.getTowers().size() + islandInterface.getTowers().get(0).getColor());
                 if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
                     System.out.println("MotherNature is here !");
 
