@@ -384,12 +384,13 @@ public class Game implements GameInterface, Serializable {
             influenceManager.calculateInfluence();
             //Bisognerebbe selezionare un tasto TODO
             currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
+            this.getIslandManager().checkGroup(this.motherNature.getIsland());
+            checkWinner();
         }
-        if(!this.currentRound.moveMotherNature(jumps))
-        System.out.println("Move not possible");
-        checkWinner();
-        propertyChange.firePropertyChange("move mothernature",jumps,motherNature.getIsland());
-
+        if(!this.currentRound.moveMotherNature(jumps)) {
+            System.out.println("Move not possible");
+        }
+        propertyChange.firePropertyChange("move MotherNature",jumps,motherNature.getIsland());
     }
 
     /**
