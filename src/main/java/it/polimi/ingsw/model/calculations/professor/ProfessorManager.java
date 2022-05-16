@@ -55,7 +55,6 @@ public class ProfessorManager implements Serializable {
 
         }
 
-        setStandardCheck(); // reset the strategy to the standard one
     }
 
     /**

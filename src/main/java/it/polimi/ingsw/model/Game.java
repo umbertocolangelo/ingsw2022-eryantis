@@ -561,6 +561,7 @@ public class Game implements GameInterface, Serializable {
 
             }
             this.currentRound.checkRoundEnded();
+            professorManager.setStandardCheck(); // reset the professor calculus
             propertyChange.firePropertyChange("Choose cloud",this.clouds,cloud);
         }
 
