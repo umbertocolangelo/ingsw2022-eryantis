@@ -81,6 +81,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent , Ser
      */
     public void addStudent(Student student) {
         this.students.add(student);
+        student.setPosition(this);
     }
 
     /**

@@ -450,19 +450,27 @@ public class CLI {
                     }
                     ((IngressHallSwap)messageMethod).setStudentIngress(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get( Integer.parseInt(input)).getId());
                     System.out.println("Select a player from your Hall \n");
-
                     for(Color c : Color.values()) {
 
                         for (int i = 0; i < client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().size();i++) {
-                            System.out.println("Student " +  client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getColor() + " Number " + i + "\n");
+                            System.out.print("Student " +  client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getColor() + " Number " + i + "\n");
                         }
+                        if (!client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().isEmpty())
                         System.out.println("\n");
                     }
                     System.out.println("Select the color of the line, YELLOW=0  BLUE=1  GREEN=2  RED=3  PINK=4 \n");
                     input = scanner.nextLine();
-                    while (!(input.equals("0") || input.equals("1") || (input.equals("2")) || input.equals("3") || input.equals("4")) && client.getGame().getCurrentPlayer().getSchool().getHall().getLine(Color.getColor(Integer.parseInt(input))).getStudents().isEmpty()) {
+                    while (!(input.equals("0") || input.equals("1") || (input.equals("2")) || input.equals("3") || input.equals("4")) ) {
                         System.out.println("Ops! You entered a wrong value or you dont have any student in this line");
                         input = scanner.nextLine();
+                    }
+                    while(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(Color.getColor(Integer.parseInt(input))).getStudents().isEmpty()){
+                        System.out.println("The line you selected is empty");
+                        input = scanner.nextLine();
+                        while (!(input.equals("0") || input.equals("1") || (input.equals("2")) || input.equals("3") || input.equals("4"))){
+                            System.out.println("Ops! You entered a wrong value or you dont have any student in this line");
+                            input = scanner.nextLine();
+                        }
                     }
 
                     System.out.println("Write the number of the student in the correspondent line");

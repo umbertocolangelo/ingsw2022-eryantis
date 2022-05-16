@@ -82,6 +82,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
      */
     public void addStudent(Student student) {
         this.students.add(student);
+        student.setPosition(this);
     }
 
     /**
