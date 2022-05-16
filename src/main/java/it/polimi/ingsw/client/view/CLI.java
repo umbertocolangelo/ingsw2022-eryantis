@@ -576,7 +576,6 @@ public class CLI {
         }
     }
 
-
     /**
      *
      */
@@ -596,7 +595,7 @@ public class CLI {
     /**
      *
      */
-    private void goBack(){
+    private void goBack() {
         Thread d;
         if (client.getGame().getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE) {
             d = movingMotherNature();
@@ -612,7 +611,5 @@ public class CLI {
             e.printStackTrace();
         }
     }
-
-
 
 }
