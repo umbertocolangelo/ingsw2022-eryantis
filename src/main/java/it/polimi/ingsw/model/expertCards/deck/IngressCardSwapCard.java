@@ -22,7 +22,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
         this.manager=cardManager;
         IdManager.getInstance().addExpertCard(this);
         students = new LinkedList<Student>();
-        for (int i=0; i<6; i++) {
+        for (int i=0; i<7; i++) {
             addStudent(manager.getBag().newStudent());
         }
     }
@@ -81,8 +81,14 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
      * @param student
      */
     public void addStudent(Student student) {
-        this.students.add(student);
-        student.setPosition(this);
+        if (!this.students.contains(student)) {
+            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+                FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
+                position.removeStudent(student);
+            }
+            student.setPosition(this);
+            this.students.add(student);
+        }
     }
 
     /**
