@@ -158,7 +158,7 @@ public class IslandManager implements Serializable {
     private void islandsUpdate(Integer curr) {
         IslandGroup newGroup = new IslandGroup();
         setNewGroup(newGroup, islands.get(curr));
-
+        this.motherNature.setIsland(newGroup);
         if (curr==islands.size()-1) {
             islands.add(curr, newGroup);
             islands.remove(curr+1);
