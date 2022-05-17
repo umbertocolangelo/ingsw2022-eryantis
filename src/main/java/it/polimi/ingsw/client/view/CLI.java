@@ -3,9 +3,7 @@ package it.polimi.ingsw.client.view;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.Controller;
 import it.polimi.ingsw.message.*;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
-import it.polimi.ingsw.model.enumerations.Wizard;
+import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
 import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
 import it.polimi.ingsw.model.expertCards.deck.StudentToHallCard;
@@ -59,9 +57,11 @@ public class CLI {
     public Thread chooseColorAndDeck() {
 
         Thread t = new Thread(() -> {
+            Integer index=0;
             System.out.println("Before starting, choose your deck and your wizard!");
             for (Wizard wizard: ((SetUpRound) client.getGame().getCurrentRound()).getWizards()) {
-                System.out.println(wizard.getColor() + " Wizard");
+                System.out.println(wizard.getColor() + "  Wizard " +index);
+                index++;
             }
             System.out.println("Select a color from 0 to the number of wizard(s) available");
             input = scanner.nextLine();
@@ -74,7 +74,11 @@ public class CLI {
             MessageMethod messageMethod = new ChooseColorAndDeck();
             ((ChooseColorAndDeck) messageMethod).setWizard(((SetUpRound) client.getGame().getCurrentRound()).getWizards().get(Integer.parseInt(input)));
             System.out.println("Pick the color\n");
-            System.out.println(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor());
+            index=0;
+            for(PlayerColor color : ((SetUpRound) client.getGame().getCurrentRound()).getplayerColor()) {
+                System.out.println(color + "  PlayerColor " + index);
+                index++;
+            }
             input = scanner.nextLine();
             while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().size()-1) {
                     System.out.println("You entered a wrong or too high value, please try again.");
@@ -96,8 +100,18 @@ public class CLI {
     public Thread choosingAssistant() {
 
         Thread t = new Thread(() -> {
-            System.out.println("All right! Now pick the assistant card to use in this turn.");
-            System.out.println((client.getGame().getCurrentPlayer()).getAssistantCard());
+            Integer index=0;
+            for(Player player:client.getGame().getPlayerList()){
+                if(!(player.getName().equals(client.getNamePlayer())) && player.getCardPlayed()!=null)
+                    System.out.println("Player " + client.getNamePlayer() + " played the card " + player.getCardPlayed());
+            }
+            System.out.println("\nAll right! Now pick the assistant card to use in this turn.");
+
+
+            for(AssistantCard assistantCard : (client.getGame().getCurrentPlayer()).getAssistantCard() ) {
+                System.out.println("Insert " + index + " to play " + assistantCard.name() + " with value: " + assistantCard.getValue());
+                index++;
+            }
             input = scanner.nextLine();
             while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getAssistantCard().size()-1) {
                 System.out.println("You entered a wrong or too high value, please try again.");
@@ -193,7 +207,7 @@ public class CLI {
             showIsland();
             System.out.println("\nNow you can move Mother Nature!\nHow many jumps do you want Mother Nature to do? (you have from 1 to " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
             input = scanner.nextLine();
-            while (input=="" || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input=="0") {
+            while (input.equals("") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getCardPlayedValue() || input.equals("0")) {
                 System.out.println("Ops! You entered a wrong or too high value, choose again!\nHow many jumps do you want Mother Nature to do? (you have from 1 to " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
                 input = scanner.nextLine();
             }
@@ -219,9 +233,11 @@ public class CLI {
                 } else {
                     System.out.println(index + ": Cloud");
                     for (Student student: cloud.getStudents()) {
-                        System.out.println(student.getColor() + " Student");
+                        System.out.print(student.getColor() + "    Student ");
                     }
                 }
+                System.out.println("\n");
+                index++;
             }
             System.out.println("\n");
             System.out.println("Now you can choose the group of students you want among the available clouds!");
@@ -251,7 +267,7 @@ public class CLI {
 
             if (client.getGame().getGameMode()) {
                 if (client.getGame().getCardManager().getCurrentCard() != null) {
-                    System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round");
+                    System.out.println("You cannot play another ExpertCard in this turn because it has already been played a expertCard in this round\n");
                   goBack();
                 } else {
                     System.out.println("If you want to play an Expert Card click 0 to visualize the three Expert card available, otherwise select 1");
@@ -517,8 +533,7 @@ public class CLI {
      */
     public Thread studentToIsland() {
         Thread t = new Thread(() -> {
-
-            System.out.println("You have to select the student from the card");
+            System.out.println("You have to select the student from the card you want to put in the Hall, those are the students present on the card\n");
             for (int i=0; i<((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size()-1; i++) {
                 System.out.println("Student " + ((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
             }
@@ -574,8 +589,9 @@ public class CLI {
                 }
                 for(int k=0;k<islandInterface.getStudents().size();k++)
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "    " );
+                System.out.print("\n");
                 for(Tower h : islandInterface.getTowers())
-                    System.out.println("Towers: " + islandInterface.getTowers().size() + islandInterface.getTowers().get(0).getColor());
+                    System.out.println( " Towers: " + islandInterface.getTowers().get(0).getColor() + "  number of Towers: " + islandInterface.getTowers().size());
                 if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
                     System.out.println("MotherNature is here !");
 

@@ -216,6 +216,7 @@ public class Game implements GameInterface, Serializable {
         influenceManager= new InfluenceManager(motherNature, playerList);
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
+        propertyChange.firePropertyChange("Inizialize game",null,null);
     }
 
     /**
@@ -543,6 +544,7 @@ public class Game implements GameInterface, Serializable {
             currentPlayer.getSchool().getHall().addStudent(student);
             FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
+            professorManager.checkProfessor(currentPlayer);
             propertyChange.firePropertyChange("expert moveStudentToHall",this.currentPlayer.getSchool().getHall(),student);
         }
     }

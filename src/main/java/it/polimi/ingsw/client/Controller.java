@@ -99,7 +99,7 @@ public class Controller implements Runnable {
                         break;
 
                     case CHOOSING_CLOUD:
-                    checkRound();
+                        checkRound();
                     break;
                }
                try {

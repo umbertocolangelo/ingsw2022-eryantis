@@ -25,11 +25,6 @@ public class Client {
     private ObjectInputStream socketIn;
 
     /**
-     *  Keep the reference to
-     */
-    private Object object = new Object();
-
-    /**
      * Keep the ip port
      */
     private String ip;
@@ -37,7 +32,7 @@ public class Client {
     /**
      *Keep the reference to the port
      */
-    private int port;
+    private final int port;
 
     /**
      * Keep the reference to the game
@@ -121,7 +116,7 @@ public class Client {
                                     controller.setClientState(ClientState.PLAYING);
                                     controller.run();
                             } else if (inputObject instanceof SetUp) {
-                                System.out.println("Set Up received.");
+                               // System.out.println("Set Up received.");
                                 controller.setClientState(ClientState.LOGIN);
                                 controller.run();
                             } else if (inputObject instanceof SetName)

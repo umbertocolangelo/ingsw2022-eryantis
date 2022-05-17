@@ -115,7 +115,7 @@ public class SocketClientConnection implements Runnable {
             in = new ObjectInputStream(socket.getInputStream());
             SetUp setup = new SetUp();
             // System.out.println("si");
-            send("Welcome!\nWhat is your name?");
+            send("Welcome in the CLI version of Eryantis!\nWhat is your name?");
 
             //si  sincronizza con il send
             send(setup);
