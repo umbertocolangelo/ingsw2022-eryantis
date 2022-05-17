@@ -68,8 +68,12 @@ public class IslandManager implements Serializable {
             for (int i = 0; i < islands.size(); i++) {
                 if (islands.get(i) == islandInterface) {
                     if (islandInterface.getInfluenceColor()==rightIsland(islandInterface).getInfluenceColor() && islandInterface.getInfluenceColor()==leftIsland(islandInterface).getInfluenceColor()) {
-                        if (i-1 == -1) { j = islands.size()-1; }
-                        else { j = i-1; }
+                        if (i-1 == -1) {
+                            j = islands.size()-1;
+                        }
+                        else {
+                            j = i-1;
+                        }
                         islandsUpdate(j); //primo update unisce leftIsland a island
                         islandsUpdate(j); //secondo update unisce il nuovo gruppo (con dentro leftIsland e island) a rightIsland
                     }
@@ -158,7 +162,6 @@ public class IslandManager implements Serializable {
     private void islandsUpdate(Integer curr) {
         IslandGroup newGroup = new IslandGroup();
         setNewGroup(newGroup, islands.get(curr));
-        this.motherNature.setIsland(newGroup);
         if (curr==islands.size()-1) {
             islands.add(curr, newGroup);
             islands.remove(curr+1);
@@ -169,6 +172,7 @@ public class IslandManager implements Serializable {
             islands.remove(curr+1);
             islands.remove(curr+1);
         }
+        this.motherNature.setIsland(newGroup);
     }
 
 
