@@ -590,11 +590,14 @@ public class CLI {
                 for(int k=0;k<islandInterface.getStudents().size();k++)
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "    " );
                 System.out.print("\n");
-                for(Tower h : islandInterface.getTowers())
-                    System.out.println("Towers: " + islandInterface.getTowers().get(0).getColor() + "  number of Towers: " + islandInterface.getTowers().size());
+                if(islandInterface.isGrouped())
+                    System.out.println("Towers: " + islandInterface.getTowers().get(0).getColor() + "     number of Towers: " + islandInterface.getTowers().size());
+                else {
+                    for (Tower h : islandInterface.getTowers())
+                        System.out.println("Towers: " + islandInterface.getTowers().get(0).getColor() + "     number of Towers: " + islandInterface.getTowers().size());
+                }
                 if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
                     System.out.println("MotherNature is here !");
-
             }
             ind0++;
         }
