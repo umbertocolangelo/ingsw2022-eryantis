@@ -5,7 +5,8 @@ import it.polimi.ingsw.client.Client;
 import java.io.IOException;
 
 public class ClientApp2 {
-    public  static void main(String[] args){
+
+    public  static void main(String[] args) {
         Client client = new Client("localhost", 12345);
         try{
             client.run();
@@ -13,4 +14,5 @@ public class ClientApp2 {
             System.err.println(e.getMessage());
         }
     }
+
 }

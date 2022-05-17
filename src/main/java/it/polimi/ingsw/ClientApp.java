@@ -4,9 +4,9 @@ import it.polimi.ingsw.client.Client;
 
 import java.io.IOException;
 
-public class ClientApp
-{
-    public static void main(String[] args){
+public class ClientApp {
+
+    public static void main(String[] args) {
         Client client = new Client("192.168.1.130", 12345);
         try{
             client.run();
@@ -14,4 +14,5 @@ public class ClientApp
             System.err.println(e.getMessage());
         }
     }
+
 }
