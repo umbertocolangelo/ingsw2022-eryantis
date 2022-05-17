@@ -591,7 +591,7 @@ public class CLI {
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "    " );
                 System.out.print("\n");
                 for(Tower h : islandInterface.getTowers())
-                    System.out.println( " Towers: " + islandInterface.getTowers().get(0).getColor() + "  number of Towers: " + islandInterface.getTowers().size());
+                    System.out.println("Towers: " + islandInterface.getTowers().get(0).getColor() + "  number of Towers: " + islandInterface.getTowers().size());
                 if(islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId())
                     System.out.println("MotherNature is here !");
 
@@ -607,6 +607,11 @@ public class CLI {
     private void showSchool(){
         for(Color c :Color.values()){
             System.out.println("In the " + c +"  line you have " + client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().size() + " student");
+            for(Player player : client.getGame().getPlayerList()){
+                if(player.getSchool().getHall().getLine(c).isProfessor() && !player.getName().equals(client.getNamePlayer())){
+                    System.out.println("The player "+ player.getName() + " has the professor " + c +" with " + player.getSchool().getHall().getLine(c).getStudents().size() + " students");
+                }
+            }
             if(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).isProfessor())
                 System.out.println("You have the professor for the color  " + c);
         }
