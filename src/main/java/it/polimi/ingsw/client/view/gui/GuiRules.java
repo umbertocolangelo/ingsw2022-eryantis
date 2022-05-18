@@ -1,4 +1,4 @@
 package it.polimi.ingsw.client.view.gui;
 
-public class GuiChooseDeck {
+public class GuiRules {
 }

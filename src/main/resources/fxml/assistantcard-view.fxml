@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiAssistantCardController">
+   <children>
+      <ImageView fx:id="background" fitHeight="450.0" fitWidth="800.0" opacity="0.35">
+         <image>
+            <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
+         </image>
+      </ImageView>
+      <Label layoutX="50.0" layoutY="40.0" text="Here's your Assistant Card :  ">
+         <font>
+            <Font name="Book Antiqua" size="12.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="card1" fitHeight="160.0" fitWidth="95.0" layoutX="55.0" layoutY="80.0" onMouseEntered="#onCard1Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(1).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card2" fitHeight="160.0" fitWidth="95.0" layoutX="175.0" layoutY="80.0" onMouseEntered="#onCard2Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(2).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card3" fitHeight="160.0" fitWidth="95.0" layoutX="295.0" layoutY="80.0" onMouseEntered="#onCard3Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(3).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card4" fitHeight="160.0" fitWidth="95.0" layoutX="415.0" layoutY="80.0" onMouseEntered="#onCard4Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(4).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card5" fitHeight="160.0" fitWidth="95.0" layoutX="535.0" layoutY="80.0" onMouseEntered="#onCard5Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(5).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card6" fitHeight="160.0" fitWidth="95.0" layoutX="55.0" layoutY="250.0" onMouseEntered="#onCard6Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(6).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card7" fitHeight="160.0" fitWidth="95.0" layoutX="175.0" layoutY="250.0" onMouseEntered="#onCard7Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(7).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card8" fitHeight="160.0" fitWidth="95.0" layoutX="295.0" layoutY="250.0" onMouseEntered="#onCard8Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(8).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card9" fitHeight="160.0" fitWidth="95.0" layoutX="415.0" layoutY="250.0" onMouseEntered="#onCard9Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(9).png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="card10" fitHeight="160.0" fitWidth="95.0" layoutX="535.0" layoutY="250.0" onMouseEntered="#onCard10Show3x">
+         <image>
+            <Image url="@../Graphical_Assets/Assistenti/2x/Assistente%20(10).png" />
+         </image>
+      </ImageView>
+      <Hyperlink layoutX="715.0" layoutY="15.0" onMouseClicked="#onClickRules" text="Check rules" textAlignment="CENTER" underline="true">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="12.0" />
+         </font>
+      </Hyperlink>
+      <Button fx:id="next" layoutX="680.0" layoutY="370.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" text="Next">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="20.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

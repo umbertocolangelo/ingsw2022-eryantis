@@ -4,8 +4,12 @@ import javafx.scene.input.MouseEvent;
 
 public class GuiStartController {
 
+    /**
+     * click on next button
+     * @param mouseEvent
+     */
     public void onClickEvent(MouseEvent mouseEvent) {
-        //goToLogin
+        //go to login
     }
 
 }
