@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="394.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.GuiStartController">
+<AnchorPane prefHeight="389.0" prefWidth="919.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiStartController">
    <children>
-      <ImageView fitHeight="520.0" fitWidth="920.0" layoutX="-1.0">
+      <ImageView fitHeight="540.0" fitWidth="920.0" layoutX="-1.0">
          <image>
             <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
          </image>
@@ -19,7 +19,7 @@
             <Font name="Book Antiqua Bold" size="29.0" />
          </font>
       </Label>
-      <Button layoutX="418.0" layoutY="425.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Start">
+      <Button layoutX="412.0" layoutY="453.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Next">
          <font>
             <Font name="Book Antiqua Bold Italic" size="15.0" />
          </font>
