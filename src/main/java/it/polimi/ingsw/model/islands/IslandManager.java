@@ -199,7 +199,9 @@ public class IslandManager implements Serializable {
     /**
      * used only for test
      */
-    public void islandsUpdateTest(Integer curr) { islandsUpdate(curr); }
+    public void islandsUpdateTest(Integer curr) {
+        islandsUpdate(curr);
+    }
 
     /**
      * used only for test

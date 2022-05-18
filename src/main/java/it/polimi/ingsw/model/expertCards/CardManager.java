@@ -25,7 +25,6 @@ public class CardManager implements Serializable {
         this.playerList = new ArrayList<>(playerList);
         this.bag = bag;
         this.expertCards = new LinkedList<>(getThreeExpertCards());
-
     }
 
     /**
@@ -101,7 +100,6 @@ public class CardManager implements Serializable {
         return this.islandManager;
     }
 
-
     /**
      * @return  Player      Return an array of the players.
      */
@@ -140,7 +138,6 @@ public class CardManager implements Serializable {
         return expertCards;
     }
 
-
     /**
      * @return expert cards usable in this game
      */
@@ -153,7 +150,5 @@ public class CardManager implements Serializable {
         this.expertCards.add(expertCard);
         this.currentCard = expertCard;
     }
-
-
 
 }
