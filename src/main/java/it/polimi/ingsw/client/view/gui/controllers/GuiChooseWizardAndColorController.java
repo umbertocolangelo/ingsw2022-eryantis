@@ -1,8 +1,24 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
+
+import java.io.IOException;
 
 public class GuiChooseWizardAndColorController {
+
+    /**
+     *
+     */
+    private Stage stage;
+
+    /**
+     *
+     */
+    private Scene scene;
 
     /**
      * click on wizard1
@@ -40,8 +56,12 @@ public class GuiChooseWizardAndColorController {
      * click on next button
      * @param mouseEvent
      */
-    public void onNextClick(MouseEvent mouseEvent) {
-
+    public void onNextClick(MouseEvent mouseEvent) throws IOException {
+        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.show();
     }
 
     /**

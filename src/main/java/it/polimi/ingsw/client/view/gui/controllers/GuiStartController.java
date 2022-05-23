@@ -10,7 +10,14 @@ import java.io.IOException;
 
 public class GuiStartController {
 
+    /**
+     *
+     */
     private Stage stage;
+
+    /**
+     *
+     */
     private Scene scene;
 
     /**

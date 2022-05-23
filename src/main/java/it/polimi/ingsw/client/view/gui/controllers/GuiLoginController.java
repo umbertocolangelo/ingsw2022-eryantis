@@ -11,7 +11,14 @@ import java.io.IOException;
 
 public class GuiLoginController {
 
+    /**
+     *
+     */
     private Stage stage;
+
+    /**
+     *
+     */
     private Scene scene;
 
     /**
@@ -20,7 +27,7 @@ public class GuiLoginController {
      */
     public void onClickEvent(MouseEvent mouseEvent) throws IOException {
         stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/deckandcolor-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/deckAndColor-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
