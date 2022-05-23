@@ -2,18 +2,13 @@
 package it.polimi.ingsw.modelTest.islandTest;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
-import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.expertCards.CardManager;
-import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.islands.IslandGroup;
 import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Tower;
 import it.polimi.ingsw.model.player.Player;
-import it.polimi.ingsw.model.studentSuppliers.Bag;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -35,8 +30,8 @@ public class IslandManagerTest {
         Tower tower1 = new Tower(PlayerColor.WHITE);
         Tower tower2 = new Tower(PlayerColor.WHITE);
         Tower tower3 = new Tower(PlayerColor.BLACK);
-        game.getIslandManager().getIslands().get(0).addTower(tower1);
-        game.getIslandManager().getIslands().get(1).addTower(tower2);
+        //game.getIslandManager().getIslands().get(0).addTower(tower1);
+        //game.getIslandManager().getIslands().get(1).addTower(tower2);
         game.getIslandManager().getIslands().get(2).addTower(new Tower(PlayerColor.WHITE));
         game.getIslandManager().getIslands().get(3).addTower(new Tower(PlayerColor.WHITE));
         game.getIslandManager().getIslands().get(4).addTower(tower3);
@@ -49,7 +44,7 @@ public class IslandManagerTest {
         System.out.println(game.getIslandManager().getIslands().get(1).getInfluenceColor());
         System.out.println(game.getIslandManager().getIslands().get(4).getInfluenceColor());
 
-        game.getIslandManager().checkGroup(game.getIslandManager().getIslands().get(1));
+        game.getIslandManager().checkGroup(game.getIslandManager().getIslands().get(0));
 
         System.out.println();
         System.out.println("Step 1");

@@ -5,6 +5,7 @@ import it.polimi.ingsw.listener.PropertyObserver;
 import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.message.StartGame;
 import it.polimi.ingsw.model.player.Player;
 
 import java.io.IOException;
@@ -86,9 +87,11 @@ public class Server {
             game = new Game();
             propertyObserver = new PropertyObserver(game,this);
             game.addListener(propertyObserver);
-            //System.out.println(game.getCurrentPlayer().getName());
-            //System.out.println(game.getPlayerList());
-            Thread t1 = new Thread( modifyGame(game));
+            MessageMethod messageMethod=new StartGame();
+            ((StartGame)messageMethod).setGameMode(gameMode);
+            ((StartGame)messageMethod).setPlayers(players);
+
+            Thread t1 = new Thread( modifyGame(messageMethod));
             t1.join();
 
             playingConnection.putAll(waitingConnection);
@@ -212,16 +215,6 @@ public class Server {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                if(object instanceof Game) {
-                    //Dovremmo mettere un messaggio per fare questa azione
-                    game.setPlayerList(players);
-                    game.initializeGame();
-                    for (int i =0; i<game.getPlayerList().size(); i++) //Necessario per far giocare le play expertCArd
-                        game.getPlayerList().get(i).setCoin(5);
-                    if(gameMode==false)
-                        game.setNormalMode();
-                    sendGame();
-                }
                 if (object instanceof MessageMethod) {
                    ((MessageMethod) object).apply(game);
                 }

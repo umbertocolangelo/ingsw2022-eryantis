@@ -91,33 +91,16 @@ public class Controller implements Runnable {
                         break;
 
                     case MOVING_STUDENTS:
-                        if(client.getGame().getCurrentRound().getId()==null)
-                            t0=cli.choosingExpertCardOrMoving();
-                        else {
-                            switch (client.getGame().getCurrentRound().getId()) {
-                                case 0:
-                                    t0 = cli.ingressCardSwap();
-                                    break;
-                                case 1:
-                                    t0 = cli.ingressHallSwap();
-                                    break;
-                                case 2:
-                                    t0 = cli.studentToHall();
-                                    break;
-                                case 3:
-                                    t0 = cli.studentToIsland();
-                                    break;
-                            }
-                        }
+                       checkRound();
 
                         break;
                     case MOVING_MOTHERNATURE:
-                        t0 = cli.choosingExpertCardOrMoving();
+                        checkRound();
                         break;
 
                     case CHOOSING_CLOUD:
-                       t0 = cli.choosingExpertCardOrMoving();
-                       break;
+                        checkRound();
+                    break;
                }
                try {
                    t0.join();
@@ -151,6 +134,28 @@ public class Controller implements Runnable {
      */
     public void setClientState(ClientState clientState) {
         this.clientState = clientState;
+    }
+
+
+    private void checkRound(){
+        if(client.getGame().getCurrentRound().getId()==null)
+            t0=cli.choosingExpertCardOrMoving();
+        else {
+            switch (client.getGame().getCurrentRound().getId()) {
+                case 0:
+                    t0 = cli.ingressCardSwap();
+                    break;
+                case 1:
+                    t0 = cli.ingressHallSwap();
+                    break;
+                case 2:
+                    t0 = cli.studentToHall();
+                    break;
+                case 3:
+                    t0 = cli.studentToIsland();
+                    break;
+            }
+        }
     }
 
 }

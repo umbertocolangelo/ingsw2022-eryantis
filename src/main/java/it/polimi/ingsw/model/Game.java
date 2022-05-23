@@ -216,6 +216,7 @@ public class Game implements GameInterface, Serializable {
         influenceManager= new InfluenceManager(motherNature, playerList);
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
+        propertyChange.firePropertyChange("Inizialize game",null,null);
     }
 
     /**
@@ -331,7 +332,6 @@ public class Game implements GameInterface, Serializable {
         return null;
     }
 
-
     /**
      * @param string       Move the student from the ingress to the hall
      */
@@ -400,7 +400,7 @@ public class Game implements GameInterface, Serializable {
     @Override
     public void playAssistantCard(String assistant) {
         AssistantCard assistantCard=IdManager.getInstance().getAssistantCard(assistant);
-        if(this.currentRound.playAssistantCard(assistantCard,this.currentPlayer)) {
+        if(this.currentRound.playAssistantCard(assistantCard, this.currentPlayer)) {
 
             System.out.println("Assistant card played");
 
@@ -410,12 +410,11 @@ public class Game implements GameInterface, Serializable {
             }
 
             propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
-        }else{
+        } else {
             System.out.println("Assistant card already played");
             propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
         }
     }
-
 
     /**
      * @param expert        Play the expert card
@@ -423,8 +422,10 @@ public class Game implements GameInterface, Serializable {
     public void playExpertCard(String expert, String object) {
         ExpertCard expertCard= IdManager.getInstance().getExpertCard(expert);
 
-        if(expertMode==false){ return;}
-        if(currentRound.playExpertCard(expertCard).equals(true)){ // if the card can be played
+        if (expertMode==false) {
+            return;
+        }
+        if (currentRound.playExpertCard(expertCard).equals(true)) { // if the card can be played
             currentPlayer.setCoin(-(expertCard.getCost())); // update the card cost
             cardManager.setCurrentCard(expertCard);
 
@@ -491,11 +492,11 @@ public class Game implements GameInterface, Serializable {
     public void expertStudentToIsland(String student1, String island1) {
         Student student=IdManager.getInstance().getStudent(student1);
         Island island=IdManager.getInstance().getIsland(island1);
-        if(this.currentRound.expertStudentToIsland(student,island)){
+        if(this.currentRound.expertStudentToIsland(student, island)){
             island.addStudent(student);
-            FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
+            FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
-            propertyChange.firePropertyChange("expert moveStudentToIsland",island,student);
+            propertyChange.firePropertyChange("expert moveStudentToIsland", island, student);
 
         }
     }
@@ -505,17 +506,17 @@ public class Game implements GameInterface, Serializable {
      * @param student2        The student from the ingress
      */
     public void expertIngressCardSwap(String student1, String student2) {
-        Student studentCard=IdManager.getInstance().getStudent(student1);
-        Student studentHall=IdManager.getInstance().getStudent(student2);
-        if(this.currentRound.expertIngressCardSwap(studentCard, studentHall)) {
+        Student studentCard = IdManager.getInstance().getStudent(student1);
+        Student studentHall = IdManager.getInstance().getStudent(student2);
+        if (this.currentRound.expertIngressCardSwap(studentCard, studentHall)) {
             this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
-            FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
+            FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(studentHall);
-            if(((IngressCardSwapActionRound)currentRound).getStudent()==0)
+            if (((IngressCardSwapActionRound)currentRound).getStudent()==0) {
                 finishExpertMove();
+            }
             propertyChange.firePropertyChange("expert moveStudentToIsland", student1, student2);
         }
-
     }
 
     /**
@@ -523,54 +524,53 @@ public class Game implements GameInterface, Serializable {
      * @param studentIngress1        The student present on the ingress
      */
     public void expertIngressHallSwap(String studentHall1, String studentIngress1) {
-        Student studentHall=IdManager.getInstance().getStudent(studentHall1);
-        Student studentIngress=IdManager.getInstance().getStudent(studentIngress1);
+        Student studentHall = IdManager.getInstance().getStudent(studentHall1);
+        Student studentIngress = IdManager.getInstance().getStudent(studentIngress1);
         if(this.currentRound.expertIngressHallSwap(studentHall, studentIngress)) {
             currentPlayer.getSchool().getIngress().addStudent((studentHall));
             currentPlayer.getSchool().getHall().getLine(studentIngress.getColor()).addStudent(studentIngress);
-            if(((IngressHallSwapActionRound)currentRound).getStudent()==0)
+            if(((IngressHallSwapActionRound)currentRound).getStudent()==0) {
                 finishExpertMove();
+            }
             propertyChange.firePropertyChange("expert IngressHallSwap", studentHall1, studentIngress1);
         }
-
     }
 
     /**
      * @param student1           The student we want to put in the Hall
      */
     public void expertStudentToHall(String student1) {
-        Student student=IdManager.getInstance().getStudent(student1);
+        Student student = IdManager.getInstance().getStudent(student1);
         if(this.currentRound.expertStudentToHall(student)) {
             currentPlayer.getSchool().getHall().addStudent(student);
-            FixedObjectStudent expertCard= (FixedObjectStudent) cardManager.getCurrentCard();
+            FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(this.bag.newStudent());
-            propertyChange.firePropertyChange("expert moveStudentToHall",this.currentPlayer.getSchool().getHall(),student);
+            professorManager.checkProfessor(currentPlayer);
+            propertyChange.firePropertyChange("expert moveStudentToHall", this.currentPlayer.getSchool().getHall(), student);
         }
     }
 
     /**
      * @param cloud1         The cloud we want to select
-     *                      Its not clear how we set the cloud we can get
+     *                       It's not clear how we set the cloud we can get
      */
     public void chooseCloud(String cloud1) {
-        Cloud cloud= IdManager.getInstance().getCloud(cloud1);
+        Cloud cloud = IdManager.getInstance().getCloud(cloud1);
         if(this.currentRound.chooseCloud(cloud)) {
-            while (cloud.getStudents().size() != 0) {
+            while (cloud.getStudents().size()!=0) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
-
             }
             this.currentRound.checkRoundEnded();
             professorManager.setStandardCheck(); // reset the professor calculus
-            propertyChange.firePropertyChange("Choose cloud",this.clouds,cloud);
+            propertyChange.firePropertyChange("Choose cloud", this.clouds, cloud);
         }
-
     }
 
     /**
      * Sets the game in expert mode
      */
     public void setExpertMode() {
-        expertMode = true;
+        this.expertMode = true;
     }
 
     /**
@@ -592,18 +592,19 @@ public class Game implements GameInterface, Serializable {
             this.currentPlayer.setPlayerColor(color);
             System.out.println(this.currentPlayer.getName());
             currentPlayer.setWizard(wizard);
-            for (int i = 0; (isThree & i < 9) || (!isThree && i < 7); i++)
+            for (int i=0; (isThree & i<9) || (!isThree && i<7); i++) {
                 this.currentPlayer.getSchool().getIngress().addStudent(bag.newStudent());
+            }
             if(playerList.indexOf(currentPlayer)<playerList.size()-1) {
                 System.out.println("modify current player in game");
-                this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
+                this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer)+1));
                 System.out.println(currentPlayer.getName());
             }
             else {
                 Collections.shuffle(playerList);
-                currentPlayer=playerList.getFirst();
+                currentPlayer = playerList.getFirst();
             }
-            propertyChange.firePropertyChange("Finished choose color and deck",currentRound,color);
+            propertyChange.firePropertyChange("Finished choose color and deck", currentRound, color);
             return true;
         }
         else
@@ -612,7 +613,7 @@ public class Game implements GameInterface, Serializable {
 
     @Override
     public void setNormalMode() {
-        this.expertMode=false;
+        this.expertMode = false;
     }
 
     @Override
@@ -623,15 +624,15 @@ public class Game implements GameInterface, Serializable {
     /**
      * @return orderedPlayerList    Return the orderedPlayerList
      */
-    public LinkedList<Player> getOrderedPLayerList(){
+    public LinkedList<Player> getOrderedPLayerList() {
         return new LinkedList<>(this.orderedPLayerList);
     }
 
     /**
      * Set the orderedPlayerList
      */
-    public void setOrderedPLayerList(LinkedList<Player> playerList){
-        this.orderedPLayerList=playerList;
+    public void setOrderedPLayerList(LinkedList<Player> playerList) {
+        this.orderedPLayerList = playerList;
     }
 
     /**
@@ -659,7 +660,7 @@ public class Game implements GameInterface, Serializable {
     /**
      **@return actionRound Return the actionRound
      */
-    public ActionRound setActionRoundState(){
+    public ActionRound setActionRoundState() {
         this.actionRound = new ActionRound(this,isThree);
         return (ActionRound) this.actionRound;
     }
@@ -667,21 +668,21 @@ public class Game implements GameInterface, Serializable {
     /**
      **@return studentToIslandRound Return the studentToIslandRound
      */
-    public StudentToIslandActionRound setStudentToIslandState(){
+    public StudentToIslandActionRound setStudentToIslandState() {
         return (StudentToIslandActionRound) this.studentToIslandRound;
     }
 
     /**
      **@return ingressCardSwap Return the ingressCardSwap
      */
-    public IngressCardSwapActionRound setIngressCardSwapActionRound(){
+    public IngressCardSwapActionRound setIngressCardSwapActionRound() {
         return (IngressCardSwapActionRound) this.ingressCardSwap;
     }
 
     /**
      *@return studentToHallRound Return the studentToHallRound
      */
-    public StudentToHallActionRound setStudentToHallState(){
+    public StudentToHallActionRound setStudentToHallState() {
        return (StudentToHallActionRound) this.studentToHallRound;
     }
 
@@ -689,58 +690,59 @@ public class Game implements GameInterface, Serializable {
      *
      * @return  setUpRound      Return the setUpRound
      */
-    public SetUpRound setSetUpRound(){
+    public SetUpRound setSetUpRound() {
         return (SetUpRound) this.setUpRound;
     }
 
     /**
      *Used if the player wants to finish the move
      */
-    public void finishExpertMove(){
+    public void finishExpertMove() {
         setRound(previousRound);
-        propertyChange.firePropertyChange("Finished expert move",cardManager.getCurrentCard(),null);
+        propertyChange.firePropertyChange("Finished expert move", cardManager.getCurrentCard(), null);
     }
 
     /**
      * @return     It's needed for the rounds where after picks a student from an expert card they put another one, they need to access to current card
      */
-    public CardManager getCardManager(){
+    public CardManager getCardManager() {
         return this.cardManager;
     }
 
     /**
      * @return the instance of IslandManager
      */
-    public IslandManager getIslandManager() { return this.islandManager; }
+    public IslandManager getIslandManager() {
+        return this.islandManager;
+    }
 
     /**
      * @return  Bag     Return the instance of the Bag
      */
-    public Bag getBag(){
+    public Bag getBag() {
         return this.bag;
     }
 
     /**
-     * Set the Playerlist, only for debugging so far
+     * Set the Player list, only for debugging so far
      */
-    public void setPlayerList(LinkedList<Player> players){
-        this.playerList =players;
-        if(players.size()==3){
+    public void setPlayerList(LinkedList<Player> players) {
+        this.playerList = players;
+        if(players.size()==3) {
             isThree = true;
-            for(Player p : players){
+            for(Player p : players) {
                 p.setThreePlayers();
             }
-        }else{
-            isThree=false;
+        } else {
+            isThree = false;
         }
-
     }
 
     /**
      *
      * @return  new linked list of clouds
      */
-    public LinkedList<Cloud> getClouds(){
+    public LinkedList<Cloud> getClouds() {
         return new LinkedList<>(this.clouds);
     }
 
@@ -748,7 +750,7 @@ public class Game implements GameInterface, Serializable {
      *
      * @param clouds        Set the clouds
      */
-    public void setCloud(LinkedList<Cloud> clouds){
+    public void setCloud(LinkedList<Cloud> clouds) {
         this.clouds = clouds;
     }
 
@@ -759,8 +761,5 @@ public class Game implements GameInterface, Serializable {
     public MotherNature getMotherNature() {
         return this.motherNature;
     }
-
-
-
 
 }

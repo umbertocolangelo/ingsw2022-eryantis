@@ -109,11 +109,7 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
      */
     @Override
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress) {
-
         studentsMoved++;
-        if(studentsMoved==3){
-            return finishExpertMove();
-        }
         return true;
 
 

@@ -234,4 +234,11 @@ public class Player implements Serializable {
         return this.assistantCards;
     }
 
+    /**
+     *
+     */
+    public void resetPlayedCard(){
+        this.playedCard=null;
+    }
+
 }
