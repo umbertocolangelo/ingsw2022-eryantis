@@ -48,7 +48,7 @@ public class PianificationRound implements RoundInterface, Serializable {
      */
     public Boolean checkRoundEnded() {
         if(assistantCards.size()==this.game.getPlayerList().size()) {
-
+            this.game.setPlayerList(playerListOrdered);
             this.game.setOrderedPLayerList(playerListOrdered);
             assistantCards=new ArrayList<>();
             playerListOrdered=new LinkedList<>();
