@@ -88,10 +88,11 @@ public class Bag implements Serializable {
      * @return boolean      Check if the number of students of the color c is arrived at the maximum
      */
     public boolean checkNumOfStudents(Color c){
-        if((greenStudentsNum<26 && c.equals(Color.GREEN)) || (yellowStudentsNum<26 && c.equals(Color.YELLOW)) || (redStudentsNum<26 && c.equals(Color.RED)) || (blueStudentsNum <26 && c.equals(Color.BLUE)) || pinkStudentsNum <26 && c.equals(Color.PINK))
+        if((greenStudentsNum<26 && c.equals(Color.GREEN)) || (yellowStudentsNum<26 && c.equals(Color.YELLOW)) || (redStudentsNum<26 && c.equals(Color.RED)) || (blueStudentsNum <26 && c.equals(Color.BLUE)) || pinkStudentsNum <26 && c.equals(Color.PINK)){
             return true;
-            else
-                return false;
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -171,4 +172,11 @@ public class Bag implements Serializable {
          */
     }
 
+    private boolean isEmpty(){
+        if(greenStudentsNum==26 && yellowStudentsNum==26 && redStudentsNum==26 && blueStudentsNum==26 && pinkStudentsNum==26 ){
+            return true;
+        }
+        return false;
+
+    }
 }

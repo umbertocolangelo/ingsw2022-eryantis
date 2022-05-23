@@ -249,7 +249,8 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * Checks if there is a winner, if so returns the winner player
+     * Checks if there is a winner, if so sets isWinner of the winning player to true
+     * @return the winner player
      */
     private void checkWinner() {
 
