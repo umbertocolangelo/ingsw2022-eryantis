@@ -105,7 +105,6 @@ public class ActionRound implements RoundInterface, Serializable {
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
         if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
             return false;
-
         return true;
     }
 
@@ -117,7 +116,6 @@ public class ActionRound implements RoundInterface, Serializable {
        if(currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps || jumps<1)
         return false;
        else{
-
            return true;
        }
     }
@@ -203,7 +201,7 @@ public class ActionRound implements RoundInterface, Serializable {
 
     /**
      * @param cloud     The cloud chose from the
-     * @return          True uf we can make the move
+     * @return          True if we can make the move
      */
     public Boolean chooseCloud(Cloud cloud) {
         if (this.currentPlayer.getPlayerPhase() != PlayerPhase.CHOOSING_CLOUD)
@@ -213,20 +211,22 @@ public class ActionRound implements RoundInterface, Serializable {
         LinkedList<Player> players=this.game.getOrderedPLayerList();
         players.removeFirst();
         this.game.setOrderedPLayerList(players);
-
-        //checkRoundEnded(); called after in Game
         return true;
-
     }
 
 
     /**
-     *Return the number of the students moved
+     * Return the number of the students moved
      */
     public Integer getStudentsMoved(){
         return this.studentsMoved;
     }
 
+
+    /**
+     * Checks if the player has already played an expert card
+     * @return true if the player has already played an expert card
+     */
     public Boolean getCardAlreadyPlayed(){
         return cardAlreadyPlayed;
     }

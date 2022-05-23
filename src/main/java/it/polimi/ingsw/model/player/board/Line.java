@@ -124,7 +124,7 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializa
     }
 
     /**
-     * @return boolean      Return if the professor is present on the line
+     * @return true if the professor is present on the line, else returns false
      */
     public Boolean isProfessor() {
         if(this.professor!=null){

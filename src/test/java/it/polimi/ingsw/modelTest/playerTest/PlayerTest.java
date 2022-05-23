@@ -14,28 +14,28 @@ public class PlayerTest {
      * Test getPlayerCards function
      */
 
-   @Test
-    public void getPlayerCardsTest(){
-        Player player=new Player("vittorio");
-        ArrayList<AssistantCard> assist=  player.getPlayedCards();
+    @Test
+    public void getPlayerCardsTest() {
+        Player player = new Player("vittorio");
+        ArrayList<AssistantCard> assist = player.getPlayedCards();
 
 
-        assertTrue(assist.get(0).name()=="ONE_CARD"&& assist.get(9).name()=="TEN_CARD");
+        assertTrue(assist.get(0).name() == "ONE_CARD" && assist.get(9).name() == "TEN_CARD");
     }
     /**
      * Test playAssistantCard function
      */
 
     @Test
-    public void playAssistantCardTest(){
-        Player player=new Player("vittorio");
-        AssistantCard assist= AssistantCard.TWO_CARD;
+    public void playAssistantCardTest() {
+        Player player = new Player("vittorio");
+        AssistantCard assist = AssistantCard.TWO_CARD;
         player.playAssistantCard(assist);
-        AssistantCard assist1= AssistantCard.NINE_CARD;
+        AssistantCard assist1 = AssistantCard.NINE_CARD;
         player.playAssistantCard(assist1);
-        AssistantCard assist2= AssistantCard.FIVE_CARD;
+        AssistantCard assist2 = AssistantCard.FIVE_CARD;
         player.playAssistantCard(assist2);
-        assertTrue(player.getPlayedCards().size()==7);
+        assertTrue(player.getPlayedCards().size() == 7);
 
 
     }
@@ -49,7 +49,7 @@ public class PlayerTest {
         Player player = new Player("vittorio");
         AssistantCard assist = AssistantCard.TWO_CARD;
         player.playAssistantCard(assist);
-        assertTrue(player.getCardPlayedValue()==assist.getValue());
+        assertTrue(player.getCardPlayedValue() == assist.getValue());
     }
 
     /**
@@ -61,25 +61,27 @@ public class PlayerTest {
         Player player = new Player("vittorio");
         AssistantCard assist = AssistantCard.TWO_CARD;
         player.playAssistantCard(assist);
-        assertTrue(player.getCardPlayed()==assist);
+        assertTrue(player.getCardPlayed() == assist);
     }
 
     /**
      * Test getName function
      */
     @Test
-    public void getNameTest(){
-        Player player=new Player("vittorio");
+    public void getNameTest() {
+        Player player = new Player("vittorio");
         assertTrue(player.getName().equals("vittorio"));
     }
+
     /**
      * Test getWizard function
      */
     @Test
     public void getWizardTest() {
         Player player = new Player("vittorio");
-        assertTrue(player.getWizard()==null);
+        assertTrue(player.getWizard() == null);
     }
+
     /**
      * Test geSchool function
      */
@@ -88,7 +90,7 @@ public class PlayerTest {
         Player player = new Player("vittorio");
         Player player1 = new Player("vittorio");
         player.setPlayerColor(PlayerColor.WHITE);
-        assertTrue(player.getSchool()!=player1.getSchool());
+        assertTrue(player.getSchool() != player1.getSchool());
     }
 
     /**
@@ -98,7 +100,7 @@ public class PlayerTest {
     public void getCoinsTest() {
         Player player = new Player("vittorio");
         player.setCoin(1);
-        assertTrue(player.getCoins()==1);
+        assertTrue(player.getCoins() == 1);
     }
 
     /**
@@ -108,8 +110,8 @@ public class PlayerTest {
     public void setPlayerColorTest() {
         Player player = new Player("vittorio");
         player.setPlayerColor(PlayerColor.WHITE);
-        assertTrue(player.getPlayerColor()==PlayerColor.WHITE);
-        assertTrue(player.getSchool()!=null);
+        assertTrue(player.getPlayerColor() == PlayerColor.WHITE);
+        assertTrue(player.getSchool() != null);
     }
 
     /**
@@ -119,33 +121,34 @@ public class PlayerTest {
     public void getPlayerColorTest() {
         Player player = new Player("vittorio");
         player.setPlayerColor(PlayerColor.WHITE);
-        assertTrue(player.getPlayerColor()==PlayerColor.WHITE);
+        assertTrue(player.getPlayerColor() == PlayerColor.WHITE);
     }
+
     /**
      * Test isDeckEnded function
      */
     @Test
-    public void isDeckEndedTest(){
+    public void isDeckEndedTest() {
         Player player = new Player("vittorio");
-        AssistantCard assist= AssistantCard.TWO_CARD;
+        AssistantCard assist = AssistantCard.TWO_CARD;
         player.playAssistantCard(assist);
-       AssistantCard assist1= AssistantCard.ONE_CARD;
+        AssistantCard assist1 = AssistantCard.ONE_CARD;
         player.playAssistantCard(assist1);
-        AssistantCard assist2= AssistantCard.THREE_CARD;
+        AssistantCard assist2 = AssistantCard.THREE_CARD;
         player.playAssistantCard(assist2);
-        AssistantCard assist3= AssistantCard.FOUR_CARD;
+        AssistantCard assist3 = AssistantCard.FOUR_CARD;
         player.playAssistantCard(assist3);
-        AssistantCard assist4= AssistantCard.FIVE_CARD;
+        AssistantCard assist4 = AssistantCard.FIVE_CARD;
         player.playAssistantCard(assist4);
-        AssistantCard assist5= AssistantCard.SIX_CARD;
+        AssistantCard assist5 = AssistantCard.SIX_CARD;
         player.playAssistantCard(assist5);
-        AssistantCard assist6= AssistantCard.SEVEN_CARD;
+        AssistantCard assist6 = AssistantCard.SEVEN_CARD;
         player.playAssistantCard(assist6);
-        AssistantCard assist7= AssistantCard.EIGHT_CARD;
+        AssistantCard assist7 = AssistantCard.EIGHT_CARD;
         player.playAssistantCard(assist7);
-        AssistantCard assist8= AssistantCard.NINE_CARD;
+        AssistantCard assist8 = AssistantCard.NINE_CARD;
         player.playAssistantCard(assist8);
-        AssistantCard assist9= AssistantCard.TEN_CARD;
+        AssistantCard assist9 = AssistantCard.TEN_CARD;
         player.playAssistantCard(assist9);
         assertTrue(player.isDeckEnded());
 
@@ -158,8 +161,7 @@ public class PlayerTest {
     public void addCoinsTest() {
         Player player = new Player("vittorio");
         player.setCoin(1);
-        assertTrue(player.getCoins()==1);
+        assertTrue(player.getCoins() == 1);
 
     }
-
 }

@@ -12,6 +12,7 @@ import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.MotherNature;
+import it.polimi.ingsw.model.pawns.Professor;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.*;
@@ -251,34 +252,72 @@ public class Game implements GameInterface, Serializable {
 
     /**
      * Checks if there is a winner, if so sets isWinner of the winning player to true
-     * @return the winner player
      */
     private void checkWinner() {
-
-        // If the bag is empty
-
-        Boolean isEmpty = true;
-        for(Color color : Color.values()){
-             if(bag.checkNumOfStudents(color)){
-                 isEmpty = false;
-                 break;
-             }
-        }
-        if(isEmpty == true){
-            currentPlayer.isWinner();
-        }
 
         // If a player has placed all the towers
 
         for(Player p : playerList){
             if(p.getSchool().getTowerTable().numOfTowers()==0){
                 p.isWinner();
-                break;
+                return;
             }
         }
 
         // If there are 3 island groups
-        // TODO
+
+        // If assistant cards finished
+
+        if(playerList.get(0).getAssistantCard().isEmpty() && playerList.get(0).getCardPlayed()==null){ // if the players have played all the assistant cards
+
+            Player winner = playerList.get(0);
+            int minTower = winner.getSchool().getTowerTable().numOfTowers();
+            LinkedList<Player> tiePlayers = new LinkedList<Player>(); // if there is a tie, stores the players with same number of towers
+
+            for(Player player : playerList){
+                if(player.getSchool().getTowerTable().numOfTowers()<minTower){ // if this player has placed more towers
+                    winner = player;
+                    minTower = winner.getSchool().getTowerTable().numOfTowers();
+                    tiePlayers.clear();
+                }
+                if(player.getSchool().getTowerTable().numOfTowers()==minTower){
+                    if(tiePlayers.isEmpty()){
+                        tiePlayers.add(player);
+                        tiePlayers.add(winner);
+                    }else{
+                        tiePlayers.add(player);
+                    }
+                    winner=null;
+                }
+
+            }
+
+            if(winner!=null){ // if there is a tie between two players the winner is based on the professors owned
+                int maxProfCount = 0;
+                for(Player player : tiePlayers){
+                    int profCount = 0;
+                    for(Color color : Color.values()){
+                        if(player.getSchool().getHall().getLine(color).isProfessor()){
+                            profCount++;
+                        }
+                    }
+
+                    if(maxProfCount<profCount){
+                        maxProfCount = profCount;
+                        winner = player;
+                    }
+
+                    if(maxProfCount==profCount){ // if there is a tie
+                        winner = null;
+                    }
+                }
+            }
+
+            if(winner!=null){
+                winner.isWinner();
+            }
+            return;
+        }
     }
 
     public RoundInterface getCurrentRound(){

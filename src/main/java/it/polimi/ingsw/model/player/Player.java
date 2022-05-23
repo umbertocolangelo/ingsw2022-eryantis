@@ -145,21 +145,22 @@ public class Player implements Serializable {
     }
 
     /**
-     * @return          The number of coins of this player
+     * @return the number of coins of this player
      */
     public Integer getCoins() {
         return this.coins;
     }
 
     /**
-     * @return          A copy of the deck of this player
+     * @return a copy of the deck of this player
    */
     public ArrayList<AssistantCard>getPlayedCards() {
          return new ArrayList<AssistantCard>(this.assistantCards);
     }
 
     /**
-     * @param color     Sets the color of the player and instantiates its school
+     * Sets the color of the player and instantiates its school
+     * @param color is the color set to the player
      */
     public void setPlayerColor(PlayerColor color) {
         this.color = color;
@@ -167,14 +168,14 @@ public class Player implements Serializable {
     }
 
     /**
-     * @return  PlayerColor     Return the player color
+     * @return the PlayerColor of the player
      */
     public PlayerColor getPlayerColor() {
         return this.color;
     }
 
     /**
-     * @return boolean         Return true if the deck doesn't contain any cards, otherwise return false.
+     * @return true if the deck doesn't contain any cards, otherwise return false.
      */
     public Boolean isDeckEnded() {
        if(this.assistantCards.size()==0)
@@ -191,28 +192,29 @@ public class Player implements Serializable {
     }
 
     /**
-     * 
+     * Adds two jumps to current number of jumps possible
      */
     public void twoMoreJumps() {
         this.cardValue = cardValue+2;
     }
 
     /**
-     * @param phase
+     * Sets the phase of the player
+     * @param phase is the phase the player will be set to
      */
     public void setPlayerPhase(PlayerPhase phase) {
         this.phase=phase;
     }
 
     /**
-     * @return
+     * @return the PlayerPhase of the player
      */
     public PlayerPhase getPlayerPhase() {
         return this.phase;
     }
 
     /**
-     * @return
+     * Sets the player as winner
      */
     public void isWinner() {
         isWinner = true;
@@ -223,21 +225,21 @@ public class Player implements Serializable {
     }
 
     /**
-     * @return
+     * @return the id of the player
      */
     public String getId() { return this.id; }
 
     /**
-     * @return
+     * @return the deck of assistant cards
      */
     public ArrayList<AssistantCard> getAssistantCard(){
         return this.assistantCards;
     }
 
     /**
-     *
+     * Sets the assistant card to null
      */
-    public void resetPlayedCard(){
+    public void resetAssistantCard(){
         this.playedCard=null;
     }
 

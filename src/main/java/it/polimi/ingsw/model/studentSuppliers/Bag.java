@@ -59,6 +59,7 @@ public class Bag implements Serializable {
      * @return  student         Create a new student, use a fanction that return a random color, check if its not been created all the students of that color, if it isnt than create the student
      */
     public Student newStudent() {
+        if(isEmpty()){return null;} //if the bag is empty
         Color c;
         while(true) {
             c = randomEnum(Color.class);
@@ -172,11 +173,14 @@ public class Bag implements Serializable {
          */
     }
 
-    private boolean isEmpty(){
+    /**
+     * Check if the bag is empty
+     * @return true if the bag is empty
+     */
+    public boolean isEmpty(){
         if(greenStudentsNum==26 && yellowStudentsNum==26 && redStudentsNum==26 && blueStudentsNum==26 && pinkStudentsNum==26 ){
             return true;
         }
         return false;
-
     }
 }

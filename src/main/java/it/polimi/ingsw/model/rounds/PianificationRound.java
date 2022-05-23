@@ -24,7 +24,7 @@ public class PianificationRound implements RoundInterface, Serializable {
      */
     public PianificationRound(Game game) {
         for(Player player: game.getPlayerList())
-            player.resetPlayedCard();
+            player.resetAssistantCard();
         this.game=game;
     }
 
