@@ -25,7 +25,10 @@ public class GuiPianificationPhaseController {
      */
     private Scene scene;
 
-
+    /**
+     *
+     */
+    private AnchorPane anchorPane;
 
     /**
      * click to show rules
@@ -134,6 +137,7 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void lightUp(MouseEvent mouseEvent) {
+
     }
 
     /**
@@ -141,6 +145,7 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void turnOff(MouseEvent mouseEvent) {
+
     }
 
 }
