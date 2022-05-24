@@ -128,7 +128,8 @@ public class SocketClientConnection implements Runnable {
                 System.out.println(read);
             }
 
-            server.getSemaphore().release();
+
+
             name = read;
             send(new SetName(name));
             server.lobby(this, name);

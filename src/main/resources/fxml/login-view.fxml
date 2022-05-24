@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="800.0" style="-fx-background-image: url('/Graphical_Assets/Eriantys_slider.jpg');" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiLoginController">
+<AnchorPane fx:id="scenePane"  prefHeight="450.0" prefWidth="800.0" style="-fx-background-image: url('/Graphical_Assets/Eriantys_slider.jpg');" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiLoginController">
    <children>
       <ImageView fitHeight="450.0" fitWidth="800.0" opacity="0.5">
          <image>
@@ -31,7 +31,7 @@
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Label>
-      <RadioButton layoutX="79.0" layoutY="183.0" mnemonicParsing="false" text="2">
+      <RadioButton fx:id="twoPlayers" layoutX="79.0" layoutY="183.0" mnemonicParsing="false" text="2">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>

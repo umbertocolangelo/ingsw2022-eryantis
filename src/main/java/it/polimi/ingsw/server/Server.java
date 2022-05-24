@@ -125,14 +125,14 @@ public class Server {
                     socketConnection.setIsFirst();
                 socketConnections.add(socketConnection);
                 Thread t0 = new Thread(socketConnection);
-                semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
+                //semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
                 t0.start();
 
             } catch (IOException e) {
                 System.out.println("Connection Error!");
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+           // } catch (InterruptedException e) {
+             //   e.printStackTrace();
 
             }
         }
@@ -224,12 +224,7 @@ public class Server {
         return t;
     }
 
-    /**
-     * @return
-     */
-    public Semaphore getSemaphore(){
-        return this.semaphore;
-    }
+
 
 }
 
