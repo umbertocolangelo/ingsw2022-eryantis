@@ -119,4 +119,18 @@ public class GuiChooseWizardAndColorController {
 
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
+    public void lightUp(MouseEvent mouseEvent) {
+    }
+
+    /**
+     *
+     * @param mouseEvent
+     */
+    public void turnOff(MouseEvent mouseEvent) {
+    }
+
 }
