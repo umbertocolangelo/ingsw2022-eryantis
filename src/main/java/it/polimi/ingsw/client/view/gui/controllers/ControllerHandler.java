@@ -52,7 +52,6 @@ public class ControllerHandler {
 
     {
         case LOGIN:
-
             GuiMain guiMain = new GuiMain();
             guiMain.launchApp();
             break;
