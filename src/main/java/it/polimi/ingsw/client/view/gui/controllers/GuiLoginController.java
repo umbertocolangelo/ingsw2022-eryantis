@@ -63,6 +63,31 @@ public class GuiLoginController {
 
     }
 
+    /**
+     *
+     */
+    public void twoPlayers(MouseEvent mouseEvent) {
 
+    }
+
+    /**
+     *
+     */
+    public void threePlayers(MouseEvent mouseEvent) {
+    }
+
+    /**
+     *
+     * @param mouseEvent
+     */
+    public void classicGame(MouseEvent mouseEvent) {
+    }
+
+    /**
+     *
+     * @param mouseEvent
+     */
+    public void expertGame(MouseEvent mouseEvent) {
+    }
 
 }

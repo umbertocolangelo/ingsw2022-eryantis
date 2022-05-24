@@ -101,7 +101,7 @@ public class ControllerHandler {
     return stage;
     }
 
-    public void setClientState(ClientState clientState){
+    public void setClientState(ClientState clientState) {
         this.clientState = clientState;
     }
 

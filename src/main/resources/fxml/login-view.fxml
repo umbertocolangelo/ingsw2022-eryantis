@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane"  prefHeight="450.0" prefWidth="800.0" style="-fx-background-image: url('/Graphical_Assets/Eriantys_slider.jpg');" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiLoginController">
+<AnchorPane fx:id="scenePane" prefHeight="450.0" prefWidth="800.0" style="-fx-background-image: url('/Graphical_Assets/Eriantys_slider.jpg');" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiLoginController">
    <children>
       <ImageView fitHeight="450.0" fitWidth="800.0" opacity="0.5">
          <image>
@@ -31,12 +31,12 @@
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Label>
-      <RadioButton fx:id="twoPlayers" layoutX="79.0" layoutY="183.0" mnemonicParsing="false" text="2">
+      <RadioButton fx:id="twoPlayers" layoutX="79.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#twoPlayers" text="2">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="threePlayers" layoutX="79.0" layoutY="216.0" mnemonicParsing="false" text="3">
+      <RadioButton fx:id="threePlayers" layoutX="79.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#threePlayers" text="3">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
@@ -46,12 +46,12 @@
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Label>
-      <RadioButton fx:id="classicMode" layoutX="79.0" layoutY="301.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Classic">
+      <RadioButton fx:id="classicMode" layoutX="79.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#classicGame" prefHeight="18.0" prefWidth="64.0" text="Classic">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton fx:id="expertMode" layoutX="79.0" layoutY="331.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Expert">
+      <RadioButton fx:id="expertMode" layoutX="79.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#expertGame" prefHeight="18.0" prefWidth="64.0" text="Expert">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
