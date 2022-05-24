@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
+import it.polimi.ingsw.model.enumerations.AssistantCard;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,6 +19,11 @@ public class GuiPianificationPhaseController {
     /**
      *
      */
+    private String assistantCard;
+
+    /**
+     *
+     */
     private Stage stage;
 
     /**
@@ -27,11 +33,13 @@ public class GuiPianificationPhaseController {
 
 
 
+
     /**
      * click to show rules
      * @param mouseEvent
      */
     public void onRulesClick(MouseEvent mouseEvent) {
+
     }
 
     /**
@@ -39,6 +47,8 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard1Click(MouseEvent mouseEvent) {
+        assistantCard= AssistantCard.ONE_CARD.getId();
+
     }
 
     /**
@@ -46,6 +56,8 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard2Click(MouseEvent mouseEvent) {
+        assistantCard= AssistantCard.TWO_CARD.getId();
+
     }
 
     /**
@@ -53,6 +65,8 @@ public class GuiPianificationPhaseController {
             * @param mouseEvent
      */
     public void onCard3Click(MouseEvent mouseEvent) {
+        assistantCard= AssistantCard.THREE_CARD.getId();
+
     }
 
     /**
@@ -60,6 +74,8 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard4Click(MouseEvent mouseEvent) {
+        assistantCard=AssistantCard.FOUR_CARD.getId();
+
     }
 
     /**
@@ -67,6 +83,8 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard5Click(MouseEvent mouseEvent) {
+        assistantCard=AssistantCard.FIVE_CARD.getId();
+
     }
 
     /**
@@ -74,6 +92,8 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard6Click(MouseEvent mouseEvent) {
+        assistantCard=AssistantCard.SIX_CARD.getId();
+
     }
 
     /**
@@ -81,6 +101,9 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard7Click(MouseEvent mouseEvent) {
+        assistantCard=AssistantCard.SEVEN_CARD.getId();
+
+
     }
 
     /**
@@ -88,6 +111,7 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard8Click(MouseEvent mouseEvent) {
+        assistantCard=AssistantCard.EIGHT_CARD.getId();
     }
 
     /**
@@ -95,6 +119,7 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard9Click(MouseEvent mouseEvent) {
+        assistantCard=AssistantCard.NINE_CARD.getId();
     }
 
     /**
@@ -102,6 +127,7 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onCard10Click(MouseEvent mouseEvent) {
+        assistantCard=AssistantCard.TEN_CARD.getId();
     }
 
     /**
@@ -110,14 +136,14 @@ public class GuiPianificationPhaseController {
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
 
-        if(ControllerHandler.getInstance().getClient().getNamePlayer().equals(ControllerHandler.getInstance().getClient().getGame().getCurrentPlayer().getName())) {
+
 
             stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
             scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setScene(scene);
             stage.show();
-        }
+
     }
 
     public void changeScene() throws IOException {

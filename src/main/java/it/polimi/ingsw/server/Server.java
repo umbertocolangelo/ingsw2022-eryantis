@@ -28,7 +28,7 @@ public class Server {
     private Game game;
     private SetUp setup = new SetUp();
     private Semaphore semaphore = new Semaphore(1);
-    private Boolean isCLi=true;
+    private Boolean isCLi=false;
 
 
     /**
