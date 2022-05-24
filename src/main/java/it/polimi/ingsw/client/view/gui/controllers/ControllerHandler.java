@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class ControllerHandler {
+
     /**
      *
      */
@@ -36,18 +37,18 @@ public class ControllerHandler {
     }
 
 
-    public static ControllerHandler getInstance(){
-        if (controllerHandler==null)
-            controllerHandler=new ControllerHandler();
+    public static ControllerHandler getInstance() {
+        if (controllerHandler==null) {
+            controllerHandler = new ControllerHandler();
+        }
         return controllerHandler;
     }
 
     public void setClient(Client client){
-        this.client= client;
+        this.client = client;
     }
 
     public void chooseScene() throws IOException {
-
         switch (clientState)
         {
             case LOGIN:
@@ -57,7 +58,7 @@ public class ControllerHandler {
 
             case SLEEPING:
                 System.out.println("hello");
-                GuiLoginController controller= new GuiLoginController();
+                GuiLoginController controller = new GuiLoginController();
                 Platform.runLater(()-> {
                     try {
                         controller.changeScene();
@@ -65,10 +66,7 @@ public class ControllerHandler {
                         e.printStackTrace();
                     }
                 });
-
-
         }
-
     }
 
     /**
@@ -104,7 +102,7 @@ public class ControllerHandler {
     }
 
     public void setClientState(ClientState clientState){
-        this.clientState=clientState;
+        this.clientState = clientState;
     }
 
 }
