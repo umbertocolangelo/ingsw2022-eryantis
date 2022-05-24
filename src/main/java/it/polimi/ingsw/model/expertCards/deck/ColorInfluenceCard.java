@@ -39,32 +39,26 @@ public class ColorInfluenceCard implements ExpertCard, Serializable {
     /**
      *
      */
-    private Color color;
-
-    /**
-     *
-     */
     public void apply(Color color) {
         manager.getInfluenceManager().setColorInfluence(color);
         incrementCost();
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     *
      * @return
      */
     @Override
