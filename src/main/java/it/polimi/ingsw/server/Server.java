@@ -16,18 +16,65 @@ import java.util.concurrent.Semaphore;
 
 public class Server {
 
+    /**
+     *
+     */
     private LinkedList<Player> players = new LinkedList<>();
-    private static final int PORT = 12345;
-    private ServerSocket serverSocket;private Map<String, SocketClientConnection> waitingConnection = new HashMap<>();
-    private Map<String, SocketClientConnection> playingConnection = new HashMap<>();
-    private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
-    private Integer numberOfPlayer = 128;
-    private Boolean gameMode; // true for expert mode, false for normal one
-    private PropertyObserver propertyObserver;
-    private Game game;
-    private SetUp setup = new SetUp();
-    private Semaphore semaphore = new Semaphore(1);
 
+    /**
+     *
+     */
+    private static final int PORT = 12345;
+
+    /**
+     *
+     */
+    private ServerSocket serverSocket;
+
+    /**
+     *
+     */
+    private Map<String, SocketClientConnection> waitingConnection = new HashMap<>();
+
+    /**
+     *
+     */
+    private Map<String, SocketClientConnection> playingConnection = new HashMap<>();
+
+    /**
+     *
+     */
+    private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
+
+    /**
+     *
+     */
+    private Integer numberOfPlayer = 128;
+
+    /**
+     *
+     */
+    private Boolean gameMode; // true for expert mode, false for normal one
+
+    /**
+     *
+     */
+    private PropertyObserver propertyObserver;
+
+    /**
+     *
+     */
+    private Game game;
+
+    /**
+     *
+     */
+    private SetUp setup = new SetUp();
+
+    /**
+     *
+     */
+    private Semaphore semaphore = new Semaphore(1);
 
     /**
      * deregister connection
@@ -113,9 +160,7 @@ public class Server {
     public void run(){
         int connections = 0;
         System.out.println("Server is running");
-
         while (!Thread.currentThread().isInterrupted() ) { //Abbiamo un problema che il client si disconnetete se tutte due si connetono insieme e scrive il secondo client (?)
-
             try {
                 Socket newSocket = serverSocket.accept();
                 connections++;
@@ -127,13 +172,10 @@ public class Server {
                 Thread t0 = new Thread(socketConnection);
                 semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
                 t0.start();
-
             } catch (IOException e) {
                 System.out.println("Connection Error!");
-
             } catch (InterruptedException e) {
                 e.printStackTrace();
-
             }
         }
     }
