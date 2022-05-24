@@ -1,4 +1,5 @@
-    module it.polimi.ingsw.client.view.gui {
+
+module it.polimi.ingsw.client.view.gui {
         requires javafx.controls;
         requires javafx.fxml;
 
@@ -7,8 +8,11 @@
 
         opens it.polimi.ingsw.client.view.gui to javafx.fxml;
         exports it.polimi.ingsw.client.view.gui;
-            exports it.polimi.ingsw;
-            opens it.polimi.ingsw to javafx.fxml;
+        exports it.polimi.ingsw;
+        opens it.polimi.ingsw to javafx.fxml;
         exports it.polimi.ingsw.client.view.gui.controllers;
         opens it.polimi.ingsw.client.view.gui.controllers to javafx.fxml;
+
+
     }
+

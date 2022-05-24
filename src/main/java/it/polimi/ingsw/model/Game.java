@@ -253,13 +253,14 @@ public class Game implements GameInterface, Serializable {
     /**
      * Checks if there is a winner, if so sets isWinner of the winning player to true
      */
-    private void checkWinner() {
+    public void checkWinner() {
 
         // If a player has placed all the towers
 
         for(Player p : playerList){
             if(p.getSchool().getTowerTable().numOfTowers()==0){
                 p.isWinner();
+                propertyChange.firePropertyChange("winner", null, p);
                 return;
             }
         }
@@ -315,6 +316,7 @@ public class Game implements GameInterface, Serializable {
 
             if(winner!=null){
                 winner.isWinner();
+                propertyChange.firePropertyChange("winner", null, winner);
             }
             return;
         }
@@ -682,7 +684,7 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     *@return pianificationRound Return the pianificationRound
+     *@return the pianificationRound
      */
     public PianificationRound setPianificationRoundState(){
         this.pianificationRound = new PianificationRound(this);
@@ -697,7 +699,7 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     **@return actionRound Return the actionRound
+     **@return the actionRound
      */
     public ActionRound setActionRoundState() {
         this.actionRound = new ActionRound(this,isThree);
@@ -705,7 +707,7 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     **@return studentToIslandRound Return the studentToIslandRound
+     **@return the studentToIslandRound
      */
     public StudentToIslandActionRound setStudentToIslandState() {
         return (StudentToIslandActionRound) this.studentToIslandRound;
