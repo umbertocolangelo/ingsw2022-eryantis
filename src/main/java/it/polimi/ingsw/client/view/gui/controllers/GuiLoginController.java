@@ -5,8 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -15,10 +15,12 @@ import java.io.IOException;
 public class GuiLoginController {
 
     @FXML
-    AnchorPane scenePane;
+    TextField insertName;
 
     @FXML
     private RadioButton twoPlayers;
+
+    @FXML
 
     /**
      *
@@ -39,13 +41,13 @@ public class GuiLoginController {
     public void onClickEvent(MouseEvent mouseEvent) throws IOException {
 
         stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
-        ControllerHandler.getInstance().write("virepo");
-        ControllerHandler.getInstance().write("2");
+        ControllerHandler.getInstance().write(insertName.getText());
+        System.out.println();
+        ControllerHandler.getInstance().write(twoPlayers.getText());
         ControllerHandler.getInstance().write("0");
         ControllerHandler.getInstance().receiveMessage();
 
@@ -62,6 +64,8 @@ public class GuiLoginController {
         stage.show();
 
     }
+
+
 
 
 

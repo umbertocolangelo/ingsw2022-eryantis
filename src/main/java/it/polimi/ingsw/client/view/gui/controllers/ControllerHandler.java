@@ -55,18 +55,30 @@ public class ControllerHandler {
 
             GuiMain guiMain = new GuiMain();
             guiMain.launchApp();
-
-        case SLEEPING:
-            System.out.println("hello");
-            GuiLoginController controller= new GuiLoginController();
-            Platform.runLater(()-> {
-                try {
-                    controller.changeScene();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
-
+            break;
+        case PLAYING:
+            switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
+                case SET_UP_PHASE:
+                        System.out.println("Setup");
+                        GuiLoginController controller = new GuiLoginController();
+                        Platform.runLater(() -> {
+                         try {
+                        controller.changeScene();
+                        } catch (IOException e) {
+                        e.printStackTrace();
+                        }
+                         });
+                        break;
+                case CHOOSING_ASSISTANT:
+                    GuiChooseWizardAndColorController colorController=new GuiChooseWizardAndColorController();
+                    Platform.runLater(() -> {
+                        try {
+                            colorController.changeScene();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+            }
 
     }
 
