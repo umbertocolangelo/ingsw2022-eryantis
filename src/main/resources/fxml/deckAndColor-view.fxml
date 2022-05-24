@@ -20,22 +20,22 @@
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Label>
-      <ImageView fx:id="wizard1" fitHeight="130.0" fitWidth="85.0" layoutX="64.0" layoutY="97.0" onMouseClicked="#onWizardClick1">
+      <ImageView fx:id="wizard1" fitHeight="130.0" fitWidth="85.0" layoutX="64.0" layoutY="97.0" onMouseClicked="#onWizardClick1" onMouseEntered="#lightUp" onMouseExited="#turnOff">
          <image>
             <Image url="@../Graphical_Assets/Assistenti/retro/CarteTOT_back_1@3x.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="wizard2" fitHeight="130.0" fitWidth="85.0" layoutX="182.0" layoutY="97.0" onMouseClicked="#onWizardClick2">
+      <ImageView fx:id="wizard2" fitHeight="130.0" fitWidth="85.0" layoutX="182.0" layoutY="97.0" onMouseClicked="#onWizardClick2" onMouseEntered="#lightUp" onMouseExited="#turnOff">
          <image>
             <Image url="@../Graphical_Assets/Assistenti/retro/CarteTOT_back_11@3x.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="wizard3" fitHeight="130.0" fitWidth="85.0" layoutX="301.0" layoutY="97.0" onMouseClicked="#onWizardClick3">
+      <ImageView fx:id="wizard3" fitHeight="130.0" fitWidth="85.0" layoutX="301.0" layoutY="97.0" onMouseClicked="#onWizardClick3" onMouseEntered="#lightUp" onMouseExited="#turnOff">
          <image>
             <Image url="@../Graphical_Assets/Assistenti/retro/CarteTOT_back_21@3x.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="wizard4" fitHeight="130.0" fitWidth="85.0" layoutX="416.0" layoutY="97.0" onMouseClicked="#onWizardClick4">
+      <ImageView fx:id="wizard4" fitHeight="130.0" fitWidth="85.0" layoutX="416.0" layoutY="97.0" onMouseClicked="#onWizardClick4" onMouseEntered="#lightUp" onMouseExited="#turnOff">
          <image>
             <Image url="@../Graphical_Assets/Assistenti/retro/CarteTOT_back_31@3x.png" />
          </image>
