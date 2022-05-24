@@ -71,7 +71,6 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-
         stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -81,7 +80,7 @@ public class GuiChooseWizardAndColorController {
         ((ChooseColorAndDeck)messageMethod).setWizard(wizard);
         ((ChooseColorAndDeck)messageMethod).setPlayerColor(color);
         ControllerHandler.getInstance().write(messageMethod);
-        ControllerHandler.getInstance().receiveMessage();
+        //ControllerHandler.getInstance().receiveMessage();
 
     }
 
@@ -110,9 +109,8 @@ public class GuiChooseWizardAndColorController {
     }
 
     public void changeScene() throws IOException {
-
         stage= ControllerHandler.getInstance().getStage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/assistandcard-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/pianificationPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();

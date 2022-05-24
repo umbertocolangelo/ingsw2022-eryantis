@@ -21,6 +21,25 @@ public class GuiLoginController {
     private RadioButton twoPlayers;
 
     @FXML
+    private RadioButton threePlayers;
+
+    @FXML
+    private RadioButton expertMode;
+
+    @FXML
+    private RadioButton classicMode;
+
+
+    /**
+     *
+     */
+    private String numOfPLayers;
+
+    /**
+     *
+     */
+
+    private String expertModeOrClassic;
 
     /**
      *
@@ -46,12 +65,9 @@ public class GuiLoginController {
         stage.setScene(scene);
         stage.show();
         ControllerHandler.getInstance().write(insertName.getText());
-        System.out.println();
-        ControllerHandler.getInstance().write(twoPlayers.getText());
-        ControllerHandler.getInstance().write("0");
+        ControllerHandler.getInstance().write(numOfPLayers);
+        ControllerHandler.getInstance().write(expertModeOrClassic);
         ControllerHandler.getInstance().receiveMessage();
-
-
 
     }
 
@@ -69,13 +85,14 @@ public class GuiLoginController {
      *
      */
     public void twoPlayers(MouseEvent mouseEvent) {
-
+            numOfPLayers="2";
     }
 
     /**
      *
      */
     public void threePlayers(MouseEvent mouseEvent) {
+        numOfPLayers="3";
     }
 
     /**
@@ -83,6 +100,7 @@ public class GuiLoginController {
      * @param mouseEvent
      */
     public void classicGame(MouseEvent mouseEvent) {
+        expertModeOrClassic="0";
     }
 
     /**
@@ -90,6 +108,7 @@ public class GuiLoginController {
      * @param mouseEvent
      */
     public void expertGame(MouseEvent mouseEvent) {
+        expertModeOrClassic="1";
     }
 
 
