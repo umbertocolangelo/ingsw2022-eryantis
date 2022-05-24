@@ -40,8 +40,8 @@ public class GameTests {
         lista.add(player);
         game.setPlayerList(lista);
         game.initializeGame();
-        game.chooseColorAndDeck(PlayerColor.WHITE, Wizard.GREEN_WIZARD);
-        game.chooseColorAndDeck(PlayerColor.BLACK,Wizard.BLUE_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(), Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
     }
 
 }

@@ -29,8 +29,8 @@ public class IngressCardSwapActionRoundTest {
 
         game.initializeGame();
         System.out.println("First player is " + game.getCurrentPlayer().getName());
-        game.chooseColorAndDeck(PlayerColor.GREY, Wizard.BLUE_WIZARD);
-        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.GREY.getId(), Wizard.BLUE_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
         System.out.println("First player is " + game.getCurrentPlayer().getName());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());

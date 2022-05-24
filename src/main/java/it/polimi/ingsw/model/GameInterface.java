@@ -1,7 +1,5 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.player.Player;
 
 import java.util.LinkedList;
@@ -101,7 +99,7 @@ public interface GameInterface {
      * @param wizard
      * @return
      */
-    public Boolean chooseColorAndDeck(PlayerColor color, Wizard wizard);
+    public Boolean chooseColorAndDeck(String color, String wizard);
 
     /**
      *

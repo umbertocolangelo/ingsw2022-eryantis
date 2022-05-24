@@ -25,8 +25,8 @@ public class ActionRoundTest {
         lista.add(lista.size(), new Player("vittorio"));
         game.setPlayerList(lista);
         game.initializeGame();
-        game.chooseColorAndDeck(PlayerColor.GREY, Wizard.BLUE_WIZARD);
-        game.chooseColorAndDeck(PlayerColor.WHITE, Wizard.GREEN_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.GREY.getId(), Wizard.BLUE_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(), Wizard.GREEN_WIZARD.getId());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
@@ -79,8 +79,8 @@ public class ActionRoundTest {
         lista.add(player);
         game.setPlayerList(lista);
         game.initializeGame();
-        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
-        game.chooseColorAndDeck(PlayerColor.BLACK,Wizard.BLUE_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
@@ -103,8 +103,8 @@ public class ActionRoundTest {
         lista.add(player);
         game.setPlayerList(lista);
         game.initializeGame();
-        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
-        game.chooseColorAndDeck(PlayerColor.BLACK,Wizard.BLUE_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
@@ -136,8 +136,8 @@ public class ActionRoundTest {
         game.setExpertMode();
         game.setPLayerList(lista);
         game.initializeGame();
-        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.GREEN_WIZARD);
-        game.chooseColorAndDeck(PlayerColor.WHITE,Wizard.BLUE_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.BLUE_WIZARD.getId());
         game.playAssistantCard(AssistantCard.ONE_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));

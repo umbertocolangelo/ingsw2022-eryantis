@@ -2,7 +2,6 @@ package it.polimi.ingsw.modelTest.roundsTest;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.player.Player;
 import org.junit.jupiter.api.Test;
@@ -24,9 +23,9 @@ public class SetUpRoundTest {
         lista.add(player1);
         game.setPlayerList(lista);
         game.initializeGame();
-        game.chooseColorAndDeck( PlayerColor.WHITE, Wizard.BLUE_WIZARD);
+        game.chooseColorAndDeck( PlayerColor.WHITE.getId(), Wizard.BLUE_WIZARD.getId());
         assertTrue(player.getPlayerColor()==PlayerColor.WHITE && player.getWizard()== Wizard.BLUE_WIZARD);
-        game.chooseColorAndDeck( PlayerColor.BLACK, Wizard.GREEN_WIZARD);
+        game.chooseColorAndDeck( PlayerColor.BLACK.getId(), Wizard.GREEN_WIZARD.getId());
         assertTrue(player1.getPlayerColor()==PlayerColor.BLACK && player1.getWizard()== Wizard.GREEN_WIZARD);
     }
 

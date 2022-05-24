@@ -12,7 +12,6 @@ import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.objectTypes.FixedObjectStudent;
 import it.polimi.ingsw.model.pawns.MotherNature;
-import it.polimi.ingsw.model.pawns.Professor;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.*;
@@ -623,12 +622,14 @@ public class Game implements GameInterface, Serializable {
 
     /**
      *
-     * @param color
-     * @param wizard
+     * @param color1
+     * @param wizard1
      * @return
      */
     @Override
-    public Boolean chooseColorAndDeck(PlayerColor color, Wizard wizard) {
+    public Boolean chooseColorAndDeck(String color1, String wizard1) {
+        PlayerColor color= IdManager.getInstance().getPlayerColor(color1);
+        Wizard wizard= IdManager.getInstance().getWizard(wizard1);
         if (this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard)) {
             this.currentPlayer.setPlayerColor(color);
             System.out.println(this.currentPlayer.getName());

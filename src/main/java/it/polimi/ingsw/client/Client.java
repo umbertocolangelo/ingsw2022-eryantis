@@ -148,9 +148,10 @@ public class Client {
                             else if (inputObject instanceof Game) {
                                 game = (Game) inputObject;
                                 System.out.println("Client received Game.");
-                            if (game.getCurrentPlayer().getName().equals(namePlayer))
-                                    ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
-                                    ControllerHandler.getInstance().chooseScene();
+                            if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
+                                ControllerHandler.getInstance().chooseScene();
+                            }
                             }
                         }else {
                             if (inputObject instanceof String) {
@@ -161,6 +162,7 @@ public class Client {
                                 if (game.getCurrentPlayer().getName().equals(namePlayer))
                                     controller.setClientState(ClientState.PLAYING);
                                 controller.run();
+
 
                             } else if (inputObject instanceof SetUp) {
                                  System.out.println("Set Up received.");

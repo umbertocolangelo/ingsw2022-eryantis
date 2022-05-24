@@ -79,6 +79,10 @@ public class GuiChooseWizardAndColorController {
         stage.show();
         MessageMethod messageMethod= new ChooseColorAndDeck();
         ((ChooseColorAndDeck)messageMethod).setWizard(wizard);
+        ((ChooseColorAndDeck)messageMethod).setPlayerColor(color);
+        ControllerHandler.getInstance().write(messageMethod);
+        ControllerHandler.getInstance().receiveMessage();
+
     }
 
     /**
