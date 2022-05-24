@@ -13,6 +13,5 @@ module it.polimi.ingsw.client.view.gui {
         exports it.polimi.ingsw.client.view.gui.controllers;
         opens it.polimi.ingsw.client.view.gui.controllers to javafx.fxml;
 
-
     }
 

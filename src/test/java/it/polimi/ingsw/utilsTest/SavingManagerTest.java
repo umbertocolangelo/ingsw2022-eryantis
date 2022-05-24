@@ -21,10 +21,19 @@ public class SavingManagerTest {
     @Test
     public void saveGameTest(){
 
-        Game game = new Game();
-        game.saveGame();
-        File f = new File("eriantys.save");
+        Game gameSaved = new Game();
+        LinkedList<Player> players = new LinkedList<>();
+        players.add(new Player("B"));
+        players.add(new Player("A"));
+        players.get(0).setPlayerColor(PlayerColor.WHITE);
+        players.get(1).setPlayerColor(PlayerColor.BLACK);
+        gameSaved.setPlayerList(players);
+        gameSaved.initializeGame();
+        gameSaved.saveGame();
+        File f = new File("eriantys-A-B.save");
         assertTrue(f.exists() && !f.isDirectory());
+        // delete the file for convenience
+        SavingManager.getInstance().deleteSavedGame("eriantys-A-B.save");
     }
 
     /**
@@ -40,10 +49,15 @@ public class SavingManagerTest {
         players.get(0).setPlayerColor(PlayerColor.WHITE);
         players.get(1).setPlayerColor(PlayerColor.BLACK);
         gameSaved.setPlayerList(players);
+        gameSaved.initializeGame();
         gameSaved.saveGame();
-        Game gameLoaded = SavingManager.getInstance().loadGame();
+        LinkedList<String> playerNames = new LinkedList<String>();
+        playerNames.add("One");
+        playerNames.add("Two");
+        Game gameLoaded = SavingManager.getInstance().loadGame(playerNames);
         assertTrue(gameLoaded.getPlayerList().get(0).getName().equals("One"));
-
+        // delete the file for convenience
+        SavingManager.getInstance().deleteSavedGame("eriantys-One-Two.save");
     }
 
     /**
@@ -54,7 +68,7 @@ public class SavingManagerTest {
 
         Game game = new Game();
         game.saveGame();
-        SavingManager.getInstance().deleteSavedGame();
+        SavingManager.getInstance().deleteSavedGame("eriantys.save");
         File f = new File("eriantys.save");
         assertTrue(!f.exists());
     }

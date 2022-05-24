@@ -150,26 +150,24 @@ public class Game implements GameInterface, Serializable {
     private Boolean expertMode = true;
 
     /**
-     *
+     * True if the method initializeGame() is called
      */
-    private Boolean isStarted;
+    private Boolean isStarted = false;
 
     /**
      *Keep track of the current player
      */
-    private Player currentPlayer = new Player("ciao");
+    private Player currentPlayer;
 
     /**
-     *
-     */
-    private void restoreGame() {
-        // TODO implement here
-    }
-
-    /**
-     *
+     * Contains the number of students moved by the current player in the action round
      */
     private Integer studentsMoved=0;
+
+    /**
+     * Contains the path of the game save
+     */
+    private String path = "eriantys";
 
     /**
      * @param pc1
@@ -180,9 +178,23 @@ public class Game implements GameInterface, Serializable {
 
 
     /**
-     *
+     * Initialize the game by instancing the needed classes and creates the save file path
      */
     public void initializeGame() {
+
+        // generates the path of the game save
+        LinkedList<String> playerNames = new LinkedList<String>();
+        for(Player player : playerList){
+            playerNames.add(player.getName());
+        }
+        java.util.Collections.sort(playerNames); // sorts the playerNames list alphabetically
+
+        for(String name : playerNames){
+            path = path + "-" + name;
+        }
+        path = path + ".save";
+
+        System.out.println(path);
 
         bag = new Bag(this.isThree);
 
@@ -255,10 +267,13 @@ public class Game implements GameInterface, Serializable {
      */
     public void checkWinner() {
 
+        // Proceed only if the game has been initialized
+        if(!isStarted){return;}
+
         // If a player has placed all the towers
 
         for(Player p : playerList){
-            if(p.getSchool().getTowerTable().numOfTowers()==0){
+            if(p.getSchool().getTowerTable()!=null && p.getSchool().getTowerTable().numOfTowers()==0){
                 p.isWinner();
                 propertyChange.firePropertyChange("winner", null, p);
                 return;
@@ -360,17 +375,16 @@ public class Game implements GameInterface, Serializable {
      * Save the current state of the game
      */
     public void saveGame() {
-        if(!SavingManager.getInstance().saveGame(this)){
+        if(!SavingManager.getInstance().saveGame(this, path)){
             System.out.println("Failed to save game");
-        }
+        }else{System.out.println("Game saved successfully");}
     }
 
     /**
      * @return
      */
     public Boolean isStarted() {
-        // TODO implement here
-        return null;
+        return isStarted;
     }
 
     /**
@@ -394,6 +408,9 @@ public class Game implements GameInterface, Serializable {
         System.out.println(student.getPosition());
         System.out.println(currentPlayer.getName());
         System.out.println(currentPlayer.getSchool().getIngress());
+
+        saveGame();
+
         propertyChange.firePropertyChange("moveStudentIngress",  this.currentPlayer.getSchool().getHall().getLine(student.getColor()),student);
     }
 
@@ -414,6 +431,9 @@ public class Game implements GameInterface, Serializable {
             studentsMoved=0;
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
         }
+
+        saveGame();
+
         propertyChange.firePropertyChange("moveStudentToIsland",island,student);
     }
 
@@ -432,6 +452,9 @@ public class Game implements GameInterface, Serializable {
         if(!this.currentRound.moveMotherNature(jumps)) {
             System.out.println("Move not possible");
         }
+
+        saveGame();
+
         propertyChange.firePropertyChange("move MotherNature",jumps,motherNature.getIsland());
     }
 
@@ -455,6 +478,8 @@ public class Game implements GameInterface, Serializable {
             System.out.println("Assistant card already played");
             propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
         }
+
+        saveGame();
     }
 
     /**
@@ -522,6 +547,9 @@ public class Game implements GameInterface, Serializable {
                     ((HallBagSwapCard) expertCard).apply((Color) color1);
                     break;
             }
+
+            saveGame();
+
             propertyChange.firePropertyChange("Play expert card", null, expertCard);
         }
     }
@@ -603,6 +631,9 @@ public class Game implements GameInterface, Serializable {
             }
             this.currentRound.checkRoundEnded();
             professorManager.setStandardCheck(); // reset the professor calculus
+
+            saveGame();
+
             propertyChange.firePropertyChange("Choose cloud", this.clouds, cloud);
         }
     }

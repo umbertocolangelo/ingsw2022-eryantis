@@ -7,6 +7,7 @@ import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.message.StartGame;
 import it.polimi.ingsw.model.player.Player;
+import it.polimi.ingsw.utils.SavingManager;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -84,18 +85,34 @@ public class Server {
                 Player player3 = new Player(c3.getName());
                 players.add(player3);
             }
-            game = new Game();
-            propertyObserver = new PropertyObserver(game,this);
-            game.addListener(propertyObserver);
-            MessageMethod messageMethod=new StartGame();
-            ((StartGame)messageMethod).setGameMode(gameMode);
-            ((StartGame)messageMethod).setPlayers(players);
 
-            Thread t1 = new Thread( modifyGame(messageMethod));
-            t1.join();
+            // check if there is a matching game saved
+            LinkedList<String> playerNames = new LinkedList<String>();
+            for(Player p : players){
+                playerNames.add(p.getName());
+            }
+            Game loadedGame = SavingManager.getInstance().loadGame(playerNames);
+            if(loadedGame!=null){ // if there is a save
+                game = loadedGame;
+                System.out.println("Previously saved game loaded");
+                playingConnection.putAll(waitingConnection);
+                waitingConnection.clear();
+                sendGame();
+            }else{
+                game = new Game();
+                propertyObserver = new PropertyObserver(game,this);
+                game.addListener(propertyObserver);
+                MessageMethod messageMethod=new StartGame();
+                ((StartGame)messageMethod).setGameMode(gameMode);
+                ((StartGame)messageMethod).setPlayers(players);
 
-            playingConnection.putAll(waitingConnection);
-            waitingConnection.clear();
+                Thread t1 = new Thread( modifyGame(messageMethod));
+                t1.join();
+                playingConnection.putAll(waitingConnection);
+                waitingConnection.clear();
+            }
+
+
 
         }
     }

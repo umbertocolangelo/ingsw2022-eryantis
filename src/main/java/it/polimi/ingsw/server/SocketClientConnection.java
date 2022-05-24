@@ -69,7 +69,7 @@ public class SocketClientConnection implements Runnable {
      * This method send the message synchronized with the reading
      * @param message
      */
-    public  void send(Object message) {
+    public void send(Object message) {
         synchronized (server) {
             try {
                 out.reset();

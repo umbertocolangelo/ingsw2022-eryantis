@@ -58,7 +58,7 @@ public class SetUpRound implements  RoundInterface, Serializable {
     @Override
     public Boolean checkRoundEnded() {
         if (playersListOrdered.size()==game.getPlayerList().size()) {
-            System.out.println("FInisco set round");
+            System.out.println("Finisco set round");
             for (Player player : playersListOrdered)
                 player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
             this.game.setRound(game.setPianificationRoundState());
