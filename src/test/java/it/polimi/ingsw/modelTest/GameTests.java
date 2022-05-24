@@ -2,6 +2,7 @@ package it.polimi.ingsw.modelTest;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.enumerations.Wizard;
 import it.polimi.ingsw.model.player.Player;
 import org.junit.jupiter.api.Test;
 
@@ -12,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class GameTests {
 
     @Test
-    public void inizializeGameTest(){
+    public void initializeGameTest(){
         Game game=new Game();
         Player player = new Player("vittorio");
         Player player1 =new Player("elena");
@@ -28,4 +29,20 @@ public class GameTests {
 
         assertTrue(game.getClouds().get(1).getStudents().size()==3 );
     }
+
+    @Test
+    public void checkWinner(){
+        Player player = new Player("elena");
+        Player player1 = new Player("vittorio");
+        Game game= new Game();
+        LinkedList <Player> lista = new LinkedList<>();
+        lista.add(player1);
+        lista.add(player);
+        game.setPlayerList(lista);
+        game.initializeGame();
+        game.chooseColorAndDeck(PlayerColor.WHITE, Wizard.GREEN_WIZARD);
+        game.chooseColorAndDeck(PlayerColor.BLACK,Wizard.BLUE_WIZARD);
+    }
+
 }
+

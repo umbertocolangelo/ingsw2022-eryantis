@@ -16,7 +16,7 @@
             <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
          </image>
       </ImageView>
-      <TextField layoutX="74.0" layoutY="87.0" promptText="username">
+      <TextField fx:id="insertName" layoutX="74.0" layoutY="87.0" promptText="username">
          <font>
             <Font name="Book Antiqua Bold Italic" size="12.0" />
          </font>
@@ -36,7 +36,7 @@
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="79.0" layoutY="216.0" mnemonicParsing="false" text="3">
+      <RadioButton fx:id="threePlayers" layoutX="79.0" layoutY="216.0" mnemonicParsing="false" text="3">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
@@ -46,17 +46,17 @@
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Label>
-      <RadioButton layoutX="79.0" layoutY="301.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Classic">
+      <RadioButton fx:id="classicMode" layoutX="79.0" layoutY="301.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Classic">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="79.0" layoutY="331.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Expert">
+      <RadioButton fx:id="expertMode" layoutX="79.0" layoutY="331.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Expert">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
       </RadioButton>
-      <Button fx:id="start" layoutX="353.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Start">
+      <Button fx:id="startGame" layoutX="353.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Start">
          <font>
             <Font name="Book Antiqua Bold Italic" size="20.0" />
          </font>

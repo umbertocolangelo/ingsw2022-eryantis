@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 
 
 public class SocketClientConnection implements Runnable {
+
     /**
      *
      */
@@ -49,6 +50,7 @@ public class SocketClientConnection implements Runnable {
     private boolean active = true;
 
     /**
+     * Default constructor
      * @param socket        The socket we want to hande
      * @param server        The reference to the server
      */
