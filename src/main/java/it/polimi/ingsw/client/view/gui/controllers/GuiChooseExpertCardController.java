@@ -10,7 +10,7 @@ public class GuiChooseExpertCardController {
      * go back to action phase
      * @param mouseEvent
      */
-    public void onExitClick(MouseEvent mouseEvent) {
+    public void onBackClick(MouseEvent mouseEvent) {
 
     }
 
@@ -21,5 +21,7 @@ public class GuiChooseExpertCardController {
     public void onNextClick(MouseEvent mouseEvent) {
 
     }
+
+
 
 }

@@ -1,14 +1,20 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class GuiPianificationPhaseController {
+
+    @FXML
+    private AnchorPane scenePane;
+
     /**
      *
      */
@@ -18,6 +24,8 @@ public class GuiPianificationPhaseController {
      *
      */
     private Scene scene;
+
+
 
     /**
      * click to show rules
@@ -101,11 +109,23 @@ public class GuiPianificationPhaseController {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
+
+        if(ControllerHandler.getInstance().getClient().getNamePlayer().equals(ControllerHandler.getInstance().getClient().getGame().getCurrentPlayer().getName())) {
+
+            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setScene(scene);
+            stage.show();
+        }
+    }
+
+    public void changeScene() throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+        stage=(Stage) scenePane.getScene().getWindow();
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
-    }
 
+    }
 }

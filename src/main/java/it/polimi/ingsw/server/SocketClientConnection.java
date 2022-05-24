@@ -13,6 +13,7 @@ import java.util.NoSuchElementException;
 
 
 public class SocketClientConnection implements Runnable {
+
     /**
      *
      */
@@ -49,6 +50,7 @@ public class SocketClientConnection implements Runnable {
     private boolean active = true;
 
     /**
+     * Default constructor
      * @param socket        The socket we want to hande
      * @param server        The reference to the server
      */
@@ -115,9 +117,11 @@ public class SocketClientConnection implements Runnable {
             in = new ObjectInputStream(socket.getInputStream());
             SetUp setup = new SetUp();
             // System.out.println("si");
+           // if (server.getIsCLi())
             send("Welcome in the CLI version of Eryantis!\nWhat is your name?");
 
             //si  sincronizza con il send
+            if (server.getIsCLi())
             send(setup);
             String read = (String) in.readObject();
 
@@ -128,7 +132,8 @@ public class SocketClientConnection implements Runnable {
                 System.out.println(read);
             }
 
-            server.getSemaphore().release();
+
+
             name = read;
             send(new SetName(name));
             server.lobby(this, name);

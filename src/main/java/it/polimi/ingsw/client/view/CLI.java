@@ -72,7 +72,7 @@ public class CLI {
             }
                 System.out.println("Wizard selected " + ((SetUpRound) client.getGame().getCurrentRound()).getWizards().get(Integer.parseInt(input)) + "\n");
             MessageMethod messageMethod = new ChooseColorAndDeck();
-            ((ChooseColorAndDeck) messageMethod).setWizard(((SetUpRound) client.getGame().getCurrentRound()).getWizards().get(Integer.parseInt(input)));
+            ((ChooseColorAndDeck) messageMethod).setWizard(((SetUpRound) client.getGame().getCurrentRound()).getWizards().get(Integer.parseInt(input)).getId());
             System.out.println("Pick the color\n");
             index=0;
             for(PlayerColor color : ((SetUpRound) client.getGame().getCurrentRound()).getplayerColor()) {
@@ -85,7 +85,7 @@ public class CLI {
                     input = scanner.nextLine();
             }
             System.out.println("Color selected " + ((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)) + "\n");
-            ((ChooseColorAndDeck) messageMethod).setPlayerColor(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)));
+            ((ChooseColorAndDeck) messageMethod).setPlayerColor(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)).getId());
             controller.write(messageMethod);
         });
         t.start();

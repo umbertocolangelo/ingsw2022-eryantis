@@ -5,6 +5,7 @@ import it.polimi.ingsw.client.view.CLI;
 import java.io.IOException;
 import java.util.Scanner;
 
+
 public class Controller implements Runnable {
 
     /**
@@ -42,6 +43,8 @@ public class Controller implements Runnable {
      */
     private CLI cli;
 
+
+
     /**
      * Default constructor
      * Keep the reference to the client
@@ -61,56 +64,58 @@ public class Controller implements Runnable {
     public void run() {
 
 
-        switch (clientState) {
-
-            case LOGIN:
-                // System.out.println("Inside Login");
-                input = stdIn.nextLine();
-                write(input);
-                setClientState(ClientState.SLEEPING);
-                break;
-
-            case SLEEPING:
-                break;
-
-            case PLAYING:
-                for(int i = 0; i < 50; i++)
-                {
-                    System.out.println("\b");
-                }
-
-                switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
-
-                    case SET_UP_PHASE :
-                        t0 = cli.chooseColorAndDeck();
-                        break;
+            switch (clientState) {
 
 
-                    case CHOOSING_ASSISTANT:
-                        t0 = cli.choosingAssistant();
-                        break;
-
-                    case MOVING_STUDENTS:
-                       checkRound();
-
-                        break;
-                    case MOVING_MOTHERNATURE:
-                        checkRound();
-                        break;
-
-                    case CHOOSING_CLOUD:
-                        checkRound();
+                case LOGIN:
+                    // System.out.println("Inside Login");
+                    input = stdIn.nextLine();
+                    write(input);
+                    setClientState(ClientState.SLEEPING);
                     break;
-               }
-               try {
-                   t0.join();
-                   setClientState(ClientState.SLEEPING);
-               } catch (InterruptedException e) {
-                   e.printStackTrace();
-               }
+
+                case SLEEPING:
+
+                    break;
+
+                case PLAYING:
+                    for (int i = 0; i < 50; i++) {
+                        System.out.println("\b");
+                    }
+
+                    switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
+
+                        case SET_UP_PHASE:
+                            t0 = cli.chooseColorAndDeck();
+                            break;
+
+
+                        case CHOOSING_ASSISTANT:
+                            t0 = cli.choosingAssistant();
+                            break;
+
+                        case MOVING_STUDENTS:
+                            checkRound();
+
+                            break;
+                        case MOVING_MOTHERNATURE:
+                            checkRound();
+                            break;
+
+                        case CHOOSING_CLOUD:
+                            checkRound();
+                            break;
+                    }
+                    try {
+                        t0.join();
+                        setClientState(ClientState.SLEEPING);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+            }
+
         }
 
-    }
 
     /**
      * This method write to the server socket synchronized with the read

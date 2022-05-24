@@ -28,6 +28,7 @@ public class Server {
     private Game game;
     private SetUp setup = new SetUp();
     private Semaphore semaphore = new Semaphore(1);
+    private Boolean isCLi=false;
 
 
     /**
@@ -62,15 +63,19 @@ public class Server {
         System.out.println("New client " + name);
         waitingConnection.put(name, c);
         if (waitingConnection.size()==1) {
+            if (isCLi)
             c.send("You are the first player");
             decideNumberOfPlayersAndGameMode(c);
         }
+        if(isCLi)
         c.send("waiting for other players");
         keys = new ArrayList<>(waitingConnection.keySet());
 
         if (waitingConnection.size()==numberOfPlayer) {
             for (SocketClientConnection d : waitingConnection.values()) {
+                if (isCLi){
                 d.send("Players arrived, starting game..");
+            }
             }
 
             SocketClientConnection c1 = waitingConnection.get(keys.get(0));
@@ -142,14 +147,14 @@ public class Server {
                     socketConnection.setIsFirst();
                 socketConnections.add(socketConnection);
                 Thread t0 = new Thread(socketConnection);
-                semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
+                //semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
                 t0.start();
 
             } catch (IOException e) {
                 System.out.println("Connection Error!");
 
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+           // } catch (InterruptedException e) {
+             //   e.printStackTrace();
 
             }
         }
@@ -160,6 +165,7 @@ public class Server {
      * @return  boolean     True if the name is not already chosen, false instead
      */
     public Boolean equalName(String username,Boolean isFirst) {
+        //return true; //Serve per la GUI adesso non possiamo ancora mandare i giusti messaggi
         if(isFirst)
             return false;
         for (int i = 0; i<socketConnections.size()-1; i++) {
@@ -177,19 +183,24 @@ public class Server {
      * @throws ClassNotFoundException
      */
     public void decideNumberOfPlayersAndGameMode(SocketClientConnection c) throws IOException, ClassNotFoundException {
-        c.send("Decide the number of players, 2 or 3 ");
-        c.send(setup);
+        if(isCLi) {
+            c.send("Decide the number of players, 2 or 3 ");
+            c.send(setup);
+        }
         String message = (String) c.getIn().readObject();
         while(!(message.equals("2") || message.equals("3"))) {
-            c.send("You must select 2 or 3! Please try again");
-            c.send(setup);
+            if (isCLi) {
+                c.send("You must select 2 or 3! Please try again");
+                c.send(setup);
+            }
             message = (String) c.getIn().readObject(); // Read user input
         }
         numberOfPlayer= Integer.valueOf(message);
         System.out.println("Number of players selected "+ numberOfPlayer);
-
-        c.send("Decide the gameMode, 1 for expert and 0 for normal");
-        c.send(setup);
+        if (isCLi) {
+            c.send("Decide the gameMode, 1 for expert and 0 for normal");
+            c.send(setup);
+        }
         message = (String) c.getIn().readObject(); // Read user input
 
         while(!(message.equals("0") || message.equals("1"))) {
@@ -241,12 +252,9 @@ public class Server {
         return t;
     }
 
-    /**
-     * @return
-     */
-    public Semaphore getSemaphore(){
-        return this.semaphore;
-    }
+        public Boolean getIsCLi(){
+        return isCLi;
+        }
 
 }
 

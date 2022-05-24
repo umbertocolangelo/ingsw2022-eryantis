@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.view.gui;
 
+import it.polimi.ingsw.client.view.gui.controllers.ControllerHandler;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -8,16 +9,21 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GuiMain extends Application {
+
+
+
     @Override
-    public void start(Stage stage) throws IOException {
+    public void start(Stage stage) throws IOException, InterruptedException {
+        ControllerHandler.setStage(stage);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/start-view.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setTitle("Hello!");
         stage.setScene(scene);
         stage.show();
+
     }
 
-    public static void main(String[] args) {
+    public void launchApp() {
         launch();
     }
 }

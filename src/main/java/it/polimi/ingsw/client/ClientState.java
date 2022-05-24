@@ -4,6 +4,7 @@ public enum ClientState {
 
     LOGIN,
     PLAYING,
-    SLEEPING
+    SLEEPING,
+    WRITING
 
 }

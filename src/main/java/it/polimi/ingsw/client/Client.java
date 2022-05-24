@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 
+import it.polimi.ingsw.client.view.gui.controllers.ControllerHandler;
 import it.polimi.ingsw.message.SetName;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
@@ -11,6 +12,7 @@ import java.io.ObjectOutputStream;
 import java.net.Socket;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.concurrent.Semaphore;
 
 public class Client {
 
@@ -70,6 +72,16 @@ public class Client {
     private Boolean active = true;
 
     /**
+     *
+     */
+    private Boolean isCli=false;
+
+    /**
+     *
+     */
+    private ControllerHandler controllerHandler;
+
+    /**
      * @param ip        The ip address
      * @param port      the port
      */
@@ -96,6 +108,12 @@ public class Client {
 
     /**
      *
+     */
+    private Semaphore semaphore = new Semaphore(1);
+
+
+    /**
+     *
      * @param socketIn The inputStream
      * @return Thread  Return the thread who will keep read and once he read it will run the controller and wait for his termination
      */
@@ -106,7 +124,36 @@ public class Client {
                 synchronized (this) {
                     try {
                         while (isActive()) {
+
                             inputObject = socketIn.readObject();
+
+                        if(!isCli){
+                            if (inputObject instanceof String) {
+                                System.out.println(inputObject);
+                                if(inputObject.equals("Players arrived, starting game.."))
+                                    ControllerHandler.getInstance().receiveMessage();
+                                else {
+                                    ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
+                                    ControllerHandler.getInstance().chooseScene();
+                                }
+                                }
+                           else if (inputObject instanceof SetUp){
+                                System.out.println("RIcevuto setup");
+
+                            }
+                            else if (inputObject instanceof SetName) {
+                                System.out.println("setName");
+                                namePlayer = ((SetName) inputObject).getName();
+                            }
+                            else if (inputObject instanceof Game) {
+                                game = (Game) inputObject;
+                                System.out.println("Client received Game.");
+                            if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
+                                ControllerHandler.getInstance().chooseScene();
+                            }
+                            }
+                        }else {
                             if (inputObject instanceof String) {
                                 System.out.println((String) inputObject);
                             } else if (inputObject instanceof Game) {
@@ -114,16 +161,23 @@ public class Client {
                                 System.out.println("Client received Game.");
                                 if (game.getCurrentPlayer().getName().equals(namePlayer))
                                     controller.setClientState(ClientState.PLAYING);
-                                    controller.run();
+                                controller.run();
+
+
                             } else if (inputObject instanceof SetUp) {
-                               // System.out.println("Set Up received.");
+                                 System.out.println("Set Up received.");
+                                if(stdin.hasNextLine())
+                                    System.out.println("hello");
                                 controller.setClientState(ClientState.LOGIN);
                                 controller.run();
-                            } else if (inputObject instanceof SetName)
+                            } else if (inputObject instanceof SetName) {
                                 namePlayer = ((SetName) inputObject).getName();
+                                ControllerHandler.getInstance().receiveMessage();
+                            }
                             else {
                                 throw new IllegalArgumentException();
                             }
+                        }
 
                         }
                     } catch (Exception e) {
@@ -148,6 +202,8 @@ public class Client {
         socketOut = new ObjectOutputStream(socket.getOutputStream());
         stdin = new Scanner(System.in);
         controller = new Controller(this);
+       ControllerHandler.getInstance().setClient(this);
+
 
         try {
             Thread t0 = asyncReadFromSocket(socketIn);
@@ -191,10 +247,20 @@ public class Client {
 
     /**
      *
+     */
+    public ObjectInputStream getOUt(){
+        return this.socketIn;
+    }
+
+    /**
+     *
      * @return game     The refrence to the game in the client
      */
     public Game getGame(){
         return this.game;
     }
+
+
+
 
 }
