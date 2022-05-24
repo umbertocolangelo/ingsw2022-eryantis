@@ -52,11 +52,12 @@ public class ControllerHandler {
 
     {
         case LOGIN:
+
             GuiMain guiMain = new GuiMain();
             guiMain.launchApp();
+
         case SLEEPING:
             System.out.println("hello");
-
             GuiLoginController controller= new GuiLoginController();
             Platform.runLater(()-> {
                 try {

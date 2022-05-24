@@ -124,19 +124,33 @@ public class Client {
                 synchronized (this) {
                     try {
                         while (isActive()) {
-                           // System.out.println("prima read");
+
                             inputObject = socketIn.readObject();
-                            //System.out.println("read");
+
                         if(!isCli){
                             if (inputObject instanceof String) {
-                                System.out.println("RIcevuto string");
-                                ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
-                               ControllerHandler.getInstance().chooseScene();
+                                System.out.println(inputObject);
+                                if(inputObject.equals("Players arrived, starting game.."))
+                                    ControllerHandler.getInstance().receiveMessage();
+                                else {
+                                    ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
+                                    ControllerHandler.getInstance().chooseScene();
+                                }
                                 }
                            else if (inputObject instanceof SetUp){
                                 System.out.println("RIcevuto setup");
-                                ControllerHandler.getInstance().setClientState(ClientState.SLEEPING);
-                                ControllerHandler.getInstance().chooseScene();
+
+                            }
+                            else if (inputObject instanceof SetName) {
+                                System.out.println("setName");
+                                namePlayer = ((SetName) inputObject).getName();
+                            }
+                            else if (inputObject instanceof Game) {
+                                game = (Game) inputObject;
+                                System.out.println("Client received Game.");
+                                if (game.getCurrentPlayer().getName().equals(namePlayer))
+                                    ControllerHandler.getInstance().setClientState(ClientState.SLEEPING);
+                                    ControllerHandler.getInstance().chooseScene();
                             }
                         }else {
                             if (inputObject instanceof String) {
@@ -154,8 +168,10 @@ public class Client {
                                     System.out.println("hello");
                                 controller.setClientState(ClientState.LOGIN);
                                 controller.run();
-                            } else if (inputObject instanceof SetName)
+                            } else if (inputObject instanceof SetName) {
                                 namePlayer = ((SetName) inputObject).getName();
+                                ControllerHandler.getInstance().receiveMessage();
+                            }
                             else {
                                 throw new IllegalArgumentException();
                             }
