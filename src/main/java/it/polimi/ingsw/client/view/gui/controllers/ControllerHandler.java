@@ -33,9 +33,9 @@ public class ControllerHandler {
 
     public ControllerHandler() {
 
-
-
     }
+
+
     public static ControllerHandler getInstance(){
         if (controllerHandler==null)
             controllerHandler=new ControllerHandler();
@@ -48,28 +48,26 @@ public class ControllerHandler {
 
     public void chooseScene() throws IOException {
 
-    switch (clientState)
+        switch (clientState)
+        {
+            case LOGIN:
 
-    {
-        case LOGIN:
+                GuiMain guiMain = new GuiMain();
+                guiMain.launchApp();
 
-            GuiMain guiMain = new GuiMain();
-            guiMain.launchApp();
-
-        case SLEEPING:
-            System.out.println("hello");
-            GuiLoginController controller= new GuiLoginController();
-            Platform.runLater(()-> {
-                try {
-                    controller.changeScene();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            });
+            case SLEEPING:
+                System.out.println("hello");
+                GuiLoginController controller= new GuiLoginController();
+                Platform.runLater(()-> {
+                    try {
+                        controller.changeScene();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
 
 
-    }
-
+        }
 
     }
 
@@ -89,12 +87,11 @@ public class ControllerHandler {
         }
     }
 
-    public void receiveMessage(){
+    public void receiveMessage() {
        client.asyncReadFromSocket(client.getOUt());
-
     }
 
-    public Client getClient(){
+    public Client getClient() {
         return this.client;
     }
 

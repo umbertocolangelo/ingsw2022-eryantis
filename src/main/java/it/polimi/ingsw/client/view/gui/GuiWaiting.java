@@ -1,7 +1,4 @@
 package it.polimi.ingsw.client.view.gui;
 
-public class GuiChooseExpertCard {
-
-
-
+public class GuiWaiting {
 }
