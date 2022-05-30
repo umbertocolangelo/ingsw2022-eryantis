@@ -110,18 +110,18 @@ public class ControllerHandler {
                 break;
             case PLAYING:
                 switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
-                    case SET_UP_PHASE:
+                    case SET_UP_PHASE: //cambio scena da login a deck/color phase
                             System.out.println("Setup");
-                            GuiLoginController loginController = new GuiLoginController();
+                            GuiLoginController controller = new GuiLoginController();
                             Platform.runLater(() -> {
                                 try {
-                                    loginController.changeScene();
+                                    controller.changeScene();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }
                             });
                             break;
-                    case CHOOSING_ASSISTANT:
+                    case CHOOSING_ASSISTANT: //cambio scena da deck/color phase a choosing assistant card
                         GuiChooseWizardAndColorController colorController = new GuiChooseWizardAndColorController();
                         Platform.runLater(() -> {
                             try {
@@ -130,7 +130,32 @@ public class ControllerHandler {
                                 e.printStackTrace();
                             }
                         });
+                        break;
+                    case MOVING_STUDENTS: //cambio scena da choosing assistant card a moving students and mn
+                        GuiPianificationPhaseController assistantController = new GuiPianificationPhaseController();
+                        Platform.runLater(() -> {
+                            try {
+                                assistantController.changeScene();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        break;
+                    case CHOOSING_CLOUD: //cambio scena da mooving mn a choosing cloud
+                        GuiActionPhaseController actionController = new GuiActionPhaseController();
+                        Platform.runLater(() -> {
+                            try {
+                                actionController.changeScene();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        break;
                 }
+            case WINNER:
+
+
+
         }
 
     }

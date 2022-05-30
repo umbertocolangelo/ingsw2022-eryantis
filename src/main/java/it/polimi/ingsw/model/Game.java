@@ -127,7 +127,6 @@ public class Game implements GameInterface, Serializable {
      */
     private InfluenceManager influenceManager;
 
-
     /**
      *
      */
@@ -174,7 +173,6 @@ public class Game implements GameInterface, Serializable {
     public void addListener(PropertyChangeListener pc1){
         propertyChange.addPropertyChangeListener(pc1);
     }
-
 
     /**
      * Initialize the game by instancing the needed classes and creates the save file path

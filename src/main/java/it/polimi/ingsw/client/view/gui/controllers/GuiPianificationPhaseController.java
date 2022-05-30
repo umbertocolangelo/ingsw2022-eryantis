@@ -142,7 +142,7 @@ public class GuiPianificationPhaseController {
     }
 
     /**
-     * TODO
+     *
      * @throws IOException
      */
     public void changeScene() throws IOException {
