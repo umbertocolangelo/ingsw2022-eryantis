@@ -1,6 +1,5 @@
 package it.polimi.ingsw.model;
 
-import it.polimi.ingsw.listener.PropertyObserver;
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.enumerations.*;
@@ -35,116 +34,76 @@ public class Game implements GameInterface, Serializable {
      * Built already the instance of the Rounds
      */
     public Game() {
-        this.setUpRound= new SetUpRound(this);
-        setRound(this.setSetUpRound());
+        setRound(new SetUpRound(this));
     }
-    /**
-     * Keep the reference to the observer
-     */
-    private PropertyObserver observer;
-    /**
-     *
-     */
-    private PropertyChangeSupport propertyChange= new PropertyChangeSupport(this);
 
     /**
-     *Kepp the reference to ingressCArdSwap
+     * Stores the reference of the PropertyChangeSupport
      */
-    private RoundInterface ingressCardSwap;
+    private final PropertyChangeSupport propertyChange= new PropertyChangeSupport(this);
 
     /**
-     *Keep the reference to ingressHallSwap
-     */
-    private RoundInterface ingressHallSwap;
-
-    /**
-     *Keep the reference to actionRound
-     */
-    private RoundInterface actionRound;
-
-    /**
-     *Keep the reference to pianificationRound
-     */
-    private RoundInterface pianificationRound;
-
-    /**
-     *Keep the reference to studentToIslandRound
-     */
-    private RoundInterface studentToIslandRound;
-
-    /**
-     *Keep the reference to studentToHallRound
-     */
-    private RoundInterface studentToHallRound;
-
-    /**
-     *Keep the reference to studentToHallRound
-     */
-    private RoundInterface setUpRound;
-
-    /**
-     *
+     * Stores the clouds instances
      */
     private LinkedList<Cloud> clouds=new LinkedList<>();
 
     /**
-     *Keep track of the order in every  round, dinamically change itself, collect the first who became the current player and at the end of his turn gets removed from the list, start a new pianification round when the list is empty
+     * Keep track of the order in every  round, dynamically change itself, collect the first who became the current player and at the end of his turn gets removed from the list, start a new pianification round when the list is empty
      */
     private LinkedList <Player> orderedPLayerList= new LinkedList<>();
 
     /**
-     *This list contains the order set for all the game, its needed for play assistant card
+     * This list contains the order set for all the game, it's needed for play assistant card
      */
     private LinkedList <Player> playerList = new LinkedList<>();
 
     /**
-     *
+     * Stores the instance of mother nature
      */
     private MotherNature motherNature=new MotherNature();
 
     /**
-     *Keep track of the round which is currently on
+     * Keep track of the round which is currently on
      */
     private RoundInterface currentRound;
 
     /**
-     *Keep the track of the round which is called before
+     * Keep the track of the round which is called before
      */
     private RoundInterface previousRound;
 
     /**
-     *
+     * Indicates if the game is 2 (false) or 3 (true) players
      */
     private Boolean isThree = false;
 
     /**
-     *
+     * Stores the instance of the Bag
      */
     private Bag bag;
 
     /**
-     *
+     * Stores the instance of InfluenceManager
      */
     private InfluenceManager influenceManager;
 
-
     /**
-     *
+     * Stores the instance of IslandManager
      */
     private IslandManager islandManager = new IslandManager(motherNature);
 
     /**
-     *
+     * Stores the instance of ProfessorManager
      */
     private ProfessorManager professorManager;
 
     /**
-     *
+     * Stores the instance of CardManager
      */
     private CardManager cardManager;
 
     /**
-     * Stores the game mode, the default mode is normal (false)
+     * Stores the game mode (normal or expert), the default mode is expert (true)
      */
     private Boolean expertMode = true;
 
@@ -154,12 +113,12 @@ public class Game implements GameInterface, Serializable {
     private Boolean isStarted = false;
 
     /**
-     *Keep track of the current player
+     * Keep track of the current player
      */
     private Player currentPlayer;
 
     /**
-     * Contains the number of students moved by the current player in the action round
+     * Contains the number of students moved by the current player in his action round
      */
     private Integer studentsMoved=0;
 
@@ -169,10 +128,11 @@ public class Game implements GameInterface, Serializable {
     private String path = "eriantys";
 
     /**
-     * @param pc1
+     * Adds a listener to the game
+     * @param listener is the listener set
      */
-    public void addListener(PropertyChangeListener pc1){
-        propertyChange.addPropertyChangeListener(pc1);
+    public void addListener(PropertyChangeListener listener){
+        propertyChange.addPropertyChangeListener(listener);
     }
 
 
@@ -220,8 +180,8 @@ public class Game implements GameInterface, Serializable {
             }
         }
 
-        for(int i=0; i<playerList.size(); i++) {
-            playerList.get(i).setPlayerPhase(PlayerPhase.SET_UP_PHASE);
+        for (Player player : playerList) {
+            player.setPlayerPhase(PlayerPhase.SET_UP_PHASE);
 
         }
         professorManager= new ProfessorManager(playerList);
@@ -232,33 +192,40 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param round     Set the current round
+     * @param round is set as current round
      */
     public void setRound(RoundInterface round) {
        this.currentRound = round;
     }
 
     /**
-     * @param round     Set the previous round
+     * @param round is set as previous round
      */
     public void setPreviousRound(RoundInterface round) {
         this.previousRound = round;
     }
 
     /**
-     *
-     * @return previousRound    Return the previous round
+     * @return the previous round
      */
     public RoundInterface getPreviousRound() {
         return this.previousRound;
     }
 
-
     /**
-     * @param players playerList        Set the playerList
+     * Sets the players
+     * @param players is the list of players playing
      */
-    public void setPLayerList(LinkedList<Player> players) {
+    public void setPlayerList(LinkedList<Player> players) {
         this.playerList = players;
+        if(players.size()==3) {
+            isThree = true;
+            for(Player p : players) {
+                p.setThreePlayers();
+            }
+        } else {
+            isThree = false;
+        }
     }
 
     /**
@@ -280,6 +247,8 @@ public class Game implements GameInterface, Serializable {
         }
 
         // If there are 3 island groups
+
+          //TODO
 
         // If assistant cards finished
 
@@ -332,42 +301,22 @@ public class Game implements GameInterface, Serializable {
                 winner.isWinner();
                 propertyChange.firePropertyChange("winner", null, winner);
             }
-            return;
         }
     }
 
+    /**
+     * @return the current round as
+     */
     public RoundInterface getCurrentRound(){
         return this.currentRound;
     }
 
     /**
-     * @param first     Set the current player
+     * Sets the current player
+     * @param player is the player set as current player
      */
-    public void setCurrentPlayer(Player first) {
-        this.currentPlayer=first;
-    }
-
-    /**
-     * @param name
-     * @param playerNum
-     */
-    public void playerLogin(String name, Integer playerNum) {
-        // TODO implement here
-    }
-
-    /**
-     * @param playerNum
-     */
-    @Override
-    public void startGame(LinkedList<Player> playerNum) {
-
-    }
-
-    /**
-     * @param playerNum
-     */
-    public void startGame(Integer playerNum) {
-        // TODO implement here
+    public void setCurrentPlayer(Player player) {
+        this.currentPlayer=player;
     }
 
     /**
@@ -380,17 +329,17 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return
+     * @return true if the game has been initialized
      */
     public Boolean isStarted() {
         return isStarted;
     }
 
     /**
-     * @param string       Move the student from the ingress to the hall
+     * @param studentId is the id of the student on the ingress that is moved on the hall
      */
-    public void moveStudentIngressToHall(String string) {
-        Student student= IdManager.getInstance().getStudent(string);
+    public void moveStudentIngressToHall(String studentId) {
+        Student student= IdManager.getInstance().getStudent(studentId);
 
         if(!this.currentRound.moveStudentIngressToHall(student))
             System.out.println("Move not possible");
@@ -414,12 +363,12 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param student1       Student in the ingress
-     * @param island1        Island where we want to move>>
+     * @param studentId is the id of the student on the ingress
+     * @param islandId is the id of the island where the student is moved
      */
-    public void moveStudentIngressToIsland(String student1, String island1) {
-        Student student=IdManager.getInstance().getStudent(student1);
-        Island island=IdManager.getInstance().getIsland(island1);
+    public void moveStudentIngressToIsland(String studentId, String islandId) {
+        Student student=IdManager.getInstance().getStudent(studentId);
+        Island island=IdManager.getInstance().getIsland(islandId);
         if (!this.currentRound.moveStudentIngressToIsland(student,island))
             System.out.println("Move not possible");
         if(this.currentRound.moveStudentIngressToIsland(student,island)) {
@@ -437,7 +386,7 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param jumps
+     * @param jumps is the number of jumps that mother nature has to do
      */
     public void moveMotherNature(Integer jumps) {
         if(this.currentRound.moveMotherNature(jumps)) {
@@ -458,11 +407,10 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param assistant     Play playAssistantCard on the currentRound
+     * @param assistantId is the id of the assistant card to play
      */
-    @Override
-    public void playAssistantCard(String assistant) {
-        AssistantCard assistantCard=IdManager.getInstance().getAssistantCard(assistant);
+    public void playAssistantCard(String assistantId) {
+        AssistantCard assistantCard=IdManager.getInstance().getAssistantCard(assistantId);
         if(this.currentRound.playAssistantCard(assistantCard, this.currentPlayer)) {
 
             System.out.println("Assistant card played");
@@ -482,12 +430,12 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param expert        Play the expert card
+     * @param expertId is the id of the expert card to play
      */
-    public void playExpertCard(String expert, String object) {
-        ExpertCard expertCard= IdManager.getInstance().getExpertCard(expert);
+    public void playExpertCard(String expertId, String object) {
+        ExpertCard expertCard= IdManager.getInstance().getExpertCard(expertId);
 
-        if (expertMode==false) {
+        if (!expertMode) {
             return;
         }
         if (currentRound.playExpertCard(expertCard).equals(true)) { // if the card can be played
@@ -495,56 +443,52 @@ public class Game implements GameInterface, Serializable {
             cardManager.setCurrentCard(expertCard);
 
             switch (expertCard.getId()) {
-                case "38":
+                case "38" -> {
                     ((StudentToIslandCard) expertCard).apply();
                     setPreviousRound(currentRound);
                     setRound(new StudentToIslandActionRound(this));
-                    break;
-                case "39":
-                    ((ProfessorControlCard) expertCard).apply();
-                    break;
-                case "40":
-                    IslandInterface parameter=IdManager.getInstance().getIsland(object);
-                    ((IslandInfluenceCard) expertCard).apply((IslandInterface) parameter);
-                    break;
-                case "41":
+                }
+                case "39" -> ((ProfessorControlCard) expertCard).apply();
+                case "40" -> {
+                    IslandInterface parameter = IdManager.getInstance().getIsland(object);
+                    ((IslandInfluenceCard) expertCard).apply(parameter);
+                }
+                case "41" -> {
                     ((TwoJumpCard) expertCard).apply();
                     currentPlayer.twoMoreJumps();
-                    break;
-                case "42":
-                    Island island=IdManager.getInstance().getIsland(object);
-                    ((DenyCard) expertCard).apply((Island) island);
-                    break;
-                case "43":
-                    ((TowerInfluenceCard) expertCard).apply();
-                    break;
-                case "44":
+                }
+                case "42" -> {
+                    Island island = IdManager.getInstance().getIsland(object);
+                    ((DenyCard) expertCard).apply(island);
+                }
+                case "43" -> ((TowerInfluenceCard) expertCard).apply();
+                case "44" -> {
                     ((IngressCardSwapCard) expertCard).apply();
                     setPreviousRound(currentRound);
                     setRound(new IngressCardSwapActionRound((this)));
-                    break;
-                case "45":
-                    Player player=IdManager.getInstance().getPlayer(object);
-                    ((TwoInfluenceCard) expertCard).apply((Player) player);
-                    break;
-                case "46":
-                    Color color=IdManager.getInstance().getColor(object);
-                    ((ColorInfluenceCard) expertCard).apply((Color) color);
-                    break;
-                case "47":
+                }
+                case "45" -> {
+                    Player player = IdManager.getInstance().getPlayer(object);
+                    ((TwoInfluenceCard) expertCard).apply(player);
+                }
+                case "46" -> {
+                    Color color = IdManager.getInstance().getColor(object);
+                    ((ColorInfluenceCard) expertCard).apply(color);
+                }
+                case "47" -> {
                     ((IngressHallSwapCard) expertCard).apply();
                     setPreviousRound(currentRound);
                     setRound(new IngressHallSwapActionRound(this));
-                    break;
-                case "48":
+                }
+                case "48" -> {
                     ((StudentToHallCard) expertCard).apply();
                     setPreviousRound(currentRound);
                     setRound(new StudentToHallActionRound(this));
-                    break;
-                case "49":
-                    Color color1=IdManager.getInstance().getColor(object);
-                    ((HallBagSwapCard) expertCard).apply((Color) color1);
-                    break;
+                }
+                case "49" -> {
+                    Color color1 = IdManager.getInstance().getColor(object);
+                    ((HallBagSwapCard) expertCard).apply(color1);
+                }
             }
 
             saveGame();
@@ -554,12 +498,12 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param student1             The student we want to put on the island
-     * @param island1                The island where we want to put hte student
+     * @param studentId is the id of the student we want to put on the island
+     * @param islandId  is the id of the island where we want to put hte student
      */
-    public void expertStudentToIsland(String student1, String island1) {
-        Student student=IdManager.getInstance().getStudent(student1);
-        Island island=IdManager.getInstance().getIsland(island1);
+    public void expertStudentToIsland(String studentId, String islandId) {
+        Student student=IdManager.getInstance().getStudent(studentId);
+        Island island=IdManager.getInstance().getIsland(islandId);
         if(this.currentRound.expertStudentToIsland(student, island)){
             island.addStudent(student);
             FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
@@ -570,12 +514,12 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param student1           The studentCard from the ExpertCard
-     * @param student2        The student from the ingress
+     * @param studentCardId is the id of the student on the card
+     * @param studentHallId is the id of the student on the ingress
      */
-    public void expertIngressCardSwap(String student1, String student2) {
-        Student studentCard = IdManager.getInstance().getStudent(student1);
-        Student studentHall = IdManager.getInstance().getStudent(student2);
+    public void expertIngressCardSwap(String studentCardId, String studentHallId) {
+        Student studentCard = IdManager.getInstance().getStudent(studentCardId);
+        Student studentHall = IdManager.getInstance().getStudent(studentHallId);
         if (this.currentRound.expertIngressCardSwap(studentCard, studentHall)) {
             this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
             FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
@@ -583,32 +527,32 @@ public class Game implements GameInterface, Serializable {
             if (((IngressCardSwapActionRound)currentRound).getStudent()==0) {
                 finishExpertMove();
             }
-            propertyChange.firePropertyChange("expert moveStudentToIsland", student1, student2);
+            propertyChange.firePropertyChange("expert moveStudentToIsland", studentCard, studentHall);
         }
     }
 
     /**
-     * @param studentHall1           The student present in the hall
-     * @param studentIngress1        The student present on the ingress
+     * @param studentHallId is the id of the student present in the hall
+     * @param studentIngressId is the id of the student present on the ingress
      */
-    public void expertIngressHallSwap(String studentHall1, String studentIngress1) {
-        Student studentHall = IdManager.getInstance().getStudent(studentHall1);
-        Student studentIngress = IdManager.getInstance().getStudent(studentIngress1);
+    public void expertIngressHallSwap(String studentHallId, String studentIngressId) {
+        Student studentHall = IdManager.getInstance().getStudent(studentHallId);
+        Student studentIngress = IdManager.getInstance().getStudent(studentIngressId);
         if(this.currentRound.expertIngressHallSwap(studentHall, studentIngress)) {
             currentPlayer.getSchool().getIngress().addStudent((studentHall));
             currentPlayer.getSchool().getHall().getLine(studentIngress.getColor()).addStudent(studentIngress);
             if(((IngressHallSwapActionRound)currentRound).getStudent()==0) {
                 finishExpertMove();
             }
-            propertyChange.firePropertyChange("expert IngressHallSwap", studentHall1, studentIngress1);
+            propertyChange.firePropertyChange("expert IngressHallSwap", studentHallId, studentIngressId);
         }
     }
 
     /**
-     * @param student1           The student we want to put in the Hall
+     * @param studentId is the id of the student to put in the Hall
      */
-    public void expertStudentToHall(String student1) {
-        Student student = IdManager.getInstance().getStudent(student1);
+    public void expertStudentToHall(String studentId) {
+        Student student = IdManager.getInstance().getStudent(studentId);
         if(this.currentRound.expertStudentToHall(student)) {
             currentPlayer.getSchool().getHall().addStudent(student);
             FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
@@ -619,11 +563,10 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @param cloud1         The cloud we want to select
-     *                       It's not clear how we set the cloud we can get
+     * @param cloudId is the id of the cloud to be selected
      */
-    public void chooseCloud(String cloud1) {
-        Cloud cloud = IdManager.getInstance().getCloud(cloud1);
+    public void chooseCloud(String cloudId) {
+        Cloud cloud = IdManager.getInstance().getCloud(cloudId);
         if(this.currentRound.chooseCloud(cloud)) {
             while (cloud.getStudents().size()!=0) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
@@ -638,29 +581,19 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * Sets the game in expert mode
-     */
-    public void setExpertMode() {
-        this.expertMode = true;
-    }
-
-    /**
-     * @return currentPlayer      Return the currentPlayer
+     * @return the currentPlayer
      */
     public Player getCurrentPlayer() {
         return this.currentPlayer;
     }
 
     /**
-     *
-     * @param color1
-     * @param wizard1
-     * @return
+     * @param colorId is the id of the color chosen
+     * @param wizardId is the id of the wizard chosen
      */
-    @Override
-    public Boolean chooseColorAndDeck(String color1, String wizard1) {
-        PlayerColor color= IdManager.getInstance().getPlayerColor(color1);
-        Wizard wizard= IdManager.getInstance().getWizard(wizard1);
+    public void chooseColorAndDeck(String colorId, String wizardId) {
+        PlayerColor color= IdManager.getInstance().getPlayerColor(colorId);
+        Wizard wizard= IdManager.getInstance().getWizard(wizardId);
         if (this.currentRound.chooseColorAndDeck(currentPlayer, color, wizard)) {
             this.currentPlayer.setPlayerColor(color);
             System.out.println(this.currentPlayer.getName());
@@ -669,7 +602,6 @@ public class Game implements GameInterface, Serializable {
                 this.currentPlayer.getSchool().getIngress().addStudent(bag.newStudent());
             }
             if(playerList.indexOf(currentPlayer)<playerList.size()-1) {
-                System.out.println("modify current player in game");
                 this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer)+1));
                 System.out.println(currentPlayer.getName());
             }
@@ -678,24 +610,25 @@ public class Game implements GameInterface, Serializable {
                 currentPlayer = playerList.getFirst();
             }
             propertyChange.firePropertyChange("Finished choose color and deck", currentRound, color);
-            return true;
         }
-        else
-            return false;
     }
 
-    @Override
+    /**
+     * Sets the game mode to normal
+     */
     public void setNormalMode() {
         this.expertMode = false;
     }
 
-    @Override
+    /**
+     * @return true if the game is in expert mode, false if in normal mode
+     */
     public Boolean getGameMode() {
         return expertMode;
     }
 
     /**
-     * @return orderedPlayerList    Return the orderedPlayerList
+     * @return the orderedPlayerList
      */
     public LinkedList<Player> getOrderedPLayerList() {
         return new LinkedList<>(this.orderedPLayerList);
@@ -709,66 +642,28 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     *@return ingressHallSwap Return the IngressHallSwap
+     * Sets the current round to a new PianificationRound
      */
-    public IngressHallSwapActionRound setIngressHallSwapState() {
-        return (IngressHallSwapActionRound) this.ingressHallSwap;
+    public void setPianificationRoundState(){
+        this.setRound(new PianificationRound(this));
     }
 
     /**
-     *@return the pianificationRound
-     */
-    public PianificationRound setPianificationRoundState(){
-        this.pianificationRound = new PianificationRound(this);
-        return (PianificationRound) this.pianificationRound;
-    }
-
-    /**
-     *Return the PlayerList
+     * Return the PlayerList
      */
     public LinkedList<Player> getPlayerList() {
         return this.playerList;
     }
 
     /**
-     **@return the actionRound
+     * Sets the current round to a new ActionRound
      */
-    public ActionRound setActionRoundState() {
-        this.actionRound = new ActionRound(this,isThree);
-        return (ActionRound) this.actionRound;
+    public void setActionRoundState() {
+        this.setRound(new ActionRound(this,isThree));
     }
 
     /**
-     **@return the studentToIslandRound
-     */
-    public StudentToIslandActionRound setStudentToIslandState() {
-        return (StudentToIslandActionRound) this.studentToIslandRound;
-    }
-
-    /**
-     **@return ingressCardSwap Return the ingressCardSwap
-     */
-    public IngressCardSwapActionRound setIngressCardSwapActionRound() {
-        return (IngressCardSwapActionRound) this.ingressCardSwap;
-    }
-
-    /**
-     *@return studentToHallRound Return the studentToHallRound
-     */
-    public StudentToHallActionRound setStudentToHallState() {
-       return (StudentToHallActionRound) this.studentToHallRound;
-    }
-
-    /**
-     *
-     * @return  setUpRound      Return the setUpRound
-     */
-    public SetUpRound setSetUpRound() {
-        return (SetUpRound) this.setUpRound;
-    }
-
-    /**
-     *Used if the player wants to finish the move
+     * Used if the player wants to finish the move
      */
     public void finishExpertMove() {
         setRound(previousRound);
@@ -776,7 +671,7 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return     It's needed for the rounds where after picks a student from an expert card they put another one, they need to access to current card
+     * @return the instance of CardManager
      */
     public CardManager getCardManager() {
         return this.cardManager;
@@ -790,46 +685,22 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return  Bag     Return the instance of the Bag
+     * @return the instance of the Bag
      */
     public Bag getBag() {
         return this.bag;
     }
 
     /**
-     * Set the Player list, only for debugging so far
-     */
-    public void setPlayerList(LinkedList<Player> players) {
-        this.playerList = players;
-        if(players.size()==3) {
-            isThree = true;
-            for(Player p : players) {
-                p.setThreePlayers();
-            }
-        } else {
-            isThree = false;
-        }
-    }
-
-    /**
-     *
-     * @return  new linked list of clouds
+     * @return a linked list containing the clouds
      */
     public LinkedList<Cloud> getClouds() {
         return new LinkedList<>(this.clouds);
     }
 
     /**
-     *
-     * @param clouds        Set the clouds
-     */
-    public void setCloud(LinkedList<Cloud> clouds) {
-        this.clouds = clouds;
-    }
-
-    /**
-     * Only for testing so far
-     * @return
+     * Only for testing
+     * @return mother nature instance
      */
     public MotherNature getMotherNature() {
         return this.motherNature;

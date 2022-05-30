@@ -52,7 +52,7 @@ public class ActionRoundTest {
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
         game.initializeGame();
-        game.setRound(game.setPianificationRoundState());
+        game.setPianificationRoundState();
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
@@ -133,8 +133,7 @@ public class ActionRoundTest {
         LinkedList<Player> lista=new LinkedList<>();
         lista.add(player);
         lista.add(new Player("two"));
-        game.setExpertMode();
-        game.setPLayerList(lista);
+        game.setPlayerList(lista);
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.BLUE_WIZARD.getId());
