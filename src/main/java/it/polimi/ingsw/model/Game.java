@@ -135,7 +135,6 @@ public class Game implements GameInterface, Serializable {
         propertyChange.addPropertyChangeListener(listener);
     }
 
-
     /**
      * Initialize the game by instancing the needed classes and creates the save file path
      */

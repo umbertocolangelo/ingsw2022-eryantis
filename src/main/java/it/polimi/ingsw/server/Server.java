@@ -57,7 +57,8 @@ public class Server {
      * @throws ClassNotFoundException
      * @throws InterruptedException     Thrown when the modifyGame doesn't end
      */
-    public synchronized void lobby(SocketClientConnection c, String name) throws IOException, ClassNotFoundException, InterruptedException {
+    public synchronized void lobby(SocketClientConnection c, String name)
+            throws IOException, ClassNotFoundException, InterruptedException {
 
         List<String> keys = new ArrayList<>(waitingConnection.keySet());
         System.out.println("New client " + name);
@@ -74,8 +75,8 @@ public class Server {
         if (waitingConnection.size()==numberOfPlayer) {
             for (SocketClientConnection d : waitingConnection.values()) {
                 if (isCLi){
-                d.send("Players arrived, starting game..");
-            }
+                    d.send("Players arrived, starting game..");
+                }
             }
 
             SocketClientConnection c1 = waitingConnection.get(keys.get(0));
@@ -85,6 +86,7 @@ public class Server {
             players.add(player1);
             Player player2 = new Player(c2.getName());
             players.add(player2);
+
             if (waitingConnection.size()==3) {
                 SocketClientConnection c3 = waitingConnection.get(keys.get(2));
                 Player player3 = new Player(c3.getName());
@@ -93,17 +95,17 @@ public class Server {
 
             // check if there is a matching game saved
             LinkedList<String> playerNames = new LinkedList<String>();
-            for(Player p : players){
+            for(Player p : players) {
                 playerNames.add(p.getName());
             }
             Game loadedGame = SavingManager.getInstance().loadGame(playerNames);
-            if(loadedGame!=null){ // if there is a save
+            if(loadedGame!=null) { // if there is a save
                 game = loadedGame;
                 System.out.println("Previously saved game loaded");
                 playingConnection.putAll(waitingConnection);
                 waitingConnection.clear();
                 sendGame();
-            }else{
+            } else {
                 game = new Game();
                 propertyObserver = new PropertyObserver(game,this);
                 game.addListener(propertyObserver);
@@ -116,9 +118,6 @@ public class Server {
                 playingConnection.putAll(waitingConnection);
                 waitingConnection.clear();
             }
-
-
-
         }
     }
 
@@ -252,7 +251,11 @@ public class Server {
         return t;
     }
 
-        public Boolean getIsCLi(){
+    /**
+     *
+     * @return
+     */
+    public Boolean getIsCLi(){
         return isCLi;
         }
 

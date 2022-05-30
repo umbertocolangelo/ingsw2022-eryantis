@@ -2,7 +2,6 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -16,46 +15,16 @@
             <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
          </image>
       </ImageView>
-      <TextField fx:id="insertName" layoutX="74.0" layoutY="87.0" promptText="username">
+      <TextField fx:id="insertName" layoutX="300.0" layoutY="217.0" prefHeight="30.0" prefWidth="200.0" promptText="username">
          <font>
             <Font name="Book Antiqua Bold Italic" size="12.0" />
          </font>
       </TextField>
-      <Label layoutX="74.0" layoutY="62.0" prefHeight="18.0" prefWidth="160.0" text="Insert here your username !">
+      <Label layoutX="312.0" layoutY="190.0" prefHeight="18.0" prefWidth="176.0" text="Insert here your username !">
          <font>
-            <Font name="Book Antiqua" size="12.0" />
+            <Font name="Book Antiqua" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="76.0" layoutY="153.0" prefHeight="18.0" prefWidth="166.0" text="Select the number of players :">
-         <font>
-            <Font name="Book Antiqua" size="12.0" />
-         </font>
-      </Label>
-      <RadioButton fx:id="twoPlayers" layoutX="79.0" layoutY="183.0" mnemonicParsing="false" onMouseClicked="#twoPlayers" text="2">
-         <font>
-            <Font name="Book Antiqua Bold" size="12.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="threePlayers" layoutX="79.0" layoutY="216.0" mnemonicParsing="false" onMouseClicked="#threePlayers" text="3">
-         <font>
-            <Font name="Book Antiqua Bold" size="12.0" />
-         </font>
-      </RadioButton>
-      <Label layoutX="74.0" layoutY="271.0" text="Select game mode :">
-         <font>
-            <Font name="Book Antiqua" size="12.0" />
-         </font>
-      </Label>
-      <RadioButton fx:id="classicMode" layoutX="79.0" layoutY="301.0" mnemonicParsing="false" onMouseClicked="#classicGame" prefHeight="18.0" prefWidth="64.0" text="Classic">
-         <font>
-            <Font name="Book Antiqua Bold" size="12.0" />
-         </font>
-      </RadioButton>
-      <RadioButton fx:id="expertMode" layoutX="79.0" layoutY="331.0" mnemonicParsing="false" onMouseClicked="#expertGame" prefHeight="18.0" prefWidth="64.0" text="Expert">
-         <font>
-            <Font name="Book Antiqua Bold" size="12.0" />
-         </font>
-      </RadioButton>
       <Button fx:id="startGame" layoutX="353.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Start">
          <font>
             <Font name="Book Antiqua Bold Italic" size="20.0" />

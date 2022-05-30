@@ -5,6 +5,7 @@ public enum ClientState {
     LOGIN,
     PLAYING,
     SLEEPING,
+    WINNER,
     WRITING
 
 }

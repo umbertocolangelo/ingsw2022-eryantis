@@ -220,6 +220,18 @@ public class Player implements Serializable {
         isWinner = true;
     }
 
+    /**
+     *
+     * @return if this player is the Winner
+     */
+    public Boolean getIsWinner() {
+        return this.isWinner;
+    }
+
+    /**
+     *
+     * @param wizard
+     */
     public void setWizard(Wizard wizard){
         this.wizard = wizard;
     }
@@ -240,7 +252,7 @@ public class Player implements Serializable {
      * Sets the assistant card to null
      */
     public void resetAssistantCard(){
-        this.playedCard=null;
+        this.playedCard = null;
     }
 
 }

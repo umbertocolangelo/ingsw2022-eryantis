@@ -6,7 +6,11 @@ import javafx.stage.Stage;
 
 public class GuiLoadingController {
 
+    /**
+     *
+     */
     public AnchorPane scenePane;
+
     /**
      *
      */
