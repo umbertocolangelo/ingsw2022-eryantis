@@ -50,17 +50,17 @@
             <Font name="Book Antiqua" size="12.0" />
          </font>
       </Label>
-      <RadioButton layoutX="63.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#onColorClick1" text="White">
+      <RadioButton fx:id="white" layoutX="63.0" layoutY="294.0" mnemonicParsing="false" onMouseClicked="#onColorClick1" text="White">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="63.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#onColorClick2" text="Black">
+      <RadioButton fx:id="black" layoutX="63.0" layoutY="327.0" mnemonicParsing="false" onMouseClicked="#onColorClick2" text="Black">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>
       </RadioButton>
-      <RadioButton layoutX="63.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#onColorClick3" text="Grey">
+      <RadioButton   fx:id="grey" layoutX="63.0" layoutY="360.0" mnemonicParsing="false" onMouseClicked="#onColorClick3" text="Grey">
          <font>
             <Font name="Book Antiqua Bold" size="12.0" />
          </font>

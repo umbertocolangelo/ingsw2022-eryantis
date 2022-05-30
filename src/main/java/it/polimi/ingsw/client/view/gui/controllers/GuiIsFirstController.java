@@ -73,7 +73,7 @@ public class GuiIsFirstController {
         isFirst.setPlayers(numOfPLayers);
         ControllerHandler.getInstance().write(isFirst);
 
-        ControllerHandler.getInstance().receiveMessage();
+
     }
 
     /**
