@@ -75,9 +75,8 @@ public class GuiLoginController {
         stage.setScene(scene);
         stage.show();
         ControllerHandler.getInstance().write(insertName.getText());
-        ControllerHandler.getInstance().write(numOfPLayers);
-        ControllerHandler.getInstance().write(expertModeOrClassic);
         ControllerHandler.getInstance().receiveMessage();
+
     }
 
     /**

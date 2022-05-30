@@ -9,7 +9,6 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
-import java.util.Locale;
 import java.util.NoSuchElementException;
 
 
@@ -122,19 +121,17 @@ public class SocketClientConnection implements Runnable {
             send("Welcome in the CLI version of Eryantis!\nWhat is your name?");
 
             //si  sincronizza con il send
-            if (server.getIsCLi())
+
             send(setup);
             String read = (String) in.readObject();
             read = read.toUpperCase();
-
-            while ( (read.matches(".*\\d.*") || server.equalName(read,isFirst))) {
-                send("You inserted a number or the username is already used, please try again");
+            while (server.equalName(read,isFirst)) {
+                send("You inserted a number or the username that is already used, insert again");
                 send(setup);
                 read = (String) in.readObject();
+                read = read.toUpperCase();
                 System.out.println(read);
             }
-
-
 
             name = read;
             send(new SetName(name));

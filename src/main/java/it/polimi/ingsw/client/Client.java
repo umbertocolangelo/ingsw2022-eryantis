@@ -2,6 +2,7 @@ package it.polimi.ingsw.client;
 
 
 import it.polimi.ingsw.client.view.gui.controllers.ControllerHandler;
+import it.polimi.ingsw.message.IsFirst;
 import it.polimi.ingsw.message.SetName;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
@@ -124,27 +125,31 @@ public class Client {
                 synchronized (this) {
                     try {
                         while (isActive()) {
-                            System.out.println("redy to receive");
+                        System.out.println("Pronto per ricevere");
                             inputObject = socketIn.readObject();
-                            System.out.println("received something");
-
+                            System.out.println("MEssaggio ricevuto" + inputObject);
                             if(!isCli){
-                            if (inputObject instanceof String) {
-                                System.out.println(inputObject);
-                                if(inputObject.equals("Players arrived, starting game.."))
-                                    ControllerHandler.getInstance().receiveMessage();
-                                else {
+                                if (inputObject instanceof SetUp) {
+                                    System.out.println(inputObject);
+                                    if(inputObject.equals("Players arrived, starting game.."))
+                                        ControllerHandler.getInstance().receiveMessage();
+                                    else {
                                     ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
                                     ControllerHandler.getInstance().chooseScene();
-                                }
-                                }
-                           else if (inputObject instanceof SetUp){
-                                System.out.println("RIcevuto setup");
 
-                            }
+                                }
+
+                                }
+                                else if(inputObject instanceof IsFirst){
+                                    System.out.println(inputObject);
+                                    ControllerHandler.getInstance().setClientState(ClientState.ISFIRST);
+                                    ControllerHandler.getInstance().chooseScene();
+
+                                }
                             else if (inputObject instanceof SetName) {
                                 System.out.println("setName");
                                 namePlayer = ((SetName) inputObject).getName();
+
                             }
                             else if (inputObject instanceof Game) {
                                 game = (Game) inputObject;
@@ -169,6 +174,9 @@ public class Client {
                                 controller.run();
                             } else if (inputObject instanceof SetName) {
                                 namePlayer = ((SetName) inputObject).getName();
+                            }else if(inputObject instanceof IsFirst){
+                                controller.setClientState(ClientState.ISFIRST);
+                                controller.run();
                             }
                             else {
                                 throw new IllegalArgumentException();
