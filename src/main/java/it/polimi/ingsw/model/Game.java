@@ -188,6 +188,7 @@ public class Game implements GameInterface, Serializable {
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
         propertyChange.firePropertyChange("Inizialize game",null,null);
+
     }
 
     /**
@@ -258,10 +259,12 @@ public class Game implements GameInterface, Serializable {
             LinkedList<Player> tiePlayers = new LinkedList<Player>(); // if there is a tie, stores the players with same number of towers
 
             for(Player player : playerList){
+                if(player==winner){continue;}
                 if(player.getSchool().getTowerTable().numOfTowers()<minTower){ // if this player has placed more towers
                     winner = player;
                     minTower = winner.getSchool().getTowerTable().numOfTowers();
                     tiePlayers.clear();
+                    continue;
                 }
                 if(player.getSchool().getTowerTable().numOfTowers()==minTower){
                     if(tiePlayers.isEmpty()){
@@ -275,7 +278,7 @@ public class Game implements GameInterface, Serializable {
 
             }
 
-            if(winner!=null){ // if there is a tie between two players the winner is based on the professors owned
+            if(winner==null){ // if there is a tie between two players the winner is based on the professors owned
                 int maxProfCount = 0;
                 for(Player player : tiePlayers){
                     int profCount = 0;
@@ -293,6 +296,9 @@ public class Game implements GameInterface, Serializable {
                     if(maxProfCount==profCount){ // if there is a tie
                         winner = null;
                     }
+                }
+                if(winner==null){ // if still there is a tie, the winner is set randomly
+                    winner = tiePlayers.get(0);
                 }
             }
 
@@ -328,7 +334,7 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     * @return true if the game has been initialized
+     * @return true if every player has chosen color and deck
      */
     public Boolean isStarted() {
         return isStarted;
@@ -391,13 +397,9 @@ public class Game implements GameInterface, Serializable {
         if(this.currentRound.moveMotherNature(jumps)) {
             this.motherNature.setIsland(this.islandManager.nextIsland(jumps));
             influenceManager.calculateInfluence();
-            //Bisognerebbe selezionare un tasto TODO
             currentPlayer.setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
             this.getIslandManager().checkGroup(this.motherNature.getIsland());
             checkWinner();
-        }
-        if(!this.currentRound.moveMotherNature(jumps)) {
-            System.out.println("Move not possible");
         }
 
         saveGame();
@@ -607,6 +609,7 @@ public class Game implements GameInterface, Serializable {
             else {
                 Collections.shuffle(playerList);
                 currentPlayer = playerList.getFirst();
+                isStarted=true;
             }
             propertyChange.firePropertyChange("Finished choose color and deck", currentRound, color);
         }

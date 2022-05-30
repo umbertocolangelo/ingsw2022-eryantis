@@ -13,7 +13,7 @@ public interface GameInterface {
     void saveGame();
 
     /**
-     * @return true if the game has been initialized
+     * @return true if every player has chosen color and deck
      */
     Boolean isStarted();
 
