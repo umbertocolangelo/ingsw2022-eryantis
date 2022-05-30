@@ -2,111 +2,96 @@ package it.polimi.ingsw.model;
 
 import it.polimi.ingsw.model.player.Player;
 
-import java.util.LinkedList;
-
 /**
  * 
  */
 public interface GameInterface {
 
     /**
-     * @param name 
-     * @param playerNum
+     * Saves the game
      */
-    public void playerLogin(String name, Integer playerNum);
+    void saveGame();
 
     /**
-     * @param playerNum
+     * @return true if the game has been initialized
      */
-    public void startGame(LinkedList<Player> playerNum);
+    Boolean isStarted();
 
     /**
-     * 
+     * @param studentId is the id of the student on the ingress that is moved on the hall
      */
-    public void saveGame();
+    void moveStudentIngressToHall(String studentId);
 
     /**
-     * @return
+     * @param studentId is the id of the student on the ingress
+     * @param islandId is the id of the island where the student is moved
      */
-    public Boolean isStarted();
+    void moveStudentIngressToIsland(String studentId, String islandId);
 
     /**
-     * @param string
+     * @param jumps is the number of jumps that mother nature has to do
      */
-    public void moveStudentIngressToHall(String string);
+    void moveMotherNature(Integer jumps);
 
     /**
-     * @param student1
-     * @param island1
+     * @param assistantId is the id of the assistant card to play
      */
-    public void moveStudentIngressToIsland(String student1, String island1);
-
-    /**
-     * @param jumps
-     */
-    public void moveMotherNature(Integer jumps);
-
-    /**
-     * @param assistantCard
-     */
-    public void playAssistantCard(String assistantCard);
+    void playAssistantCard(String assistantId);
 
 
     /**
-     * @param student
-     * @param island
+     * @param studentId is the id of the student we want to put on the island
+     * @param islandId  is the id of the island where we want to put hte student
      */
-    public void expertStudentToIsland(String student, String island);
+    void expertStudentToIsland(String studentId, String islandId);
 
     /**
-     * @param student1
-     * @param student2
+     * @param studentCardId is the id of the student on the card
+     * @param studentHallId is the id of the student on the ingress
      */
-    public void expertIngressCardSwap(String student1, String student2);
+    void expertIngressCardSwap(String studentCardId, String studentHallId);
 
     /**
-     * @param studentHall1
-     * @param studentIngress1
+     * @param studentHallId is the id of the student present in the hall
+     * @param studentIngressId is the id of the student present on the ingress
      */
-    void expertIngressHallSwap(String studentHall1, String studentIngress1);
+    void expertIngressHallSwap(String studentHallId, String studentIngressId);
 
     /**
-     * @param student1
+     * @param studentId is the id of the student to put in the Hall
      */
-    void expertStudentToHall(String student1);
+    void expertStudentToHall(String studentId);
 
     /**
-     * @param cloud
+     * @param cloudId is the id of the cloud to be selected
      */
-    void chooseCloud(String cloud);
-
-    public void finishExpertMove();
-
+    void chooseCloud(String cloudId);
 
     /**
-     * @return
+     * Used if the player wants to finish the move
      */
-    public void setExpertMode();
+    void finishExpertMove();
 
     /**
-     * @return
+     * @return the currentPlayer
      */
-    public Player getCurrentPlayer();
+    Player getCurrentPlayer();
 
     /**
-     *
-     * @param color
-     * @param wizard
-     * @return
+     * @param colorId is the id of the color chosen
+     * @param wizardId is the id of the wizard chosen
      */
-    public Boolean chooseColorAndDeck(String color, String wizard);
+    void chooseColorAndDeck(String colorId, String wizardId);
 
     /**
-     *
+     * Sets the game mode to normal
      */
     public void setNormalMode();
 
-    public Boolean getGameMode();
+    /**
+     * @return true if the game is in expert mode, false if in normal mode
+     */
+    Boolean getGameMode();
 
 
 
