@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.view.CLI;
+import it.polimi.ingsw.message.IsFirst;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -63,10 +64,50 @@ public class Controller implements Runnable {
         switch (clientState) {
             case LOGIN:
                 input = stdIn.nextLine();
+                while ( (input.matches(".*\\d.*"))){
+                    System.out.println("You inserted a wrong value for username");
+                input = stdIn.nextLine();
+                 }
+
                 write(input);
                 setClientState(ClientState.SLEEPING);
                 break;
+            case ISFIRST:
+                System.out.println("You are the first Player");
+                System.out.println("Decide the number of players, 2 or 3");
+                String message = stdIn.nextLine();
+                while(!(message.equals("2") || message.equals("3"))) {
+                        System.out.println("You must select 2 or 3! Please try again");
+                    message = stdIn.nextLine(); // Read user input
+                }
+                IsFirst isFirst=new IsFirst();
+                isFirst.setPlayers(Integer.parseInt(message));
+                System.out.println("Number of players selected "+ Integer.parseInt(message));
+                System.out.println("Decide the gameMode, 1 for expert and 0 for normal");
+                message = stdIn.nextLine(); // Read user input// Read user input
 
+                while(!(message.equals("0") || message.equals("1"))) {
+                    System.out.println("You must select 0 or 1 ");
+                    message = stdIn.nextLine(); // Read user input// Read user input
+                }
+
+                if(message.equals("1"))
+                    isFirst.setGameMode(true);
+                else
+                    isFirst.setGameMode(false);
+
+                System.out.println("Game mode selected ");
+                write(isFirst);
+            case EQUALNAME:
+                input = stdIn.nextLine();
+                while ( (input.matches(".*\\d.*"))){
+                    System.out.println("You inserted a wrong value for username");
+                    input = stdIn.nextLine();
+                }
+
+                write(input);
+                setClientState(ClientState.SLEEPING);
+                break;
             case SLEEPING:
                 break;
 

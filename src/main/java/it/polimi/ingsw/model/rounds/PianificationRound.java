@@ -54,7 +54,7 @@ public class PianificationRound implements RoundInterface, Serializable {
             assistantCards=new ArrayList<>();
             playerListOrdered=new LinkedList<>();
             this.game.getCardManager().setCurrentCard(null);
-            this.game.setRound(this.game.setActionRoundState());
+            this.game.setActionRoundState();
             return true;
         }
         return false;

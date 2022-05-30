@@ -20,8 +20,8 @@ public class StudentToIslandActionRoundTest {
         Player player1 = new Player("one");
         lista.add(player1);
         lista.add(new Player("two"));
-        game.setExpertMode();
-        game.setPLayerList(lista);
+
+        game.setPlayerList(lista);
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
         game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());

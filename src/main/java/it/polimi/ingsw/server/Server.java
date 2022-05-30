@@ -2,6 +2,7 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.listener.PropertyObserver;
+import it.polimi.ingsw.message.IsFirst;
 import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
@@ -28,7 +29,7 @@ public class Server {
     private Game game;
     private SetUp setup = new SetUp();
     private Semaphore semaphore = new Semaphore(1);
-    private Boolean isCLi=false;
+    private Boolean isCLi=true;
 
 
     /**
@@ -64,14 +65,14 @@ public class Server {
         System.out.println("New client " + name);
         waitingConnection.put(name, c);
         if (waitingConnection.size()==1) {
-            if (isCLi)
-            c.send("You are the first player");
-            decideNumberOfPlayersAndGameMode(c);
+            System.out.println("Sendign is first");
+            c.send(new IsFirst());
+            IsFirst isFirst= (IsFirst) c.getIn().readObject();
+            gameMode=isFirst.getGameMode();
+            numberOfPlayer=isFirst.getPlayers();
         }
-        if(isCLi)
-        c.send("waiting for other players");
-        keys = new ArrayList<>(waitingConnection.keySet());
 
+        keys = new ArrayList<>(waitingConnection.keySet());
         if (waitingConnection.size()==numberOfPlayer) {
             for (SocketClientConnection d : waitingConnection.values()) {
                 if (isCLi){
@@ -92,7 +93,6 @@ public class Server {
                 Player player3 = new Player(c3.getName());
                 players.add(player3);
             }
-
             // check if there is a matching game saved
             LinkedList<String> playerNames = new LinkedList<String>();
             for(Player p : players) {
@@ -245,8 +245,8 @@ public class Server {
                 if (object instanceof MessageMethod) {
                    ((MessageMethod) object).apply(game);
                 }
-            }
-        });
+                }
+            });
         t.start();
         return t;
     }

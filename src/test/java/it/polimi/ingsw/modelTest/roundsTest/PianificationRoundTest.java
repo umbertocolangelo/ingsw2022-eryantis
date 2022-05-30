@@ -29,7 +29,7 @@ public class PianificationRoundTest {
         game.initializeGame();
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
-        game.setRound(game.setPianificationRoundState());
+        game.setPianificationRoundState();
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
@@ -61,7 +61,7 @@ public class PianificationRoundTest {
         lista.add(player2);
         game.setPlayerList(lista);
         game.initializeGame();
-        game.setRound(game.setPianificationRoundState());
+        game.setPianificationRoundState();
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player2.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);

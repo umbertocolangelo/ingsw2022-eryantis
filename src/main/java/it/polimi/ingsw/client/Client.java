@@ -2,10 +2,11 @@ package it.polimi.ingsw.client;
 
 
 import it.polimi.ingsw.client.view.gui.controllers.ControllerHandler;
+import it.polimi.ingsw.message.EqualName;
+import it.polimi.ingsw.message.IsFirst;
 import it.polimi.ingsw.message.SetName;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.player.Player;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -20,7 +21,7 @@ public class Client {
     /**
      * Keep the reference to the socket
      */
-    private Socket socket;
+    private  Socket socket;
 
     /**
      *  Keep the reference to InputStream
@@ -73,13 +74,18 @@ public class Client {
     private Boolean active = true;
 
     /**
-     * check game mode and instantiate the correct controller
+     *
      */
-    private Boolean isCli = false;
+    private Boolean isCli=false;
 
     /**
-     * @param ip address
-     * @param port
+     *
+     */
+    private ControllerHandler controllerHandler;
+
+    /**
+     * @param ip        The ip address
+     * @param port      the port
      */
     public Client(String ip, int port) {
         this.ip = ip;
@@ -95,8 +101,8 @@ public class Client {
     }
 
     /**
-     * Set the active variable
-     * @param active
+     *
+     * @param active        Set the active variable
      */
     public synchronized void setActive(Boolean active) {
         this.active = active;
@@ -106,6 +112,7 @@ public class Client {
      *
      */
     private Semaphore semaphore = new Semaphore(1);
+
 
     /**
      *
@@ -123,66 +130,58 @@ public class Client {
                             inputObject = socketIn.readObject();
                             System.out.println("received something");
 
-                            if (!isCli) {
-                                if (inputObject instanceof String) {
-                                    System.out.println(inputObject);
-                                    if (inputObject.equals("Players arrived, starting game..")) {
-                                        ControllerHandler.getInstance().receiveMessage();
-                                    }
-                                    else {
-                                        ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
-                                        ControllerHandler.getInstance().chooseScene();
-                                    }
-                                }
-                                else if (inputObject instanceof SetUp) {
-                                    System.out.println("Setup received");
-                                }
-                                else if (inputObject instanceof SetName) {
-                                    System.out.println("setName");
-                                    namePlayer = ((SetName) inputObject).getName();
-                                }
-                                else if (inputObject instanceof Game) {
-                                    game = (Game) inputObject;
-                                    for (Player p: game.getPlayerList()) {
-                                        if (p.getIsWinner()) {
-                                            ControllerHandler.getInstance().setClientState(ClientState.WINNER);
-                                        }
-                                    }
-                                    System.out.println("Client received Game.");
-                                    if (game.getCurrentPlayer().getName().equals(namePlayer)) {
-                                        ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
-                                        ControllerHandler.getInstance().chooseScene();
-                                    }
-                                }
-                            } else {
-                                if (inputObject instanceof String) {
-                                    System.out.println((String) inputObject);
-                                }
-                                else if (inputObject instanceof Game) {
-                                    game = (Game) inputObject;
-                                    for (Player p: game.getPlayerList()) {
-                                        if (p.getIsWinner()) {
-                                            controller.setClientState(ClientState.WINNER);
-                                        }
-                                    }
-                                    System.out.println("Client received Game.");
-                                    if (game.getCurrentPlayer().getName().equals(namePlayer)) {
-                                        controller.setClientState(ClientState.PLAYING);
-                                        controller.run();
-                                    }
-                                }
-                                else if (inputObject instanceof SetUp) {
-                                    System.out.println("Set Up received.");
-                                    controller.setClientState(ClientState.LOGIN);
-                                    controller.run();
-                                }
-                                else if (inputObject instanceof SetName) {
-                                    namePlayer = ((SetName) inputObject).getName();
-                                }
+                            if(!isCli){
+                            if (inputObject instanceof SetUp) {
+                                System.out.println(inputObject);
+                                if(inputObject.equals("Players arrived, starting game.."))
+                                    ControllerHandler.getInstance().receiveMessage();
                                 else {
-                                    throw new IllegalArgumentException();
+                                    ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
+                                    ControllerHandler.getInstance().chooseScene();
                                 }
+                                }
+                           else if (inputObject instanceof IsFirst){
+                                System.out.println("isFirst");
+                                ControllerHandler.getInstance().setClientState(ClientState.ISFIRST);
+                                ControllerHandler.getInstance().chooseScene();
                             }
+                            else if (inputObject instanceof SetName) {
+                                System.out.println("setName");
+                                namePlayer = ((SetName) inputObject).getName();
+                            }
+                            else if (inputObject instanceof Game) {
+                                game = (Game) inputObject;
+                                System.out.println("Client received Game.");
+                            if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
+                                ControllerHandler.getInstance().chooseScene();
+                            }
+                            }
+                        }else {
+                            if (inputObject instanceof String) {
+                                System.out.println((String) inputObject);
+                            } else if (inputObject instanceof Game) {
+                                game = (Game) inputObject;
+                                System.out.println("Client received Game.");
+                                if (game.getCurrentPlayer().getName().equals(namePlayer))
+                                    controller.setClientState(ClientState.PLAYING);
+                                    controller.run();
+                            } else if (inputObject instanceof SetUp) {
+                                System.out.println("Set Up received.");
+                                controller.setClientState(ClientState.LOGIN);
+                                controller.run();
+                            } else if(inputObject instanceof EqualName){
+                                System.out.println("Set Up received.");
+                                controller.setClientState(ClientState.EQUALNAME);
+                                controller.run();
+                            } else if (inputObject instanceof SetName) {
+                                namePlayer = ((SetName) inputObject).getName();
+                            }
+                            else {
+                                throw new IllegalArgumentException();
+                            }
+                        }
+
                         }
                     } catch (Exception e) {
                         setActive(false);
@@ -193,6 +192,7 @@ public class Client {
         t.start();
         return t;
     }
+
 
     /**
      *  When the client is running start the thread for reading and wait until that thread die
@@ -205,13 +205,19 @@ public class Client {
         socketOut = new ObjectOutputStream(socket.getOutputStream());
         stdin = new Scanner(System.in);
         controller = new Controller(this);
-        ControllerHandler.getInstance().setClient(this);
+       ControllerHandler.getInstance().setClient(this);
+
 
         try {
             Thread t0 = asyncReadFromSocket(socketIn);
+           // Thread t1 = asyncWriteToSocket(stdin, socketOut);
+
             t0.join();
+            //t1.join();
+
         } catch (InterruptedException | NoSuchElementException e) {
             System.out.println("Connection closed from the client side");
+
         } finally {
             stdin.close();
             socketIn.close();
@@ -224,7 +230,7 @@ public class Client {
      *
      * @return stdIn        The scanner of the keyboard
      */
-    public Scanner getScanner() { return this.stdin; }
+    public Scanner getScanner() { return stdin; }
 
     /**
      *
@@ -239,7 +245,7 @@ public class Client {
      * @return socketOut        The inputStream
      */
     public ObjectOutputStream getIn(){
-        return this.socketOut;
+        return socketOut;
     }
 
     /**
@@ -251,11 +257,13 @@ public class Client {
 
     /**
      *
-     * @return model game reference
+     * @return game     The refrence to the game in the client
      */
     public Game getGame(){
         return this.game;
     }
+
+
 
 
 }

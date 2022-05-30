@@ -12,6 +12,11 @@ import java.io.IOException;
 public class ControllerHandler {
 
     /**
+     * Set true if isFirst, for change scene
+     */
+    private Boolean isFirst=false;
+
+    /**
      *
      */
     private static Stage stage;
@@ -108,14 +113,25 @@ public class ControllerHandler {
                 GuiMain guiMain = new GuiMain();
                 guiMain.launchApp();
                 break;
+            case ISFIRST:
+                System.out.println("IsFirst");
+                GuiLoginController controller = new GuiLoginController();
+                Platform.runLater(() -> {
+                    try {
+                        controller.changeSceneIsFirst();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                break;
             case PLAYING:
                 switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
                     case SET_UP_PHASE: //cambio scena da login a deck/color phase
                             System.out.println("Setup");
-                            GuiLoginController controller = new GuiLoginController();
+                            GuiLoginController controllerLogin = new GuiLoginController();
                             Platform.runLater(() -> {
                                 try {
-                                    controller.changeScene();
+                                    controllerLogin.changeScene();
                                 } catch (IOException e) {
                                     e.printStackTrace();
                                 }

@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
+import it.polimi.ingsw.message.IsFirst;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -39,12 +40,12 @@ public class GuiIsFirstController {
     /**
      *
      */
-    private String numOfPLayers;
+    private Integer numOfPLayers;
 
     /**
      *
      */
-    private String expertModeOrClassic;
+    private Boolean expertModeOrClassic;
 
     /**
      *
@@ -66,8 +67,12 @@ public class GuiIsFirstController {
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
-        ControllerHandler.getInstance().write(numOfPLayers);
-        ControllerHandler.getInstance().write(expertModeOrClassic);
+        IsFirst isFirst=new IsFirst();
+
+        isFirst.setGameMode(expertModeOrClassic);
+        isFirst.setPlayers(numOfPLayers);
+        ControllerHandler.getInstance().write(isFirst);
+
         ControllerHandler.getInstance().receiveMessage();
     }
 
@@ -87,14 +92,14 @@ public class GuiIsFirstController {
      *
      */
     public void twoPlayers(MouseEvent mouseEvent) {
-        numOfPLayers = "2";
+        numOfPLayers = 2;
     }
 
     /**
      *
      */
     public void threePlayers(MouseEvent mouseEvent) {
-        numOfPLayers = "3";
+        numOfPLayers = 3;
     }
 
     /**
@@ -102,7 +107,7 @@ public class GuiIsFirstController {
      * @param mouseEvent
      */
     public void classicGame(MouseEvent mouseEvent) {
-        expertModeOrClassic = "0";
+        expertModeOrClassic =false;
     }
 
     /**
@@ -110,7 +115,7 @@ public class GuiIsFirstController {
      * @param mouseEvent
      */
     public void expertGame(MouseEvent mouseEvent) {
-        expertModeOrClassic = "1";
+        expertModeOrClassic = true;
     }
 
 }

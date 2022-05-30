@@ -31,7 +31,7 @@ public class StudentToHallActionRoundTest {
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
         game.initializeGame();
-        game.setRound(game.setPianificationRoundState());
+        game.setPianificationRoundState();
         player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         game.setCurrentPlayer(player1);
