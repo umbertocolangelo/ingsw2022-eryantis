@@ -1,14 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiChooseCloudController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiChooseCloudController">
+   <children>
+      <ImageView fitHeight="720.0" fitWidth="1280.0" layoutY="-2.0" opacity="0.4">
+         <image>
+            <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
+         </image>
+      </ImageView>
+      <ImageView id="cloud1" fitHeight="243.0" fitWidth="267.0" layoutX="747.0" layoutY="140.0" onMouseClicked="#chooseCloud1">
+         <image>
+            <Image url="@../Graphical_Assets/reameB_2.png" />
+         </image>
+      </ImageView>
+      <ImageView id="cloud2" fitHeight="243.0" fitWidth="267.0" layoutX="507.0" layoutY="383.0" onMouseClicked="#chooseCloud2">
+         <image>
+            <Image url="@../Graphical_Assets/reameB_2.png" />
+         </image>
+      </ImageView>
+      <ImageView id="cloud3" fitHeight="243.0" fitWidth="267.0" layoutX="240.0" layoutY="140.0" onMouseClicked="#chooseCloud3">
+         <image>
+            <Image url="@../Graphical_Assets/reameB_2.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonNext" layoutX="1013.0" layoutY="572.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="51.0" prefWidth="114.0" text="Next">
+         <font>
+            <Font name="Book Antiqua Bold Italic" size="24.0" />
+         </font>
+      </Button>
+   </children>
 </AnchorPane>

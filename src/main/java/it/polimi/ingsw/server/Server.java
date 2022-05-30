@@ -75,9 +75,9 @@ public class Server {
         keys = new ArrayList<>(waitingConnection.keySet());
         if (waitingConnection.size()==numberOfPlayer) {
             for (SocketClientConnection d : waitingConnection.values()) {
-                if (isCLi){
-                    d.send("Players arrived, starting game..");
-                }
+               // if (isCLi){
+                 //   d.send("Players arrived, starting game..");
+              //  }
             }
 
             SocketClientConnection c1 = waitingConnection.get(keys.get(0));
