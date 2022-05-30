@@ -6,6 +6,7 @@ public enum ClientState {
     ISFIRST,
     PLAYING,
     SLEEPING,
+    WINNER,
     WRITING
 
 }

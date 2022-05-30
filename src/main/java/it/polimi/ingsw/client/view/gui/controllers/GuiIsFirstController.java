@@ -5,20 +5,46 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
-
-public class GuiLoginController {
+public class GuiIsFirstController {
 
     /**
      *
      */
     @FXML
-    TextField insertName;
+    private RadioButton twoPlayers;
+
+    /**
+     *
+     */
+    @FXML
+    private RadioButton threePlayers;
+
+    /**
+     *
+     */
+    @FXML
+    private RadioButton expertMode;
+
+    /**
+     *
+     */
+    @FXML
+    private RadioButton classicMode;
+
+    /**
+     *
+     */
+    private String numOfPLayers;
+
+    /**
+     *
+     */
+    private String expertModeOrClassic;
 
     /**
      *
@@ -40,9 +66,9 @@ public class GuiLoginController {
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
-        ControllerHandler.getInstance().write(insertName.getText());
+        ControllerHandler.getInstance().write(numOfPLayers);
+        ControllerHandler.getInstance().write(expertModeOrClassic);
         ControllerHandler.getInstance().receiveMessage();
-
     }
 
     /**
@@ -56,4 +82,35 @@ public class GuiLoginController {
         stage.setScene(scene);
         stage.show();
     }
+
+    /**
+     *
+     */
+    public void twoPlayers(MouseEvent mouseEvent) {
+        numOfPLayers = "2";
+    }
+
+    /**
+     *
+     */
+    public void threePlayers(MouseEvent mouseEvent) {
+        numOfPLayers = "3";
+    }
+
+    /**
+     *
+     * @param mouseEvent
+     */
+    public void classicGame(MouseEvent mouseEvent) {
+        expertModeOrClassic = "0";
+    }
+
+    /**
+     *
+     * @param mouseEvent
+     */
+    public void expertGame(MouseEvent mouseEvent) {
+        expertModeOrClassic = "1";
+    }
+
 }
