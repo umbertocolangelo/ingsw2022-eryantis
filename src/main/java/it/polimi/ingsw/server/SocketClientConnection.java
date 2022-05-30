@@ -1,6 +1,7 @@
 package it.polimi.ingsw.server;
 
 
+import it.polimi.ingsw.message.EqualName;
 import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.SetName;
 import it.polimi.ingsw.message.SetUp;
@@ -127,7 +128,7 @@ public class SocketClientConnection implements Runnable {
             read = read.toUpperCase();
             while (server.equalName(read,isFirst)) {
                 send("You inserted a number or the username that is already used, insert again");
-                send(setup);
+                send(new EqualName());
                 read = (String) in.readObject();
                 read = read.toUpperCase();
                 System.out.println(read);

@@ -2,6 +2,8 @@ package it.polimi.ingsw.client;
 
 
 import it.polimi.ingsw.client.view.gui.controllers.ControllerHandler;
+import it.polimi.ingsw.message.EqualName;
+import it.polimi.ingsw.message.IsFirst;
 import it.polimi.ingsw.message.SetName;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.model.Game;
@@ -129,7 +131,7 @@ public class Client {
                             System.out.println("received something");
 
                             if(!isCli){
-                            if (inputObject instanceof String) {
+                            if (inputObject instanceof SetUp) {
                                 System.out.println(inputObject);
                                 if(inputObject.equals("Players arrived, starting game.."))
                                     ControllerHandler.getInstance().receiveMessage();
@@ -138,9 +140,10 @@ public class Client {
                                     ControllerHandler.getInstance().chooseScene();
                                 }
                                 }
-                           else if (inputObject instanceof SetUp){
-                                System.out.println("RIcevuto setup");
-
+                           else if (inputObject instanceof IsFirst){
+                                System.out.println("isFirst");
+                                ControllerHandler.getInstance().setClientState(ClientState.ISFIRST);
+                                ControllerHandler.getInstance().chooseScene();
                             }
                             else if (inputObject instanceof SetName) {
                                 System.out.println("setName");
@@ -164,8 +167,12 @@ public class Client {
                                     controller.setClientState(ClientState.PLAYING);
                                     controller.run();
                             } else if (inputObject instanceof SetUp) {
-                                 System.out.println("Set Up received.");
+                                System.out.println("Set Up received.");
                                 controller.setClientState(ClientState.LOGIN);
+                                controller.run();
+                            } else if(inputObject instanceof EqualName){
+                                System.out.println("Set Up received.");
+                                controller.setClientState(ClientState.EQUALNAME);
                                 controller.run();
                             } else if (inputObject instanceof SetName) {
                                 namePlayer = ((SetName) inputObject).getName();

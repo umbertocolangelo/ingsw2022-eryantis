@@ -25,7 +25,7 @@
             <Font name="Book Antiqua" size="14.0" />
          </font>
       </Label>
-      <Button fx:id="startGame" layoutX="353.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Start">
+      <Button fx:id="startGame" layoutX="353.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="36.0" prefWidth="94.0" text="Start">
          <font>
             <Font name="Book Antiqua Bold Italic" size="20.0" />
          </font>

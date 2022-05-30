@@ -4,7 +4,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -52,6 +51,14 @@ public class GuiLoginController {
     public void changeScene() throws IOException {
         stage= ControllerHandler.getInstance().getStage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/deckAndColor-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+    public void changeSceneIsFirst() throws IOException {
+        stage= ControllerHandler.getInstance().getStage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/isfirst-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();

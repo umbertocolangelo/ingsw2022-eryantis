@@ -23,7 +23,7 @@ public class GameTests {
         lista.add(player1);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
-        game.setPLayerList(lista);
+        game.setPlayerList(lista);
         game.initializeGame();
 
 

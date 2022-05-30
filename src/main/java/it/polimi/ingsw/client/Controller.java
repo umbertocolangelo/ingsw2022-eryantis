@@ -98,7 +98,16 @@ public class Controller implements Runnable {
 
                 System.out.println("Game mode selected ");
                 write(isFirst);
+            case EQUALNAME:
+                input = stdIn.nextLine();
+                while ( (input.matches(".*\\d.*"))){
+                    System.out.println("You inserted a wrong value for username");
+                    input = stdIn.nextLine();
+                }
 
+                write(input);
+                setClientState(ClientState.SLEEPING);
+                break;
             case SLEEPING:
                 break;
 
