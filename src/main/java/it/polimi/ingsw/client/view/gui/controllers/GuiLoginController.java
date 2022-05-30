@@ -19,6 +19,8 @@ public class GuiLoginController {
     @FXML
     TextField insertName;
 
+    private Boolean equal=false;
+
     /**
      *
      */
@@ -40,7 +42,10 @@ public class GuiLoginController {
         stage.setScene(scene);
         stage.show();
         ControllerHandler.getInstance().write(insertName.getText());
-        ControllerHandler.getInstance().receiveMessage();
+        if (ControllerHandler.getInstance().getEqual()==false) {
+            System.out.println("receiveevevvevev");
+            ControllerHandler.getInstance().receiveMessage();
+        }
 
     }
 
@@ -63,4 +68,15 @@ public class GuiLoginController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void changeSceneEqual() throws IOException {
+        ControllerHandler.getInstance().setEqual();
+        stage= ControllerHandler.getInstance().getStage();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 }

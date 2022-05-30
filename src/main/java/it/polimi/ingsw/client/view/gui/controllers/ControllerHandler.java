@@ -12,6 +12,11 @@ import java.io.IOException;
 public class ControllerHandler {
 
     /**
+     *
+     */
+    private Boolean equal=false;
+
+    /**
      * Set true if isFirst, for change scene
      */
     private Boolean isFirst=false;
@@ -114,6 +119,7 @@ public class ControllerHandler {
                 guiMain.launchApp();
                 break;
             case ISFIRST:
+                setIsFirst();
                 System.out.println("IsFirst");
                 GuiLoginController controller = new GuiLoginController();
                 Platform.runLater(() -> {
@@ -124,18 +130,43 @@ public class ControllerHandler {
                     }
                 });
                 break;
+            case EQUALNAME:
+                GuiLoginController controllerEqual = new GuiLoginController();
+                Platform.runLater(() -> {
+                    try {
+                        controllerEqual.changeSceneEqual();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                break;
             case PLAYING:
                 switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
                     case SET_UP_PHASE: //cambio scena da login a deck/color phase
                             System.out.println("Setup");
                             GuiLoginController controllerLogin = new GuiLoginController();
-                            Platform.runLater(() -> {
-                                try {
-                                    controllerLogin.changeScene();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            });
+                            if (!isFirst) {
+                                Platform.runLater(() -> {
+                                    try {
+                                        System.out.println("Change scene normal");
+                                        controllerLogin.changeScene();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                });
+                            }
+                            else{
+                                GuiIsFirstController controllerFirst =new GuiIsFirstController();
+                                Platform.runLater(() -> {
+                                    try {
+                                        System.out.println("Change scene nont normal");
+
+                                        controllerFirst.changeScene();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                });
+                            }
                             break;
                     case CHOOSING_ASSISTANT: //cambio scena da deck/color phase a choosing assistant card
                         GuiChooseWizardAndColorController colorController = new GuiChooseWizardAndColorController();
@@ -183,12 +214,29 @@ public class ControllerHandler {
     public void write(Object object) {
         synchronized (client) {
             try {
+                System.out.println("writing");
                 client.getIn().writeObject(object);
                 client.getIn().flush();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
+    }
+
+    /**Set true if this client is the first one
+     *
+     */
+    public void setIsFirst(){
+        this.isFirst=true;
+    }
+
+
+    public void setEqual(){
+        this.equal=true;
+    }
+
+    public Boolean getEqual(){
+        return equal;
     }
 
 }
