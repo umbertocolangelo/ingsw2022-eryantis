@@ -99,6 +99,7 @@ public class Controller implements Runnable {
                 System.out.println("Game mode selected ");
                 write(isFirst);
             case EQUALNAME:
+                System.out.println("The username is already present, select another one");
                 input = stdIn.nextLine();
                 while ( (input.matches(".*\\d.*"))){
                     System.out.println("You inserted a wrong value for username");

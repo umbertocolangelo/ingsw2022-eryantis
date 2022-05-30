@@ -127,9 +127,10 @@ public class SocketClientConnection implements Runnable {
             String read = (String) in.readObject();
             read = read.toUpperCase();
             while (server.equalName(read,isFirst)) {
-                send("You inserted a number or the username that is already used, insert again");
                 send(new EqualName());
+                System.out.println("Pronto a leggere");
                 read = (String) in.readObject();
+                System.out.println("Oggetto letto");
                 read = read.toUpperCase();
                 System.out.println(read);
             }

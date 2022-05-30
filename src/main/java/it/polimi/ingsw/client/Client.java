@@ -128,18 +128,18 @@ public class Client {
                         while (isActive()) {
                             System.out.println("ready to receive");
                             inputObject = socketIn.readObject();
-                            System.out.println("received something");
+                            System.out.println("received something" + inputObject);
 
                             if(!isCli){
+
                             if (inputObject instanceof SetUp) {
-                                System.out.println(inputObject);
-                                if(inputObject.equals("Players arrived, starting game.."))
-                                    ControllerHandler.getInstance().receiveMessage();
-                                else {
                                     ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
                                     ControllerHandler.getInstance().chooseScene();
                                 }
-                                }
+                            else if(inputObject instanceof EqualName){
+                                ControllerHandler.getInstance().setClientState(ClientState.EQUALNAME);
+                                ControllerHandler.getInstance().chooseScene();
+                            }
                            else if (inputObject instanceof IsFirst){
                                 System.out.println("isFirst");
                                 ControllerHandler.getInstance().setClientState(ClientState.ISFIRST);
@@ -155,7 +155,7 @@ public class Client {
                             if (game.getCurrentPlayer().getName().equals(namePlayer)) {
                                 ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
                                 ControllerHandler.getInstance().chooseScene();
-                            }
+                                }
                             }
                         }else {
                             if (inputObject instanceof String) {
@@ -176,6 +176,10 @@ public class Client {
                                 controller.run();
                             } else if (inputObject instanceof SetName) {
                                 namePlayer = ((SetName) inputObject).getName();
+                            }
+                            else if(inputObject instanceof  IsFirst){
+                                controller.setClientState(ClientState.ISFIRST);
+                                controller.run();
                             }
                             else {
                                 throw new IllegalArgumentException();
