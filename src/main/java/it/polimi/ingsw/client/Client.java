@@ -119,7 +119,7 @@ public class Client {
                 synchronized (this) {
                     try {
                         while (isActive()) {
-                            System.out.println("redy to receive");
+                            System.out.println("ready to receive");
                             inputObject = socketIn.readObject();
                             System.out.println("received something");
 
