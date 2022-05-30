@@ -12,6 +12,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
 public class GuiChooseWizardAndColorController {
 
     /**
@@ -39,7 +40,7 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void onWizardClick1(MouseEvent mouseEvent) {
-        wizard= Wizard.GREEN_WIZARD.getId();
+        wizard = Wizard.GREEN_WIZARD.getId();
     }
 
     /**
@@ -47,7 +48,7 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void onWizardClick2(MouseEvent mouseEvent) {
-        wizard= Wizard.BLUE_WIZARD.getId();
+        wizard = Wizard.BLUE_WIZARD.getId();
     }
 
     /**
@@ -55,7 +56,7 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void onWizardClick3(MouseEvent mouseEvent) {
-        wizard= Wizard.PURPLE_WIZARD.getId();
+        wizard = Wizard.PURPLE_WIZARD.getId();
     }
 
     /**
@@ -63,7 +64,7 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void onWizardClick4(MouseEvent mouseEvent) {
-        wizard= Wizard.YELLOW_WIZARD.getId();
+        wizard = Wizard.YELLOW_WIZARD.getId();
     }
 
     /**
@@ -76,12 +77,11 @@ public class GuiChooseWizardAndColorController {
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
-        MessageMethod messageMethod= new ChooseColorAndDeck();
+        MessageMethod messageMethod = new ChooseColorAndDeck();
         ((ChooseColorAndDeck)messageMethod).setWizard(wizard);
         ((ChooseColorAndDeck)messageMethod).setPlayerColor(color);
         ControllerHandler.getInstance().write(messageMethod);
         //ControllerHandler.getInstance().receiveMessage();
-
     }
 
     /**
@@ -89,7 +89,7 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void onColorClick1(MouseEvent mouseEvent) {
-        color= PlayerColor.GREY.getId();
+        color = PlayerColor.GREY.getId();
     }
 
     /**
@@ -97,7 +97,7 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void onColorClick2(MouseEvent mouseEvent) {
-        color= PlayerColor.BLACK.getId();
+        color = PlayerColor.BLACK.getId();
     }
 
     /**
@@ -105,16 +105,19 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void onColorClick3(MouseEvent mouseEvent) {
-        color= PlayerColor.WHITE.getId();
+        color = PlayerColor.WHITE.getId();
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void changeScene() throws IOException {
-        stage= ControllerHandler.getInstance().getStage();
+        stage = ControllerHandler.getInstance().getStage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/pianificationPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
-
     }
 
     /**
@@ -122,6 +125,7 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void lightUp(MouseEvent mouseEvent) {
+
     }
 
     /**
@@ -129,6 +133,7 @@ public class GuiChooseWizardAndColorController {
      * @param mouseEvent
      */
     public void turnOff(MouseEvent mouseEvent) {
+
     }
 
 }

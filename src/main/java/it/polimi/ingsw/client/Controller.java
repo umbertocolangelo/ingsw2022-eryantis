@@ -43,8 +43,6 @@ public class Controller implements Runnable {
      */
     private CLI cli;
 
-
-
     /**
      * Default constructor
      * Keep the reference to the client
@@ -56,65 +54,56 @@ public class Controller implements Runnable {
         cli = new CLI(client,this);
     }
 
-
     /**
      * We receive the clientState and decide what to do
      */
     @Override
     public void run() {
 
+        switch (clientState) {
+            case LOGIN:
+                input = stdIn.nextLine();
+                write(input);
+                setClientState(ClientState.SLEEPING);
+                break;
 
-            switch (clientState) {
+            case SLEEPING:
+                break;
 
+            case PLAYING:
+                for (int i = 0; i < 50; i++) {
+                    System.out.println("\b");
+                }
+                switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
+                    case SET_UP_PHASE:
+                        t0 = cli.chooseColorAndDeck();
+                        break;
 
-                case LOGIN:
-                    // System.out.println("Inside Login");
-                    input = stdIn.nextLine();
-                    write(input);
+                    case CHOOSING_ASSISTANT:
+                        t0 = cli.choosingAssistant();
+                        break;
+
+                    case MOVING_STUDENTS:
+                        checkRound();
+                        break;
+
+                    case MOVING_MOTHERNATURE:
+                        checkRound();
+                        break;
+
+                    case CHOOSING_CLOUD:
+                        checkRound();
+                        break;
+                }
+                try {
+                    t0.join();
                     setClientState(ClientState.SLEEPING);
-                    break;
-
-                case SLEEPING:
-
-
-                case PLAYING:
-                    for (int i = 0; i < 50; i++) {
-                        System.out.println("\b");
-                    }
-
-                    switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
-
-                        case SET_UP_PHASE:
-                            t0 = cli.chooseColorAndDeck();
-                            break;
-
-
-                        case CHOOSING_ASSISTANT:
-                            t0 = cli.choosingAssistant();
-                            break;
-
-                        case MOVING_STUDENTS:
-                            checkRound();
-
-                            break;
-                        case MOVING_MOTHERNATURE:
-                            checkRound();
-                            break;
-
-                        case CHOOSING_CLOUD:
-                            checkRound();
-                            break;
-                    }
-                    try {
-                        t0.join();
-                        setClientState(ClientState.SLEEPING);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-            }
-
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
         }
 
+    }
 
     /**
      * This method write to the server socket synchronized with the read
@@ -140,10 +129,12 @@ public class Controller implements Runnable {
         this.clientState = clientState;
     }
 
-
-    private void checkRound(){
+    /**
+     *
+     */
+    private void checkRound() {
         if(client.getGame().getCurrentRound().getId()==null)
-            t0=cli.choosingExpertCardOrMoving();
+            t0 = cli.choosingExpertCardOrMoving();
         else {
             switch (client.getGame().getCurrentRound().getId()) {
                 case 0:

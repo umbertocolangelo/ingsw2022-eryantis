@@ -14,21 +14,35 @@ import java.io.IOException;
 
 public class GuiLoginController {
 
+    /**
+     *
+     */
     @FXML
     TextField insertName;
 
+    /**
+     *
+     */
     @FXML
     private RadioButton twoPlayers;
 
+    /**
+     *
+     */
     @FXML
     private RadioButton threePlayers;
 
+    /**
+     *
+     */
     @FXML
     private RadioButton expertMode;
 
+    /**
+     *
+     */
     @FXML
     private RadioButton classicMode;
-
 
     /**
      *
@@ -38,7 +52,6 @@ public class GuiLoginController {
     /**
      *
      */
-
     private String expertModeOrClassic;
 
     /**
@@ -51,14 +64,11 @@ public class GuiLoginController {
      */
     private Scene scene;
 
-
-
     /**
      * click on start button
      * @param mouseEvent
      */
     public void onClickEvent(MouseEvent mouseEvent) throws IOException {
-
         stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -68,31 +78,32 @@ public class GuiLoginController {
         ControllerHandler.getInstance().write(numOfPLayers);
         ControllerHandler.getInstance().write(expertModeOrClassic);
         ControllerHandler.getInstance().receiveMessage();
-
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void changeScene() throws IOException {
-
         stage= ControllerHandler.getInstance().getStage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/deckAndColor-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
-
     }
 
     /**
      *
      */
     public void twoPlayers(MouseEvent mouseEvent) {
-            numOfPLayers="2";
+            numOfPLayers = "2";
     }
 
     /**
      *
      */
     public void threePlayers(MouseEvent mouseEvent) {
-        numOfPLayers="3";
+        numOfPLayers = "3";
     }
 
     /**
@@ -100,7 +111,7 @@ public class GuiLoginController {
      * @param mouseEvent
      */
     public void classicGame(MouseEvent mouseEvent) {
-        expertModeOrClassic="0";
+        expertModeOrClassic = "0";
     }
 
     /**
@@ -108,9 +119,7 @@ public class GuiLoginController {
      * @param mouseEvent
      */
     public void expertGame(MouseEvent mouseEvent) {
-        expertModeOrClassic="1";
+        expertModeOrClassic = "1";
     }
-
-
 
 }
