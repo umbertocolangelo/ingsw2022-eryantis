@@ -185,7 +185,7 @@ public class GuiPianificationPhaseController implements Initializable {
      * @throws IOException
      */
     public void changeScene() throws IOException {
-
+        ControllerHandler.getInstance().setCardPlayed(false);
         stage= ControllerHandler.getInstance().getStage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
