@@ -1,25 +1,41 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.enumerations.Color;
+import it.polimi.ingsw.model.pawns.Student;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class GuiActionPhaseController implements Initializable {
+
+
+    private String motherNature = "file:src/main/resources/Graphical_Assets/pawns/mothernature.png";
+    private String yellow = "file:src/main/resources/Graphical_Assets/pawns/student_yellow.png";
+    private String red = "file:src/main/resources/Graphical_Assets/pawns/student_red.png";
+    private String blue = "file:src/main/resources/Graphical_Assets/pawns/student_blue.png";
+    private String green = "file:src/main/resources/Graphical_Assets/pawns/student_green.png";
+    private String pink = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
 
     /**
      *
      */
     @FXML
     private AnchorPane scenePane;
+
+    @FXML
+    private ImageView studentIngress1;
 
     @FXML
     private ImageView studentIngress2;
@@ -44,6 +60,7 @@ public class GuiActionPhaseController implements Initializable {
     @FXML
     private ImageView studentIngress9;
 
+    private LinkedList<ImageView> studentsIngress = new LinkedList<ImageView>();
 
     /**
      *
@@ -79,27 +96,42 @@ public class GuiActionPhaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        studentsIngress.add(studentIngress1);
+        studentsIngress.add(studentIngress2);
+        studentsIngress.add(studentIngress3);
+        studentsIngress.add(studentIngress4);
+        studentsIngress.add(studentIngress5);
+        studentsIngress.add(studentIngress6);
+        studentsIngress.add(studentIngress7);
+        studentsIngress.add(studentIngress8);
+        studentsIngress.add(studentIngress9);
+
         Game game=ControllerHandler.getInstance().getClient().getGame();
-        /**
-        if(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getColor()== Color.RED){
-            studentIngress2.setImage(new Image("/home/vittorio/IdeaProjects/ingsw2022-AM29/src/main/java/it/polimi/ingsw/client/view/gui/images/cerchi.png"));
+
+        for(int i = 0; i < game.getCurrentPlayer().getSchool().getIngress().getStudents().size(); i++){
+            switch (game.getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor()) {
+                case RED -> {
+                    studentsIngress.get(i).setImage(new Image(red));
                 }
-        if(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(1).getColor()== Color.RED){
-            studentIngress3.setImage(new Image("/home/vittorio/IdeaProjects/ingsw2022-AM29/src/main/java/it/polimi/ingsw/client/view/gui/images/cerchi.png"));
+                case GREEN -> {
+                    studentsIngress.get(i).setImage(new Image(green));
+                }
+                case BLUE -> {
+                    studentsIngress.get(i).setImage(new Image(blue));
+                }
+                case PINK -> {
+                    studentsIngress.get(i).setImage(new Image(pink));
+                }
+                case YELLOW -> {
+                    studentsIngress.get(i).setImage(new Image(yellow));
+                }
+
+
             }
-        if(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(2).getColor()== Color.RED){
-            studentIngress4.setImage(new Image("/home/vittorio/IdeaProjects/ingsw2022-AM29/src/main/java/it/polimi/ingsw/client/view/gui/images/cerchi.png"));
         }
-        if(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(3).getColor()== Color.RED){
-            studentIngress5.setImage(new Image("/home/vittorio/IdeaProjects/ingsw2022-AM29/src/main/java/it/polimi/ingsw/client/view/gui/images/cerchi.png"));
-        }
-        if(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(4).getColor()== Color.RED){
-            studentIngress6.setImage(new Image("/home/vittorio/IdeaProjects/ingsw2022-AM29/src/main/java/it/polimi/ingsw/client/view/gui/images/cerchi.png"));
-        }
-        if(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getColor()== Color.RED){
-            studentIngress7.setImage(new Image("/home/vittorio/IdeaProjects/ingsw2022-AM29/src/main/java/it/polimi/ingsw/client/view/gui/images/cerchi.png"));
-        }
-         */
+
+
+
     }
 
 

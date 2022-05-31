@@ -79,15 +79,14 @@
             <Image url="@../Graphical_Assets/Plancia/Plancia_DEF3.png" />
          </image>
       </ImageView>
-      <ImageView  fx:id="studentIngress1" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress2" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress3" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress4" fitHeight="30.0" fitWidth="32.0" layoutX="31.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress5" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress6" fitHeight="30.0" fitWidth="32.0" layoutX="31.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress7" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress8" fitHeight="30.0" fitWidth="32.0" layoutX="31.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress9" fitHeight="30.0" fitWidth="32.0" layoutX="31.0" layoutY="657.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView  fx:id="studentIngress10" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="657.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress1" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress2" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress3" fitHeight="30.0" fitWidth="32.0" layoutX="31.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress4" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress5" fitHeight="30.0" fitWidth="32.0" layoutX="31.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress6" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress7" fitHeight="30.0" fitWidth="32.0" layoutX="31.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress8" fitHeight="30.0" fitWidth="32.0" layoutX="31.0" layoutY="657.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView  fx:id="studentIngress9" fitHeight="30.0" fitWidth="32.0" layoutX="72.0" layoutY="657.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
