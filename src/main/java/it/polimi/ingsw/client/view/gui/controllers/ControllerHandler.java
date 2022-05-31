@@ -14,6 +14,11 @@ public class ControllerHandler {
     /**
      *
      */
+    private Boolean cardPlayed=false;
+
+    /**
+     *
+     */
     private Boolean equal=false;
 
     /**
@@ -239,4 +244,11 @@ public class ControllerHandler {
         return equal;
     }
 
+    public Boolean getCardPlayed() {
+        return cardPlayed;
+    }
+
+    public void setCardPlayed(Boolean cardPlayed) {
+        this.cardPlayed = cardPlayed;
+    }
 }

@@ -185,7 +185,7 @@ public class GuiPianificationPhaseController implements Initializable {
      * @throws IOException
      */
     public void changeScene() throws IOException {
-
+        ControllerHandler.getInstance().setCardPlayed(false);
         stage= ControllerHandler.getInstance().getStage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -213,6 +213,9 @@ public class GuiPianificationPhaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(ControllerHandler.getInstance().getCardPlayed()==true)
+            label.setText("You played a card that has been already played, pick another one");
+        ControllerHandler.getInstance().setCardPlayed(true);
         Game game= ControllerHandler.getInstance().getClient().getGame();
         if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.ONE_CARD)){
             card1.setVisible(false);
