@@ -91,6 +91,7 @@
       <ImageView fx:id="studentHallGreen1" fitHeight="30.0" fitWidth="32.0" layoutX="131.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallGreen2" fitHeight="30.0" fitWidth="26.0" layoutX="166.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallGreen3" fitHeight="30.0" fitWidth="26.0" layoutX="197.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentHallGreen4" fitHeight="30.0" fitWidth="26.0" layoutX="226.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallGreen5" fitHeight="30.0" fitWidth="26.0" layoutX="260.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallGreen6" fitHeight="30.0" fitWidth="26.0" layoutX="292.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallGreen8" fitHeight="30.0" fitWidth="32.0" layoutX="349.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
@@ -137,6 +138,5 @@
       <ImageView fx:id="studentHallBlue8" fitHeight="30.0" fitWidth="26.0" layoutX="352.0" layoutY="657.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallBlue9" fitHeight="30.0" fitWidth="26.0" layoutX="384.0" layoutY="657.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallBlue10" fitHeight="30.0" fitWidth="26.0" layoutX="416.0" layoutY="657.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentHallGreen4" fitHeight="30.0" fitWidth="26.0" layoutX="226.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>
