@@ -187,7 +187,7 @@ public class Game implements GameInterface, Serializable {
         influenceManager= new InfluenceManager(motherNature, playerList);
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
         this.currentPlayer=playerList.getFirst();
-        propertyChange.firePropertyChange("Inizialize game",null,null);
+        propertyChange.firePropertyChange("Initialize game",null,null);
 
     }
 
