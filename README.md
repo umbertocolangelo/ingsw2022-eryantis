@@ -24,6 +24,6 @@ Implementazione del gioco da tavolo [Eriantys](https://www.craniocreations.it/pr
 | Character Cards | 🟢 |
 | Socket          | 🟢 |
 | GUI             | 🟡 |
-| CLI             | 🟡 |
+| CLI             | 🟢 |
 | Resilience      | 🔴 |
-| Persistence     | 🟡 |
+| Persistence     | 🟢 |
