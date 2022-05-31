@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -8,7 +13,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiPianificationPhaseController">
+<AnchorPane prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiPianificationPhaseController">
    <children>
       <ImageView fx:id="background" fitHeight="450.0" fitWidth="800.0" opacity="0.35">
          <image>
@@ -80,5 +85,6 @@
             <Font name="Book Antiqua Bold Italic" size="20.0" />
          </font>
       </Button>
+      <Label fx:id="label" layoutX="143.0" layoutY="412.0" prefHeight="15.0" prefWidth="544.0" />
    </children>
 </AnchorPane>

@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -8,10 +13,10 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiIsFirstController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiIsFirstController">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1280.0" opacity="0.5">
+      <Label fx:id="label" layoutX="440.0" layoutY="494.0" prefHeight="42.0" prefWidth="425.0" />
+      <ImageView fitHeight="720.0" fitWidth="1280.0" layoutX="-5.0" opacity="0.5">
          <image>
             <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
          </image>

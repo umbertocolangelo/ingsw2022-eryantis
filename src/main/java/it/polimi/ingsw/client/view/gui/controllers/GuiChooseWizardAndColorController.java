@@ -11,6 +11,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -43,7 +44,8 @@ public class GuiChooseWizardAndColorController implements Initializable {
     private RadioButton grey;
     @FXML
     private RadioButton black;
-
+    @FXML
+    Label label;
 
 
 
@@ -111,16 +113,19 @@ public class GuiChooseWizardAndColorController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.show();
-        MessageMethod messageMethod = new ChooseColorAndDeck();
-        ((ChooseColorAndDeck)messageMethod).setWizard(wizard);
-        ((ChooseColorAndDeck)messageMethod).setPlayerColor(color);
-        ControllerHandler.getInstance().write(messageMethod);
-        //ControllerHandler.getInstance().receiveMessage();
+        if(wizard==null || color==null)
+            label.setText("You must select the wizard and the player color");
+        else {
+            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setScene(scene);
+            stage.show();
+            MessageMethod messageMethod = new ChooseColorAndDeck();
+            ((ChooseColorAndDeck) messageMethod).setWizard(wizard);
+            ((ChooseColorAndDeck) messageMethod).setPlayerColor(color);
+            ControllerHandler.getInstance().write(messageMethod);
+        }
     }
 
     /**

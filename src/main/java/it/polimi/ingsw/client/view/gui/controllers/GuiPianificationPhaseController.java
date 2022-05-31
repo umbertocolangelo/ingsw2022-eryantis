@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -48,6 +49,8 @@ public class GuiPianificationPhaseController implements Initializable {
     private ImageView card9;
     @FXML
     private ImageView card10;
+    @FXML
+    private Label label;
 
     /**
      *
@@ -163,14 +166,18 @@ public class GuiPianificationPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.show();
-        MessageMethod messageMethod=new ChoosingAssistant();
-        ((ChoosingAssistant)messageMethod).setAssistantCard(assistantCard);
-        ControllerHandler.getInstance().write(messageMethod);
+        if(assistantCard==null)
+            label.setText("You must select an assistant card");
+        else {
+            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setScene(scene);
+            stage.show();
+            MessageMethod messageMethod = new ChoosingAssistant();
+            ((ChoosingAssistant) messageMethod).setAssistantCard(assistantCard);
+            ControllerHandler.getInstance().write(messageMethod);
+        }
     }
 
     /**
@@ -178,7 +185,7 @@ public class GuiPianificationPhaseController implements Initializable {
      * @throws IOException
      */
     public void changeScene() throws IOException {
-        ControllerHandler.getInstance().setEqual();
+
         stage= ControllerHandler.getInstance().getStage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);

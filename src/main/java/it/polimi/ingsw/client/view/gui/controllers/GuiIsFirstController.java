@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -17,7 +18,7 @@ public class GuiIsFirstController {
      *
      */
     @FXML
-    private RadioButton twoPlayers;
+    private Label label;
 
     /**
      *
@@ -62,18 +63,21 @@ public class GuiIsFirstController {
      * @param mouseEvent
      */
     public void onStartClick(MouseEvent mouseEvent) throws IOException {
-        stage = (Stage)((Node)mouseEvent.getSource()).getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.show();
-        IsFirst isFirst=new IsFirst();
+        if (numOfPLayers == null || expertModeOrClassic == null)
+            label.setText("You must select both the options");
+        else {
+            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setScene(scene);
+            stage.show();
+            IsFirst isFirst = new IsFirst();
+            isFirst.setGameMode(expertModeOrClassic);
+            isFirst.setPlayers(numOfPLayers);
+            ControllerHandler.getInstance().write(isFirst);
 
-        isFirst.setGameMode(expertModeOrClassic);
-        isFirst.setPlayers(numOfPLayers);
-        ControllerHandler.getInstance().write(isFirst);
 
-
+        }
     }
 
     /**
