@@ -79,7 +79,8 @@ public class GuiActionPhaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Game game=ControllerHandler.getInstance().getClient().getGame();
+
+
         /**
         if(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getColor()== Color.RED){
             studentIngress2.setImage(new Image("/home/vittorio/IdeaProjects/ingsw2022-AM29/src/main/java/it/polimi/ingsw/client/view/gui/images/cerchi.png"));
