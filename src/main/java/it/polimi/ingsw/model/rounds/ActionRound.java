@@ -25,7 +25,7 @@ public class ActionRound implements RoundInterface, Serializable {
      */
     public ActionRound(Game game, Boolean isThreePlayers) {
         this.game=game;
-        this.game.setCurrentPlayer(this.game.getOrderedPLayerList().getFirst());
+        this.game.setCurrentPlayer(this.game.getOrderedPlayerList().getFirst());
         this.currentPlayer=this.game.getCurrentPlayer();
         this.currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
     }
@@ -67,7 +67,7 @@ public class ActionRound implements RoundInterface, Serializable {
      */
     @Override
     public Boolean checkRoundEnded() {
-        if(this.game.getOrderedPLayerList().isEmpty()) {
+        if(this.game.getOrderedPlayerList().isEmpty()) {
             for(Cloud d: game.getClouds())
             game.getBag().addStudentsOnCloud(d);
             for(int i=0;i<game.getPlayerList().size();i++){
@@ -208,9 +208,9 @@ public class ActionRound implements RoundInterface, Serializable {
             return false;
         if (cloud.getStudents().size() == 0)
             return false;
-        LinkedList<Player> players=this.game.getOrderedPLayerList();
+        LinkedList<Player> players=this.game.getOrderedPlayerList();
         players.removeFirst();
-        this.game.setOrderedPLayerList(players);
+        this.game.setOrderedPlayerList(players);
         return true;
     }
 

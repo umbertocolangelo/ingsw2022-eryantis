@@ -13,17 +13,18 @@ import java.util.LinkedList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ActionRoundTest {
+
     /**
      * Testing moveIngressToHall function
      */
     @Test
     public void moveIngressToHallTest() {
         Game game= new Game();
-        LinkedList <Player> lista = new LinkedList<>();
+        LinkedList <Player> list = new LinkedList<>();
         Player player = new Player("elena");
-        lista.add(player);
-        lista.add(lista.size(), new Player("vittorio"));
-        game.setPlayerList(lista);
+        list.add(player);
+        list.add(list.size(), new Player("vittorio"));
+        game.setPlayerList(list);
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.GREY.getId(), Wizard.BLUE_WIZARD.getId());
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(), Wizard.GREEN_WIZARD.getId());
@@ -33,22 +34,22 @@ public class ActionRoundTest {
         game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
         System.out.println(game.getCurrentPlayer().getSchool().getIngress().numOfStudents());
         game.moveStudentIngressToHall(student.getId());
-        System.out.println(game.getOrderedPLayerList());
+        System.out.println(game.getOrderedPlayerList());
         assertTrue( game.getCurrentPlayer().getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
-
     }
+
     /**
      *
      */
     @Test
     public void moveMotherNatureTest(){
-        Player player = new Player("elena");
-        Player player1 = new Player("vittorio");
+        Player player = new Player("one");
+        Player player1 = new Player("two");
         Game game= new Game();
-        LinkedList <Player> lista=new LinkedList<>();
-        lista.add(player1);
-        lista.add(player);
-        game.setPlayerList(lista);
+        LinkedList <Player> list =new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        game.setPlayerList(list);
         player.setPlayerColor(PlayerColor.WHITE);
         player1.setPlayerColor(PlayerColor.GREY);
         game.initializeGame();
@@ -65,10 +66,10 @@ public class ActionRoundTest {
         game.moveMotherNature(1);
         assertTrue((Island) game.getMotherNature().getIsland()==island);
     }
+
     /**
      * Testing moveIngressToIsland function
      */
-
     @Test
     public void moveIngressToIslandTest() {
         Player player = new Player("elena");

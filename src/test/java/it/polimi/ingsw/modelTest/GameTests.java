@@ -1,13 +1,18 @@
 package it.polimi.ingsw.modelTest;
 
 import it.polimi.ingsw.model.Game;
-import it.polimi.ingsw.model.enumerations.AssistantCard;
-import it.polimi.ingsw.model.enumerations.Color;
-import it.polimi.ingsw.model.enumerations.PlayerColor;
-import it.polimi.ingsw.model.enumerations.Wizard;
+import it.polimi.ingsw.model.enumerations.*;
+import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
+import it.polimi.ingsw.model.expertCards.deck.IngressHallSwapCard;
+import it.polimi.ingsw.model.expertCards.deck.StudentToHallCard;
+import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Professor;
+import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
 import it.polimi.ingsw.model.player.Player;
+import it.polimi.ingsw.model.rounds.PianificationRound;
+import it.polimi.ingsw.model.studentSuppliers.Bag;
+import it.polimi.ingsw.utils.IdManager;
 import org.junit.jupiter.api.Test;
 
 import java.util.LinkedList;
@@ -15,6 +20,260 @@ import java.util.LinkedList;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class GameTests {
+
+
+    @Test
+    public void expertStudentToIslandTest() {
+        Game game = new Game();
+        LinkedList<Player> list =new LinkedList<>();
+        Player player1 = new Player("one");
+        list.add(player1);
+        list.add(new Player("two"));
+        game.setPlayerList(list);
+        game.initializeGame();
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
+        game.playAssistantCard(AssistantCard.ONE_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        game.getCurrentPlayer().setCoin(5);
+        game.playExpertCard(IdManager.getInstance().getExpertCard("38").getId(),null);
+        Student student1 = new Student(Color.RED);
+        Student student = new Student(Color.YELLOW);
+        game.getCurrentPlayer().getSchool().getHall().getLine(Color.RED).addStudent(student1);
+        Island island = new Island();
+        game.expertStudentToIsland(student.getId(),island.getId());
+        assertTrue(island.getStudents().contains(student));
+    }
+
+    /**
+     * Testing expertStudentToHall method
+     */
+    @Test
+    public void expertStudentToHallTest(){
+        Player player = new Player("one");
+        Player player1 = new Player("two");
+        Game game= new Game();
+        LinkedList<Player> list =new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        game.setPlayerList(list);
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
+        game.initializeGame();
+        game.setPianificationRoundState();
+        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        game.setCurrentPlayer(player1);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.setCurrentPlayer(player);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        Bag bag = new Bag(false);
+        StudentToHallCard ingressCardSwapCard=new StudentToHallCard(game.getCardManager());
+        player1.setCoin(5);
+        game.playExpertCard(ingressCardSwapCard.getId(),null);
+        Student student1=new Student(Color.RED);
+        Student student=new Student(Color.YELLOW);
+        game.expertStudentToHall(student1.getId());
+        assertTrue( player1.getSchool().getHall().getLine(Color.RED).getStudents().contains(student1));
+    }
+
+    /**
+     * Testing the chooseColorAndDeck method
+     */
+    @Test
+    public void chooseColorAndDeckTest(){
+        Player player = new Player("one");
+        Player player1=new Player("two");
+        Game game = new Game();
+        game.setCurrentPlayer(player);
+        LinkedList<Player> list=new LinkedList<>();
+        list.add(player);
+        list.add(player1);
+        game.setPlayerList(list);
+        game.initializeGame();
+        game.chooseColorAndDeck( PlayerColor.WHITE.getId(), Wizard.BLUE_WIZARD.getId());
+        assertTrue(player.getPlayerColor()==PlayerColor.WHITE && player.getWizard()== Wizard.BLUE_WIZARD);
+        game.chooseColorAndDeck( PlayerColor.BLACK.getId(), Wizard.GREEN_WIZARD.getId());
+        assertTrue(player1.getPlayerColor()==PlayerColor.BLACK && player1.getWizard()== Wizard.GREEN_WIZARD);
+    }
+
+
+    /**
+     * Testing getPlayerOrdered method
+     */
+    @Test
+    public void getPlayerListOrderedTest() {
+        Player player = new Player("one");
+        Player player1 = new Player("two");
+        Player player2 = new Player("three");
+        Game game= new Game();
+        LinkedList <Player> list=new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        list.add(player2);
+        game.setPlayerList(list);
+        game.initializeGame();
+        game.setPianificationRoundState();
+        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        player2.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        game.playAssistantCard(AssistantCard.FOUR_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        assertTrue(game.getOrderedPlayerList().get(0)==player2 && game.getOrderedPlayerList().get(1)==player && game.getOrderedPlayerList().get(2)==player1);
+    }
+
+    /**
+     * Testing playAssistantCard method
+     */
+    @Test
+    public void playAssistantCardTest() {
+        Player player = new Player("one");
+        Player player1 = new Player("two");
+        Game game= new Game();
+        LinkedList <Player> list=new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        game.setPlayerList(list);
+        game.initializeGame();
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
+        game.setPianificationRoundState();
+        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        game.setCurrentPlayer(player1);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.setCurrentPlayer(player);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        assertTrue(game.getOrderedPlayerList().get(0)==player1 && game.getOrderedPlayerList().get(1)==player);
+    }
+
+    /**
+     * Testing moveMotherNature method
+     */
+    @Test
+    public void moveMotherNatureTest(){
+        Player player = new Player("one");
+        Player player1 = new Player("two");
+        Game game= new Game();
+        LinkedList <Player> list=new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        game.setPlayerList(list);
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
+        game.initializeGame();
+        game.setPianificationRoundState();
+        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        game.setCurrentPlayer(player1);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.setCurrentPlayer(player);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        player.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
+        game.initializeGame();
+        Island island= (Island) game.getMotherNature().getIsland();
+        game.moveMotherNature(1);
+        assertTrue((Island) game.getMotherNature().getIsland()==island);
+    }
+
+
+    /**
+     * Testing moveIngressToHall method
+     */
+    @Test
+    public void moveIngressToHallTest() {
+        Game game= new Game();
+        LinkedList <Player> list = new LinkedList<>();
+        Player player = new Player("one");
+        list.add(player);
+        list.add(list.size(), new Player("two"));
+        game.setPlayerList(list);
+        game.initializeGame();
+        game.chooseColorAndDeck(PlayerColor.GREY.getId(), Wizard.BLUE_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(), Wizard.GREEN_WIZARD.getId());
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        Student student = new Student(Color.RED);
+        game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
+        game.moveStudentIngressToHall(student.getId());
+        assertTrue( game.getCurrentPlayer().getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
+    }
+
+    /**
+     * Testing moveIngressToIsland method
+     */
+    @Test
+    public void moveIngressToIslandTest() {
+        Player player = new Player("one");
+        Player player1 = new Player("two");
+        Game game= new Game();
+        LinkedList <Player> lista = new LinkedList<>();
+        lista.add(player1);
+        lista.add(player);
+        game.setPlayerList(lista);
+        game.initializeGame();
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        Student student = new Student(Color.RED);
+        game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
+        game.moveStudentIngressToIsland(student.getId(),"30");
+        assertTrue( IdManager.getInstance().getIsland("30").getStudents().contains(student) && !game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(student));
+    }
+
+    /**
+     * Testing chooseCloud method
+     */
+    @Test
+    public void chooseCloudTest() {
+        Player player = new Player("one");
+        Player player1 = new Player("two");
+        Game game= new Game();
+        LinkedList <Player> list=new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        game.setPlayerList(list);
+        game.initializeGame();
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
+        LinkedList<Student> students = game.getClouds().get(0).getStudents();
+        game.chooseCloud(game.getClouds().get(0).getId());
+        game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
+        game.chooseCloud(game.getClouds().get(1).getId());
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(0)));
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(1)));
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(2)));
+    }
+
+    /**
+     * Testing expertMoveToBag method
+     */
+    @Test
+    public void expertMoveToBagFunction() {
+        Player player = new Player("one");
+        Game game = new Game();
+        LinkedList<Player> list=new LinkedList<>();
+        list.add(player);
+        list.add(new Player("two"));
+        game.setPlayerList(list);
+        game.initializeGame();
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.BLUE_WIZARD.getId());
+        game.playAssistantCard(AssistantCard.ONE_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
+        player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
+        player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
+        player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
+        game.getCurrentPlayer().setCoin(5);
+        game.playExpertCard(IdManager.getInstance().getExpertCard("49").getId(), Color.RED.getId());
+        assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
+    }
 
     /**
      * Test of checkWinner method when a player places all the towers (two players)
@@ -35,7 +294,6 @@ public class GameTests {
         for (Tower t : player1.getSchool().getTowerTable().getTowers()){
             player1.getSchool().getTowerTable().removeTower(t);
         }
-        System.out.println(player1.getSchool().getTowerTable().numOfTowers());
         game.checkWinner();
         // player one wins
         assertTrue(player1.getIsWinner());
@@ -64,7 +322,6 @@ public class GameTests {
         for (Tower t : player2.getSchool().getTowerTable().getTowers()){
             player2.getSchool().getTowerTable().removeTower(t);
         }
-        System.out.println(player1.getSchool().getTowerTable().numOfTowers());
         game.checkWinner();
         // player two wins
         assertTrue(!player1.getIsWinner());
@@ -215,6 +472,68 @@ public class GameTests {
         assertTrue(player1.getIsWinner());
         assertTrue(!player2.getIsWinner());
         assertTrue(!player3.getIsWinner());
+    }
+
+    /**
+     * Testing expertIngressCardSwap function
+     */
+    @Test
+    public void  expertIngressCardSwapTest(){
+        Player player = new Player("one");
+        Player player1 = new Player("two");
+        Game game= new Game();
+        LinkedList <Player> list=new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        game.setPlayerList(list);
+        game.initializeGame();
+        game.chooseColorAndDeck(PlayerColor.GREY.getId(), Wizard.BLUE_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard(game.getCardManager());
+        game.getCurrentPlayer().setCoin(5);
+        game.playExpertCard(ingressCardSwapCard.getId(),null);
+        Student student1=new Student(Color.RED);
+        Student student=new Student(Color.YELLOW);
+        game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
+        game.expertIngressCardSwap(student1.getId(),student.getId());
+        assertTrue( game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(student1));
+    }
+
+    /**
+     * Testing expertHallIngressSwap function
+     */
+    @Test
+    public void expertHallIngressSwapTest() {
+        Player player = new Player("one");
+        Player player1 = new Player("two");
+        Game game = new Game();
+        LinkedList<Player> list = new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        game.setPlayerList(list);
+        player.setPlayerColor(PlayerColor.WHITE);
+        player1.setPlayerColor(PlayerColor.GREY);
+        game.initializeGame();
+        game.setPianificationRoundState();
+        player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        player1.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        game.setCurrentPlayer(player1);
+        game.playAssistantCard(AssistantCard.TWO_CARD.getId());
+        game.setCurrentPlayer(player);
+        game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        Bag bag=new Bag(false);
+        IngressHallSwapCard ingressCardSwapCard = new IngressHallSwapCard();
+        player1.setCoin(5);
+        game.playExpertCard(ingressCardSwapCard.getId(),null);
+        Student student1 = new Student(Color.RED);
+        Student student = new Student(Color.YELLOW);
+        System.out.println(game.getCurrentPlayer());
+        player1.getSchool().getHall().getLine(Color.RED).addStudent(student1);
+        player1.getSchool().getIngress().addStudent(student);
+        game.expertIngressHallSwap(student1.getId(), student.getId());
+        assertTrue(player1.getSchool().getIngress().getStudents().contains(student1) && !player1.getSchool().getIngress().getStudents().contains(student) && player1.getSchool().getHall().getLine(Color.YELLOW).getStudents().contains(student) && !player1.getSchool().getHall().getLine(Color.RED).getStudents().contains(student1));
     }
 }
 

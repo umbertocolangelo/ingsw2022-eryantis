@@ -291,6 +291,7 @@ public class Game implements GameInterface, Serializable {
                     if(maxProfCount<profCount){
                         maxProfCount = profCount;
                         winner = player;
+                        continue;
                     }
 
                     if(maxProfCount==profCount){ // if there is a tie
@@ -632,14 +633,14 @@ public class Game implements GameInterface, Serializable {
     /**
      * @return the orderedPlayerList
      */
-    public LinkedList<Player> getOrderedPLayerList() {
+    public LinkedList<Player> getOrderedPlayerList() {
         return new LinkedList<>(this.orderedPLayerList);
     }
 
     /**
      * Set the orderedPlayerList
      */
-    public void setOrderedPLayerList(LinkedList<Player> playerList) {
+    public void setOrderedPlayerList(LinkedList<Player> playerList) {
         this.orderedPLayerList = playerList;
     }
 
