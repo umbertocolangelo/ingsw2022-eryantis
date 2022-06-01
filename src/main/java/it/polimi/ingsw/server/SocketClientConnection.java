@@ -1,10 +1,7 @@
 package it.polimi.ingsw.server;
 
 
-import it.polimi.ingsw.message.EqualName;
-import it.polimi.ingsw.message.MessageMethod;
-import it.polimi.ingsw.message.SetName;
-import it.polimi.ingsw.message.SetUp;
+import it.polimi.ingsw.message.*;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -123,6 +120,9 @@ public class SocketClientConnection implements Runnable {
 
             //si  sincronizza con il send
 
+
+
+
             send(setup);
             String read = (String) in.readObject();
             read = read.toUpperCase();
@@ -137,6 +137,18 @@ public class SocketClientConnection implements Runnable {
 
             name = read;
             send(new SetName(name));
+
+
+
+            if(isFirst) {
+                System.out.println("Sendign is first");
+                send(new IsFirst());
+                IsFirst isFirst = (IsFirst) in.readObject();
+                System.out.println();
+                server.setGameMode(isFirst.getGameMode());
+                server.setNumberOfPlayer(isFirst.getPlayers());
+            }
+            server.getSemaphore().release();
             server.lobby(this, name);
 
             while (isActive()) {

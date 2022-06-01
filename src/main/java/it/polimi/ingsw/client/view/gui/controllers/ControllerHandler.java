@@ -12,12 +12,16 @@ import java.io.IOException;
 public class ControllerHandler {
 
     /**
-     *
+     * Used to set choose which loading view is the right one to call
+     */
+    private Boolean needRefresh=false;
+    /**
+     *Need to use the messagge in view
      */
     private Boolean cardPlayed=false;
 
     /**
-     *
+     *True if e chose an equal name
      */
     private Boolean equal=false;
 
@@ -27,17 +31,17 @@ public class ControllerHandler {
     private Boolean isFirst=false;
 
     /**
-     *
+     *Keep the reference to stage
      */
     private static Stage stage;
 
     /**
-     *
+     *Keep the reference to client
      */
     private Client client;
 
     /**
-     *
+     *Keep the reference to clientState
      */
     private ClientState clientState;
 
@@ -183,11 +187,34 @@ public class ControllerHandler {
                             }
                         });
                         break;
-                    case MOVING_STUDENTS: //cambio scena da choosing assistant card a moving students and mn
+                    case MOVING_STUDENTS://cambio scena da choosing assistant card a moving students and mn
+                        if(!needRefresh ){
+                            needRefresh=true;
                         GuiPianificationPhaseController assistantController = new GuiPianificationPhaseController();
                         Platform.runLater(() -> {
                             try {
                                 assistantController.changeScene();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    }else{
+                            GuiActionPhaseController actionController= new GuiActionPhaseController();
+                            Platform.runLater(() -> {
+                                try {
+                                    actionController.refresh();
+                                    } catch (IOException e) {
+                                    e.printStackTrace();
+                                    }
+                            });
+                        }
+                        break;
+
+                    case MOVING_MOTHERNATURE:
+                        GuiActionPhaseController movingMotherNatureController= new GuiActionPhaseController();
+                        Platform.runLater(() -> {
+                            try {
+                                movingMotherNatureController.refresh();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -197,7 +224,7 @@ public class ControllerHandler {
                         GuiActionPhaseController actionController = new GuiActionPhaseController();
                         Platform.runLater(() -> {
                             try {
-                                actionController.changeScene();
+                                actionController.refresh();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

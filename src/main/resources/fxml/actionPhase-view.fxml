@@ -15,62 +15,62 @@
             <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
          </image>
       </ImageView>
-      <ImageView fx:id="island1" fitHeight="116.0" fitWidth="132.0" layoutX="551.0" layoutY="334.0">
+      <ImageView fx:id="island1" fitHeight="116.0" fitWidth="132.0" layoutX="551.0" layoutY="334.0" onMouseClicked="#clickIsland1">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island2" fitHeight="116.0" fitWidth="132.0" layoutX="952.0" layoutY="325.0">
+      <ImageView fx:id="island11" fitHeight="116.0" fitWidth="132.0" layoutX="952.0" layoutY="325.0" onMouseClicked="#clickIsland11">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island3" fitHeight="116.0" fitWidth="132.0" layoutX="350.0" layoutY="334.0">
+      <ImageView fx:id="island2" fitHeight="116.0" fitWidth="132.0" layoutX="350.0" layoutY="334.0" onMouseClicked="#clickIsland2">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island4" fitHeight="116.0" fitWidth="132.0" layoutX="36.0" layoutY="199.0">
+      <ImageView fx:id="island4" fitHeight="116.0" fitWidth="132.0" layoutX="36.0" layoutY="199.0" onMouseClicked="#clickIsland4">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island5" fitHeight="116.0" fitWidth="132.0" layoutX="350.0" layoutY="32.0">
+      <ImageView fx:id="island6" fitHeight="116.0" fitWidth="132.0" layoutX="350.0" layoutY="32.0" onMouseClicked="#clickIsland6">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island6" fitHeight="116.0" fitWidth="132.0" layoutX="175.0" layoutY="90.0">
+      <ImageView fx:id="island5" fitHeight="116.0" fitWidth="132.0" layoutX="175.0" layoutY="90.0" onMouseClicked="#clickIsland5">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island7" fitHeight="116.0" fitWidth="132.0" layoutX="551.0" layoutY="32.0">
+      <ImageView fx:id="island7" fitHeight="116.0" fitWidth="132.0" layoutX="551.0" layoutY="32.0" onMouseClicked="#clickIsland7">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island8" fitHeight="116.0" fitWidth="132.0" layoutX="749.0" layoutY="32.0">
+      <ImageView fx:id="island8" fitHeight="116.0" fitWidth="132.0" layoutX="749.0" layoutY="32.0" onMouseClicked="#clickIsland8">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island9" fitHeight="116.0" fitWidth="132.0" layoutX="952.0" layoutY="90.0">
+      <ImageView fx:id="island9" fitHeight="116.0" fitWidth="132.0" layoutX="952.0" layoutY="90.0" onMouseClicked="#clickIsland9">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island10" fitHeight="116.0" fitWidth="132.0" layoutX="1074.0" layoutY="199.0">
+      <ImageView fx:id="island10" fitHeight="116.0" fitWidth="132.0" layoutX="1074.0" layoutY="199.0" onMouseClicked="#clickIsland10">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.3.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island11" fitHeight="116.0" fitWidth="132.0" layoutX="749.0" layoutY="334.0">
+      <ImageView fx:id="island12" fitHeight="116.0" fitWidth="132.0" layoutX="749.0" layoutY="334.0" onMouseClicked="#clickIsland12">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="island12" fitHeight="116.0" fitWidth="132.0" layoutX="160.0" layoutY="302.0">
+      <ImageView fx:id="island3" fitHeight="116.0" fitWidth="132.0" layoutX="160.0" layoutY="302.0" onMouseClicked="#clickIsland3">
          <image>
             <Image url="@../Graphical_Assets/reameB_1.2.png" />
          </image>
@@ -80,15 +80,15 @@
             <Image url="@../Graphical_Assets/Plancia/Plancia_DEF2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="studentIngress1" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="495.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentIngress2" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentIngress3" fitHeight="28.0" fitWidth="28.0" layoutX="22.0" layoutY="536.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentIngress4" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentIngress5" fitHeight="28.0" fitWidth="28.0" layoutX="22.0" layoutY="577.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentIngress6" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentIngress7" fitHeight="28.0" fitWidth="28.0" layoutX="22.0" layoutY="618.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentIngress8" fitHeight="28.0" fitWidth="28.0" layoutX="22.0" layoutY="658.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="studentIngress9" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="658.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress1" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="495.0" onMouseClicked="#clickOnIngress1" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress2" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="536.0" onMouseClicked="#clickOnIngress2" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress3" fitHeight="28.0" fitWidth="28.0" layoutX="22.0" layoutY="536.0" onMouseClicked="#clickOnIngress3" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress4" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="577.0" onMouseClicked="#clickOnIngress4" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress5" fitHeight="28.0" fitWidth="28.0" layoutX="22.0" layoutY="577.0" onMouseClicked="#clickOnIngress5" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress6" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="618.0" onMouseClicked="#clickOnIngress6" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress7" fitHeight="28.0" fitWidth="28.0" layoutX="22.0" layoutY="618.0" onMouseClicked="#clickOnIngress7" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress8" fitHeight="28.0" fitWidth="28.0" layoutX="22.0" layoutY="658.0" onMouseClicked="#clickOnIngress8" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="studentIngress9" fitHeight="28.0" fitWidth="28.0" layoutX="56.0" layoutY="658.0" onMouseClicked="#clickOnIngress9" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallGreen1" fitHeight="28.0" fitWidth="28.0" layoutX="111.0" layoutY="495.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallGreen2" fitHeight="28.0" fitWidth="28.0" layoutX="138.0" layoutY="495.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="studentHallGreen3" fitHeight="28.0" fitWidth="28.0" layoutX="165.0" layoutY="494.0" pickOnBounds="true" preserveRatio="true" />
@@ -170,5 +170,10 @@
       <Button layoutX="1108.0" layoutY="513.0" mnemonicParsing="false" text="Play" />
       <Button layoutX="1108.0" layoutY="580.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="1108.0" layoutY="653.0" mnemonicParsing="false" text="Button" />
+      <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="108.0" layoutY="497.0" onMouseClicked="#clickOnGreenLine" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="534.0" onMouseClicked="#clikOnRedLine" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="574.0" onMouseClicked="#clikOnYellowLine" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="108.0" layoutY="616.0" onMouseClicked="#clikOnPinkLine" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="652.0" onMouseClicked="#clikOnBlueLine" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

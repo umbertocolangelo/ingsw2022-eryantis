@@ -2,11 +2,10 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.listener.PropertyObserver;
-import it.polimi.ingsw.message.IsFirst;
 import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.SetUp;
-import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.message.StartGame;
+import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.utils.SavingManager;
 
@@ -23,13 +22,16 @@ public class Server {
     private ServerSocket serverSocket;private Map<String, SocketClientConnection> waitingConnection = new HashMap<>();
     private Map<String, SocketClientConnection> playingConnection = new HashMap<>();
     private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
-    private Integer numberOfPlayer = 128;
+    private Integer numberOfPlayer = 0;
     private Boolean gameMode; // true for expert mode, false for normal one
     private PropertyObserver propertyObserver;
     private Game game;
     private SetUp setup = new SetUp();
     private Semaphore semaphore = new Semaphore(1);
-    private Boolean isCLi=true;
+
+
+
+
 
 
     /**
@@ -64,14 +66,6 @@ public class Server {
         List<String> keys = new ArrayList<>(waitingConnection.keySet());
         System.out.println("New client " + name);
         waitingConnection.put(name, c);
-        if (waitingConnection.size()==1) {
-            System.out.println("Sendign is first");
-            c.send(new IsFirst());
-            IsFirst isFirst= (IsFirst) c.getIn().readObject();
-            gameMode=isFirst.getGameMode();
-            numberOfPlayer=isFirst.getPlayers();
-        }
-
         keys = new ArrayList<>(waitingConnection.keySet());
         if (waitingConnection.size()==numberOfPlayer) {
             for (SocketClientConnection d : waitingConnection.values()) {
@@ -144,7 +138,9 @@ public class Server {
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
                 if(socketConnections.isEmpty())
                     socketConnection.setIsFirst();
+                semaphore.acquire();
                 socketConnections.add(socketConnection);
+
                 Thread t0 = new Thread(socketConnection);
                 //semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
                 t0.start();
@@ -155,6 +151,8 @@ public class Server {
            // } catch (InterruptedException e) {
              //   e.printStackTrace();
 
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -175,48 +173,6 @@ public class Server {
         }
         return false;
     }
-
-    /**
-     * @param c         The socketConnection which is the first player
-     * @throws IOException  Thrown if occurs problems with the socket
-     * @throws ClassNotFoundException
-     */
-    public void decideNumberOfPlayersAndGameMode(SocketClientConnection c) throws IOException, ClassNotFoundException {
-        if(isCLi) {
-            c.send("Decide the number of players, 2 or 3 ");
-            c.send(setup);
-        }
-        String message = (String) c.getIn().readObject();
-        while(!(message.equals("2") || message.equals("3"))) {
-            if (isCLi) {
-                c.send("You must select 2 or 3! Please try again");
-                c.send(setup);
-            }
-            message = (String) c.getIn().readObject(); // Read user input
-        }
-        numberOfPlayer= Integer.valueOf(message);
-        System.out.println("Number of players selected "+ numberOfPlayer);
-        if (isCLi) {
-            c.send("Decide the gameMode, 1 for expert and 0 for normal");
-            c.send(setup);
-        }
-        message = (String) c.getIn().readObject(); // Read user input
-
-        while(!(message.equals("0") || message.equals("1"))) {
-            c.send("You must select 0 or 1 ");
-            c.send(setup);
-            message = (String) c.getIn().readObject(); // Read user input
-        }
-
-        if(message.equals("1"))
-            gameMode = true;
-        else
-            gameMode = false;
-
-        System.out.println("Game mode selected " + gameMode);
-
-    }
-
     /**
      * This method is called from observer, after its modified we sent the game to the client
      */
@@ -251,14 +207,21 @@ public class Server {
         return t;
     }
 
-    /**
-     *
-     * @return
-     */
-    public Boolean getIsCLi(){
-        return isCLi;
-        }
+    public void setGameMode(Boolean gameMode) {
+        this.gameMode = gameMode;
+    }
 
+    public void setNumberOfPlayer(Integer numberOfPlayer){
+        this.numberOfPlayer=numberOfPlayer;
+    }
+
+    public Semaphore getSemaphore() {
+        return semaphore;
+    }
+
+    public void setSemaphore(Semaphore semaphore) {
+        this.semaphore = semaphore;
+    }
 }
 
 

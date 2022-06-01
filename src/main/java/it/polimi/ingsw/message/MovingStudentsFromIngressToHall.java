@@ -11,6 +11,8 @@ public class MovingStudentsFromIngressToHall implements MessageMethod, Serializa
      */
     private String student;
 
+
+
     /**
      *
      * @param game
@@ -26,5 +28,7 @@ public class MovingStudentsFromIngressToHall implements MessageMethod, Serializa
     public void setStudent(String student) {
         this.student = student;
     }
+
+
 
 }
