@@ -76,7 +76,7 @@ public class Client {
     /**
      *
      */
-    private Boolean isCli=false;
+    private Boolean isCli=true;
 
     /**
      *

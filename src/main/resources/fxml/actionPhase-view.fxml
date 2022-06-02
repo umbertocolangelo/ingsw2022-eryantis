@@ -152,17 +152,17 @@
       <ImageView fx:id="tower6" fitHeight="32.0" fitWidth="32.0" layoutX="517.0" layoutY="595.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="tower7" fitHeight="32.0" fitWidth="32.0" layoutX="473.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="tower8" fitHeight="32.0" fitWidth="32.0" layoutX="517.0" layoutY="636.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fx:id="cloud1" fitHeight="125.0" fitWidth="125.0" layoutX="378.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cloud1" fitHeight="125.0" fitWidth="125.0" layoutX="378.0" layoutY="196.0" onMouseClicked="#clickOnCloud1" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Graphical_Assets/reameB_2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cloud2" fitHeight="125.0" fitWidth="125.0" layoutX="555.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cloud3" fitHeight="125.0" fitWidth="125.0" layoutX="555.0" layoutY="196.0" onMouseClicked="#clickOnCloud3" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Graphical_Assets/reameB_2.png" />
          </image>
       </ImageView>
-      <ImageView fx:id="cloud3" fitHeight="125.0" fitWidth="125.0" layoutX="721.0" layoutY="196.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="cloud2" fitHeight="125.0" fitWidth="125.0" layoutX="721.0" layoutY="196.0" onMouseClicked="#clickOnCloud2" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../Graphical_Assets/reameB_2.png" />
          </image>
@@ -170,10 +170,22 @@
       <Button layoutX="1108.0" layoutY="513.0" mnemonicParsing="false" text="Play" />
       <Button layoutX="1108.0" layoutY="580.0" mnemonicParsing="false" text="Button" />
       <Button layoutX="1108.0" layoutY="653.0" mnemonicParsing="false" text="Button" />
-      <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="108.0" layoutY="497.0" onMouseClicked="#clickOnGreenLine" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="greenLine" fitHeight="32.0" fitWidth="281.0" layoutX="108.0" layoutY="497.0" onMouseClicked="#clickOnGreenLine" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="534.0" onMouseClicked="#clikOnRedLine" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="574.0" onMouseClicked="#clikOnYellowLine" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="108.0" layoutY="616.0" onMouseClicked="#clikOnPinkLine" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="652.0" onMouseClicked="#clikOnBlueLine" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student3Cloud1" fitHeight="28.0" fitWidth="28.0" layoutX="412.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student4Cloud1" fitHeight="28.0" fitWidth="28.0" layoutX="441.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student2Cloud1" fitHeight="28.0" fitWidth="28.0" layoutX="412.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student1Cloud1" fitHeight="28.0" fitWidth="28.0" layoutX="441.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student3Cloud3" fitHeight="28.0" fitWidth="28.0" layoutX="581.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student4Cloud3" fitHeight="28.0" fitWidth="28.0" layoutX="617.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student1Cloud3" fitHeight="28.0" fitWidth="28.0" layoutX="617.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student2Cloud3" fitHeight="28.0" fitWidth="28.0" layoutX="581.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student2Cloud2" fitHeight="28.0" fitWidth="28.0" layoutX="749.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student3Cloud2" fitHeight="28.0" fitWidth="28.0" layoutX="749.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student4Cloud2" fitHeight="28.0" fitWidth="28.0" layoutX="784.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+      <ImageView fx:id="student1Cloud2" fitHeight="28.0" fitWidth="28.0" layoutX="784.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

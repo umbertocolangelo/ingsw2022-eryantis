@@ -178,14 +178,25 @@ public class ControllerHandler {
                             }
                             break;
                     case CHOOSING_ASSISTANT: //cambio scena da deck/color phase a choosing assistant card
-                        GuiChooseWizardAndColorController colorController = new GuiChooseWizardAndColorController();
-                        Platform.runLater(() -> {
-                            try {
-                                colorController.changeScene();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
+                        if(!needRefresh) {
+                            GuiChooseWizardAndColorController colorController = new GuiChooseWizardAndColorController();
+                            Platform.runLater(() -> {
+                                try {
+                                    colorController.changeScene();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                        }else{
+                            GuiActionPhaseController colorController = new GuiActionPhaseController();
+                            Platform.runLater(() -> {
+                                try {
+                                    colorController.changeScene();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                        }
                         break;
                     case MOVING_STUDENTS://cambio scena da choosing assistant card a moving students and mn
                         if(!needRefresh ){
