@@ -1,15 +1,11 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
-import it.polimi.ingsw.message.ChooseColorAndDeck;
 import it.polimi.ingsw.message.ChooseStudentsFromCloud;
 import it.polimi.ingsw.message.MessageMethod;
-import it.polimi.ingsw.model.studentSuppliers.Cloud;
-
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -88,5 +84,17 @@ public class GuiChooseCloudController {
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
+    }
+
+    public void clickOnExpert1(MouseEvent mouseEvent) {
+    }
+
+    public void clickOnExpert2(MouseEvent mouseEvent) {
+    }
+
+    public void clickOnExpert3(MouseEvent mouseEvent) {
+    }
+
+    public void onBackClick(MouseEvent mouseEvent) {
     }
 }

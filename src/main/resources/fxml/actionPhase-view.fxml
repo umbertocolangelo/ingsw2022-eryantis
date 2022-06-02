@@ -168,7 +168,7 @@
          </image>
       </ImageView>
       <Button layoutX="1108.0" layoutY="513.0" mnemonicParsing="false" text="Play" />
-      <Button layoutX="1108.0" layoutY="580.0" mnemonicParsing="false" text="Button" />
+      <Button fx:id="expertCardButton" layoutX="1108.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#clickPlayExpertCard" text="Play ExpertCard" />
       <Button layoutX="1108.0" layoutY="653.0" mnemonicParsing="false" text="Button" />
       <ImageView fx:id="greenLine" fitHeight="32.0" fitWidth="281.0" layoutX="108.0" layoutY="497.0" onMouseClicked="#clickOnGreenLine" pickOnBounds="true" preserveRatio="true" />
       <ImageView fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="534.0" onMouseClicked="#clikOnRedLine" pickOnBounds="true" preserveRatio="true" />

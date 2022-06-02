@@ -13,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -211,6 +212,8 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView student4Cloud3;
     @FXML
     private ImageView cloud3;
+    @FXML
+    private Button expertCardButton;
 
     /**
      *
@@ -332,6 +335,9 @@ public class GuiActionPhaseController implements Initializable {
       //  switch (game.getCurrentPlayer().)
         game=ControllerHandler.getInstance().getClient().getGame();
         MotherNature motherNature=game.getMotherNature();
+        if(game.getGameMode()==false)
+            expertCardButton.setVisible(false);
+
 
         switch (motherNature.getIsland().getId()){
             case "26":
@@ -849,6 +855,16 @@ public class GuiActionPhaseController implements Initializable {
             ( (ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(0).getId());
             ControllerHandler.getInstance().write(messageMethod);
             //refresh();
+        }
+    }
+
+    public void clickPlayExpertCard(MouseEvent mouseEvent) throws IOException {
+        if(game.getGameMode()==true){
+            stage = ControllerHandler.getInstance().getStage();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/expertCard-view.fxml"));
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setScene(scene);
+            stage.show();
         }
     }
 }
