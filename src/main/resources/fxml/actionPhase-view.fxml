@@ -187,5 +187,6 @@
       <ImageView fx:id="student3Cloud2" fitHeight="28.0" fitWidth="28.0" layoutX="749.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="student4Cloud2" fitHeight="28.0" fitWidth="28.0" layoutX="784.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
       <ImageView fx:id="student1Cloud2" fitHeight="28.0" fitWidth="28.0" layoutX="784.0" layoutY="229.0" pickOnBounds="true" preserveRatio="true" />
+      <Label fx:id="communication" layoutX="685.0" layoutY="528.0" prefHeight="79.0" prefWidth="183.0" />
    </children>
 </AnchorPane>
