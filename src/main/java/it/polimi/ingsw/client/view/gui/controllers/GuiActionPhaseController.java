@@ -592,174 +592,176 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     public void clickIsland1(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()<=calculateJumps(26,idIsland) && game.getCurrentRound().getId()==null){
+            MessageMethod movingMotherNature= new MovingMotherNature();
+            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(26,idIsland));
+            ControllerHandler.getInstance().write(movingMotherNature);
+        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
             MessageMethod messageMethod=new StudentToIsland();
             ((StudentToIsland)messageMethod).setIsland("26");
             ((StudentToIsland)messageMethod).setStudent(studentOnRound);
             ControllerHandler.getInstance().write(messageMethod);
-        }else if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()<=calculateJumps(26,idIsland)){
-            MessageMethod movingMotherNature= new MovingMotherNature();
-            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(26,idIsland));
-            ControllerHandler.getInstance().write(movingMotherNature);
         }
     }
 
 
     public void clickIsland2(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(27,idIsland) && game.getCurrentRound().getId()==null){
+            MessageMethod movingMotherNature= new MovingMotherNature();
+            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(27,idIsland));
+            ControllerHandler.getInstance().write(movingMotherNature);
+        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
             MessageMethod messageMethod=new StudentToIsland();
             ((StudentToIsland)messageMethod).setIsland("27");
             ((StudentToIsland)messageMethod).setStudent(studentOnRound);
             ControllerHandler.getInstance().write(messageMethod);
-        }else  if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()<=calculateJumps(27,idIsland)){
-            MessageMethod movingMotherNature= new MovingMotherNature();
-            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(27,idIsland));
-            ControllerHandler.getInstance().write(movingMotherNature);
         }
-
     }
 
     public void clickIsland3(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("28");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
-        }else if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()<=calculateJumps(28,idIsland)){
+       if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(28,idIsland) && game.getCurrentRound().getId()==null){
 
             MessageMethod movingMotherNature= new MovingMotherNature();
             ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(28,idIsland));
             ControllerHandler.getInstance().write(movingMotherNature);
+        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+            MessageMethod messageMethod=new StudentToIsland();
+            ((StudentToIsland)messageMethod).setIsland("28");
+            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+            ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
     public void clickIsland4(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+       if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(29,idIsland) && game.getCurrentRound().getId()==null){
+            MessageMethod movingMotherNature= new MovingMotherNature();
+            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(29,idIsland));
+            ControllerHandler.getInstance().write(movingMotherNature);
+        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
             MessageMethod messageMethod=new StudentToIsland();
             ((StudentToIsland)messageMethod).setIsland("29");
             ((StudentToIsland)messageMethod).setStudent(studentOnRound);
             ControllerHandler.getInstance().write(messageMethod);
-        }else  if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>calculateJumps(29,idIsland)){
-
-            MessageMethod movingMotherNature= new MovingMotherNature();
-            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(29,idIsland));
-            ControllerHandler.getInstance().write(movingMotherNature);
         }
     }
 
 
     public void clickIsland5(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+        if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue() >= calculateJumps(30, idIsland) && game.getCurrentRound().getId()==null) {
+            MessageMethod movingMotherNature = new MovingMotherNature();
+            ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(30, idIsland));
+            ControllerHandler.getInstance().write(movingMotherNature);
+        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
             MessageMethod messageMethod=new StudentToIsland();
             ((StudentToIsland)messageMethod).setIsland("30");
             ((StudentToIsland)messageMethod).setStudent(studentOnRound);
             ControllerHandler.getInstance().write(messageMethod);
-        }else if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue() <= calculateJumps(30, idIsland)) {
-
-            MessageMethod movingMotherNature = new MovingMotherNature();
-            ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(30, idIsland));
-            ControllerHandler.getInstance().write(movingMotherNature);
         }
     }
 
     public void clickIsland6(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(31,idIsland) && game.getCurrentRound().getId()==null){
+            MessageMethod movingMotherNature= new MovingMotherNature();
+            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(31,idIsland));
+            ControllerHandler.getInstance().write(movingMotherNature);
+        }else  if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
             MessageMethod messageMethod=new StudentToIsland();
             ((StudentToIsland)messageMethod).setIsland("31");
             ((StudentToIsland)messageMethod).setStudent(studentOnRound);
             ControllerHandler.getInstance().write(messageMethod);
-        }else if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()<=calculateJumps(31,idIsland)){
-
-            MessageMethod movingMotherNature= new MovingMotherNature();
-            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(31,idIsland));
-            ControllerHandler.getInstance().write(movingMotherNature);
         }
     }
 
 
 
     public void clickIsland7(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("32");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
-        }else if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(32,idIsland)){
+        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(32,idIsland) && game.getCurrentRound().getId()==null){
 
             MessageMethod movingMotherNature= new MovingMotherNature();
             ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(32,idIsland));
             ControllerHandler.getInstance().write(movingMotherNature);
+        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+            MessageMethod messageMethod=new StudentToIsland();
+            ((StudentToIsland)messageMethod).setIsland("32");
+            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+            ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
     public void clickIsland8(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("33");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
-        }else if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(33,idIsland)){
+        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(33,idIsland) && game.getCurrentRound().getId()==null){
 
             MessageMethod movingMotherNature= new MovingMotherNature();
             ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(33,idIsland));
             ControllerHandler.getInstance().write(movingMotherNature);
         }
-    }
-
-    public void clickIsland9(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+       else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
             MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("34");
+            ((StudentToIsland)messageMethod).setIsland("33");
             ((StudentToIsland)messageMethod).setStudent(studentOnRound);
             ControllerHandler.getInstance().write(messageMethod);
-        }else if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(34,idIsland)){
+        }
+    }
+
+    /**
+     *
+     * @param mouseEvent
+     */
+    public void clickIsland9(MouseEvent mouseEvent) {
+     if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(34,idIsland) && game.getCurrentRound().getId()==null){
 
             MessageMethod movingMotherNature= new MovingMotherNature();
             ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(34,idIsland));
             ControllerHandler.getInstance().write(movingMotherNature);
+        } else   if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+            MessageMethod messageMethod=new StudentToIsland();
+            ((StudentToIsland)messageMethod).setIsland("34");
+            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+            ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
     public void clickIsland10(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("35");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
-        }else if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(35,idIsland)){
+        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(35,idIsland) && game.getCurrentRound().getId()==null){
 
             MessageMethod movingMotherNature= new MovingMotherNature();
             ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(35,idIsland));
             ControllerHandler.getInstance().write(movingMotherNature);
+        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+            MessageMethod messageMethod=new StudentToIsland();
+            ((StudentToIsland)messageMethod).setIsland("35");
+            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+            ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
 
     public void clickIsland11(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("36");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
-        }else
-        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(36,idIsland)){
+        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(36,idIsland) && game.getCurrentRound().getId()==null){
 
             MessageMethod movingMotherNature= new MovingMotherNature();
             ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(36,idIsland));
             ControllerHandler.getInstance().write(movingMotherNature);
         }
+        else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+            MessageMethod messageMethod=new StudentToIsland();
+            ((StudentToIsland)messageMethod).setIsland("36");
+            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+            ControllerHandler.getInstance().write(messageMethod);
+        }
+
     }
 
     public void clickIsland12(MouseEvent mouseEvent) {
-        if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+        if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(37,idIsland)){
+            MessageMethod movingMotherNature= new MovingMotherNature();
+            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(37,idIsland));
+            ControllerHandler.getInstance().write(movingMotherNature);
+        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
             MessageMethod messageMethod=new StudentToIsland();
             ((StudentToIsland)messageMethod).setIsland("37");
             ((StudentToIsland)messageMethod).setStudent(studentOnRound);
             ControllerHandler.getInstance().write(messageMethod);
-        }else  if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(37,idIsland)){
-            MessageMethod movingMotherNature= new MovingMotherNature();
-            ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(37,idIsland));
-            ControllerHandler.getInstance().write(movingMotherNature);
         }
     }
 
@@ -770,7 +772,6 @@ public class GuiActionPhaseController implements Initializable {
         if(studentMoving!=null) {
             switch (studentMoving) {
                 case GREEN -> {
-
                     ControllerHandler.getInstance().write(studentOnHall);
                     studentOnHall = new MovingStudentsFromIngressToHall();
                 }
@@ -847,7 +848,7 @@ public class GuiActionPhaseController implements Initializable {
 
     public void clickOnIngress1(MouseEvent mouseEvent) {
         if(game.getCurrentPlayer().getPlayerPhase()== PlayerPhase.MOVING_STUDENTS) {
-            ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(1).getId());
+            ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getId());
             studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getColor();
         }else  if(game.getCurrentRound().getId()==1 ||game.getCurrentRound().getId()==1 )
         {
