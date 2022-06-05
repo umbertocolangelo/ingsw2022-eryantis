@@ -12,6 +12,7 @@ import it.polimi.ingsw.utils.SavingManager;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.*;
 import java.util.concurrent.Semaphore;
 
@@ -31,8 +32,7 @@ public class Server {
 
 
 
-
-
+//Qui socketClient chiama deregistiring client quando viene disconesso e manda un messaggio ai client che ci si e disconessi
 
     /**
      * deregister connection
@@ -44,7 +44,8 @@ public class Server {
             opponent.closeConnection();
         }
         playingConnection.remove(c);
-        playingConnection.remove(opponent);
+
+        //playingConnection.remove(opponent);
         Iterator<String> iterator = waitingConnection.keySet().iterator();
         while (iterator.hasNext()) {
             if (waitingConnection.get(iterator.next())==c) {
@@ -133,10 +134,11 @@ public class Server {
 
             try {
                 Socket newSocket = serverSocket.accept();
+                newSocket.setSoTimeout(360000);
                 connections++;
                 System.out.println("Ready for the new connection - " + connections);
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
-                if(socketConnections.isEmpty())
+                if (socketConnections.isEmpty())
                     socketConnection.setIsFirst();
                 semaphore.acquire();
                 socketConnections.add(socketConnection);
@@ -145,13 +147,20 @@ public class Server {
                 //semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
                 t0.start();
 
-            } catch (IOException e) {
-                System.out.println("Connection Error!");
+                //  } catch (IOException e) {
+                System.out.println("Seee!");
 
-           // } catch (InterruptedException e) {
-             //   e.printStackTrace();
+                // } catch (InterruptedException e) {
+                //   e.printStackTrace();
 
+                //  } catch (InterruptedException e) {
+            }catch(SocketTimeoutException e){
+                System.out.println("### Timed out after 5 seconds.");
+                //}            } catch (IOException e) {
+              //  e.printStackTrace();
             } catch (InterruptedException e) {
+               // e.printStackTrace();
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }

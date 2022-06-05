@@ -6,6 +6,7 @@ import it.polimi.ingsw.model.expertCards.deck.*;
 import it.polimi.ingsw.model.islands.IslandManager;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
+import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
 import java.util.*;
@@ -149,6 +150,15 @@ public class CardManager implements Serializable {
     public void setExpertCards(ExpertCard expertCard) {
         this.expertCards.add(expertCard);
         this.currentCard = expertCard;
+    }
+
+    /**
+     * debugging only
+     */
+    public void setDeck(String id){
+       ExpertCard expertCard= IdManager.getInstance().getExpertCard(id);
+       expertCards.add(0,expertCard);
+       expertCards.removeLast();
     }
 
 }

@@ -31,5 +31,10 @@
             <Font name="Book Antiqua Bold Italic" size="24.0" />
          </font>
       </Button>
+      <Label fx:id="coinsLabel" layoutX="79.0" layoutY="506.0" prefHeight="74.0" prefWidth="350.0">
+         <font>
+            <Font size="34.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

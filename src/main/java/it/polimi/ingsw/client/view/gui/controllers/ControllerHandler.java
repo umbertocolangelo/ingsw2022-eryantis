@@ -3,7 +3,7 @@ package it.polimi.ingsw.client.view.gui.controllers;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.ClientState;
 import it.polimi.ingsw.client.view.gui.GuiMain;
-import it.polimi.ingsw.message.MessageMethod;
+import it.polimi.ingsw.message.IngressCardSwap;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
@@ -11,11 +11,15 @@ import java.io.IOException;
 
 
 public class ControllerHandler {
+    /**
+     *
+     */
+    private Boolean finishTurn=false;
 
     /**
      * Keep the reference of the message methode, useful for the expertCard implemented in Rounds
      */
-    private MessageMethod messageMethod;
+    private IngressCardSwap messageMethodIngressCard=new IngressCardSwap();
 
     /**
      * Keep the reference to the expertCard played
@@ -132,7 +136,6 @@ public class ControllerHandler {
      * @throws IOException
      */
     public void chooseScene() throws IOException {
-
         switch (clientState) {
             case LOGIN:
                 GuiMain guiMain = new GuiMain();
@@ -161,8 +164,44 @@ public class ControllerHandler {
                 });
                 break;
             case PLAYING:
-                switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
-                    case SET_UP_PHASE: //cambio scena da login a deck/color phase
+                if(client.getGame().getCurrentRound().getId()!=null){
+                    if(!cardPlayed) {
+                        GuiChooseExpertCardController cardController = new GuiChooseExpertCardController();
+                        Platform.runLater(() -> {
+                            try {
+                                System.out.println("Change scene normal");
+                                cardController.sceneStudentOnCard();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                    }else{
+                        if(client.getGame().getCurrentRound().getId()==0){
+                            GuiActionPhaseController controllerOnCard=new GuiActionPhaseController();
+                            Platform.runLater(() -> {
+                                try {
+                                    System.out.println("Change scene normal");
+                                    controllerOnCard.refresh();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+
+                        }
+                        GuiChooseStudentsOnCardController controllerOnCard=new GuiChooseStudentsOnCardController();
+                        Platform.runLater(() -> {
+                            try {
+                                System.out.println("Change scene normal");
+                                controllerOnCard.refresh();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+
+                    }
+                }else {
+                    switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
+                        case SET_UP_PHASE: //cambio scena da login a deck/color phase
                             System.out.println("Setup");
                             GuiLoginController controllerLogin = new GuiLoginController();
                             if (!isFirst) {
@@ -174,9 +213,8 @@ public class ControllerHandler {
                                         e.printStackTrace();
                                     }
                                 });
-                            }
-                            else{
-                                GuiIsFirstController controllerFirst =new GuiIsFirstController();
+                            } else {
+                                GuiIsFirstController controllerFirst = new GuiIsFirstController();
                                 Platform.runLater(() -> {
                                     try {
                                         System.out.println("Change scene nont normal");
@@ -188,63 +226,64 @@ public class ControllerHandler {
                                 });
                             }
                             break;
-                    case CHOOSING_ASSISTANT: //cambio scena da deck/color phase a choosing assistant card
-                        if(!needRefresh) {
-                            GuiChooseWizardAndColorController colorController = new GuiChooseWizardAndColorController();
-                            Platform.runLater(() -> {
-                                try {
-                                    colorController.changeScene();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            });
-                        }else{
-                            GuiActionPhaseController colorController = new GuiActionPhaseController();
-                            Platform.runLater(() -> {
-                                try {
-                                    colorController.changeScene();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            });
-                        }
-                        break;
-                    case MOVING_STUDENTS://cambio scena da choosing assistant card a moving students and mn
-                        if(!needRefresh ){
-                            needRefresh=true;
-                        GuiPianificationPhaseController assistantController = new GuiPianificationPhaseController();
-                        Platform.runLater(() -> {
-                            try {
-                                assistantController.changeScene();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
-                    }else{
-                            GuiActionPhaseController actionController= new GuiActionPhaseController();
-                            Platform.runLater(() -> {
-                                try {
-                                    actionController.refresh();
+                        case CHOOSING_ASSISTANT: //cambio scena da deck/color phase a choosing assistant card
+                            if (!needRefresh) {
+                                GuiChooseWizardAndColorController colorController = new GuiChooseWizardAndColorController();
+                                Platform.runLater(() -> {
+                                    try {
+                                        colorController.changeScene();
                                     } catch (IOException e) {
-                                    e.printStackTrace();
+                                        e.printStackTrace();
                                     }
-                            });
-                        }
-                        break;
-
-                    case MOVING_MOTHERNATURE,CHOOSING_CLOUD:
-                        GuiActionPhaseController movingMotherNatureController= new GuiActionPhaseController();
-                        Platform.runLater(() -> {
-                            try {
-                                movingMotherNatureController.refresh();
-                            } catch (IOException e) {
-                                e.printStackTrace();
+                                });
+                            } else {
+                                GuiActionPhaseController colorController = new GuiActionPhaseController();
+                                Platform.runLater(() -> {
+                                    try {
+                                        colorController.changeScene();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                });
                             }
-                        });
-                        break;
+                            break;
+                        case MOVING_STUDENTS://cambio scena da choosing assistant card a moving students and mn
+                            if (!needRefresh) {
+                                needRefresh = true;
+                                GuiPianificationPhaseController assistantController = new GuiPianificationPhaseController();
+                                Platform.runLater(() -> {
+                                    try {
+                                        assistantController.changeScene();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                });
+                            } else {
+                                GuiActionPhaseController actionController = new GuiActionPhaseController();
+                                Platform.runLater(() -> {
+                                    try {
+                                        actionController.refresh();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
+                                });
+                            }
+                            break;
 
+                        case MOVING_MOTHERNATURE, CHOOSING_CLOUD:
+                            GuiActionPhaseController movingMotherNatureController = new GuiActionPhaseController();
+                            Platform.runLater(() -> {
+                                try {
+                                    movingMotherNatureController.refresh();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                            break;
+
+                    }
                 }
-            case WINNER:
+         //   case WINNER:
 
 
 
@@ -298,5 +337,21 @@ public class ControllerHandler {
 
     public void setIdExpertCardPlayed(String idExpertCardPlayed) {
         this.idExpertCardPlayed = idExpertCardPlayed;
+    }
+
+    public IngressCardSwap getMessageMethod() {
+        return messageMethodIngressCard;
+    }
+
+    public void setMessageMethodIngressCard(IngressCardSwap messageMethod) {
+        this.messageMethodIngressCard = messageMethod;
+    }
+
+    public Boolean getFinishTurn() {
+        return finishTurn;
+    }
+
+    public void setFinishTurn(Boolean finishTurn) {
+        this.finishTurn = finishTurn;
     }
 }
