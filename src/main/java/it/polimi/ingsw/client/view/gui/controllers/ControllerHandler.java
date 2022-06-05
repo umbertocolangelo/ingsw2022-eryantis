@@ -3,6 +3,7 @@ package it.polimi.ingsw.client.view.gui.controllers;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.ClientState;
 import it.polimi.ingsw.client.view.gui.GuiMain;
+import it.polimi.ingsw.message.MessageMethod;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
@@ -10,6 +11,11 @@ import java.io.IOException;
 
 
 public class ControllerHandler {
+
+    /**
+     * Keep the reference of the message methode, useful for the expertCard implemented in Rounds
+     */
+    private MessageMethod messageMethod;
 
     /**
      * Keep the reference to the expertCard played
@@ -226,7 +232,7 @@ public class ControllerHandler {
                         }
                         break;
 
-                    case MOVING_MOTHERNATURE:
+                    case MOVING_MOTHERNATURE,CHOOSING_CLOUD:
                         GuiActionPhaseController movingMotherNatureController= new GuiActionPhaseController();
                         Platform.runLater(() -> {
                             try {
@@ -236,16 +242,7 @@ public class ControllerHandler {
                             }
                         });
                         break;
-                    case CHOOSING_CLOUD: //cambio scena da mooving mn a choosing cloud
-                        GuiActionPhaseController actionController = new GuiActionPhaseController();
-                        Platform.runLater(() -> {
-                            try {
-                                actionController.refresh();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
-                        break;
+
                 }
             case WINNER:
 
