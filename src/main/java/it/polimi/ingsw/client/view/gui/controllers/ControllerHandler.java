@@ -12,6 +12,11 @@ import java.io.IOException;
 public class ControllerHandler {
 
     /**
+     * Keep the reference to the expertCard played
+     */
+    private String idExpertCardPlayed;
+
+    /**
      * Used to set choose which loading view is the right one to call
      */
     private Boolean needRefresh=false;
@@ -288,5 +293,13 @@ public class ControllerHandler {
 
     public void setCardPlayed(Boolean cardPlayed) {
         this.cardPlayed = cardPlayed;
+    }
+
+    public String getIdExpertCardPlayed() {
+        return idExpertCardPlayed;
+    }
+
+    public void setIdExpertCardPlayed(String idExpertCardPlayed) {
+        this.idExpertCardPlayed = idExpertCardPlayed;
     }
 }
