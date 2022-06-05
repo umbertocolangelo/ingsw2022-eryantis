@@ -417,7 +417,7 @@ public class GuiActionPhaseController implements Initializable {
                    communication.setText("You are in student on island round");
                    break;
                case 1:
-                   communication.setText("You are in ingress swap");
+                   communication.setText("You are in ingress Hall swap");
                case 2:
                    communication.setText("You are in studentOn Island round");
                case 3:
