@@ -4,6 +4,7 @@ import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.ClientState;
 import it.polimi.ingsw.client.view.gui.GuiMain;
 import it.polimi.ingsw.message.IngressCardSwap;
+import it.polimi.ingsw.message.StudentToIsland;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
@@ -15,6 +16,11 @@ public class ControllerHandler {
      *
      */
     private Boolean finishTurn=false;
+
+    /**
+     *
+     */
+    private StudentToIsland studentToIsland;
 
     /**
      * Keep the reference of the message methode, useful for the expertCard implemented in Rounds
@@ -165,7 +171,7 @@ public class ControllerHandler {
                 break;
             case PLAYING:
                 if(client.getGame().getCurrentRound().getId()!=null){
-                    if(client.getGame().getCurrentRound().getId()==0) {
+                    if(client.getGame().getCurrentRound().getId()==0 || client.getGame().getCurrentRound().getId()==3 || client.getGame().getCurrentRound().getId()==2) {
                         GuiChooseExpertCardController cardController = new GuiChooseExpertCardController();
                         Platform.runLater(() -> {
                             try {
@@ -340,5 +346,13 @@ public class ControllerHandler {
 
     public void setFinishTurn(Boolean finishTurn) {
         this.finishTurn = finishTurn;
+    }
+
+    public StudentToIsland getStudentToIsland() {
+        return studentToIsland;
+    }
+
+    public void setStudentToIsland(StudentToIsland studentToIsland) {
+        this.studentToIsland = studentToIsland;
     }
 }

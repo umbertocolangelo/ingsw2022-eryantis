@@ -53,7 +53,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     /**
      *
      */
-    private  MessageMethod messageMethodIsland=new StudentToIsland();
+    private  StudentToIsland messageMethodIsland=new StudentToIsland();
     /**
      *
      */
@@ -157,7 +157,8 @@ public class GuiChooseStudentsOnCardController implements Initializable {
 
         switch (idExpertCard){
             case "38":
-             //   ControllerHandler.getInstance().setMessageMethod(messageMethodIsland);
+               ControllerHandler.getInstance().setStudentToIsland(messageMethodIsland);
+               changeToAction();
                 break;
             case "44":
                 ControllerHandler.getInstance().setMessageMethodIngressCard(messageMethodSwap);

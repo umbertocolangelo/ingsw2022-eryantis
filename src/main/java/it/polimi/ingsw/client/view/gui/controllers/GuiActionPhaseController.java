@@ -605,11 +605,10 @@ public class GuiActionPhaseController implements Initializable {
              ControllerHandler.getInstance().write(movingMotherNature);
          }
         }else if(game.getCurrentRound().getId()==3){
-         //   MessageMethod messageMethod=ControllerHandler.getInstance().getMessageMethod();
-          //  ((StudentToIsland)messageMethod).setIsland("26");
-          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-           // ControllerHandler.getInstance().write(messageMethod);
-            //ControllerHandler.getInstance().setMessageMethod(new StudentToIsland());
+           StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+           (messageMethod).setIsland("26");
+           ControllerHandler.getInstance().write(messageMethod);
+           ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -624,11 +623,10 @@ public class GuiActionPhaseController implements Initializable {
             }
 
         }else if(game.getCurrentRound().getId()==3){
-        //    MessageMethod messageMethod=ControllerHandler.getInstance().getMessageMethod();
-         //   ((StudentToIsland)messageMethod).setIsland("27");
-          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-        //    ControllerHandler.getInstance().write(messageMethod);
-           // ControllerHandler.getInstance().setMessageMethod(new StudentToIsland());
+             StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+             (messageMethod).setIsland("27");
+             ControllerHandler.getInstance().write(messageMethod);
+             ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -640,11 +638,11 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(28, idIsland));
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
-       // }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-          //  MessageMethod messageMethod=new StudentToIsland();
-           // ((StudentToIsland)messageMethod).setIsland("28");
-            //((StudentToIsland)messageMethod).setStudent(studentOnRound);
-          //  ControllerHandler.getInstance().write(messageMethod);
+        }else if(game.getCurrentRound().getId()==3){
+           StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("28");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -655,11 +653,11 @@ public class GuiActionPhaseController implements Initializable {
                ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(29, idIsland));
                ControllerHandler.getInstance().write(movingMotherNature);
            }
-        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-           // MessageMethod messageMethod=new StudentToIsland();
-          //  ((StudentToIsland)messageMethod).setIsland("29");
-          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-          //  ControllerHandler.getInstance().write(messageMethod);
+        }else if(game.getCurrentRound().getId()==3 ){
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("29");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -671,11 +669,11 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(30, idIsland));
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
-        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-         //   MessageMethod messageMethod=new StudentToIsland();
-          //  ((StudentToIsland)messageMethod).setIsland("30");
-         //   ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-         //   ControllerHandler.getInstance().write(messageMethod);
+        }else if(game.getCurrentRound().getId()==3){
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("30");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -687,10 +685,10 @@ public class GuiActionPhaseController implements Initializable {
                     ControllerHandler.getInstance().write(movingMotherNature);
                 }
         }else  if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-          //  MessageMethod messageMethod=new StudentToIsland();
-          //  ((StudentToIsland)messageMethod).setIsland("31");
-          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-          //  ControllerHandler.getInstance().write(messageMethod);
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("31");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -705,10 +703,10 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
         }else if(game.getCurrentRound().getId()==3 ){
-          //  MessageMethod messageMethod=new StudentToIsland();
-          //  ((StudentToIsland)messageMethod).setIsland("32");
-          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-         //   ControllerHandler.getInstance().write(messageMethod);
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("32");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -721,11 +719,11 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
         }
-       else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-        //    MessageMethod messageMethod=new StudentToIsland();
-       //     ((StudentToIsland)messageMethod).setIsland("33");
-        //    ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-         //   ControllerHandler.getInstance().write(messageMethod);
+       else if(game.getCurrentRound().getId()==3 ){
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("33");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -741,11 +739,11 @@ public class GuiActionPhaseController implements Initializable {
                  ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(34, idIsland));
                  ControllerHandler.getInstance().write(movingMotherNature);
              }
-        } else   if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-         //   MessageMethod messageMethod=new StudentToIsland();
-         ///   ((StudentToIsland)messageMethod).setIsland("34");
-         //   ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-        //    ControllerHandler.getInstance().write(messageMethod);
+        } else   if(game.getCurrentRound().getId()==3 ){
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("34");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -757,11 +755,11 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(35, idIsland));
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
-        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-        //    MessageMethod messageMethod=new StudentToIsland();
-       //     ((StudentToIsland)messageMethod).setIsland("35");
-        //    ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-        //    ControllerHandler.getInstance().write(messageMethod);
+        }else if(game.getCurrentRound().getId()==3){
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("35");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -776,10 +774,10 @@ public class GuiActionPhaseController implements Initializable {
             }
         }
         else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-        //    MessageMethod messageMethod=new StudentToIsland();
-       //     ((StudentToIsland)messageMethod).setIsland("36");
-      //      ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-       //     ControllerHandler.getInstance().write(messageMethod);
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("36");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
 
     }
@@ -793,10 +791,10 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
         }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-        //    MessageMethod messageMethod=new StudentToIsland();
-        //    ((StudentToIsland)messageMethod).setIsland("37");
-        //    ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-        //    ControllerHandler.getInstance().write(messageMethod);
+            StudentToIsland messageMethod=ControllerHandler.getInstance().getStudentToIsland();
+            (messageMethod).setIsland("37");
+            ControllerHandler.getInstance().write(messageMethod);
+            ControllerHandler.getInstance().setStudentToIsland(new StudentToIsland());
         }
     }
 
@@ -914,7 +912,7 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     public void clikOnBlueLine(MouseEvent mouseEvent) {
-        if (game.getCardManager().getCurrentCard().getId()!=null) {
+        if (game.getCurrentRound().getId()!=null){
             if (game.getCurrentRound().getId()==0) {
                 IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
                 ingressCardSwap.setStudentIngress(game.getCurrentPlayer().getSchool().getHall().getLine(Color.BLUE).getStudents().getLast().getId());
