@@ -214,13 +214,14 @@ public class GuiActionPhaseController implements Initializable {
     private Button expertCardButton;
     @FXML
     private Label communication;
-
+    @FXML
+    private Button finishExpertMove;
 
 
     /**
      *
      */
-    private String studentOnRound;
+    private Student studentOnRound;
 
     /**
      *
@@ -344,6 +345,11 @@ public class GuiActionPhaseController implements Initializable {
         MotherNature motherNature=game.getMotherNature();
         if(game.getGameMode()==false || game.getCardManager().getCurrentCard()!=null && ControllerHandler.getInstance().getFinishTurn())
             expertCardButton.setVisible(false);
+        if(game.getCurrentRound().getId()==null){
+          finishExpertMove.setVisible(false);
+          finishExpertMove.setDisable(false);
+        }
+
         switch (motherNature.getIsland().getId()){
             case "26":
                 island1.setImage(new Image(islandMotherNature));
@@ -599,10 +605,10 @@ public class GuiActionPhaseController implements Initializable {
              ControllerHandler.getInstance().write(movingMotherNature);
          }
         }else if(game.getCurrentRound().getId()==3){
-            MessageMethod messageMethod=ControllerHandler.getInstance().getMessageMethod();
-            ((StudentToIsland)messageMethod).setIsland("26");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+         //   MessageMethod messageMethod=ControllerHandler.getInstance().getMessageMethod();
+          //  ((StudentToIsland)messageMethod).setIsland("26");
+          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+           // ControllerHandler.getInstance().write(messageMethod);
             //ControllerHandler.getInstance().setMessageMethod(new StudentToIsland());
         }
     }
@@ -618,10 +624,10 @@ public class GuiActionPhaseController implements Initializable {
             }
 
         }else if(game.getCurrentRound().getId()==3){
-            MessageMethod messageMethod=ControllerHandler.getInstance().getMessageMethod();
-            ((StudentToIsland)messageMethod).setIsland("27");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+        //    MessageMethod messageMethod=ControllerHandler.getInstance().getMessageMethod();
+         //   ((StudentToIsland)messageMethod).setIsland("27");
+          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+        //    ControllerHandler.getInstance().write(messageMethod);
            // ControllerHandler.getInstance().setMessageMethod(new StudentToIsland());
         }
     }
@@ -634,11 +640,11 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(28, idIsland));
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
-        }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("28");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+       // }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
+          //  MessageMethod messageMethod=new StudentToIsland();
+           // ((StudentToIsland)messageMethod).setIsland("28");
+            //((StudentToIsland)messageMethod).setStudent(studentOnRound);
+          //  ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
@@ -650,10 +656,10 @@ public class GuiActionPhaseController implements Initializable {
                ControllerHandler.getInstance().write(movingMotherNature);
            }
         }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("29");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+           // MessageMethod messageMethod=new StudentToIsland();
+          //  ((StudentToIsland)messageMethod).setIsland("29");
+          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+          //  ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
@@ -666,10 +672,10 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
         }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("30");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+         //   MessageMethod messageMethod=new StudentToIsland();
+          //  ((StudentToIsland)messageMethod).setIsland("30");
+         //   ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+         //   ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
@@ -681,10 +687,10 @@ public class GuiActionPhaseController implements Initializable {
                     ControllerHandler.getInstance().write(movingMotherNature);
                 }
         }else  if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("31");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+          //  MessageMethod messageMethod=new StudentToIsland();
+          //  ((StudentToIsland)messageMethod).setIsland("31");
+          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+          //  ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
@@ -699,10 +705,10 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
         }else if(game.getCurrentRound().getId()==3 ){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("32");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+          //  MessageMethod messageMethod=new StudentToIsland();
+          //  ((StudentToIsland)messageMethod).setIsland("32");
+          //  ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+         //   ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
@@ -716,10 +722,10 @@ public class GuiActionPhaseController implements Initializable {
             }
         }
        else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("33");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+        //    MessageMethod messageMethod=new StudentToIsland();
+       //     ((StudentToIsland)messageMethod).setIsland("33");
+        //    ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+         //   ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
@@ -736,10 +742,10 @@ public class GuiActionPhaseController implements Initializable {
                  ControllerHandler.getInstance().write(movingMotherNature);
              }
         } else   if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("34");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+         //   MessageMethod messageMethod=new StudentToIsland();
+         ///   ((StudentToIsland)messageMethod).setIsland("34");
+         //   ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+        //    ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
@@ -752,10 +758,10 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
         }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("35");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+        //    MessageMethod messageMethod=new StudentToIsland();
+       //     ((StudentToIsland)messageMethod).setIsland("35");
+        //    ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+        //    ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
@@ -770,15 +776,16 @@ public class GuiActionPhaseController implements Initializable {
             }
         }
         else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("36");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+        //    MessageMethod messageMethod=new StudentToIsland();
+       //     ((StudentToIsland)messageMethod).setIsland("36");
+      //      ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+       //     ControllerHandler.getInstance().write(messageMethod);
         }
 
     }
 
     public void clickIsland12(MouseEvent mouseEvent) {
+
         if(game.getCurrentRound().getId()==null) {
             if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(37,idIsland)) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
@@ -786,22 +793,30 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().write(movingMotherNature);
             }
         }else if(game.getCurrentRound().getId()==3 && studentOnRound!=null){
-            MessageMethod messageMethod=new StudentToIsland();
-            ((StudentToIsland)messageMethod).setIsland("37");
-            ((StudentToIsland)messageMethod).setStudent(studentOnRound);
-            ControllerHandler.getInstance().write(messageMethod);
+        //    MessageMethod messageMethod=new StudentToIsland();
+        //    ((StudentToIsland)messageMethod).setIsland("37");
+        //    ((StudentToIsland)messageMethod).setStudent(studentOnRound);
+        //    ControllerHandler.getInstance().write(messageMethod);
         }
     }
 
 
 
     public void clickOnGreenLine(MouseEvent mouseEvent) {
+        if (game.getCurrentRound().getId()!=null){
        // greenLine.setEffect(new DropShadow(20,null));
-        if(game.getCardManager().getCurrentCard().getId().equals("44")){
-            IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
-            ingressCardSwap.setStudentIngress(game.getCurrentPlayer().getSchool().getHall().getLine(Color.GREEN).getStudents().getLast().getId());
-            ControllerHandler.getInstance().write(ingressCardSwap);
-            ControllerHandler.getInstance().setMessageMethodIngressCard(new IngressCardSwap());
+            if(game.getCurrentRound().getId()==0) {
+                IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
+                ingressCardSwap.setStudentIngress(game.getCurrentPlayer().getSchool().getHall().getLine(Color.GREEN).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(ingressCardSwap);
+                ControllerHandler.getInstance().setMessageMethodIngressCard(new IngressCardSwap());
+            }
+            if(game.getCurrentRound().getId()==1 && !game.getCurrentPlayer().getSchool().getHall().getLine(Color.GREEN).getStudents().isEmpty() && studentOnRound!=null) {
+                MessageMethod messageMethod = new IngressHallSwap();
+                ((IngressHallSwap) messageMethod).setStudentIngress(studentOnRound.getId());
+                ((IngressHallSwap) messageMethod).setStudentHall(game.getCurrentPlayer().getSchool().getHall().getLine(Color.GREEN).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(messageMethod);
+            }
         }else { if (studentMoving != null) {
                 switch (studentMoving) {
                     case GREEN -> {
@@ -815,50 +830,113 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     public void clikOnRedLine(MouseEvent mouseEvent) {
-        if(studentMoving!=null) {
-            switch (studentMoving) {
-                case RED -> {
-                    ControllerHandler.getInstance().write(studentOnHall);
-                    studentOnHall = new MovingStudentsFromIngressToHall();
-                }
+        if (game.getCurrentRound().getId()!=null) {
+            if (game.getCurrentRound().getId()==0) {
+                IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
+                ingressCardSwap.setStudentIngress(game.getCurrentPlayer().getSchool().getHall().getLine(Color.RED).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(ingressCardSwap);
+                ControllerHandler.getInstance().setMessageMethodIngressCard(new IngressCardSwap());
+            }
+            if (game.getCurrentRound().getId()==1 && !game.getCurrentPlayer().getSchool().getHall().getLine(Color.RED).getStudents().isEmpty() && studentOnRound != null) {
+                MessageMethod messageMethod = new IngressHallSwap();
+                ((IngressHallSwap) messageMethod).setStudentIngress(studentOnRound.getId());
+                ((IngressHallSwap) messageMethod).setStudentHall(game.getCurrentPlayer().getSchool().getHall().getLine(Color.RED).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(messageMethod);
+            }
 
+        } else {
+            if (studentMoving != null) {
+                switch (studentMoving) {
+                    case RED -> {
+                        ControllerHandler.getInstance().write(studentOnHall);
+                        studentOnHall = new MovingStudentsFromIngressToHall();
+                    }
+
+                }
             }
         }
     }
 
     public void clikOnYellowLine(MouseEvent mouseEvent) {
+        if (game.getCurrentRound().getId()!=null){
+            if(game.getCurrentRound().getId()==0){
+                IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
+                ingressCardSwap.setStudentIngress(game.getCurrentPlayer().getSchool().getHall().getLine(Color.YELLOW).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(ingressCardSwap);
+                ControllerHandler.getInstance().setMessageMethodIngressCard(new IngressCardSwap());
+            }
+            if(game.getCurrentRound().getId()==1 && !game.getCurrentPlayer().getSchool().getHall().getLine(Color.YELLOW).getStudents().isEmpty() && studentOnRound!=null) {
+                MessageMethod messageMethod = new IngressHallSwap();
+                ((IngressHallSwap) messageMethod).setStudentIngress(studentOnRound.getId());
+                ((IngressHallSwap) messageMethod).setStudentHall(game.getCurrentPlayer().getSchool().getHall().getLine(Color.YELLOW).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(messageMethod);
+            }
+        }else {
+            if (studentMoving != null) {
+                switch (studentMoving) {
+                    case YELLOW -> {
+                        ControllerHandler.getInstance().write(studentOnHall);
+                        studentOnHall = new MovingStudentsFromIngressToHall();
+                    }
 
-        if(studentMoving!=null) {
-            switch (studentMoving) {
-                case YELLOW -> {
-                    ControllerHandler.getInstance().write(studentOnHall);
-                    studentOnHall = new MovingStudentsFromIngressToHall();
                 }
-
             }
         }
     }
 
     public void clikOnPinkLine(MouseEvent mouseEvent) {
-        if(studentMoving!=null) {
-            switch (studentMoving) {
-                case PINK -> {
-                    ControllerHandler.getInstance().write(studentOnHall);
-                    studentOnHall = new MovingStudentsFromIngressToHall();
-                }
-
+        if (game.getCurrentRound().getId()!=null){
+            if (game.getCurrentRound().getId()==0) {
+                IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
+                ingressCardSwap.setStudentIngress(game.getCurrentPlayer().getSchool().getHall().getLine(Color.PINK).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(ingressCardSwap);
+                ControllerHandler.getInstance().setMessageMethodIngressCard(new IngressCardSwap());
+             }
+            if(game.getCurrentRound().getId()==1 && !game.getCurrentPlayer().getSchool().getHall().getLine(Color.PINK).getStudents().isEmpty() && studentOnRound!=null) {
+                MessageMethod messageMethod = new IngressHallSwap();
+                ((IngressHallSwap) messageMethod).setStudentIngress(studentOnRound.getId());
+                ((IngressHallSwap)messageMethod).setStudentHall(game.getCurrentPlayer().getSchool().getHall().getLine(Color.PINK).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(messageMethod);
             }
-        }
+
+        }else {
+                if (studentMoving != null) {
+                switch (studentMoving) {
+                    case PINK -> {
+                        ControllerHandler.getInstance().write(studentOnHall);
+                        studentOnHall = new MovingStudentsFromIngressToHall();
+                        }
+
+
+                }
+                }
+            }
     }
 
     public void clikOnBlueLine(MouseEvent mouseEvent) {
-        if(studentMoving!=null) {
-            switch (studentMoving) {
-                case BLUE -> {
-                    ControllerHandler.getInstance().write(studentOnHall);
-                    studentOnHall = new MovingStudentsFromIngressToHall();
-                }
+        if (game.getCardManager().getCurrentCard().getId()!=null) {
+            if (game.getCurrentRound().getId()==0) {
+                IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
+                ingressCardSwap.setStudentIngress(game.getCurrentPlayer().getSchool().getHall().getLine(Color.BLUE).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(ingressCardSwap);
+                ControllerHandler.getInstance().setMessageMethodIngressCard(new IngressCardSwap());
+            }
+            if(game.getCurrentRound().getId()==1 && !game.getCurrentPlayer().getSchool().getHall().getLine(Color.BLUE).getStudents().isEmpty() && studentOnRound!=null) {
+                MessageMethod messageMethod = new IngressHallSwap();
+                ((IngressHallSwap) messageMethod).setStudentIngress(studentOnRound.getId());
+                ((IngressHallSwap)messageMethod).setStudentHall(game.getCurrentPlayer().getSchool().getHall().getLine(Color.BLUE).getStudents().getLast().getId());
+                ControllerHandler.getInstance().write(messageMethod);
+            }
+        }
+        else {
+            if (studentMoving != null) {
+                switch (studentMoving) {
+                    case BLUE -> {
+                        ControllerHandler.getInstance().write(studentOnHall);
+                        studentOnHall = new MovingStudentsFromIngressToHall();
+                    }
 
+                }
             }
         }
 
@@ -889,81 +967,85 @@ public class GuiActionPhaseController implements Initializable {
 
 
     public void clickOnIngress1(MouseEvent mouseEvent) {
-        if(game.getCurrentPlayer().getPlayerPhase()== PlayerPhase.MOVING_STUDENTS) {
-            ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getId());
-            studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getColor();
-        }else  if(game.getCurrentRound().getId()==1 ||game.getCurrentRound().getId()==1 )
+        if(game.getCurrentRound().getId()==null){
+            //Da controllare se nella CLI viene fatto il controllo se ci sono studenti nella hall
+            if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+                ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getId());
+                studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getColor();
+            }
+        }else   if(game.getCurrentRound().getId()==1)
         {
-            MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-            ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getId());
-            ControllerHandler.getInstance().write(messageMethod);
+            studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0);
+
         }
+
     }
 
     public void clickOnIngress2(MouseEvent mouseEvent) {
-        if(game.getCurrentPlayer().getPlayerPhase()== PlayerPhase.MOVING_STUDENTS) {
-            ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(1).getId());
-            studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(1).getColor();
-
-
-        }else  if(game.getCurrentRound().getId()==1 ||game.getCurrentRound().getId()==1 )
-
-        {
-        MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-        ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(1).getId());
-        ControllerHandler.getInstance().write(messageMethod);
-         }
+        if(game.getCurrentRound().getId()==null){
+            //Da controllare se nella CLI viene fatto il controllo se ci sono studenti nella hall
+            if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+                ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(1).getId());
+                studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(1).getColor();
+            }
+        }else   if(game.getCurrentRound().getId()==1)
+            {
+           studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0);
+            }
     }
 
     public void clickOnIngress3(MouseEvent mouseEvent) {
-        if(game.getCurrentPlayer().getSchool().getIngress().getStudents().size()>2) {
-            if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS && game.getCurrentRound().getId() == null ) {
-                ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(3).getId());
-                studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(2).getColor();
-            } else if (game.getCurrentRound().getId() == 1 ) {
-                MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-                ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(2).getId());
-                ControllerHandler.getInstance().write(messageMethod);
-            }
+        if (game.getCurrentRound().getId() == null) {
+            //Da controllare se nella CLI viene fatto il controllo se ci sono studenti nella hall
+                if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+                    ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(2).getId());
+                    studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(2).getColor();
+                }
+        } else if (game.getCurrentRound().getId() == 1 ) {
+                studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(2);
+
         }
     }
 
     public void clickOnIngress4(MouseEvent mouseEvent) {
-        if(game.getCurrentPlayer().getSchool().getIngress().getStudents().size()>3 ) {
-            if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS && game.getCurrentRound().getId() == null ) {
-
-                ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(3).getId());
-                studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(3).getColor();
-            } else if (game.getCurrentRound().getId() == 1 ) {
-                MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-                ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(3).getId());
-                ControllerHandler.getInstance().write(messageMethod);
-            }
-        }
+            if(game.getCurrentRound().getId()==null){
+                //Da controllare se nella CLI viene fatto il controllo se ci sono studenti nella hall
+                if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+                    ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(3).getId());
+                    studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(3).getColor();
+                }
+            }else   if(game.getCurrentRound().getId()==1)             {
+                studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(3);
+                }
     }
 
     public void clickOnIngress5(MouseEvent mouseEvent) {
         if(game.getCurrentPlayer().getSchool().getIngress().getStudents().size()>4) {
-            if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS && game.getCurrentRound().getId() == null) {
-                ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(4).getId());
-                studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(4).getColor();
-            } else if (game.getCurrentRound().getId() == 1 || game.getCurrentRound().getId() == 1) {
-                MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-                ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(4).getId());
-                ControllerHandler.getInstance().write(messageMethod);
+            if(game.getCurrentRound().getId()==null){
+                //Da controllare se nella CLI viene fatto il controllo se ci sono studenti nella hall
+                if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+                    ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(4).getId());
+                    studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(4).getColor();
+                }
+            }else   if(game.getCurrentRound().getId()==1 )
+            {
+               studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(4);
             }
         }
+
     }
 
     public void clickOnIngress6(MouseEvent mouseEvent) {
         if (game.getCurrentPlayer().getSchool().getIngress().getStudents().size() > 5) {
-            if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS && game.getCurrentRound().getId() == null) {
-                ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getId());
-                studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getColor();
-            } else if (game.getCurrentRound().getId() == 1 || game.getCurrentRound().getId() == 1) {
-                MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-                ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getId());
-                ControllerHandler.getInstance().write(messageMethod);
+            if(game.getCurrentRound().getId()==null){
+                //Da controllare se nella CLI viene fatto il controllo se ci sono studenti nella hall
+                if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS) {
+                    ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getId());
+                    studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getColor();
+                }
+            }else   if(game.getCurrentRound().getId()==1 && !game.getCurrentPlayer().getSchool().getHall().getLine(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getColor()).getStudents().isEmpty())
+            {
+                studentOnRound=(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5));
             }
         }
     }
@@ -974,9 +1056,7 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getId());
                 studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(6).getColor();
             } else if (game.getCurrentRound().getId() == 1 || game.getCurrentRound().getId() == 1 ) {
-                MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-                ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(6).getId());
-                ControllerHandler.getInstance().write(messageMethod);
+                studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(6);
             }
         }
     }
@@ -987,9 +1067,8 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getId());
                 studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(7).getColor();
             } else if (game.getCurrentRound().getId() == 1 || game.getCurrentRound().getId() == 1 ) {
-                MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-                ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(7).getId());
-                ControllerHandler.getInstance().write(messageMethod);
+              studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(7);
+
             }
         }
     }
@@ -1001,9 +1080,7 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getId());
                 studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(8).getColor();
             } else if (game.getCurrentRound().getId() == 1 || game.getCurrentRound().getId() == 1 ) {
-                MessageMethod messageMethod = new MovingStudentsFromIngressToHall();
-                ((MovingStudentsFromIngressToHall) messageMethod).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(8).getId());
-                ControllerHandler.getInstance().write(messageMethod);
+               studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(8);
             }
         }
     }
@@ -1045,5 +1122,9 @@ public class GuiActionPhaseController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    public void clickFinishExpertMove(MouseEvent mouseEvent) {
+        ControllerHandler.getInstance().write(new RoundEnd());
     }
 }

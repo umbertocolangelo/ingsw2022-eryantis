@@ -19,7 +19,7 @@ public class ControllerHandler {
     /**
      * Keep the reference of the message methode, useful for the expertCard implemented in Rounds
      */
-    private IngressCardSwap messageMethodIngressCard=new IngressCardSwap();
+    private IngressCardSwap messageMethodIngressCard;
 
     /**
      * Keep the reference to the expertCard played
@@ -165,7 +165,7 @@ public class ControllerHandler {
                 break;
             case PLAYING:
                 if(client.getGame().getCurrentRound().getId()!=null){
-                    if(!cardPlayed) {
+                    if(client.getGame().getCurrentRound().getId()==0) {
                         GuiChooseExpertCardController cardController = new GuiChooseExpertCardController();
                         Platform.runLater(() -> {
                             try {
@@ -175,30 +175,17 @@ public class ControllerHandler {
                                 e.printStackTrace();
                             }
                         });
-                    }else{
-                        if(client.getGame().getCurrentRound().getId()==0){
-                            GuiActionPhaseController controllerOnCard=new GuiActionPhaseController();
-                            Platform.runLater(() -> {
-                                try {
-                                    System.out.println("Change scene normal");
-                                    controllerOnCard.refresh();
-                                } catch (IOException e) {
-                                    e.printStackTrace();
-                                }
-                            });
-
-                        }
-                        GuiChooseStudentsOnCardController controllerOnCard=new GuiChooseStudentsOnCardController();
+                    }else   if(client.getGame().getCurrentRound().getId()==1){
+                        GuiActionPhaseController actionController = new GuiActionPhaseController();
                         Platform.runLater(() -> {
                             try {
-                                System.out.println("Change scene normal");
-                                controllerOnCard.refresh();
+                                actionController.refresh();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
                         });
+                }
 
-                    }
                 }else {
                     switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
                         case SET_UP_PHASE: //cambio scena da login a deck/color phase

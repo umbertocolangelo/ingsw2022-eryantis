@@ -140,7 +140,6 @@ public class GuiChooseStudentsOnCardController implements Initializable {
                 break;
             case "44":
                 //E necessario perche questa carta dura piu turni quindi tiene conto che dura di piu
-                ControllerHandler.getInstance().setFinishTurn(false);
                 expertCardId.setImage(new Image(cardSevenPath));
                 studentCard1.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(0)));
                 studentCard2.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(1)));
