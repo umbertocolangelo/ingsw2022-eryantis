@@ -14,6 +14,8 @@ import java.util.Scanner;
 import java.util.concurrent.Semaphore;
 
 public class Client {
+
+
     /**
      *
      */
@@ -77,7 +79,7 @@ public class Client {
     /**
      *
      */
-    private Boolean isCli = true;
+    private Boolean isCli = false;
 
     /**
      *
@@ -129,7 +131,10 @@ public class Client {
                             inputObject = socketIn.readObject();
                             System.out.println("Received something: " + inputObject);
                             if (!isCli) {
-                                if (inputObject instanceof SetUp) {
+                                if (inputObject instanceof ClientLost) {
+                                    ControllerHandler.getInstance().setClientState(ClientState.CLIENTLOST);
+                                    ControllerHandler.getInstance().chooseScene();
+                                }else if (inputObject instanceof SetUp) {
                                     ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
                                     ControllerHandler.getInstance().chooseScene();
                                 } else if (inputObject instanceof EqualName) {

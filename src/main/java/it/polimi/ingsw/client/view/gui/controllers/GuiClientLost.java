@@ -1,19 +1,16 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class GuiLoadingController {
-    /**
-     *
-     */
-    private Scene scene;
+public class GuiClientLost implements Initializable {
 
     /**
      *
@@ -21,24 +18,15 @@ public class GuiLoadingController {
     @FXML
     public AnchorPane scenePane;
 
-    /**
-     *
-     */
+
     @FXML
-    private Label loadingIndicator;
+    private Text clientLost;
 
-
-    /**
-     *
-     */
-    private Stage stage;
-
-    /**
-     *
-     */
-    public GuiLoadingController() {
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        clientLost.setText("The player " + ControllerHandler.getInstance().getNameClientLost() + " has been disconnected\n Game finished");
     }
+
 
     /**
      *
@@ -67,43 +55,4 @@ public class GuiLoadingController {
             //scenePane.setCenterShape(true);
         });
     }
-
-    /**
-     *
-     */
-    public void closeStage() {
-        this.stage.close();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Stage getStage() {
-        return stage;
-    }
-
-    /**
-     * Sets the label text and position when is not the player turn
-     */
-    public void setWaitText() {
-        loadingIndicator.setText("Waiting for your turn...");
-        loadingIndicator.setLayoutX(432);
-    }
-
-    public void clientLost() throws IOException {
-        stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/clientLost-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.setTitle("Eriantys");
-        stage.show();
-
-        GuiClientLost guiClientLost = fxmlLoader.getController();
-        guiClientLost.resize(stage, scene);
-    }
-
 }

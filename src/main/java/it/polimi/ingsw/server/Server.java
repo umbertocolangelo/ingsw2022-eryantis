@@ -2,10 +2,7 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.listener.PropertyObserver;
-import it.polimi.ingsw.message.ClientLost;
-import it.polimi.ingsw.message.MessageMethod;
-import it.polimi.ingsw.message.SetUp;
-import it.polimi.ingsw.message.StartGame;
+import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.utils.SavingManager;
@@ -21,8 +18,9 @@ public class Server {
 
     private LinkedList<Player> players = new LinkedList<>();
     private static final int PORT = 12345;
-    private ServerSocket serverSocket;private Map<String, SocketClientConnection> waitingConnection = new HashMap<>();
-    private Map<String, SocketClientConnection> playingConnection = new HashMap<>();
+    private ServerSocket serverSocket;
+    private LinkedList<SocketClientConnection> waitingConnection = new LinkedList<>();
+    private LinkedList<SocketClientConnection> playingConnection = new LinkedList<>();
     private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
     private Integer numberOfPlayer = 0;
     private Boolean gameMode; // true for expert mode, false for normal one
@@ -35,6 +33,10 @@ public class Server {
      */
     private Boolean playerIsDisconnetted=false;
 
+    /**
+     *Set true if the games has started
+     */
+    private Boolean gameHasStarted=false;
 
 //Qui socketClient chiama deregistiring client quando viene disconesso e manda un messaggio ai client che ci si e disconessi
 
@@ -43,18 +45,28 @@ public class Server {
      * @param c
      */
     public synchronized void deregisterConnection(SocketClientConnection c) {
-        playerIsDisconnetted=true;
-        for(SocketClientConnection clientConnection:socketConnections){
-            clientConnection.send(new ClientLost(clientConnection.getName()));
-        }
-        playingConnection.remove(c);
-        //playingConnection.remove(opponent);
-        Iterator<String> iterator = waitingConnection.keySet().iterator();
-        while (iterator.hasNext()) {
-            if (waitingConnection.get(iterator.next())==c) {
-                iterator.remove();
+        socketConnections.remove(c);
+        if(!playingConnection.isEmpty()) {
+            for (SocketClientConnection clientConnection : socketConnections) {
+                clientConnection.send(new ClientLost(clientConnection.getName()));
+            }
+        }else{
+            if(waitingConnection.contains(c)) {
+                socketConnections.remove(c);
+                waitingConnection.remove(c);
+            }
+            if(numberOfPlayer!=0 && !waitingConnection.isEmpty()){
+                waitingConnection.getFirst().send(new IsFirst());
             }
         }
+
+        //playingConnection.remove(opponent);
+       // Iterator<String> iterator = waitingConnection.keySet().iterator();
+        //while (iterator.hasNext()) {
+          //  if (waitingConnection.get(iterator.next())==c) {
+            //    iterator.remove();
+            //}
+        //}
     }
 
     /**
@@ -66,20 +78,18 @@ public class Server {
      */
     public synchronized void lobby(SocketClientConnection c, String name)
             throws IOException, ClassNotFoundException, InterruptedException {
-
-        List<String> keys = new ArrayList<>(waitingConnection.keySet());
-        System.out.println("New client " + name);
-        waitingConnection.put(name, c);
-        keys = new ArrayList<>(waitingConnection.keySet());
+        waitingConnection.add(c);
+        System.out.println("new client");
+        semaphore.release();
         if (waitingConnection.size()==numberOfPlayer) {
-            for (SocketClientConnection d : waitingConnection.values()) {
+            for (SocketClientConnection d : waitingConnection) {
                // if (isCLi){
                  //   d.send("Players arrived, starting game..");
               //  }
             }
 
-            SocketClientConnection c1 = waitingConnection.get(keys.get(0));
-            SocketClientConnection c2 = waitingConnection.get(keys.get(1));
+            SocketClientConnection c1 = waitingConnection.get(0);
+            SocketClientConnection c2 = waitingConnection.get(1);
 
             Player player1 = new Player(c1.getName());
             players.add(player1);
@@ -87,7 +97,7 @@ public class Server {
             players.add(player2);
 
             if (waitingConnection.size()==3) {
-                SocketClientConnection c3 = waitingConnection.get(keys.get(2));
+                SocketClientConnection c3 = waitingConnection.get(2);
                 Player player3 = new Player(c3.getName());
                 players.add(player3);
             }
@@ -100,7 +110,7 @@ public class Server {
             if(loadedGame!=null) { // if there is a save
                 game = loadedGame;
                 System.out.println("Previously saved game loaded");
-                playingConnection.putAll(waitingConnection);
+                playingConnection.addAll(waitingConnection);
                 waitingConnection.clear();
                 sendGame();
             } else {
@@ -113,7 +123,7 @@ public class Server {
 
                 Thread t1 = new Thread( modifyGame(messageMethod));
                 t1.join();
-                playingConnection.putAll(waitingConnection);
+                playingConnection.addAll(waitingConnection);
                 waitingConnection.clear();
             }
         }
@@ -141,15 +151,10 @@ public class Server {
                 connections++;
                 System.out.println("Ready for the new connection - " + connections);
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
-                if (socketConnections.isEmpty())
-                    socketConnection.setIsFirst();
-
                 socketConnections.add(socketConnection);
-
                 Thread t0 = new Thread(socketConnection);
                 //semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
                 t0.start();
-
                 //  } catch (IOException e) {
                 System.out.println("Seee!");
 
@@ -188,7 +193,7 @@ public class Server {
      */
     public void sendGame(){
         System.out.println("Sending game to clients");
-            for (SocketClientConnection c : playingConnection.values()) {
+            for (SocketClientConnection c : playingConnection) {
                 c.send(game);
         }
     }
@@ -231,6 +236,18 @@ public class Server {
 
     public void setSemaphore(Semaphore semaphore) {
         this.semaphore = semaphore;
+    }
+
+    /**
+     *
+     * @param c The socket client that will be removed from the waiting in the lobby
+     */
+    public void removeWaitingConnection(SocketClientConnection c){
+        waitingConnection.remove(c);
+    }
+
+    public LinkedList<SocketClientConnection> getWaitingConnection(){
+        return this.waitingConnection;
     }
 }
 

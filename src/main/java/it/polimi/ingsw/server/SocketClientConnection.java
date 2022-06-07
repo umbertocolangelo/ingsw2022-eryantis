@@ -100,6 +100,7 @@ public class SocketClientConnection implements Runnable {
     private void close() {
 
         closeConnection();
+        server.getSemaphore().release();
         System.out.println("Deregistering client...");
         server.deregisterConnection(this);
         System.out.println("Done!");
@@ -120,6 +121,10 @@ public class SocketClientConnection implements Runnable {
             //si  sincronizza con il send
 
             server.getSemaphore().acquire();
+
+            if (server.getWaitingConnection().isEmpty()){
+                isFirst=true;
+            }
             send(setup);
             String read = (String) in.readObject();
             read = read.toUpperCase();
@@ -135,8 +140,6 @@ public class SocketClientConnection implements Runnable {
             name = read;
             send(new SetName(name));
 
-
-
             if(isFirst) {
                 System.out.println("Sendign is first");
                 send(new IsFirst());
@@ -145,7 +148,7 @@ public class SocketClientConnection implements Runnable {
                 server.setGameMode(isFirst.getGameMode());
                 server.setNumberOfPlayer(isFirst.getPlayers());
             }
-            server.getSemaphore().release();
+
             server.lobby(this, name);
 
             while (isActive()) {

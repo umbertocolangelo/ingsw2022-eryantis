@@ -15,14 +15,20 @@ public class ControllerHandler {
     /**
      *
      */
-    private Boolean cardNeedIsland=false;
+    private String nameClientLost;
+
     /**
-     *
+     *Set true when a cadr that needs an island as parameter has been played
+     */
+    private Boolean cardNeedIsland=false;
+
+    /**
+     *Not used
      */
     private Boolean finishTurn=false;
 
     /**
-     *
+     *Message method student To Island
      */
     private StudentToIsland studentToIsland;
 
@@ -147,6 +153,17 @@ public class ControllerHandler {
      */
     public void chooseScene() throws IOException {
         switch (clientState) {
+            case CLIENTLOST:
+                nameClientLost=client.getNamePLayerLost();
+                GuiLoadingController loadingController=new GuiLoadingController();
+                Platform.runLater(() -> {
+                    try {
+                        loadingController.clientLost();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                break;
             case LOGIN:
                 GuiMain guiMain = new GuiMain();
                 guiMain.launchApp();
@@ -366,5 +383,9 @@ public class ControllerHandler {
 
     public void setCardNeedIsland(Boolean cardNeedIsland) {
         this.cardNeedIsland = cardNeedIsland;
+    }
+
+    public String getNameClientLost() {
+        return nameClientLost;
     }
 }
