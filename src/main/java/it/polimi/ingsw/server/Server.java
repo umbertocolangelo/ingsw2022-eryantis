@@ -174,7 +174,6 @@ public class Server {
      * @return  boolean     True if the name is not already chosen, false instead
      */
     public Boolean equalName(String username,Boolean isFirst) {
-        //return true; //Serve per la GUI adesso non possiamo ancora mandare i giusti messaggi
         if(isFirst)
             return false;
         for (int i = 0; i<socketConnections.size()-1; i++) {
