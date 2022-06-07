@@ -29,7 +29,7 @@
          </font>
       </Label>
       <Button fx:id="player1" layoutX="151.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer0" prefHeight="90.0" prefWidth="226.0" text="Button" />
-      <Button fx:id="player3" layoutX="527.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer3" prefHeight="90.0" prefWidth="226.0" text="Button" />
-      <Button fx:id="player2" layoutX="900.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer2" prefHeight="90.0" prefWidth="226.0" text="Button" />
+      <Button fx:id="player3" layoutX="527.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer2" prefHeight="90.0" prefWidth="226.0" text="Button" />
+      <Button fx:id="player2" layoutX="900.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer1" prefHeight="90.0" prefWidth="226.0" text="Button" />
    </children>
 </AnchorPane>

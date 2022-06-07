@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -122,6 +123,14 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     @FXML
     private ImageView expertCard3;
+    @FXML
+    private Text coins;
+    @FXML
+    private Text costCard1;
+    @FXML
+    private Text costCard2;
+    @FXML
+    private Text costCard3;
 
     /**
      * go back to action phase
@@ -292,6 +301,10 @@ public class GuiChooseExpertCardController implements Initializable {
         setImageExpertCard(game.getCardManager().getDeck().get(0).getId(),expertCard1);
         setImageExpertCard(game.getCardManager().getDeck().get(1).getId(),expertCard2);
         setImageExpertCard(game.getCardManager().getDeck().get(2).getId(),expertCard3);
+        coins.setText("You have " + game.getCurrentPlayer().getCoins() + " coins");
+        costCard1.setText("Cost: " + game.getCardManager().getDeck().get(0).getCost());
+        costCard2.setText("Cost: " + game.getCardManager().getDeck().get(1).getCost());
+        costCard3.setText("Cost: " + game.getCardManager().getDeck().get(2).getCost());
     }
 
     /**

@@ -31,7 +31,7 @@
             <Font name="Book Antiqua Bold Italic" size="24.0" />
          </font>
       </Button>
-      <Text fx:id="coins" layoutX="99.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have 5 coins" wrappingWidth="397.7294921875">
+      <Text fx:id="coins" layoutX="99.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="397.7294921875">
          <font>
             <Font size="44.0" />
          </font>

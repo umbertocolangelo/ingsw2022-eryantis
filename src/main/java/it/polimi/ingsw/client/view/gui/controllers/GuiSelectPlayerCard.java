@@ -51,21 +51,23 @@ public class GuiSelectPlayerCard implements Initializable {
 
 
     public void clickSelectPlayer(MouseEvent mouseEvent) {
-        MessageMethod playExpertCard=new PlayExpertCard();
-        ((PlayExpertCard)playExpertCard).setExpertCard("45");
-        ((PlayExpertCard)playExpertCard).setParameter(player);
-        ControllerHandler.getInstance().write(playExpertCard);
+        if(player!=null) {
+            MessageMethod playExpertCard = new PlayExpertCard();
+            ((PlayExpertCard) playExpertCard).setExpertCard("45");
+            ((PlayExpertCard) playExpertCard).setParameter(player);
+            ControllerHandler.getInstance().write(playExpertCard);
+        }
     }
 
     public void clickPlayer0(MouseEvent mouseEvent) {
         player=game.getPlayerList().get(0).getId();
     }
 
-    public void clickPlayer3(MouseEvent mouseEvent) {
-        player=game.getPlayerList().get(1).getId();
-    }
-
     public void clickPlayer2(MouseEvent mouseEvent) {
         player=game.getPlayerList().get(2).getId();
+    }
+
+    public void clickPlayer1(MouseEvent mouseEvent) {
+        player=game.getPlayerList().get(1).getId();
     }
 }

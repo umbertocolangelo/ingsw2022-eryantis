@@ -11,11 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -582,7 +582,7 @@ public class GuiActionPhaseController implements Initializable {
      *
      */
     @FXML
-    private Label communication;
+    private Text communication;
 
     /**
      *
@@ -752,6 +752,7 @@ public class GuiActionPhaseController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         //switch (game.getCurrentPlayer().)
         game = ControllerHandler.getInstance().getClient().getGame();
+        ControllerHandler.getInstance().setCardPlayed(false);
         MotherNature motherNature = game.getMotherNature();
         if (game.getGameMode()==false || game.getCardManager().getCurrentCard()!=null && ControllerHandler.getInstance().getFinishTurn()) {
             expertCardButton.setVisible(false);
@@ -843,6 +844,12 @@ public class GuiActionPhaseController implements Initializable {
                case 3:
                    communication.setText("You are in student on card round");
                    break;
+           }
+       }
+
+       if(ControllerHandler.getInstance().getIdExpertCardPlayed()!=null){
+           if(ControllerHandler.getInstance().getIdExpertCardPlayed().equals("40") ||ControllerHandler.getInstance().getIdExpertCardPlayed().equals("42") ){
+               communication.setText("You selected a card that needs an island as parameter, pick an island");
            }
        }
 
