@@ -76,7 +76,7 @@ public class Client {
     /**
      *
      */
-    private Boolean isCli=false;
+    private Boolean isCli = false;
 
     /**
      *
@@ -113,9 +113,7 @@ public class Client {
      */
     private Semaphore semaphore = new Semaphore(1);
 
-
     /**
-     *
      * @param socketIn The inputStream
      * @return Thread  Return the thread who will keep read and once he read it will run the controller and wait for his termination
      */
@@ -126,68 +124,62 @@ public class Client {
                 synchronized (this) {
                     try {
                         while (isActive()) {
-                            System.out.println("ready to receive");
+                            System.out.println("Ready to receive");
                             inputObject = socketIn.readObject();
-                            System.out.println("received something" + inputObject);
+                            System.out.println("Received something: " + inputObject);
 
-                            if(!isCli){
-
-                            if (inputObject instanceof SetUp) {
+                            if (!isCli) {
+                                if (inputObject instanceof SetUp) {
                                     ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
                                     ControllerHandler.getInstance().chooseScene();
-                                }
-                            else if(inputObject instanceof EqualName){
-                                ControllerHandler.getInstance().setClientState(ClientState.EQUALNAME);
-                                ControllerHandler.getInstance().chooseScene();
-                            }
-                           else if (inputObject instanceof IsFirst){
-                                System.out.println("isFirst");
-                                ControllerHandler.getInstance().setClientState(ClientState.ISFIRST);
-                                ControllerHandler.getInstance().chooseScene();
-                            }
-                            else if (inputObject instanceof SetName) {
-                                System.out.println("setName");
-                                namePlayer = ((SetName) inputObject).getName();
-                            }
-                            else if (inputObject instanceof Game) {
-                                game = (Game) inputObject;
-                                System.out.println("Client received Game.");
-                            if (game.getCurrentPlayer().getName().equals(namePlayer)) {
-                                ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
-                                ControllerHandler.getInstance().chooseScene();
-                                }
-                            }
-                        }else {
-                            if (inputObject instanceof String) {
-                                System.out.println((String) inputObject);
-                            } else if (inputObject instanceof Game) {
-                                game = (Game) inputObject;
-                                System.out.println("Client received Game.");
-                                if (game.getCurrentPlayer().getName().equals(namePlayer))
-                                    controller.setClientState(ClientState.PLAYING);
-                                    controller.run();
-                            } else if (inputObject instanceof SetUp) {
-                                System.out.println("Set Up received.");
-                                controller.setClientState(ClientState.LOGIN);
-                                controller.run();
-                            } else if(inputObject instanceof EqualName){
-                                System.out.println("Set Up received.");
-                                controller.setClientState(ClientState.EQUALNAME);
-                                controller.run();
-                            } else if (inputObject instanceof SetName) {
-                                namePlayer = ((SetName) inputObject).getName();
-                            }
-                            else if(inputObject instanceof  IsFirst){
-                                controller.setClientState(ClientState.ISFIRST);
-                                controller.run();
-                            }
-                            else {
-                                throw new IllegalArgumentException();
-                            }
-                        }
+                                } else if (inputObject instanceof EqualName) {
+                                    ControllerHandler.getInstance().setClientState(ClientState.EQUALNAME);
+                                    ControllerHandler.getInstance().chooseScene();
+                                } else if (inputObject instanceof IsFirst) {
+                                    System.out.println("isFirst");
+                                    ControllerHandler.getInstance().setClientState(ClientState.ISFIRST);
+                                    ControllerHandler.getInstance().chooseScene();
+                                } else if (inputObject instanceof SetName) {
+                                    System.out.println("setName");
+                                    namePlayer = ((SetName) inputObject).getName();
+                                } else if (inputObject instanceof Game) {
+                                    game = (Game) inputObject;
+                                    System.out.println("Client received Game.");
 
+                                    if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                        ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
+                                        ControllerHandler.getInstance().chooseScene();
+                                    }
+                                }
+                            } else {
+                                if (inputObject instanceof String) {
+                                    System.out.println((String) inputObject);
+                                } else if (inputObject instanceof Game) {
+                                    game = (Game) inputObject;
+                                    System.out.println("Client received Game");
+                                    if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                        controller.setClientState(ClientState.PLAYING);
+                                        controller.run();
+                                    } else if (inputObject instanceof SetUp) {
+                                        System.out.println("Set Up received");
+                                        controller.setClientState(ClientState.LOGIN);
+                                        controller.run();
+                                    } else if (inputObject instanceof EqualName) {
+                                        System.out.println("Set Up received");
+                                        controller.setClientState(ClientState.EQUALNAME);
+                                        controller.run();
+                                    } else if (inputObject instanceof SetName) {
+                                        namePlayer = ((SetName) inputObject).getName();
+                                    } else if (inputObject instanceof IsFirst) {
+                                        controller.setClientState(ClientState.ISFIRST);
+                                        controller.run();
+                                    } else {
+                                        throw new IllegalArgumentException();
+                                    }
+                                }
+                            }
                         }
-                    } catch (Exception e) {
+                    } catch(Exception e) {
                         setActive(false);
                     }
                 }
@@ -209,15 +201,13 @@ public class Client {
         socketOut = new ObjectOutputStream(socket.getOutputStream());
         stdin = new Scanner(System.in);
         controller = new Controller(this);
-       ControllerHandler.getInstance().setClient(this);
+        ControllerHandler.getInstance().setClient(this);
 
 
         try {
             Thread t0 = asyncReadFromSocket(socketIn);
-           // Thread t1 = asyncWriteToSocket(stdin, socketOut);
 
             t0.join();
-            //t1.join();
 
         } catch (InterruptedException | NoSuchElementException e) {
             System.out.println("Connection closed from the client side");
@@ -234,7 +224,9 @@ public class Client {
      *
      * @return stdIn        The scanner of the keyboard
      */
-    public Scanner getScanner() { return stdin; }
+    public Scanner getScanner() {
+        return stdin;
+    }
 
     /**
      *
@@ -248,14 +240,14 @@ public class Client {
      *
      * @return socketOut        The inputStream
      */
-    public ObjectOutputStream getIn(){
+    public ObjectOutputStream getIn() {
         return socketOut;
     }
 
     /**
      *
      */
-    public ObjectInputStream getOUt(){
+    public ObjectInputStream getOUt() {
         return this.socketIn;
     }
 
@@ -263,11 +255,8 @@ public class Client {
      *
      * @return game     The refrence to the game in the client
      */
-    public Game getGame(){
+    public Game getGame() {
         return this.game;
     }
-
-
-
 
 }

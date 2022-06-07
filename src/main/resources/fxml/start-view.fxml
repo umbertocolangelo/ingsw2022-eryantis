@@ -7,27 +7,31 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="450.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiStartController">
+<AnchorPane fx:id="spane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiStartController">
    <children>
-      <ImageView fitHeight="450.0" fitWidth="800.0" layoutX="-1.0" opacity="0.9">
-         <image>
-            <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
-         </image>
-      </ImageView>
-      <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="175.0" layoutY="122.0" lineSpacing="1.0" opacity="0.7" text="Welcome to the magic world of . . ." textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font name="Book Antiqua Bold" size="30.0" />
-         </font>
-      </Label>
-      <Button layoutX="364.0" layoutY="361.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Next">
-         <font>
-            <Font name="Book Antiqua Bold Italic" size="20.0" />
-         </font>
-      </Button>
-      <Label layoutX="222.0" layoutY="162.0" text="Eriantys" textFill="WHITE">
-         <font>
-            <Font name="Book Antiqua Bold" size="100.0" />
-         </font>
-      </Label>
+      <AnchorPane fx:id="scenePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <ImageView fitHeight="720.0" fitWidth="1280.0" opacity="0.9" pickOnBounds="true">
+               <image>
+                  <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
+               </image>
+            </ImageView>
+            <Label alignment="BOTTOM_CENTER" contentDisplay="CENTER" layoutX="403.0" layoutY="276.0" lineSpacing="1.0" opacity="0.7" text="Welcome to the magic world of . . ." textAlignment="CENTER" textFill="WHITE" wrapText="true">
+               <font>
+                  <Font name="Book Antiqua Bold" size="30.0" />
+               </font>
+            </Label>
+            <Button layoutX="591.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Next">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="20.0" />
+               </font>
+            </Button>
+            <Label layoutX="449.0" layoutY="315.0" text="Eriantys" textFill="WHITE">
+               <font>
+                  <Font name="Book Antiqua Bold" size="100.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

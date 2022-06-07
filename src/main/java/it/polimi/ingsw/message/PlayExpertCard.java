@@ -5,6 +5,7 @@ import it.polimi.ingsw.model.Game;
 import java.io.Serializable;
 
 public class PlayExpertCard implements Serializable,MessageMethod {
+
     /**
      * Id of the expertCArd played
      */
@@ -13,13 +14,14 @@ public class PlayExpertCard implements Serializable,MessageMethod {
     /**
      *
      */
-    private String parameter=null;
+    private String parameter = null;
+
     /**
      * @param game
      */
     @Override
     public void apply(Game game) {
-        game.playExpertCard(expertCard,parameter);
+        game.playExpertCard(expertCard, parameter);
     }
 
     /**
@@ -27,12 +29,15 @@ public class PlayExpertCard implements Serializable,MessageMethod {
      * @param expert
      */
     public void setExpertCard(String expert){
-        this.expertCard=expert;
+        this.expertCard = expert;
     }
 
-
+    /**
+     *
+     * @param object
+     */
     public void setParameter(String object){
-        parameter=object;
+        parameter = object;
     }
 
 }

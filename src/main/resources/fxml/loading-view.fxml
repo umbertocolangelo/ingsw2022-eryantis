@@ -7,19 +7,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane  fx:id="scenePane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiLoadingController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiLoadingController">
    <children>
-      <ImageView fitHeight="720.0" fitWidth="1280.0" opacity="0.5">
-         <image>
-            <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
-         </image>
-      </ImageView>
-      <Label layoutX="536.0" layoutY="308.0" text="Loading . . .">
-         <font>
-            <Font name="Book Antiqua Bold Italic" size="40.0" />
-         </font>
-      </Label>
-      <ProgressIndicator layoutX="583.0" layoutY="370.0" />
+      <AnchorPane fx:id="scenePane" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <ImageView fx:id="background" fitHeight="720.0" fitWidth="1280.0" opacity="0.5">
+               <image>
+                  <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
+               </image>
+            </ImageView>
+            <ProgressIndicator fx:id="progressIndicator" layoutX="614.0" layoutY="378.0" />
+            <Label fx:id="loadingIndicator" layoutX="566.0" layoutY="334.0" text="Loading">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="40.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

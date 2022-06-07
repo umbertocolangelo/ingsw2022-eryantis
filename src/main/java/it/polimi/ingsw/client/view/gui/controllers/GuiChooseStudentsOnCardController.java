@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -28,13 +29,13 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     private String greenPath = "file:src/main/resources/Graphical_Assets/pawns/student_green.png";
     private String pinkPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
 
-    private String cardOnePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front1.jpg"; //StudentOn ISland
-    private String cardElevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front10.jpg";//Student to hall
-    private String cardSevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front6.jpg";//Ingress cardswap
+    private String cardOnePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front1.jpg"; //StudentOnIsland
+    private String cardElevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front10.jpg"; //Student to hall
+    private String cardSevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front6.jpg"; //Ingress cardswap
 
-/**
- *
- */
+    /**
+     *
+     */
     private Stage stage;
     /**
      *
@@ -64,6 +65,8 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      */
     private  String idExpertCard;
 
+    @FXML
+    private AnchorPane scenePane;
 
     @FXML
     private ImageView expertCardId;
@@ -80,9 +83,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     @FXML
     private ImageView studentCard6;
 
-
     /**
-     *
      * @param student
      * @return
      */
@@ -148,13 +149,9 @@ public class GuiChooseStudentsOnCardController implements Initializable {
                 studentCard5.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(2)));
                 studentCard6.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(3)));
         }
-
-
     }
 
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-
-
         switch (idExpertCard){
             case "38":
                ControllerHandler.getInstance().setStudentToIsland(messageMethodIsland);
@@ -176,11 +173,17 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      *
      */
     public void changeToAction() throws IOException {
-        stage = ControllerHandler.getInstance().getStage();
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
+
+        GuiActionPhaseController actionController = fxmlLoader.getController();
+        actionController.resize(stage, scene);
     }
 
     /**
@@ -197,7 +200,6 @@ public class GuiChooseStudentsOnCardController implements Initializable {
                 break;
             case "44":
                 ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(0).getId());
-
         }
     }
 
@@ -288,6 +290,32 @@ public class GuiChooseStudentsOnCardController implements Initializable {
         stage.show();
     }
 
+    /**
+     *
+     */
+    public void resize(Stage stage, Scene scene) {
+        double height = stage.getHeight();
+        double width = stage.getWidth();
 
+        stage.setMinHeight(450);
+        stage.setMinWidth(800);
+
+        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
+        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
+
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleX = newVal.doubleValue()/width;
+            scenePane.setScaleX(scaleX);
+            scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
+            //scenePane.setCenterShape(true);
+        });
+
+        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleY = newVal.doubleValue()/height;
+            scenePane.setScaleY(scaleY);
+            scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
+            //scenePane.setCenterShape(true);
+        });
+    }
 
 }

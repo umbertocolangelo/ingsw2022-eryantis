@@ -7,7 +7,6 @@ import it.polimi.ingsw.model.enumerations.AssistantCard;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
@@ -28,27 +27,69 @@ public class GuiPianificationPhaseController implements Initializable {
     @FXML
     private AnchorPane scenePane;
 
-
+    /**
+     *
+     */
     @FXML
     private ImageView card1;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card2;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card3;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card4;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card5;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card6;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card7;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card8;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card9;
+
+    /**
+     *
+     */
     @FXML
     private ImageView card10;
+
+    /**
+     *
+     */
     @FXML
     private Label label;
 
@@ -166,14 +207,23 @@ public class GuiPianificationPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-        if(assistantCard==null)
+        if(assistantCard==null) {
             label.setText("You must select an assistant card");
+        }
         else {
-            stage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            stage = new Stage();
+            ControllerHandler.getInstance().getStage().close();
+            ControllerHandler.setStage(stage);
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
             scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setScene(scene);
+            stage.setTitle("Eriantys");
             stage.show();
+
+            GuiLoadingController loadingController = fxmlLoader.getController();
+            loadingController.resize(stage, scene);
+
             MessageMethod messageMethod = new ChoosingAssistant();
             ((ChoosingAssistant) messageMethod).setAssistantCard(assistantCard);
             ControllerHandler.getInstance().write(messageMethod);
@@ -185,12 +235,18 @@ public class GuiPianificationPhaseController implements Initializable {
      * @throws IOException
      */
     public void changeScene() throws IOException {
-        ControllerHandler.getInstance().setCardPlayed(false);
-        stage= ControllerHandler.getInstance().getStage();
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
+        stage.setTitle("Eriantys");
         stage.show();
+
+        GuiActionPhaseController actionController = fxmlLoader.getController();
+        actionController.resize(stage, scene);
     }
 
     /**
@@ -213,50 +269,94 @@ public class GuiPianificationPhaseController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(ControllerHandler.getInstance().getCardPlayed()==true)
+        if (ControllerHandler.getInstance().getCardPlayed()==true) {
             label.setText("You played a card that has been already played, pick another one");
+        }
         ControllerHandler.getInstance().setCardPlayed(true);
-        Game game= ControllerHandler.getInstance().getClient().getGame();
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.ONE_CARD)){
+        Game game = ControllerHandler.getInstance().getClient().getGame();
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.ONE_CARD)) {
             card1.setVisible(false);
             card1.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.TWO_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.TWO_CARD)) {
             card2.setVisible(false);
             card2.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.THREE_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.THREE_CARD)) {
             card3.setVisible(false);
             card3.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.FOUR_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.FOUR_CARD)) {
             card4.setVisible(false);
             card4.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.FIVE_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.FIVE_CARD)) {
             card5.setVisible(false);
             card5.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SIX_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SIX_CARD)) {
             card6.setVisible(false);
             card6.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)) {
             card7.setVisible(false);
             card7.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)) {
             card8.setVisible(false);
             card8.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)) {
             card9.setVisible(false);
             card9.setDisable(false);
         }
-        if(!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)){
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)) {
             card10.setVisible(false);
             card10.setDisable(false);
         }
-
     }
+
+    /**
+     *
+     */
+    public void resize(Stage stage, Scene scene) {
+        double height = stage.getHeight();
+        double width = stage.getWidth();
+
+        stage.setMinHeight(450);
+        stage.setMinWidth(800);
+
+        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
+        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
+
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleX = newVal.doubleValue()/width;
+            scenePane.setScaleX(scaleX);
+            scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
+            //scenePane.setCenterShape(true);
+        });
+
+        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleY = newVal.doubleValue()/height;
+            scenePane.setScaleY(scaleY);
+            scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
+            //scenePane.setCenterShape(true);
+        });
+    }
+
+    /**
+     *
+     */
+    public void closeStage() {
+        this.stage.close();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Stage getStage() {
+        return stage;
+    }
+
 }

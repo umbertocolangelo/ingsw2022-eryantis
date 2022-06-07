@@ -302,19 +302,21 @@ public class GuiActionPhaseController implements Initializable {
 
     /**
      *
-     */
-    private AnchorPane anchorPane;
-
-    /**
-     *
      * @throws IOException
      */
     public void changeScene() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/pianificationPhase-view.fxml"));
-        stage = ControllerHandler.getInstance().getStage();
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
+        stage.setTitle("Eriantys");
         stage.show();
+
+        GuiActionPhaseController pianController = fxmlLoader.getController();
+        pianController.resize(stage, scene);
     }
 
     public Image getColorStudent(Student student) {
@@ -400,7 +402,8 @@ public class GuiActionPhaseController implements Initializable {
                 idIsland=37;
                 break;
         }
-       /**
+
+       /*
        island.add(island1);
         island.add(island2);
        island.add(island3);
@@ -446,16 +449,16 @@ public class GuiActionPhaseController implements Initializable {
                 student4Cloud2.setImage(getColorStudent(game.getClouds().get(1).getStudents().get(3)));
 
         }
-          if(game.getPlayerList().size()==3) {
-              if (!game.getClouds().get(2).getStudents().isEmpty()) {
-
-                  student1Cloud3.setImage(getColorStudent(game.getClouds().get(2).getStudents().get(0)));
-                  student2Cloud3.setImage(getColorStudent(game.getClouds().get(2).getStudents().get(1)));
-                  student3Cloud3.setImage(getColorStudent(game.getClouds().get(2).getStudents().get(2)));
-                  student4Cloud3.setImage(getColorStudent(game.getClouds().get(2).getStudents().get(3)));
-              }
-          } else
+        if (game.getPlayerList().size()==3) {
+            if (!game.getClouds().get(2).getStudents().isEmpty()) {
+                student1Cloud3.setImage(getColorStudent(game.getClouds().get(2).getStudents().get(0)));
+                student2Cloud3.setImage(getColorStudent(game.getClouds().get(2).getStudents().get(1)));
+                student3Cloud3.setImage(getColorStudent(game.getClouds().get(2).getStudents().get(2)));
+                student4Cloud3.setImage(getColorStudent(game.getClouds().get(2).getStudents().get(3)));
+            }
+        } else {
             cloud3.setImage(null);
+        }
 
         // populating the hallLists
         hallLists.put(Color.YELLOW, studentsHallYellow);
@@ -530,9 +533,6 @@ public class GuiActionPhaseController implements Initializable {
         studentsHallPink.add(studentHallPink9);
         studentsHallPink.add(studentHallPink10);
 
-
-
-
         // show students in ingress
         for(int i = 0; i < game.getCurrentPlayer().getSchool().getIngress().getStudents().size(); i++){
             switch (game.getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor()) {
@@ -555,7 +555,6 @@ public class GuiActionPhaseController implements Initializable {
         }
 
         // show students in green hall
-
         for(Color color : Color.values()){
             for(int i = 0; i < game.getCurrentPlayer().getSchool().getHall().getLine(color).getStudents().size(); i++){
                 switch (color) {
@@ -594,7 +593,6 @@ public class GuiActionPhaseController implements Initializable {
 
        }
        return jumps;
-
     }
 
     public void clickIsland1(MouseEvent mouseEvent) {
@@ -849,7 +847,6 @@ public class GuiActionPhaseController implements Initializable {
                         ControllerHandler.getInstance().write(studentOnHall);
                         studentOnHall = new MovingStudentsFromIngressToHall();
                     }
-
                 }
             }
         }
@@ -876,12 +873,15 @@ public class GuiActionPhaseController implements Initializable {
                         ControllerHandler.getInstance().write(studentOnHall);
                         studentOnHall = new MovingStudentsFromIngressToHall();
                     }
-
                 }
             }
         }
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clikOnPinkLine(MouseEvent mouseEvent) {
         if (game.getCurrentRound().getId()!=null){
             if (game.getCurrentRound().getId()==0) {
@@ -897,18 +897,16 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().write(messageMethod);
             }
 
-        }else {
-                if (studentMoving != null) {
+        } else {
+            if (studentMoving != null) {
                 switch (studentMoving) {
                     case PINK -> {
                         ControllerHandler.getInstance().write(studentOnHall);
                         studentOnHall = new MovingStudentsFromIngressToHall();
-                        }
-
-
-                }
+                    }
                 }
             }
+        }
     }
 
     public void clikOnBlueLine(MouseEvent mouseEvent) {
@@ -925,15 +923,13 @@ public class GuiActionPhaseController implements Initializable {
                 ((IngressHallSwap)messageMethod).setStudentHall(game.getCurrentPlayer().getSchool().getHall().getLine(Color.BLUE).getStudents().getLast().getId());
                 ControllerHandler.getInstance().write(messageMethod);
             }
-        }
-        else {
+        } else {
             if (studentMoving != null) {
                 switch (studentMoving) {
                     case BLUE -> {
                         ControllerHandler.getInstance().write(studentOnHall);
                         studentOnHall = new MovingStudentsFromIngressToHall();
                     }
-
                 }
             }
         }
@@ -945,25 +941,43 @@ public class GuiActionPhaseController implements Initializable {
      * @throws IOException
      */
     public void refresh() throws IOException {
-        stage = ControllerHandler.getInstance().getStage();
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
+        stage.setTitle("Eriantys");
         stage.show();
+
+        GuiActionPhaseController actionController = fxmlLoader.getController();
+        actionController.resize(stage, scene);
 
     }
 
-    public void studentOnCard() throws IOException {
-        stage = ControllerHandler.getInstance().getStage();
+    /**
+     *
+     * @throws IOException
+     */
+    public void sceneStudentOnCard() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/studentsOnCard-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();
 
+        GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
+        studentsController.resize(stage, scene);
     }
 
-
-
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clickOnIngress1(MouseEvent mouseEvent) {
         if(game.getCurrentRound().getId()==null){
             //Da controllare se nella CLI viene fatto il controllo se ci sono studenti nella hall
@@ -971,14 +985,15 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getId());
                 studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0).getColor();
             }
-        }else   if(game.getCurrentRound().getId()==1)
-        {
+        } else if(game.getCurrentRound().getId()==1) {
             studentOnRound=game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0);
-
         }
-
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clickOnIngress2(MouseEvent mouseEvent) {
         if(game.getCurrentRound().getId()==null){
             //Da controllare se nella CLI viene fatto il controllo se ci sono studenti nella hall
@@ -1072,9 +1087,13 @@ public class GuiActionPhaseController implements Initializable {
     }
 
 
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clickOnIngress9(MouseEvent mouseEvent) {
         if (game.getCurrentPlayer().getSchool().getIngress().getStudents().size() > 8) {
-            if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_STUDENTS && game.getCurrentRound().getId() == null) {
+            if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_STUDENTS && game.getCurrentRound().getId() == null) {
                 ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getId());
                 studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(8).getColor();
             } else if (game.getCurrentRound().getId() == 1 || game.getCurrentRound().getId() == 1 ) {
@@ -1083,9 +1102,14 @@ public class GuiActionPhaseController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void clickOnCloud2(MouseEvent mouseEvent) throws IOException {
         if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
-            MessageMethod messageMethod=new ChooseStudentsFromCloud();
+            MessageMethod messageMethod = new ChooseStudentsFromCloud();
             ( (ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(1).getId());
             ControllerHandler.getInstance().write(messageMethod);
            // refresh();
@@ -1093,36 +1117,82 @@ public class GuiActionPhaseController implements Initializable {
         }
     }
 
+    /**
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void clickOnCloud3(MouseEvent mouseEvent) throws IOException {
         if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD && game.getPlayerList().size()==3) {
-            MessageMethod messageMethod=new ChooseStudentsFromCloud();
+            MessageMethod messageMethod = new ChooseStudentsFromCloud();
             ( (ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(2).getId());
             ControllerHandler.getInstance().write(messageMethod);
            // refresh();
-
         }
     }
 
+    /**
+     *
+     * @param mouseEvent
+     * @throws IOException
+     */
     public void clickOnCloud1(MouseEvent mouseEvent) throws IOException {
         if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
-            MessageMethod messageMethod=new ChooseStudentsFromCloud();
-            ( (ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(0).getId());
+            MessageMethod messageMethod = new ChooseStudentsFromCloud();
+            ((ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(0).getId());
             ControllerHandler.getInstance().write(messageMethod);
             //refresh();
         }
     }
 
     public void clickPlayExpertCard(MouseEvent mouseEvent) throws IOException {
-        if(game.getGameMode()==true && game.getCardManager().getCurrentCard()==null){
-            stage = ControllerHandler.getInstance().getStage();
+        if (game.getGameMode()==true && game.getCardManager().getCurrentCard()==null) {
+            stage = new Stage();
+            ControllerHandler.getInstance().getStage().close();
+            ControllerHandler.setStage(stage);
+
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/expertCard-view.fxml"));
             scene = new Scene(fxmlLoader.load(), 1280, 720);
             stage.setScene(scene);
             stage.show();
+
+            GuiChooseExpertCardController expertController = fxmlLoader.getController();
+            expertController.resize(stage, scene);
         }
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clickFinishExpertMove(MouseEvent mouseEvent) {
         ControllerHandler.getInstance().write(new RoundEnd());
+    }
+
+    /**
+     *
+     */
+    public void resize(Stage stage, Scene scene) {
+        double height = stage.getHeight();
+        double width = stage.getWidth();
+
+        stage.setMinHeight(450);
+        stage.setMinWidth(800);
+
+        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
+        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
+
+        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleX = newVal.doubleValue()/width;
+            scenePane.setScaleX(scaleX);
+            scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
+            //scenePane.setCenterShape(true);
+        });
+
+        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleY = newVal.doubleValue()/height;
+            scenePane.setScaleY(scaleY);
+            scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
+            //scenePane.setCenterShape(true);
+        });
     }
 }

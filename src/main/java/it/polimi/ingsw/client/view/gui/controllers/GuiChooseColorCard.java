@@ -54,7 +54,7 @@ public class GuiChooseColorCard implements Initializable {
     }
 
     public void clickOnBlue(MouseEvent mouseEvent) {
-        color= "8";
+        color = "8";
     }
 
     public void clickOnRed(MouseEvent mouseEvent) {
