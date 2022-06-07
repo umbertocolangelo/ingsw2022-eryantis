@@ -589,6 +589,30 @@ public class GuiActionPhaseController implements Initializable {
      */
     @FXML
     private Button finishExpertMove;
+    @FXML
+    private ImageView motherNature1;
+    @FXML
+    private ImageView motherNature2;
+    @FXML
+    private ImageView motherNature3;
+    @FXML
+    private ImageView motherNature4;
+    @FXML
+    private ImageView motherNature5;
+    @FXML
+    private ImageView motherNature6;
+    @FXML
+    private ImageView motherNature7;
+    @FXML
+    private ImageView motherNature8;
+    @FXML
+    private ImageView motherNature9;
+    @FXML
+    private ImageView motherNature10;
+    @FXML
+    private ImageView motherNature11;
+    @FXML
+    private ImageView motherNature12;
 
     /**
      *
@@ -739,51 +763,51 @@ public class GuiActionPhaseController implements Initializable {
         }
         switch (motherNature.getIsland().getId()) {
             case "26":
-                island1.setImage(new Image(islandMotherNature));
+                motherNature1.setImage(new Image(motherNaturePath));
                 idIsland = 26;
                 break;
             case "27":
-                island2.setImage(new Image(islandMotherNature));
+                motherNature2.setImage(new Image(motherNaturePath));
                 idIsland = 27;
                 break;
             case "28":
-                island3.setImage(new Image(islandMotherNature));
+                motherNature3.setImage(new Image(motherNaturePath));
                 idIsland = 28;
                 break;
             case "29":
-                island4.setImage(new Image(islandMotherNature));
+                motherNature4.setImage(new Image(motherNaturePath));
                 idIsland = 29;
                 break;
             case "30":
-                island5.setImage(new Image(islandMotherNature));
+                motherNature5.setImage(new Image(motherNaturePath));
                 idIsland=30;
                 break;
             case "31":
-                island6.setImage(new Image(islandMotherNature));
+                motherNature6.setImage(new Image(motherNaturePath));
                 idIsland = 31;
                 break;
             case "32":
-                island7.setImage(new Image(islandMotherNature));
+                motherNature7.setImage(new Image(motherNaturePath));
                 idIsland = 32;
                 break;
             case "33":
-                island8.setImage(new Image(islandMotherNature));
+                motherNature8.setImage(new Image(motherNaturePath));
                 idIsland = 33;
                 break;
             case "34":
-                island9.setImage(new Image(islandMotherNature));
+                motherNature9.setImage(new Image(motherNaturePath));
                 idIsland = 34;
                 break;
             case "35":
-                island10.setImage(new Image(islandMotherNature));
+                motherNature10.setImage(new Image(motherNaturePath));
                 idIsland = 35;
                 break;
             case "36":
-                island11.setImage(new Image(islandMotherNature));
+                motherNature11.setImage(new Image(motherNaturePath));
                 idIsland = 36;
                 break;
             case "37":
-                island12.setImage(new Image(islandMotherNature));
+                motherNature12.setImage(new Image(motherNaturePath));
                 idIsland = 37;
                 break;
         }
