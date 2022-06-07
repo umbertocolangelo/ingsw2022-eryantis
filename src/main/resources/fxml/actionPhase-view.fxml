@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiActionPhaseController">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiActionPhaseController">
    <children>
       <AnchorPane fx:id="scenePane" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -361,26 +366,6 @@
             <ImageView fx:id="student11Island1" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="426.0" onMouseClicked="#clickIsland1" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student12Island1" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="426.0" onMouseClicked="#clickIsland1" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student20Island1" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="426.0" onMouseClicked="#clickIsland1" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student17Island7" fitHeight="23.0" fitWidth="23.0" layoutX="575.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student7Island7" fitHeight="23.0" fitWidth="23.0" layoutX="600.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student8Island7" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student9Island7" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student18Island7" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student13Island7" fitHeight="23.0" fitWidth="23.0" layoutX="575.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student1Island7" fitHeight="23.0" fitWidth="23.0" layoutX="600.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student2Island7" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student3Island7" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student14Island7" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student15Island7" fitHeight="23.0" fitWidth="23.0" layoutX="575.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student4Island7" fitHeight="23.0" fitWidth="23.0" layoutX="600.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student5Island7" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student6Island7" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student16Island7" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student19Island7" fitHeight="23.0" fitWidth="23.0" layoutX="575.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student10Island7" fitHeight="23.0" fitWidth="23.0" layoutX="600.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student11Island7" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student12Island7" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="student20Island7" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student17Island12" fitHeight="23.0" fitWidth="23.0" layoutX="770.0" layoutY="357.0" onMouseClicked="#clickIsland12" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student7Island12" fitHeight="23.0" fitWidth="23.0" layoutX="795.0" layoutY="357.0" onMouseClicked="#clickIsland12" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student8Island12" fitHeight="23.0" fitWidth="23.0" layoutX="820.0" layoutY="357.0" onMouseClicked="#clickIsland12" pickOnBounds="true" preserveRatio="true" />
@@ -408,6 +393,26 @@
             <ImageView fx:id="student18Island8" fitHeight="23.0" fitWidth="23.0" layoutX="870.0" layoutY="52.0" onMouseClicked="#clickIsland8" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student13Island8" fitHeight="23.0" fitWidth="23.0" layoutX="770.0" layoutY="75.0" onMouseClicked="#clickIsland8" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student1Island8" fitHeight="23.0" fitWidth="23.0" layoutX="795.0" layoutY="75.0" onMouseClicked="#clickIsland8" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student17Island7" fitHeight="23.0" fitWidth="23.0" layoutX="575.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student7Island7" fitHeight="23.0" fitWidth="23.0" layoutX="600.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student8Island7" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student9Island7" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student18Island7" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="52.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student13Island7" fitHeight="23.0" fitWidth="23.0" layoutX="575.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student1Island7" fitHeight="23.0" fitWidth="23.0" layoutX="600.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student2Island7" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student3Island7" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student14Island7" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="75.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student15Island7" fitHeight="23.0" fitWidth="23.0" layoutX="575.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student4Island7" fitHeight="23.0" fitWidth="23.0" layoutX="600.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student5Island7" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student6Island7" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student16Island7" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="98.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student19Island7" fitHeight="23.0" fitWidth="23.0" layoutX="575.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student10Island7" fitHeight="23.0" fitWidth="23.0" layoutX="600.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student11Island7" fitHeight="23.0" fitWidth="23.0" layoutX="625.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student12Island7" fitHeight="23.0" fitWidth="23.0" layoutX="650.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="student20Island7" fitHeight="23.0" fitWidth="23.0" layoutX="675.0" layoutY="121.0" onMouseClicked="#clickIsland7" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student2Island8" fitHeight="23.0" fitWidth="23.0" layoutX="820.0" layoutY="75.0" onMouseClicked="#clickIsland8" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student3Island8" fitHeight="23.0" fitWidth="23.0" layoutX="845.0" layoutY="75.0" onMouseClicked="#clickIsland8" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="student14Island8" fitHeight="23.0" fitWidth="23.0" layoutX="870.0" layoutY="75.0" onMouseClicked="#clickIsland8" pickOnBounds="true" preserveRatio="true" />

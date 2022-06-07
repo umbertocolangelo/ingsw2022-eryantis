@@ -1821,6 +1821,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland1(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==0){
+            return;
+        }
+
         studentsIsland.clear();
         studentsIsland.add(student1Island1);
         studentsIsland.add(student2Island1);
@@ -1856,6 +1860,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the students on island 2 on the screen
      */
     private void showStudentIsland2(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==1){
+            return;
+        }
 
         studentsIsland.clear();
         studentsIsland.add(student1Island2);
@@ -1893,6 +1901,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland3(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==2){
+            return;
+        }
+
         studentsIsland.clear();
         studentsIsland.add(student1Island3);
         studentsIsland.add(student2Island3);
@@ -1928,6 +1940,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the students on island 4 on the screen
      */
     private void showStudentIsland4(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==3){
+            return;
+        }
 
         studentsIsland.clear();
         studentsIsland.add(student1Island4);
@@ -1965,6 +1981,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland5(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==4){
+            return;
+        }
+
         studentsIsland.clear();
         studentsIsland.add(student1Island5);
         studentsIsland.add(student2Island5);
@@ -2000,6 +2020,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the students on island 6 on the screen
      */
     private void showStudentIsland6(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==5){
+            return;
+        }
 
         studentsIsland.clear();
         studentsIsland.add(student1Island6);
@@ -2037,6 +2061,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland7(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==6){
+            return;
+        }
+
         studentsIsland.clear();
         studentsIsland.add(student1Island7);
         studentsIsland.add(student2Island7);
@@ -2072,6 +2100,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the students on island 8 on the screen
      */
     private void showStudentIsland8(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==7){
+            return;
+        }
 
         studentsIsland.clear();
         studentsIsland.add(student1Island8);
@@ -2109,6 +2141,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland9(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==8){
+            return;
+        }
+
         studentsIsland.clear();
         studentsIsland.add(student1Island9);
         studentsIsland.add(student2Island9);
@@ -2141,9 +2177,13 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     /**
-     * shows the students on island 19 on the screen
+     * shows the students on island 10 on the screen
      */
     private void showStudentIsland10(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==9){
+            return;
+        }
 
         studentsIsland.add(student1Island10);
         studentsIsland.add(student2Island10);
@@ -2180,6 +2220,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland11(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==10){
+            return;
+        }
+
         studentsIsland.clear();
         studentsIsland.add(student1Island11);
         studentsIsland.add(student2Island11);
@@ -2215,6 +2259,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the students on island 12 on the screen
      */
     private void showStudentIsland12(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==11){
+            return;
+        }
 
         studentsIsland.clear();
         studentsIsland.add(student1Island12);
