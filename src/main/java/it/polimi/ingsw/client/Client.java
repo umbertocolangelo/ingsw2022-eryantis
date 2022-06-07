@@ -2,10 +2,7 @@ package it.polimi.ingsw.client;
 
 
 import it.polimi.ingsw.client.view.gui.controllers.ControllerHandler;
-import it.polimi.ingsw.message.EqualName;
-import it.polimi.ingsw.message.IsFirst;
-import it.polimi.ingsw.message.SetName;
-import it.polimi.ingsw.message.SetUp;
+import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
 
 import java.io.IOException;
@@ -17,6 +14,10 @@ import java.util.Scanner;
 import java.util.concurrent.Semaphore;
 
 public class Client {
+    /**
+     *
+     */
+    private String namePLayerLost;
 
     /**
      * Keep the reference to the socket
@@ -76,7 +77,7 @@ public class Client {
     /**
      *
      */
-    private Boolean isCli = false;
+    private Boolean isCli = true;
 
     /**
      *
@@ -127,7 +128,6 @@ public class Client {
                             System.out.println("Ready to receive");
                             inputObject = socketIn.readObject();
                             System.out.println("Received something: " + inputObject);
-
                             if (!isCli) {
                                 if (inputObject instanceof SetUp) {
                                     ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
@@ -157,29 +157,31 @@ public class Client {
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
                                     System.out.println("Client received Game");
-                                    if (game.getCurrentPlayer().getName().equals(namePlayer)) {
-                                        controller.setClientState(ClientState.PLAYING);
-                                        controller.run();
-                                    } else if (inputObject instanceof SetUp) {
-                                        System.out.println("Set Up received");
-                                        controller.setClientState(ClientState.LOGIN);
-                                        controller.run();
-                                    } else if (inputObject instanceof EqualName) {
-                                        System.out.println("Set Up received");
-                                        controller.setClientState(ClientState.EQUALNAME);
-                                        controller.run();
-                                    } else if (inputObject instanceof SetName) {
-                                        namePlayer = ((SetName) inputObject).getName();
-                                    } else if (inputObject instanceof IsFirst) {
-                                        controller.setClientState(ClientState.ISFIRST);
-                                        controller.run();
-                                    } else {
-                                        throw new IllegalArgumentException();
-                                    }
+                                } else if (inputObject instanceof SetUp) {
+                                    controller.setClientState(ClientState.LOGIN);
+                                    controller.run();
+                                }else if (inputObject instanceof EqualName) {
+                                    controller.setClientState(ClientState.EQUALNAME);
+                                    controller.run();
+                                } else if (inputObject instanceof SetName) {
+                                    namePlayer = ((SetName) inputObject).getName();
+                                } else if (inputObject instanceof IsFirst) {
+                                    controller.setClientState(ClientState.ISFIRST);
+                                    controller.run();
+                                } else if (inputObject instanceof ClientLost) {
+                                    namePLayerLost = ((ClientLost) inputObject).getNamePlayerLost();
+                                    controller.setClientState(ClientState.CLIENTLOST);
+                                    controller.run();
+                                } else if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                    controller.setClientState(ClientState.PLAYING);
+                                    controller.run();
+                                } else {
+                                    throw new IllegalArgumentException();
                                 }
                             }
                         }
-                    } catch(Exception e) {
+
+                    } catch (Exception e) {
                         setActive(false);
                     }
                 }
@@ -206,9 +208,7 @@ public class Client {
 
         try {
             Thread t0 = asyncReadFromSocket(socketIn);
-
             t0.join();
-
         } catch (InterruptedException | NoSuchElementException e) {
             System.out.println("Connection closed from the client side");
 
@@ -259,4 +259,11 @@ public class Client {
         return this.game;
     }
 
+    public String getNamePLayerLost() {
+        return namePLayerLost;
+    }
+
+    public void setNamePLayerLost(String namePLayerLost) {
+        this.namePLayerLost = namePLayerLost;
+    }
 }

@@ -97,6 +97,20 @@ public class CLI {
      * Get the thread to run the play assistantCArd action
      * @return thread
      */
+    public Thread clientLost(String nameClientLost) {
+
+        Thread t = new Thread(() -> {
+            System.out.println("The player "+ nameClientLost+ "has been disconetted");
+
+        });
+        t.start();
+        return t;
+    }
+
+    /**
+     * Get the thread to run the play assistantCArd action
+     * @return thread
+     */
     public Thread choosingAssistant() {
 
         Thread t = new Thread(() -> {
@@ -191,6 +205,9 @@ public class CLI {
         t.start();
         return t;
     }
+
+
+
 
     /**
      * Get the thread to move mother nature on the desired island
