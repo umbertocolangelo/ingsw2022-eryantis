@@ -1854,7 +1854,7 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickFinishExpertMove(MouseEvent mouseEvent) {
-        if(game.getCardManager().getCurrentCard()!=null && !ControllerHandler.getInstance().getCardNeedIsland()) {
+        if (game.getCardManager().getCurrentCard()!=null && !ControllerHandler.getInstance().getCardNeedIsland()) {
             ControllerHandler.getInstance().write(new RoundEnd());
         }
     }
