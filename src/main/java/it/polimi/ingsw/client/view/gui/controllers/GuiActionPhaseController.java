@@ -6,6 +6,7 @@ import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Student;
+import it.polimi.ingsw.model.pawns.Tower;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -81,6 +82,21 @@ public class GuiActionPhaseController implements Initializable {
      * Path to blue professor image file
      */
     private String blueProfessorPath = "file:src/main/resources/Graphical_Assets/pawns/professor_blue.png";
+
+    /**
+     * Path to black tower image file
+     */
+    private String blackTowerPath = "file:src/main/resources/Graphical_Assets/pawns/tower_black.png";
+
+    /**
+     * Path to white tower image file
+     */
+    private String whiteTowerPath = "file:src/main/resources/Graphical_Assets/pawns/tower_white.png";
+
+    /**
+     * Path to grey tower image file
+     */
+    private String greyTowerPath = "file:src/main/resources/Graphical_Assets/pawns/tower_grey.png";
 
     /**
      * AnchorPane reference
@@ -1296,6 +1312,11 @@ public class GuiActionPhaseController implements Initializable {
     private Map<Color, ImageView> professors = new HashMap<>();
 
     /**
+     * Stores the list of ImageView for the towers
+     */
+    private LinkedList<ImageView> towers = new LinkedList<ImageView>();
+
+    /**
      * Stores the list of ImageView for the islands
      */
     private LinkedList<ImageView> islands = new LinkedList<ImageView>();
@@ -1447,7 +1468,41 @@ public class GuiActionPhaseController implements Initializable {
         showClouds();
         showText();
         showProfessors();
+        showTowerTable();
+    }
 
+    /**
+     * shows the towers in the school on the screen
+     */
+    public void showTowerTable(){
+
+        towers.add(tower1);
+        towers.add(tower2);
+        towers.add(tower3);
+        towers.add(tower4);
+        towers.add(tower5);
+        towers.add(tower6);
+        towers.add(tower7);
+        towers.add(tower8);
+
+        int count = 0;
+        for(Tower tower : game.getCurrentPlayer().getSchool().getTowerTable().getTowers()){
+            switch(tower.getColor()){
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            count++;
+        }
     }
 
     /**
