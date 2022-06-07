@@ -1798,6 +1798,7 @@ public class GuiActionPhaseController implements Initializable {
             ((ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(1).getId());
             ControllerHandler.getInstance().write(messageMethod);
             //refresh();
+            showLoading();
         }
     }
 
@@ -1811,6 +1812,7 @@ public class GuiActionPhaseController implements Initializable {
             ((ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(2).getId());
             ControllerHandler.getInstance().write(messageMethod);
             // refresh();
+            showLoading();
         }
     }
 
@@ -1825,7 +1827,23 @@ public class GuiActionPhaseController implements Initializable {
             ((ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(0).getId());
             ControllerHandler.getInstance().write(messageMethod);
             //refresh();
+            showLoading();
         }
+    }
+
+    public void showLoading() throws IOException{
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.setTitle("Eriantys");
+        stage.show();
+
+        GuiLoadingController loadingController = fxmlLoader.getController();
+        loadingController.resize(stage, scene);
     }
 
     /**
