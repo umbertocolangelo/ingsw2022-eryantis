@@ -100,6 +100,7 @@ public class SocketClientConnection implements Runnable {
     private void close() {
 
         closeConnection();
+        if(server.getSemaphore().availablePermits()==0)
         server.getSemaphore().release();
         System.out.println("Deregistering client...");
         server.deregisterConnection(this);

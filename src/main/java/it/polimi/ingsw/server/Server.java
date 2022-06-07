@@ -33,10 +33,7 @@ public class Server {
      */
     private Boolean playerIsDisconnetted=false;
 
-    /**
-     *Set true if the games has started
-     */
-    private Boolean gameHasStarted=false;
+
 
 //Qui socketClient chiama deregistiring client quando viene disconesso e manda un messaggio ai client che ci si e disconessi
 
