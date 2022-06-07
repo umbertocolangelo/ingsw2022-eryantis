@@ -695,7 +695,6 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     /**
-     *
      * @param student
      * @return
      */
@@ -733,7 +732,7 @@ public class GuiActionPhaseController implements Initializable {
         if (game.getGameMode()==false || game.getCardManager().getCurrentCard()!=null && ControllerHandler.getInstance().getFinishTurn()) {
             expertCardButton.setVisible(false);
         }
-        if(game.getCurrentRound().getId()==null) {
+        if (game.getCurrentRound().getId()==null) {
           finishExpertMove.setVisible(false);
           finishExpertMove.setDisable(false);
         }
