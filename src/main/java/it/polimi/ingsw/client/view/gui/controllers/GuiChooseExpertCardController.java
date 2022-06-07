@@ -336,7 +336,7 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-        GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
+        GuiActionPhaseController studentsController = fxmlLoader.getController();
         studentsController.resize(stage, scene);
     }
 

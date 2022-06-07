@@ -9,14 +9,13 @@ import it.polimi.ingsw.model.rounds.SetUpRound;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.scene.image.ImageView;
 
 import java.io.IOException;
 import java.net.URL;
@@ -150,6 +149,15 @@ public class GuiChooseWizardAndColorController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
+
+        if(wizard==null || color==null) {
+            label.setText("You must select the wizard and the player color");
+        } else {
+            MessageMethod messageMethod = new ChooseColorAndDeck();
+            ((ChooseColorAndDeck) messageMethod).setWizard(wizard);
+            ((ChooseColorAndDeck) messageMethod).setPlayerColor(color);
+            ControllerHandler.getInstance().write(messageMethod);
+        }
         stage = new Stage();
         ControllerHandler.getInstance().getStage().close();
         ControllerHandler.setStage(stage);
@@ -162,14 +170,6 @@ public class GuiChooseWizardAndColorController implements Initializable {
         GuiLoadingController loadingController = fxmlLoader.getController();
         loadingController.resize(stage, scene);
 
-        if(wizard==null || color==null) {
-            label.setText("You must select the wizard and the player color");
-        } else {
-            MessageMethod messageMethod = new ChooseColorAndDeck();
-            ((ChooseColorAndDeck) messageMethod).setWizard(wizard);
-            ((ChooseColorAndDeck) messageMethod).setPlayerColor(color);
-            ControllerHandler.getInstance().write(messageMethod);
-        }
     }
 
     /**
@@ -210,7 +210,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-        GuiLoadingController pianController = fxmlLoader.getController();
+        GuiPianificationPhaseController pianController = fxmlLoader.getController();
         pianController.resize(stage, scene);
     }
 
