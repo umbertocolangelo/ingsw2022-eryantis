@@ -211,6 +211,7 @@ public class GuiChooseExpertCardController implements Initializable {
         break;
         case "49":
         ControllerHandler.getInstance().setIdExpertCardPlayed("49");
+            ControllerHandler.getInstance().setIdExpertCardPlayed("49");
         sceneColor();
         break;
         }
@@ -335,7 +336,7 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-        GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
+        GuiChooseColorCard studentsController = fxmlLoader.getController();
         studentsController.resize(stage, scene);
     }
 
@@ -363,7 +364,7 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.setScene(scene);
         stage.show();
 
-        GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
+        GuiSelectPlayerCard studentsController = fxmlLoader.getController();
         studentsController.resize(stage, scene);
     }
 
@@ -394,6 +395,7 @@ public class GuiChooseExpertCardController implements Initializable {
             //scenePane.setCenterShape(true);
         });
     }
+
 
     /**
      *
