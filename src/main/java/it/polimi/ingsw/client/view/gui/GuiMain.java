@@ -19,7 +19,7 @@ public class GuiMain extends Application {
      * @throws InterruptedException
      */
     @Override
-    public void start(Stage stage) throws IOException, InterruptedException {
+    public void start(Stage stage) throws IOException {
         ControllerHandler.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/start-view.fxml"));
