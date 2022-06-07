@@ -1,12 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiChooseStudentsOnCardController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiChooseStudentsOnCardController">
    <children>
       <AnchorPane fx:id="scenePane" layoutY="2.0" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -21,12 +26,12 @@
                </font>
             </Button>
             <ImageView fx:id="expertCardId" fitHeight="424.0" fitWidth="302.0" layoutX="489.0" layoutY="104.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="studentCard1" fitHeight="62.0" fitWidth="62.0" layoutX="550.0" layoutY="151.0" onMouseClicked="#onClickStudentCard1" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="studentCard2" fitHeight="62.0" fitWidth="62.0" layoutX="683.0" layoutY="151.0" onMouseClicked="#onClickStudentCard2" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="studentCard3" fitHeight="62.0" fitWidth="62.0" layoutX="550.0" layoutY="277.0" onMouseClicked="#onClickStudentCard3" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="studentCard4" fitHeight="62.0" fitWidth="62.0" layoutX="683.0" layoutY="285.0" onMouseClicked="#onClickStudentCard4" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="studentCard5" fitHeight="62.0" fitWidth="62.0" layoutX="683.0" layoutY="403.0" onMouseClicked="#onClickStudentCard5" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="studentCard6" fitHeight="62.0" fitWidth="62.0" layoutX="550.0" layoutY="403.0" onMouseClicked="#onClickStudentCard6" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard1" fitHeight="62.0" fitWidth="62.0" layoutX="519.0" layoutY="155.0" onMouseClicked="#onClickStudentCard1" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard2" fitHeight="62.0" fitWidth="62.0" layoutX="692.0" layoutY="155.0" onMouseClicked="#onClickStudentCard2" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard3" fitHeight="62.0" fitWidth="62.0" layoutX="519.0" layoutY="276.0" onMouseClicked="#onClickStudentCard3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard4" fitHeight="62.0" fitWidth="62.0" layoutX="692.0" layoutY="276.0" onMouseClicked="#onClickStudentCard4" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard5" fitHeight="62.0" fitWidth="62.0" layoutX="692.0" layoutY="397.0" onMouseClicked="#onClickStudentCard5" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard6" fitHeight="62.0" fitWidth="62.0" layoutX="519.0" layoutY="397.0" onMouseClicked="#onClickStudentCard6" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="finishExpertMove" layoutX="824.0" layoutY="572.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="51.0" prefWidth="153.0" text="Finish ExpertMove">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />

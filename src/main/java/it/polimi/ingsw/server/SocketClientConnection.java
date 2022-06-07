@@ -85,7 +85,7 @@ public class SocketClientConnection implements Runnable {
      * This method is needed when we want to close the connection, close the socket and set active to false
      */
     public synchronized void closeConnection() {
-        send("Connection closed!");
+        send("We lost your Connection");
         try {
             socket.close();
         } catch (IOException e) {
@@ -98,6 +98,7 @@ public class SocketClientConnection implements Runnable {
      *Calls the close connection and close the connection also in the server
      */
     private void close() {
+
         closeConnection();
         System.out.println("Deregistering client...");
         server.deregisterConnection(this);
@@ -116,13 +117,9 @@ public class SocketClientConnection implements Runnable {
             SetUp setup = new SetUp();
             // System.out.println("si");
            // if (server.getIsCLi())
-            send("Welcome in the CLI version of Eryantis!\nWhat is your name?");
-
             //si  sincronizza con il send
 
-
-
-
+            server.getSemaphore().acquire();
             send(setup);
             String read = (String) in.readObject();
             read = read.toUpperCase();
