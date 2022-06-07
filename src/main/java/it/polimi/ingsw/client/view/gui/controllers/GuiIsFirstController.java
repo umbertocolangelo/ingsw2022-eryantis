@@ -102,11 +102,11 @@ public class GuiIsFirstController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/deckAndColor-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
-
-        GuiChooseWizardAndColorController controller = fxmlLoader.getController();
-        controller.resize(stage, scene);
-
+        stage.setTitle("Eriantys");
         stage.show();
+
+        GuiChooseWizardAndColorController deckController = fxmlLoader.getController();
+        deckController.resize(stage, scene);
     }
 
     /**
