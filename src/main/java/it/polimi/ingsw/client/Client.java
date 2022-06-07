@@ -125,7 +125,7 @@ public class Client {
                 synchronized (this) {
                     try {
                         while (isActive()) {
-                            System.out.println("Ready to receive");
+                           // System.out.println("Ready to receive");
                             inputObject = socketIn.readObject();
                             System.out.println("Received something: " + inputObject);
                             if (!isCli) {
@@ -157,6 +157,10 @@ public class Client {
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
                                     System.out.println("Client received Game");
+                                    if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                        controller.setClientState(ClientState.PLAYING);
+                                        controller.run();
+                                        }
                                 } else if (inputObject instanceof SetUp) {
                                     controller.setClientState(ClientState.LOGIN);
                                     controller.run();
@@ -171,9 +175,6 @@ public class Client {
                                 } else if (inputObject instanceof ClientLost) {
                                     namePLayerLost = ((ClientLost) inputObject).getNamePlayerLost();
                                     controller.setClientState(ClientState.CLIENTLOST);
-                                    controller.run();
-                                } else if (game.getCurrentPlayer().getName().equals(namePlayer)) {
-                                    controller.setClientState(ClientState.PLAYING);
                                     controller.run();
                                 } else {
                                     throw new IllegalArgumentException();

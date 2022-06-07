@@ -63,8 +63,9 @@ public class Controller implements Runnable {
 
         switch (clientState) {
             case LOGIN:
+                System.out.println("Welcome to Eryantis, what's your name?");
                 input = stdIn.nextLine();
-                while ( (input.matches(".*\\d.*"))){
+                while ( (input.matches(".*\\d.*")) || input.equals("")){
                     System.out.println("You inserted a wrong value for username");
                 input = stdIn.nextLine();
                  }
@@ -98,7 +99,7 @@ public class Controller implements Runnable {
 
                 System.out.println("Game mode selected ");
                 write(isFirst);
-
+                break;
             case EQUALNAME:
                 System.out.println("The username is already present, select another one");
                 input = stdIn.nextLine();
@@ -111,8 +112,12 @@ public class Controller implements Runnable {
                 setClientState(ClientState.SLEEPING);
                 break;
             case SLEEPING:
+                System.out.println("Waiting fo other players");
                 break;
-
+            case CLIENTLOST:
+                t0=cli.clientLost(client.getNamePLayerLost());
+               // client.setActive(false);
+                break;
             case PLAYING:
                 for (int i = 0; i < 50; i++) {
                     System.out.println("\b");

@@ -2,6 +2,7 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.listener.PropertyObserver;
+import it.polimi.ingsw.message.ClientLost;
 import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.SetUp;
 import it.polimi.ingsw.message.StartGame;
@@ -29,7 +30,10 @@ public class Server {
     private Game game;
     private SetUp setup = new SetUp();
     private Semaphore semaphore = new Semaphore(1);
-
+    /**
+     * Set true when a client has been disconnetted, so the server do not modify game
+     */
+    private Boolean playerIsDisconnetted=false;
 
 
 //Qui socketClient chiama deregistiring client quando viene disconesso e manda un messaggio ai client che ci si e disconessi
@@ -39,12 +43,11 @@ public class Server {
      * @param c
      */
     public synchronized void deregisterConnection(SocketClientConnection c) {
-        SocketClientConnection opponent = playingConnection.get(c);
-        if (opponent != null) {
-            opponent.closeConnection();
+        playerIsDisconnetted=true;
+        for(SocketClientConnection clientConnection:socketConnections){
+            clientConnection.send(new ClientLost(clientConnection.getName()));
         }
         playingConnection.remove(c);
-
         //playingConnection.remove(opponent);
         Iterator<String> iterator = waitingConnection.keySet().iterator();
         while (iterator.hasNext()) {
@@ -140,7 +143,7 @@ public class Server {
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
                 if (socketConnections.isEmpty())
                     socketConnection.setIsFirst();
-                semaphore.acquire();
+
                 socketConnections.add(socketConnection);
 
                 Thread t0 = new Thread(socketConnection);
@@ -154,13 +157,11 @@ public class Server {
                 //   e.printStackTrace();
 
                 //  } catch (InterruptedException e) {
-            }catch(SocketTimeoutException e){
+            }catch(SocketTimeoutException e) {
                 System.out.println("### Timed out after 5 seconds.");
                 //}            } catch (IOException e) {
-              //  e.printStackTrace();
-            } catch (InterruptedException e) {
-               // e.printStackTrace();
-            } catch (IOException e) {
+                //  e.printStackTrace();
+            }catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -207,7 +208,7 @@ public class Server {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (object instanceof MessageMethod) {
+                if (object instanceof MessageMethod && !playerIsDisconnetted) {
                    ((MessageMethod) object).apply(game);
                 }
                 }
