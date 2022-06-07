@@ -11,11 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -213,7 +213,7 @@ public class GuiActionPhaseController implements Initializable {
     @FXML
     private Button expertCardButton;
     @FXML
-    private Label communication;
+    private Text communication;
     @FXML
     private Button finishExpertMove;
 
@@ -433,7 +433,10 @@ public class GuiActionPhaseController implements Initializable {
                    communication.setText("You are in student on Island round");
            }
        }
-
+        if(ControllerHandler.getInstance().getIdExpertCardPlayed()!=null) {
+            if (ControllerHandler.getInstance().getIdExpertCardPlayed().equals("42") || ControllerHandler.getInstance().getIdExpertCardPlayed().equals("40"))
+                communication.setText("You played an expert that need an island");
+        }
     if(!game.getClouds().get(0).getStudents().isEmpty()) {
         student1Cloud1.setImage(getColorStudent(game.getClouds().get(0).getStudents().get(0)));
         student2Cloud1.setImage(getColorStudent(game.getClouds().get(0).getStudents().get(1)));
