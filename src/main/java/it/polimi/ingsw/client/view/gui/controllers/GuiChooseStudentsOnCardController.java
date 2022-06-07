@@ -131,7 +131,6 @@ public class GuiChooseStudentsOnCardController implements Initializable {
                 studentCard3.setImage(getColorStudent(((StudentToHallCard)expertCard).getStudents().get(2)));
                 studentCard4.setImage(getColorStudent(((StudentToHallCard)expertCard).getStudents().get(3)));
                 break;
-
             case"38":
                 expertCardId.setImage(new Image(cardOnePath));
                 studentCard1.setImage(getColorStudent(((StudentToIslandCard)expertCard).getStudents().get(0)));
@@ -148,21 +147,25 @@ public class GuiChooseStudentsOnCardController implements Initializable {
                 studentCard4.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(3)));
                 studentCard5.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(2)));
                 studentCard6.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(3)));
+                break;
         }
     }
 
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
         switch (idExpertCard){
             case "38":
+                ControllerHandler.getInstance().setIdExpertCardPlayed("");
                ControllerHandler.getInstance().setStudentToIsland(messageMethodIsland);
                changeToAction();
                 break;
             case "44":
+                ControllerHandler.getInstance().setIdExpertCardPlayed("");
                 ControllerHandler.getInstance().setMessageMethodIngressCard(messageMethodSwap);
                 changeToAction();
 
                 break;
             case "48":
+                ControllerHandler.getInstance().setIdExpertCardPlayed("");
                 ControllerHandler.getInstance().write(messageMethodHall);
         }
 

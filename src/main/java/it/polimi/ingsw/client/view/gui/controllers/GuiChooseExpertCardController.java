@@ -159,6 +159,7 @@ public class GuiChooseExpertCardController implements Initializable {
         switch (idExpert){
         case "38":
         MessageMethod messageMethod38 = new PlayExpertCard();
+        ControllerHandler.getInstance().setIdExpertCardPlayed("38");
         ((PlayExpertCard)messageMethod38).setExpertCard("38");
         ControllerHandler.getInstance().write(messageMethod38);
         break;
@@ -189,6 +190,7 @@ public class GuiChooseExpertCardController implements Initializable {
         break;
         case "44":
         MessageMethod messageMethod44 = new PlayExpertCard();
+        ControllerHandler.getInstance().setIdExpertCardPlayed("44");
         ((PlayExpertCard)messageMethod44).setExpertCard("44");
         ControllerHandler.getInstance().write(messageMethod44);
         break;
@@ -206,6 +208,7 @@ public class GuiChooseExpertCardController implements Initializable {
         break;
         case "48":
         MessageMethod messageMethod48=new PlayExpertCard();
+            ControllerHandler.getInstance().setIdExpertCardPlayed("48");
         ((PlayExpertCard)messageMethod48).setExpertCard("48");
         ControllerHandler.getInstance().write(messageMethod48);
         break;
@@ -252,7 +255,7 @@ public class GuiChooseExpertCardController implements Initializable {
         switch (id) {
             case"38":
                 expertCard.setImage(new Image(cardOnePath));
-                ControllerHandler.getInstance().setIdExpertCardPlayed("38");
+
                 break;
             case"39":
                 expertCard.setImage(new Image(cardTwoPath));
@@ -270,7 +273,6 @@ public class GuiChooseExpertCardController implements Initializable {
                 expertCard.setImage(new Image(cardSixPath));
                 break;
             case"44":
-                ControllerHandler.getInstance().setIdExpertCardPlayed("44");
                 expertCard.setImage(new Image(cardSevenPath));
                 break;
             case"45":
@@ -284,7 +286,6 @@ public class GuiChooseExpertCardController implements Initializable {
                 break;
             case"48":
                 expertCard.setImage(new Image(cardElevenPath));
-                ControllerHandler.getInstance().setIdExpertCardPlayed("48");
                 break;
             case"49":
                 expertCard.setImage(new Image(cardTwelvePath));

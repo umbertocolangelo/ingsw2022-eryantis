@@ -157,19 +157,19 @@ public class GuiChooseWizardAndColorController implements Initializable {
             ((ChooseColorAndDeck) messageMethod).setWizard(wizard);
             ((ChooseColorAndDeck) messageMethod).setPlayerColor(color);
             ControllerHandler.getInstance().write(messageMethod);
+
+            stage = new Stage();
+            ControllerHandler.getInstance().getStage().close();
+            ControllerHandler.setStage(stage);
+
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setScene(scene);
+            stage.show();
+
+            GuiLoadingController loadingController = fxmlLoader.getController();
+            loadingController.resize(stage, scene);
         }
-        stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.show();
-
-        GuiLoadingController loadingController = fxmlLoader.getController();
-        loadingController.resize(stage, scene);
-
     }
 
     /**

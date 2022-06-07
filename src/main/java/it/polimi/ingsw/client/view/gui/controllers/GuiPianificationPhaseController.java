@@ -302,15 +302,15 @@ public class GuiPianificationPhaseController implements Initializable {
             card7.setVisible(false);
             card7.setDisable(false);
         }
-        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)) {
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.EIGHT_CARD)) {
             card8.setVisible(false);
             card8.setDisable(false);
         }
-        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)) {
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.NINE_CARD)) {
             card9.setVisible(false);
             card9.setDisable(false);
         }
-        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)) {
+        if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.TEN_CARD)) {
             card10.setVisible(false);
             card10.setDisable(false);
         }

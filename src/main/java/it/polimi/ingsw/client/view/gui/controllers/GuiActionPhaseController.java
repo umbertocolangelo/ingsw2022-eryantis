@@ -714,7 +714,7 @@ public class GuiActionPhaseController implements Initializable {
         stage.setTitle("Eriantys");
         stage.show();
 
-        GuiActionPhaseController pianController = fxmlLoader.getController();
+        GuiPianificationPhaseController pianController = fxmlLoader.getController();
         pianController.resize(stage, scene);
     }
 
