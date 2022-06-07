@@ -17,7 +17,7 @@ import java.util.concurrent.Semaphore;
 public class Server {
 
     private LinkedList<Player> players = new LinkedList<>();
-    private static final int PORT = 12345;
+    private static final int PORT = 65432;
     private ServerSocket serverSocket;
     private LinkedList<SocketClientConnection> waitingConnection = new LinkedList<>();
     private LinkedList<SocketClientConnection> playingConnection = new LinkedList<>();
