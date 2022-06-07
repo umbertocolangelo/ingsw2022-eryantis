@@ -15,6 +15,10 @@ public class ControllerHandler {
     /**
      *
      */
+    private Boolean cardNeedIsland=false;
+    /**
+     *
+     */
     private Boolean finishTurn=false;
 
     /**
@@ -354,5 +358,13 @@ public class ControllerHandler {
 
     public void setStudentToIsland(StudentToIsland studentToIsland) {
         this.studentToIsland = studentToIsland;
+    }
+
+    public Boolean getCardNeedIsland() {
+        return cardNeedIsland;
+    }
+
+    public void setCardNeedIsland(Boolean cardNeedIsland) {
+        this.cardNeedIsland = cardNeedIsland;
     }
 }

@@ -163,7 +163,6 @@ public class GuiChooseStudentsOnCardController implements Initializable {
 
                 break;
             case "48":
-              //  ControllerHandler.getInstance().setMessageMethod(messageMethodHall);
                 ControllerHandler.getInstance().write(messageMethodHall);
         }
 

@@ -18,7 +18,7 @@
             <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
          </image>
       </ImageView>
-      <Button fx:id="" layoutX="1013.0" layoutY="572.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="51.0" prefWidth="114.0" text="Next">
+      <Button fx:id="" layoutX="1013.0" layoutY="572.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="51.0" prefWidth="114.0" text="Play">
          <font>
             <Font name="Book Antiqua Bold Italic" size="24.0" />
          </font>
@@ -31,10 +31,27 @@
             <Font name="Book Antiqua Bold Italic" size="24.0" />
          </font>
       </Button>
-      <Label fx:id="coinsLabel" layoutX="79.0" layoutY="506.0" prefHeight="74.0" prefWidth="350.0">
+      <Text fx:id="coins" layoutX="99.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" text="You have 5 coins" wrappingWidth="397.7294921875">
          <font>
-            <Font size="34.0" />
+            <Font size="44.0" />
          </font>
-      </Label>
+      </Text>
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+      <Text fx:id="costCard1" layoutX="235.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="127.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="costCard2" layoutX="557.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="127.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
+      <Text fx:id="costCard3" layoutX="868.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="127.0">
+         <font>
+            <Font size="30.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>

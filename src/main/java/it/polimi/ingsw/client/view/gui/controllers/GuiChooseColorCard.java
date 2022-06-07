@@ -1,5 +1,7 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
+import it.polimi.ingsw.message.MessageMethod;
+import it.polimi.ingsw.message.PlayExpertCard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -45,9 +47,18 @@ public class GuiChooseColorCard implements Initializable {
 
     public void clickSelectColor(MouseEvent mouseEvent) {
         if(color!=null){
-            switch (ControllerHandler.getInstance().getClient().getGame().getCardManager().getCurrentCard().getId()){
+            MessageMethod messageMethod= new PlayExpertCard();
+            switch (ControllerHandler.getInstance().getIdExpertCardPlayed()){
                 case"44":
+                    ControllerHandler.getInstance().setIdExpertCardPlayed("");
+                    ((PlayExpertCard)messageMethod).setExpertCard("44");
+                    ((PlayExpertCard)messageMethod).setParameter(color);
+                    ControllerHandler.getInstance().write(messageMethod);
                 case"49":
+                    ControllerHandler.getInstance().setIdExpertCardPlayed("");
+                    ((PlayExpertCard)messageMethod).setExpertCard("49");
+                    ((PlayExpertCard)messageMethod).setParameter(color);
+                    ControllerHandler.getInstance().write(messageMethod);
             }
 
         }
