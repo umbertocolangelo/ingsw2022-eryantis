@@ -1154,7 +1154,7 @@ public class GuiActionPhaseController implements Initializable {
     private Map<Color, ImageView> professors = new HashMap<>();
 
     /**
-     * Stores the list of ImageView for the towers
+     * Stores the list of ImageView for the towers (reused for school and islands)
      */
     private LinkedList<ImageView> towers = new LinkedList<ImageView>();
 
@@ -1333,7 +1333,487 @@ public class GuiActionPhaseController implements Initializable {
         showStudentIsland10(0,0);
         showStudentIsland11(0,0);
         showStudentIsland12(0,0);
+        showTowersIsland1(0,0);
+        showTowersIsland2(0,0);
+        showTowersIsland3(0,0);
+        showTowersIsland4(0,0);
+        showTowersIsland5(0,0);
+        showTowersIsland6(0,0);
+        showTowersIsland7(0,0);
+        showTowersIsland8(0,0);
+        showTowersIsland9(0,0);
+        showTowersIsland10(0,0);
+        showTowersIsland11(0,0);
+        showTowersIsland12(0,0);
 
+    }
+
+    /**
+     * shows the towers on island 1 on the screen
+     */
+    private void showTowersIsland1(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island1);
+        towers.add(tower2Island1);
+        towers.add(tower3Island1);
+        towers.add(tower4Island1);
+        towers.add(tower5Island1);
+        towers.add(tower6Island1);
+
+        if(game.getIslandManager().getIslands().get(0).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(0).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 2 on the screen
+     */
+    private void showTowersIsland2(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island2);
+        towers.add(tower2Island2);
+        towers.add(tower3Island2);
+        towers.add(tower4Island2);
+        towers.add(tower5Island2);
+        towers.add(tower6Island2);
+
+        if(game.getIslandManager().getIslands().get(1).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(1).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 3 on the screen
+     */
+    private void showTowersIsland3(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island3);
+        towers.add(tower2Island3);
+        towers.add(tower3Island3);
+        towers.add(tower4Island3);
+        towers.add(tower5Island3);
+        towers.add(tower6Island3);
+
+        if(game.getIslandManager().getIslands().get(2).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(2).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 4 on the screen
+     */
+    private void showTowersIsland4(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island4);
+        towers.add(tower2Island4);
+        towers.add(tower3Island4);
+        towers.add(tower4Island4);
+        towers.add(tower5Island4);
+        towers.add(tower6Island4);
+
+        int count = 0;
+
+        if(game.getIslandManager().getIslands().get(3).getTowers()==null){
+            return;
+        }
+        for(Tower tower : game.getIslandManager().getIslands().get(3).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 5 on the screen
+     */
+    private void showTowersIsland5(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island5);
+        towers.add(tower2Island5);
+        towers.add(tower3Island5);
+        towers.add(tower4Island5);
+        towers.add(tower5Island5);
+        towers.add(tower6Island5);
+
+        if(game.getIslandManager().getIslands().get(4).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(4).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 6 on the screen
+     */
+    private void showTowersIsland6(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island6);
+        towers.add(tower2Island6);
+        towers.add(tower3Island6);
+        towers.add(tower4Island6);
+        towers.add(tower5Island6);
+        towers.add(tower6Island6);
+
+        if(game.getIslandManager().getIslands().get(5).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(5).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 7 on the screen
+     */
+    private void showTowersIsland7(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island7);
+        towers.add(tower2Island7);
+        towers.add(tower3Island7);
+        towers.add(tower4Island7);
+        towers.add(tower5Island7);
+        towers.add(tower6Island7);
+
+        if(game.getIslandManager().getIslands().get(6).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(6).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 8 on the screen
+     */
+    private void showTowersIsland8(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island8);
+        towers.add(tower2Island8);
+        towers.add(tower3Island8);
+        towers.add(tower4Island8);
+        towers.add(tower5Island8);
+        towers.add(tower6Island8);
+
+        if(game.getIslandManager().getIslands().get(7).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(7).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 9 on the screen
+     */
+    private void showTowersIsland9(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island9);
+        towers.add(tower2Island9);
+        towers.add(tower3Island9);
+        towers.add(tower4Island9);
+        towers.add(tower5Island9);
+        towers.add(tower6Island9);
+
+        if(game.getIslandManager().getIslands().get(8).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(8).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 10 on the screen
+     */
+    private void showTowersIsland10(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island10);
+        towers.add(tower2Island10);
+        towers.add(tower3Island10);
+        towers.add(tower4Island10);
+        towers.add(tower5Island10);
+        towers.add(tower6Island10);
+
+        if(game.getIslandManager().getIslands().get(9).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(9).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 11 on the screen
+     */
+    private void showTowersIsland11(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island11);
+        towers.add(tower2Island11);
+        towers.add(tower3Island11);
+        towers.add(tower4Island11);
+        towers.add(tower5Island11);
+        towers.add(tower6Island11);
+
+        if(game.getIslandManager().getIslands().get(10).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(10).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the towers on island 12 on the screen
+     */
+    private void showTowersIsland12(double x, double y){
+
+        towers.clear();
+        towers.add(tower1Island12);
+        towers.add(tower2Island12);
+        towers.add(tower3Island12);
+        towers.add(tower4Island12);
+        towers.add(tower5Island12);
+        towers.add(tower6Island12);
+
+        if(game.getIslandManager().getIslands().get(11).getTowers()==null){
+            return;
+        }
+
+        int count = 0;
+        for(Tower tower : game.getIslandManager().getIslands().get(11).getTowers()){
+            switch(tower.getColor()) {
+                case WHITE -> {
+                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    break;
+                }
+                case BLACK -> {
+                    towers.get(count).setImage(new Image(blackTowerPath));
+                    break;
+                }
+                case GREY -> {
+                    towers.get(count).setImage(new Image(greyTowerPath));
+                    break;
+                }
+            }
+            towers.get(count).setX(studentsIsland.get(count).getX() + x);
+            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
     }
 
     /**
