@@ -142,881 +142,530 @@ public class GuiActionPhaseController implements Initializable {
      * student on island 1 ImageView reference
      */
     @FXML
-    private ImageView student1island1;
+    private ImageView student1Island1;
     @FXML
-    private ImageView student2island1;
+    private ImageView student2Island1;
     @FXML
-    private ImageView student3island1;
+    private ImageView student3Island1;
     @FXML
-    private ImageView student4island1;
+    private ImageView student4Island1;
     @FXML
-    private ImageView student5island1;
+    private ImageView student5Island1;
     @FXML
-    private ImageView student6island1;
+    private ImageView student6Island1;
     @FXML
-    private ImageView student7island1;
+    private ImageView student7Island1;
     @FXML
-    private ImageView student8island1;
+    private ImageView student8Island1;
     @FXML
-    private ImageView student9island1;
+    private ImageView student9Island1;
     @FXML
-    private ImageView student10island1;
+    private ImageView student10Island1;
     @FXML
-    private ImageView student11island1;
+    private ImageView student11Island1;
     @FXML
-    private ImageView student12island1;
+    private ImageView student12Island1;
     @FXML
-    private ImageView student13island1;
+    private ImageView student13Island1;
     @FXML
-    private ImageView student14island1;
+    private ImageView student14Island1;
     @FXML
-    private ImageView student15island1;
+    private ImageView student15Island1;
     @FXML
-    private ImageView student16island1;
+    private ImageView student16Island1;
     @FXML
-    private ImageView student17island1;
+    private ImageView student17Island1;
     @FXML
-    private ImageView student18island1;
+    private ImageView student18Island1;
     @FXML
-    private ImageView student19island1;
+    private ImageView student19Island1;
     @FXML
-    private ImageView student20island1;
+    private ImageView student20Island1;
 
     /**
      * student on island 2 ImageView reference
      */
     @FXML
-    private ImageView student1island2;
+    private ImageView student1Island2;
     @FXML
-    private ImageView student2island2;
+    private ImageView student2Island2;
     @FXML
-    private ImageView student3island2;
+    private ImageView student3Island2;
     @FXML
-    private ImageView student4island2;
+    private ImageView student4Island2;
     @FXML
-    private ImageView student5island2;
+    private ImageView student5Island2;
     @FXML
-    private ImageView student6island2;
+    private ImageView student6Island2;
     @FXML
-    private ImageView student7island2;
+    private ImageView student7Island2;
     @FXML
-    private ImageView student8island2;
+    private ImageView student8Island2;
     @FXML
-    private ImageView student9island2;
+    private ImageView student9Island2;
     @FXML
-    private ImageView student10island2;
+    private ImageView student10Island2;
     @FXML
-    private ImageView student11island2;
+    private ImageView student11Island2;
     @FXML
-    private ImageView student12island2;
+    private ImageView student12Island2;
     @FXML
-    private ImageView student13island2;
+    private ImageView student13Island2;
     @FXML
-    private ImageView student14island2;
+    private ImageView student14Island2;
     @FXML
-    private ImageView student15island2;
+    private ImageView student15Island2;
     @FXML
-    private ImageView student16island2;
+    private ImageView student16Island2;
     @FXML
-    private ImageView student17island2;
+    private ImageView student17Island2;
     @FXML
-    private ImageView student18island2;
+    private ImageView student18Island2;
     @FXML
-    private ImageView student19island2;
+    private ImageView student19Island2;
     @FXML
-    private ImageView student20island2;
+    private ImageView student20Island2;
 
     /**
      * student on island 1 ImageView reference
      */
     @FXML
-    private ImageView student1island3;
+    private ImageView student1Island3;
     @FXML
-    private ImageView student2island3;
+    private ImageView student2Island3;
     @FXML
-    private ImageView student3island3;
+    private ImageView student3Island3;
     @FXML
-    private ImageView student4island3;
+    private ImageView student4Island3;
     @FXML
-    private ImageView student5island3;
+    private ImageView student5Island3;
     @FXML
-    private ImageView student6island3;
+    private ImageView student6Island3;
     @FXML
-    private ImageView student7island3;
+    private ImageView student7Island3;
     @FXML
-    private ImageView student8island3;
+    private ImageView student8Island3;
     @FXML
-    private ImageView student9island3;
+    private ImageView student9Island3;
     @FXML
-    private ImageView student10island3;
+    private ImageView student10Island3;
     @FXML
-    private ImageView student11island3;
+    private ImageView student11Island3;
     @FXML
-    private ImageView student12island3;
+    private ImageView student12Island3;
     @FXML
-    private ImageView student13island3;
+    private ImageView student13Island3;
     @FXML
-    private ImageView student14island3;
+    private ImageView student14Island3;
     @FXML
-    private ImageView student15island3;
+    private ImageView student15Island3;
     @FXML
-    private ImageView student16island3;
+    private ImageView student16Island3;
     @FXML
-    private ImageView student17island3;
+    private ImageView student17Island3;
     @FXML
-    private ImageView student18island3;
+    private ImageView student18Island3;
     @FXML
-    private ImageView student19island3;
+    private ImageView student19Island3;
     @FXML
-    private ImageView student20island3;
+    private ImageView student20Island3;
 
     /**
      * student on island 4 ImageView reference
      */
     @FXML
-    private ImageView student1island4;
+    private ImageView student1Island4;
     @FXML
-    private ImageView student2island4;
+    private ImageView student2Island4;
     @FXML
-    private ImageView student3island4;
+    private ImageView student3Island4;
     @FXML
-    private ImageView student4island4;
+    private ImageView student4Island4;
     @FXML
-    private ImageView student5island4;
+    private ImageView student5Island4;
     @FXML
-    private ImageView student6island4;
+    private ImageView student6Island4;
     @FXML
-    private ImageView student7island4;
+    private ImageView student7Island4;
     @FXML
-    private ImageView student8island4;
+    private ImageView student8Island4;
     @FXML
-    private ImageView student9island4;
+    private ImageView student9Island4;
     @FXML
-    private ImageView student10island4;
+    private ImageView student10Island4;
     @FXML
-    private ImageView student11island4;
+    private ImageView student11Island4;
     @FXML
-    private ImageView student12island4;
+    private ImageView student12Island4;
     @FXML
-    private ImageView student13island4;
+    private ImageView student13Island4;
     @FXML
-    private ImageView student14island4;
+    private ImageView student14Island4;
     @FXML
-    private ImageView student15island4;
+    private ImageView student15Island4;
     @FXML
-    private ImageView student16island4;
+    private ImageView student16Island4;
     @FXML
-    private ImageView student17island4;
+    private ImageView student17Island4;
     @FXML
-    private ImageView student18island4;
+    private ImageView student18Island4;
     @FXML
-    private ImageView student19island4;
+    private ImageView student19Island4;
     @FXML
-    private ImageView student20island4;
+    private ImageView student20Island4;
 
     /**
      * student on island 5 ImageView reference
      */
     @FXML
-    private ImageView student1island5;
+    private ImageView student1Island5;
     @FXML
-    private ImageView student2island5;
+    private ImageView student2Island5;
     @FXML
-    private ImageView student3island5;
+    private ImageView student3Island5;
     @FXML
-    private ImageView student4island5;
+    private ImageView student4Island5;
     @FXML
-    private ImageView student5island5;
+    private ImageView student5Island5;
     @FXML
-    private ImageView student6island5;
+    private ImageView student6Island5;
     @FXML
-    private ImageView student7island5;
+    private ImageView student7Island5;
     @FXML
-    private ImageView student8island5;
+    private ImageView student8Island5;
     @FXML
-    private ImageView student9island5;
+    private ImageView student9Island5;
     @FXML
-    private ImageView student10island5;
+    private ImageView student10Island5;
     @FXML
-    private ImageView student11island5;
+    private ImageView student11Island5;
     @FXML
-    private ImageView student12island5;
+    private ImageView student12Island5;
     @FXML
-    private ImageView student13island5;
+    private ImageView student13Island5;
     @FXML
-    private ImageView student14island5;
+    private ImageView student14Island5;
     @FXML
-    private ImageView student15island5;
+    private ImageView student15Island5;
     @FXML
-    private ImageView student16island5;
+    private ImageView student16Island5;
     @FXML
-    private ImageView student17island5;
+    private ImageView student17Island5;
     @FXML
-    private ImageView student18island5;
+    private ImageView student18Island5;
     @FXML
-    private ImageView student19island5;
+    private ImageView student19Island5;
     @FXML
-    private ImageView student20island5;
+    private ImageView student20Island5;
 
     /**
      * student on island 6 ImageView reference
      */
     @FXML
-    private ImageView student1island6;
+    private ImageView student1Island6;
     @FXML
-    private ImageView student2island6;
+    private ImageView student2Island6;
     @FXML
-    private ImageView student3island6;
+    private ImageView student3Island6;
     @FXML
-    private ImageView student4island6;
+    private ImageView student4Island6;
     @FXML
-    private ImageView student5island6;
+    private ImageView student5Island6;
     @FXML
-    private ImageView student6island6;
+    private ImageView student6Island6;
     @FXML
-    private ImageView student7island6;
+    private ImageView student7Island6;
     @FXML
-    private ImageView student8island6;
+    private ImageView student8Island6;
     @FXML
-    private ImageView student9island6;
+    private ImageView student9Island6;
     @FXML
-    private ImageView student10island6;
+    private ImageView student10Island6;
     @FXML
-    private ImageView student11island6;
+    private ImageView student11Island6;
     @FXML
-    private ImageView student12island6;
+    private ImageView student12Island6;
     @FXML
-    private ImageView student13island6;
+    private ImageView student13Island6;
     @FXML
-    private ImageView student14island6;
+    private ImageView student14Island6;
     @FXML
-    private ImageView student15island6;
+    private ImageView student15Island6;
     @FXML
-    private ImageView student16island6;
+    private ImageView student16Island6;
     @FXML
-    private ImageView student17island6;
+    private ImageView student17Island6;
     @FXML
-    private ImageView student18island6;
+    private ImageView student18Island6;
     @FXML
-    private ImageView student19island6;
+    private ImageView student19Island6;
     @FXML
-    private ImageView student20island6;
+    private ImageView student20Island6;
 
     /**
      * student on island 7 ImageView reference
      */
     @FXML
-    private ImageView student1island7;
+    private ImageView student1Island7;
     @FXML
-    private ImageView student2island7;
+    private ImageView student2Island7;
     @FXML
-    private ImageView student3island7;
+    private ImageView student3Island7;
     @FXML
-    private ImageView student4island7;
+    private ImageView student4Island7;
     @FXML
-    private ImageView student5island7;
+    private ImageView student5Island7;
     @FXML
-    private ImageView student6island7;
+    private ImageView student6Island7;
     @FXML
-    private ImageView student7island7;
+    private ImageView student7Island7;
     @FXML
-    private ImageView student8island7;
+    private ImageView student8Island7;
     @FXML
-    private ImageView student9island7;
+    private ImageView student9Island7;
     @FXML
-    private ImageView student10island7;
+    private ImageView student10Island7;
     @FXML
-    private ImageView student11island7;
+    private ImageView student11Island7;
     @FXML
-    private ImageView student12island7;
+    private ImageView student12Island7;
     @FXML
-    private ImageView student13island7;
+    private ImageView student13Island7;
     @FXML
-    private ImageView student14island7;
+    private ImageView student14Island7;
     @FXML
-    private ImageView student15island7;
+    private ImageView student15Island7;
     @FXML
-    private ImageView student16island7;
+    private ImageView student16Island7;
     @FXML
-    private ImageView student17island7;
+    private ImageView student17Island7;
     @FXML
-    private ImageView student18island7;
+    private ImageView student18Island7;
     @FXML
-    private ImageView student19island7;
+    private ImageView student19Island7;
     @FXML
-    private ImageView student20island7;
+    private ImageView student20Island7;
 
     /**
      * student on island 8 ImageView reference
      */
     @FXML
-    private ImageView student1island8;
+    private ImageView student1Island8;
     @FXML
-    private ImageView student2island8;
+    private ImageView student2Island8;
     @FXML
-    private ImageView student3island8;
+    private ImageView student3Island8;
     @FXML
-    private ImageView student4island8;
+    private ImageView student4Island8;
     @FXML
-    private ImageView student5island8;
+    private ImageView student5Island8;
     @FXML
-    private ImageView student6island8;
+    private ImageView student6Island8;
     @FXML
-    private ImageView student7island8;
+    private ImageView student7Island8;
     @FXML
-    private ImageView student8island8;
+    private ImageView student8Island8;
     @FXML
-    private ImageView student9island8;
+    private ImageView student9Island8;
     @FXML
-    private ImageView student10island8;
+    private ImageView student10Island8;
     @FXML
-    private ImageView student11island8;
+    private ImageView student11Island8;
     @FXML
-    private ImageView student12island8;
+    private ImageView student12Island8;
     @FXML
-    private ImageView student13island8;
+    private ImageView student13Island8;
     @FXML
-    private ImageView student14island8;
+    private ImageView student14Island8;
     @FXML
-    private ImageView student15island8;
+    private ImageView student15Island8;
     @FXML
-    private ImageView student16island8;
+    private ImageView student16Island8;
     @FXML
-    private ImageView student17island8;
+    private ImageView student17Island8;
     @FXML
-    private ImageView student18island8;
+    private ImageView student18Island8;
     @FXML
-    private ImageView student19island8;
+    private ImageView student19Island8;
     @FXML
-    private ImageView student20island8;
+    private ImageView student20Island8;
 
     /**
      * student on island 9 ImageView reference
      */
     @FXML
-    private ImageView student1island9;
+    private ImageView student1Island9;
     @FXML
-    private ImageView student2island9;
+    private ImageView student2Island9;
     @FXML
-    private ImageView student3island9;
+    private ImageView student3Island9;
     @FXML
-    private ImageView student4island9;
+    private ImageView student4Island9;
     @FXML
-    private ImageView student5island9;
+    private ImageView student5Island9;
     @FXML
-    private ImageView student6island9;
+    private ImageView student6Island9;
     @FXML
-    private ImageView student7island9;
+    private ImageView student7Island9;
     @FXML
-    private ImageView student8island9;
+    private ImageView student8Island9;
     @FXML
-    private ImageView student9island9;
+    private ImageView student9Island9;
     @FXML
-    private ImageView student10island9;
+    private ImageView student10Island9;
     @FXML
-    private ImageView student11island9;
+    private ImageView student11Island9;
     @FXML
-    private ImageView student12island9;
+    private ImageView student12Island9;
     @FXML
-    private ImageView student13island9;
+    private ImageView student13Island9;
     @FXML
-    private ImageView student14island9;
+    private ImageView student14Island9;
     @FXML
-    private ImageView student15island9;
+    private ImageView student15Island9;
     @FXML
-    private ImageView student16island9;
+    private ImageView student16Island9;
     @FXML
-    private ImageView student17island9;
+    private ImageView student17Island9;
     @FXML
-    private ImageView student18island9;
+    private ImageView student18Island9;
     @FXML
-    private ImageView student19island9;
+    private ImageView student19Island9;
     @FXML
-    private ImageView student20island9;
+    private ImageView student20Island9;
 
     /**
      * student on island 10 ImageView reference
      */
     @FXML
-    private ImageView student1island10;
+    private ImageView student1Island10;
     @FXML
-    private ImageView student2island10;
+    private ImageView student2Island10;
     @FXML
-    private ImageView student3island10;
+    private ImageView student3Island10;
     @FXML
-    private ImageView student4island10;
+    private ImageView student4Island10;
     @FXML
-    private ImageView student5island10;
+    private ImageView student5Island10;
     @FXML
-    private ImageView student6island10;
+    private ImageView student6Island10;
     @FXML
-    private ImageView student7island10;
+    private ImageView student7Island10;
     @FXML
-    private ImageView student8island10;
+    private ImageView student8Island10;
     @FXML
-    private ImageView student9island10;
+    private ImageView student9Island10;
     @FXML
-    private ImageView student10island10;
+    private ImageView student10Island10;
     @FXML
-    private ImageView student11island10;
+    private ImageView student11Island10;
     @FXML
-    private ImageView student12island10;
+    private ImageView student12Island10;
     @FXML
-    private ImageView student13island10;
+    private ImageView student13Island10;
     @FXML
-    private ImageView student14island10;
+    private ImageView student14Island10;
     @FXML
-    private ImageView student15island10;
+    private ImageView student15Island10;
     @FXML
-    private ImageView student16island10;
+    private ImageView student16Island10;
     @FXML
-    private ImageView student17island10;
+    private ImageView student17Island10;
     @FXML
-    private ImageView student18island10;
+    private ImageView student18Island10;
     @FXML
-    private ImageView student19island10;
+    private ImageView student19Island10;
     @FXML
-    private ImageView student20island10;
+    private ImageView student20Island10;
 
     /**
      * student on island 11 ImageView reference
      */
     @FXML
-    private ImageView student1island11;
+    private ImageView student1Island11;
     @FXML
-    private ImageView student2island11;
+    private ImageView student2Island11;
     @FXML
-    private ImageView student3island11;
+    private ImageView student3Island11;
     @FXML
-    private ImageView student4island11;
+    private ImageView student4Island11;
     @FXML
-    private ImageView student5island11;
+    private ImageView student5Island11;
     @FXML
-    private ImageView student6island11;
+    private ImageView student6Island11;
     @FXML
-    private ImageView student7island11;
+    private ImageView student7Island11;
     @FXML
-    private ImageView student8island11;
+    private ImageView student8Island11;
     @FXML
-    private ImageView student9island11;
+    private ImageView student9Island11;
     @FXML
-    private ImageView student10island11;
+    private ImageView student10Island11;
     @FXML
-    private ImageView student11island11;
+    private ImageView student11Island11;
     @FXML
-    private ImageView student12island11;
+    private ImageView student12Island11;
     @FXML
-    private ImageView student13island11;
+    private ImageView student13Island11;
     @FXML
-    private ImageView student14island11;
+    private ImageView student14Island11;
     @FXML
-    private ImageView student15island11;
+    private ImageView student15Island11;
     @FXML
-    private ImageView student16island11;
+    private ImageView student16Island11;
     @FXML
-    private ImageView student17island11;
+    private ImageView student17Island11;
     @FXML
-    private ImageView student18island11;
+    private ImageView student18Island11;
     @FXML
-    private ImageView student19island11;
+    private ImageView student19Island11;
     @FXML
-    private ImageView student20island11;
+    private ImageView student20Island11;
 
     /**
      * student on island 1 ImageView reference
      */
     @FXML
-    private ImageView student1island12;
+    private ImageView student1Island12;
     @FXML
-    private ImageView student2island12;
+    private ImageView student2Island12;
     @FXML
-    private ImageView student3island12;
+    private ImageView student3Island12;
     @FXML
-    private ImageView student4island12;
+    private ImageView student4Island12;
     @FXML
-    private ImageView student5island12;
+    private ImageView student5Island12;
     @FXML
-    private ImageView student6island12;
+    private ImageView student6Island12;
     @FXML
-    private ImageView student7island12;
+    private ImageView student7Island12;
     @FXML
-    private ImageView student8island12;
+    private ImageView student8Island12;
     @FXML
-    private ImageView student9island12;
+    private ImageView student9Island12;
     @FXML
-    private ImageView student10island12;
+    private ImageView student10Island12;
     @FXML
-    private ImageView student11island12;
+    private ImageView student11Island12;
     @FXML
-    private ImageView student12island12;
+    private ImageView student12Island12;
     @FXML
-    private ImageView student13island12;
+    private ImageView student13Island12;
     @FXML
-    private ImageView student14island12;
+    private ImageView student14Island12;
     @FXML
-    private ImageView student15island12;
+    private ImageView student15Island12;
     @FXML
-    private ImageView student16island12;
+    private ImageView student16Island12;
     @FXML
-    private ImageView student17island12;
+    private ImageView student17Island12;
     @FXML
-    private ImageView student18island12;
+    private ImageView student18Island12;
     @FXML
-    private ImageView student19island12;
+    private ImageView student19Island12;
     @FXML
-    private ImageView student20island12;
+    private ImageView student20Island12;
 
-    /**
-     * student on island 13 ImageView reference
-     */
-    @FXML
-    private ImageView student1island13;
-    @FXML
-    private ImageView student2island13;
-    @FXML
-    private ImageView student3island13;
-    @FXML
-    private ImageView student4island13;
-    @FXML
-    private ImageView student5island13;
-    @FXML
-    private ImageView student6island13;
-    @FXML
-    private ImageView student7island13;
-    @FXML
-    private ImageView student8island13;
-    @FXML
-    private ImageView student9island13;
-    @FXML
-    private ImageView student10island13;
-    @FXML
-    private ImageView student11island13;
-    @FXML
-    private ImageView student12island13;
-    @FXML
-    private ImageView student13island13;
-    @FXML
-    private ImageView student14island13;
-    @FXML
-    private ImageView student15island13;
-    @FXML
-    private ImageView student16island13;
-    @FXML
-    private ImageView student17island13;
-    @FXML
-    private ImageView student18island13;
-    @FXML
-    private ImageView student19island13;
-    @FXML
-    private ImageView student20island13;
-
-    /**
-     * student on island 14 ImageView reference
-     */
-    @FXML
-    private ImageView student1island14;
-    @FXML
-    private ImageView student2island14;
-    @FXML
-    private ImageView student3island14;
-    @FXML
-    private ImageView student4island14;
-    @FXML
-    private ImageView student5island14;
-    @FXML
-    private ImageView student6island14;
-    @FXML
-    private ImageView student7island14;
-    @FXML
-    private ImageView student8island14;
-    @FXML
-    private ImageView student9island14;
-    @FXML
-    private ImageView student10island14;
-    @FXML
-    private ImageView student11island14;
-    @FXML
-    private ImageView student12island14;
-    @FXML
-    private ImageView student13island14;
-    @FXML
-    private ImageView student14island14;
-    @FXML
-    private ImageView student15island14;
-    @FXML
-    private ImageView student16island14;
-    @FXML
-    private ImageView student17island14;
-    @FXML
-    private ImageView student18island14;
-    @FXML
-    private ImageView student19island14;
-    @FXML
-    private ImageView student20island14;
-
-    /**
-     * student on island 5 ImageView reference
-     */
-    @FXML
-    private ImageView student1island15;
-    @FXML
-    private ImageView student2island15;
-    @FXML
-    private ImageView student3island15;
-    @FXML
-    private ImageView student4island15;
-    @FXML
-    private ImageView student5island15;
-    @FXML
-    private ImageView student6island15;
-    @FXML
-    private ImageView student7island15;
-    @FXML
-    private ImageView student8island15;
-    @FXML
-    private ImageView student9island15;
-    @FXML
-    private ImageView student10island15;
-    @FXML
-    private ImageView student11island15;
-    @FXML
-    private ImageView student12island15;
-    @FXML
-    private ImageView student13island15;
-    @FXML
-    private ImageView student14island15;
-    @FXML
-    private ImageView student15island15;
-    @FXML
-    private ImageView student16island15;
-    @FXML
-    private ImageView student17island15;
-    @FXML
-    private ImageView student18island15;
-    @FXML
-    private ImageView student19island15;
-    @FXML
-    private ImageView student20island15;
-
-    /**
-     * student on island 16 ImageView reference
-     */
-    @FXML
-    private ImageView student1island16;
-    @FXML
-    private ImageView student2island16;
-    @FXML
-    private ImageView student3island16;
-    @FXML
-    private ImageView student4island16;
-    @FXML
-    private ImageView student5island16;
-    @FXML
-    private ImageView student6island16;
-    @FXML
-    private ImageView student7island16;
-    @FXML
-    private ImageView student8island16;
-    @FXML
-    private ImageView student9island16;
-    @FXML
-    private ImageView student10island16;
-    @FXML
-    private ImageView student11island16;
-    @FXML
-    private ImageView student12island16;
-    @FXML
-    private ImageView student13island16;
-    @FXML
-    private ImageView student14island16;
-    @FXML
-    private ImageView student15island16;
-    @FXML
-    private ImageView student16island16;
-    @FXML
-    private ImageView student17island16;
-    @FXML
-    private ImageView student18island16;
-    @FXML
-    private ImageView student19island16;
-    @FXML
-    private ImageView student20island16;
-
-    /**
-     * student on island 17 ImageView reference
-     */
-    @FXML
-    private ImageView student1island17;
-    @FXML
-    private ImageView student2island17;
-    @FXML
-    private ImageView student3island17;
-    @FXML
-    private ImageView student4island17;
-    @FXML
-    private ImageView student5island17;
-    @FXML
-    private ImageView student6island17;
-    @FXML
-    private ImageView student7island17;
-    @FXML
-    private ImageView student8island17;
-    @FXML
-    private ImageView student9island17;
-    @FXML
-    private ImageView student10island17;
-    @FXML
-    private ImageView student11island17;
-    @FXML
-    private ImageView student12island17;
-    @FXML
-    private ImageView student13island17;
-    @FXML
-    private ImageView student14island17;
-    @FXML
-    private ImageView student15island17;
-    @FXML
-    private ImageView student16island17;
-    @FXML
-    private ImageView student17island17;
-    @FXML
-    private ImageView student18island17;
-    @FXML
-    private ImageView student19island17;
-    @FXML
-    private ImageView student20island17;
-
-    /**
-     * student on island 18 ImageView reference
-     */
-    @FXML
-    private ImageView student1island18;
-    @FXML
-    private ImageView student2island18;
-    @FXML
-    private ImageView student3island18;
-    @FXML
-    private ImageView student4island18;
-    @FXML
-    private ImageView student5island18;
-    @FXML
-    private ImageView student6island18;
-    @FXML
-    private ImageView student7island18;
-    @FXML
-    private ImageView student8island18;
-    @FXML
-    private ImageView student9island18;
-    @FXML
-    private ImageView student10island18;
-    @FXML
-    private ImageView student11island18;
-    @FXML
-    private ImageView student12island18;
-    @FXML
-    private ImageView student13island18;
-    @FXML
-    private ImageView student14island18;
-    @FXML
-    private ImageView student15island18;
-    @FXML
-    private ImageView student16island18;
-    @FXML
-    private ImageView student17island18;
-    @FXML
-    private ImageView student18island18;
-    @FXML
-    private ImageView student19island18;
-    @FXML
-    private ImageView student20island18;
-
-    /**
-     * student on island 19 ImageView reference
-     */
-    @FXML
-    private ImageView student1island19;
-    @FXML
-    private ImageView student2island19;
-    @FXML
-    private ImageView student3island19;
-    @FXML
-    private ImageView student4island19;
-    @FXML
-    private ImageView student5island19;
-    @FXML
-    private ImageView student6island19;
-    @FXML
-    private ImageView student7island19;
-    @FXML
-    private ImageView student8island19;
-    @FXML
-    private ImageView student9island19;
-    @FXML
-    private ImageView student10island19;
-    @FXML
-    private ImageView student11island19;
-    @FXML
-    private ImageView student12island19;
-    @FXML
-    private ImageView student13island19;
-    @FXML
-    private ImageView student14island19;
-    @FXML
-    private ImageView student15island19;
-    @FXML
-    private ImageView student16island19;
-    @FXML
-    private ImageView student17island19;
-    @FXML
-    private ImageView student18island19;
-    @FXML
-    private ImageView student19island19;
-    @FXML
-    private ImageView student20island19;
-
-    /**
-     * student on island 20 ImageView reference
-     */
-    @FXML
-    private ImageView student1island20;
-    @FXML
-    private ImageView student2island20;
-    @FXML
-    private ImageView student3island20;
-    @FXML
-    private ImageView student4island20;
-    @FXML
-    private ImageView student5island20;
-    @FXML
-    private ImageView student6island20;
-    @FXML
-    private ImageView student7island20;
-    @FXML
-    private ImageView student8island20;
-    @FXML
-    private ImageView student9island20;
-    @FXML
-    private ImageView student10island20;
-    @FXML
-    private ImageView student11island20;
-    @FXML
-    private ImageView student12island20;
-    @FXML
-    private ImageView student13island20;
-    @FXML
-    private ImageView student14island20;
-    @FXML
-    private ImageView student15island20;
-    @FXML
-    private ImageView student16island20;
-    @FXML
-    private ImageView student17island20;
-    @FXML
-    private ImageView student18island20;
-    @FXML
-    private ImageView student19island20;
-    @FXML
-    private ImageView student20island20;
 
     /**
      * student ingress ImageView reference
@@ -1159,6 +808,199 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView studentHallPink9;
     @FXML
     private ImageView studentHallPink10;
+
+    /**
+     *  Tower on island 1 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island1;
+    @FXML
+    private ImageView tower2Island1;
+    @FXML
+    private ImageView tower3Island1;
+    @FXML
+    private ImageView tower4Island1;
+    @FXML
+    private ImageView tower5Island1;
+    @FXML
+    private ImageView tower6Island1;
+
+    /**
+     *  Tower on island 2 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island2;
+    @FXML
+    private ImageView tower2Island2;
+    @FXML
+    private ImageView tower3Island2;
+    @FXML
+    private ImageView tower4Island2;
+    @FXML
+    private ImageView tower5Island2;
+    @FXML
+    private ImageView tower6Island2;
+
+    /**
+     *  Tower on island 2 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island3;
+    @FXML
+    private ImageView tower2Island3;
+    @FXML
+    private ImageView tower3Island3;
+    @FXML
+    private ImageView tower4Island3;
+    @FXML
+    private ImageView tower5Island3;
+    @FXML
+    private ImageView tower6Island3;
+
+    /**
+     *  Tower on island 3 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island4;
+    @FXML
+    private ImageView tower2Island4;
+    @FXML
+    private ImageView tower3Island4;
+    @FXML
+    private ImageView tower4Island4;
+    @FXML
+    private ImageView tower5Island4;
+    @FXML
+    private ImageView tower6Island4;
+
+    /**
+     *  Tower on island 5 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island5;
+    @FXML
+    private ImageView tower2Island5;
+    @FXML
+    private ImageView tower3Island5;
+    @FXML
+    private ImageView tower4Island5;
+    @FXML
+    private ImageView tower5Island5;
+    @FXML
+    private ImageView tower6Island5;
+
+    /**
+     *  Tower on island 6 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island6;
+    @FXML
+    private ImageView tower2Island6;
+    @FXML
+    private ImageView tower3Island6;
+    @FXML
+    private ImageView tower4Island6;
+    @FXML
+    private ImageView tower5Island6;
+    @FXML
+    private ImageView tower6Island6;
+
+    /**
+     *  Tower on island 7 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island7;
+    @FXML
+    private ImageView tower2Island7;
+    @FXML
+    private ImageView tower3Island7;
+    @FXML
+    private ImageView tower4Island7;
+    @FXML
+    private ImageView tower5Island7;
+    @FXML
+    private ImageView tower6Island7;
+
+    /**
+     *  Tower on island 8 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island8;
+    @FXML
+    private ImageView tower2Island8;
+    @FXML
+    private ImageView tower3Island8;
+    @FXML
+    private ImageView tower4Island8;
+    @FXML
+    private ImageView tower5Island8;
+    @FXML
+    private ImageView tower6Island8;
+
+    /**
+     *  Tower on island 9 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island9;
+    @FXML
+    private ImageView tower2Island9;
+    @FXML
+    private ImageView tower3Island9;
+    @FXML
+    private ImageView tower4Island9;
+    @FXML
+    private ImageView tower5Island9;
+    @FXML
+    private ImageView tower6Island9;
+
+    /**
+     *  Tower on island 10 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island10;
+    @FXML
+    private ImageView tower2Island10;
+    @FXML
+    private ImageView tower3Island10;
+    @FXML
+    private ImageView tower4Island10;
+    @FXML
+    private ImageView tower5Island10;
+    @FXML
+    private ImageView tower6Island10;
+
+    /**
+     *  Tower on island 11 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island11;
+    @FXML
+    private ImageView tower2Island11;
+    @FXML
+    private ImageView tower3Island11;
+    @FXML
+    private ImageView tower4Island11;
+    @FXML
+    private ImageView tower5Island11;
+    @FXML
+    private ImageView tower6Island11;
+
+    /**
+     *  Tower on island 12 ImageView reference
+     */
+    @FXML
+    private ImageView tower1Island12;
+    @FXML
+    private ImageView tower2Island12;
+    @FXML
+    private ImageView tower3Island12;
+    @FXML
+    private ImageView tower4Island12;
+    @FXML
+    private ImageView tower5Island12;
+    @FXML
+    private ImageView tower6Island12;
+
 
     /**
      *  Island ImageView reference
@@ -1322,6 +1164,11 @@ public class GuiActionPhaseController implements Initializable {
     private LinkedList<ImageView> islands = new LinkedList<ImageView>();
 
     /**
+     * Stores the list of ImageView for the students on islands (reused for every island)
+     */
+    private LinkedList<ImageView> studentsIsland = new LinkedList<ImageView>();
+
+    /**
      * Stores the list of ImageView for the students on the ingress
      */
     private LinkedList<ImageView> studentsIngress = new LinkedList<ImageView>();
@@ -1469,8 +1316,451 @@ public class GuiActionPhaseController implements Initializable {
         showText();
         showProfessors();
         showTowerTable();
+        showStudentIsland1(0,0);
+        showStudentIsland2(0,0);
+        showStudentIsland3(0,0);
+        showStudentIsland4(0,0);
+        showStudentIsland5(0,0);
+        showStudentIsland6(0,0);
+        showStudentIsland7(0,0);
+        showStudentIsland8(0,0);
+        showStudentIsland9(0,0);
+        showStudentIsland10(0,0);
+        showStudentIsland11(0,0);
+        showStudentIsland12(0,0);
+
     }
 
+    /**
+     * shows the students on island 1 on the screen
+     */
+    private void showStudentIsland1(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island1);
+        studentsIsland.add(student2Island1);
+        studentsIsland.add(student3Island1);
+        studentsIsland.add(student4Island1);
+        studentsIsland.add(student5Island1);
+        studentsIsland.add(student6Island1);
+        studentsIsland.add(student7Island1);
+        studentsIsland.add(student8Island1);
+        studentsIsland.add(student9Island1);
+        studentsIsland.add(student10Island1);
+        studentsIsland.add(student11Island1);
+        studentsIsland.add(student12Island1);
+        studentsIsland.add(student13Island1);
+        studentsIsland.add(student14Island1);
+        studentsIsland.add(student15Island1);
+        studentsIsland.add(student16Island1);
+        studentsIsland.add(student17Island1);
+        studentsIsland.add(student18Island1);
+        studentsIsland.add(student19Island1);
+        studentsIsland.add(student20Island1);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(0).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 2 on the screen
+     */
+    private void showStudentIsland2(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island2);
+        studentsIsland.add(student2Island2);
+        studentsIsland.add(student3Island2);
+        studentsIsland.add(student4Island2);
+        studentsIsland.add(student5Island2);
+        studentsIsland.add(student6Island2);
+        studentsIsland.add(student7Island2);
+        studentsIsland.add(student8Island2);
+        studentsIsland.add(student9Island2);
+        studentsIsland.add(student10Island2);
+        studentsIsland.add(student11Island2);
+        studentsIsland.add(student12Island2);
+        studentsIsland.add(student13Island2);
+        studentsIsland.add(student14Island2);
+        studentsIsland.add(student15Island2);
+        studentsIsland.add(student16Island2);
+        studentsIsland.add(student17Island2);
+        studentsIsland.add(student18Island2);
+        studentsIsland.add(student19Island2);
+        studentsIsland.add(student20Island2);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(1).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 3 on the screen
+     */
+    private void showStudentIsland3(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island3);
+        studentsIsland.add(student2Island3);
+        studentsIsland.add(student3Island3);
+        studentsIsland.add(student4Island3);
+        studentsIsland.add(student5Island3);
+        studentsIsland.add(student6Island3);
+        studentsIsland.add(student7Island3);
+        studentsIsland.add(student8Island3);
+        studentsIsland.add(student9Island3);
+        studentsIsland.add(student10Island3);
+        studentsIsland.add(student11Island3);
+        studentsIsland.add(student12Island3);
+        studentsIsland.add(student13Island3);
+        studentsIsland.add(student14Island3);
+        studentsIsland.add(student15Island3);
+        studentsIsland.add(student16Island3);
+        studentsIsland.add(student17Island3);
+        studentsIsland.add(student18Island3);
+        studentsIsland.add(student19Island3);
+        studentsIsland.add(student20Island3);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(2).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 4 on the screen
+     */
+    private void showStudentIsland4(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island4);
+        studentsIsland.add(student2Island4);
+        studentsIsland.add(student3Island4);
+        studentsIsland.add(student4Island4);
+        studentsIsland.add(student5Island4);
+        studentsIsland.add(student6Island4);
+        studentsIsland.add(student7Island4);
+        studentsIsland.add(student8Island4);
+        studentsIsland.add(student9Island4);
+        studentsIsland.add(student10Island4);
+        studentsIsland.add(student11Island4);
+        studentsIsland.add(student12Island4);
+        studentsIsland.add(student13Island4);
+        studentsIsland.add(student14Island4);
+        studentsIsland.add(student15Island4);
+        studentsIsland.add(student16Island4);
+        studentsIsland.add(student17Island4);
+        studentsIsland.add(student18Island4);
+        studentsIsland.add(student19Island4);
+        studentsIsland.add(student20Island4);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(3).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 5 on the screen
+     */
+    private void showStudentIsland5(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island5);
+        studentsIsland.add(student2Island5);
+        studentsIsland.add(student3Island5);
+        studentsIsland.add(student4Island5);
+        studentsIsland.add(student5Island5);
+        studentsIsland.add(student6Island5);
+        studentsIsland.add(student7Island5);
+        studentsIsland.add(student8Island5);
+        studentsIsland.add(student9Island5);
+        studentsIsland.add(student10Island5);
+        studentsIsland.add(student11Island5);
+        studentsIsland.add(student12Island5);
+        studentsIsland.add(student13Island5);
+        studentsIsland.add(student14Island5);
+        studentsIsland.add(student15Island5);
+        studentsIsland.add(student16Island5);
+        studentsIsland.add(student17Island5);
+        studentsIsland.add(student18Island5);
+        studentsIsland.add(student19Island5);
+        studentsIsland.add(student20Island5);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(4).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 6 on the screen
+     */
+    private void showStudentIsland6(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island6);
+        studentsIsland.add(student2Island6);
+        studentsIsland.add(student3Island6);
+        studentsIsland.add(student4Island6);
+        studentsIsland.add(student5Island6);
+        studentsIsland.add(student6Island6);
+        studentsIsland.add(student7Island6);
+        studentsIsland.add(student8Island6);
+        studentsIsland.add(student9Island6);
+        studentsIsland.add(student10Island6);
+        studentsIsland.add(student11Island6);
+        studentsIsland.add(student12Island6);
+        studentsIsland.add(student13Island6);
+        studentsIsland.add(student14Island6);
+        studentsIsland.add(student15Island6);
+        studentsIsland.add(student16Island6);
+        studentsIsland.add(student17Island6);
+        studentsIsland.add(student18Island6);
+        studentsIsland.add(student19Island6);
+        studentsIsland.add(student20Island6);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(5).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 7 on the screen
+     */
+    private void showStudentIsland7(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island7);
+        studentsIsland.add(student2Island7);
+        studentsIsland.add(student3Island7);
+        studentsIsland.add(student4Island7);
+        studentsIsland.add(student5Island7);
+        studentsIsland.add(student6Island7);
+        studentsIsland.add(student7Island7);
+        studentsIsland.add(student8Island7);
+        studentsIsland.add(student9Island7);
+        studentsIsland.add(student10Island7);
+        studentsIsland.add(student11Island7);
+        studentsIsland.add(student12Island7);
+        studentsIsland.add(student13Island7);
+        studentsIsland.add(student14Island7);
+        studentsIsland.add(student15Island7);
+        studentsIsland.add(student16Island7);
+        studentsIsland.add(student17Island7);
+        studentsIsland.add(student18Island7);
+        studentsIsland.add(student19Island7);
+        studentsIsland.add(student20Island7);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(7).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 8 on the screen
+     */
+    private void showStudentIsland8(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island8);
+        studentsIsland.add(student2Island8);
+        studentsIsland.add(student3Island8);
+        studentsIsland.add(student4Island8);
+        studentsIsland.add(student5Island8);
+        studentsIsland.add(student6Island8);
+        studentsIsland.add(student7Island8);
+        studentsIsland.add(student8Island8);
+        studentsIsland.add(student9Island8);
+        studentsIsland.add(student10Island8);
+        studentsIsland.add(student11Island8);
+        studentsIsland.add(student12Island8);
+        studentsIsland.add(student13Island8);
+        studentsIsland.add(student14Island8);
+        studentsIsland.add(student15Island8);
+        studentsIsland.add(student16Island8);
+        studentsIsland.add(student17Island8);
+        studentsIsland.add(student18Island8);
+        studentsIsland.add(student19Island8);
+        studentsIsland.add(student20Island8);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(7).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 9 on the screen
+     */
+    private void showStudentIsland9(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island9);
+        studentsIsland.add(student2Island9);
+        studentsIsland.add(student3Island9);
+        studentsIsland.add(student4Island9);
+        studentsIsland.add(student5Island9);
+        studentsIsland.add(student6Island9);
+        studentsIsland.add(student7Island9);
+        studentsIsland.add(student8Island9);
+        studentsIsland.add(student9Island9);
+        studentsIsland.add(student10Island9);
+        studentsIsland.add(student11Island9);
+        studentsIsland.add(student12Island9);
+        studentsIsland.add(student13Island9);
+        studentsIsland.add(student14Island9);
+        studentsIsland.add(student15Island9);
+        studentsIsland.add(student16Island9);
+        studentsIsland.add(student17Island9);
+        studentsIsland.add(student18Island9);
+        studentsIsland.add(student19Island9);
+        studentsIsland.add(student20Island9);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(8).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 19 on the screen
+     */
+    private void showStudentIsland10(double x, double y){
+
+        studentsIsland.add(student1Island10);
+        studentsIsland.add(student2Island10);
+        studentsIsland.add(student3Island10);
+        studentsIsland.add(student4Island10);
+        studentsIsland.add(student5Island10);
+        studentsIsland.add(student6Island10);
+        studentsIsland.add(student7Island10);
+        studentsIsland.add(student8Island10);
+        studentsIsland.add(student9Island10);
+        studentsIsland.add(student10Island10);
+        studentsIsland.add(student11Island10);
+        studentsIsland.add(student12Island10);
+        studentsIsland.add(student13Island10);
+        studentsIsland.add(student14Island10);
+        studentsIsland.add(student15Island10);
+        studentsIsland.add(student16Island10);
+        studentsIsland.add(student17Island10);
+        studentsIsland.add(student18Island10);
+        studentsIsland.add(student19Island10);
+        studentsIsland.add(student20Island10);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(9).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 11 on the screen
+     */
+    private void showStudentIsland11(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island11);
+        studentsIsland.add(student2Island11);
+        studentsIsland.add(student3Island11);
+        studentsIsland.add(student4Island11);
+        studentsIsland.add(student5Island11);
+        studentsIsland.add(student6Island11);
+        studentsIsland.add(student7Island11);
+        studentsIsland.add(student8Island11);
+        studentsIsland.add(student9Island11);
+        studentsIsland.add(student10Island11);
+        studentsIsland.add(student11Island11);
+        studentsIsland.add(student12Island11);
+        studentsIsland.add(student13Island11);
+        studentsIsland.add(student14Island11);
+        studentsIsland.add(student15Island11);
+        studentsIsland.add(student16Island11);
+        studentsIsland.add(student17Island11);
+        studentsIsland.add(student18Island11);
+        studentsIsland.add(student19Island11);
+        studentsIsland.add(student20Island11);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(10).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
+
+    /**
+     * shows the students on island 12 on the screen
+     */
+    private void showStudentIsland12(double x, double y){
+
+        studentsIsland.clear();
+        studentsIsland.add(student1Island12);
+        studentsIsland.add(student2Island12);
+        studentsIsland.add(student3Island12);
+        studentsIsland.add(student4Island12);
+        studentsIsland.add(student5Island12);
+        studentsIsland.add(student6Island12);
+        studentsIsland.add(student7Island12);
+        studentsIsland.add(student8Island12);
+        studentsIsland.add(student9Island12);
+        studentsIsland.add(student10Island12);
+        studentsIsland.add(student11Island12);
+        studentsIsland.add(student12Island12);
+        studentsIsland.add(student13Island12);
+        studentsIsland.add(student14Island12);
+        studentsIsland.add(student15Island12);
+        studentsIsland.add(student16Island12);
+        studentsIsland.add(student17Island12);
+        studentsIsland.add(student18Island12);
+        studentsIsland.add(student19Island12);
+        studentsIsland.add(student20Island12);
+
+        int count = 0;
+        for(Student student : game.getIslandManager().getIslands().get(11).getStudents()){
+            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
+            studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
+            count++;
+        }
+    }
     /**
      * shows the towers in the school on the screen
      */

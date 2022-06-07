@@ -98,6 +98,7 @@ public class Controller implements Runnable {
 
                 System.out.println("Game mode selected ");
                 write(isFirst);
+                break;
 
             case EQUALNAME:
                 System.out.println("The username is already present, select another one");
