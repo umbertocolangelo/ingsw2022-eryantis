@@ -1844,6 +1844,8 @@ public class GuiActionPhaseController implements Initializable {
 
         GuiLoadingController loadingController = fxmlLoader.getController();
         loadingController.resize(stage, scene);
+
+        loadingController.setWaitText();
     }
 
     /**

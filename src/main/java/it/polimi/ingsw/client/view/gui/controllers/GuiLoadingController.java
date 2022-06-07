@@ -2,7 +2,9 @@ package it.polimi.ingsw.client.view.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 public class GuiLoadingController {
@@ -12,6 +14,13 @@ public class GuiLoadingController {
      */
     @FXML
     public AnchorPane scenePane;
+
+    /**
+     *
+     */
+    @FXML
+    private Label loadingIndicator;
+
 
     /**
      *
@@ -66,6 +75,14 @@ public class GuiLoadingController {
      */
     public Stage getStage() {
         return stage;
+    }
+
+    /**
+     * Sets the label text and position when is not the player turn
+     */
+    public void setWaitText() {
+        loadingIndicator.setText("Waiting for your turn...");
+        loadingIndicator.setLayoutX(432);
     }
 
 }

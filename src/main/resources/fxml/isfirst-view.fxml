@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
@@ -13,48 +8,53 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="scenePane" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiIsFirstController">
+
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiIsFirstController">
    <children>
-      <Label fx:id="label" layoutX="440.0" layoutY="494.0" prefHeight="42.0" prefWidth="425.0" />
-      <ImageView fitHeight="720.0" fitWidth="1280.0" layoutX="-5.0" opacity="0.5">
-         <image>
-            <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
-         </image>
-      </ImageView>
-      <Label layoutX="194.0" layoutY="178.0" text="Select the number of players : ">
-         <font>
-            <Font name="Book Antiqua" size="24.0" />
-         </font>
-      </Label>
-      <RadioButton layoutX="209.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#twoPlayers" prefHeight="31.0" prefWidth="110.0" text="2">
-         <font>
-            <Font name="Book Antiqua Bold Italic" size="14.0" />
-         </font>
-      </RadioButton>
-      <RadioButton layoutX="209.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#threePlayers" prefHeight="31.0" prefWidth="110.0" text="3">
-         <font>
-            <Font name="Book Antiqua Bold Italic" size="14.0" />
-         </font>
-      </RadioButton>
-      <Label layoutX="194.0" layoutY="376.0" text="Select the game mode : ">
-         <font>
-            <Font name="Book Antiqua" size="24.0" />
-         </font>
-      </Label>
-      <RadioButton layoutX="209.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#classicGame" prefHeight="31.0" prefWidth="110.0" text="Classic">
-         <font>
-            <Font name="Book Antiqua Bold Italic" size="14.0" />
-         </font>
-      </RadioButton>
-      <RadioButton layoutX="209.0" layoutY="478.0" mnemonicParsing="false" onMouseClicked="#expertGame" prefHeight="31.0" prefWidth="110.0" text="Expert">
-         <font>
-            <Font name="Book Antiqua Bold Italic" size="14.0" />
-         </font>
-      </RadioButton>
-      <Button layoutX="568.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="51.0" prefWidth="134.0" text="Start">
-         <font>
-            <Font name="Book Antiqua Bold Italic" size="24.0" />
-         </font>
-      </Button>
+      <AnchorPane fx:id="scenePane" prefHeight="720.0" prefWidth="1280.0">
+         <children>
+            <Label fx:id="label" layoutX="440.0" layoutY="494.0" prefHeight="42.0" prefWidth="425.0" />
+            <ImageView fitHeight="720.0" fitWidth="1280.0" opacity="0.5">
+               <image>
+                  <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
+               </image>
+            </ImageView>
+            <Label layoutX="194.0" layoutY="178.0" text="Select the number of players : ">
+               <font>
+                  <Font name="Book Antiqua" size="24.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="209.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#twoPlayers" prefHeight="31.0" prefWidth="110.0" text="2">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="209.0" layoutY="270.0" mnemonicParsing="false" onMouseClicked="#threePlayers" prefHeight="31.0" prefWidth="110.0" text="3">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="14.0" />
+               </font>
+            </RadioButton>
+            <Label layoutX="194.0" layoutY="376.0" text="Select the game mode : ">
+               <font>
+                  <Font name="Book Antiqua" size="24.0" />
+               </font>
+            </Label>
+            <RadioButton layoutX="209.0" layoutY="429.0" mnemonicParsing="false" onMouseClicked="#classicGame" prefHeight="31.0" prefWidth="110.0" text="Classic">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="14.0" />
+               </font>
+            </RadioButton>
+            <RadioButton layoutX="209.0" layoutY="478.0" mnemonicParsing="false" onMouseClicked="#expertGame" prefHeight="31.0" prefWidth="110.0" text="Expert">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="14.0" />
+               </font>
+            </RadioButton>
+            <Button layoutX="568.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="51.0" prefWidth="134.0" text="Start">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="24.0" />
+               </font>
+            </Button>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

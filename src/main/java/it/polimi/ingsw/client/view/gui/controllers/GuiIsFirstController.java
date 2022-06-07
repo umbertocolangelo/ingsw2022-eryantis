@@ -155,6 +155,7 @@ public class GuiIsFirstController {
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
             //scenePane.setCenterShape(true);
+
         });
 
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
