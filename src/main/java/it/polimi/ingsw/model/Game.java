@@ -543,7 +543,7 @@ public class Game implements GameInterface, Serializable {
         if(this.currentRound.expertIngressHallSwap(studentHall, studentIngress)) {
             currentPlayer.getSchool().getIngress().addStudent((studentHall));
             currentPlayer.getSchool().getHall().getLine(studentIngress.getColor()).addStudent(studentIngress);
-            if(((IngressHallSwapActionRound)currentRound).getStudent()==3) {
+            if(((IngressHallSwapActionRound)currentRound).getStudent()==2) {
                 finishExpertMove();
             }
             propertyChange.firePropertyChange("expert IngressHallSwap", studentHallId, studentIngressId);

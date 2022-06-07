@@ -28,6 +28,11 @@ public class GuiChooseExpertCardController implements Initializable {
     /**
      *
      */
+    private String idExpert;
+
+    /**
+     *
+     */
     private Game game;
 
     /**
@@ -141,68 +146,74 @@ public class GuiChooseExpertCardController implements Initializable {
      * choose the selected card
      * @param mouseEvent
      */
-    public void onNextClick(MouseEvent mouseEvent) {
-
+    public void onNextClick(MouseEvent mouseEvent) throws IOException {
+        switch (idExpert){
+        case "38":
+        MessageMethod messageMethod38 = new PlayExpertCard();
+        ((PlayExpertCard)messageMethod38).setExpertCard("38");
+        ControllerHandler.getInstance().write(messageMethod38);
+        break;
+        case "39":
+        MessageMethod messageMethod39 = new PlayExpertCard();
+        ((PlayExpertCard)messageMethod39).setExpertCard("39");
+        ControllerHandler.getInstance().write(messageMethod39);
+        break;
+        case "40":
+        ControllerHandler.getInstance().setIdExpertCardPlayed("40");
+        ControllerHandler.getInstance().setCardNeedIsland(true);
+        sceneAction();
+        break;
+        case "41":
+        MessageMethod messageMethod41 = new PlayExpertCard();
+        ((PlayExpertCard)messageMethod41).setExpertCard("41");
+        ControllerHandler.getInstance().write(messageMethod41);
+        break;
+        case "42":
+        ControllerHandler.getInstance().setIdExpertCardPlayed("42");
+        ControllerHandler.getInstance().setCardNeedIsland(true);
+        sceneAction();
+        break;
+        case "43":
+        MessageMethod messageMethod43 = new PlayExpertCard();
+        ((PlayExpertCard)messageMethod43).setExpertCard("43");
+        ControllerHandler.getInstance().write(messageMethod43);
+        break;
+        case "44":
+        MessageMethod messageMethod44 = new PlayExpertCard();
+        ((PlayExpertCard)messageMethod44).setExpertCard("44");
+        ControllerHandler.getInstance().write(messageMethod44);
+        break;
+        case "45":
+        scenePlayer();
+        break;
+        case "46":
+        ControllerHandler.getInstance().setIdExpertCardPlayed("46");
+        sceneColor();
+        break;
+        case "47":
+        MessageMethod messageMethod47 = new PlayExpertCard();
+        ((PlayExpertCard)messageMethod47).setExpertCard("47");
+        ControllerHandler.getInstance().write(messageMethod47);
+        break;
+        case "48":
+        MessageMethod messageMethod48=new PlayExpertCard();
+        ((PlayExpertCard)messageMethod48).setExpertCard("48");
+        ControllerHandler.getInstance().write(messageMethod48);
+        break;
+        case "49":
+        ControllerHandler.getInstance().setIdExpertCardPlayed("49");
+        sceneColor();
+        break;
+        }
     }
 
     /**
      *
      * @param mouseEvent
      */
-    public void clickOnExpert1(MouseEvent mouseEvent) {
-        switch (game.getCardManager().getDeck().get(0).getId()) {
-            case "38":
-                MessageMethod messageMethod38 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod38).setExpertCard("38");
-                ControllerHandler.getInstance().write(messageMethod38);
-                break;
-            case "39":
-                MessageMethod messageMethod39 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod39).setExpertCard("39");
-                ControllerHandler.getInstance().write(messageMethod39);
-                break;
-            case "40":
+    public void clickOnExpert1(MouseEvent mouseEvent) throws IOException {
+       idExpert=game.getCardManager().getDeck().get(0).getId();
 
-                break;
-            case "41":
-                MessageMethod messageMethod41 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod41).setExpertCard("41");
-                ControllerHandler.getInstance().write(messageMethod41);
-                break;
-            case "42":
-                //TODO
-                break;
-            case "43":
-                MessageMethod messageMethod43 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod43).setExpertCard("43");
-                ControllerHandler.getInstance().write(messageMethod43);
-                break;
-            case "44":
-                MessageMethod messageMethod44 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod44).setExpertCard("44");
-                ControllerHandler.getInstance().write(messageMethod44);
-                break;
-            case "45":
-                MessageMethod messageMethod45 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod45).setExpertCard("45");
-                ControllerHandler.getInstance().write(messageMethod45);
-                break;
-            case "46":
-                MessageMethod messageMethod46 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod46).setExpertCard("46");
-                ControllerHandler.getInstance().write(messageMethod46);
-                break;
-            case "47":
-                MessageMethod messageMethod47 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod47).setExpertCard("47");
-                ControllerHandler.getInstance().write(messageMethod47);
-                break;
-            case "48":
-                MessageMethod messageMethod48=new PlayExpertCard();
-                ((PlayExpertCard)messageMethod48).setExpertCard("48");
-                ControllerHandler.getInstance().write(messageMethod48);
-                break;
-        }
     }
 
     /**
@@ -210,59 +221,7 @@ public class GuiChooseExpertCardController implements Initializable {
      * @param mouseEvent
      */
     public void clickOnExpert2(MouseEvent mouseEvent) {
-        switch (game.getCardManager().getDeck().get(1).getId()) {
-            case "38":
-                MessageMethod messageMethod38 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod38).setExpertCard("38");
-                ControllerHandler.getInstance().write(messageMethod38);
-                break;
-            case "39":
-                MessageMethod messageMethod39 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod39).setExpertCard("39");
-                ControllerHandler.getInstance().write(messageMethod39);
-                break;
-            case "40":
-
-                break;
-            case "41":
-                MessageMethod messageMethod41 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod41).setExpertCard("41");
-                ControllerHandler.getInstance().write(messageMethod41);
-                break;
-            case "42":
-
-                break;
-            case "43":
-                MessageMethod messageMethod43 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod43).setExpertCard("43");
-                ControllerHandler.getInstance().write(messageMethod43);
-                break;
-            case "44":
-                MessageMethod messageMethod44 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod44).setExpertCard("44");
-                ControllerHandler.getInstance().write(messageMethod44);
-                break;
-            case "45":
-                MessageMethod messageMethod45 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod45).setExpertCard("45");
-                ControllerHandler.getInstance().write(messageMethod45);
-                break;
-            case "46":
-
-            case "47":
-                MessageMethod messageMethod47 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod47).setExpertCard("47");
-                ControllerHandler.getInstance().write(messageMethod47);
-                break;
-            case "48":
-                MessageMethod messageMethod48 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod48).setExpertCard("48");
-                ControllerHandler.getInstance().write(messageMethod48);
-
-                break;
-            case "49":
-                break;
-        }
+        idExpert=game.getCardManager().getDeck().get(1).getId();
     }
 
     /**
@@ -271,58 +230,7 @@ public class GuiChooseExpertCardController implements Initializable {
      * @throws IOException
      */
     public void clickOnExpert3(MouseEvent mouseEvent) throws IOException {
-        switch (game.getCardManager().getDeck().get(2).getId()) {
-            case ("38"):
-                MessageMethod messageMethod38 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod38).setExpertCard("38");
-                ControllerHandler.getInstance().write(messageMethod38);
-                break;
-            case "39":
-                MessageMethod messageMethod39 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod39).setExpertCard("39");
-                ControllerHandler.getInstance().write(messageMethod39);
-                break;
-            case "40":
-                //TODO
-                break;
-            case "41":
-                MessageMethod messageMethod41 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod41).setExpertCard("41");
-                ControllerHandler.getInstance().write(messageMethod41);
-                break;
-            case "42":
-
-                break;
-            case "43":
-                MessageMethod messageMethod43 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod43).setExpertCard("43");
-                ControllerHandler.getInstance().write(messageMethod43);
-                break;
-            case "44":
-                MessageMethod messageMethod44 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod44).setExpertCard("44");
-                ControllerHandler.getInstance().write(messageMethod44);
-            case "45":
-                MessageMethod messageMethod45 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod45).setExpertCard("45");
-                ControllerHandler.getInstance().write(messageMethod45);
-                break;
-            case "46":
-                MessageMethod messageMethod46 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod46).setExpertCard("46");
-                ControllerHandler.getInstance().write(messageMethod46);
-                break;
-            case "47":
-                MessageMethod messageMethod47 = new PlayExpertCard();
-                ((PlayExpertCard)messageMethod47).setExpertCard("47");
-                ControllerHandler.getInstance().write(messageMethod47);
-                break;
-            case "48":
-                MessageMethod messageMethod48=new PlayExpertCard();
-                ((PlayExpertCard)messageMethod48).setExpertCard("48");
-                ControllerHandler.getInstance().write(messageMethod48);
-                break;
-        }
+        idExpert=game.getCardManager().getDeck().get(2).getId();
     }
 
     /**
@@ -396,6 +304,48 @@ public class GuiChooseExpertCardController implements Initializable {
         ControllerHandler.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/studentsOnCard-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.show();
+
+        GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
+        studentsController.resize(stage, scene);
+    }
+
+    public void sceneColor() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/selectColorCard-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.show();
+
+        GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
+        studentsController.resize(stage, scene);
+    }
+
+    public void sceneAction() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.show();
+
+        GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
+        studentsController.resize(stage, scene);
+    }
+
+    public void scenePlayer() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/selectPlayerCard-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.show();

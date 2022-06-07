@@ -12,11 +12,14 @@ import java.io.IOException;
 
 
 public class ControllerHandler {
-
     /**
      *
      */
-    private Boolean finishTurn = false;
+    private Boolean cardNeedIsland=false;
+    /**
+     *
+     */
+    private Boolean finishTurn=false;
 
     /**
      *
@@ -36,22 +39,21 @@ public class ControllerHandler {
     /**
      * Used to set choose which loading view is the right one to call
      */
-    private Boolean needRefresh = false;
+    private Boolean needRefresh=false;
+    /**
+     *Need to use the messagge in view
+     */
+    private Boolean cardPlayed=false;
 
     /**
-     * Need to use the message in view
+     *True if e chose an equal name
      */
-    private Boolean cardPlayed = false;
-
-    /**
-     * True if e chose an equal name
-     */
-    private Boolean equal = false;
+    private Boolean equal=false;
 
     /**
      * Set true if isFirst, for change scene
      */
-    private Boolean isFirst = false;
+    private Boolean isFirst=false;
 
     /**
      *Keep the reference to stage
@@ -59,12 +61,12 @@ public class ControllerHandler {
     private static Stage stage;
 
     /**
-     * Keep the reference to client
+     *Keep the reference to client
      */
     private Client client;
 
     /**
-     * Keep the reference to clientState
+     *Keep the reference to clientState
      */
     private ClientState clientState;
 
@@ -152,27 +154,27 @@ public class ControllerHandler {
             case ISFIRST:
                 setIsFirst();
                 System.out.println("IsFirst");
-                GuiLoginController loginController = new GuiLoginController();
+                GuiLoginController controller = new GuiLoginController();
                 Platform.runLater(() -> {
                     try {
-                        loginController.changeSceneIsFirst();
+                        controller.changeSceneIsFirst();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 });
                 break;
             case EQUALNAME:
-                GuiLoginController equalNameController = new GuiLoginController();
+                GuiLoginController controllerEqual = new GuiLoginController();
                 Platform.runLater(() -> {
                     try {
-                        equalNameController.changeSceneEqual();
+                        controllerEqual.changeSceneEqual();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 });
                 break;
             case PLAYING:
-                if(client.getGame().getCurrentRound().getId()!=null) {
+                if(client.getGame().getCurrentRound().getId()!=null){
                     if(client.getGame().getCurrentRound().getId()==0 || client.getGame().getCurrentRound().getId()==3 || client.getGame().getCurrentRound().getId()==2) {
                         GuiChooseExpertCardController cardController = new GuiChooseExpertCardController();
                         Platform.runLater(() -> {
@@ -183,7 +185,7 @@ public class ControllerHandler {
                                 e.printStackTrace();
                             }
                         });
-                    } else if(client.getGame().getCurrentRound().getId()==1) {
+                    }else   if(client.getGame().getCurrentRound().getId()==1){
                         GuiActionPhaseController actionController = new GuiActionPhaseController();
                         Platform.runLater(() -> {
                             try {
@@ -192,8 +194,9 @@ public class ControllerHandler {
                                 e.printStackTrace();
                             }
                         });
-                    }
-                } else {
+                }
+
+                }else {
                     switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
                         case SET_UP_PHASE: //cambio scena da login a deck/color phase
                             System.out.println("Setup");
@@ -212,6 +215,7 @@ public class ControllerHandler {
                                 Platform.runLater(() -> {
                                     try {
                                         System.out.println("Change scene nont normal");
+
                                         controllerFirst.changeScene();
                                     } catch (IOException e) {
                                         e.printStackTrace();
@@ -240,7 +244,7 @@ public class ControllerHandler {
                                 });
                             }
                             break;
-                        case MOVING_STUDENTS: //cambio scena da choosing assistant card a moving students and mn
+                        case MOVING_STUDENTS://cambio scena da choosing assistant card a moving students and mn
                             if (!needRefresh) {
                                 needRefresh = true;
                                 GuiPianificationPhaseController assistantController = new GuiPianificationPhaseController();
@@ -262,6 +266,7 @@ public class ControllerHandler {
                                 });
                             }
                             break;
+
                         case MOVING_MOTHERNATURE, CHOOSING_CLOUD:
                             GuiActionPhaseController movingMotherNatureController = new GuiActionPhaseController();
                             Platform.runLater(() -> {
@@ -272,10 +277,15 @@ public class ControllerHandler {
                                 }
                             });
                             break;
+
                     }
                 }
-                //case WINNER:
+         //   case WINNER:
+
+
+
         }
+
     }
 
     /**
@@ -294,107 +304,67 @@ public class ControllerHandler {
         }
     }
 
-    /**
-     * Set true if this client is the first one
+    /**Set true if this client is the first one
+     *
      */
     public void setIsFirst(){
-        this.isFirst = true;
+        this.isFirst=true;
     }
 
 
-    /**
-     *
-     */
-    public void setEqual() {
-        this.equal = true;
+    public void setEqual(){
+        this.equal=true;
     }
 
-    /**
-     *
-     * @return
-     */
     public Boolean getEqual(){
         return equal;
     }
 
-    /**
-     *
-     * @return
-     */
     public Boolean getCardPlayed() {
         return cardPlayed;
     }
 
-    /**
-     *
-     * @param cardPlayed
-     */
     public void setCardPlayed(Boolean cardPlayed) {
         this.cardPlayed = cardPlayed;
     }
 
-    /**
-     *
-     * @return
-     */
     public String getIdExpertCardPlayed() {
         return idExpertCardPlayed;
     }
 
-    /**
-     *
-     * @param idExpertCardPlayed
-     */
     public void setIdExpertCardPlayed(String idExpertCardPlayed) {
         this.idExpertCardPlayed = idExpertCardPlayed;
     }
 
-    /**
-     *
-     * @return
-     */
     public IngressCardSwap getMessageMethod() {
         return messageMethodIngressCard;
     }
 
-    /**
-     *
-     * @param messageMethod
-     */
     public void setMessageMethodIngressCard(IngressCardSwap messageMethod) {
         this.messageMethodIngressCard = messageMethod;
     }
 
-    /**
-     *
-     * @return
-     */
     public Boolean getFinishTurn() {
         return finishTurn;
     }
 
-    /**
-     *
-     * @param finishTurn
-     */
     public void setFinishTurn(Boolean finishTurn) {
         this.finishTurn = finishTurn;
     }
 
-    /**
-     *
-     * @return
-     */
     public StudentToIsland getStudentToIsland() {
         return studentToIsland;
     }
 
-    /**
-     *
-     * @param studentToIsland
-     */
     public void setStudentToIsland(StudentToIsland studentToIsland) {
         this.studentToIsland = studentToIsland;
     }
 
+    public Boolean getCardNeedIsland() {
+        return cardNeedIsland;
+    }
+
+    public void setCardNeedIsland(Boolean cardNeedIsland) {
+        this.cardNeedIsland = cardNeedIsland;
+    }
 }
