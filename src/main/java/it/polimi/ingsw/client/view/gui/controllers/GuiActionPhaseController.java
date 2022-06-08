@@ -1353,6 +1353,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showTowersIsland1(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==0){
+            return;
+        }
+
         towers.clear();
         towers.add(tower1Island1);
         towers.add(tower2Island1);
@@ -1391,6 +1395,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the towers on island 2 on the screen
      */
     private void showTowersIsland2(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==1){
+            return;
+        }
 
         towers.clear();
         towers.add(tower1Island2);
@@ -1431,6 +1439,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showTowersIsland3(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==2){
+            return;
+        }
+
         towers.clear();
         towers.add(tower1Island3);
         towers.add(tower2Island3);
@@ -1469,6 +1481,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the towers on island 4 on the screen
      */
     private void showTowersIsland4(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==3){
+            return;
+        }
 
         towers.clear();
         towers.add(tower1Island4);
@@ -1509,6 +1525,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showTowersIsland5(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==4){
+            return;
+        }
+
         towers.clear();
         towers.add(tower1Island5);
         towers.add(tower2Island5);
@@ -1547,6 +1567,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the towers on island 6 on the screen
      */
     private void showTowersIsland6(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==5){
+            return;
+        }
 
         towers.clear();
         towers.add(tower1Island6);
@@ -1587,6 +1611,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showTowersIsland7(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==6){
+            return;
+        }
+
         towers.clear();
         towers.add(tower1Island7);
         towers.add(tower2Island7);
@@ -1625,6 +1653,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the towers on island 8 on the screen
      */
     private void showTowersIsland8(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==7){
+            return;
+        }
 
         towers.clear();
         towers.add(tower1Island8);
@@ -1665,6 +1697,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showTowersIsland9(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==8){
+            return;
+        }
+
         towers.clear();
         towers.add(tower1Island9);
         towers.add(tower2Island9);
@@ -1703,6 +1739,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the towers on island 10 on the screen
      */
     private void showTowersIsland10(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==9){
+            return;
+        }
 
         towers.clear();
         towers.add(tower1Island10);
@@ -1743,6 +1783,10 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showTowersIsland11(double x, double y){
 
+        if(game.getIslandManager().getIslands().size()==10){
+            return;
+        }
+
         towers.clear();
         towers.add(tower1Island11);
         towers.add(tower2Island11);
@@ -1781,6 +1825,10 @@ public class GuiActionPhaseController implements Initializable {
      * shows the towers on island 12 on the screen
      */
     private void showTowersIsland12(double x, double y){
+
+        if(game.getIslandManager().getIslands().size()==11){
+            return;
+        }
 
         towers.clear();
         towers.add(tower1Island12);
