@@ -98,7 +98,6 @@ public class SocketClientConnection implements Runnable {
      *Calls the close connection and close the connection also in the server
      */
     private void close() {
-
         closeConnection();
        // if(server.getSemaphore().availablePermits()==0)
         server.getSemaphore().release();
@@ -124,16 +123,16 @@ public class SocketClientConnection implements Runnable {
             server.getSemaphore().acquire();
 
             if (server.getWaitingConnection().isEmpty()){
-                isFirst=true;
+                isFirst = true;
             }
             send(setup);
             String read = (String) in.readObject();
             read = read.toUpperCase();
             while (server.equalName(read,isFirst)) {
                 send(new EqualName());
-                System.out.println("Pronto a leggere");
+                System.out.println("Ready to read");
                 read = (String) in.readObject();
-                System.out.println("Oggetto letto");
+                System.out.println("Object read");
                 read = read.toUpperCase();
                 System.out.println(read);
             }
@@ -142,7 +141,7 @@ public class SocketClientConnection implements Runnable {
             send(new SetName(name));
 
             if(isFirst) {
-                System.out.println("Sendign is first");
+                System.out.println("Sending is first");
                 send(new IsFirst());
                 IsFirst isFirst = (IsFirst) in.readObject();
                 System.out.println();
@@ -162,13 +161,10 @@ public class SocketClientConnection implements Runnable {
             }
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error! " + e.getMessage());
-
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-
         } catch (InterruptedException e) {
             e.printStackTrace();
-
         } finally {
             close();
         }
@@ -180,10 +176,14 @@ public class SocketClientConnection implements Runnable {
      * @return name     Return the playerName
      */
     public String getName(){
-        if(name!=null)
-        return  this.name;
-        else
+        if (name!=null) {
+            return this.name;
+        }
+        else {
             return null;
+        }
+
+
     }
 
     /**
