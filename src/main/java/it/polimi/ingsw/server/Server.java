@@ -16,22 +16,47 @@ import java.util.concurrent.Semaphore;
 
 public class Server {
 
+    /**
+     * Keep the reference to the players
+     */
     private LinkedList<Player> players = new LinkedList<>();
     private static final int PORT = 65432;
+
     private ServerSocket serverSocket;
+    /**
+     * Keep the reference to the connection that are waiting in the lobby
+     */
     private LinkedList<SocketClientConnection> waitingConnection = new LinkedList<>();
+    /**
+     * Keep the reference to the connection that are playing
+     */
     private LinkedList<SocketClientConnection> playingConnection = new LinkedList<>();
+    /**
+     * Keep the reference to each socket the server accept
+     */
     private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
+    /**
+     * Keep the reference to the number of Player
+     */
     private Integer numberOfPlayer = 0;
+    /**
+     * Keep the reference to the GameMode
+     */
     private Boolean gameMode; // true for expert mode, false for normal one
+    /**
+     * Keep the refernce to the Observer
+     */
     private PropertyObserver propertyObserver;
+    /**
+     * Keep the reference to Game
+     */
     private Game game;
+    /**
+     * Reference to the setUp message
+     */
     private SetUp setup = new SetUp();
     private Semaphore semaphore = new Semaphore(1);
-    /**
-     * Set true when a client has been disconnetted, so the server do not modify game
-     */
-    private Boolean playerIsDisconnetted=false;
+
 
 
 
@@ -46,7 +71,8 @@ public class Server {
         c.setHasBeenDisconnected(true);
         socketConnections.remove(c);
         if(!playingConnection.isEmpty() && !c.getPlayerIsPlus()) {
-            for (SocketClientConnection clientConnection : socketConnections) {
+            playingConnection.remove(c);
+            for (SocketClientConnection clientConnection : playingConnection) {
                 clientConnection.send(new ClientLost(clientConnection.getName()));
             }
         }else{
@@ -231,9 +257,9 @@ public class Server {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (object instanceof MessageMethod && !playerIsDisconnetted) {
+                if (object instanceof MessageMethod && playingConnection.size()==numberOfPlayer){
                    ((MessageMethod) object).apply(game);
-                }
+                     }
                 }
             });
         t.start();
