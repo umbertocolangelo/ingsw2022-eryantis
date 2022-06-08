@@ -156,6 +156,7 @@ public class GuiChooseExpertCardController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
+
         switch (idExpert){
         case "38":
         MessageMethod messageMethod38 = new PlayExpertCard();

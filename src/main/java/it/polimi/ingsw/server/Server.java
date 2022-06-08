@@ -35,6 +35,7 @@ public class Server {
 
 
 
+
 //Qui socketClient chiama deregistiring client quando viene disconesso e manda un messaggio ai client che ci si e disconessi
 
     /**
@@ -42,18 +43,31 @@ public class Server {
      * @param c
      */
     public synchronized void deregisterConnection(SocketClientConnection c) {
+        c.setHasBeenDisconnected(true);
         socketConnections.remove(c);
-        if(!playingConnection.isEmpty()) {
+        if(!playingConnection.isEmpty() && !c.getPlayerIsPlus()) {
             for (SocketClientConnection clientConnection : socketConnections) {
                 clientConnection.send(new ClientLost(clientConnection.getName()));
             }
         }else{
             if(waitingConnection.contains(c)) {
-                socketConnections.remove(c);
                 waitingConnection.remove(c);
             }
-            if(numberOfPlayer!=0 && !waitingConnection.isEmpty()){
-                waitingConnection.getFirst().send(new IsFirst());
+            if (c.getPlayerIsPlus()){
+                System.out.println("The game has already started you are more than the necessary");
+            //}else if(numberOfPlayer==0 && !waitingConnection.isEmpty()){
+                //waitingConnection.getFirst().setIsFirst();
+                //waitingConnection.getFirst().send(new IsFirst());
+        }else if(numberOfPlayer==0 && !socketConnections.isEmpty()){
+                Boolean thereIsAFirst=false; //Check if there is a player that already received a first, if it is do not set a new first
+                for (SocketClientConnection d: socketConnections){
+                    if (d.getIsFirst())
+                        thereIsAFirst=true;
+                }
+                if (!thereIsAFirst) {
+                    socketConnections.getFirst().setIsFirst();
+                    socketConnections.getFirst().send(new IsFirst());
+                }
             }
         }
 
@@ -74,16 +88,24 @@ public class Server {
      * @throws InterruptedException     Thrown when the modifyGame doesn't end
      */
     public synchronized void lobby(SocketClientConnection c, String name)
+        //DA risolvere se siamo 3 giocatori io all'ultimo setto 2 non si elmina l'ultimo il suo number of player e 0
             throws IOException, ClassNotFoundException, InterruptedException {
-        waitingConnection.add(c);
-        System.out.println("new client");
-        semaphore.release();
-        if (waitingConnection.size()==numberOfPlayer) {
-            for (SocketClientConnection d : waitingConnection) {
-               // if (isCLi){
-                 //   d.send("Players arrived, starting game..");
-              //  }
+        if (name!=null) {
+            waitingConnection.add(c);
+            System.out.println("new client");
+            if (semaphore.availablePermits() == 0)
+                semaphore.release();
+           if (!playingConnection.isEmpty()) {
+               c.setPlayerIsPlus(true);
+               c.close();
+           }
+        }else if (waitingConnection.size()>numberOfPlayer){
+            while (waitingConnection.size()>numberOfPlayer) {
+                waitingConnection.getLast().setPlayerIsPlus(true);
+                waitingConnection.getLast().close();
             }
+        }
+        if (waitingConnection.size()==numberOfPlayer) {
 
             SocketClientConnection c1 = waitingConnection.get(0);
             SocketClientConnection c2 = waitingConnection.get(1);
