@@ -59,7 +59,7 @@ public class Server {
                 //waitingConnection.getFirst().setIsFirst();
                 //waitingConnection.getFirst().send(new IsFirst());
         }else if(numberOfPlayer==0 && !socketConnections.isEmpty()){
-                Boolean thereIsAFirst=false; //Check if there is a player that already received a first, if it is do not set a new first
+                Boolean thereIsAFirst=false; //Check if there is a player that already received a first, if  so ,do not set a new first
                 for (SocketClientConnection d: socketConnections){
                     if (d.getIsFirst())
                         thereIsAFirst=true;
@@ -105,7 +105,7 @@ public class Server {
                 waitingConnection.getLast().close();
             }
         }
-        if (waitingConnection.size()==numberOfPlayer) {
+        if (waitingConnection.size()==numberOfPlayer && !c.getPlayerIsPlus()) {
 
             SocketClientConnection c1 = waitingConnection.get(0);
             SocketClientConnection c2 = waitingConnection.get(1);
