@@ -2686,7 +2686,7 @@ public class GuiActionPhaseController implements Initializable {
                 ControllerHandler.getInstance().setIdExpertCardPlayed("");
                 ControllerHandler.getInstance().write(messageMethod);
             }
-           else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()<=calculateJumps(26,idIsland)) {
+           else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(26,idIsland)) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(26, idIsland));
                 ControllerHandler.getInstance().write(movingMotherNature);

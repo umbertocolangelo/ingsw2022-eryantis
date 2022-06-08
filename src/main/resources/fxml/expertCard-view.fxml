@@ -30,7 +30,10 @@
                <image>
                   <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-128.png" />
                </image></ImageView>
-            <ImageView fx:id="expertCard2" fitHeight="267.0" fitWidth="192.0" layoutX="524.0" layoutY="159.0" onMouseClicked="#clickOnExpert2" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="expertCard2" fitHeight="267.0" fitWidth="192.0" layoutX="524.0" layoutY="159.0" onMouseClicked="#clickOnExpert2" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-128.png" />
+               </image></ImageView>
             <ImageView fx:id="expertCard3" fitHeight="267.0" fitWidth="192.0" layoutX="844.0" layoutY="165.0" onMouseClicked="#clickOnExpert3" pickOnBounds="true" preserveRatio="true" />
             <Button fx:id="backButton" layoutX="874.0" layoutY="572.0" mnemonicParsing="false" onMouseClicked="#onBackClick" prefHeight="51.0" prefWidth="114.0" text="Back">
                <font>
@@ -65,6 +68,12 @@
             <ImageView fx:id="studentCard2" fitHeight="51.0" fitWidth="52.0" layoutX="310.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="studentCard4" fitHeight="51.0" fitWidth="52.0" layoutX="310.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="studentCard6" fitHeight="51.0" fitWidth="52.0" layoutX="310.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard21" fitHeight="51.0" fitWidth="52.0" layoutX="537.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard211" fitHeight="51.0" fitWidth="52.0" layoutX="537.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard2111" fitHeight="51.0" fitWidth="52.0" layoutX="537.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard21111" fitHeight="51.0" fitWidth="52.0" layoutX="640.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard211111" fitHeight="51.0" fitWidth="52.0" layoutX="640.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="studentCard2111111" fitHeight="51.0" fitWidth="52.0" layoutX="640.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
