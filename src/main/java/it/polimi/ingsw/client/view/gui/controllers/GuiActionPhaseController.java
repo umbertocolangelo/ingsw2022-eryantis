@@ -2656,7 +2656,7 @@ public class GuiActionPhaseController implements Initializable {
         Integer jumps = 0;
        while (idIslandTarget!=idIslandMotherNature){
            idIslandMotherNature++;
-           if(idIslandMotherNature==37) {
+           if(idIslandMotherNature==38) {
                idIslandMotherNature = 26;
            }
            jumps++;

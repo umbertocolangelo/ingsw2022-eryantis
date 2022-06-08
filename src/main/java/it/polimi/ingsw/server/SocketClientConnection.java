@@ -10,7 +10,18 @@ import java.net.Socket;
 import java.util.NoSuchElementException;
 
 
+
 public class SocketClientConnection implements Runnable {
+
+    /**
+     *Set true if we close the connection, useful if we want to avoid close the connection twice
+     */
+    private Boolean hasBeenDisconnected=false;
+
+    /**
+     *True if the player is more than the player selected in isfirst
+     */
+    private Boolean playerIsPlus=false;
 
     /**
      *
@@ -97,13 +108,18 @@ public class SocketClientConnection implements Runnable {
     /**
      *Calls the close connection and close the connection also in the server
      */
-    private void close() {
-        closeConnection();
-       // if(server.getSemaphore().availablePermits()==0)
-        server.getSemaphore().release();
-        System.out.println("Deregistering client...");
-        server.deregisterConnection(this);
-        System.out.println("Done!");
+    //DA mettere a posto quando il server chiama questa funzione viene chiamata 2 volte dal server appunto e quando la socket vera e propria viene chiusa
+    public void close() {
+        if (!hasBeenDisconnected) {
+            if (isFirst)
+                server.setNumberOfPlayer(0);
+            closeConnection();
+            if (server.getSemaphore().availablePermits() == 0)
+                server.getSemaphore().release();
+            System.out.println("Deregistering client...");
+            server.deregisterConnection(this);
+            System.out.println("Done!");
+        }
     }
 
     /**
@@ -123,16 +139,16 @@ public class SocketClientConnection implements Runnable {
             server.getSemaphore().acquire();
 
             if (server.getWaitingConnection().isEmpty()){
-                isFirst = true;
+                isFirst=true;
             }
             send(setup);
             String read = (String) in.readObject();
             read = read.toUpperCase();
             while (server.equalName(read,isFirst)) {
                 send(new EqualName());
-                System.out.println("Ready to read");
+                System.out.println("Pronto a leggere");
                 read = (String) in.readObject();
-                System.out.println("Object read");
+                System.out.println("Oggetto letto");
                 read = read.toUpperCase();
                 System.out.println(read);
             }
@@ -141,12 +157,13 @@ public class SocketClientConnection implements Runnable {
             send(new SetName(name));
 
             if(isFirst) {
-                System.out.println("Sending is first");
+                System.out.println("Sendign is first");
                 send(new IsFirst());
                 IsFirst isFirst = (IsFirst) in.readObject();
                 System.out.println();
                 server.setGameMode(isFirst.getGameMode());
                 server.setNumberOfPlayer(isFirst.getPlayers());
+
             }
 
             server.lobby(this, name);
@@ -158,13 +175,21 @@ public class SocketClientConnection implements Runnable {
                     t1.join();
                     System.out.println(object);
                 }
+                if ((object instanceof IsFirst)){
+                    server.setGameMode(((IsFirst)object).getGameMode());
+                    server.setNumberOfPlayer(((IsFirst)object).getPlayers());
+                    server.lobby(this,null);
+                }
             }
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error! " + e.getMessage());
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+
         } catch (InterruptedException e) {
             e.printStackTrace();
+
         } finally {
             close();
         }
@@ -176,14 +201,10 @@ public class SocketClientConnection implements Runnable {
      * @return name     Return the playerName
      */
     public String getName(){
-        if (name!=null) {
-            return this.name;
-        }
-        else {
+        if(name!=null)
+        return  this.name;
+        else
             return null;
-        }
-
-
     }
 
     /**
@@ -201,4 +222,23 @@ public class SocketClientConnection implements Runnable {
         isFirst=true;
     }
 
+    public Boolean getIsFirst(){
+        return this.isFirst;
+    }
+
+    public Boolean getPlayerIsPlus() {
+        return playerIsPlus;
+    }
+
+    public void setPlayerIsPlus(Boolean playerIsPlus) {
+        this.playerIsPlus = playerIsPlus;
+    }
+
+    public Boolean getHasBeenDisconnected() {
+        return hasBeenDisconnected;
+    }
+
+    public void setHasBeenDisconnected(Boolean hasBeenDisconnected) {
+        this.hasBeenDisconnected = hasBeenDisconnected;
+    }
 }
