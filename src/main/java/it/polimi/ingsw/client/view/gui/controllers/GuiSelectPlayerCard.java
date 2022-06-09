@@ -32,6 +32,9 @@ public class GuiSelectPlayerCard implements Initializable {
      */
     private String player;
 
+    /**
+     *
+     */
     @FXML
     private Button player1;
     @FXML
@@ -47,20 +50,24 @@ public class GuiSelectPlayerCard implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        game=ControllerHandler.getInstance().getClient().getGame();
+        game = ControllerHandler.getInstance().getClient().getGame();
         player1.setText(game.getPlayerList().get(0).getName());
         player2.setText(game.getPlayerList().get(1).getName());
-        if(game.getPlayerList().size()==3)
+        if (game.getPlayerList().size()==3) {
             player2.setText(game.getPlayerList().get(2).getName());
-        else{
+        }
+        else {
             player3.setDisable(false);
             player3.setVisible(false);
         }
     }
 
-
+    /**
+     * Click on selected card
+     * @param mouseEvent
+     */
     public void clickSelectPlayer(MouseEvent mouseEvent) {
-        if(player!=null) {
+        if (player!=null) {
             MessageMethod playExpertCard = new PlayExpertCard();
             ((PlayExpertCard) playExpertCard).setExpertCard("45");
             ((PlayExpertCard) playExpertCard).setParameter(player);
@@ -68,33 +75,53 @@ public class GuiSelectPlayerCard implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clickPlayer0(MouseEvent mouseEvent) {
-        player=game.getPlayerList().get(0).getId();
+        player = game.getPlayerList().get(0).getId();
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clickPlayer2(MouseEvent mouseEvent) {
-        player=game.getPlayerList().get(2).getId();
+        player = game.getPlayerList().get(2).getId();
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clickPlayer1(MouseEvent mouseEvent) {
-        player=game.getPlayerList().get(1).getId();
+        player = game.getPlayerList().get(1).getId();
     }
 
+    /**
+     * Window resize
+     */
     public void resize(Stage stage, Scene scene) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
-        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
-        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
-
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            double scaleX = newVal.doubleValue() / width;
+            double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
-            scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue() - oldVal.doubleValue()) / 2);
-            //scenePane.setCenterShape(true);
+            scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
+        });
+
+        //vertical listener
+        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleY = newVal.doubleValue()/height;
+            scenePane.setScaleY(scaleY);
+            scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
     }
 

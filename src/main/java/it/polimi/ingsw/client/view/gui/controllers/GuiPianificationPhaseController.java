@@ -113,15 +113,6 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     private AnchorPane anchorPane;
 
-
-    /**
-     * click to show rules
-     * @param mouseEvent
-     */
-    public void onRulesClick(MouseEvent mouseEvent) {
-
-    }
-
     /**
      * select card 1
      * @param mouseEvent
@@ -207,7 +198,7 @@ public class GuiPianificationPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-        if(assistantCard==null) {
+        if (assistantCard==null) {
             label.setText("You must select an assistant card");
         }
         else {
@@ -250,28 +241,16 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * TODO
-     * @param mouseEvent
+     * Sets images in pianification phase
+     * @param url
+     * @param resourceBundle
      */
-    public void lightUp(MouseEvent mouseEvent) {
-
-    }
-
-
-    /**
-     *
-     * @param mouseEvent
-     */
-    public void turnOff(MouseEvent mouseEvent) {
-
-    }
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if (ControllerHandler.getInstance().getCardPlayed()==true) {
-            label.setText("You played a card that has been already played, pick another one");
+            label.setText("You played a card that has been already played, please pick another one");
         }
+
         ControllerHandler.getInstance().setCardPlayed(true);
         Game game = ControllerHandler.getInstance().getClient().getGame();
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.ONE_CARD)) {
@@ -317,46 +296,29 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     *
+     * Window resize
      */
     public void resize(Stage stage, Scene scene) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
-        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
-        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
-
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
 
+        //vertical listener
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
             double scaleY = newVal.doubleValue()/height;
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
-    }
-
-    /**
-     *
-     */
-    public void closeStage() {
-        this.stage.close();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Stage getStage() {
-        return stage;
     }
 
 }
