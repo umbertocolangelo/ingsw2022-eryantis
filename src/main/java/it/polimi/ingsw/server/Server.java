@@ -20,71 +20,94 @@ public class Server {
      * Keep the reference to the players
      */
     private LinkedList<Player> players = new LinkedList<>();
+
+    /**
+     * Port for local connection
+     */
     private static final int PORT = 65432;
 
+    /**
+     * Keep the reference to the socket
+     */
     private ServerSocket serverSocket;
+
     /**
      * Keep the reference to the connection that are waiting in the lobby
      */
     private LinkedList<SocketClientConnection> waitingConnection = new LinkedList<>();
+
     /**
      * Keep the reference to the connection that are playing
      */
     private LinkedList<SocketClientConnection> playingConnection = new LinkedList<>();
+
     /**
      * Keep the reference to each socket the server accept
      */
     private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
+
     /**
      * Keep the reference to the number of Player
      */
     private Integer numberOfPlayer = 0;
+
     /**
      * Keep the reference to the GameMode
      */
     private Boolean gameMode; // true for expert mode, false for normal one
+
     /**
      * Keep the refernce to the Observer
      */
     private PropertyObserver propertyObserver;
+
     /**
      * Keep the reference to Game
      */
     private Game game;
+
     /**
      * Reference to the setUp message
      */
     private SetUp setup = new SetUp();
-    private Semaphore semaphore = new Semaphore(1);
-//Qui socketClient chiama deregistiring client quando viene disconesso e manda un messaggio ai client che ci si e disconessi
 
     /**
-     * deregister connection handle the connection different if we are in game or waiting in lobby
+     * Reference to the semaphore
+     */
+    private Semaphore semaphore = new Semaphore(1);
+
+    /**
+     * Default constructor
+     * @throws IOException
+     */
+    public Server() throws IOException {
+        this.serverSocket = new ServerSocket(PORT);
+    }
+
+    /**
+     * This method handles the connection differently if we are in game or waiting in lobby
      * @param c the connection that has to be shutdown
      */
     public synchronized void deregisterConnection(SocketClientConnection c) {
         c.setHasBeenDisconnected(true);
         socketConnections.remove(c);
-        if(!playingConnection.isEmpty() && !c.getPlayerIsPlus()) {
+        if (!playingConnection.isEmpty() && !c.getPlayerIsPlus()) {
             playingConnection.remove(c);
             for (SocketClientConnection clientConnection : playingConnection) {
                 clientConnection.send(new ClientLost(clientConnection.getName()));
             }
-        }else{
-            if(waitingConnection.contains(c)) {
+        } else {
+            if (waitingConnection.contains(c)) {
                 waitingConnection.remove(c);
             }
-            if (c.getPlayerIsPlus()){
-
-                System.out.println("The game has already started you are more than the necessary");
-            //}else if(numberOfPlayer==0 && !waitingConnection.isEmpty()){
-                //waitingConnection.getFirst().setIsFirst();
-                //waitingConnection.getFirst().send(new IsFirst());
-        }else if(numberOfPlayer==0 && !socketConnections.isEmpty()){
-                Boolean thereIsAFirst=false; //Check if there is a player that already received a first, if  so ,do not set a new first
-                for (SocketClientConnection d: socketConnections){
-                    if (d.getIsFirst())
-                        thereIsAFirst=true;
+            if (c.getPlayerIsPlus()) {
+                System.out.println("The game has already started, please try later");
+            } else if (numberOfPlayer==0 && !socketConnections.isEmpty()) {
+                Boolean thereIsAFirst = false; //Check if there is a player that already received a first, if  so ,do not set a new first
+                for (SocketClientConnection d: socketConnections) {
+                    if (d.getIsFirst()) {
+                        thereIsAFirst = true;
+                    }
                 }
                 if (!thereIsAFirst) {
                     socketConnections.getFirst().setIsFirst();
@@ -92,14 +115,6 @@ public class Server {
                 }
             }
         }
-
-        //playingConnection.remove(opponent);
-       // Iterator<String> iterator = waitingConnection.keySet().iterator();
-        //while (iterator.hasNext()) {
-          //  if (waitingConnection.get(iterator.next())==c) {
-            //    iterator.remove();
-            //}
-        //}
     }
 
     /**
@@ -111,28 +126,28 @@ public class Server {
      * @throws InterruptedException     Thrown when the modifyGame doesn't end
      */
     public synchronized void lobby(SocketClientConnection c, String name)
-        //DA risolvere se siamo 3 giocatori io all'ultimo setto 2 non si elmina l'ultimo il suo number of player e 0
-            throws IOException, ClassNotFoundException, InterruptedException {
+                   throws IOException, ClassNotFoundException, InterruptedException {
         if (name!=null) {
             waitingConnection.add(c);
-            System.out.println("new client");
-            if (semaphore.availablePermits() == 0)
-                    semaphore.release();
+            System.out.println("New client");
+            if (semaphore.availablePermits() == 0) {
+                semaphore.release();
+            }
             if (!playingConnection.isEmpty()) {
                 c.setPlayerIsPlus(true);
                 c.close();
                 return;
             }
-            //We enter here only if we need to set again the message isFirst
-        }else if (waitingConnection.size()>numberOfPlayer){
+        //We enter here only if we need to set again the message isFirst
+        }else if (waitingConnection.size()>numberOfPlayer) {
             while (waitingConnection.size()>numberOfPlayer) {
                 waitingConnection.getLast().setPlayerIsPlus(true);
                 waitingConnection.getLast().close();
             }
         }
+
         //If socket enter here we start the game, switching from waiting connection to playing connection
         if (waitingConnection.size()==numberOfPlayer) {
-
             SocketClientConnection c1 = waitingConnection.get(0);
             SocketClientConnection c2 = waitingConnection.get(1);
 
@@ -146,13 +161,14 @@ public class Server {
                 Player player3 = new Player(c3.getName());
                 players.add(player3);
             }
+
             // check if there is a matching game saved
             LinkedList<String> playerNames = new LinkedList<String>();
             for(Player p : players) {
                 playerNames.add(p.getName());
             }
             Game loadedGame = SavingManager.getInstance().loadGame(playerNames);
-            if(loadedGame!=null) { // if there is a save
+            if (loadedGame!=null) { // if there is a save
                 game = loadedGame;
                 System.out.println("Previously saved game loaded");
                 playingConnection.addAll(waitingConnection);
@@ -175,21 +191,13 @@ public class Server {
     }
 
     /**
-     * @throws IOException
-     */
-    public Server() throws IOException {
-        this.serverSocket = new ServerSocket(PORT);
-    }
-
-    /**
      * Accept the connection and create a SocketClientConnection for each socket
      */
-    public void run(){
+    public void run() {
         int connections = 0;
         System.out.println("Server is running");
 
-        while (!Thread.currentThread().isInterrupted() ) { //Abbiamo un problema che il client si disconnetete se tutte due si connetono insieme e scrive il secondo client (?)
-
+        while (!Thread.currentThread().isInterrupted() ) {
             try {
                 Socket newSocket = serverSocket.accept();
                 newSocket.setSoTimeout(360000);
@@ -197,16 +205,11 @@ public class Server {
                 System.out.println("Ready for the new connection - " + connections);
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
                 socketConnections.add(socketConnection);
-                Thread t0 = new Thread(socketConnection);
-                //semaphore.acquire(); //utilizza un semaforo per far gestire le connessioni iniziali
-                t0.start();
-                //  } catch (IOException e) {
-                System.out.println("Seee!");
 
-            }catch(SocketTimeoutException e) {
+                Thread t0 = new Thread(socketConnection);
+                t0.start();
+            } catch(SocketTimeoutException e) {
                 System.out.println("### Timed out after 5 seconds.");
-                //}            } catch (IOException e) {
-                //  e.printStackTrace();
             }catch (IOException e) {
                 e.printStackTrace();
             }
@@ -215,14 +218,14 @@ public class Server {
 
     /**
      * @param username  The name of the player who is calling this method
-     * @return  boolean     True if the name is not already chosen, false instead
+     * @return true if the name is not already chosen, false instead
      */
-    public Boolean equalName(String username,Boolean isFirst) {
-        if(isFirst) {
+    public Boolean equalName(String username, Boolean isFirst) {
+        if (isFirst) {
             return false;
         }
         for (int i = 0; i<socketConnections.size()-1; i++) {
-            if(socketConnections.get(i).getName() == null) {
+            if (socketConnections.get(i).getName() == null) {
                 return false;
             }
             if (socketConnections.get(i).getName().equals(username)) {
@@ -235,7 +238,7 @@ public class Server {
     /**
      * This method is called from observer, after its modified we sent the game to the client
      */
-    public void sendGame(){
+    public void sendGame() {
         System.out.println("Sending game to clients");
             for (SocketClientConnection c : playingConnection) {
                 c.send(game);
@@ -243,30 +246,31 @@ public class Server {
     }
 
     /**
-     * @return  game    The reference to the game
+     * @return reference to the game
      */
-    public Game getGame() { return this.game; }
+    public Game getGame() {
+        return this.game;
+    }
 
     /**
      * Synchronized the modifying in game with the other threads
-     * @param object The messagge method which modify the game
+     * @param object The message method which modifies the game
      * @return
      */
-    public Thread modifyGame(Object object){
+    public Thread modifyGame(Object object) {
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (object instanceof MessageMethod && playingConnection.size()==numberOfPlayer){
+                if (object instanceof MessageMethod && playingConnection.size()==numberOfPlayer) {
                    ((MessageMethod) object).apply(game);
-                     }
                 }
-            });
+            }
+        });
         t.start();
         return t;
     }
 
     /**
-     *
      * @param gameMode The game mode we want to set
      */
     public void setGameMode(Boolean gameMode) {
@@ -274,25 +278,26 @@ public class Server {
     }
 
     /**
-     *
      * @param numberOfPlayer THe number of player we decided
      */
     public void setNumberOfPlayer(Integer numberOfPlayer){
-        this.numberOfPlayer=numberOfPlayer;
+        this.numberOfPlayer = numberOfPlayer;
     }
 
     /**
-     *
      * @return semaphore The semaphore that the server uses to handle the socket
      */
     public Semaphore getSemaphore() {
-        return semaphore;
+        return this.semaphore;
     }
 
-
-    public LinkedList<SocketClientConnection> getWaitingConnection(){
+    /**
+     * @return waitingConnection list
+     */
+    public LinkedList<SocketClientConnection> getWaitingConnection() {
         return this.waitingConnection;
     }
+
 }
 
 
