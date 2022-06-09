@@ -1347,7 +1347,7 @@ public class GuiActionPhaseController implements Initializable {
         // show of islands and relative students and towers
         LinkedList<IslandInterface> islandList = game.getIslandManager().getIslands();
         int islandIndex = 0;
-        for(int islandNum = 1; islandNum<13; islandNum++){ // for every ImageView of island
+        for(int islandNum = 1; islandNum<islandList.size()+1; islandNum++){ // for every ImageView of island
             if((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum){ // if for that ImageView an island has to be shown
                 // show towers and students on the island with that index on the ImageView of the relative island
                 showAllIsland(islandNum,islandIndex,0,0);
