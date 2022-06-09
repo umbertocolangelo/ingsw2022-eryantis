@@ -218,16 +218,20 @@ public class Server {
      * @return  boolean     True if the name is not already chosen, false instead
      */
     public Boolean equalName(String username,Boolean isFirst) {
-        if(isFirst)
+        if(isFirst) {
             return false;
+        }
         for (int i = 0; i<socketConnections.size()-1; i++) {
-            if(socketConnections.get(i).getName() == null)
+            if(socketConnections.get(i).getName() == null) {
                 return false;
-            if (socketConnections.get(i).getName().equals(username))
-               return true;
+            }
+            if (socketConnections.get(i).getName().equals(username)) {
+                return true;
+            }
         }
         return false;
     }
+
     /**
      * This method is called from observer, after its modified we sent the game to the client
      */
@@ -239,7 +243,6 @@ public class Server {
     }
 
     /**
-     *
      * @return  game    The reference to the game
      */
     public Game getGame() { return this.game; }

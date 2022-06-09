@@ -668,7 +668,7 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView student20Island11;
 
     /**
-     * student on island 1 ImageView reference
+     * student on island 12 ImageView reference
      */
     @FXML
     private ImageView student1Island12;
@@ -710,7 +710,6 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView student19Island12;
     @FXML
     private ImageView student20Island12;
-
 
     /**
      * student ingress ImageView reference
@@ -1293,7 +1292,7 @@ public class GuiActionPhaseController implements Initializable {
      * @param color of professor whose image is returned
      * @return a new Image object of professor
      */
-    public Image getImageProfessor(Color color){
+    public Image getImageProfessor(Color color) {
         switch (color) {
             case RED -> {
                 return new Image(redProfessorPath);
@@ -1322,20 +1321,19 @@ public class GuiActionPhaseController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
-
         game = ControllerHandler.getInstance().getClient().getGame();
         ControllerHandler.getInstance().setCardPlayed(false);
 
         if (game.getGameMode()==false || game.getCardManager().getCurrentCard()!=null && ControllerHandler.getInstance().getFinishTurn()) {
             expertCardButton.setVisible(false);
         }
+
         if (game.getCurrentRound().getId()==null) {
           finishExpertMove.setVisible(false);
           finishExpertMove.setDisable(false);
         }
 
         // show elements on the screen
-
         showMotherNature();;
         showStudentsHall();
         showStudentsIngress();
@@ -1347,12 +1345,12 @@ public class GuiActionPhaseController implements Initializable {
         // show of islands and relative students and towers
         LinkedList<IslandInterface> islandList = game.getIslandManager().getIslands();
         int islandIndex = 0;
-        for(int islandNum = 1; islandNum<islandList.size()+1; islandNum++){ // for every ImageView of island
-            if((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum){ // if for that ImageView an island has to be shown
+        for (int islandNum=1; islandNum<islandList.size()+1; islandNum++) { // for every ImageView of island
+            if ((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum) { // if for that ImageView an island has to be shown
                 // show towers and students on the island with that index on the ImageView of the relative island
                 showAllIsland(islandNum,islandIndex,0,0);
                 islandIndex++;
-            }else{
+            } else {
                 // do not show island with that index and make it not clickable
                 disableIsland(islandNum);
             }
@@ -1365,8 +1363,8 @@ public class GuiActionPhaseController implements Initializable {
      * makes an island not visible and not clickable
      * @param islandNum is the number of the island to disable
      */
-    private void disableIsland(int islandNum){
-        switch(islandNum) {
+    private void disableIsland (int islandNum) {
+        switch (islandNum) {
             case 1 -> {
                 island1.setImage(null);
                 isDisabled.add(1);
@@ -1415,7 +1413,6 @@ public class GuiActionPhaseController implements Initializable {
                 island12.setImage(null);
                 isDisabled.add(12);
             }
-
         }
     }
 
@@ -1426,8 +1423,8 @@ public class GuiActionPhaseController implements Initializable {
      * @param x is the horizontal shift applied on towers and students
      * @param y is the vertical shift applied on towers and students
      */
-    private void showAllIsland(int islandNum, int islandIndex, double x, double y){
-        switch(islandNum){
+    private void showAllIsland(int islandNum, int islandIndex, double x, double y) {
+        switch (islandNum) {
             case 1 -> {
                 showStudentIsland1(islandIndex,x,y);
                 showTowersIsland1(islandIndex,x,y);
@@ -1476,14 +1473,13 @@ public class GuiActionPhaseController implements Initializable {
                 showStudentIsland12(islandIndex,x,y);
                 showTowersIsland12(islandIndex,x,y);
             }
-
         }
     }
 
     /**
      * shows the towers on island 1 on the screen
      */
-    private void showTowersIsland1(int index, double x, double y){
+    private void showTowersIsland1(int index, double x, double y) {
 
         towers.clear();
         towers.add(tower1Island1);
@@ -1493,13 +1489,13 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island1);
         towers.add(tower6Island1);
 
-        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
-            switch(tower.getColor()) {
+        for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
+            switch (tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
                     break;
@@ -1522,7 +1518,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 2 on the screen
      */
-    private void showTowersIsland2(int index, double x, double y){
+    private void showTowersIsland2(int index, double x, double y) {
 
         towers.clear();
         towers.add(tower1Island2);
@@ -1571,7 +1567,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island3);
         towers.add(tower6Island3);
 
-        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
+        if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
         }
 
