@@ -7,14 +7,12 @@ import java.io.Serializable;
 public class MovingStudentsFromIngressToHall implements MessageMethod, Serializable {
 
     /**
-     *
+     * Student selected
      */
     private String student;
 
-
-
     /**
-     *
+     * Applies the changes to the model
      * @param game
      */
     public void apply(Game game) {
@@ -22,7 +20,7 @@ public class MovingStudentsFromIngressToHall implements MessageMethod, Serializa
     }
 
     /**
-     *
+     * Sets the student
      * @param student
      */
     public void setStudent(String student) {

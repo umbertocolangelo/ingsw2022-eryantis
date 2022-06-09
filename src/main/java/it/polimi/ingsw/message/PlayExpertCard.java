@@ -7,16 +7,17 @@ import java.io.Serializable;
 public class PlayExpertCard implements Serializable,MessageMethod {
 
     /**
-     * Id of the expertCArd played
+     * ID of the expertCard played
      */
     private String expertCard;
 
     /**
-     *
+     * Parameter required in expert card effect
      */
     private String parameter = null;
 
     /**
+     * Applies the changes to the model
      * @param game
      */
     @Override
@@ -25,19 +26,19 @@ public class PlayExpertCard implements Serializable,MessageMethod {
     }
 
     /**
-     *
-     * @param expert
+     * Sets the expert card
+     * @param expertCard
      */
-    public void setExpertCard(String expert){
-        this.expertCard = expert;
+    public void setExpertCard(String expertCard){
+        this.expertCard = expertCard;
     }
 
     /**
-     *
+     * Sets the parameter
      * @param object
      */
     public void setParameter(String object){
-        parameter = object;
+        this.parameter = object;
     }
 
 }

@@ -162,7 +162,7 @@ public class SocketClientConnection implements Runnable {
                 IsFirst isFirst = (IsFirst) in.readObject();
                 System.out.println();
                 server.setGameMode(isFirst.getGameMode());
-                server.setNumberOfPlayer(isFirst.getPlayers());
+                server.setNumberOfPlayer(isFirst.getPlayersNumber());
 
             }
 
@@ -177,7 +177,7 @@ public class SocketClientConnection implements Runnable {
                 }
                 if ((object instanceof IsFirst)) {
                     server.setGameMode(((IsFirst)object).getGameMode());
-                    server.setNumberOfPlayer(((IsFirst)object).getPlayers());
+                    server.setNumberOfPlayer(((IsFirst)object).getPlayersNumber());
                     server.lobby(this,null);
                 }
             }

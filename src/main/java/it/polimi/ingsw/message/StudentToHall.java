@@ -4,13 +4,15 @@ import it.polimi.ingsw.model.Game;
 
 import java.io.Serializable;
 
-public class StudentToHall implements Serializable,MessageMethod {
+public class StudentToHall implements Serializable, MessageMethod {
+
     /**
-     *
+     * Student selectd
      */
     private String studentToHall;
 
     /**
+     * Applies the changes to the model
      * @param game
      */
     @Override
@@ -19,10 +21,11 @@ public class StudentToHall implements Serializable,MessageMethod {
     }
 
     /**
-     *
+     * Sets the student from hall
      * @param student
      */
     public void setStudentToHall(String student){
-        this.studentToHall=student;
+        this.studentToHall = student;
     }
+
 }

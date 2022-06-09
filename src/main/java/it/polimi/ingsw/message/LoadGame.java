@@ -7,17 +7,17 @@ import java.io.Serializable;
 public class LoadGame implements Serializable {
 
     /**
-     *
+     * Game instance
      */
     private Game game;
 
     /**
-     *
+     * Path of the previous game saved
      */
     private String path;
 
     /**
-     *
+     * Sets game
      * @param game
      */
     public void setGame(Game game) {
@@ -25,7 +25,7 @@ public class LoadGame implements Serializable {
     }
 
     /**
-     *
+     * Sets saved game path
      * @param path
      */
     public void setPath(String path) {
@@ -33,16 +33,14 @@ public class LoadGame implements Serializable {
     }
 
     /**
-     *
-     * @return
+     * @return game
      */
     public Game getGame() {
         return this.game;
     }
 
     /**
-     *
-     * @return
+     * @return saved game path
      */
     public String getPath() {
         return this.path;
