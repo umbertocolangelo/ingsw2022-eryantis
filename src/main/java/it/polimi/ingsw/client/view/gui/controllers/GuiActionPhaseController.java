@@ -4,6 +4,7 @@ import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.model.pawns.MotherNature;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
@@ -27,6 +28,22 @@ import java.util.Map;
 import java.util.ResourceBundle;
 
 public class GuiActionPhaseController implements Initializable {
+
+
+    /**
+     * Path to island A image file
+     */
+    private String islandAPath = "file:src/main/resources/Graphical_Assets/reameB_1.png";
+
+    /**
+     * Path to island B image file
+     */
+    private String islandBPath = "file:src/main/resources/Graphical_Assets/reameB_1.2.png";
+
+    /**
+     * Path to island C image file
+     */
+    private String islandCPath = "file:src/main/resources/Graphical_Assets/pawns/reameB_1.3.png";
 
     /**
      * Path to mother nature image file
@@ -103,6 +120,34 @@ public class GuiActionPhaseController implements Initializable {
      */
     @FXML
     private AnchorPane scenePane;
+
+    /**
+     * islands reference
+     */
+    @FXML
+    private ImageView island1;
+    @FXML
+    private ImageView island2;
+    @FXML
+    private ImageView island3;
+    @FXML
+    private ImageView island4;
+    @FXML
+    private ImageView island5;
+    @FXML
+    private ImageView island6;
+    @FXML
+    private ImageView island7;
+    @FXML
+    private ImageView island8;
+    @FXML
+    private ImageView island9;
+    @FXML
+    private ImageView island10;
+    @FXML
+    private ImageView island11;
+    @FXML
+    private ImageView island12;
 
     /**
      * professor ImageView reference
@@ -1001,35 +1046,6 @@ public class GuiActionPhaseController implements Initializable {
     @FXML
     private ImageView tower6Island12;
 
-
-    /**
-     *  Island ImageView reference
-     */
-    @FXML
-    private ImageView island1;
-    @FXML
-    private ImageView island2;
-    @FXML
-    private ImageView island3;
-    @FXML
-    private ImageView island4;
-    @FXML
-    private ImageView island5;
-    @FXML
-    private ImageView island6;
-    @FXML
-    private ImageView island7;
-    @FXML
-    private ImageView island8;
-    @FXML
-    private ImageView island9;
-    @FXML
-    private ImageView island10;
-    @FXML
-    private ImageView island11;
-    @FXML
-    private ImageView island12;
-
     /**
      * Third cloud ImageView reference
      */
@@ -1124,12 +1140,18 @@ public class GuiActionPhaseController implements Initializable {
     private Student studentOnRound;
 
     /**
+     * contains the island numbers of the disabled islands
+     */
+    private LinkedList<Integer> isDisabled = new LinkedList<>();
+
+    /**
      *
      */
     private LinkedList<ImageView> studentOnCloud=new LinkedList<>();
 
     /**
-     * Variable need to calculate the jumps for MotherNature
+     * Contains the position of the island on which mother nature is located at the moment
+     * If mother nature is on an island group, it contains the id of the first island of the group
      */
     private Integer idIsland;
 
@@ -1321,41 +1343,147 @@ public class GuiActionPhaseController implements Initializable {
         showText();
         showProfessors();
         showTowerTable();
-        showStudentIsland1(0,0);
-        showStudentIsland2(0,0);
-        showStudentIsland3(0,0);
-        showStudentIsland4(0,0);
-        showStudentIsland5(0,0);
-        showStudentIsland6(0,0);
-        showStudentIsland7(0,0);
-        showStudentIsland8(0,0);
-        showStudentIsland9(0,0);
-        showStudentIsland10(0,0);
-        showStudentIsland11(0,0);
-        showStudentIsland12(0,0);
-        showTowersIsland1(0,0);
-        showTowersIsland2(0,0);
-        showTowersIsland3(0,0);
-        showTowersIsland4(0,0);
-        showTowersIsland5(0,0);
-        showTowersIsland6(0,0);
-        showTowersIsland7(0,0);
-        showTowersIsland8(0,0);
-        showTowersIsland9(0,0);
-        showTowersIsland10(0,0);
-        showTowersIsland11(0,0);
-        showTowersIsland12(0,0);
 
+        // show of islands and relative students and towers
+        LinkedList<IslandInterface> islandList = game.getIslandManager().getIslands();
+        int islandIndex = 0;
+        for(int islandNum = 1; islandNum<islandList.size()+1; islandNum++){ // for every ImageView of island
+            if((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum){ // if for that ImageView an island has to be shown
+                // show towers and students on the island with that index on the ImageView of the relative island
+                showAllIsland(islandNum,islandIndex,0,0);
+                islandIndex++;
+            }else{
+                // do not show island with that index and make it not clickable
+                disableIsland(islandNum);
+            }
+        }
+
+
+    }
+
+    /**
+     * makes an island not visible and not clickable
+     * @param islandNum is the number of the island to disable
+     */
+    private void disableIsland(int islandNum){
+        switch(islandNum) {
+            case 1 -> {
+                island1.setImage(null);
+                isDisabled.add(1);
+            }
+            case 2 -> {
+                island2.setImage(null);
+                isDisabled.add(2);
+            }
+            case 3 -> {
+                island3.setImage(null);
+                isDisabled.add(3);
+            }
+            case 4 -> {
+                island4.setImage(null);
+                isDisabled.add(4);
+            }
+            case 5 -> {
+                island5.setImage(null);
+                isDisabled.add(5);
+            }
+            case 6 -> {
+                island6.setImage(null);
+                isDisabled.add(6);
+            }
+            case 7 -> {
+                island7.setImage(null);
+                isDisabled.add(7);
+            }
+            case 8 -> {
+                island8.setImage(null);
+                isDisabled.add(8);
+            }
+            case 9 -> {
+                island9.setImage(null);
+                isDisabled.add(9);
+            }
+            case 10 -> {
+                island10.setImage(null);
+                isDisabled.add(10);
+            }
+            case 11 -> {
+                island11.setImage(null);
+                isDisabled.add(11);
+            }
+            case 12 -> {
+                island12.setImage(null);
+                isDisabled.add(12);
+            }
+
+        }
+    }
+
+    /**
+     * shows students and tower on a specific island on the screen
+     * @param islandNum is the island number relative to the fxml page
+     * @param islandIndex is the index of the island in the IslandManager list
+     * @param x is the horizontal shift applied on towers and students
+     * @param y is the vertical shift applied on towers and students
+     */
+    private void showAllIsland(int islandNum, int islandIndex, double x, double y){
+        switch(islandNum){
+            case 1 -> {
+                showStudentIsland1(islandIndex,x,y);
+                showTowersIsland1(islandIndex,x,y);
+            }
+            case 2 -> {
+                showStudentIsland2(islandIndex,x,y);
+                showTowersIsland2(islandIndex,x,y);
+            }
+            case 3 -> {
+                showStudentIsland3(islandIndex,x,y);
+                showTowersIsland3(islandIndex,x,y);
+            }
+            case 4 -> {
+                showStudentIsland4(islandIndex,x,y);
+                showTowersIsland4(islandIndex,x,y);
+            }
+            case 5 -> {
+                showStudentIsland5(islandIndex,x,y);
+                showTowersIsland5(islandIndex,x,y);
+            }
+            case 6 -> {
+                showStudentIsland6(islandIndex,x,y);
+                showTowersIsland6(islandIndex,x,y);
+            }
+            case 7 -> {
+                showStudentIsland7(islandIndex,x,y);
+                showTowersIsland7(islandIndex,x,y);
+            }
+            case 8 -> {
+                showStudentIsland8(islandIndex,x,y);
+                showTowersIsland8(islandIndex,x,y);
+            }
+            case 9 -> {
+                showStudentIsland9(islandIndex,x,y);
+                showTowersIsland9(islandIndex,x,y);
+            }
+            case 10 -> {
+                showStudentIsland10(islandIndex,x,y);
+                showTowersIsland10(islandIndex,x,y);
+            }
+            case 11 -> {
+                showStudentIsland11(islandIndex,x,y);
+                showTowersIsland11(islandIndex,x,y);
+            }
+            case 12 -> {
+                showStudentIsland12(islandIndex,x,y);
+                showTowersIsland12(islandIndex,x,y);
+            }
+
+        }
     }
 
     /**
      * shows the towers on island 1 on the screen
      */
-    private void showTowersIsland1(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==0){
-            return;
-        }
+    private void showTowersIsland1(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island1);
@@ -1365,12 +1493,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island1);
         towers.add(tower6Island1);
 
-        if(game.getIslandManager().getIslands().get(0).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(0).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1394,11 +1522,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 2 on the screen
      */
-    private void showTowersIsland2(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==1){
-            return;
-        }
+    private void showTowersIsland2(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island2);
@@ -1408,12 +1532,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island2);
         towers.add(tower6Island2);
 
-        if(game.getIslandManager().getIslands().get(1).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(1).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1437,11 +1561,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 3 on the screen
      */
-    private void showTowersIsland3(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==2){
-            return;
-        }
+    private void showTowersIsland3(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island3);
@@ -1451,12 +1571,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island3);
         towers.add(tower6Island3);
 
-        if(game.getIslandManager().getIslands().get(2).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(2).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1480,11 +1600,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 4 on the screen
      */
-    private void showTowersIsland4(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==3){
-            return;
-        }
+    private void showTowersIsland4(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island4);
@@ -1496,10 +1612,10 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
 
-        if(game.getIslandManager().getIslands().get(3).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
-        for(Tower tower : game.getIslandManager().getIslands().get(3).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1523,11 +1639,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 5 on the screen
      */
-    private void showTowersIsland5(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==4){
-            return;
-        }
+    private void showTowersIsland5(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island5);
@@ -1537,12 +1649,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island5);
         towers.add(tower6Island5);
 
-        if(game.getIslandManager().getIslands().get(4).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(4).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1566,11 +1678,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 6 on the screen
      */
-    private void showTowersIsland6(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==5){
-            return;
-        }
+    private void showTowersIsland6(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island6);
@@ -1580,12 +1688,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island6);
         towers.add(tower6Island6);
 
-        if(game.getIslandManager().getIslands().get(5).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(5).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1609,11 +1717,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 7 on the screen
      */
-    private void showTowersIsland7(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==6){
-            return;
-        }
+    private void showTowersIsland7(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island7);
@@ -1623,12 +1727,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island7);
         towers.add(tower6Island7);
 
-        if(game.getIslandManager().getIslands().get(6).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(6).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1652,11 +1756,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 8 on the screen
      */
-    private void showTowersIsland8(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==7){
-            return;
-        }
+    private void showTowersIsland8(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island8);
@@ -1666,12 +1766,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island8);
         towers.add(tower6Island8);
 
-        if(game.getIslandManager().getIslands().get(7).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(7).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1695,7 +1795,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 9 on the screen
      */
-    private void showTowersIsland9(double x, double y){
+    private void showTowersIsland9(int index, double x, double y){
 
         if(game.getIslandManager().getIslands().size()==8){
             return;
@@ -1709,12 +1809,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island9);
         towers.add(tower6Island9);
 
-        if(game.getIslandManager().getIslands().get(8).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(8).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1738,11 +1838,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 10 on the screen
      */
-    private void showTowersIsland10(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==9){
-            return;
-        }
+    private void showTowersIsland10(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island10);
@@ -1752,12 +1848,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island10);
         towers.add(tower6Island10);
 
-        if(game.getIslandManager().getIslands().get(9).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(9).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1781,11 +1877,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 11 on the screen
      */
-    private void showTowersIsland11(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==10){
-            return;
-        }
+    private void showTowersIsland11(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island11);
@@ -1795,12 +1887,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island11);
         towers.add(tower6Island11);
 
-        if(game.getIslandManager().getIslands().get(10).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(10).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1824,11 +1916,7 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the towers on island 12 on the screen
      */
-    private void showTowersIsland12(double x, double y){
-
-        if(game.getIslandManager().getIslands().size()==11){
-            return;
-        }
+    private void showTowersIsland12(int index, double x, double y){
 
         towers.clear();
         towers.add(tower1Island12);
@@ -1838,12 +1926,12 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower5Island12);
         towers.add(tower6Island12);
 
-        if(game.getIslandManager().getIslands().get(11).getTowers()==null){
+        if(game.getIslandManager().getIslands().get(index).getTowers()==null){
             return;
         }
 
         int count = 0;
-        for(Tower tower : game.getIslandManager().getIslands().get(11).getTowers()){
+        for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
                     towers.get(count).setImage(new Image(whiteTowerPath));
@@ -1867,11 +1955,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 1 on the screen
      */
-    private void showStudentIsland1(double x, double y){
+    private void showStudentIsland1(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==0){
-            return;
-        }
+        island1.setImage(new Image(islandAPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island1);
@@ -1896,7 +1982,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island1);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(0).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -1907,11 +1993,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 2 on the screen
      */
-    private void showStudentIsland2(double x, double y){
+    private void showStudentIsland2(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==1){
-            return;
-        }
+        island1.setImage(new Image(islandCPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island2);
@@ -1936,7 +2020,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island2);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(1).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -1947,11 +2031,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 3 on the screen
      */
-    private void showStudentIsland3(double x, double y){
+    private void showStudentIsland3(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==2){
-            return;
-        }
+        island1.setImage(new Image(islandBPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island3);
@@ -1976,7 +2058,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island3);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(2).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -1987,11 +2069,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 4 on the screen
      */
-    private void showStudentIsland4(double x, double y){
+    private void showStudentIsland4(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==3){
-            return;
-        }
+        island1.setImage(new Image(islandBPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island4);
@@ -2016,7 +2096,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island4);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(3).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2027,11 +2107,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 5 on the screen
      */
-    private void showStudentIsland5(double x, double y){
+    private void showStudentIsland5(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==4){
-            return;
-        }
+        island1.setImage(new Image(islandCPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island5);
@@ -2056,7 +2134,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island5);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(4).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2067,11 +2145,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 6 on the screen
      */
-    private void showStudentIsland6(double x, double y){
+    private void showStudentIsland6(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==5){
-            return;
-        }
+        island1.setImage(new Image(islandAPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island6);
@@ -2096,7 +2172,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island6);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(5).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2107,11 +2183,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 7 on the screen
      */
-    private void showStudentIsland7(double x, double y){
+    private void showStudentIsland7(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==6){
-            return;
-        }
+        island1.setImage(new Image(islandBPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island7);
@@ -2136,7 +2210,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island7);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(7).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2147,11 +2221,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 8 on the screen
      */
-    private void showStudentIsland8(double x, double y){
+    private void showStudentIsland8(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==7){
-            return;
-        }
+        island1.setImage(new Image(islandCPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island8);
@@ -2176,7 +2248,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island8);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(7).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2187,11 +2259,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 9 on the screen
      */
-    private void showStudentIsland9(double x, double y){
+    private void showStudentIsland9(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==8){
-            return;
-        }
+        island1.setImage(new Image(islandAPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island9);
@@ -2216,7 +2286,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island9);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(8).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2227,11 +2297,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 10 on the screen
      */
-    private void showStudentIsland10(double x, double y){
+    private void showStudentIsland10(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==9){
-            return;
-        }
+        island1.setImage(new Image(islandCPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island10);
@@ -2256,7 +2324,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island10);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(9).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2267,11 +2335,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 11 on the screen
      */
-    private void showStudentIsland11(double x, double y){
+    private void showStudentIsland11(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==10){
-            return;
-        }
+        island1.setImage(new Image(islandBPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island11);
@@ -2296,7 +2362,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island11);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(10).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2307,11 +2373,9 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * shows the students on island 12 on the screen
      */
-    private void showStudentIsland12(double x, double y){
+    private void showStudentIsland12(int index, double x, double y){
 
-        if(game.getIslandManager().getIslands().size()==11){
-            return;
-        }
+        island1.setImage(new Image(islandAPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island12);
@@ -2336,7 +2400,7 @@ public class GuiActionPhaseController implements Initializable {
         studentsIsland.add(student20Island12);
 
         int count = 0;
-        for(Student student : game.getIslandManager().getIslands().get(11).getStudents()){
+        for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
             studentsIsland.get(count).setImage(getImageStudent(student));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
@@ -2651,19 +2715,24 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     /**
-     *
-     * @return jumps The number of jumps that motherNature should do
+     * @param idIslandMotherNature is the id of the island on which mother nature is located
+     * @param idIslandTarget
+     * @return the number of jumps that motherNature should do
      */
     public Integer calculateJumps(Integer idIslandTarget,Integer idIslandMotherNature ){
         Integer jumps = 0;
-       while (idIslandTarget!=idIslandMotherNature){
-           idIslandMotherNature++;
-           if(idIslandMotherNature==38) {
-               idIslandMotherNature = 26;
-           }
-           jumps++;
-       }
-       return jumps;
+        LinkedList<IslandInterface> islandList = game.getIslandManager().getIslands();
+        int index = islandList.indexOf(game.getMotherNature().getIsland());
+        int size = islandList.size();
+        while (idIslandTarget!=idIslandMotherNature){
+            index++;
+            if(index>size-1){
+                index=0;
+            }
+            idIslandMotherNature = Integer.parseInt(islandList.get(index).getId());
+            jumps++;
+        }
+        return jumps;
     }
 
     /**
@@ -2671,6 +2740,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland1(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(1)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -2710,6 +2782,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland2(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(2)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -2747,6 +2822,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland3(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(3)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -2785,6 +2863,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland4(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(4)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -2823,6 +2904,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland5(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(5)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -2860,6 +2944,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland6(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(6)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -2897,6 +2984,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland7(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(7)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -2935,6 +3025,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland8(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(8)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -2973,6 +3066,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland9(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(9)){return;}
+
         if (game.getCurrentRound().getId()==null) {
              if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -3010,6 +3106,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland10(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(10)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod = new PlayExpertCard();
@@ -3048,6 +3147,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland11(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(11)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod=new PlayExpertCard();
@@ -3086,6 +3188,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickIsland12(MouseEvent mouseEvent) {
+
+        if(isDisabled.contains(12)){return;}
+
         if (game.getCurrentRound().getId()==null) {
             if (ControllerHandler.getInstance().getCardNeedIsland()) {
                 MessageMethod messageMethod=new PlayExpertCard();

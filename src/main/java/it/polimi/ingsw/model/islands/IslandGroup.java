@@ -121,7 +121,7 @@ public class IslandGroup implements IslandInterface, Serializable {
      */
     @Override
     public String getId() {
-        return null;
+        return islandGroup.getFirst().getId();
     }
 
     /**
