@@ -2233,6 +2233,7 @@ public class GuiActionPhaseController implements Initializable {
             return;
         }
 
+        studentsIsland.clear();
         studentsIsland.add(student1Island10);
         studentsIsland.add(student2Island10);
         studentsIsland.add(student3Island10);
@@ -2347,6 +2348,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     public void showTowerTable(){
 
+        towers.clear();
         towers.add(tower1);
         towers.add(tower2);
         towers.add(tower3);
