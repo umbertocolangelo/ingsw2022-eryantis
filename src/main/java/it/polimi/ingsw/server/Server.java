@@ -56,11 +56,6 @@ public class Server {
      */
     private SetUp setup = new SetUp();
     private Semaphore semaphore = new Semaphore(1);
-
-
-
-
-
 //Qui socketClient chiama deregistiring client quando viene disconesso e manda un messaggio ai client che ci si e disconessi
 
     /**
@@ -80,6 +75,7 @@ public class Server {
                 waitingConnection.remove(c);
             }
             if (c.getPlayerIsPlus()){
+
                 System.out.println("The game has already started you are more than the necessary");
             //}else if(numberOfPlayer==0 && !waitingConnection.isEmpty()){
                 //waitingConnection.getFirst().setIsFirst();

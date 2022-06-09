@@ -110,6 +110,8 @@ public class SocketClientConnection implements Runnable {
      */
     //DA mettere a posto quando il server chiama questa funzione viene chiamata 2 volte dal server appunto e quando la socket vera e propria viene chiusa
     public void close() {
+        if(playerIsPlus)
+            send(new PlayerIsPlus());
         if (!hasBeenDisconnected) {
             if (isFirst)
                 server.setNumberOfPlayer(0);
