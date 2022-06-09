@@ -9,6 +9,7 @@ public enum ClientState {
     WINNER,
     WRITING,
     EQUALNAME,
-    CLIENTLOST
+    CLIENTLOST,
+    PLAYERPLUS
 
 }

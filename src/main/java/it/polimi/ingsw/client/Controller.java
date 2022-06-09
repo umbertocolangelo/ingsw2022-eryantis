@@ -118,6 +118,8 @@ public class Controller implements Runnable {
                 t0=cli.clientLost(client.getNamePLayerLost());
                // client.setActive(false);
                 break;
+            case PLAYERPLUS:
+                t0=cli.playerIsPlus();
             case PLAYING:
                 for (int i = 0; i < 50; i++) {
                     System.out.println("\b");

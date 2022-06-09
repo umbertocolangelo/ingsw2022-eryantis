@@ -94,13 +94,27 @@ public class CLI {
     }
 
     /**
-     * Get the thread to run the play assistantCArd action
+     * If we lost the connection from a client
      * @return thread
      */
     public Thread clientLost(String nameClientLost) {
 
         Thread t = new Thread(() -> {
             System.out.println("The player "+ nameClientLost+ "has been disconetted");
+
+        });
+        t.start();
+        return t;
+    }
+
+    /**
+     * Get the thread to run the play assistantCArd action
+     * @return thread
+     */
+    public Thread playerIsPlus() {
+
+        Thread t = new Thread(() -> {
+            System.out.println("The game has been created and you are not necessary");
 
         });
         t.start();

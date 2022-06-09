@@ -16,37 +16,58 @@ import java.util.concurrent.Semaphore;
 
 public class Server {
 
+    /**
+     * Keep the reference to the players
+     */
     private LinkedList<Player> players = new LinkedList<>();
     private static final int PORT = 65432;
+
     private ServerSocket serverSocket;
+    /**
+     * Keep the reference to the connection that are waiting in the lobby
+     */
     private LinkedList<SocketClientConnection> waitingConnection = new LinkedList<>();
+    /**
+     * Keep the reference to the connection that are playing
+     */
     private LinkedList<SocketClientConnection> playingConnection = new LinkedList<>();
+    /**
+     * Keep the reference to each socket the server accept
+     */
     private LinkedList<SocketClientConnection> socketConnections = new LinkedList<>();
+    /**
+     * Keep the reference to the number of Player
+     */
     private Integer numberOfPlayer = 0;
+    /**
+     * Keep the reference to the GameMode
+     */
     private Boolean gameMode; // true for expert mode, false for normal one
+    /**
+     * Keep the refernce to the Observer
+     */
     private PropertyObserver propertyObserver;
+    /**
+     * Keep the reference to Game
+     */
     private Game game;
+    /**
+     * Reference to the setUp message
+     */
     private SetUp setup = new SetUp();
     private Semaphore semaphore = new Semaphore(1);
-    /**
-     * Set true when a client has been disconnetted, so the server do not modify game
-     */
-    private Boolean playerIsDisconnetted=false;
-
-
-
-
 //Qui socketClient chiama deregistiring client quando viene disconesso e manda un messaggio ai client che ci si e disconessi
 
     /**
-     * deregister connection
-     * @param c
+     * deregister connection handle the connection different if we are in game or waiting in lobby
+     * @param c the connection that has to be shutdown
      */
     public synchronized void deregisterConnection(SocketClientConnection c) {
         c.setHasBeenDisconnected(true);
         socketConnections.remove(c);
         if(!playingConnection.isEmpty() && !c.getPlayerIsPlus()) {
-            for (SocketClientConnection clientConnection : socketConnections) {
+            playingConnection.remove(c);
+            for (SocketClientConnection clientConnection : playingConnection) {
                 clientConnection.send(new ClientLost(clientConnection.getName()));
             }
         }else{
@@ -54,12 +75,13 @@ public class Server {
                 waitingConnection.remove(c);
             }
             if (c.getPlayerIsPlus()){
+
                 System.out.println("The game has already started you are more than the necessary");
             //}else if(numberOfPlayer==0 && !waitingConnection.isEmpty()){
                 //waitingConnection.getFirst().setIsFirst();
                 //waitingConnection.getFirst().send(new IsFirst());
         }else if(numberOfPlayer==0 && !socketConnections.isEmpty()){
-                Boolean thereIsAFirst=false; //Check if there is a player that already received a first, if it is do not set a new first
+                Boolean thereIsAFirst=false; //Check if there is a player that already received a first, if  so ,do not set a new first
                 for (SocketClientConnection d: socketConnections){
                     if (d.getIsFirst())
                         thereIsAFirst=true;
@@ -81,6 +103,7 @@ public class Server {
     }
 
     /**
+     * The connection try to create a game, if we have the number of connection equal to the number of player we create a game
      * @param c         The socketConnection which is currently running
      * @param name         The name of the player
      * @throws IOException
@@ -94,17 +117,20 @@ public class Server {
             waitingConnection.add(c);
             System.out.println("new client");
             if (semaphore.availablePermits() == 0)
-                semaphore.release();
-           if (!playingConnection.isEmpty()) {
-               c.setPlayerIsPlus(true);
-               c.close();
-           }
+                    semaphore.release();
+            if (!playingConnection.isEmpty()) {
+                c.setPlayerIsPlus(true);
+                c.close();
+                return;
+            }
+            //We enter here only if we need to set again the message isFirst
         }else if (waitingConnection.size()>numberOfPlayer){
             while (waitingConnection.size()>numberOfPlayer) {
                 waitingConnection.getLast().setPlayerIsPlus(true);
                 waitingConnection.getLast().close();
             }
         }
+        //If socket enter here we start the game, switching from waiting connection to playing connection
         if (waitingConnection.size()==numberOfPlayer) {
 
             SocketClientConnection c1 = waitingConnection.get(0);
@@ -156,7 +182,7 @@ public class Server {
     }
 
     /**
-     * This thread is always open uses a semphore to handle the connections, once he gets on he waits for the semphore and start the thread
+     * Accept the connection and create a SocketClientConnection for each socket
      */
     public void run(){
         int connections = 0;
@@ -177,10 +203,6 @@ public class Server {
                 //  } catch (IOException e) {
                 System.out.println("Seee!");
 
-                // } catch (InterruptedException e) {
-                //   e.printStackTrace();
-
-                //  } catch (InterruptedException e) {
             }catch(SocketTimeoutException e) {
                 System.out.println("### Timed out after 5 seconds.");
                 //}            } catch (IOException e) {
@@ -224,45 +246,46 @@ public class Server {
 
     /**
      * Synchronized the modifying in game with the other threads
-     * @param object
+     * @param object The messagge method which modify the game
      * @return
      */
     public Thread modifyGame(Object object){
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
-                if (object instanceof MessageMethod && !playerIsDisconnetted) {
+                if (object instanceof MessageMethod && playingConnection.size()==numberOfPlayer){
                    ((MessageMethod) object).apply(game);
-                }
+                     }
                 }
             });
         t.start();
         return t;
     }
 
+    /**
+     *
+     * @param gameMode The game mode we want to set
+     */
     public void setGameMode(Boolean gameMode) {
         this.gameMode = gameMode;
     }
 
+    /**
+     *
+     * @param numberOfPlayer THe number of player we decided
+     */
     public void setNumberOfPlayer(Integer numberOfPlayer){
         this.numberOfPlayer=numberOfPlayer;
     }
 
+    /**
+     *
+     * @return semaphore The semaphore that the server uses to handle the socket
+     */
     public Semaphore getSemaphore() {
         return semaphore;
     }
 
-    public void setSemaphore(Semaphore semaphore) {
-        this.semaphore = semaphore;
-    }
-
-    /**
-     *
-     * @param c The socket client that will be removed from the waiting in the lobby
-     */
-    public void removeWaitingConnection(SocketClientConnection c){
-        waitingConnection.remove(c);
-    }
 
     public LinkedList<SocketClientConnection> getWaitingConnection(){
         return this.waitingConnection;

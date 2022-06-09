@@ -131,6 +131,7 @@ public class Client {
                             inputObject = socketIn.readObject();
                             System.out.println("Received something: " + inputObject);
                             if (!isCli) {
+
                                 if (inputObject instanceof ClientLost) {
                                     ControllerHandler.getInstance().setClientState(ClientState.CLIENTLOST);
                                     ControllerHandler.getInstance().chooseScene();
@@ -176,6 +177,9 @@ public class Client {
                                     namePlayer = ((SetName) inputObject).getName();
                                 } else if (inputObject instanceof IsFirst) {
                                     controller.setClientState(ClientState.ISFIRST);
+                                    controller.run();
+                                }else if(inputObject instanceof PlayerIsPlus){
+                                    controller.setClientState(ClientState.PLAYERPLUS);
                                     controller.run();
                                 } else if (inputObject instanceof ClientLost) {
                                     namePLayerLost = ((ClientLost) inputObject).getNamePlayerLost();
