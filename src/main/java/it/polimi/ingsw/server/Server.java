@@ -20,6 +20,9 @@ public class Server {
      * Keep the reference to the players
      */
     private LinkedList<Player> players = new LinkedList<>();
+    /**
+     *
+     */
     private static final int PORT = 65432;
 
     private ServerSocket serverSocket;
