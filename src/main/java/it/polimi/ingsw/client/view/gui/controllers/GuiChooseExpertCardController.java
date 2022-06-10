@@ -7,10 +7,12 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -235,6 +237,9 @@ public class GuiChooseExpertCardController implements Initializable {
        else{
            idExpert=game.getCardManager().getDeck().get(0).getId();
            coins.setText("Click on card 1");
+           expertCard3.setEffect(null);
+           expertCard2.setEffect(null);
+           expertCard1.setEffect(new DropShadow(30, Color.YELLOW));
        }
 
 
@@ -251,6 +256,9 @@ public class GuiChooseExpertCardController implements Initializable {
         else{
             idExpert=game.getCardManager().getDeck().get(1).getId();
             coins.setText("Click on card 2");
+            expertCard1.setEffect(null);
+            expertCard3.setEffect(null);
+            expertCard2.setEffect(new DropShadow(30, Color.YELLOW));
         }
     }
 
@@ -265,6 +273,9 @@ public class GuiChooseExpertCardController implements Initializable {
         else{
             idExpert=game.getCardManager().getDeck().get(2).getId();
             coins.setText("Click on card 3");
+            expertCard1.setEffect(null);
+            expertCard2.setEffect(null);
+            expertCard3.setEffect(new DropShadow(30, Color.YELLOW));
         }
     }
 
