@@ -2960,7 +2960,7 @@ public class GuiActionPhaseController implements Initializable {
                 ((MovingStudentFromIngressToIsland)studentOnIsland).setIsland("31");
                 ControllerHandler.getInstance().write(studentOnIsland);
             }
-        } else if (game.getCurrentRound().getId()==3 && studentOnRound!=null) {
+        } else if (game.getCurrentRound().getId()==3) {
             StudentToIsland messageMethod = ControllerHandler.getInstance().getStudentToIsland();
             (messageMethod).setIsland("31");
             ControllerHandler.getInstance().write(messageMethod);
