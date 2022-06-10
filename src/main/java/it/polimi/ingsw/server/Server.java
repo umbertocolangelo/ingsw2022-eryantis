@@ -298,6 +298,13 @@ public class Server {
         return this.waitingConnection;
     }
 
+    /**
+     * @return playingConnection list
+     */
+    public LinkedList<SocketClientConnection> getPlayingConnection() {
+        return this.waitingConnection;
+    }
+
 }
 
 

@@ -137,7 +137,7 @@ public class SocketClientConnection implements Runnable {
             server.getSemaphore().acquire();
 
             //If there are no player waiting in the lobby set this client connection as first
-            if (server.getWaitingConnection().isEmpty()){
+            if (server.getWaitingConnection().isEmpty() && server.getPlayingConnection().isEmpty()){
                 isFirst = true;
             }
 
