@@ -48,10 +48,10 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializa
     private Player player;
 
     /**
-     * @return boolean      Check if the students make gain a coin and return true
+     * @return boolean true if the number of students make gain a coin and return true
      */
-    private boolean checkCoin() {
-        if(students.size()==2 || students.size()==5 || students.size()==8){
+    public boolean checkCoin() {
+        if(students.size()==3 || students.size()==6 || students.size()==9){
             return true;
         }
         else{

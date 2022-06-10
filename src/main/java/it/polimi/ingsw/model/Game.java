@@ -347,10 +347,13 @@ public class Game implements GameInterface, Serializable {
     public void moveStudentIngressToHall(String studentId) {
         Student student= IdManager.getInstance().getStudent(studentId);
 
-        if(!this.currentRound.moveStudentIngressToHall(student))
+        if(!currentRound.moveStudentIngressToHall(student)){
             System.out.println("Move not possible");
-        if(this.currentRound.moveStudentIngressToHall(student)) {
-            this.currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
+        }else{
+            currentPlayer.getSchool().getHall().getLine(student.getColor()).addStudent(student);
+            if(currentPlayer.getSchool().getHall().getLine(student.getColor()).checkCoin()){
+                currentPlayer.setCoin(1);
+            }
             studentsMoved++;
             professorManager.checkProfessor(currentPlayer);
         }

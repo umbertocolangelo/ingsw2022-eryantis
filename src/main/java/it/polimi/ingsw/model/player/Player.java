@@ -185,7 +185,8 @@ public class Player implements Serializable {
     }
 
     /**
-     *  Add one coin to this player
+     *  Adds/subtract coins to the player
+     * @param value is the number of coins to be added or subtracted
      */
     public void setCoin(Integer value) {
         this.coins=coins+value;

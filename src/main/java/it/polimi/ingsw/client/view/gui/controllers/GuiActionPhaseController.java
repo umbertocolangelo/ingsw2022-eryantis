@@ -1144,6 +1144,11 @@ public class GuiActionPhaseController implements Initializable {
     private LinkedList<Integer> isDisabled = new LinkedList<>();
 
     /**
+     * contains the colors of the hall lines that are full
+     */
+    private LinkedList<Color> isFull = new LinkedList<>();
+
+    /**
      *
      */
     private LinkedList<ImageView> studentOnCloud=new LinkedList<>();
@@ -1264,11 +1269,11 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     /**
-     * @param student whose image is returned
-     * @return a new Image object of the student
+     * @param color of student whose image is returned
+     * @return a new Image object of student
      */
-    public Image getImageStudent(Student student) {
-        switch (student.getColor()) {
+    public Image getImageStudent(Color color) {
+        switch (color) {
             case RED -> {
                 return new Image(redStudentPath);
             }
@@ -1980,7 +1985,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2018,7 +2023,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2056,7 +2061,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2094,7 +2099,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2132,7 +2137,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2170,7 +2175,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2208,7 +2213,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2246,7 +2251,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2284,7 +2289,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2322,7 +2327,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2360,7 +2365,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2398,7 +2403,7 @@ public class GuiActionPhaseController implements Initializable {
 
         int count = 0;
         for(Student student : game.getIslandManager().getIslands().get(index).getStudents()){
-            studentsIsland.get(count).setImage(getImageStudent(student));
+            studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
             count++;
@@ -2495,27 +2500,27 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showClouds(){
         if (!game.getClouds().get(0).getStudents().isEmpty()) {
-            student1Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(0)));
-            student2Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(1)));
-            student3Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(2)));
+            student1Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(0).getColor()));
+            student2Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(1).getColor()));
+            student3Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(2).getColor()));
             if (game.getPlayerList().size()==3) {
-                student4Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(3)));
+                student4Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(3).getColor()));
             }
         }
         if (!game.getClouds().get(1).getStudents().isEmpty()) {
-            student1Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(0)));
-            student2Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(1)));
-            student3Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(2)));
+            student1Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(0).getColor()));
+            student2Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(1).getColor()));
+            student3Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(2).getColor()));
             if (game.getPlayerList().size()==3) {
-                student4Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(3)));
+                student4Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(3).getColor()));
             }
         }
         if (game.getPlayerList().size()==3) {
             if (!game.getClouds().get(2).getStudents().isEmpty()) {
-                student1Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(0)));
-                student2Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(1)));
-                student3Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(2)));
-                student4Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(3)));
+                student1Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(0).getColor()));
+                student2Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(1).getColor()));
+                student3Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(2).getColor()));
+                student4Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(3).getColor()));
             }
         } else {
             cloud3.setImage(null);
@@ -2690,22 +2695,9 @@ public class GuiActionPhaseController implements Initializable {
 
         for (Color color : Color.values()) {
             for (int i = 0; i < game.getCurrentPlayer().getSchool().getHall().getLine(color).getStudents().size(); i++) {
-                switch (color) {
-                    case RED -> {
-                        hallLists.get(color).get(i).setImage(new Image(redStudentPath));
-                    }
-                    case GREEN -> {
-                        hallLists.get(color).get(i).setImage(new Image(greenStudentPath));
-                    }
-                    case BLUE -> {
-                        hallLists.get(color).get(i).setImage(new Image(blueStudentPath));
-                    }
-                    case PINK -> {
-                        hallLists.get(color).get(i).setImage(new Image(pinkStudentPath));
-                    }
-                    case YELLOW -> {
-                        hallLists.get(color).get(i).setImage(new Image(yellowStudentPath));
-                    }
+                hallLists.get(color).get(i).setImage(getImageStudent(color));
+                if(i==10){
+                    isFull.add(color);
                 }
             }
         }
@@ -3226,6 +3218,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickOnGreenLine(MouseEvent mouseEvent) {
+
+        if(isFull.contains(Color.GREEN)){return;}
+
         if (game.getCurrentRound().getId()!=null) {
             //greenLine.setEffect(new DropShadow(20,null));
             if (game.getCurrentRound().getId()==0) {
@@ -3257,6 +3252,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickOnRedLine(MouseEvent mouseEvent) {
+
+        if(isFull.contains(Color.RED)){return;}
+
         if (game.getCurrentRound().getId()!=null) {
             if (game.getCurrentRound().getId()==0) {
                 IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
@@ -3287,6 +3285,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickOnYellowLine(MouseEvent mouseEvent) {
+
+        if(isFull.contains(Color.YELLOW)){return;}
+
         if (game.getCurrentRound().getId()!=null) {
             if (game.getCurrentRound().getId()==0){
                 IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
@@ -3317,6 +3318,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickOnPinkLine(MouseEvent mouseEvent) {
+
+        if(isFull.contains(Color.PINK)){return;}
+
         if (game.getCurrentRound().getId()!=null) {
             if (game.getCurrentRound().getId()==0) {
                 IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
@@ -3347,6 +3351,9 @@ public class GuiActionPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void clickOnBlueLine(MouseEvent mouseEvent) {
+
+        if(isFull.contains(Color.BLUE)){return;}
+
         if (game.getCurrentRound().getId()!=null) {
             if (game.getCurrentRound().getId()==0) {
                 IngressCardSwap ingressCardSwap = ControllerHandler.getInstance().getMessageMethod();
