@@ -1345,8 +1345,9 @@ public class GuiActionPhaseController implements Initializable {
         // show of islands and relative students and towers
         LinkedList<IslandInterface> islandList = game.getIslandManager().getIslands();
         int islandIndex = 0;
-        for (int islandNum=1; islandNum<islandList.size()+1; islandNum++) { // for every ImageView of island
-            if ((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum) { // if for that ImageView an island has to be shown
+        int size = islandList.size();
+        for (int islandNum=1; islandNum<13; islandNum++) { // for every ImageView of island
+            if ((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum) { // if for that ImageView an island or island group has to be shown
                 // show towers and students on the island with that index on the ImageView of the relative island
                 showAllIsland(islandNum,islandIndex,0,0);
                 islandIndex++;
@@ -1953,7 +1954,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland1(int index, double x, double y){
 
-        island1.setImage(new Image(islandAPath));
+        //island1.setImage(new Image(islandAPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island1);
@@ -1991,7 +1992,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland2(int index, double x, double y){
 
-        island1.setImage(new Image(islandCPath));
+        //island1.setImage(new Image(islandCPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island2);
@@ -2029,7 +2030,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland3(int index, double x, double y){
 
-        island1.setImage(new Image(islandBPath));
+        //island1.setImage(new Image(islandBPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island3);
@@ -2067,7 +2068,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland4(int index, double x, double y){
 
-        island1.setImage(new Image(islandBPath));
+        //island1.setImage(new Image(islandBPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island4);
@@ -2105,7 +2106,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland5(int index, double x, double y){
 
-        island1.setImage(new Image(islandCPath));
+        //island1.setImage(new Image(islandCPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island5);
@@ -2143,7 +2144,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland6(int index, double x, double y){
 
-        island1.setImage(new Image(islandAPath));
+        //island1.setImage(new Image(islandAPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island6);
@@ -2181,7 +2182,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland7(int index, double x, double y){
 
-        island1.setImage(new Image(islandBPath));
+        //island1.setImage(new Image(islandBPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island7);
@@ -2219,7 +2220,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland8(int index, double x, double y){
 
-        island1.setImage(new Image(islandCPath));
+        //island1.setImage(new Image(islandCPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island8);
@@ -2257,7 +2258,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland9(int index, double x, double y){
 
-        island1.setImage(new Image(islandAPath));
+        //island1.setImage(new Image(islandAPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island9);
@@ -2295,7 +2296,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland10(int index, double x, double y){
 
-        island1.setImage(new Image(islandCPath));
+        //island1.setImage(new Image(islandCPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island10);
@@ -2333,7 +2334,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland11(int index, double x, double y){
 
-        island1.setImage(new Image(islandBPath));
+        //island1.setImage(new Image(islandBPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island11);
@@ -2371,7 +2372,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showStudentIsland12(int index, double x, double y){
 
-        island1.setImage(new Image(islandAPath));
+        //island1.setImage(new Image(islandAPath));
 
         studentsIsland.clear();
         studentsIsland.add(student1Island12);
