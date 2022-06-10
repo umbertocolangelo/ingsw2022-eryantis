@@ -7,25 +7,34 @@ public class IsFirst implements Serializable {
     /**
      *
      */
-    public Integer players;
+    public Integer playersNumber;
 
     /**
      *
      */
-    public Boolean gameMode=true;
+    public Boolean gameMode = true;
 
-
-
+    /**
+     * Sets the number of player
+     * @param players
+     */
     public void setPlayers(Integer players){
-        this.players=players;
+        this.playersNumber = players;
     }
 
+    /**
+     * Sets expert or normal game mode
+     * @param gameMode
+     */
     public void setGameMode(Boolean gameMode){
-        this.gameMode=gameMode;
+        this.gameMode = gameMode;
     }
 
-    public Integer getPlayers(){
-        return this.players;
+    /**
+     * @return number of players
+     */
+    public Integer getPlayersNumber(){
+        return this.playersNumber;
     }
 
     public Boolean getGameMode(){

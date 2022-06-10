@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class SetName implements Serializable {
 
     /**
-     *Is the name of the Player
+     * Name of the player
      */
     private String name;
 
     /**
-     * Set the name
+     * Sets the name
      * @param name
      */
     public SetName(String name){
@@ -18,8 +18,7 @@ public class SetName implements Serializable {
     }
 
     /**
-     * Get the name
-     * @return
+     * @return player's name
      */
     public String getName(){
         return this.name;

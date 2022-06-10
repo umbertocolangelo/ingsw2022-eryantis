@@ -5,19 +5,31 @@ import java.io.Serializable;
 public class ClientLost implements Serializable {
 
     /**
-     * THe name of the player that has been diconneted
+     * The name of the player that has been disconnected
      */
     private String namePlayerLost;
 
-    public String getNamePlayerLost() {
-        return namePlayerLost;
+    /**
+     * Default constructor
+     * @param namePlayerLost
+     */
+    public ClientLost(String namePlayerLost){
+        this.namePlayerLost=namePlayerLost;
     }
 
+    /**
+     * @return player disconnected
+     */
+    public String getNamePlayerLost() {
+        return this.namePlayerLost;
+    }
+
+    /**
+     * Sets playerLost name
+     * @param namePlayerLost
+     */
     public void setNamePlayerLost(String namePlayerLost) {
         this.namePlayerLost = namePlayerLost;
     }
 
-    public ClientLost(String namePlayerLost){
-        this.namePlayerLost=namePlayerLost;
-    }
 }

@@ -7,12 +7,12 @@ import java.io.Serializable;
 public class ChooseStudentsFromCloud implements MessageMethod, Serializable {
 
     /**
-     *
+     * cloud chosen by the player
      */
     private String cloud;
 
     /**
-     *
+     * Applies the change at the model
      * @param game
      */
     public void apply(Game game) {
@@ -20,7 +20,7 @@ public class ChooseStudentsFromCloud implements MessageMethod, Serializable {
     }
 
     /**
-     *
+     * Sets the cloud chosen
      * @param cloud
      */
     public void setCloud(String cloud) {

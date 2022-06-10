@@ -16,21 +16,27 @@ public class IngressHallSwap implements Serializable,MessageMethod {
      */
     private String studentHall;
 
-
     /**
      * @param game
      */
     @Override
     public void apply(Game game) {
-        game.expertIngressHallSwap(studentHall,studentIngress);
+        game.expertIngressHallSwap(studentHall, studentIngress);
     }
 
-
+    /**
+     * Sets student from ingress
+     * @param student
+     */
     public void setStudentIngress(String student){
-        this.studentIngress=student;
+        this.studentIngress = student;
     }
 
+    /**
+     * Sets student from hall
+     * @param studentHall
+     */
     public void setStudentHall(String studentHall){
-        this.studentHall=studentHall;
+        this.studentHall = studentHall;
     }
 }
