@@ -27,57 +27,57 @@
                   <Font name="Book Antiqua" size="23.0" />
                </font>
             </Label>
-            <ImageView fx:id="card1" fitHeight="200.0" fitWidth="140.0" layoutX="170.0" layoutY="168.0" onMouseClicked="#onCard1Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card1" fitHeight="200.0" fitWidth="140.0" layoutX="170.0" layoutY="168.0" onMouseClicked="#onCard1Click" >
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (1).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card2" fitHeight="200.0" fitWidth="140.0" layoutX="370.0" layoutY="168.0" onMouseClicked="#onCard2Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card2" fitHeight="200.0" fitWidth="140.0" layoutX="370.0" layoutY="168.0" onMouseClicked="#onCard2Click">
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (2).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card3" fitHeight="200.0" fitWidth="140.0" layoutX="570.0" layoutY="168.0" onMouseClicked="#onCard3Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card3" fitHeight="200.0" fitWidth="140.0" layoutX="570.0" layoutY="168.0" onMouseClicked="#onCard3Click" >
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (3).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card4" fitHeight="200.0" fitWidth="140.0" layoutX="770.0" layoutY="168.0" onMouseClicked="#onCard4Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card4" fitHeight="200.0" fitWidth="140.0" layoutX="770.0" layoutY="168.0" onMouseClicked="#onCard4Click" >
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (4).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card5" fitHeight="200.0" fitWidth="140.0" layoutX="970.0" layoutY="168.0" onMouseClicked="#onCard5Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card5" fitHeight="200.0" fitWidth="140.0" layoutX="970.0" layoutY="168.0" onMouseClicked="#onCard5Click" >
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (5).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card6" fitHeight="200.0" fitWidth="140.0" layoutX="170.0" layoutY="386.0" onMouseClicked="#onCard6Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card6" fitHeight="200.0" fitWidth="140.0" layoutX="170.0" layoutY="386.0" onMouseClicked="#onCard6Click" >
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (6).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card7" fitHeight="200.0" fitWidth="140.0" layoutX="370.0" layoutY="386.0" onMouseClicked="#onCard7Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card7" fitHeight="200.0" fitWidth="140.0" layoutX="370.0" layoutY="386.0" onMouseClicked="#onCard7Click" >
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (7).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card8" fitHeight="200.0" fitWidth="140.0" layoutX="570.0" layoutY="386.0" onMouseClicked="#onCard8Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card8" fitHeight="200.0" fitWidth="140.0" layoutX="570.0" layoutY="386.0" onMouseClicked="#onCard8Click" >
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (8).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card9" fitHeight="200.0" fitWidth="140.0" layoutX="770.0" layoutY="386.0" onMouseClicked="#onCard9Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card9" fitHeight="200.0" fitWidth="140.0" layoutX="770.0" layoutY="386.0" onMouseClicked="#onCard9Click" >
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (9).png" />
                </image>
             </ImageView>
-            <ImageView fx:id="card10" fitHeight="200.0" fitWidth="140.0" layoutX="970.0" layoutY="386.0" onMouseClicked="#onCard10Click" onMouseEntered="#lightUp" onMouseExited="#turnOff">
+            <ImageView fx:id="card10" fitHeight="200.0" fitWidth="140.0" layoutX="970.0" layoutY="386.0" onMouseClicked="#onCard10Click">
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/2x/Assistente (10).png" />
                </image>
             </ImageView>
-            <Hyperlink layoutX="1148.0" layoutY="32.0" onMouseClicked="#onRulesClick" text="Check rules" textAlignment="CENTER" underline="true">
+            <Hyperlink layoutX="1148.0" layoutY="32.0"  text="Check rules" textAlignment="CENTER" underline="true">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="17.0" />
                </font>

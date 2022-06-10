@@ -18,7 +18,7 @@ public class ControllerHandler {
     private String nameClientLost;
 
     /**
-     *Set true when a cadr that needs an island as parameter has been played
+     *Set true when a card that needs an island as parameter has been played
      */
     private Boolean cardNeedIsland=false;
 
