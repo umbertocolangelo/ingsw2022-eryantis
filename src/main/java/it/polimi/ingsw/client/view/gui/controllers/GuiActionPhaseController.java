@@ -3552,7 +3552,7 @@ public class GuiActionPhaseController implements Initializable {
     public void clickOnIngress7(MouseEvent mouseEvent) {
         if (game.getCurrentPlayer().getSchool().getIngress().getStudents().size()>6) {
             if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_STUDENTS && game.getCurrentRound().getId() == null && !ControllerHandler.getInstance().getCardNeedIsland()) {
-                ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(5).getId());
+                ((MovingStudentsFromIngressToHall) studentOnHall).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(6).getId());
                 studentMoving = game.getCurrentPlayer().getSchool().getIngress().getStudents().get(6).getColor();
                 ((MovingStudentFromIngressToIsland) studentOnIsland).setStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(6).getId());
 
