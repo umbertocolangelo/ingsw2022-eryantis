@@ -26,9 +26,9 @@
                         <Font name="Book Antiqua Bold Italic" size="30.0" />
                     </font>
                 </Button>
-                <Label layoutX="499.0" layoutY="239.0" text="Previous game found, do you want to load it?">
+                <Label layoutX="356.0" layoutY="241.0" text="Previous game found, do you want to load it?">
                     <font>
-                        <Font name="Book Antiqua" size="23.0" />
+                        <Font name="Book Antiqua Bold Italic" size="28.0" />
                     </font>
                 </Label>
             </children>

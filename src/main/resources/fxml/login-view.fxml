@@ -17,22 +17,25 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="insertName" layoutX="553.0" layoutY="340.0" prefHeight="39.0" prefWidth="229.0" promptText="username">
+            <TextField fx:id="insertName" alignment="CENTER" layoutX="530.0" layoutY="351.0" prefHeight="47.0" prefWidth="220.0" promptText="username">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="12.0" />
+                  <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
             </TextField>
-            <Label layoutX="580.0" layoutY="305.0" prefHeight="18.0" prefWidth="176.0" text="Insert here your username !">
+            <Label layoutX="482.0" layoutY="287.0" prefHeight="40.0" prefWidth="316.0" text="Insert your username here" textAlignment="CENTER">
                <font>
-                  <Font name="Book Antiqua" size="14.0" />
+                  <Font name="Book Antiqua Bold Italic" size="27.0" />
                </font>
             </Label>
-            <Button fx:id="startGame" layoutX="627.0" layoutY="479.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="36.0" prefWidth="94.0" text="Start">
+            <Button fx:id="startGame" layoutX="573.0" layoutY="426.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="60.0" prefWidth="134.0" text="Start">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="20.0" />
+                  <Font name="Book Antiqua Bold Italic" size="30.0" />
                </font>
             </Button>
-            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="387.0" layoutY="426.0" prefHeight="15.0" prefWidth="547.0" />
+            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="535.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER">
+               <font>
+                  <Font size="20.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </children>

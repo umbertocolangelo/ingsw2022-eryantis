@@ -21,9 +21,9 @@
                   <Font name="Book Antiqua Bold" size="30.0" />
                </font>
             </Label>
-            <Button layoutX="591.0" layoutY="537.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="36.0" prefWidth="94.0" text="Next">
+            <Button layoutX="567.0" layoutY="518.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="56.0" prefWidth="142.0" text="Next">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="20.0" />
+                  <Font name="Book Antiqua Bold Italic" size="30.0" />
                </font>
             </Button>
             <Label layoutX="449.0" layoutY="315.0" text="Eriantys" textFill="WHITE">
