@@ -29,30 +29,12 @@ public class GuiIsFirstController {
     /**
      *
      */
-    @FXML
-    private RadioButton threePlayers;
+    private Integer numOfPLayers = null;
 
     /**
      *
      */
-    @FXML
-    private RadioButton expertMode;
-
-    /**
-     *
-     */
-    @FXML
-    private RadioButton classicMode;
-
-    /**
-     *
-     */
-    private Integer numOfPLayers;
-
-    /**
-     *
-     */
-    private Boolean expertModeOrClassic;
+    private Boolean expertModeOrClassic = null;
 
     /**
      *
@@ -69,6 +51,12 @@ public class GuiIsFirstController {
      * @param mouseEvent
      */
     public void onStartClick(MouseEvent mouseEvent) throws IOException {
+
+        if (numOfPLayers==null || expertModeOrClassic==null) {
+            label.setText("You must select both the options");
+            return;
+        }
+
         stage = new Stage();
         ControllerHandler.getInstance().getStage().close();
         ControllerHandler.setStage(stage);
@@ -81,14 +69,10 @@ public class GuiIsFirstController {
         GuiLoadingController controller = fxmlLoader.getController();
         controller.resize(stage, scene);
 
-        if (numOfPLayers==null || expertModeOrClassic==null) {
-            label.setText("You must select both the options");
-        } else {
-            IsFirst isFirst = new IsFirst();
-            isFirst.setGameMode(expertModeOrClassic);
-            isFirst.setPlayers(numOfPLayers);
-            ControllerHandler.getInstance().write(isFirst);
-        }
+        IsFirst isFirst = new IsFirst();
+        isFirst.setGameMode(expertModeOrClassic);
+        isFirst.setPlayers(numOfPLayers);
+        ControllerHandler.getInstance().write(isFirst);
     }
 
     /**
