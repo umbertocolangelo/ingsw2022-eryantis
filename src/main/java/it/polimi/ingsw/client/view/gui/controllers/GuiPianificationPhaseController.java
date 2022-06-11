@@ -8,9 +8,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -94,6 +96,11 @@ public class GuiPianificationPhaseController implements Initializable {
     private Text label;
 
     /**
+     * Keep the reference to the last image that has the light up
+     */
+    private ImageView lastLight=null;
+
+    /**
      *
      */
     private String assistantCard;
@@ -119,6 +126,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard1Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.ONE_CARD.getId();
+        setShadow(card1);
     }
 
     /**
@@ -127,6 +135,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard2Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.TWO_CARD.getId();
+        setShadow(card2);
     }
 
     /**
@@ -135,6 +144,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard3Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.THREE_CARD.getId();
+        setShadow(card3);
     }
 
     /**
@@ -143,6 +153,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard4Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.FOUR_CARD.getId();
+        setShadow(card4);
     }
 
     /**
@@ -151,6 +162,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard5Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.FIVE_CARD.getId();
+        setShadow(card5);
     }
 
     /**
@@ -159,6 +171,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard6Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.SIX_CARD.getId();
+        setShadow(card6);
     }
 
     /**
@@ -167,6 +180,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard7Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.SEVEN_CARD.getId();
+        setShadow(card7);
     }
 
     /**
@@ -175,6 +189,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard8Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.EIGHT_CARD.getId();
+        setShadow(card8);
     }
 
     /**
@@ -183,6 +198,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard9Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.NINE_CARD.getId();
+        setShadow(card9);
     }
 
     /**
@@ -191,6 +207,7 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void onCard10Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.TEN_CARD.getId();
+        setShadow(card10);
     }
 
     /**
@@ -321,4 +338,14 @@ public class GuiPianificationPhaseController implements Initializable {
         });
     }
 
+    /**
+     *
+     * @param setImage the image we want to set the Dropshadow
+     */
+    private void setShadow(ImageView setImage){
+        setImage.setEffect(new DropShadow(30, Color.DARKBLUE));
+        if (lastLight!=null)
+            lastLight.setEffect(null);
+        lastLight=setImage;
+    }
 }

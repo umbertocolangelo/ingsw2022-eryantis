@@ -11,9 +11,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -84,6 +86,8 @@ public class GuiChooseWizardAndColorController implements Initializable {
     @FXML
     private Text wizardColor;
 
+    private ImageView lastLight=null;
+
     /**
      *
      */
@@ -111,6 +115,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
     public void onWizardClick1(MouseEvent mouseEvent) {
         if(wizard1.getImage()!=null) {
             wizard = Wizard.GREEN_WIZARD.getId();
+            setShadow(wizard1);
         }
     }
 
@@ -121,6 +126,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
     public void onWizardClick2(MouseEvent mouseEvent) {
         if(wizard2.getImage()!=null) {
             wizard = Wizard.YELLOW_WIZARD.getId();
+            setShadow(wizard2);
         }
     }
 
@@ -131,7 +137,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
     public void onWizardClick3(MouseEvent mouseEvent) {
         if(wizard3.getImage()!=null) {
             wizard = Wizard.PURPLE_WIZARD.getId();
-
+            setShadow(wizard3);
         }
     }
 
@@ -142,6 +148,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
     public void onWizardClick4(MouseEvent mouseEvent) {
         if(wizard4.getImage()!=null) {
             wizard = Wizard.BLUE_WIZARD.getId();
+            setShadow(wizard4);
         }
     }
 
@@ -289,6 +296,13 @@ public class GuiChooseWizardAndColorController implements Initializable {
      */
     public Stage getStage() {
         return stage;
+    }
+
+    private void setShadow(ImageView setImage){
+        setImage.setEffect(new DropShadow(30, Color.DARKBLUE));
+        if (lastLight!=null)
+            lastLight.setEffect(null);
+        lastLight=setImage;
     }
 
 }
