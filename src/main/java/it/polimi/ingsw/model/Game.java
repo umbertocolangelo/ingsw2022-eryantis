@@ -35,12 +35,18 @@ public class Game implements GameInterface, Serializable {
      */
     public Game() {
         setRound(new SetUpRound(this));
+        idManager = IdManager.getInstance();
     }
 
     /**
      * Stores the reference of the PropertyChangeSupport
      */
     private final PropertyChangeSupport propertyChange= new PropertyChangeSupport(this);
+
+    /**
+     * Stores the instance of idManager for save/load purposes
+     */
+    private IdManager idManager;
 
     /**
      * Stores the clouds instances
@@ -373,9 +379,6 @@ public class Game implements GameInterface, Serializable {
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
 
         }
-        System.out.println(student.getPosition());
-        System.out.println(currentPlayer.getName());
-        System.out.println(currentPlayer.getSchool().getIngress());
 
         saveGame();
 
@@ -721,6 +724,13 @@ public class Game implements GameInterface, Serializable {
      */
     public MotherNature getMotherNature() {
         return this.motherNature;
+    }
+
+    /**
+     * Sets the instances of the unique objects to the ones created along the current instance of Game
+     */
+    public void setInstances(){
+        IdManager.setInstance(idManager);
     }
 
 }

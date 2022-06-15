@@ -12,12 +12,12 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.io.Serializable;
 import java.util.HashMap;
+import java.util.Map;
 
 
 public class IdManager implements Serializable {
 
     public IdManager() {
-        idMap = new HashMap<>();
 
         // Adds the enumerations to idMap
         for(Color color : Color.values()){
@@ -42,7 +42,12 @@ public class IdManager implements Serializable {
     /**
      * Associates every object with an id
      */
-    private static HashMap<String, Object> idMap;
+    private Map<String, Object> idMap = new HashMap<>();
+
+    /**
+     * Stores the current available id
+     */
+    Integer studentId = 53;
 
     /**
      *
@@ -53,6 +58,14 @@ public class IdManager implements Serializable {
             instance = new IdManager();
         }
         return instance;
+    }
+
+    /**
+     * Sets the instance of the IdManager to an old one already created
+     * @param oldInstance is the old instance of the IdManager
+     */
+    public static void setInstance(IdManager oldInstance){
+        instance = oldInstance;
     }
 
     /**
@@ -115,7 +128,9 @@ public class IdManager implements Serializable {
      * @param student
      */
     public void addStudent(Student student) {
-        idMap.put(student.getId(), student);
+        student.setId(studentId.toString());
+        idMap.put(studentId.toString(), student);
+        studentId++;
     }
 
     /**

@@ -273,6 +273,9 @@ public class Server {
         if(choice.equals("1")){
             t = new Thread(() -> {
                game = loadedGame;
+               propertyObserver = new PropertyObserver(game,this);
+               game.addListener(propertyObserver);
+               game.setInstances();
                playingConnection.addAll(waitingConnection);
                sendGame();
             });

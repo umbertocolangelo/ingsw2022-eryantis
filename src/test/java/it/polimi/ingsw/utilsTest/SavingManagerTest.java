@@ -3,6 +3,7 @@ package it.polimi.ingsw.utilsTest;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
 import it.polimi.ingsw.model.player.Player;
+import it.polimi.ingsw.utils.IdManager;
 import it.polimi.ingsw.utils.SavingManager;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -55,6 +56,7 @@ public class SavingManagerTest {
         playerNames.add("One");
         playerNames.add("Two");
         Game gameLoaded = SavingManager.getInstance().loadGame(playerNames);
+        gameLoaded.setInstances();
         assertTrue(gameLoaded.getPlayerList().get(0).getName().equals("One"));
         // delete the file for convenience
         SavingManager.getInstance().deleteSavedGame("eriantys-One-Two.save");

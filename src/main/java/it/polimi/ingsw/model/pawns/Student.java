@@ -17,9 +17,7 @@ public class Student implements PlaceableObject, Serializable {
      */
     public Student(Color color){
         this.color = color;
-        id=idCounter.toString();
         IdManager.getInstance().addStudent(this);
-        idCounter++;
     }
 
     /**
@@ -31,12 +29,6 @@ public class Student implements PlaceableObject, Serializable {
      * Indicates the color of the single student
      */
     private Color color;
-
-    /**
-     * Stores the current available id
-     */
-    private static Integer idCounter = 53;
-
 
     /**
      * 
@@ -72,4 +64,7 @@ public class Student implements PlaceableObject, Serializable {
     public String getId() { return id; }
 
 
+    public void setId(String id) {
+        this.id = id;
+    }
 }

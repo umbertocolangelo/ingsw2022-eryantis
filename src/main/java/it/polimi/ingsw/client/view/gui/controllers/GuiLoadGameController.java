@@ -71,8 +71,7 @@ public class GuiLoadGameController {
         stage.setTitle("Eriantys");
         stage.show();
         ControllerHandler.getInstance().write("1");
-        GuiLoginController loginController = fxmlLoader.getController();
-        loginController.resize(stage, scene);
+        resize(stage, scene);
     }
 
     /**
@@ -90,8 +89,7 @@ public class GuiLoadGameController {
         stage.setTitle("Eriantys");
         stage.show();
         ControllerHandler.getInstance().write("0");
-        GuiLoginController loginController = fxmlLoader.getController();
-        loginController.resize(stage, scene);
+        resize(stage, scene);
     }
 
     /**
