@@ -117,7 +117,7 @@ public class SocketClientConnection implements Runnable {
             closeConnection();
             if (server.getSemaphore().availablePermits() == 0)
                 server.getSemaphore().release();
-            System.out.println("Deregistering client ...");
+            System.out.println("Unregistering client ...");
             server.deregisterConnection(this);
             System.out.println("Done!");
         }
@@ -179,6 +179,10 @@ public class SocketClientConnection implements Runnable {
                     server.setGameMode(((IsFirst)object).getGameMode());
                     server.setNumberOfPlayer(((IsFirst)object).getPlayersNumber());
                     server.lobby(this,null);
+                }
+                if ((object instanceof String)) {
+                    Thread t1 = new Thread(server.loadGame((String) object));
+                    t1.join();
                 }
             }
         } catch (IOException | NoSuchElementException e) {

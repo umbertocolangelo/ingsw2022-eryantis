@@ -180,6 +180,16 @@ public class ControllerHandler {
                     }
                 });
                 break;
+            case LOAD:
+                GuiLoadGameController loadController = new GuiLoadGameController();
+                Platform.runLater(() -> {
+                    try {
+                        loadController.show();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                break;
             case EQUALNAME:
                 GuiLoginController controllerEqual = new GuiLoginController();
                 Platform.runLater(() -> {

@@ -77,6 +77,11 @@ public class Server {
     private Semaphore semaphore = new Semaphore(1);
 
     /**
+     * Holds the loaded instance of Game if present
+     */
+    private Game loadedGame;
+
+    /**
      * Default constructor
      * @throws IOException
      */
@@ -163,29 +168,19 @@ public class Server {
             }
 
             // check if there is a matching game saved
+
             LinkedList<String> playerNames = new LinkedList<String>();
             for(Player p : players) {
                 playerNames.add(p.getName());
             }
-            Game loadedGame = SavingManager.getInstance().loadGame(playerNames);
-            if (loadedGame!=null) { // if there is a save
-                game = loadedGame;
-                System.out.println("Previously saved game loaded");
-                playingConnection.addAll(waitingConnection);
-                waitingConnection.clear();
-                sendGame();
-            } else {
-                game = new Game();
-                propertyObserver = new PropertyObserver(game,this);
-                game.addListener(propertyObserver);
-                MessageMethod messageMethod=new StartGame();
-                ((StartGame)messageMethod).setGameMode(gameMode);
-                ((StartGame)messageMethod).setPlayers(players);
 
-                Thread t1 = new Thread( modifyGame(messageMethod));
-                t1.join();
-                playingConnection.addAll(waitingConnection);
-                waitingConnection.clear();
+            loadedGame = SavingManager.getInstance().loadGame(playerNames);
+
+            if (loadedGame!=null) { // if a matching save is present
+                System.out.println("Founded previously saved game");
+                waitingConnection.get(0).send(new LoadGame());
+            } else {
+                createGame();
             }
         }
     }
@@ -255,19 +250,56 @@ public class Server {
     /**
      * Synchronized the modifying in game with the other threads
      * @param object The message method which modifies the game
-     * @return
+     * @return the thread used
      */
     public Thread modifyGame(Object object) {
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                if (object instanceof MessageMethod && playingConnection.size()==numberOfPlayer) {
-                   ((MessageMethod) object).apply(game);
-                }
+        Thread t = new Thread(() -> {
+            if (object instanceof MessageMethod && playingConnection.size()==numberOfPlayer) {
+               ((MessageMethod) object).apply(game);
             }
         });
         t.start();
         return t;
+    }
+
+    /**
+     * Load the game saved
+     * @param choice is 1 if the game saved has to be loaded, 0 if a new game has to be created
+     * @return the thread used
+     */
+    public Thread loadGame(String choice){
+        Server server = this;
+        Thread t;
+        if(choice.equals("1")){
+            t = new Thread(() -> {
+               game = loadedGame;
+               playingConnection.addAll(waitingConnection);
+               sendGame();
+            });
+        }else{
+            t = new Thread(() -> {
+                try {
+                    createGame();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+        }
+        t.start();
+        return t;
+    }
+
+    private void createGame() throws InterruptedException{
+        game = new Game();
+        propertyObserver = new PropertyObserver(game,this);
+        game.addListener(propertyObserver);
+        MessageMethod messageMethod = new StartGame();
+        ((StartGame)messageMethod).setGameMode(gameMode);
+        ((StartGame)messageMethod).setPlayers(players);
+        Thread t1 = new Thread(modifyGame(messageMethod));
+        t1.join();
+        playingConnection.addAll(waitingConnection);
+        waitingConnection.clear();
     }
 
     /**

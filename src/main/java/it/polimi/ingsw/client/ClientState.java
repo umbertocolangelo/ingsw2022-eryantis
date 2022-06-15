@@ -10,6 +10,7 @@ public enum ClientState {
     WRITING,
     EQUALNAME,
     CLIENTLOST,
-    PLAYERPLUS
+    PLAYERPLUS,
+    LOAD
 
 }

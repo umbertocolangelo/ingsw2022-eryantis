@@ -42,6 +42,20 @@ public class GuiLoadGameController {
      */
     Stage stage;
 
+
+    public void show() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loadgame-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.setTitle("Eriantys");
+        stage.show();
+        resize(stage, scene);
+    }
+
     /**
      * Click to load previous game
      * @param mouseEvent
@@ -56,7 +70,7 @@ public class GuiLoadGameController {
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-
+        ControllerHandler.getInstance().write("1");
         GuiLoginController loginController = fxmlLoader.getController();
         loginController.resize(stage, scene);
     }
@@ -75,7 +89,7 @@ public class GuiLoadGameController {
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-
+        ControllerHandler.getInstance().write("0");
         GuiLoginController loginController = fxmlLoader.getController();
         loginController.resize(stage, scene);
     }

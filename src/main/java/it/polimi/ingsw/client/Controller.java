@@ -112,7 +112,7 @@ public class Controller implements Runnable {
                 setClientState(ClientState.SLEEPING);
                 break;
             case SLEEPING:
-                System.out.println("Waiting fo other players");
+                System.out.println("Waiting for other players");
                 break;
             case CLIENTLOST:
                 t0=cli.clientLost(client.getNamePLayerLost());
@@ -120,6 +120,18 @@ public class Controller implements Runnable {
                 break;
             case PLAYERPLUS:
                 t0=cli.playerIsPlus();
+                break;
+            case LOAD:
+                System.out.println("A previously saved game has been found, insert 1 to load it or insert 0 to start a new game");
+                input = stdIn.nextLine();
+                while (!(input.equals("0") || input.equals("1"))){
+                    System.out.println("You must select 0 or 1");
+                    input = stdIn.nextLine();
+                }
+                write(input);
+                setClientState(ClientState.SLEEPING);
+                break;
+
             case PLAYING:
                 for (int i = 0; i < 50; i++) {
                     System.out.println("\b");

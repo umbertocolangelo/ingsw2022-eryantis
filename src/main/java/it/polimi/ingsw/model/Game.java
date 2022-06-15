@@ -241,6 +241,7 @@ public class Game implements GameInterface, Serializable {
         for(Player p : playerList){
             if(p.getSchool().getTowerTable()!=null && p.getSchool().getTowerTable().numOfTowers()==0){
                 p.isWinner();
+                deleteGame();
                 propertyChange.firePropertyChange("winner", null, p);
                 return;
             }
@@ -305,6 +306,7 @@ public class Game implements GameInterface, Serializable {
 
             if(winner!=null){
                 winner.isWinner();
+                deleteGame();
                 propertyChange.firePropertyChange("winner", null, winner);
             }
         }
@@ -332,6 +334,15 @@ public class Game implements GameInterface, Serializable {
         if(!SavingManager.getInstance().saveGame(this, path)){
             System.out.println("Failed to save game");
         }else{System.out.println("Game saved successfully");}
+    }
+
+    /**
+     * Deletes the save of the current game
+     */
+    public void deleteGame() {
+        if(!SavingManager.getInstance().deleteSavedGame(path)){
+            System.out.println("Failed to delete saved game");
+        }else{System.out.println("Game save deleted successfully");}
     }
 
     /**

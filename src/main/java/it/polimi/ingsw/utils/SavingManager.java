@@ -81,8 +81,7 @@ public class SavingManager implements Serializable{
             Files.deleteIfExists(file.toPath());
             return true;
         } catch (IOException e) {
-            System.out.println("Failed to delete file");
+            return false;
         }
-        return false;
     }
 }

@@ -9,6 +9,12 @@ public class ClientApp {
     public static void main(String[] args) {
         Client client = new Client("localhost", 65432);
         try{
+            for(String arg : args){
+                if(arg.equals("--cli") || arg.equals("--c")){
+                    client.setIsCli();
+                    break;
+                }
+            }
             client.run();
         }catch (IOException e){
             System.err.println(e.getMessage());

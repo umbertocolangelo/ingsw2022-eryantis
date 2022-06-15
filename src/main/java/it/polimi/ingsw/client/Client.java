@@ -62,7 +62,7 @@ public class Client {
     private Object inputObject;
 
     /**
-     * Keep the reference to the controller
+     * Keeps the reference to the CLI controller
      */
     private Controller controller;
 
@@ -77,12 +77,12 @@ public class Client {
     private Boolean active = true;
 
     /**
-     *
+     * States if the view is CLI (false) or GUI (true)
      */
     private Boolean isCli = false;
 
     /**
-     *
+     * Keeps the reference to the GUI controller
      */
     private ControllerHandler controllerHandler;
 
@@ -138,7 +138,10 @@ public class Client {
                                 }else if (inputObject instanceof SetUp) {
                                     ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
                                     ControllerHandler.getInstance().chooseScene();
-                                } else if (inputObject instanceof EqualName) {
+                                }else if (inputObject instanceof LoadGame) {
+                                    ControllerHandler.getInstance().setClientState(ClientState.LOAD);
+                                    ControllerHandler.getInstance().chooseScene();
+                                }else if (inputObject instanceof EqualName) {
                                     ControllerHandler.getInstance().setClientState(ClientState.EQUALNAME);
                                     ControllerHandler.getInstance().chooseScene();
                                 } else if (inputObject instanceof IsFirst) {
@@ -172,6 +175,9 @@ public class Client {
                                     controller.run();
                                 }else if (inputObject instanceof EqualName) {
                                     controller.setClientState(ClientState.EQUALNAME);
+                                    controller.run();
+                                }else if (inputObject instanceof LoadGame) {
+                                    controller.setClientState(ClientState.LOAD);
                                     controller.run();
                                 } else if (inputObject instanceof SetName) {
                                     namePlayer = ((SetName) inputObject).getName();
@@ -275,5 +281,12 @@ public class Client {
 
     public void setNamePLayerLost(String namePLayerLost) {
         this.namePLayerLost = namePLayerLost;
+    }
+
+    /**
+     * Sets the view to CLI
+     */
+    public void setIsCli(){
+        isCli=true;
     }
 }
