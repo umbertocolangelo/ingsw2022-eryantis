@@ -3788,4 +3788,24 @@ public class GuiActionPhaseController implements Initializable {
             lastLight.setEffect(null);
         lastLight=setImage;
     }
+
+
+
+    /**
+     * @throws IOException
+     */
+    public void winner() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/winner-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.setTitle("Eriantys");
+        stage.show();
+
+        GuiChooseWizardAndColorController deckController = fxmlLoader.getController();
+        deckController.resize(stage, scene);
+    }
 }

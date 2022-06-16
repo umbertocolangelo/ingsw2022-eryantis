@@ -1,12 +1,18 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class GuiWinnerController {
+import java.net.URL;
+import java.util.ResourceBundle;
+
+public class GuiWinnerController implements Initializable {
+
 
     /**
      *
@@ -27,6 +33,9 @@ public class GuiWinnerController {
     private Label loser1;
     @FXML
     private Label loser2;
+
+    @FXML
+    private Text winner;
 
     /**
      *
@@ -62,5 +71,10 @@ public class GuiWinnerController {
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        winner.setText("The winner is " + ControllerHandler.getInstance().getNameWinner() );
     }
 }

@@ -12,6 +12,12 @@ import java.io.IOException;
 
 
 public class ControllerHandler {
+
+    /**
+     *
+     */
+    private String nameWinner;
+
     /**
      *
      */
@@ -153,6 +159,16 @@ public class ControllerHandler {
      */
     public void chooseScene() throws IOException {
         switch (clientState) {
+            case WINNER:
+                GuiActionPhaseController actionController0= new GuiActionPhaseController();
+                Platform.runLater(() -> {
+                    try {
+                        actionController0.winner();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+                break;
             case CLIENTLOST:
                 nameClientLost=client.getNamePLayerLost();
                 GuiLoadingController loadingController=new GuiLoadingController();
@@ -397,5 +413,13 @@ public class ControllerHandler {
 
     public String getNameClientLost() {
         return nameClientLost;
+    }
+
+    public String getNameWinner() {
+        return nameWinner;
+    }
+
+    public void setNameWinner(String nameWinner) {
+        this.nameWinner = nameWinner;
     }
 }
