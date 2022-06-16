@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +7,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiActionPhaseController">
+<AnchorPane xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiActionPhaseController">
    <children>
       <AnchorPane fx:id="scenePane" prefHeight="720.0" prefWidth="1280.0">
          <children>
@@ -56,7 +51,7 @@
                   <Image url="@../Graphical_Assets/reameB_1.2.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="island8" fitHeight="116.0" fitWidth="132.0" layoutX="768.0" layoutY="31.0" onMouseClicked="#clickIsland8">
+            <ImageView fx:id="island8" fitHeight="116.0" fitWidth="132.0" layoutX="767.0" layoutY="31.0" onMouseClicked="#clickIsland8">
                <image>
                   <Image url="@../Graphical_Assets/reameB_1.3.png" />
                </image>
@@ -71,7 +66,7 @@
                   <Image url="@../Graphical_Assets/reameB_1.3.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="island12" fitHeight="116.0" fitWidth="132.0" layoutX="768.0" layoutY="336.0" onMouseClicked="#clickIsland12">
+            <ImageView fx:id="island12" fitHeight="116.0" fitWidth="132.0" layoutX="767.0" layoutY="336.0" onMouseClicked="#clickIsland12">
                <image>
                   <Image url="@../Graphical_Assets/reameB_1.png" />
                </image>
@@ -522,6 +517,54 @@
             <ImageView fx:id="tower6" fitHeight="53.0" fitWidth="32.0" layoutX="517.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7" fitHeight="53.0" fitWidth="32.0" layoutX="473.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower8" fitHeight="53.0" fitWidth="32.0" layoutX="517.0" layoutY="613.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island4" fitHeight="23.0" fitWidth="23.0" layoutX="164.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island3" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="392.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island2" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="426.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island1" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="426.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island12" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="426.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island11" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="392.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island10" fitHeight="23.0" fitWidth="23.0" layoutX="1254.0" layoutY="290.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="178.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island8" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="121.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island7" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="121.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island6" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="121.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island5" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="178.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island4" fitHeight="23.0" fitWidth="23.0" layoutX="164.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island4" fitHeight="23.0" fitWidth="23.0" layoutX="164.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island4" fitHeight="23.0" fitWidth="23.0" layoutX="164.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island3" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island3" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island3" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island2" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island2" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island2" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island1" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island1" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island1" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island12" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="401.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island12" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="376.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island12" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island11" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="367.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island11" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="342.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island11" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="317.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island10" fitHeight="23.0" fitWidth="23.0" layoutX="1254.0" layoutY="265.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island10" fitHeight="23.0" fitWidth="23.0" layoutX="1254.0" layoutY="240.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island10" fitHeight="23.0" fitWidth="23.0" layoutX="1254.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island8" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island8" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island8" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island7" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island7" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island7" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island6" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island6" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island6" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny2Island5" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny3Island5" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island5" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>
