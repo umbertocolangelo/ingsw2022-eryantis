@@ -3784,7 +3784,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void setShadow(ImageView setImage){
         setImage.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
-        if (lastLight!=null)
+        if (lastLight!=null && lastLight!=setImage)
             lastLight.setEffect(null);
         lastLight=setImage;
     }

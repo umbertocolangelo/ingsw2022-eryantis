@@ -300,7 +300,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
 
     private void setShadow(ImageView setImage){
         setImage.setEffect(new DropShadow(30, Color.DARKBLUE));
-        if (lastLight!=null)
+        if (lastLight!=null && lastLight!=setImage)
             lastLight.setEffect(null);
         lastLight=setImage;
     }

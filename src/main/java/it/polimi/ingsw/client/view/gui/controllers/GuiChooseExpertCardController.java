@@ -29,7 +29,10 @@ public class GuiChooseExpertCardController implements Initializable {
     AnchorPane scenePane;
 
 
-
+    /**
+     * Keep the reference to the last image light up
+     */
+    private ImageView  lastLight;
     /**
      *
      */
@@ -236,10 +239,8 @@ public class GuiChooseExpertCardController implements Initializable {
            coins.setText("You cannot afford this card");
        else{
            idExpert=game.getCardManager().getDeck().get(0).getId();
-           coins.setText("Click on card 1");
-           expertCard3.setEffect(null);
-           expertCard2.setEffect(null);
-           expertCard1.setEffect(new DropShadow(30, Color.YELLOW));
+          setShadow(expertCard1);
+
        }
 
 
@@ -256,9 +257,7 @@ public class GuiChooseExpertCardController implements Initializable {
         else{
             idExpert=game.getCardManager().getDeck().get(1).getId();
             coins.setText("Click on card 2");
-            expertCard1.setEffect(null);
-            expertCard3.setEffect(null);
-            expertCard2.setEffect(new DropShadow(30, Color.YELLOW));
+           setShadow(expertCard2);
         }
     }
 
@@ -273,9 +272,7 @@ public class GuiChooseExpertCardController implements Initializable {
         else{
             idExpert=game.getCardManager().getDeck().get(2).getId();
             coins.setText("Click on card 3");
-            expertCard1.setEffect(null);
-            expertCard2.setEffect(null);
-            expertCard3.setEffect(new DropShadow(30, Color.YELLOW));
+            setShadow(expertCard3);
         }
     }
 
@@ -438,5 +435,17 @@ public class GuiChooseExpertCardController implements Initializable {
     public Stage getStage() {
         return stage;
     }
+
+    /**
+     *
+     * @param setImage
+     */
+    private void setShadow(ImageView setImage){
+        setImage.setEffect(new DropShadow(30, Color.DARKBLUE));
+        if (lastLight!=null && lastLight!=setImage)
+            lastLight.setEffect(null);
+        lastLight=setImage;
+    }
+
 
 }
