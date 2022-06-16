@@ -34,6 +34,11 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     private String cardSevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front6.jpg"; //Ingress cardswap
 
     /**
+     * Keep the reference to game
+     */
+    private Game game;
+
+    /**
      *
      */
     private Stage stage;
@@ -115,15 +120,15 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Game game=ControllerHandler.getInstance().getClient().getGame();
+        game=ControllerHandler.getInstance().getClient().getGame();
          idExpertCard =ControllerHandler.getInstance().getIdExpertCardPlayed();
-        if(idExpertCard.equals(game.getCardManager().getDeck().get(0).getId()))
+        if(game.getCardManager().getCurrentCard().getId().equals(game.getCardManager().getDeck().get(0).getId()))
             expertCard=game.getCardManager().getDeck().get(0);
-        else if(idExpertCard.equals(game.getCardManager().getDeck().get(1).getId()))
+        else if(game.getCardManager().getCurrentCard().getId().equals(game.getCardManager().getDeck().get(1).getId()))
             expertCard=game.getCardManager().getDeck().get(1);
         else
             expertCard=game.getCardManager().getDeck().get(2);
-        switch (idExpertCard){
+        switch (game.getCardManager().getCurrentCard().getId()){
             case "48":
                 expertCardId.setImage(new Image(cardElevenPath));
                 studentCard1.setImage(getColorStudent(((StudentToHallCard)expertCard).getStudents().get(0)));
@@ -152,7 +157,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     }
 
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-        switch (idExpertCard){
+        switch (game.getCardManager().getCurrentCard().getId()){
             case "38":
                 ControllerHandler.getInstance().setIdExpertCardPlayed("");
                ControllerHandler.getInstance().setStudentToIsland(messageMethodIsland);
@@ -193,7 +198,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      * @param mouseEvent
      */
     public void onClickStudentCard1(MouseEvent mouseEvent) {
-        switch (idExpertCard){
+        switch (game.getCardManager().getCurrentCard().getId()){
             case "48":
                 ((StudentToHall)messageMethodHall).setStudentToHall(((StudentToHallCard)expertCard).getStudents().get(0).getId());
                 break;
@@ -210,7 +215,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      * @param mouseEvent
      */
     public void onClickStudentCard2(MouseEvent mouseEvent) {
-        switch (idExpertCard){
+        switch (game.getCardManager().getCurrentCard().getId()){
             case "48":
                 ((StudentToHall)messageMethodHall).setStudentToHall(((StudentToHallCard)expertCard).getStudents().get(1).getId());
                 break;
@@ -228,7 +233,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      * @param mouseEvent
      */
     public void onClickStudentCard3(MouseEvent mouseEvent) {
-        switch (idExpertCard){
+        switch (game.getCardManager().getCurrentCard().getId()){
             case "48":
                 ((StudentToHall)messageMethodHall).setStudentToHall(((StudentToHallCard)expertCard).getStudents().get(2).getId());
                 break;
