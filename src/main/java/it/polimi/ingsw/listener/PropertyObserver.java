@@ -31,7 +31,7 @@ public class PropertyObserver implements PropertyChangeListener {
 
     /**
      * This method gets called when a bound property is changed.
-     *
+     * Every time this method is called, the game is saved
      * @param evt A PropertyChangeEvent object describing the event source
      *            and the property that has changed.
      */
@@ -40,6 +40,7 @@ public class PropertyObserver implements PropertyChangeListener {
         System.out.println("Old value   " + evt.getPropertyName());
         System.out.println("Value changed   " + evt.getOldValue());
         System.out.println("New value    " + evt.getNewValue());
+        game.saveGame();
         server.sendGame();
     }
 

@@ -380,8 +380,6 @@ public class Game implements GameInterface, Serializable {
 
         }
 
-        saveGame();
-
         propertyChange.firePropertyChange("moveStudentIngress",  this.currentPlayer.getSchool().getHall().getLine(student.getColor()),student);
     }
 
@@ -403,8 +401,6 @@ public class Game implements GameInterface, Serializable {
             currentPlayer.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
         }
 
-        saveGame();
-
         propertyChange.firePropertyChange("moveStudentToIsland",island,student);
     }
 
@@ -419,8 +415,6 @@ public class Game implements GameInterface, Serializable {
             this.getIslandManager().checkGroup(this.motherNature.getIsland());
             checkWinner();
         }
-
-        saveGame();
 
         propertyChange.firePropertyChange("move MotherNature",jumps,motherNature.getIsland());
     }
@@ -445,7 +439,6 @@ public class Game implements GameInterface, Serializable {
             propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
         }
 
-        saveGame();
     }
 
     /**
@@ -509,8 +502,6 @@ public class Game implements GameInterface, Serializable {
                     ((HallBagSwapCard) expertCard).apply(color1);
                 }
             }
-
-            saveGame();
 
             propertyChange.firePropertyChange("Play expert card", null, expertCard);
         }
@@ -592,8 +583,6 @@ public class Game implements GameInterface, Serializable {
             }
             this.currentRound.checkRoundEnded();
             professorManager.setStandardCheck(); // reset the professor calculus
-
-            saveGame();
 
             propertyChange.firePropertyChange("Choose cloud", this.clouds, cloud);
         }
