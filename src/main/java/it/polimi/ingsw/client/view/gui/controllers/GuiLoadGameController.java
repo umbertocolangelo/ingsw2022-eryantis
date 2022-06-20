@@ -14,36 +14,25 @@ import java.io.IOException;
 
 public class GuiLoadGameController {
 
-    /**
-     *
-     */
     @FXML
-    AnchorPane scenePane;
+    private AnchorPane scenePane;
+    @FXML
+    private Button loadButton;
+    @FXML
+    private Button newButton;
 
     /**
-     *
-     */
-    @FXML
-    Button loadButton;
-
-    /**
-     *
-     */
-    @FXML
-    Button newButton;
-
-    /**
-     *
+     * Reference to the stage
      */
     Scene scene;
 
     /**
-     *
+     * Reference to the scene
      */
     Stage stage;
 
     /**
-     *
+     * Shows the scene
      * @throws IOException
      */
     public void show() throws IOException {
@@ -56,7 +45,7 @@ public class GuiLoadGameController {
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-        resize(stage, scene);
+        resize(stage);
     }
 
     /**
@@ -74,7 +63,7 @@ public class GuiLoadGameController {
         stage.setTitle("Eriantys");
         stage.show();
         ControllerHandler.getInstance().write("1");
-        resize(stage, scene);
+        resize(stage);
     }
 
     /**
@@ -92,25 +81,28 @@ public class GuiLoadGameController {
         stage.setTitle("Eriantys");
         stage.show();
         ControllerHandler.getInstance().write("0");
-        resize(stage, scene);
+        resize(stage);
     }
 
     /**
      * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
 
+        //vertical listener
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
             double scaleY = newVal.doubleValue()/height;
             scenePane.setScaleY(scaleY);

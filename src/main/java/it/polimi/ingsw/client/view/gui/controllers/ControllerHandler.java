@@ -16,11 +16,6 @@ public class ControllerHandler {
     /**
      *
      */
-    private String nameWinner;
-
-    /**
-     *
-     */
     private String nameClientLost;
 
     /**
@@ -29,9 +24,9 @@ public class ControllerHandler {
     private Boolean cardNeedIsland=false;
 
     /**
-     *Not used
+     * Not used
      */
-    private Boolean finishTurn=false;
+    private Boolean finishTurn = false;
 
     /**
      *Message method student To Island
@@ -159,16 +154,6 @@ public class ControllerHandler {
      */
     public void chooseScene() throws IOException {
         switch (clientState) {
-            case WINNER:
-                GuiActionPhaseController actionController0= new GuiActionPhaseController();
-                Platform.runLater(() -> {
-                    try {
-                        actionController0.winner();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                });
-                break;
             case CLIENTLOST:
                 nameClientLost = client.getNamePLayerLost();
                 GuiLoadingController loadingController = new GuiLoadingController();
@@ -476,21 +461,5 @@ public class ControllerHandler {
      */
     public String getNameClientLost() {
         return this.nameClientLost;
-    }
-
-    public String getNameWinner() {
-        return nameWinner;
-    }
-
-    public void setNameWinner(String nameWinner) {
-        this.nameWinner = nameWinner;
-    }
-
-
-    public void startClient() throws IOException {
-        Client client = new Client("localhost", 65432);
-
-            client.run();
-
     }
 }

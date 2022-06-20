@@ -28,23 +28,23 @@ public class GuiChooseExpertCardController implements Initializable {
     @FXML
     AnchorPane scenePane;
 
-
     /**
      * Keep the reference to the last image light up
      */
     private ImageView  lastLight;
+
     /**
-     *
+     * Used to have the id of the selected expert card
      */
     private String idExpert;
 
     /**
-     *
+     * Reference to game
      */
     private Game game;
 
     /**
-     *
+     * Reference to the stage
      */
     private Stage stage;
 
@@ -130,12 +130,28 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     @FXML
     private ImageView expertCard3;
+
+    /**
+     *
+     */
     @FXML
     private Text coins;
+
+    /**
+     *
+     */
     @FXML
     private Text costCard1;
+
+    /**
+     *
+     */
     @FXML
     private Text costCard2;
+
+    /**
+     *
+     */
     @FXML
     private Text costCard3;
 
@@ -155,7 +171,7 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.show();
 
         GuiActionPhaseController actionController = fxmlLoader.getController();
-        actionController.resize(stage, scene);
+        actionController.resize(stage);
     }
 
     /**
@@ -230,54 +246,49 @@ public class GuiChooseExpertCardController implements Initializable {
     }
 
     /**
-     *
+     * Click on the first (of the three) expert card randomly choose for the game
      * @param mouseEvent
      */
     public void clickOnExpert1(MouseEvent mouseEvent) throws IOException {
-
-       if(game.getCardManager().getDeck().get(0).getCost()>game.getCurrentPlayer().getCoins())
+       if (game.getCardManager().getDeck().get(0).getCost()>game.getCurrentPlayer().getCoins()) {
            coins.setText("You cannot afford this card");
-       else{
-           idExpert=game.getCardManager().getDeck().get(0).getId();
-          setShadow(expertCard1);
-
+       } else {
+           idExpert = game.getCardManager().getDeck().get(0).getId();
+           setShadow(expertCard1);
        }
-
-
-
     }
 
     /**
-     *
+     * Click on the second (of the three) expert card randomly choose for the game
      * @param mouseEvent
      */
     public void clickOnExpert2(MouseEvent mouseEvent) {
-        if(game.getCardManager().getDeck().get(1).getCost()>game.getCurrentPlayer().getCoins())
+        if (game.getCardManager().getDeck().get(1).getCost()>game.getCurrentPlayer().getCoins()) {
             coins.setText("You cannot afford this card");
-        else{
-            idExpert=game.getCardManager().getDeck().get(1).getId();
+        } else {
+            idExpert = game.getCardManager().getDeck().get(1).getId();
             coins.setText("Click on card 2");
-           setShadow(expertCard2);
+            setShadow(expertCard2);
         }
     }
 
     /**
-     *
+     * Click on the third (of the three) expert card randomly choose for the game
      * @param mouseEvent
      * @throws IOException
      */
     public void clickOnExpert3(MouseEvent mouseEvent) throws IOException {
-        if(game.getCardManager().getDeck().get(2).getCost()>game.getCurrentPlayer().getCoins())
+        if (game.getCardManager().getDeck().get(2).getCost()>game.getCurrentPlayer().getCoins()) {
             coins.setText("You cannot afford this card");
-        else{
-            idExpert=game.getCardManager().getDeck().get(2).getId();
+        } else {
+            idExpert = game.getCardManager().getDeck().get(2).getId();
             coins.setText("Click on card 3");
             setShadow(expertCard3);
         }
     }
 
     /**
-     *
+     * Sets expert card images
      * @param id
      * @param expertCard
      */
@@ -285,7 +296,6 @@ public class GuiChooseExpertCardController implements Initializable {
         switch (id) {
             case"38":
                 expertCard.setImage(new Image(cardOnePath));
-
                 break;
             case"39":
                 expertCard.setImage(new Image(cardTwoPath));
@@ -340,7 +350,7 @@ public class GuiChooseExpertCardController implements Initializable {
     }
 
     /**
-     *
+     * go to studentOnCard scene
      * @throws IOException
      */
     public void sceneStudentOnCard() throws IOException {
@@ -354,9 +364,13 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.show();
 
         GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
-        studentsController.resize(stage, scene);
+        studentsController.resize(stage);
     }
 
+    /**
+     * go to selectColor scene
+     * @throws IOException
+     */
     public void sceneColor() throws IOException {
         stage = new Stage();
         ControllerHandler.getInstance().getStage().close();
@@ -368,9 +382,13 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.show();
 
         GuiChooseColorCard studentsController = fxmlLoader.getController();
-        studentsController.resize(stage, scene);
+        studentsController.resize(stage);
     }
 
+    /**
+     * go to actionPhase scene
+     * @throws IOException
+     */
     public void sceneAction() throws IOException {
         stage = new Stage();
         ControllerHandler.getInstance().getStage().close();
@@ -382,9 +400,13 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.show();
 
         GuiActionPhaseController studentsController = fxmlLoader.getController();
-        studentsController.resize(stage, scene);
+        studentsController.resize(stage);
     }
 
+    /**
+     * go to selectPlayerCard scene
+     * @throws IOException
+     */
     public void scenePlayer() throws IOException {
         stage = new Stage();
         ControllerHandler.getInstance().getStage().close();
@@ -396,56 +418,45 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.show();
 
         GuiSelectPlayerCard studentsController = fxmlLoader.getController();
-        studentsController.resize(stage, scene);
+        studentsController.resize(stage);
     }
 
     /**
-     *
+     * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
-        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
-        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
-
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
 
+        //vertical listener
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
             double scaleY = newVal.doubleValue()/height;
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
     }
 
-
     /**
-     *
-     * @return
-     */
-    public Stage getStage() {
-        return stage;
-    }
-
-    /**
-     *
+     * Sets shadows on images
      * @param setImage
      */
-    private void setShadow(ImageView setImage){
+    private void setShadow(ImageView setImage) {
         setImage.setEffect(new DropShadow(30, Color.DARKBLUE));
-        if (lastLight!=null && lastLight!=setImage)
+        if (lastLight!=null && lastLight!=setImage) {
             lastLight.setEffect(null);
-        lastLight=setImage;
+        }
+        lastLight = setImage;
     }
-
 
 }

@@ -16,25 +16,8 @@ import java.util.ResourceBundle;
 
 public class GuiSelectPlayerCard implements Initializable {
 
-    /**
-     *
-     */
     @FXML
-    AnchorPane scenePane;
-
-    /**
-     *
-     */
-    private Game game;
-
-    /**
-     *
-     */
-    private String player;
-
-    /**
-     *
-     */
+    private AnchorPane scenePane;
     @FXML
     private Button player1;
     @FXML
@@ -42,6 +25,15 @@ public class GuiSelectPlayerCard implements Initializable {
     @FXML
     private Button player3;
 
+    /**
+     * Reference to game
+     */
+    private Game game;
+
+    /**
+     * Reference to player
+     */
+    private String player;
 
     /**
      * Build the scene select a Player Color as an expert card
@@ -55,8 +47,7 @@ public class GuiSelectPlayerCard implements Initializable {
         player2.setText(game.getPlayerList().get(1).getName());
         if (game.getPlayerList().size()==3) {
             player2.setText(game.getPlayerList().get(2).getName());
-        }
-        else {
+        } else {
             player3.setDisable(false);
             player3.setVisible(false);
         }
@@ -76,7 +67,7 @@ public class GuiSelectPlayerCard implements Initializable {
     }
 
     /**
-     *
+     * Click on player zero
      * @param mouseEvent
      */
     public void clickPlayer0(MouseEvent mouseEvent) {
@@ -84,15 +75,7 @@ public class GuiSelectPlayerCard implements Initializable {
     }
 
     /**
-     *
-     * @param mouseEvent
-     */
-    public void clickPlayer2(MouseEvent mouseEvent) {
-        player = game.getPlayerList().get(2).getId();
-    }
-
-    /**
-     *
+     * Click on player one
      * @param mouseEvent
      */
     public void clickPlayer1(MouseEvent mouseEvent) {
@@ -100,9 +83,17 @@ public class GuiSelectPlayerCard implements Initializable {
     }
 
     /**
+     * Click on player two
+     * @param mouseEvent
+     */
+    public void clickPlayer2(MouseEvent mouseEvent) {
+        player = game.getPlayerList().get(2).getId();
+    }
+
+    /**
      * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 

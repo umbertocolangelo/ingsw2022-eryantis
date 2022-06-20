@@ -8,6 +8,8 @@ import javafx.stage.Stage;
 
 public class GuiWinnerController {
 
+    @FXML
+    private AnchorPane scenePane;
     /**
      * Text field
      */
@@ -22,16 +24,13 @@ public class GuiWinnerController {
     @FXML
     private Label loser2;
 
-    @FXML
-    private AnchorPane scenePane;
-
     /**
-     *
+     * Reference to the stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to the scene
      */
     private Scene scene;
 
@@ -55,7 +54,7 @@ public class GuiWinnerController {
     /**
      * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
