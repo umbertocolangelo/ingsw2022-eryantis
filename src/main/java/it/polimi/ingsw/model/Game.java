@@ -240,13 +240,18 @@ public class Game implements GameInterface, Serializable {
     public void checkWinner() {
 
         // Proceed only if the game has been initialized
-        if(!isStarted){return;}
+        if (!isStarted) {
+            return;
+        }
 
         // If a player has placed all the towers
 
-        for(Player p : playerList){
-            if(p.getSchool().getTowerTable()!=null && p.getSchool().getTowerTable().numOfTowers()==0){
+        for (Player p : playerList) {
+            if (p.getSchool().getTowerTable()!=null && p.getSchool().getTowerTable().numOfTowers()==0) {
                 p.isWinner();
+                for (Player player : playerList) {
+                    player.setPlayerPhase(PlayerPhase.WINNER);
+                }
                 deleteGame();
                 propertyChange.firePropertyChange("winner", null, p);
                 return;
@@ -259,21 +264,21 @@ public class Game implements GameInterface, Serializable {
 
         // If assistant cards finished
 
-        if(playerList.get(0).getAssistantCard().isEmpty() && playerList.get(0).getCardPlayed()==null){ // if the players have played all the assistant cards
+        if (playerList.get(0).getAssistantCard().isEmpty() && playerList.get(0).getCardPlayed()==null) { // if the players have played all the assistant cards
 
             Player winner = playerList.get(0);
             int minTower = winner.getSchool().getTowerTable().numOfTowers();
             LinkedList<Player> tiePlayers = new LinkedList<Player>(); // if there is a tie, stores the players with same number of towers
 
-            for(Player player : playerList){
-                if(player==winner){continue;}
-                if(player.getSchool().getTowerTable().numOfTowers()<minTower){ // if this player has placed more towers
+            for (Player player : playerList) {
+                if (player==winner) {continue;}
+                if (player.getSchool().getTowerTable().numOfTowers()<minTower) { // if this player has placed more towers
                     winner = player;
                     minTower = winner.getSchool().getTowerTable().numOfTowers();
                     tiePlayers.clear();
                     continue;
                 }
-                if(player.getSchool().getTowerTable().numOfTowers()==minTower){
+                if (player.getSchool().getTowerTable().numOfTowers()==minTower) {
                     if(tiePlayers.isEmpty()){
                         tiePlayers.add(player);
                         tiePlayers.add(winner);
@@ -285,37 +290,52 @@ public class Game implements GameInterface, Serializable {
 
             }
 
-            if(winner==null){ // if there is a tie between two players the winner is based on the professors owned
+            if(winner==null) { // if there is a tie between two players the winner is based on the professors owned
                 int maxProfCount = 0;
-                for(Player player : tiePlayers){
+                for (Player player : tiePlayers) {
                     int profCount = 0;
-                    for(Color color : Color.values()){
-                        if(player.getSchool().getHall().getLine(color).isProfessor()){
+                    for (Color color : Color.values()) {
+                        if (player.getSchool().getHall().getLine(color).isProfessor()) {
                             profCount++;
                         }
                     }
 
-                    if(maxProfCount<profCount){
+                    if (maxProfCount<profCount) {
                         maxProfCount = profCount;
                         winner = player;
                         continue;
                     }
 
-                    if(maxProfCount==profCount){ // if there is a tie
+                    if (maxProfCount==profCount) { // if there is a tie
                         winner = null;
                     }
                 }
-                if(winner==null){ // if still there is a tie, the winner is set randomly
+                if (winner==null) { // if still there is a tie, the winner is set randomly
                     winner = tiePlayers.get(0);
                 }
             }
 
-            if(winner!=null){
+            if(winner!=null) {
                 winner.isWinner();
+                for (Player player : playerList) {
+                    player.setPlayerPhase(PlayerPhase.WINNER);
+                }
                 deleteGame();
                 propertyChange.firePropertyChange("winner", null, winner);
             }
         }
+    }
+
+    /**
+     * @return winner's name
+     */
+    public String getWinner(){
+        for (Player p: playerList) {
+            if (p.getIsWinner()) {
+                return p.getName();
+            }
+        }
+        return null;
     }
 
     /**
@@ -577,7 +597,7 @@ public class Game implements GameInterface, Serializable {
      */
     public void chooseCloud(String cloudId) {
         Cloud cloud = IdManager.getInstance().getCloud(cloudId);
-        if(this.currentRound.chooseCloud(cloud)) {
+        if (this.currentRound.chooseCloud(cloud)) {
             while (cloud.getStudents().size()!=0) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
             }

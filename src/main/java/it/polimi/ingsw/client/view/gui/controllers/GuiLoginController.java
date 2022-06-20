@@ -101,6 +101,10 @@ public class GuiLoginController implements Initializable {
         deckController.resize(stage, scene);
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void changeSceneIsFirst() throws IOException {
         stage = new Stage();
         ControllerHandler.getInstance().getStage().close();
@@ -116,6 +120,10 @@ public class GuiLoginController implements Initializable {
         firstController.resize(stage, scene);
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void changeSceneEqual() throws IOException {
         ControllerHandler.getInstance().setEqual();
         stage = new Stage();
@@ -135,9 +143,9 @@ public class GuiLoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(ControllerHandler.getInstance().getEqual()) {
+        if (ControllerHandler.getInstance().getEqual()) {
             equalName.setText("You inserted a username already used");
-            System.out.println("Hello");
+            System.out.println("Username already used");
         }
     }
 
@@ -151,37 +159,17 @@ public class GuiLoginController implements Initializable {
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
-        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
-        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
-
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
 
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
             double scaleY = newVal.doubleValue()/height;
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
-    }
-
-    /**
-     *
-     */
-    public void closeStage() {
-        this.stage.close();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Stage getStage() {
-        return stage;
     }
 
 }

@@ -108,7 +108,8 @@ public class Server {
             if (c.getPlayerIsPlus()) {
                 System.out.println("The game has already started, please try later");
             } else if (numberOfPlayer==0 && !socketConnections.isEmpty()) {
-                Boolean thereIsAFirst = false; //Check if there is a player that already received a first, if  so ,do not set a new first
+                Boolean thereIsAFirst = false;
+                //Check if there is a player that already received a first and in this case do not set a new first
                 for (SocketClientConnection d: socketConnections) {
                     if (d.getIsFirst()) {
                         thereIsAFirst = true;
@@ -131,7 +132,8 @@ public class Server {
      * @throws InterruptedException     Thrown when the modifyGame doesn't end
      */
     public synchronized void lobby(SocketClientConnection c, String name)
-                   throws IOException, ClassNotFoundException, InterruptedException {
+            throws IOException, ClassNotFoundException, InterruptedException {
+
         if (name!=null) {
             waitingConnection.add(c);
             System.out.println("New client");
@@ -143,6 +145,7 @@ public class Server {
                 c.close();
                 return;
             }
+
         //We enter here only if we need to set again the message isFirst
         }else if (waitingConnection.size()>numberOfPlayer) {
             while (waitingConnection.size()>numberOfPlayer) {
@@ -168,7 +171,6 @@ public class Server {
             }
 
             // check if there is a matching game saved
-
             LinkedList<String> playerNames = new LinkedList<String>();
             for(Player p : players) {
                 playerNames.add(p.getName());
@@ -176,7 +178,8 @@ public class Server {
 
             loadedGame = SavingManager.getInstance().loadGame(playerNames);
 
-            if (loadedGame!=null) { // if a matching save is present
+            // if a matching save is present
+            if (loadedGame!=null) {
                 System.out.println("Founded previously saved game");
                 waitingConnection.get(0).send(new LoadGame());
             } else {
@@ -203,6 +206,7 @@ public class Server {
 
                 Thread t0 = new Thread(socketConnection);
                 t0.start();
+
             } catch(SocketTimeoutException e) {
                 System.out.println("### Timed out after 5 seconds.");
             }catch (IOException e) {
@@ -292,6 +296,10 @@ public class Server {
         return t;
     }
 
+    /**
+     *
+     * @throws InterruptedException
+     */
     private void createGame() throws InterruptedException{
         game = new Game();
         propertyObserver = new PropertyObserver(game,this);

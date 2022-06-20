@@ -16,27 +16,27 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="winner1" layoutX="420.0" layoutY="253.0" text="CONGRATULATIONS !" visible="false">
+            <Label fx:id="winner1" layoutX="420.0" layoutY="253.0" text="CONGRATULATIONS !">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="winner2" layoutX="234.0" layoutY="331.0" text="YOU ARE THE WINNER OF THIS MAGIC GAME" visible="false">
+            <Label fx:id="winner2" layoutX="234.0" layoutY="331.0" text="YOU ARE THE WINNER OF THIS MAGIC GAME">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="winner3" layoutX="505.0" layoutY="404.0" text="No one is on your level !" visible="false">
+            <Label fx:id="winner3" layoutX="505.0" layoutY="404.0" text="No one is on your level !">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="loser1" layoutX="114.0" layoutY="296.0" text="Oooh what a pity ! Player Name was a real strategist this time and won the game ...">
+            <Label fx:id="loser1" layoutX="114.0" layoutY="296.0" text="Oooh no, what a pity ! Player Name was a real strategist this time and won the game ...">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="28.0" />
                </font>
             </Label>
-            <Label fx:id="loser2" layoutX="263.0" layoutY="342.0" text="But dont'worry, play again to improve your skills and prove you are the best !" textAlignment="CENTER">
+            <Label fx:id="loser2" layoutX="263.0" layoutY="342.0" text="But don't worry, play again to improve your skills and prove you are the best !" textAlignment="CENTER">
                <font>
                   <Font name="Book Antiqua Italic" size="24.0" />
                </font>

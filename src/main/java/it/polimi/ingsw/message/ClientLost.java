@@ -14,7 +14,7 @@ public class ClientLost implements Serializable {
      * @param namePlayerLost
      */
     public ClientLost(String namePlayerLost){
-        this.namePlayerLost=namePlayerLost;
+        this.namePlayerLost = namePlayerLost;
     }
 
     /**
