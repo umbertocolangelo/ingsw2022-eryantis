@@ -14,14 +14,14 @@ import java.io.IOException;
 public class ControllerHandler {
 
     /**
-     *
+     * Reference to the name of the client lost
      */
     private String nameClientLost;
 
     /**
-     *Set true when a card that needs an island as parameter has been played
+     * Set true when a card that needs an island as parameter has been played
      */
-    private Boolean cardNeedIsland=false;
+    private Boolean cardNeedIsland = false;
 
     /**
      * Not used
@@ -29,7 +29,7 @@ public class ControllerHandler {
     private Boolean finishTurn = false;
 
     /**
-     *Message method student To Island
+     * Message method student To Island
      */
     private StudentToIsland studentToIsland;
 
@@ -46,39 +46,39 @@ public class ControllerHandler {
     /**
      * Used to set choose which loading view is the right one to call
      */
-    private Boolean needRefresh=false;
+    private Boolean needRefresh = false;
     /**
-     *Need to use the messagge in view
+     * Need to use the message in view
      */
     private Boolean cardPlayed=false;
 
     /**
-     *True if e chose an equal name
+     * True if e chose an equal name
      */
-    private Boolean equal=false;
+    private Boolean equal = false;
 
     /**
      * Set true if isFirst, for change scene
      */
-    private Boolean isFirst=false;
+    private Boolean isFirst = false;
 
     /**
-     *Keep the reference to stage
+     * Keep the reference to stage
      */
     private static Stage stage;
 
     /**
-     *Keep the reference to client
+     * Keep the reference to client
      */
     private Client client;
 
     /**
-     *Keep the reference to clientState
+     * Keep the reference to clientState
      */
     private ClientState clientState;
 
     /**
-     *
+     * static reference to controller handler
      * @param client
      */
     private static ControllerHandler controllerHandler;
@@ -91,7 +91,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Gives controller handler instance
      * @return the instance of the controller handler
      */
     public static ControllerHandler getInstance(){
@@ -102,14 +102,14 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Receive message from login
      */
     public void receiveMessage() {
         client.asyncReadFromSocket(client.getOut());
     }
 
     /**
-     *
+     * Get client reference
      * @return
      */
     public Client getClient() {
@@ -117,7 +117,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get stage reference
      * @return
      */
     public Stage getStage() {
@@ -125,7 +125,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get stage reference
      * @param stage
      */
     public static void setStage(Stage stage) {
@@ -133,7 +133,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set client state
      * @param clientState
      */
     public void setClientState(ClientState clientState){
@@ -141,7 +141,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set client
      * @param client
      */
     public void setClient(Client client) {
@@ -149,7 +149,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set the correct scene in the gui
      * @throws IOException
      */
     public void chooseScene() throws IOException {
@@ -345,14 +345,14 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set equal name boolean
      */
     public void setEqual(){
         this.equal = true;
     }
 
     /**
-     *
+     * Get equal name boolean
      * @return
      */
     public Boolean getEqual(){
@@ -360,7 +360,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get the selected assistant card
      * @return
      */
     public Boolean getCardPlayed() {
@@ -368,7 +368,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set the assistant card played
      * @param cardPlayed
      */
     public void setCardPlayed(Boolean cardPlayed) {
@@ -376,15 +376,15 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get the id of the expert card played
      * @return
      */
     public String getIdExpertCardPlayed() {
-        return idExpertCardPlayed;
+        return this.idExpertCardPlayed;
     }
 
     /**
-     *
+     * Set the id of the expert card played
      * @param idExpertCardPlayed
      */
     public void setIdExpertCardPlayed(String idExpertCardPlayed) {
@@ -392,7 +392,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get the type of message method to send at the model
      * @return
      */
     public IngressCardSwap getMessageMethod() {
@@ -400,7 +400,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set the type of message method to send at the model
      * @param messageMethod
      */
     public void setMessageMethodIngressCard(IngressCardSwap messageMethod) {
@@ -408,7 +408,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get finished turn boolean
      * @return
      */
     public Boolean getFinishTurn() {
@@ -416,7 +416,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set finished turn boolean
      * @param finishTurn
      */
     public void setFinishTurn(Boolean finishTurn) {
@@ -424,15 +424,15 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get the student of studentToIsland expert card effect
      * @return
      */
     public StudentToIsland getStudentToIsland() {
-        return studentToIsland;
+        return this.studentToIsland;
     }
 
     /**
-     *
+     * Get the student studentToIsland expert card effect
      * @param studentToIsland
      */
     public void setStudentToIsland(StudentToIsland studentToIsland) {
@@ -440,15 +440,15 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get if is needed an island because of an expert card effect
      * @return
      */
     public Boolean getCardNeedIsland() {
-        return cardNeedIsland;
+        return this.cardNeedIsland;
     }
 
     /**
-     *
+     * Set if is needed an island because of an expert card effect
      * @param cardNeedIsland
      */
     public void setCardNeedIsland(Boolean cardNeedIsland) {
@@ -456,7 +456,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get the name of the client lost
      * @return
      */
     public String getNameClientLost() {
