@@ -42,7 +42,10 @@ public class GuiLoadGameController {
      */
     Stage stage;
 
-
+    /**
+     *
+     * @throws IOException
+     */
     public void show() throws IOException {
         stage = new Stage();
         ControllerHandler.getInstance().getStage().close();

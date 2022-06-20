@@ -1,27 +1,15 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-
-public class GuiWinnerController implements Initializable {
-
+public class GuiWinnerController {
 
     /**
-     *
-     */
-    @FXML
-    private AnchorPane scenePane;
-
-    /**
-     * Txt field
+     * Text field
      */
     @FXML
     private Label winner1;
@@ -35,7 +23,7 @@ public class GuiWinnerController implements Initializable {
     private Label loser2;
 
     @FXML
-    private Text winner;
+    private AnchorPane scenePane;
 
     /**
      *
@@ -46,6 +34,23 @@ public class GuiWinnerController implements Initializable {
      *
      */
     private Scene scene;
+
+    /**
+     * Sets the label text when client wins
+     */
+    public void setWinnerText() {
+        loser1.setVisible(false);
+        loser2.setVisible(false);
+    }
+
+    /**
+     * Sets the label text when client loses
+     */
+    public void setLoserText() {
+        winner1.setVisible(false);
+        winner2.setVisible(false);
+        winner3.setVisible(false);
+    }
 
     /**
      * Window resize
@@ -71,10 +76,5 @@ public class GuiWinnerController implements Initializable {
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        winner.setText("The winner is " + ControllerHandler.getInstance().getNameWinner() );
     }
 }

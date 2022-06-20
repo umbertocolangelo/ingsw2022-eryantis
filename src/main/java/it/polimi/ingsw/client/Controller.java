@@ -63,13 +63,12 @@ public class Controller implements Runnable {
 
         switch (clientState) {
             case LOGIN:
-                System.out.println("Welcome to Eryantis, what's your name?");
+                System.out.println("Welcome to Eriantys, what's your name?");
                 input = stdIn.nextLine();
-                while ( (input.matches(".*\\d.*")) || input.equals("")){
+                while ((input.matches(".*\\d.*")) || input.equals("")) {
                     System.out.println("You inserted a wrong value for username");
-                input = stdIn.nextLine();
-                 }
-
+                    input = stdIn.nextLine();
+                }
                 write(input);
                 setClientState(ClientState.SLEEPING);
                 break;
@@ -85,18 +84,18 @@ public class Controller implements Runnable {
                 isFirst.setPlayers(Integer.parseInt(message));
                 System.out.println("Number of players selected "+ Integer.parseInt(message));
                 System.out.println("Decide the gameMode, 1 for expert and 0 for normal");
-                message = stdIn.nextLine(); // Read user input// Read user input
+                message = stdIn.nextLine(); // Read user input
 
                 while(!(message.equals("0") || message.equals("1"))) {
                     System.out.println("You must select 0 or 1 ");
-                    message = stdIn.nextLine(); // Read user input// Read user input
+                    message = stdIn.nextLine(); // Read user input
                 }
-
-                if(message.equals("1"))
+                if(message.equals("1")) {
                     isFirst.setGameMode(true);
-                else
+                }
+                else {
                     isFirst.setGameMode(false);
-
+                }
                 System.out.println("Game mode selected ");
                 write(isFirst);
                 break;
@@ -107,7 +106,6 @@ public class Controller implements Runnable {
                     System.out.println("You inserted a wrong value for username");
                     input = stdIn.nextLine();
                 }
-
                 write(input);
                 setClientState(ClientState.SLEEPING);
                 break;
@@ -116,7 +114,6 @@ public class Controller implements Runnable {
                 break;
             case CLIENTLOST:
                 t0=cli.clientLost(client.getNamePLayerLost());
-               // client.setActive(false);
                 break;
             case PLAYERPLUS:
                 t0=cli.playerIsPlus();
@@ -145,17 +142,16 @@ public class Controller implements Runnable {
                         t0 = cli.choosingAssistant();
                         break;
 
-                    case MOVING_STUDENTS:
+                    case MOVING_STUDENTS, MOVING_MOTHERNATURE, CHOOSING_CLOUD:
                         checkRound();
                         break;
-
-                    case MOVING_MOTHERNATURE:
-                        checkRound();
-                        break;
-
-                    case CHOOSING_CLOUD:
-                        checkRound();
-                        break;
+                    case WINNER:
+                        if (client.getNamePlayer() == client.getGame().getWinner()) {
+                            System.out.println("Congratulations " + client.getNamePlayer() + " ! You are the winner of this magic game !\nNo one is on your level :)");
+                        }
+                        else {
+                            System.out.println("Oooh no, what a pity ! " + client.getGame().getWinner()+ " was a real strategist this time and won the game ...\nBut don't worry, play again to improve your skills and prove you are the best !");
+                        }
                 }
                 try {
                     t0.join();
@@ -195,8 +191,9 @@ public class Controller implements Runnable {
      *
      */
     private void checkRound() {
-        if(client.getGame().getCurrentRound().getId()==null)
+        if (client.getGame().getCurrentRound().getId()==null) {
             t0 = cli.choosingExpertCardOrMoving();
+        }
         else {
             switch (client.getGame().getCurrentRound().getId()) {
                 case 0:

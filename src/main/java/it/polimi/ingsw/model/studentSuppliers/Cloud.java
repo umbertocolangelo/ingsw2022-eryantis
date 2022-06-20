@@ -19,7 +19,7 @@ public class Cloud implements FixedObjectStudent, Serializable {
         this.id = idCounter.toString();
         IdManager.getInstance().addCloud(this);
         idCounter++;
-        if(idCounter==53){
+        if (idCounter==53) {
             idCounter=50;
         }
     }
