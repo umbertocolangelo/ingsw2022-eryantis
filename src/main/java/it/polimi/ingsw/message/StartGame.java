@@ -33,7 +33,7 @@ public class StartGame implements Serializable, MessageMethod {
             game.getPlayerList().get(i).setCoin(5);
         }
         game.initializeGame();
-       // game.getCardManager().setDeck("38");
+       game.getCardManager().setDeck("44");
     }
 
     /**

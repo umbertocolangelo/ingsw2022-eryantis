@@ -159,6 +159,7 @@ public class Client {
                                         if (player.getIsWinner()){
                                             ControllerHandler.getInstance().setNameWinner(player.getName());
                                             ControllerHandler.getInstance().setClientState(ClientState.WINNER);
+                                            ControllerHandler.getInstance().chooseScene();
                                         }
                                     }
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
