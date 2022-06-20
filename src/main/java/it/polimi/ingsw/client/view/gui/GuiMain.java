@@ -29,7 +29,7 @@ public class GuiMain extends Application {
         stage.show();
 
         GuiStartController startController = fxmlLoader.getController();
-        startController.resize(stage, scene);
+        startController.resize(stage);
     }
 
     /**

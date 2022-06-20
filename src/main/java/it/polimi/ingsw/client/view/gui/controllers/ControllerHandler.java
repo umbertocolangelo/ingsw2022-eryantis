@@ -12,6 +12,7 @@ import java.io.IOException;
 
 
 public class ControllerHandler {
+
     /**
      *
      */
@@ -23,9 +24,9 @@ public class ControllerHandler {
     private Boolean cardNeedIsland=false;
 
     /**
-     *Not used
+     * Not used
      */
-    private Boolean finishTurn=false;
+    private Boolean finishTurn = false;
 
     /**
      *Message method student To Island

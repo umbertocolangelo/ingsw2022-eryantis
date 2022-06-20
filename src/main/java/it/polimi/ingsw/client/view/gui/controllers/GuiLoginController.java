@@ -72,7 +72,7 @@ public class GuiLoginController implements Initializable {
             stage.show();
 
             GuiLoadingController loadingController = fxmlLoader.getController();
-            loadingController.resize(stage, scene);
+            loadingController.resize(stage);
 
             ControllerHandler.getInstance().write(insertName.getText());
 
@@ -98,7 +98,7 @@ public class GuiLoginController implements Initializable {
         stage.show();
 
         GuiChooseWizardAndColorController deckController = fxmlLoader.getController();
-        deckController.resize(stage, scene);
+        deckController.resize(stage);
     }
 
     /**
@@ -117,7 +117,7 @@ public class GuiLoginController implements Initializable {
         stage.show();
 
         GuiIsFirstController firstController = fxmlLoader.getController();
-        firstController.resize(stage, scene);
+        firstController.resize(stage);
     }
 
     /**
@@ -138,6 +138,7 @@ public class GuiLoginController implements Initializable {
     }
 
     /**
+     * Initialize the scene
      * @param url
      * @param resourceBundle
      */
@@ -150,21 +151,24 @@ public class GuiLoginController implements Initializable {
     }
 
     /**
-     *
+     * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
 
+        //vertical listener
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
             double scaleY = newVal.doubleValue()/height;
             scenePane.setScaleY(scaleY);
