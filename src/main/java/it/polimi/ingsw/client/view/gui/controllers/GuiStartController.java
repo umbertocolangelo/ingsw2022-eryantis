@@ -2,12 +2,9 @@ package it.polimi.ingsw.client.view.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -42,18 +39,20 @@ public class GuiStartController {
      * @param mouseEvent
      */
     public void onClickEvent(MouseEvent mouseEvent) throws IOException {
-        stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.setTitle("Eriantys");
-        stage.show();
+            stage = new Stage();
+            ControllerHandler.getInstance().getStage().close();
+            ControllerHandler.setStage(stage);
 
-        GuiLoginController loginController = fxmlLoader.getController();
-        loginController.resize(stage, scene);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
+            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            stage.setScene(scene);
+            stage.setTitle("Eriantys");
+            stage.show();
+
+            GuiLoginController loginController = fxmlLoader.getController();
+            loginController.resize(stage, scene);
+
     }
 
     /**

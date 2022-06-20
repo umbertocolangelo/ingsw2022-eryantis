@@ -485,4 +485,12 @@ public class ControllerHandler {
     public void setNameWinner(String nameWinner) {
         this.nameWinner = nameWinner;
     }
+
+
+    public void startClient() throws IOException {
+        Client client = new Client("localhost", 65432);
+
+            client.run();
+
+    }
 }
