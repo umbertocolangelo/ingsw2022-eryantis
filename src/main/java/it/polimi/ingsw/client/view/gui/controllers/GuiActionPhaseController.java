@@ -3783,6 +3783,6 @@ public class GuiActionPhaseController implements Initializable {
         stage.show();
 
         GuiChooseWizardAndColorController deckController = fxmlLoader.getController();
-        deckController.resize(stage, scene);
+        deckController.resize(stage);
     }
 }
