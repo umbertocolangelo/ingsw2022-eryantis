@@ -12,23 +12,24 @@ import java.io.IOException;
 
 
 public class ControllerHandler {
+
     /**
-     *
+     * Reference to the name of the client lost
      */
     private String nameClientLost;
 
     /**
-     *Set true when a card that needs an island as parameter has been played
+     * Set true when a card that needs an island as parameter has been played
      */
-    private Boolean cardNeedIsland=false;
+    private Boolean cardNeedIsland = false;
 
     /**
-     *Not used
+     * Not used
      */
-    private Boolean finishTurn=false;
+    private Boolean finishTurn = false;
 
     /**
-     *Message method student To Island
+     * Message method student To Island
      */
     private StudentToIsland studentToIsland;
 
@@ -45,39 +46,39 @@ public class ControllerHandler {
     /**
      * Used to set choose which loading view is the right one to call
      */
-    private Boolean needRefresh=false;
+    private Boolean needRefresh = false;
     /**
-     *Need to use the messagge in view
+     * Need to use the message in view
      */
     private Boolean cardPlayed=false;
 
     /**
-     *True if e chose an equal name
+     * True if e chose an equal name
      */
-    private Boolean equal=false;
+    private Boolean equal = false;
 
     /**
      * Set true if isFirst, for change scene
      */
-    private Boolean isFirst=false;
+    private Boolean isFirst = false;
 
     /**
-     *Keep the reference to stage
+     * Keep the reference to stage
      */
     private static Stage stage;
 
     /**
-     *Keep the reference to client
+     * Keep the reference to client
      */
     private Client client;
 
     /**
-     *Keep the reference to clientState
+     * Keep the reference to clientState
      */
     private ClientState clientState;
 
     /**
-     *
+     * static reference to controller handler
      * @param client
      */
     private static ControllerHandler controllerHandler;
@@ -90,7 +91,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Gives controller handler instance
      * @return the instance of the controller handler
      */
     public static ControllerHandler getInstance(){
@@ -101,14 +102,14 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Receive message from login
      */
     public void receiveMessage() {
-        client.asyncReadFromSocket(client.getOUt());
+        client.asyncReadFromSocket(client.getOut());
     }
 
     /**
-     *
+     * Get client reference
      * @return
      */
     public Client getClient() {
@@ -116,7 +117,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get stage reference
      * @return
      */
     public Stage getStage() {
@@ -124,7 +125,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Get stage reference
      * @param stage
      */
     public static void setStage(Stage stage) {
@@ -132,7 +133,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set client state
      * @param clientState
      */
     public void setClientState(ClientState clientState){
@@ -140,7 +141,7 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set client
      * @param client
      */
     public void setClient(Client client) {
@@ -148,14 +149,14 @@ public class ControllerHandler {
     }
 
     /**
-     *
+     * Set the correct scene in the gui
      * @throws IOException
      */
     public void chooseScene() throws IOException {
         switch (clientState) {
             case CLIENTLOST:
-                nameClientLost=client.getNamePLayerLost();
-                GuiLoadingController loadingController=new GuiLoadingController();
+                nameClientLost = client.getNamePLayerLost();
+                GuiLoadingController loadingController = new GuiLoadingController();
                 Platform.runLater(() -> {
                     try {
                         loadingController.clientLost();
@@ -201,8 +202,8 @@ public class ControllerHandler {
                 });
                 break;
             case PLAYING:
-                if(client.getGame().getCurrentRound().getId()!=null){
-                    if(client.getGame().getCurrentRound().getId()==0 || client.getGame().getCurrentRound().getId()==3 || client.getGame().getCurrentRound().getId()==2) {
+                if (client.getGame().getCurrentRound().getId()!=null) {
+                    if (client.getGame().getCurrentRound().getId()==0 || client.getGame().getCurrentRound().getId()==3 || client.getGame().getCurrentRound().getId()==2) {
                         GuiChooseExpertCardController cardController = new GuiChooseExpertCardController();
                         Platform.runLater(() -> {
                             try {
@@ -212,7 +213,7 @@ public class ControllerHandler {
                                 e.printStackTrace();
                             }
                         });
-                    }else   if(client.getGame().getCurrentRound().getId()==1){
+                    } else if (client.getGame().getCurrentRound().getId()==1) {
                         GuiActionPhaseController actionController = new GuiActionPhaseController();
                         Platform.runLater(() -> {
                             try {
@@ -221,11 +222,11 @@ public class ControllerHandler {
                                 e.printStackTrace();
                             }
                         });
-                }
-
+                    }
                 }else {
                     switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
-                        case SET_UP_PHASE: //cambio scena da login a deck/color phase
+                        //change scene from login to deck/color phase
+                        case SET_UP_PHASE:
                             System.out.println("Setup");
                             GuiLoginController controllerLogin = new GuiLoginController();
                             if (!isFirst) {
@@ -241,8 +242,7 @@ public class ControllerHandler {
                                 GuiIsFirstController controllerFirst = new GuiIsFirstController();
                                 Platform.runLater(() -> {
                                     try {
-                                        System.out.println("Change scene nont normal");
-
+                                        System.out.println("Change scene not normal");
                                         controllerFirst.changeScene();
                                     } catch (IOException e) {
                                         e.printStackTrace();
@@ -250,7 +250,8 @@ public class ControllerHandler {
                                 });
                             }
                             break;
-                        case CHOOSING_ASSISTANT: //cambio scena da deck/color phase a choosing assistant card
+                        //change scene from deck/color phase to choosing assistant card
+                        case CHOOSING_ASSISTANT:
                             if (!needRefresh) {
                                 GuiChooseWizardAndColorController colorController = new GuiChooseWizardAndColorController();
                                 Platform.runLater(() -> {
@@ -271,7 +272,8 @@ public class ControllerHandler {
                                 });
                             }
                             break;
-                        case MOVING_STUDENTS://cambio scena da choosing assistant card a moving students and mn
+                        //change scene from choosing assistant card to moving students and mn
+                        case MOVING_STUDENTS:
                             if (!needRefresh) {
                                 needRefresh = true;
                                 GuiPianificationPhaseController assistantController = new GuiPianificationPhaseController();
@@ -293,7 +295,6 @@ public class ControllerHandler {
                                 });
                             }
                             break;
-
                         case MOVING_MOTHERNATURE, CHOOSING_CLOUD:
                             GuiActionPhaseController movingMotherNatureController = new GuiActionPhaseController();
                             Platform.runLater(() -> {
@@ -304,13 +305,18 @@ public class ControllerHandler {
                                 }
                             });
                             break;
-
+                        case WINNER:
+                            GuiActionPhaseController winnerController = new GuiActionPhaseController();
+                            Platform.runLater(() -> {
+                                try {
+                                    winnerController.winnerScene();
+                                } catch (IOException e) {
+                                    e.printStackTrace();
+                                }
+                            });
+                            break;
                     }
                 }
-         //   case WINNER:
-
-
-
         }
 
     }
@@ -322,7 +328,7 @@ public class ControllerHandler {
     public void write(Object object) {
         synchronized (client) {
             try {
-                System.out.println("writing");
+                System.out.println("Writing");
                 client.getIn().writeObject(object);
                 client.getIn().flush();
             } catch (IOException e) {
@@ -331,71 +337,129 @@ public class ControllerHandler {
         }
     }
 
-    /**Set true if this client is the first one
-     *
+    /**
+     * Set true if this client is the first one
      */
     public void setIsFirst(){
-        this.isFirst=true;
+        this.isFirst = true;
     }
 
-
+    /**
+     * Set equal name boolean
+     */
     public void setEqual(){
-        this.equal=true;
+        this.equal = true;
     }
 
+    /**
+     * Get equal name boolean
+     * @return
+     */
     public Boolean getEqual(){
-        return equal;
+        return this.equal;
     }
 
+    /**
+     * Get the selected assistant card
+     * @return
+     */
     public Boolean getCardPlayed() {
-        return cardPlayed;
+        return this.cardPlayed;
     }
 
+    /**
+     * Set the assistant card played
+     * @param cardPlayed
+     */
     public void setCardPlayed(Boolean cardPlayed) {
         this.cardPlayed = cardPlayed;
     }
 
+    /**
+     * Get the id of the expert card played
+     * @return
+     */
     public String getIdExpertCardPlayed() {
-        return idExpertCardPlayed;
+        return this.idExpertCardPlayed;
     }
 
+    /**
+     * Set the id of the expert card played
+     * @param idExpertCardPlayed
+     */
     public void setIdExpertCardPlayed(String idExpertCardPlayed) {
         this.idExpertCardPlayed = idExpertCardPlayed;
     }
 
+    /**
+     * Get the type of message method to send at the model
+     * @return
+     */
     public IngressCardSwap getMessageMethod() {
-        return messageMethodIngressCard;
+        return this.messageMethodIngressCard;
     }
 
+    /**
+     * Set the type of message method to send at the model
+     * @param messageMethod
+     */
     public void setMessageMethodIngressCard(IngressCardSwap messageMethod) {
         this.messageMethodIngressCard = messageMethod;
     }
 
+    /**
+     * Get finished turn boolean
+     * @return
+     */
     public Boolean getFinishTurn() {
-        return finishTurn;
+        return this.finishTurn;
     }
 
+    /**
+     * Set finished turn boolean
+     * @param finishTurn
+     */
     public void setFinishTurn(Boolean finishTurn) {
         this.finishTurn = finishTurn;
     }
 
+    /**
+     * Get the student of studentToIsland expert card effect
+     * @return
+     */
     public StudentToIsland getStudentToIsland() {
-        return studentToIsland;
+        return this.studentToIsland;
     }
 
+    /**
+     * Get the student studentToIsland expert card effect
+     * @param studentToIsland
+     */
     public void setStudentToIsland(StudentToIsland studentToIsland) {
         this.studentToIsland = studentToIsland;
     }
 
+    /**
+     * Get if is needed an island because of an expert card effect
+     * @return
+     */
     public Boolean getCardNeedIsland() {
-        return cardNeedIsland;
+        return this.cardNeedIsland;
     }
 
+    /**
+     * Set if is needed an island because of an expert card effect
+     * @param cardNeedIsland
+     */
     public void setCardNeedIsland(Boolean cardNeedIsland) {
         this.cardNeedIsland = cardNeedIsland;
     }
 
+    /**
+     * Get the name of the client lost
+     * @return
+     */
     public String getNameClientLost() {
-        return nameClientLost;
+        return this.nameClientLost;
     }
 }

@@ -15,25 +15,16 @@ import java.io.IOException;
 
 public class GuiStartController {
 
-    /**
-     *
-     */
     @FXML
     private AnchorPane scenePane;
 
     /**
-     *
-     */
-    @FXML
-    private AnchorPane spane;
-
-    /**
-     *
+     * Reference to the stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to the scene
      */
     private Scene scene;
 
@@ -53,49 +44,33 @@ public class GuiStartController {
         stage.show();
 
         GuiLoginController loginController = fxmlLoader.getController();
-        loginController.resize(stage, scene);
+        loginController.resize(stage);
     }
 
     /**
-     *
+     * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
-        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
-        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
-
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
 
+        //vertical listener
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
             double scaleY = newVal.doubleValue()/height;
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
     }
 
-    /**
-     *
-     */
-    public void closeStage() {
-        this.stage.close();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Stage getStage() {
-        return stage;
-    }
 }

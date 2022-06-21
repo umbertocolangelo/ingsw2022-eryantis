@@ -24,10 +24,10 @@ public class Client {
     /**
      * Keep the reference to the socket
      */
-    private  Socket socket;
+    private Socket socket;
 
     /**
-     *  Keep the reference to InputStream
+     * Keep the reference to InputStream
      */
     private ObjectInputStream socketIn;
 
@@ -69,7 +69,7 @@ public class Client {
     /**
      * Keep the reference to the OutputStream
      */
-    private  ObjectOutputStream socketOut;
+    private ObjectOutputStream socketOut;
 
     /**
      * Set if the player is active to read or not
@@ -87,8 +87,9 @@ public class Client {
     private ControllerHandler controllerHandler;
 
     /**
-     * @param ip        The ip address
-     * @param port      the port
+     * The ip address and the port
+     * @param ip
+     * @param port
      */
     public Client(String ip, int port) {
         this.ip = ip;
@@ -96,16 +97,16 @@ public class Client {
     }
 
     /**
-     *
-     * @return  active      Get the active variable
+     * Get the active variable
+     * @return active
      */
     public synchronized boolean isActive() {
         return active;
     }
 
     /**
-     *
-     * @param active        Set the active variable
+     * Set the active variable
+     * @param active
      */
     public synchronized void setActive(Boolean active) {
         this.active = active;
@@ -127,11 +128,9 @@ public class Client {
                 synchronized (this) {
                     try {
                         while (isActive()) {
-                           // System.out.println("Ready to receive");
                             inputObject = socketIn.readObject();
                             System.out.println("Received something: " + inputObject);
                             if (!isCli) {
-
                                 if (inputObject instanceof ClientLost) {
                                     ControllerHandler.getInstance().setClientState(ClientState.CLIENTLOST);
                                     ControllerHandler.getInstance().chooseScene();
@@ -154,12 +153,18 @@ public class Client {
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
                                     System.out.println("Client received Game.");
-
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
                                         ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
                                         ControllerHandler.getInstance().chooseScene();
                                     }
                                 }
+                                /*
+                                else if (inputObject instanceof Winner) {
+                                    System.out.println("Winner");
+                                    ControllerHandler.getInstance().setClientState(ClientState.WINNER);
+                                    ControllerHandler.getInstance().chooseScene();
+                                }
+                                 */
                             } else {
                                 if (inputObject instanceof String) {
                                     System.out.println((String) inputObject);
@@ -169,7 +174,7 @@ public class Client {
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
                                         controller.setClientState(ClientState.PLAYING);
                                         controller.run();
-                                        }
+                                    }
                                 } else if (inputObject instanceof SetUp) {
                                     controller.setClientState(ClientState.LOGIN);
                                     controller.run();
@@ -184,14 +189,22 @@ public class Client {
                                 } else if (inputObject instanceof IsFirst) {
                                     controller.setClientState(ClientState.ISFIRST);
                                     controller.run();
-                                }else if(inputObject instanceof PlayerIsPlus){
+                                }else if (inputObject instanceof PlayerIsPlus) {
                                     controller.setClientState(ClientState.PLAYERPLUS);
                                     controller.run();
                                 } else if (inputObject instanceof ClientLost) {
                                     namePLayerLost = ((ClientLost) inputObject).getNamePlayerLost();
                                     controller.setClientState(ClientState.CLIENTLOST);
                                     controller.run();
-                                } else {
+                                }
+                                /*
+                                else if (inputObject instanceof Winner) {
+                                    controller.setClientState(ClientState.WINNER);
+                                    controller.run();
+
+                                }
+                                */
+                                else {
                                     throw new IllegalArgumentException();
                                 }
                             }
@@ -207,9 +220,8 @@ public class Client {
         return t;
     }
 
-
     /**
-     *  When the client is running start the thread for reading and wait until that thread die
+     * When the client is running start the thread for reading and wait until that thread die
      * @throws IOException
      */
     public void run() throws IOException {
@@ -220,7 +232,6 @@ public class Client {
         stdin = new Scanner(System.in);
         controller = new Controller(this);
         ControllerHandler.getInstance().setClient(this);
-
 
         try {
             Thread t0 = asyncReadFromSocket(socketIn);
@@ -237,11 +248,11 @@ public class Client {
     }
 
     /**
-     *
-     * @return stdIn        The scanner of the keyboard
+     * The scanner of the keyboard
+     * @return stdIn
      */
     public Scanner getScanner() {
-        return stdin;
+        return this.stdin;
     }
 
     /**
@@ -253,32 +264,41 @@ public class Client {
     }
 
     /**
-     *
-     * @return socketOut        The inputStream
+     * The inputStream
+     * @return socketOut
      */
     public ObjectOutputStream getIn() {
-        return socketOut;
+        return this.socketOut;
     }
 
     /**
      *
+     * @return
      */
-    public ObjectInputStream getOUt() {
+    public ObjectInputStream getOut() {
         return this.socketIn;
     }
 
     /**
-     *
-     * @return game     The refrence to the game in the client
+     * The reference to the game in the client
+     * @return game
      */
     public Game getGame() {
         return this.game;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNamePLayerLost() {
-        return namePLayerLost;
+        return this.namePLayerLost;
     }
 
+    /**
+     *
+     * @param namePLayerLost
+     */
     public void setNamePLayerLost(String namePLayerLost) {
         this.namePLayerLost = namePLayerLost;
     }
@@ -287,6 +307,7 @@ public class Client {
      * Sets the view to CLI
      */
     public void setIsCli(){
-        isCli=true;
+        this.isCli = true;
     }
+
 }

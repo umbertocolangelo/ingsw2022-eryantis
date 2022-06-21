@@ -32,133 +32,100 @@ public class GuiChooseWizardAndColorController implements Initializable {
      */
     private LinkedList<Wizard> wizards = new LinkedList<>();
 
-    /**
-     *
-     */
     @FXML
-    AnchorPane scenePane;
-
-    /**
-     *
-     */
+    private AnchorPane scenePane;
     @FXML
     private ImageView wizard1;
-
-    /**
-     *
-     */
     @FXML
     private ImageView wizard2;
-
-    /**
-     *
-     */
     @FXML
     private ImageView wizard3;
-
-    /**
-     *
-     */
     @FXML
     private ImageView wizard4;
-
-    /**
-     *
-     */
     @FXML
     private RadioButton white;
-
-    /**
-     *
-     */
     @FXML
     private RadioButton grey;
-
-    /**
-     *
-     */
     @FXML
     private RadioButton black;
-
-    /**
-     *
-     */
     @FXML
     private Text wizardColor;
 
-    private ImageView lastLight=null;
+    /**
+     * Image shadows
+     */
+    private ImageView lastLight = null;
 
     /**
-     *
+     * Reference to the stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to the scene
      */
     private Scene scene;
 
     /**
-     *
+     * Reference to the wizard
      */
     private String wizard;
 
     /**
-     *
+     * Reference to the color
      */
     private String color;
 
     /**
-     * click on wizard1
+     * Click on wizard1
      * @param mouseEvent
      */
     public void onWizardClick1(MouseEvent mouseEvent) {
-        if(wizard1.getImage()!=null) {
+        if (wizard1.getImage()!=null) {
             wizard = Wizard.GREEN_WIZARD.getId();
             setShadow(wizard1);
         }
     }
 
     /**
-     * click on wizard2
+     * Click on wizard2
      * @param mouseEvent
      */
     public void onWizardClick2(MouseEvent mouseEvent) {
-        if(wizard2.getImage()!=null) {
+        if (wizard2.getImage()!=null) {
             wizard = Wizard.YELLOW_WIZARD.getId();
             setShadow(wizard2);
         }
     }
 
     /**
-     * click on wizard3
+     * Click on wizard3
      * @param mouseEvent
      */
     public void onWizardClick3(MouseEvent mouseEvent) {
-        if(wizard3.getImage()!=null) {
+        if (wizard3.getImage()!=null) {
             wizard = Wizard.PURPLE_WIZARD.getId();
             setShadow(wizard3);
         }
     }
 
     /**
-     * click on wizard4
+     * Click on wizard4
      * @param mouseEvent
      */
     public void onWizardClick4(MouseEvent mouseEvent) {
-        if(wizard4.getImage()!=null) {
+        if (wizard4.getImage()!=null) {
             wizard = Wizard.BLUE_WIZARD.getId();
             setShadow(wizard4);
         }
     }
 
     /**
-     * click on next button
+     * Click on next button
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-
-        if(wizard==null || color==null) {
+        if (wizard==null || color==null) {
             wizardColor.setText("You must select the wizard and the player color");
         } else {
             MessageMethod messageMethod = new ChooseColorAndDeck();
@@ -176,12 +143,12 @@ public class GuiChooseWizardAndColorController implements Initializable {
             stage.show();
 
             GuiLoadingController loadingController = fxmlLoader.getController();
-            loadingController.resize(stage, scene);
+            loadingController.resize(stage);
         }
     }
 
     /**
-     * click on color white
+     * Click on color white
      * @param mouseEvent
      */
     public void onColorClick1(MouseEvent mouseEvent) {
@@ -189,7 +156,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
     }
 
     /**
-     * click on color black
+     * Click on color black
      * @param mouseEvent
      */
     public void onColorClick2(MouseEvent mouseEvent) {
@@ -197,7 +164,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
     }
 
     /**
-     * click on color grey
+     * Click on color grey
      * @param mouseEvent
      */
     public void onColorClick3(MouseEvent mouseEvent) {
@@ -205,7 +172,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
     }
 
     /**
-     *
+     * go to pianificationPhase scene
      * @throws IOException
      */
     public void changeScene() throws IOException {
@@ -219,26 +186,31 @@ public class GuiChooseWizardAndColorController implements Initializable {
         stage.show();
 
         GuiPianificationPhaseController pianController = fxmlLoader.getController();
-        pianController.resize(stage, scene);
+        pianController.resize(stage);
     }
 
+    /**
+     * Initialize the scene
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Game game = ControllerHandler.getInstance().getClient().getGame();
         ((SetUpRound)game.getCurrentRound()).getplayerColor();
-        if(!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.GREEN_WIZARD)) {
+        if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.GREEN_WIZARD)) {
             wizard1.setDisable(false);
             wizard1.setImage(null);
         }
-        if(!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.YELLOW_WIZARD)) {
+        if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.YELLOW_WIZARD)) {
             wizard2.setImage(null);
             wizard2.setVisible(false);
         }
-        if(!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.PURPLE_WIZARD)) {
+        if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.PURPLE_WIZARD)) {
             wizard3.setImage(null);
             wizard3.setVisible(false);
         }
-        if(!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.BLUE_WIZARD)){
+        if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.BLUE_WIZARD)){
             wizard4.setVisible(false);
             wizard4.setImage(null);
         }
@@ -257,52 +229,41 @@ public class GuiChooseWizardAndColorController implements Initializable {
     }
 
     /**
-     *
+     * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
-        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
-        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
-
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
 
+        //vertical listener
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
             double scaleY = newVal.doubleValue()/height;
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
     }
 
     /**
-     *
+     * Sets shadows on images
+     * @param setImage
      */
-    public void closeStage() {
-        this.stage.close();
-    }
-
-    /**
-     * @return
-     */
-    public Stage getStage() {
-        return stage;
-    }
-
     private void setShadow(ImageView setImage){
         setImage.setEffect(new DropShadow(30, Color.DARKBLUE));
-        if (lastLight!=null && lastLight!=setImage)
+        if (lastLight!=null && lastLight!=setImage) {
             lastLight.setEffect(null);
-        lastLight=setImage;
+        }
+        lastLight = setImage;
     }
 
 }

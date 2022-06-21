@@ -4,7 +4,6 @@ import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.PlayExpertCard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,8 +19,7 @@ public class GuiChooseColorCard implements Initializable {
      *
      */
     @FXML
-    AnchorPane scenePane;
-
+    private AnchorPane scenePane;
 
     /**
      *
@@ -39,13 +37,20 @@ public class GuiChooseColorCard implements Initializable {
     @FXML
     private ImageView colorGreen;
 
-
+    /**
+     * Reference to paths of students images
+     */
     private String yellowPath = "file:src/main/resources/Graphical_Assets/pawns/student_yellow.png";
     private String redPath = "file:src/main/resources/Graphical_Assets/pawns/student_red.png";
     private String bluePath = "file:src/main/resources/Graphical_Assets/pawns/student_blue.png";
     private String greenPath = "file:src/main/resources/Graphical_Assets/pawns/student_green.png";
     private String pinkPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
 
+    /**
+     *
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         colorBlue.setImage(new Image(bluePath));
@@ -55,6 +60,10 @@ public class GuiChooseColorCard implements Initializable {
         colorRed.setImage(new Image(redPath));
     }
 
+    /**
+     *
+     * @param mouseEvent
+     */
     public void clickSelectColor(MouseEvent mouseEvent) {
         if (color != null) {
             MessageMethod messageMethod = new PlayExpertCard();
@@ -76,43 +85,69 @@ public class GuiChooseColorCard implements Initializable {
         }
     }
 
+    /**
+     * Click on blue
+     * @param mouseEvent
+     */
     public void clickOnBlue(MouseEvent mouseEvent) {
         color = "8";
     }
 
+    /**
+     * Click on red
+     * @param mouseEvent
+     */
     public void clickOnRed(MouseEvent mouseEvent) {
         color = "10";
     }
 
+    /**
+     * Click on yellow
+     * @param mouseEvent
+     */
     public void clickOnYellow(MouseEvent mouseEvent) {
         color = "7";
     }
 
+    /**
+     * Click on green
+     * @param mouseEvent
+     */
     public void clickOnGreen(MouseEvent mouseEvent) {
         color = "9";
     }
 
+    /**
+     * Click on pink
+     * @param mouseEvent
+     */
     public void clickOnPink(MouseEvent mouseEvent) {
         color = "11";
     }
 
-
-
-    public void resize(Stage stage, Scene scene) {
+    /**
+     * Window resize
+     */
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
-        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
-        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
-
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            double scaleX = newVal.doubleValue() / width;
+            double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
-            scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue() - oldVal.doubleValue()) / 2);
-            //scenePane.setCenterShape(true);
+            scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
+        });
+
+        //vertical listener
+        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleY = newVal.doubleValue()/height;
+            scenePane.setScaleY(scaleY);
+            scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
     }
 }

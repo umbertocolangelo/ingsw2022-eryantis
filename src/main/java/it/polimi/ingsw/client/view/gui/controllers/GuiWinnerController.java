@@ -8,14 +8,10 @@ import javafx.stage.Stage;
 
 public class GuiWinnerController {
 
-    /**
-     *
-     */
     @FXML
     private AnchorPane scenePane;
-
     /**
-     * Txt field
+     * Text field
      */
     @FXML
     private Label winner1;
@@ -29,19 +25,36 @@ public class GuiWinnerController {
     private Label loser2;
 
     /**
-     *
+     * Reference to the stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to the scene
      */
     private Scene scene;
 
     /**
+     * Sets the label text when client wins
+     */
+    public void setWinnerText() {
+        loser1.setVisible(false);
+        loser2.setVisible(false);
+    }
+
+    /**
+     * Sets the label text when client loses
+     */
+    public void setLoserText() {
+        winner1.setVisible(false);
+        winner2.setVisible(false);
+        winner3.setVisible(false);
+    }
+
+    /**
      * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 

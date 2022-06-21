@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="spane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiStartController">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" scaleShape="false" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiStartController">
    <children>
       <AnchorPane fx:id="scenePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
          <children>

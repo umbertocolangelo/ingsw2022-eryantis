@@ -23,105 +23,57 @@ import java.util.ResourceBundle;
 
 public class GuiPianificationPhaseController implements Initializable {
 
-    /**
-     *
-     */
     @FXML
     private AnchorPane scenePane;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card1;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card2;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card3;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card4;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card5;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card6;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card7;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card8;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card9;
-
-    /**
-     *
-     */
-    @FXML
-    private ImageView card10;
-
-    /**
-     *
-     */
     @FXML
     private Text label;
 
     /**
-     * Keep the reference to the last image that has the light up
+     * References to the assistant cards
      */
-    private ImageView lastLight=null;
+    @FXML
+    private ImageView card1;
+    @FXML
+    private ImageView card2;
+    @FXML
+    private ImageView card3;
+    @FXML
+    private ImageView card4;
+    @FXML
+    private ImageView card5;
+    @FXML
+    private ImageView card6;
+    @FXML
+    private ImageView card7;
+    @FXML
+    private ImageView card8;
+    @FXML
+    private ImageView card9;
+    @FXML
+    private ImageView card10;
 
     /**
-     *
+     * Keep the reference to the last image that has the light up
+     */
+    private ImageView lastLight = null;
+
+    /**
+     * Reference to the assistant card selected
      */
     private String assistantCard;
 
     /**
-     *
+     * References to the stage
      */
     private Stage stage;
 
     /**
-     *
+     * References to the scene
      */
     private Scene scene;
 
     /**
-     *
-     */
-    private AnchorPane anchorPane;
-
-    /**
-     * select card 1
+     * Select card 1
      * @param mouseEvent
      */
     public void onCard1Click(MouseEvent mouseEvent) {
@@ -130,7 +82,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 2
+     * Select card 2
      * @param mouseEvent
      */
     public void onCard2Click(MouseEvent mouseEvent) {
@@ -139,8 +91,8 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 3
-            * @param mouseEvent
+     * Select card 3
+     * @param mouseEvent
      */
     public void onCard3Click(MouseEvent mouseEvent) {
         assistantCard = AssistantCard.THREE_CARD.getId();
@@ -148,7 +100,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 4
+     * Select card 4
      * @param mouseEvent
      */
     public void onCard4Click(MouseEvent mouseEvent) {
@@ -157,7 +109,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 5
+     * Select card 5
      * @param mouseEvent
      */
     public void onCard5Click(MouseEvent mouseEvent) {
@@ -166,7 +118,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 6
+     * Select card 6
      * @param mouseEvent
      */
     public void onCard6Click(MouseEvent mouseEvent) {
@@ -175,7 +127,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 7
+     * Select card 7
      * @param mouseEvent
      */
     public void onCard7Click(MouseEvent mouseEvent) {
@@ -184,7 +136,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 8
+     * Select card 8
      * @param mouseEvent
      */
     public void onCard8Click(MouseEvent mouseEvent) {
@@ -193,7 +145,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 9
+     * Select card 9
      * @param mouseEvent
      */
     public void onCard9Click(MouseEvent mouseEvent) {
@@ -202,7 +154,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * select card 10
+     * Select card 10
      * @param mouseEvent
      */
     public void onCard10Click(MouseEvent mouseEvent) {
@@ -211,14 +163,13 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     * click on next button
+     * Click on next button
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
         if (assistantCard==null) {
             label.setText("You must select an assistant card");
-        }
-        else {
+        } else {
             stage = new Stage();
             ControllerHandler.getInstance().getStage().close();
             ControllerHandler.setStage(stage);
@@ -230,7 +181,7 @@ public class GuiPianificationPhaseController implements Initializable {
             stage.show();
 
             GuiLoadingController loadingController = fxmlLoader.getController();
-            loadingController.resize(stage, scene);
+            loadingController.resize(stage);
 
             MessageMethod messageMethod = new ChoosingAssistant();
             ((ChoosingAssistant) messageMethod).setAssistantCard(assistantCard);
@@ -239,7 +190,7 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     *
+     * go to actionPhase scene
      * @throws IOException
      */
     public void changeScene() throws IOException {
@@ -254,7 +205,7 @@ public class GuiPianificationPhaseController implements Initializable {
         stage.show();
 
         GuiActionPhaseController actionController = fxmlLoader.getController();
-        actionController.resize(stage, scene);
+        actionController.resize(stage);
     }
 
     /**
@@ -270,6 +221,7 @@ public class GuiPianificationPhaseController implements Initializable {
 
         ControllerHandler.getInstance().setCardPlayed(true);
         Game game = ControllerHandler.getInstance().getClient().getGame();
+
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.ONE_CARD)) {
             card1.setVisible(false);
             card1.setDisable(false);
@@ -315,7 +267,7 @@ public class GuiPianificationPhaseController implements Initializable {
     /**
      * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
@@ -339,13 +291,14 @@ public class GuiPianificationPhaseController implements Initializable {
     }
 
     /**
-     *
-     * @param setImage the image we want to set the Dropshadow
+     * Sets shadows on images
+     * @param setImage
      */
-    private void setShadow(ImageView setImage){
+    private void setShadow(ImageView setImage) {
         setImage.setEffect(new DropShadow(30, Color.DARKBLUE));
-        if (lastLight!=null && lastLight!=setImage)
+        if (lastLight!=null && lastLight!=setImage) {
             lastLight.setEffect(null);
-        lastLight=setImage;
+        }
+        lastLight = setImage;
     }
 }

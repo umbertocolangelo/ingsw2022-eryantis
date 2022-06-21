@@ -14,40 +14,33 @@ import java.io.IOException;
 
 public class GuiIsFirstController {
 
-    /**
-     *
-     */
     @FXML
-    AnchorPane scenePane;
-
-    /**
-     *
-     */
+    private AnchorPane scenePane;
     @FXML
     private Label label;
 
     /**
-     *
+     * Reference to the number of players selected
      */
     private Integer numOfPLayers = null;
 
     /**
-     *
+     * Reference to selected mode
      */
     private Boolean expertModeOrClassic = null;
 
     /**
-     *
+     * Reference to stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to scene
      */
     private Scene scene;
 
     /**
-     * click on start button
+     * Click on start button
      * @param mouseEvent
      */
     public void onStartClick(MouseEvent mouseEvent) throws IOException {
@@ -67,7 +60,7 @@ public class GuiIsFirstController {
         stage.show();
 
         GuiLoadingController controller = fxmlLoader.getController();
-        controller.resize(stage, scene);
+        controller.resize(stage);
 
         IsFirst isFirst = new IsFirst();
         isFirst.setGameMode(expertModeOrClassic);
@@ -76,6 +69,7 @@ public class GuiIsFirstController {
     }
 
     /**
+     * go to chooseDeckAndColor scene
      * @throws IOException
      */
     public void changeScene() throws IOException {
@@ -90,24 +84,25 @@ public class GuiIsFirstController {
         stage.show();
 
         GuiChooseWizardAndColorController deckController = fxmlLoader.getController();
-        deckController.resize(stage, scene);
+        deckController.resize(stage);
     }
 
     /**
-     *
+     * Click on two players game
      */
     public void twoPlayers(MouseEvent mouseEvent) {
         numOfPLayers = 2;
     }
 
     /**
-     *
+     * Click on three players game
      */
     public void threePlayers(MouseEvent mouseEvent) {
         numOfPLayers = 3;
     }
 
     /**
+     * Click on classic mode
      * @param mouseEvent
      */
     public void classicGame(MouseEvent mouseEvent) {
@@ -115,6 +110,7 @@ public class GuiIsFirstController {
     }
 
     /**
+     * Click on expert mode
      * @param mouseEvent
      */
     public void expertGame(MouseEvent mouseEvent) {
@@ -122,47 +118,29 @@ public class GuiIsFirstController {
     }
 
     /**
-     *
+     * Window resize
      */
-    public void resize(Stage stage, Scene scene) {
+    public void resize(Stage stage) {
         double height = stage.getHeight();
         double width = stage.getWidth();
 
+        //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
-        //scenePane.translateXProperty().bind(scene.widthProperty().subtract(scenePane.widthProperty().divide(2)));
-        //scenePane.translateYProperty().bind(scene.heightProperty().subtract(scenePane.heightProperty().divide(2)));
-
+        //horizontal listener
         stage.widthProperty().addListener((obs, oldVal, newVal) -> {
             double scaleX = newVal.doubleValue()/width;
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
-
         });
 
+        //vertical listener
         stage.heightProperty().addListener((obs, oldVal, newVal) -> {
             double scaleY = newVal.doubleValue()/height;
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
-            //scenePane.setCenterShape(true);
         });
-    }
-
-    /**
-     *
-     */
-    public void closeStage() {
-        this.stage.close();
-    }
-
-    /**
-     *
-     * @return
-     */
-    public Stage getStage() {
-        return stage;
     }
 
 }
