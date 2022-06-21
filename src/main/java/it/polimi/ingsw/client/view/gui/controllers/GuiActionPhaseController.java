@@ -117,6 +117,12 @@ public class GuiActionPhaseController implements Initializable {
     private String greyTowerPath = "file:src/main/resources/Graphical_Assets/pawns/tower_grey.png";
 
     /**
+     * Path to deny token image file
+     */
+    private String denyPath = "file:src/main/resources/Graphical_Assets/deny_token.png";
+
+
+    /**
      * AnchorPane reference
      */
     @FXML
@@ -163,6 +169,106 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView professorPink;
     @FXML
     private ImageView professorBlue;
+
+    /**
+     * deny tokens reference
+     */
+    @FXML
+    private ImageView deny1Island1;
+    @FXML
+    private ImageView deny2Island1;
+    @FXML
+    private ImageView deny3Island1;
+    @FXML
+    private ImageView deny4Island1;
+    @FXML
+    private ImageView deny1Island2;
+    @FXML
+    private ImageView deny2Island2;
+    @FXML
+    private ImageView deny3Island2;
+    @FXML
+    private ImageView deny4Island2;
+    @FXML
+    private ImageView deny1Island3;
+    @FXML
+    private ImageView deny2Island3;
+    @FXML
+    private ImageView deny3Island3;
+    @FXML
+    private ImageView deny4Island3;
+    @FXML
+    private ImageView deny1Island4;
+    @FXML
+    private ImageView deny2Island4;
+    @FXML
+    private ImageView deny3Island4;
+    @FXML
+    private ImageView deny4Island4;
+    @FXML
+    private ImageView deny1Island5;
+    @FXML
+    private ImageView deny2Island5;
+    @FXML
+    private ImageView deny3Island5;
+    @FXML
+    private ImageView deny4Island5;
+    @FXML
+    private ImageView deny1Island6;
+    @FXML
+    private ImageView deny2Island6;
+    @FXML
+    private ImageView deny3Island6;
+    @FXML
+    private ImageView deny4Island6;
+    @FXML
+    private ImageView deny1Island7;
+    @FXML
+    private ImageView deny2Island7;
+    @FXML
+    private ImageView deny3Island7;
+    @FXML
+    private ImageView deny4Island7;
+    @FXML
+    private ImageView deny1Island8;
+    @FXML
+    private ImageView deny2Island8;
+    @FXML
+    private ImageView deny3Island8;
+    @FXML
+    private ImageView deny4Island8;
+    @FXML
+    private ImageView deny1Island9;
+    @FXML
+    private ImageView deny2Island9;
+    @FXML
+    private ImageView deny3Island9;
+    @FXML
+    private ImageView deny4Island9;
+    @FXML
+    private ImageView deny1Island10;
+    @FXML
+    private ImageView deny2Island10;
+    @FXML
+    private ImageView deny3Island10;
+    @FXML
+    private ImageView deny4Island10;
+    @FXML
+    private ImageView deny1Island11;
+    @FXML
+    private ImageView deny2Island11;
+    @FXML
+    private ImageView deny3Island11;
+    @FXML
+    private ImageView deny4Island11;
+    @FXML
+    private ImageView deny1Island12;
+    @FXML
+    private ImageView deny2Island12;
+    @FXML
+    private ImageView deny3Island12;
+    @FXML
+    private ImageView deny4Island12;
 
     /**
      * tower ImageView reference
@@ -1209,6 +1315,11 @@ public class GuiActionPhaseController implements Initializable {
     private LinkedList<ImageView> islands = new LinkedList<ImageView>();
 
     /**
+     * Stores the list of ImageView for the denyTokens
+     */
+    private LinkedList<ImageView> denyTokens = new LinkedList<ImageView>();
+
+    /**
      * Stores the list of ImageView for the students on islands (reused for every island)
      */
     private LinkedList<ImageView> studentsIsland = new LinkedList<ImageView>();
@@ -1385,6 +1496,222 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     /**
+     * shows the deny tokens on island 1 on the screen
+     */
+    private void showDenyIsland1(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island1);
+        denyTokens.add(deny2Island1);
+        denyTokens.add(deny3Island1);
+        denyTokens.add(deny4Island1);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 2 on the screen
+     */
+    private void showDenyIsland2(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island2);
+        denyTokens.add(deny2Island2);
+        denyTokens.add(deny3Island2);
+        denyTokens.add(deny4Island2);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 3 on the screen
+     */
+    private void showDenyIsland3(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island3);
+        denyTokens.add(deny2Island3);
+        denyTokens.add(deny3Island3);
+        denyTokens.add(deny4Island3);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 4 on the screen
+     */
+    private void showDenyIsland4(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island4);
+        denyTokens.add(deny2Island4);
+        denyTokens.add(deny3Island4);
+        denyTokens.add(deny4Island4);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 5 on the screen
+     */
+    private void showDenyIsland5(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island5);
+        denyTokens.add(deny2Island5);
+        denyTokens.add(deny3Island5);
+        denyTokens.add(deny4Island5);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 6 on the screen
+     */
+    private void showDenyIsland6(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island6);
+        denyTokens.add(deny2Island6);
+        denyTokens.add(deny3Island6);
+        denyTokens.add(deny4Island6);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 7 on the screen
+     */
+    private void showDenyIsland7(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island7);
+        denyTokens.add(deny2Island7);
+        denyTokens.add(deny3Island7);
+        denyTokens.add(deny4Island7);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 8 on the screen
+     */
+    private void showDenyIsland8(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island8);
+        denyTokens.add(deny2Island8);
+        denyTokens.add(deny3Island8);
+        denyTokens.add(deny4Island8);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 9 on the screen
+     */
+    private void showDenyIsland9(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island9);
+        denyTokens.add(deny2Island9);
+        denyTokens.add(deny3Island9);
+        denyTokens.add(deny4Island9);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 10 on the screen
+     */
+    private void showDenyIsland10(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island10);
+        denyTokens.add(deny2Island10);
+        denyTokens.add(deny3Island10);
+        denyTokens.add(deny4Island10);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 11 on the screen
+     */
+    private void showDenyIsland11(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island11);
+        denyTokens.add(deny2Island11);
+        denyTokens.add(deny3Island11);
+        denyTokens.add(deny4Island11);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
+     * shows the deny tokens on island 12 on the screen
+     */
+    private void showDenyIsland12(int islandIndex, double x, double y){
+
+        denyTokens.clear();
+        denyTokens.add(deny1Island12);
+        denyTokens.add(deny2Island12);
+        denyTokens.add(deny3Island12);
+        denyTokens.add(deny4Island12);
+
+        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
+            denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
+        }
+    }
+
+    /**
      * makes an island not visible and not clickable
      * @param islandNum is the number of the island to disable
      */
@@ -1453,50 +1780,62 @@ public class GuiActionPhaseController implements Initializable {
             case 1 -> {
                 showStudentIsland1(islandIndex,x,y);
                 showTowersIsland1(islandIndex,x,y);
+                showDenyIsland1(islandIndex,x,y);
             }
             case 2 -> {
                 showStudentIsland2(islandIndex,x,y);
                 showTowersIsland2(islandIndex,x,y);
+                showDenyIsland2(islandIndex,x,y);
             }
             case 3 -> {
                 showStudentIsland3(islandIndex,x,y);
                 showTowersIsland3(islandIndex,x,y);
+                showDenyIsland3(islandIndex,x,y);
             }
             case 4 -> {
                 showStudentIsland4(islandIndex,x,y);
                 showTowersIsland4(islandIndex,x,y);
+                showDenyIsland4(islandIndex,x,y);
             }
             case 5 -> {
                 showStudentIsland5(islandIndex,x,y);
                 showTowersIsland5(islandIndex,x,y);
+                showDenyIsland5(islandIndex,x,y);
             }
             case 6 -> {
                 showStudentIsland6(islandIndex,x,y);
                 showTowersIsland6(islandIndex,x,y);
+                showDenyIsland6(islandIndex,x,y);
             }
             case 7 -> {
                 showStudentIsland7(islandIndex,x,y);
                 showTowersIsland7(islandIndex,x,y);
+                showDenyIsland7(islandIndex,x,y);
             }
             case 8 -> {
                 showStudentIsland8(islandIndex,x,y);
                 showTowersIsland8(islandIndex,x,y);
+                showDenyIsland8(islandIndex,x,y);
             }
             case 9 -> {
                 showStudentIsland9(islandIndex,x,y);
                 showTowersIsland9(islandIndex,x,y);
+                showDenyIsland9(islandIndex,x,y);
             }
             case 10 -> {
                 showStudentIsland10(islandIndex,x,y);
                 showTowersIsland10(islandIndex,x,y);
+                showDenyIsland10(islandIndex,x,y);
             }
             case 11 -> {
                 showStudentIsland11(islandIndex,x,y);
                 showTowersIsland11(islandIndex,x,y);
+                showDenyIsland11(islandIndex,x,y);
             }
             case 12 -> {
                 showStudentIsland12(islandIndex,x,y);
                 showTowersIsland12(islandIndex,x,y);
+                showDenyIsland12(islandIndex,x,y);
             }
         }
     }
@@ -1534,8 +1873,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1573,8 +1912,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1612,8 +1951,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1651,8 +1990,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1690,8 +2029,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1729,8 +2068,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1768,8 +2107,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1807,8 +2146,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1850,8 +2189,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1889,8 +2228,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1928,8 +2267,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
@@ -1967,8 +2306,8 @@ public class GuiActionPhaseController implements Initializable {
                     break;
                 }
             }
-            towers.get(count).setX(studentsIsland.get(count).getX() + x);
-            towers.get(count).setY(studentsIsland.get(count).getY() + y);
+            towers.get(count).setX(towers.get(count).getX() + x);
+            towers.get(count).setY(towers.get(count).getY() + y);
             count++;
         }
     }
