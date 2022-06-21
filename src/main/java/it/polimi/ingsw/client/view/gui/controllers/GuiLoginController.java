@@ -3,7 +3,6 @@ package it.polimi.ingsw.client.view.gui.controllers;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -76,9 +75,9 @@ public class GuiLoginController implements Initializable {
 
             ControllerHandler.getInstance().write(insertName.getText());
 
-            if (ControllerHandler.getInstance().getEqual() == false) {
-                ControllerHandler.getInstance().receiveMessage();
-            }
+          //  if (ControllerHandler.getInstance().getEqual() == false) {
+            //    ControllerHandler.getInstance().receiveMessage();
+            //}
         }
     }
 

@@ -49,10 +49,10 @@ public class Controller implements Runnable {
      * Keep the reference to the client
      * @param client
      */
-    public Controller(Client client) {
-        this.client = client;
-        this.stdIn = client.getScanner();
-        cli = new CLI(client,this);
+    public Controller(Runnable client) {
+        this.client = new Client("loclahost",65432);
+        this.stdIn =new Scanner(System.in);
+        //cli = new CLI(client,this);
     }
 
     /**
@@ -63,6 +63,11 @@ public class Controller implements Runnable {
 
         switch (clientState) {
             case LOGIN:
+                try {
+                    client.run();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
                 System.out.println("Welcome to Eriantys, what's your name?");
                 input = stdIn.nextLine();
                 while ((input.matches(".*\\d.*")) || input.equals("")) {

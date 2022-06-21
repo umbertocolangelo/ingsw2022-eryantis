@@ -9,9 +9,12 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.Semaphore;
+import java.util.concurrent.TimeUnit;
 
 public class Client {
 
@@ -115,7 +118,7 @@ public class Client {
     /**
      *
      */
-    private Semaphore semaphore = new Semaphore(1);
+    private Semaphore semaphore = new Semaphore(0);
 
     /**
      * @param socketIn The inputStream
@@ -136,7 +139,7 @@ public class Client {
                                     ControllerHandler.getInstance().chooseScene();
                                 }else if (inputObject instanceof SetUp) {
                                     ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
-                                    ControllerHandler.getInstance().chooseScene();
+                                    new Thread(ControllerHandler.getInstance().chooseScene());
                                 }else if (inputObject instanceof LoadGame) {
                                     ControllerHandler.getInstance().setClientState(ClientState.LOAD);
                                     ControllerHandler.getInstance().chooseScene();
@@ -146,7 +149,7 @@ public class Client {
                                 } else if (inputObject instanceof IsFirst) {
                                     System.out.println("isFirst");
                                     ControllerHandler.getInstance().setClientState(ClientState.ISFIRST);
-                                    ControllerHandler.getInstance().chooseScene();
+                                    new Thread(ControllerHandler.getInstance().chooseScene());
                                 } else if (inputObject instanceof SetName) {
                                     System.out.println("setName");
                                     namePlayer = ((SetName) inputObject).getName();
@@ -171,6 +174,7 @@ public class Client {
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
                                     System.out.println("Client received Game");
+
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
                                         controller.setClientState(ClientState.PLAYING);
                                         controller.run();
@@ -216,35 +220,60 @@ public class Client {
                 }
             }
         });
-        t.start();
+      //  t.start();
         return t;
     }
 
     /**
      * When the client is running start the thread for reading and wait until that thread die
      * @throws IOException
+     * @return
      */
-    public void run() throws IOException {
-        socket = new Socket(ip, port);
-        System.out.println("Connection established.");
-        socketIn = new ObjectInputStream(socket.getInputStream());
-        socketOut = new ObjectOutputStream(socket.getOutputStream());
-        stdin = new Scanner(System.in);
-        controller = new Controller(this);
-        ControllerHandler.getInstance().setClient(this);
+    public Runnable run() throws IOException {
+        Thread t = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    socket = new Socket(ip, port);
+                    System.out.println("Connection established.");
+                    socketIn = new ObjectInputStream(socket.getInputStream());
+                    socketOut = new ObjectOutputStream(socket.getOutputStream());
+                    stdin = new Scanner(System.in);
+                    controller = new Controller(this);
+                    ControllerHandler.getInstance().setClient(Client.this);
+                    Thread t0 = new Thread(asyncReadFromSocket(socketIn));
+                   final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
+                 executor.submit(new Thread(asyncReadFromSocket(socketIn)));
+                   executor.awaitTermination(10000, TimeUnit.DAYS);
+                 //t0.join();
+                 //  semaphore.acquire();
 
-        try {
-            Thread t0 = asyncReadFromSocket(socketIn);
-            t0.join();
-        } catch (InterruptedException | NoSuchElementException e) {
-            System.out.println("Connection closed from the client side");
+                } catch (NoSuchElementException e) {
+                    System.out.println("Connection closed from the client side");
 
-        } finally {
-            stdin.close();
-            socketIn.close();
-            socketOut.close();
-            socket.close();
-        }
+                } catch (UnknownHostException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                } finally {
+                    try {
+                        stdin.close();
+
+                        socketIn.close();
+
+
+                        socketOut.close();
+                        socket.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+      //  t.start();
+        return t;
     }
 
     /**

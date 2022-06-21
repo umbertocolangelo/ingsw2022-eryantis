@@ -2,12 +2,9 @@ package it.polimi.ingsw.client.view.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -33,6 +30,7 @@ public class GuiStartController {
      * @param mouseEvent
      */
     public void onClickEvent(MouseEvent mouseEvent) throws IOException {
+        ControllerHandler.getInstance().startClient();
         stage = new Stage();
         ControllerHandler.getInstance().getStage().close();
         ControllerHandler.setStage(stage);
