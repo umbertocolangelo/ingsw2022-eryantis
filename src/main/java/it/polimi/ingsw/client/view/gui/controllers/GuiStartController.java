@@ -37,7 +37,7 @@ public class GuiStartController implements Initializable {
      * @param mouseEvent
      */
     public void onClickEvent(MouseEvent mouseEvent) throws IOException {
-                if(ControllerHandler.getInstance().getClient()==null) {
+                if(!ControllerHandler.getInstance().getConnectionTrue()) {
                     ControllerHandler.getInstance().startClient();
                 }else{
                     connection.setText("Connection established, waiting for other palyers");

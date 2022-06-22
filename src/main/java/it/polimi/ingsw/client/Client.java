@@ -1,6 +1,7 @@
 package it.polimi.ingsw.client;
 
 
+import it.polimi.ingsw.client.view.CLI;
 import it.polimi.ingsw.client.view.gui.controllers.ControllerHandler;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
@@ -82,12 +83,8 @@ public class Client {
     /**
      * States if the view is CLI (false) or GUI (true)
      */
-    private Boolean isCli = false;
+    private Boolean isCli = true;
 
-    /**
-     * Keeps the reference to the GUI controller
-     */
-    private ControllerHandler controllerHandler;
 
     /**
      * The ip address and the port
@@ -238,21 +235,35 @@ public class Client {
                         socket = new Socket(ip, port);
                       }catch (ConnectException e){
                         System.out.println(e.getMessage());
-                        ControllerHandler.getInstance().setConnectionRefuse(true);
-                        ControllerHandler.getInstance().setClientState(ClientState.CONNECTIONREFUSE);
-                        ControllerHandler.getInstance().chooseScene();
-                        return;
+                        if(!isCli) {
+                            ControllerHandler.getInstance().setConnectionRefuse(true);
+                            ControllerHandler.getInstance().setClientState(ClientState.CONNECTIONREFUSE);
+                            ControllerHandler.getInstance().chooseScene();
+                            return;
+                        }else{
+                            controller.connectionRefuse();
+                            return;
+                        }
+
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
-                    ControllerHandler.getInstance().setClientState(ClientState.WAITING);
-                    ControllerHandler.getInstance().chooseScene();
+
                     System.out.println("Connection established.");
                     socketIn = new ObjectInputStream(socket.getInputStream());
                     socketOut = new ObjectOutputStream(socket.getOutputStream());
                     stdin = new Scanner(System.in);
-                    controller = new Controller(Client.this);
-                    ControllerHandler.getInstance().setClient(Client.this);
+                    if(!isCli) {
+                        ControllerHandler.getInstance().setConnectionTrue(true);
+                        ControllerHandler.getInstance().setClientState(ClientState.WAITING);
+                        ControllerHandler.getInstance().chooseScene();
+                    }else{
+                        CLI cli = new CLI(Client.this,controller);
+                        controller.setCli(cli);
+                    }
+                   // if(controller!=null)
+                     //   controller.setClient(Client.this);
+                    //ControllerHandler.getInstance().setClient(Client.this);
                     Thread t0 = new Thread(asyncReadFromSocket(socketIn));
                    final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
                     executor.submit(new Thread(asyncReadFromSocket(socketIn)));
@@ -273,7 +284,6 @@ public class Client {
                     try {
                         if(stdin!=null) {
                             stdin.close();
-
                             socketIn.close();
                             socketOut.close();
                             socket.close();
@@ -351,4 +361,7 @@ public class Client {
         this.isCli = true;
     }
 
+    public void setController(Controller controller) {
+        this.controller = controller;
+    }
 }

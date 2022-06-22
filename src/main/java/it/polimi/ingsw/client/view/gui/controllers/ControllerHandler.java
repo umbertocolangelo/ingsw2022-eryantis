@@ -5,8 +5,6 @@ import it.polimi.ingsw.client.ClientState;
 import it.polimi.ingsw.message.IngressCardSwap;
 import it.polimi.ingsw.message.StudentToIsland;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -14,6 +12,11 @@ import java.net.ConnectException;
 
 
 public class ControllerHandler {
+
+    /**
+     *
+     */
+    private Boolean connectionTrue=false;
 
     /**
      *
@@ -531,7 +534,7 @@ public class ControllerHandler {
      *
      */
     public void startClient() throws ConnectException,IOException {
-        Client client = new Client("localhost", 65432);
+       // Client client = new Client("localhost", 65432);
 
             //final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
        // try {
@@ -542,26 +545,20 @@ public class ControllerHandler {
     }
 
 
-    public void connectionRefuse() throws IOException {
-        stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/start-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setTitle("Eriantys");
-        stage.setScene(scene);
-        stage.show();
-
-        GuiStartController startController = fxmlLoader.getController();
-        startController.resize(stage);
-    }
-
     public Boolean getConnectionRefuse() {
         return connectionRefuse;
     }
 
     public void setConnectionRefuse(Boolean connectionRefuse) {
         this.connectionRefuse = connectionRefuse;
+    }
+
+    public Boolean getConnectionTrue() {
+        return connectionTrue;
+    }
+
+    public void setConnectionTrue(Boolean connectionTrue) {
+        this.connectionTrue = connectionTrue;
     }
 }
 

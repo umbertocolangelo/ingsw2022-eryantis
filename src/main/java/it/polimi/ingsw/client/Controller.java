@@ -10,6 +10,11 @@ import java.util.Scanner;
 public class Controller implements Runnable {
 
     /**
+     *
+     */
+    private Boolean connectionTrue=false;
+
+    /**
      * Represent the Thread that will modify the game
      */
     private Thread t0;
@@ -47,12 +52,12 @@ public class Controller implements Runnable {
     /**
      * Default constructor
      * Keep the reference to the client
-     * @param client
      */
-    public Controller(Client client) {
-        this.client =client;
+    public Controller() {
+       // this.client =client;
         this.stdIn =new Scanner(System.in);
-        cli = new CLI(client,this);
+
+
     }
 
     /**
@@ -63,11 +68,6 @@ public class Controller implements Runnable {
 
         switch (clientState) {
             case LOGIN:
-                try {
-                    client.run();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
                 System.out.println("Welcome to Eriantys, what's your name?");
                 input = stdIn.nextLine();
                 while ((input.matches(".*\\d.*")) || input.equals("")) {
@@ -217,4 +217,65 @@ public class Controller implements Runnable {
         }
     }
 
+    public void setClient(Client client) {
+        this.client = client;
+    }
+
+    public void startClient() {
+
+
+                //final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
+                // try {
+                Thread t1 = null;
+                try {
+                    t1 = new Thread(client.run());
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+                t1.start();
+            }
+
+
+    public void connectionRefuse() {
+
+                System.out.println("The connection has been refused, write 0 if you want to try again or 1 to close the app");
+                input = stdIn.nextLine();
+                while ( !(input.equals("0") || input.equals("1"))) {
+                    System.out.println("You inserted a wrong value ");
+                    input = stdIn.nextLine();
+                }
+                if(input.equals("1"))
+                    return;
+                else {
+                    Thread t1 = null;
+                    try {
+                        t1 = new Thread(client.run());
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                    t1.start();
+                }
+            }
+
+
+
+    public Boolean getConnectionTrue() {
+        return connectionTrue;
+    }
+
+    public void setConnectionTrue(Boolean connectionTrue) {
+        this.connectionTrue = connectionTrue;
+    }
+
+    public Client getCLient(){
+        return this.client;
+    }
+
+    public void setCli(CLI cli) {
+        this.cli = cli;
+    }
 }
