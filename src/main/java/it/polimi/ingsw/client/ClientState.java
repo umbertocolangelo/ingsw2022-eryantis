@@ -11,6 +11,7 @@ public enum ClientState {
     EQUALNAME,
     CLIENTLOST,
     PLAYERPLUS,
-    LOAD
+    LOAD,
+    CONNECTIONREFUSE
 
 }

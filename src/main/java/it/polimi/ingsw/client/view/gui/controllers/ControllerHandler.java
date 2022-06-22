@@ -5,13 +5,20 @@ import it.polimi.ingsw.client.ClientState;
 import it.polimi.ingsw.message.IngressCardSwap;
 import it.polimi.ingsw.message.StudentToIsland;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.net.ConnectException;
 
 
 public class ControllerHandler {
+
+    /**
+     *
+     */
+    private Boolean connectionRefuse=false;
 
     /**
      * Reference to the name of the client lost
@@ -176,10 +183,26 @@ public class ControllerHandler {
                             }
                         });
                         break;
-                    case LOGIN:
-                        //GuiMain guiMain = new GuiMain();
-                        //guiMain.launchApp();
+                    case CONNECTIONREFUSE:
+                        GuiStartController startController = new GuiStartController();
+                        Platform.runLater(() -> {
+                            try {
+                                startController.refresh();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
                         break;
+                    case LOGIN:
+                    GuiStartController start = new GuiStartController();
+                    Platform.runLater(() -> {
+                        try {
+                            start.login();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    break;
                     case ISFIRST:
                         setIsFirst();
                         System.out.println("IsFirst");
@@ -497,20 +520,38 @@ public class ControllerHandler {
     /**
      *
      */
-    public void startClient() {
+    public void startClient() throws ConnectException,IOException {
         Client client = new Client("localhost", 65432);
-        try {
-            final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
 
-          Thread t1=new Thread( client.run());
-          t1.start();
+            //final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
+       // try {
+            Thread t1 = new Thread(client.run());
 
-        } catch (IOException e) {
-            System.err.println(e.getMessage());
+           t1.start();
 
-    //    } catch (InterruptedException e) {
-            e.printStackTrace();
-      }
+    }
+
+
+    public void connectionRefuse() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/start-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setTitle("Eriantys");
+        stage.setScene(scene);
+        stage.show();
+
+        GuiStartController startController = fxmlLoader.getController();
+        startController.resize(stage);
+    }
+
+    public Boolean getConnectionRefuse() {
+        return connectionRefuse;
+    }
+
+    public void setConnectionRefuse(Boolean connectionRefuse) {
+        this.connectionRefuse = connectionRefuse;
     }
 }
 

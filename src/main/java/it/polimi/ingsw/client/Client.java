@@ -8,9 +8,9 @@ import it.polimi.ingsw.model.Game;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
-import java.util.NoSuchElementException;
 import java.util.Scanner;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.Semaphore;
@@ -234,21 +234,31 @@ public class Client {
             @Override
             public void run() {
                 try {
-                    socket = new Socket(ip, port);
+                    try {
+                        socket = new Socket(ip, port);
+                      }catch (ConnectException e){
+                        System.out.println(e.getMessage());
+                        ControllerHandler.getInstance().setConnectionRefuse(true);
+                        ControllerHandler.getInstance().setClientState(ClientState.CONNECTIONREFUSE);
+                        ControllerHandler.getInstance().chooseScene();
+                        return;
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     System.out.println("Connection established.");
                     socketIn = new ObjectInputStream(socket.getInputStream());
                     socketOut = new ObjectOutputStream(socket.getOutputStream());
                     stdin = new Scanner(System.in);
-                    controller = new Controller(this);
+                    controller = new Controller(Client.this);
                     ControllerHandler.getInstance().setClient(Client.this);
                     Thread t0 = new Thread(asyncReadFromSocket(socketIn));
                    final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
-                 executor.submit(new Thread(asyncReadFromSocket(socketIn)));
-                   executor.awaitTermination(10000, TimeUnit.DAYS);
+                    executor.submit(new Thread(asyncReadFromSocket(socketIn)));
+                    executor.awaitTermination(1, TimeUnit.DAYS);
                  //t0.join();
                  //  semaphore.acquire();
 
-                } catch (NoSuchElementException e) {
+              //  } catch (NoSuchElementException e) {
                     System.out.println("Connection closed from the client side");
 
                 } catch (UnknownHostException e) {
@@ -259,13 +269,13 @@ public class Client {
                     e.printStackTrace();
                 } finally {
                     try {
-                        stdin.close();
+                        if(stdin!=null) {
+                            stdin.close();
 
-                        socketIn.close();
-
-
-                        socketOut.close();
-                        socket.close();
+                            socketIn.close();
+                            socketOut.close();
+                            socket.close();
+                        }
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

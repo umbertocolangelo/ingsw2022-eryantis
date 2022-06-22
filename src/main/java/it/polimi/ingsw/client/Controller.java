@@ -49,10 +49,10 @@ public class Controller implements Runnable {
      * Keep the reference to the client
      * @param client
      */
-    public Controller(Runnable client) {
-        this.client = new Client("loclahost",65432);
+    public Controller(Client client) {
+        this.client =client;
         this.stdIn =new Scanner(System.in);
-        //cli = new CLI(client,this);
+        cli = new CLI(client,this);
     }
 
     /**
