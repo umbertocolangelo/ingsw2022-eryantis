@@ -108,4 +108,19 @@ public class GuiStartController implements Initializable {
         if(ControllerHandler.getInstance().getConnectionRefuse())
             connection.setText("Connection refused, click next to try again");
     }
+
+    public void waiting() throws IOException {
+        stage = new Stage();
+        ControllerHandler.getInstance().getStage().close();
+        ControllerHandler.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.setTitle("Eriantys");
+        stage.show();
+
+        GuiLoadingController loginController = fxmlLoader.getController();
+        loginController.resize(stage);
+    }
 }

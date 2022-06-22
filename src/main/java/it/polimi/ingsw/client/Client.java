@@ -245,6 +245,8 @@ public class Client {
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
+                    ControllerHandler.getInstance().setClientState(ClientState.WAITING);
+                    ControllerHandler.getInstance().chooseScene();
                     System.out.println("Connection established.");
                     socketIn = new ObjectInputStream(socket.getInputStream());
                     socketOut = new ObjectOutputStream(socket.getOutputStream());

@@ -12,6 +12,7 @@ public enum ClientState {
     CLIENTLOST,
     PLAYERPLUS,
     LOAD,
-    CONNECTIONREFUSE
+    CONNECTIONREFUSE,
+    WAITING
 
 }

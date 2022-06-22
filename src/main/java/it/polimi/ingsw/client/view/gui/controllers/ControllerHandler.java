@@ -183,6 +183,16 @@ public class ControllerHandler {
                             }
                         });
                         break;
+                    case WAITING:
+                        GuiStartController starting = new GuiStartController();
+                        Platform.runLater(() -> {
+                            try {
+                                starting.waiting();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        break;
                     case CONNECTIONREFUSE:
                         GuiStartController startController = new GuiStartController();
                         Platform.runLater(() -> {
