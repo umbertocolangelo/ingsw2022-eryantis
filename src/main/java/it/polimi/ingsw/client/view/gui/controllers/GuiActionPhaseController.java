@@ -1465,6 +1465,7 @@ public class GuiActionPhaseController implements Initializable {
         }
 
         // show elements on the screen
+
         showMotherNature();;
         showStudentsHall();
         showStudentsIngress();
@@ -1474,18 +1475,21 @@ public class GuiActionPhaseController implements Initializable {
         showTowerTable();
 
         // show of islands and relative students and towers
+
         LinkedList<IslandInterface> islandList = game.getIslandManager().getIslands();
         int islandIndex = 0;
         int size = islandList.size();
-        for (int islandNum=1; islandNum<13; islandNum++) { // for every ImageView of island
-            if ((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum) { // if for that ImageView an island or island group has to be shown
+        int islandNum=1;
+        while(islandNum<13) { // for every ImageView of island
+            if ((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum) { // if there is an island or island group that has to be shown
                 // show towers and students on the island with that index on the ImageView of the relative island
                 showAllIsland(islandNum,islandIndex,0,0);
-                islandIndex++;
+                if(islandIndex<size-1){islandIndex++;}
             } else {
                 // do not show island with that index and make it not clickable
                 disableIsland(islandNum);
             }
+            islandNum++;
         }
     }
 
