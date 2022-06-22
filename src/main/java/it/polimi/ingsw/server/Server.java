@@ -97,7 +97,7 @@ public class Server {
         c.setHasBeenDisconnected(true);
         socketConnections.remove(c);
         if (!playingConnection.isEmpty() && !c.getPlayerIsPlus()) {
-            playingConnection.remove(c);
+          //  playingConnection.remove(c);
             for (SocketClientConnection clientConnection : playingConnection) {
                 clientConnection.send(new ClientLost(clientConnection.getName()));
             }
