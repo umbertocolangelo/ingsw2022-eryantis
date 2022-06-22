@@ -24,69 +24,71 @@ public class IslandManager implements Serializable {
     }
 
     /**
-     *
+     * Reference to islands
      */
     private LinkedList<IslandInterface> islands = new LinkedList<IslandInterface>();
 
     /**
-     *
+     * Reference to motherNature
      */
-    MotherNature motherNature;
+    private MotherNature motherNature;
 
     /**
-     *
+     * Number o groups in islandManager list
      */
     private Integer numOfGroups;
 
     /**
+     * Next island on which motherNature has to set position
      * @return
      */
     public IslandInterface nextIsland(Integer assistantCardValue) {
-        IslandInterface temp = null;
+        IslandInterface position = null;
         for (int i=0; i<islands.size(); i++) {
             if (islands.get(i).equals(motherNature.getIsland())) {
                 if (i+assistantCardValue>=islands.size()) {
-                    temp = islands.get(i+assistantCardValue-islands.size()); //circular list
+                    position = islands.get(i+assistantCardValue-islands.size()); //circular list
                 }
                 else {
-                    temp = islands.get(i+assistantCardValue);
+                    position = islands.get(i+assistantCardValue);
                 }
             }
         }
-        return temp;
+        return position;
     }
 
     /**
-     * verify group conditions and eventually instantiate new islandGroup list
+     * verifies group conditions, eventually instantiates new islandGroup list and upgrades islands list in islandManager
      */
-    public void checkGroup(IslandInterface islandInterface) { //passare la posizione di madre natura
-        int j;
+    public void checkGroup(IslandInterface islandInterface) { //request to pass mother nature position
+
         if (islandInterface.getTowers()==null) {
             return;
-        }
-        else {
+        } else {
             for (int i = 0; i < islands.size(); i++) {
                 if (islands.get(i) == islandInterface) {
                     if (islandInterface.getInfluenceColor()==rightIsland(islandInterface).getInfluenceColor() && islandInterface.getInfluenceColor()==leftIsland(islandInterface).getInfluenceColor()) {
-                        if (i-1 == -1) {
+                        int j;
+                        if (i==0) { //if it is the first island, the update is called on the last of the list
                             j = islands.size()-1;
                         }
                         else {
                             j = i-1;
                         }
-                        islandsUpdate(j); //primo update unisce leftIsland a island
-                        islandsUpdate(j); //secondo update unisce il nuovo gruppo (con dentro leftIsland e island) a rightIsland
-                    }
-                    else if (islandInterface.getInfluenceColor()==leftIsland(islandInterface).getInfluenceColor()) {
-                        islandsUpdate(i-1);
-                    }
-                    else if (islandInterface.getInfluenceColor()==rightIsland(islandInterface).getInfluenceColor()) {
+                        islandsUpdate(j); //first update links leftIsland to island
+                        islandsUpdate(j); //second update links the new group (with inside leftIsland and island) to rightIsland
+                    } else if (islandInterface.getInfluenceColor()==leftIsland(islandInterface).getInfluenceColor()) {
+                        if (i==0) { //if it is the first island, the update is called on the last of the list
+                            islandsUpdate(islands.size()-1);
+                        } else {
+                            islandsUpdate(i-1);
+                        }
+                    } else if (islandInterface.getInfluenceColor()==rightIsland(islandInterface).getInfluenceColor()) {
                         islandsUpdate(i);
                     }
                 }
             }
         }
-
     }
 
     /**
@@ -94,9 +96,9 @@ public class IslandManager implements Serializable {
      */
     public Integer getNumOfGroups() {
         numOfGroups = 0;
-        if (islands.size() == 12) {
+        if (islands.size()==12) {
             numOfGroups = 0;
-        } else if (islands.size() < 12) {
+        } else if (islands.size()<12) {
             for (int i=0; i<islands.size(); i++) {
                 if (islands.get(i).isGrouped()) {
                     numOfGroups += 1;
@@ -108,13 +110,11 @@ public class IslandManager implements Serializable {
 
     /**
      * Used only for methods test
-     *
      * @return this.islands
      */
     public LinkedList<IslandInterface> getIslands() {
         return this.islands;
     }
-
 
     /**
      * @param islandInterface
@@ -122,10 +122,11 @@ public class IslandManager implements Serializable {
      */
     private IslandInterface leftIsland(IslandInterface islandInterface) {
         IslandInterface tempIslandInterface = null;
+
         if (islands.get(0).equals(islandInterface)) {
-            tempIslandInterface = islands.get(islands.size()-1); }
-        else {
-            for (int i= islands.size()-1; i>0; i--) {
+            tempIslandInterface = islands.get(islands.size()-1);
+        } else {
+            for (int i=islands.size()-1; i>0; i--) {
                 if (islands.get(i).equals(islandInterface)) {
                     tempIslandInterface = islands.get(i-1);
                 }
@@ -140,10 +141,10 @@ public class IslandManager implements Serializable {
      */
     private IslandInterface rightIsland(IslandInterface islandInterface) {
         IslandInterface tempIslandInterface = null;
+
         if (islands.get(islands.size()-1).equals(islandInterface)) {
             tempIslandInterface = islands.get(0);
-        }
-        else {
+        } else {
             for (int i=0; i<islands.size()-1; i++) {
                 if (islands.get(i).equals(islandInterface)) {
                     tempIslandInterface = islands.get(i+1);
@@ -162,23 +163,23 @@ public class IslandManager implements Serializable {
     private void islandsUpdate(Integer curr) {
         IslandGroup newGroup = new IslandGroup();
         setNewGroup(newGroup, islands.get(curr));
+
         if (curr==islands.size()-1) {
             islands.add(curr, newGroup);
             islands.remove(curr+1);
             islands.remove(0);
-        }
-        else {
+        } else {
             islands.add(curr, newGroup);
             islands.remove(curr+1);
             islands.remove(curr+1);
         }
+
         this.motherNature.setIsland(newGroup);
     }
 
 
     /**
      * sets in newIslandGroup all islandInterface elements interested in the same island join
-     *
      * @param newIslandGroup is the new group in which are set oldIsland and its right element in islands list
      * @param islandInterface is the element in the IslandManager islands that will be replaced by newIslandGroup
      */

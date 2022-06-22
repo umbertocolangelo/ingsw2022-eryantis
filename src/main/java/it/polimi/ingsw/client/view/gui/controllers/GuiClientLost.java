@@ -2,7 +2,6 @@ package it.polimi.ingsw.client.view.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -24,7 +23,7 @@ public class GuiClientLost implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clientLost.setText("The player " + ControllerHandler.getInstance().getNameClientLost() + " has been disconnected\n Game finished");
+        clientLost.setText("The player " + GUIController.getInstance().getNameClientLost() + " has been disconnected\n Game finished");
     }
 
     /**

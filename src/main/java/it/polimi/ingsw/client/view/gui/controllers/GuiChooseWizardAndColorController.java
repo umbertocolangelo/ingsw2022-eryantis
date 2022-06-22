@@ -131,11 +131,11 @@ public class GuiChooseWizardAndColorController implements Initializable {
             MessageMethod messageMethod = new ChooseColorAndDeck();
             ((ChooseColorAndDeck) messageMethod).setWizard(wizard);
             ((ChooseColorAndDeck) messageMethod).setPlayerColor(color);
-            ControllerHandler.getInstance().write(messageMethod);
+            GUIController.getInstance().write(messageMethod);
 
             stage = new Stage();
-            ControllerHandler.getInstance().getStage().close();
-            ControllerHandler.setStage(stage);
+            GUIController.getInstance().getStage().close();
+            GUIController.setStage(stage);
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
             scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -177,8 +177,8 @@ public class GuiChooseWizardAndColorController implements Initializable {
      */
     public void changeScene() throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/pianificationPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -196,7 +196,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Game game = ControllerHandler.getInstance().getClient().getGame();
+        Game game = GUIController.getInstance().getClient().getGame();
         ((SetUpRound)game.getCurrentRound()).getplayerColor();
         if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.GREEN_WIZARD)) {
             wizard1.setDisable(false);

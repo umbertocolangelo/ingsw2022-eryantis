@@ -1,7 +1,7 @@
 package it.polimi.ingsw.client.view;
 
+import it.polimi.ingsw.client.CLIController;
 import it.polimi.ingsw.client.Client;
-import it.polimi.ingsw.client.Controller;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
@@ -26,9 +26,9 @@ public class CLI {
     private Client client;
 
     /**
-     * Keep the reference to the controller
+     * Keep the reference to the CLIController
      */
-    private Controller controller;
+    private CLIController CLIController;
 
     /**
      * The input we get from the keyboard
@@ -43,11 +43,11 @@ public class CLI {
     /**
      * Default constructor
      * @param client        Keep the reference to the client
-     * @param controller    Keep the reference to the controller
+     * @param CLIController    Keep the reference to the CLIController
      */
-    public CLI(Client client, Controller controller){
+    public CLI(Client client, CLIController CLIController){
         this.client = client;
-        this.controller = controller;
+        this.CLIController = CLIController;
     }
 
     /**
@@ -86,7 +86,7 @@ public class CLI {
             }
             System.out.println("Color selected " + ((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)) + "\n");
             ((ChooseColorAndDeck) messageMethod).setPlayerColor(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)).getId());
-            controller.write(messageMethod);
+            CLIController.write(messageMethod);
         });
         t.start();
         return t;
@@ -147,7 +147,7 @@ public class CLI {
             MessageMethod messageMethod = new ChoosingAssistant();
             ((ChoosingAssistant) messageMethod).setAssistantCard(client.getGame().getCurrentPlayer().getAssistantCard().get(Integer.parseInt(input)).getId());
 
-            controller.write(messageMethod);
+            CLIController.write(messageMethod);
         });
         t.start();
         return t;
@@ -180,7 +180,7 @@ public class CLI {
             if (input1.equals("0")) {
                 MessageMethod hallMessageMethod = new MovingStudentsFromIngressToHall();
                 ((MovingStudentsFromIngressToHall) hallMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
-                controller.write(hallMessageMethod);
+                CLIController.write(hallMessageMethod);
             }
             else if (input1.equals("1")) {
                 System.out.println("On which island do you want to move the student to? Select the Group Number\n");
@@ -213,7 +213,7 @@ public class CLI {
                     ((MovingStudentFromIngressToIsland) islandMessageMethod).setIsland(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input1)).getIslandGroupElements().get(0).getId());
                 }
 
-                controller.write(islandMessageMethod);
+                CLIController.write(islandMessageMethod);
             }
         });
         t.start();
@@ -241,7 +241,7 @@ public class CLI {
             MessageMethod messageMethod = new MovingMotherNature();
             ((MovingMotherNature) messageMethod).setJumps(Integer.parseInt(input));
 
-            controller.write(messageMethod);
+            CLIController.write(messageMethod);
         });
         t.start();
         return t;
@@ -279,7 +279,7 @@ public class CLI {
             MessageMethod messageMethod = new ChooseStudentsFromCloud();
             ((ChooseStudentsFromCloud) messageMethod).setCloud(client.getGame().getClouds().get(Integer.parseInt(input)).getId());
 
-            controller.write(messageMethod);
+            CLIController.write(messageMethod);
         });
         t.start();
         return t;
@@ -405,7 +405,7 @@ public class CLI {
                             ((PlayExpertCard)messageMethod).setParameter(client.getGame().getPlayerList().get(Integer.parseInt(input)).getId());
                         }
 
-                        controller.write(messageMethod);
+                        CLIController.write(messageMethod);
                     }
                 }
             }
@@ -451,7 +451,7 @@ public class CLI {
                 }
                 ((IngressCardSwap)messageMethod).setStudentCard(((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get( Integer.parseInt(input)).getId());
             }
-            controller.write(messageMethod);
+            CLIController.write(messageMethod);
 
         });
         t.start();
@@ -517,7 +517,7 @@ public class CLI {
                 }
                 ((IngressHallSwap)messageMethod).setStudentHall(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(Color.getColor(Integer.parseInt(input))).getStudents().get(Integer.parseInt(input1)).getId());
             }
-            controller.write(messageMethod);
+            CLIController.write(messageMethod);
 
         });
         t.start();
@@ -542,7 +542,7 @@ public class CLI {
             MessageMethod messageMethod = new StudentToHall();
             ((StudentToHall)messageMethod).setStudentToHall(((StudentToHallCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(Integer.parseInt(input)).getId());
 
-            controller.write(messageMethod);
+            CLIController.write(messageMethod);
         });
         t.start();
         return t;
@@ -576,7 +576,7 @@ public class CLI {
                 input = scanner.nextLine();
             }
             ((StudentToIsland)messageMethod).setIsland(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input)).getId());
-            controller.write(messageMethod);
+            CLIController.write(messageMethod);
 
         });
         t.start();

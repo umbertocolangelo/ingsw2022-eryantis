@@ -61,8 +61,8 @@ public class GuiLoginController implements Initializable {
             equalName.setText("The username cannot be empty");
         } else {
             stage = new Stage();
-            ControllerHandler.getInstance().getStage().close();
-            ControllerHandler.setStage(stage);
+            GUIController.getInstance().getStage().close();
+            GUIController.setStage(stage);
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
             scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -73,10 +73,10 @@ public class GuiLoginController implements Initializable {
             GuiLoadingController loadingController = fxmlLoader.getController();
             loadingController.resize(stage);
 
-            ControllerHandler.getInstance().write(insertName.getText());
+            GUIController.getInstance().write(insertName.getText());
 
-          //  if (ControllerHandler.getInstance().getEqual() == false) {
-            //    ControllerHandler.getInstance().receiveMessage();
+          //  if (GUIController.getInstance().getEqual() == false) {
+            //    GUIController.getInstance().receiveMessage();
             //}
         }
     }
@@ -87,8 +87,8 @@ public class GuiLoginController implements Initializable {
      */
     public void changeScene() throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/deckAndColor-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -106,8 +106,8 @@ public class GuiLoginController implements Initializable {
      */
     public void changeSceneIsFirst() throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/isfirst-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -124,10 +124,10 @@ public class GuiLoginController implements Initializable {
      * @throws IOException
      */
     public void changeSceneEqual() throws IOException {
-        ControllerHandler.getInstance().setEqual();
+        GUIController.getInstance().setEqual();
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -143,7 +143,7 @@ public class GuiLoginController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (ControllerHandler.getInstance().getEqual()) {
+        if (GUIController.getInstance().getEqual()) {
             equalName.setText("You inserted a username already used");
             System.out.println("Username already used");
         }

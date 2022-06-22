@@ -129,8 +129,8 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        game = ControllerHandler.getInstance().getClient().getGame();
-        idExpertCard = ControllerHandler.getInstance().getIdExpertCardPlayed();
+        game = GUIController.getInstance().getClient().getGame();
+        idExpertCard = GUIController.getInstance().getIdExpertCardPlayed();
         if (game.getCardManager().getCurrentCard().getId().equals(game.getCardManager().getDeck().get(0).getId())) {
             expertCard = game.getCardManager().getDeck().get(0);
         } else if (game.getCardManager().getCurrentCard().getId().equals(game.getCardManager().getDeck().get(1).getId())) {
@@ -174,18 +174,18 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
         switch (game.getCardManager().getCurrentCard().getId()) {
             case "38":
-                                ControllerHandler.getInstance().setIdExpertCardPlayed("");
-                ControllerHandler.getInstance().setStudentToIsland(messageMethodIsland);
+                                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setStudentToIsland(messageMethodIsland);
                 changeToAction();
                 break;
             case "44":
-                ControllerHandler.getInstance().setIdExpertCardPlayed("");
-                ControllerHandler.getInstance().setMessageMethodIngressCard(messageMethodSwap);
+                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setMessageMethodIngressCard(messageMethodSwap);
                 changeToAction();
                 break;
             case "48":
-                ControllerHandler.getInstance().setIdExpertCardPlayed("");
-                ControllerHandler.getInstance().write(messageMethodHall);
+                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().write(messageMethodHall);
                 break;
         }
 
@@ -196,8 +196,8 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      */
     public void changeToAction() throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -305,7 +305,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      * @param mouseEvent
      */
     public void clickFinishExpertMove(MouseEvent mouseEvent) {
-        ControllerHandler.getInstance().write(new RoundEnd());
+        GUIController.getInstance().write(new RoundEnd());
     }
 
     /**
@@ -313,7 +313,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      * @throws IOException
      */
     public void refresh() throws IOException {
-        stage = ControllerHandler.getInstance().getStage();
+        stage = GUIController.getInstance().getStage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/studentsOnCard-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);

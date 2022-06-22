@@ -5,7 +5,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -51,8 +50,8 @@ public class GuiIsFirstController {
         }
 
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -65,7 +64,7 @@ public class GuiIsFirstController {
         IsFirst isFirst = new IsFirst();
         isFirst.setGameMode(expertModeOrClassic);
         isFirst.setPlayers(numOfPLayers);
-        ControllerHandler.getInstance().write(isFirst);
+        GUIController.getInstance().write(isFirst);
     }
 
     /**
@@ -74,8 +73,8 @@ public class GuiIsFirstController {
      */
     public void changeScene() throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/deckAndColor-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);

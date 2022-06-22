@@ -171,8 +171,8 @@ public class GuiPianificationPhaseController implements Initializable {
             label.setText("You must select an assistant card");
         } else {
             stage = new Stage();
-            ControllerHandler.getInstance().getStage().close();
-            ControllerHandler.setStage(stage);
+            GUIController.getInstance().getStage().close();
+            GUIController.setStage(stage);
 
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
             scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -185,7 +185,7 @@ public class GuiPianificationPhaseController implements Initializable {
 
             MessageMethod messageMethod = new ChoosingAssistant();
             ((ChoosingAssistant) messageMethod).setAssistantCard(assistantCard);
-            ControllerHandler.getInstance().write(messageMethod);
+            GUIController.getInstance().write(messageMethod);
         }
     }
 
@@ -195,8 +195,8 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     public void changeScene() throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -215,12 +215,12 @@ public class GuiPianificationPhaseController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        if (ControllerHandler.getInstance().getCardPlayed()==true) {
+        if (GUIController.getInstance().getCardPlayed()==true) {
             label.setText("You played a card that has been already played, please pick another one");
         }
 
-        ControllerHandler.getInstance().setCardPlayed(true);
-        Game game = ControllerHandler.getInstance().getClient().getGame();
+        GUIController.getInstance().setCardPlayed(true);
+        Game game = GUIController.getInstance().getClient().getGame();
 
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.ONE_CARD)) {
             card1.setVisible(false);

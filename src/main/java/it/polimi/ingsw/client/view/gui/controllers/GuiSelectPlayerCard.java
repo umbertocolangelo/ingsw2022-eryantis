@@ -5,7 +5,6 @@ import it.polimi.ingsw.message.PlayExpertCard;
 import it.polimi.ingsw.model.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -42,7 +41,7 @@ public class GuiSelectPlayerCard implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        game = ControllerHandler.getInstance().getClient().getGame();
+        game = GUIController.getInstance().getClient().getGame();
         player1.setText(game.getPlayerList().get(0).getName());
         player2.setText(game.getPlayerList().get(1).getName());
         if (game.getPlayerList().size()==3) {
@@ -62,7 +61,7 @@ public class GuiSelectPlayerCard implements Initializable {
             MessageMethod playExpertCard = new PlayExpertCard();
             ((PlayExpertCard) playExpertCard).setExpertCard("45");
             ((PlayExpertCard) playExpertCard).setParameter(player);
-            ControllerHandler.getInstance().write(playExpertCard);
+            GUIController.getInstance().write(playExpertCard);
         }
     }
 

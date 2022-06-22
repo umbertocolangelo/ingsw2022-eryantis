@@ -76,8 +76,8 @@ public class GuiLoadingController {
 
     public void clientLost() throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/clientLost-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);

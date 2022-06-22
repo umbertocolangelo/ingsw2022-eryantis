@@ -67,18 +67,18 @@ public class GuiChooseColorCard implements Initializable {
     public void clickSelectColor(MouseEvent mouseEvent) {
         if (color != null) {
             MessageMethod messageMethod = new PlayExpertCard();
-            switch (ControllerHandler.getInstance().getIdExpertCardPlayed()) {
+            switch (GUIController.getInstance().getIdExpertCardPlayed()) {
                 case "46":
-                    ControllerHandler.getInstance().setIdExpertCardPlayed("");
+                    GUIController.getInstance().setIdExpertCardPlayed("");
                     ((PlayExpertCard) messageMethod).setExpertCard("46");
                     ((PlayExpertCard) messageMethod).setParameter(color);
-                    ControllerHandler.getInstance().write(messageMethod);
+                    GUIController.getInstance().write(messageMethod);
                     break;
                 case "49":
-                    ControllerHandler.getInstance().setIdExpertCardPlayed("");
+                    GUIController.getInstance().setIdExpertCardPlayed("");
                     ((PlayExpertCard) messageMethod).setExpertCard("49");
                     ((PlayExpertCard) messageMethod).setParameter(color);
-                    ControllerHandler.getInstance().write(messageMethod);
+                    GUIController.getInstance().write(messageMethod);
                     break;
             }
 

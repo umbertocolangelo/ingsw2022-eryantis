@@ -1,7 +1,6 @@
 
 package it.polimi.ingsw.client.view.gui.controllers;
 
-import it.polimi.ingsw.message.IsFirst;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -37,8 +36,8 @@ public class GuiLoadGameController {
      */
     public void show() throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loadgame-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
@@ -54,15 +53,15 @@ public class GuiLoadGameController {
      */
     public void onLoadClick(MouseEvent mouseEvent) throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-        ControllerHandler.getInstance().write("1");
+        GUIController.getInstance().write("1");
         resize(stage);
     }
 
@@ -72,15 +71,15 @@ public class GuiLoadGameController {
      */
     public void onNewClick(MouseEvent mouseEvent) throws IOException {
         stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
         scene = new Scene(fxmlLoader.load(), 1280, 720);
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-        ControllerHandler.getInstance().write("0");
+        GUIController.getInstance().write("0");
         resize(stage);
     }
 
