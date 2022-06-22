@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.net.ConnectException;
 
 
-public class ControllerHandler {
+public class GUIController {
 
     /**
      *
@@ -92,12 +92,12 @@ public class ControllerHandler {
      *
      * @param client
      */
-    private static ControllerHandler controllerHandler;
+    private static GUIController GUIController;
 
     /**
      * Default constructor
      */
-    public ControllerHandler() {
+    public GUIController() {
 
     }
 
@@ -106,11 +106,11 @@ public class ControllerHandler {
      *
      * @return the instance of the controller handler
      */
-    public static ControllerHandler getInstance() {
-        if (controllerHandler == null) {
-            controllerHandler = new ControllerHandler();
+    public static GUIController getInstance() {
+        if (GUIController == null) {
+            GUIController = new GUIController();
         }
-        return controllerHandler;
+        return GUIController;
     }
 
     /**
@@ -144,7 +144,7 @@ public class ControllerHandler {
      * @param stage
      */
     public static void setStage(Stage stage) {
-        ControllerHandler.stage = stage;
+        GUIController.stage = stage;
     }
 
     /**

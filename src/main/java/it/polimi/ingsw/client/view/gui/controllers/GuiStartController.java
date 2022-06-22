@@ -33,15 +33,82 @@ public class GuiStartController implements Initializable {
     private Scene scene;
 
     /**
+     * @param url
+     * @param resourceBundle
+     */
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        if(GUIController.getInstance().getConnectionRefuse())
+            connection.setText("Connection refused, click next to try again");
+    }
+
+    /**
      * click on next button
      * @param mouseEvent
      */
     public void onClickEvent(MouseEvent mouseEvent) throws IOException {
-                if(!ControllerHandler.getInstance().getConnectionTrue()) {
-                    ControllerHandler.getInstance().startClient();
-                }else{
-                    connection.setText("Connection established, waiting for other palyers");
-                }
+        if (!GUIController.getInstance().getConnectionTrue()) {
+            GUIController.getInstance().startClient();
+        } else {
+            connection.setText("Connection established, waiting for other players");
+        }
+    }
+
+    /**
+     *
+     * @throws IOException
+     */
+    public void refresh() throws IOException {
+        stage = new Stage();
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/start-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.setTitle("Eriantys");
+        stage.show();
+
+        GuiStartController loginController = fxmlLoader.getController();
+        loginController.resize(stage);
+    }
+
+    /**
+     *
+     * @throws IOException
+     */
+    public void login() throws IOException {
+        stage = new Stage();
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.setTitle("Eriantys");
+        stage.show();
+
+        GuiLoginController loginController = fxmlLoader.getController();
+        loginController.resize(stage);
+    }
+
+    /**
+     *
+     * @throws IOException
+     */
+    public void waiting() throws IOException {
+        stage = new Stage();
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.setTitle("Eriantys");
+        stage.show();
+
+        GuiLoadingController loginController = fxmlLoader.getController();
+        loginController.resize(stage);
     }
 
     /**
@@ -70,57 +137,4 @@ public class GuiStartController implements Initializable {
         });
     }
 
-    public void refresh() throws IOException {
-       // ControllerHandler.getInstance().startClient();
-        stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/start-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.setTitle("Eriantys");
-        stage.show();
-
-        GuiStartController loginController = fxmlLoader.getController();
-        loginController.resize(stage);
-
-
-    }
-
-    public void login() throws IOException {
-        stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.setTitle("Eriantys");
-        stage.show();
-
-        GuiLoginController loginController = fxmlLoader.getController();
-        loginController.resize(stage);
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        if(ControllerHandler.getInstance().getConnectionRefuse())
-            connection.setText("Connection refused, click next to try again");
-    }
-
-    public void waiting() throws IOException {
-        stage = new Stage();
-        ControllerHandler.getInstance().getStage().close();
-        ControllerHandler.setStage(stage);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.setTitle("Eriantys");
-        stage.show();
-
-        GuiLoadingController loginController = fxmlLoader.getController();
-        loginController.resize(stage);
-    }
 }

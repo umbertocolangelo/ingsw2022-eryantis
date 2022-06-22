@@ -2,7 +2,7 @@ package it.polimi.ingsw.client;
 
 
 import it.polimi.ingsw.client.view.CLI;
-import it.polimi.ingsw.client.view.gui.controllers.ControllerHandler;
+import it.polimi.ingsw.client.view.gui.controllers.GUIController;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
 
@@ -66,9 +66,9 @@ public class Client {
     private Object inputObject;
 
     /**
-     * Keeps the reference to the CLI controller
+     * Keeps the reference to the CLI CLIController
      */
-    private Controller controller;
+    private CLIController cliController;
 
     /**
      * Keep the reference to the OutputStream
@@ -119,7 +119,7 @@ public class Client {
 
     /**
      * @param socketIn The inputStream
-     * @return Thread  Return the thread who will keep read and once he read it will run the controller and wait for his termination
+     * @return Thread  Return the thread who will keep read and once he read it will run the CLIController and wait for his termination
      */
     public Thread asyncReadFromSocket(final ObjectInputStream socketIn) {
         Thread t = new Thread(new Runnable() {
@@ -132,21 +132,21 @@ public class Client {
                             System.out.println("Received something: " + inputObject);
                             if (!isCli) {
                                 if (inputObject instanceof ClientLost) {
-                                    ControllerHandler.getInstance().setClientState(ClientState.CLIENTLOST);
-                                    ControllerHandler.getInstance().chooseScene();
+                                    GUIController.getInstance().setClientState(ClientState.CLIENTLOST);
+                                    GUIController.getInstance().chooseScene();
                                 }else if (inputObject instanceof SetUp) {
-                                    ControllerHandler.getInstance().setClientState(ClientState.LOGIN);
-                                    new Thread(ControllerHandler.getInstance().chooseScene());
+                                    GUIController.getInstance().setClientState(ClientState.LOGIN);
+                                    new Thread(GUIController.getInstance().chooseScene());
                                 }else if (inputObject instanceof LoadGame) {
-                                    ControllerHandler.getInstance().setClientState(ClientState.LOAD);
-                                    ControllerHandler.getInstance().chooseScene();
+                                    GUIController.getInstance().setClientState(ClientState.LOAD);
+                                    GUIController.getInstance().chooseScene();
                                 }else if (inputObject instanceof EqualName) {
-                                    ControllerHandler.getInstance().setClientState(ClientState.EQUALNAME);
-                                    ControllerHandler.getInstance().chooseScene();
+                                    GUIController.getInstance().setClientState(ClientState.EQUALNAME);
+                                    GUIController.getInstance().chooseScene();
                                 } else if (inputObject instanceof IsFirst) {
                                     System.out.println("isFirst");
-                                    ControllerHandler.getInstance().setClientState(ClientState.ISFIRST);
-                                    new Thread(ControllerHandler.getInstance().chooseScene());
+                                    GUIController.getInstance().setClientState(ClientState.ISFIRST);
+                                    new Thread(GUIController.getInstance().chooseScene());
                                 } else if (inputObject instanceof SetName) {
                                     System.out.println("setName");
                                     namePlayer = ((SetName) inputObject).getName();
@@ -154,17 +154,10 @@ public class Client {
                                     game = (Game) inputObject;
                                     System.out.println("Client received Game.");
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
-                                        ControllerHandler.getInstance().setClientState(ClientState.PLAYING);
-                                        ControllerHandler.getInstance().chooseScene();
+                                        GUIController.getInstance().setClientState(ClientState.PLAYING);
+                                        GUIController.getInstance().chooseScene();
                                     }
                                 }
-                                /*
-                                else if (inputObject instanceof Winner) {
-                                    System.out.println("Winner");
-                                    ControllerHandler.getInstance().setClientState(ClientState.WINNER);
-                                    ControllerHandler.getInstance().chooseScene();
-                                }
-                                 */
                             } else {
                                 if (inputObject instanceof String) {
                                     System.out.println((String) inputObject);
@@ -173,39 +166,31 @@ public class Client {
                                     System.out.println("Client received Game");
 
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
-                                        controller.setClientState(ClientState.PLAYING);
-                                        controller.run();
+                                        cliController.setClientState(ClientState.PLAYING);
+                                        cliController.run();
                                     }
                                 } else if (inputObject instanceof SetUp) {
-                                    controller.setClientState(ClientState.LOGIN);
-                                    controller.run();
+                                    cliController.setClientState(ClientState.LOGIN);
+                                    cliController.run();
                                 }else if (inputObject instanceof EqualName) {
-                                    controller.setClientState(ClientState.EQUALNAME);
-                                    controller.run();
+                                    cliController.setClientState(ClientState.EQUALNAME);
+                                    cliController.run();
                                 }else if (inputObject instanceof LoadGame) {
-                                    controller.setClientState(ClientState.LOAD);
-                                    controller.run();
+                                    cliController.setClientState(ClientState.LOAD);
+                                    cliController.run();
                                 } else if (inputObject instanceof SetName) {
                                     namePlayer = ((SetName) inputObject).getName();
                                 } else if (inputObject instanceof IsFirst) {
-                                    controller.setClientState(ClientState.ISFIRST);
-                                    controller.run();
+                                    cliController.setClientState(ClientState.ISFIRST);
+                                    cliController.run();
                                 }else if (inputObject instanceof PlayerIsPlus) {
-                                    controller.setClientState(ClientState.PLAYERPLUS);
-                                    controller.run();
+                                    cliController.setClientState(ClientState.PLAYERPLUS);
+                                    cliController.run();
                                 } else if (inputObject instanceof ClientLost) {
                                     namePLayerLost = ((ClientLost) inputObject).getNamePlayerLost();
-                                    controller.setClientState(ClientState.CLIENTLOST);
-                                    controller.run();
-                                }
-                                /*
-                                else if (inputObject instanceof Winner) {
-                                    controller.setClientState(ClientState.WINNER);
-                                    controller.run();
-
-                                }
-                                */
-                                else {
+                                    cliController.setClientState(ClientState.CLIENTLOST);
+                                    cliController.run();
+                                } else {
                                     throw new IllegalArgumentException();
                                 }
                             }
@@ -236,12 +221,12 @@ public class Client {
                       }catch (ConnectException e){
                         System.out.println(e.getMessage());
                         if(!isCli) {
-                            ControllerHandler.getInstance().setConnectionRefuse(true);
-                            ControllerHandler.getInstance().setClientState(ClientState.CONNECTIONREFUSE);
-                            ControllerHandler.getInstance().chooseScene();
+                            GUIController.getInstance().setConnectionRefuse(true);
+                            GUIController.getInstance().setClientState(ClientState.CONNECTIONREFUSE);
+                            GUIController.getInstance().chooseScene();
                             return;
                         }else{
-                            controller.connectionRefuse();
+                            cliController.connectionRefuse();
                             return;
                         }
 
@@ -254,16 +239,16 @@ public class Client {
                     socketOut = new ObjectOutputStream(socket.getOutputStream());
                     stdin = new Scanner(System.in);
                     if(!isCli) {
-                        ControllerHandler.getInstance().setConnectionTrue(true);
-                        ControllerHandler.getInstance().setClientState(ClientState.WAITING);
-                        ControllerHandler.getInstance().chooseScene();
+                        GUIController.getInstance().setConnectionTrue(true);
+                        GUIController.getInstance().setClientState(ClientState.WAITING);
+                        GUIController.getInstance().chooseScene();
                     }else{
-                        CLI cli = new CLI(Client.this,controller);
-                        controller.setCli(cli);
+                        CLI cli = new CLI(Client.this, cliController);
+                        cliController.setCli(cli);
                     }
-                   // if(controller!=null)
-                     //   controller.setClient(Client.this);
-                    //ControllerHandler.getInstance().setClient(Client.this);
+                   // if(CLIController!=null)
+                     //   CLIController.setClient(Client.this);
+                    //GUIController.getInstance().setClient(Client.this);
                     Thread t0 = new Thread(asyncReadFromSocket(socketIn));
                    final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
                     executor.submit(new Thread(asyncReadFromSocket(socketIn)));
@@ -361,7 +346,7 @@ public class Client {
         this.isCli = true;
     }
 
-    public void setController(Controller controller) {
-        this.controller = controller;
+    public void setController(CLIController CLIController) {
+        this.cliController = CLIController;
     }
 }

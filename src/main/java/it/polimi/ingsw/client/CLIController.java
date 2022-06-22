@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
-public class Controller implements Runnable {
+public class CLIController implements Runnable {
 
     /**
      *
@@ -53,7 +53,7 @@ public class Controller implements Runnable {
      * Default constructor
      * Keep the reference to the client
      */
-    public Controller() {
+    public CLIController() {
        // this.client =client;
         this.stdIn =new Scanner(System.in);
 
@@ -151,11 +151,11 @@ public class Controller implements Runnable {
                         checkRound();
                         break;
                     case WINNER:
-                        if (client.getNamePlayer() == client.getGame().getWinner()) {
+                        if (client.getGame().getCurrentPlayer().getIsWinner()) {
                             System.out.println("Congratulations " + client.getNamePlayer() + " ! You are the winner of this magic game !\nNo one is on your level :)");
                         }
                         else {
-                            System.out.println("Oooh no, what a pity ! " + client.getGame().getWinner()+ " was a real strategist this time and won the game ...\nBut don't worry, play again to improve your skills and prove you are the best !");
+                            System.out.println("Oh noo! Unfortunately you have lost the game ...\nBut don't worry, play again to improve your skills and prove you are the best !");
                         }
                 }
                 try {
