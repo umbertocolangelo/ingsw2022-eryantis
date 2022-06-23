@@ -187,7 +187,7 @@ public class GUIController {
                         });
                         break;
                     case WAITING:
-                        GuiStartController starting = new GuiStartController();
+                        GuiPortIpController starting = new GuiPortIpController();
                         Platform.runLater(() -> {
                             try {
                                 starting.waiting();
@@ -197,7 +197,7 @@ public class GUIController {
                         });
                         break;
                     case CONNECTIONREFUSE:
-                        GuiStartController startController = new GuiStartController();
+                        GuiPortIpController startController = new GuiPortIpController();
                         Platform.runLater(() -> {
                             try {
                                 startController.refresh();
@@ -207,7 +207,7 @@ public class GUIController {
                         });
                         break;
                     case LOGIN:
-                    GuiStartController start = new GuiStartController();
+                    GuiPortIpController start = new GuiPortIpController();
                     Platform.runLater(() -> {
                         try {
                             start.login();

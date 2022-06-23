@@ -43,7 +43,7 @@ public class Client {
     /**
      *Keep the reference to the port
      */
-    private final int port;
+    private int port;
 
     /**
      * Keep the reference to the game
@@ -349,4 +349,17 @@ public class Client {
     public void setController(CLIController CLIController) {
         this.cliController = CLIController;
     }
+
+    public void setIp(String ip){
+        this.ip=ip;
+    }
+
+    public void setPort(Integer port){
+        this.port=port;
+    }
+
+    public void setIsGui(){
+        this.isCli=false;
+    }
+
 }
