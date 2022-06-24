@@ -21,17 +21,18 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
      * Default constructor
      */
     public IngressHallSwapActionRound(Game game) {
-        this.game=game;
+        this.game = game;
     }
+
     /**
-     *
+     * Reference to game
      */
-    Game game;
+    private Game game;
 
     /**
      * Id to know which round we are
      */
-    private Integer id=1;
+    private Integer id = 1;
 
     /**
      *

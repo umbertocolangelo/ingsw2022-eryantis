@@ -59,5 +59,4 @@ public class TwoJumpCard implements ExpertCard, Serializable {
         return this.id;
     }
 
-
 }

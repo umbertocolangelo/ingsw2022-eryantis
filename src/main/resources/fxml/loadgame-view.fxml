@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -16,19 +17,25 @@
                         <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="loadButton" layoutX="525.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#onLoadClick" prefHeight="55.0" prefWidth="220.0" text="LOAD">
+                <Button fx:id="loadButton" layoutX="525.0" layoutY="302.0" mnemonicParsing="false" onMouseClicked="#onLoadClick" prefHeight="55.0" prefWidth="250.0" text="LOAD">
                     <font>
-                        <Font name="Book Antiqua Bold Italic" size="30.0" />
+                        <Font name="Book Antiqua Bold Italic" size="24.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
-                <Button fx:id="newButton" layoutX="525.0" layoutY="382.0" mnemonicParsing="false" onMouseClicked="#onNewClick" prefHeight="55.0" prefWidth="220.0" text="NEW GAME">
+                <Button fx:id="newButton" layoutX="525.0" layoutY="382.0" mnemonicParsing="false" onMouseClicked="#onNewClick" prefHeight="55.0" prefWidth="250.0" text="NEW GAME">
                     <font>
-                        <Font name="Book Antiqua Bold Italic" size="30.0" />
+                        <Font name="Book Antiqua Bold Italic" size="24.0" />
                     </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
                 </Button>
-                <Label layoutX="356.0" layoutY="241.0" text="Previous game found, do you want to load it?">
+                <Label layoutX="402.0" layoutY="241.0" text="Previous game found, do you want to load it?">
                     <font>
-                        <Font name="Book Antiqua Bold Italic" size="28.0" />
+                        <Font name="Book Antiqua Bold" size="24.0" />
                     </font>
                 </Label>
             </children>

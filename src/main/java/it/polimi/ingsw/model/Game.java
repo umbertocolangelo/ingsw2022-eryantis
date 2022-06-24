@@ -540,7 +540,7 @@ public class Game implements GameInterface, Serializable {
             this.currentPlayer.getSchool().getIngress().addStudent(studentCard);
             FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
             expertCard.addStudent(studentHall);
-            if (((IngressCardSwapActionRound)currentRound).getStudent()==3) {
+            if (((IngressCardSwapActionRound)currentRound).getStudentsMoved()==3) {
                 finishExpertMove();
             }
             propertyChange.firePropertyChange("expert moveStudentToIsland", studentCard, studentHall);

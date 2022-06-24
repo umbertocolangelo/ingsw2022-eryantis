@@ -1243,6 +1243,8 @@ public class GuiActionPhaseController implements Initializable {
      */
     @FXML
     private Text communication;
+    @FXML
+    private Text communicationPlayerPhase;
 
     /**
      * finish expert move Button reference
@@ -1506,12 +1508,12 @@ public class GuiActionPhaseController implements Initializable {
         }
 
         // show elements on the screen
-
         showMotherNature();;
         showStudentsHall();
         showStudentsIngress();
         showClouds();
         showText();
+        showTextPhase();
         showProfessors();
         showTowerTable();
 
@@ -2885,6 +2887,23 @@ public class GuiActionPhaseController implements Initializable {
         for (Color color : Color.values()) {
             if (game.getCurrentPlayer().getSchool().getHall().getLine(color).isProfessor()) {
                 professors.get(color).setImage(getImageProfessor(color));
+            }
+        }
+    }
+
+    /**
+     * show moves tips based on player phase
+     */
+    private void showTextPhase(){
+        switch(game.getCurrentPlayer().getPlayerPhase()) {
+            case MOVING_STUDENTS -> {
+                communicationPlayerPhase.setText("Move a student to your hall or to an island");
+            }
+            case MOVING_MOTHERNATURE -> {
+                communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
+            }
+            case CHOOSING_CLOUD -> {
+                communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
             }
         }
     }

@@ -162,21 +162,21 @@
                   <Image url="@../Graphical_Assets/reameB_2.png" />
                </image>
             </ImageView>
-            <Button layoutX="1110.0" layoutY="513.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Play">
+            <Button layoutX="1098.0" layoutY="513.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="PLAY">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="expertCardButton" layoutX="1110.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#clickPlayExpertCard" prefHeight="35.0" prefWidth="150.0" text="Play Expert Card">
+            <Button fx:id="expertCardButton" layoutX="1086.0" layoutY="581.0" mnemonicParsing="false" onMouseClicked="#clickPlayExpertCard" prefHeight="35.0" prefWidth="175.0" text="PLAY EXPERT CARD">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="finishExpertMove" layoutX="1110.0" layoutY="647.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="35.0" prefWidth="150.0" text="Finish Expert Move">
+            <Button fx:id="finishExpertMove" layoutX="1086.0" layoutY="648.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="35.0" prefWidth="175.0" text="FINISH EXPERT MOVE">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />
                </font>
@@ -524,7 +524,7 @@
             <ImageView fx:id="tower1Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower5Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower6Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="communication" layoutX="796.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
+            <Text fx:id="communication" layoutX="790.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
                <font>
                   <Font name="Book Antiqua" size="12.0" />
                </font>
@@ -597,6 +597,11 @@
             <ImageView fx:id="tower7Island4" fitHeight="23.0" fitWidth="23.0" layoutX="32.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island5" fitHeight="23.0" fitWidth="23.0" layoutX="199.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="playedAssistantCard" fitHeight="170.0" fitWidth="133.0" layoutX="609.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true" />
+            <Text fx:id="communicationPlayerPhase" layoutX="790.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
+               <font>
+                  <Font name="Book Antiqua" size="12.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

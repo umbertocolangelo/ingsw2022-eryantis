@@ -12,33 +12,34 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.io.Serializable;
 
-/**
- * 
- */
 public class IngressCardSwapActionRound  implements RoundInterface, Serializable {
 
     /**
      * Default constructor
      */
     public IngressCardSwapActionRound(Game game) {
-        this.game=game;
+        this.game = game;
     }
 
     /**
      * Id to know which round we are
      */
-    private Integer id=0;
+    private Integer id = 0;
 
     /**
-     *
+     * Numeber of students moved
      */
-    private Integer studentsMoved=0;
+    private Integer studentsMoved = 0;
 
     /**
-     * Mantain the reference to Game
+     * Reference to Game
      */
     private Game game;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Boolean checkRoundEnded() {
         return null;
@@ -91,7 +92,6 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
         return null;
     }
 
-
     /**
      * @param student
      * @param island
@@ -111,18 +111,14 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress) {
         studentsMoved++;
         return true;
-
-
     }
 
     /**
      *Called by the controller if he wants to terminate the move
      * @return
      */
-
     public Boolean finishExpertMove() {
-        studentsMoved=0;
-
+        studentsMoved = 0;
         return true;
     }
 
@@ -134,7 +130,6 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     public Boolean expertIngressHallSwap(Student student, Student student1) {
         return null;
     }
-
 
     /**
      * @param student
@@ -154,20 +149,32 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
         return null;
     }
 
-
-
-
+    /**
+     *
+     * @param player
+     * @param color
+     * @param wizard
+     * @return
+     */
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
-    public Integer getStudent(){
-        return studentsMoved;
+    /**
+     *
+     * @return
+     */
+    public Integer getStudentsMoved() {
+        return this.studentsMoved;
     }
 }

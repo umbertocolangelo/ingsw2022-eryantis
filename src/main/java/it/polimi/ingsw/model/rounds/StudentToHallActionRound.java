@@ -22,18 +22,23 @@ public class StudentToHallActionRound implements RoundInterface, Serializable {
      * Default constructor
      */
     public StudentToHallActionRound(Game game) {
-        this.game=game;
+        this.game = game;
     }
-/**
- *
- */
-   private Game game;
+
+    /**
+     * Reference to game
+     */
+    private Game game;
 
     /**
      * Id to know which round we are
      */
-    private Integer id=2;
+    private Integer id = 2;
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Boolean checkRoundEnded() {
         return null;
@@ -90,16 +95,26 @@ public class StudentToHallActionRound implements RoundInterface, Serializable {
      * @param game
      * @param color
      */
-
     public void expertMoveStudentToBag(Game game, Color color) {
 
     }
 
+    /**
+     *
+     * @param player
+     * @param color
+     * @param wizard
+     * @return
+     */
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Integer getId() {
         return id;
@@ -129,7 +144,6 @@ public class StudentToHallActionRound implements RoundInterface, Serializable {
      *
      * @return
      */
-
     public Boolean finishExpertMove() {
         return null;
     }
@@ -162,6 +176,5 @@ public class StudentToHallActionRound implements RoundInterface, Serializable {
     public Boolean chooseCloud(Cloud cloud) {
         return null;
     }
-
 
 }

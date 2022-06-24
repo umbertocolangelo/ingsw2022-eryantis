@@ -138,10 +138,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public Player getPlayer(String id) {
-        if (Integer.parseInt(id)>0 && Integer.parseInt(id)<4)
+        if (Integer.parseInt(id)>0 && Integer.parseInt(id)<4) {
             return (Player) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
@@ -149,10 +151,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public PlayerColor getPlayerColor(String id) {
-        if(Integer.parseInt(id)>3 && Integer.parseInt(id)<7)
+        if(Integer.parseInt(id)>3 && Integer.parseInt(id)<7) {
             return (PlayerColor) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
@@ -160,10 +164,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public Color getColor(String id) {
-        if (Integer.parseInt(id)>6 && Integer.parseInt(id)<12)
+        if (Integer.parseInt(id)>6 && Integer.parseInt(id)<12) {
             return (Color) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
@@ -171,10 +177,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public Wizard getWizard(String id) {
-        if (Integer.parseInt(id)>11 && Integer.parseInt(id)<16)
+        if (Integer.parseInt(id)>11 && Integer.parseInt(id)<16) {
             return (Wizard) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
@@ -182,10 +190,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public AssistantCard getAssistantCard(String id) {
-        if (Integer.parseInt(id)>15 && Integer.parseInt(id)<26)
+        if (Integer.parseInt(id)>15 && Integer.parseInt(id)<26) {
             return (AssistantCard) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
@@ -193,10 +203,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public Island getIsland(String id) {
-        if (Integer.parseInt(id)>25 && Integer.parseInt(id)<38)
+        if (Integer.parseInt(id)>25 && Integer.parseInt(id)<38) {
             return (Island) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
@@ -204,10 +216,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public ExpertCard getExpertCard(String id) {
-        if (Integer.parseInt(id)>37 && Integer.parseInt(id)<50)
+        if (Integer.parseInt(id)>37 && Integer.parseInt(id)<50) {
             return (ExpertCard) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
@@ -215,10 +229,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public Cloud getCloud(String id) {
-        if (Integer.parseInt(id)>49 && Integer.parseInt(id)<53)
+        if (Integer.parseInt(id)>49 && Integer.parseInt(id)<53) {
             return (Cloud) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
     /**
@@ -226,10 +242,12 @@ public class IdManager implements Serializable {
      * @return
      */
     public Student getStudent(String id) {
-        if (Integer.parseInt(id)>52)
+        if (Integer.parseInt(id)>52) {
             return (Student) idMap.get(id);
-        else
+        }
+        else {
             return null;
+        }
     }
 
 }

@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -12,8 +8,9 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiPortIpController">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiPortIpController">
    <children>
       <AnchorPane fx:id="scenePane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-image: url('/Graphical_Assets/Eriantys_slider.jpg');">
          <children>
@@ -22,33 +19,36 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="ip" alignment="CENTER" layoutX="522.0" layoutY="197.0" prefHeight="47.0" prefWidth="220.0" promptText="ip">
+            <TextField fx:id="ip" alignment="CENTER" layoutX="537.0" layoutY="192.0" prefHeight="45.0" prefWidth="220.0" promptText="ip">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
             </TextField>
-            <Label layoutX="549.0" layoutY="129.0" prefHeight="40.0" prefWidth="316.0" text="Insert the ip" textAlignment="CENTER">
+            <Label layoutX="582.0" layoutY="139.0" prefHeight="40.0" prefWidth="150.0" text="Insert the ip" textAlignment="CENTER">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="27.0" />
+                  <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="startGame" layoutX="480.0" layoutY="565.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="60.0" prefWidth="304.0" text="Try to connect">
+            <Button fx:id="startGame" layoutX="522.0" layoutY="565.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="45.0" prefWidth="250.0" text="TRY TO CONNECT">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="30.0" />
+                  <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
             <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="535.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER">
                <font>
                   <Font size="20.0" />
                </font></Label>
-            <TextField fx:id="port" alignment="CENTER" layoutX="522.0" layoutY="337.0" prefHeight="47.0" prefWidth="220.0" promptText="port">
+            <TextField fx:id="port" alignment="CENTER" layoutX="522.0" layoutY="334.0" prefHeight="45.0" prefWidth="250.0" promptText="port">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
             </TextField>
-            <Label layoutX="537.0" layoutY="269.0" prefHeight="40.0" prefWidth="316.0" text="Insert the port" textAlignment="CENTER">
+            <Label layoutX="574.0" layoutY="283.0" prefHeight="40.0" prefWidth="165.0" text="Insert the port" textAlignment="CENTER">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="27.0" />
+                  <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
             <Text fx:id="connection" layoutX="332.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="650.0">

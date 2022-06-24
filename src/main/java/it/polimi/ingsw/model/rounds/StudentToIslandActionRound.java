@@ -22,18 +22,18 @@ public class StudentToIslandActionRound implements RoundInterface, Serializable 
      * Default constructor
      */
     public StudentToIslandActionRound(Game game) {
-        this.game=game;
+        this.game = game;
     }
 
     /**
-     *
+     * Reference to game
      */
     private Game game;
 
     /**
      * Id to know which round we are
      */
-    private Integer id=3;
+    private Integer id = 3;
 
     @Override
     public Boolean checkRoundEnded() {
@@ -92,19 +92,29 @@ public class StudentToIslandActionRound implements RoundInterface, Serializable 
      * @param game
      * @param color
      */
-
     public void expertMoveStudentToBag(Game game, Color color) {
 
     }
 
+    /**
+     *
+     * @param player
+     * @param color
+     * @param wizard
+     * @return
+     */
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     /**
@@ -116,7 +126,6 @@ public class StudentToIslandActionRound implements RoundInterface, Serializable 
     public Boolean expertStudentToIsland(Student student, Island island) {
         this.game.setRound(this.game.getPreviousRound());
         return true;
-
     }
 
     /**
@@ -133,7 +142,6 @@ public class StudentToIslandActionRound implements RoundInterface, Serializable 
      *
      * @return
      */
-
     public Boolean finishExpertMove() {
         return null;
     }
@@ -165,6 +173,5 @@ public class StudentToIslandActionRound implements RoundInterface, Serializable 
     public Boolean chooseCloud(Cloud cloud) {
         return null;
     }
-
 
 }
