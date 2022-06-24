@@ -133,7 +133,13 @@ public class CLIController implements Runnable {
                 write(input);
                 setClientState(ClientState.SLEEPING);
                 break;
-
+            case WINNER:
+                if (client.getGame().getCurrentPlayer().getIsWinner()) {
+                    System.out.println("Congratulations " + client.getNamePlayer() + " ! You are the winner of this magic game !\nNo one is on your level :)");
+                }
+                else {
+                    System.out.println("Oh noo! Unfortunately you have lost the game ...\nBut don't worry, play again to improve your skills and prove you are the best !");
+                }
             case PLAYING:
                 for (int i = 0; i < 50; i++) {
                     System.out.println("\b");
@@ -150,13 +156,6 @@ public class CLIController implements Runnable {
                     case MOVING_STUDENTS, MOVING_MOTHERNATURE, CHOOSING_CLOUD:
                         checkRound();
                         break;
-                    case WINNER:
-                        if (client.getGame().getCurrentPlayer().getIsWinner()) {
-                            System.out.println("Congratulations " + client.getNamePlayer() + " ! You are the winner of this magic game !\nNo one is on your level :)");
-                        }
-                        else {
-                            System.out.println("Oh noo! Unfortunately you have lost the game ...\nBut don't worry, play again to improve your skills and prove you are the best !");
-                        }
                 }
                 try {
                     t0.join();

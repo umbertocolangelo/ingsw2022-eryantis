@@ -12,6 +12,5 @@ public enum PlayerPhase implements Serializable {
     CHOOSING_ASSISTANT,
     MOVING_STUDENTS,
     MOVING_MOTHERNATURE,
-    CHOOSING_CLOUD,
-    WINNER
+    CHOOSING_CLOUD
 }

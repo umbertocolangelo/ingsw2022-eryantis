@@ -961,7 +961,7 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView studentHallPink10;
 
     /**
-     *  Tower on island 1 ImageView reference
+     * Tower on island 1 ImageView reference
      */
     @FXML
     private ImageView tower1Island1;
@@ -975,9 +975,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island1;
     @FXML
     private ImageView tower6Island1;
+    @FXML
+    private ImageView tower7Island1;
 
     /**
-     *  Tower on island 2 ImageView reference
+     * Tower on island 2 ImageView reference
      */
     @FXML
     private ImageView tower1Island2;
@@ -991,9 +993,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island2;
     @FXML
     private ImageView tower6Island2;
+    @FXML
+    private ImageView tower7Island2;
 
     /**
-     *  Tower on island 2 ImageView reference
+     * Tower on island 2 ImageView reference
      */
     @FXML
     private ImageView tower1Island3;
@@ -1007,9 +1011,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island3;
     @FXML
     private ImageView tower6Island3;
+    @FXML
+    private ImageView tower7Island3;
 
     /**
-     *  Tower on island 3 ImageView reference
+     * Tower on island 3 ImageView reference
      */
     @FXML
     private ImageView tower1Island4;
@@ -1023,9 +1029,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island4;
     @FXML
     private ImageView tower6Island4;
+    @FXML
+    private ImageView tower7Island4;
 
     /**
-     *  Tower on island 5 ImageView reference
+     * Tower on island 5 ImageView reference
      */
     @FXML
     private ImageView tower1Island5;
@@ -1039,9 +1047,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island5;
     @FXML
     private ImageView tower6Island5;
+    @FXML
+    private ImageView tower7Island5;
 
     /**
-     *  Tower on island 6 ImageView reference
+     * Tower on island 6 ImageView reference
      */
     @FXML
     private ImageView tower1Island6;
@@ -1055,9 +1065,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island6;
     @FXML
     private ImageView tower6Island6;
+    @FXML
+    private ImageView tower7Island6;
 
     /**
-     *  Tower on island 7 ImageView reference
+     * Tower on island 7 ImageView reference
      */
     @FXML
     private ImageView tower1Island7;
@@ -1071,9 +1083,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island7;
     @FXML
     private ImageView tower6Island7;
+    @FXML
+    private ImageView tower7Island7;
 
     /**
-     *  Tower on island 8 ImageView reference
+     * Tower on island 8 ImageView reference
      */
     @FXML
     private ImageView tower1Island8;
@@ -1087,9 +1101,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island8;
     @FXML
     private ImageView tower6Island8;
+    @FXML
+    private ImageView tower7Island8;
 
     /**
-     *  Tower on island 9 ImageView reference
+     * Tower on island 9 ImageView reference
      */
     @FXML
     private ImageView tower1Island9;
@@ -1103,9 +1119,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island9;
     @FXML
     private ImageView tower6Island9;
+    @FXML
+    private ImageView tower7Island9;
 
     /**
-     *  Tower on island 10 ImageView reference
+     * Tower on island 10 ImageView reference
      */
     @FXML
     private ImageView tower1Island10;
@@ -1119,9 +1137,11 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island10;
     @FXML
     private ImageView tower6Island10;
+    @FXML
+    private ImageView tower7Island10;
 
     /**
-     *  Tower on island 11 ImageView reference
+     * Tower on island 11 ImageView reference
      */
     @FXML
     private ImageView tower1Island11;
@@ -1135,6 +1155,8 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island11;
     @FXML
     private ImageView tower6Island11;
+    @FXML
+    private ImageView tower7Island11;
 
     /**
      *  Tower on island 12 ImageView reference
@@ -1151,6 +1173,8 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower5Island12;
     @FXML
     private ImageView tower6Island12;
+    @FXML
+    private ImageView tower7Island12;
 
     /**
      * Third cloud ImageView reference
@@ -1475,19 +1499,21 @@ public class GuiActionPhaseController implements Initializable {
         showTowerTable();
 
         // show of islands and relative students and towers
-
         LinkedList<IslandInterface> islandList = game.getIslandManager().getIslands();
         int islandIndex = 0;
         int size = islandList.size();
-        int islandNum=1;
+        int islandNum = 1;
         while(islandNum<13) { // for every ImageView of island
             if ((Integer.parseInt(islandList.get(islandIndex).getId())-25)==islandNum) { // if there is an island or island group that has to be shown
                 // show towers and students on the island with that index on the ImageView of the relative island
                 showAllIsland(islandNum,islandIndex,0,0);
-                if(islandIndex<size-1){islandIndex++;}
+                if (islandIndex<size-1) {
+                    islandIndex++;
+                }
             } else {
                 // do not show island with that index and make it not clickable
                 disableIsland(islandNum);
+                //updatePosition(islandNum-1, islandIndex);
             }
             islandNum++;
         }
@@ -1695,7 +1721,6 @@ public class GuiActionPhaseController implements Initializable {
      * shows the deny tokens on island 12 on the screen
      */
     private void showDenyIsland12(int islandIndex, double x, double y){
-
         denyTokens.clear();
         denyTokens.add(deny1Island12);
         denyTokens.add(deny2Island12);
@@ -1838,6 +1863,10 @@ public class GuiActionPhaseController implements Initializable {
         }
     }
 
+    private void updatePosition(Integer islandNum, Integer islandIndex, Integer groupSize) {
+
+    }
+
     /**
      * shows the towers on island 1 on the screen
      */
@@ -1850,6 +1879,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island1);
         towers.add(tower5Island1);
         towers.add(tower6Island1);
+        towers.add(tower7Island1);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -1889,6 +1919,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island2);
         towers.add(tower5Island2);
         towers.add(tower6Island2);
+        towers.add(tower7Island2);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -1928,6 +1959,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island3);
         towers.add(tower5Island3);
         towers.add(tower6Island3);
+        towers.add(tower7Island3);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -1967,6 +1999,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island4);
         towers.add(tower5Island4);
         towers.add(tower6Island4);
+        towers.add(tower7Island4);
 
         int count = 0;
 
@@ -2006,6 +2039,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island5);
         towers.add(tower5Island5);
         towers.add(tower6Island5);
+        towers.add(tower7Island5);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -2045,6 +2079,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island6);
         towers.add(tower5Island6);
         towers.add(tower6Island6);
+        towers.add(tower7Island6);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -2084,6 +2119,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island7);
         towers.add(tower5Island7);
         towers.add(tower6Island7);
+        towers.add(tower7Island7);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -2123,6 +2159,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island8);
         towers.add(tower5Island8);
         towers.add(tower6Island8);
+        towers.add(tower7Island8);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -2166,6 +2203,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island9);
         towers.add(tower5Island9);
         towers.add(tower6Island9);
+        towers.add(tower7Island9);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -2205,6 +2243,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island10);
         towers.add(tower5Island10);
         towers.add(tower6Island10);
+        towers.add(tower7Island10);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -2244,6 +2283,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island11);
         towers.add(tower5Island11);
         towers.add(tower6Island11);
+        towers.add(tower7Island11);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -2283,6 +2323,7 @@ public class GuiActionPhaseController implements Initializable {
         towers.add(tower4Island12);
         towers.add(tower5Island12);
         towers.add(tower6Island12);
+        towers.add(tower7Island12);
 
         if (game.getIslandManager().getIslands().get(index).getTowers()==null) {
             return;
@@ -3481,7 +3522,7 @@ public class GuiActionPhaseController implements Initializable {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(36, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
-            } else if(game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_STUDENTS && studentMoving!=null) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_STUDENTS && studentMoving!=null) {
                 ((MovingStudentFromIngressToIsland)studentOnIsland).setIsland("36");
                 GUIController.getInstance().write(studentOnIsland);
             }
@@ -3964,11 +4005,7 @@ public class GuiActionPhaseController implements Initializable {
             MessageMethod messageMethod = new ChooseStudentsFromCloud();
             ((ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(0).getId());
             GUIController.getInstance().write(messageMethod);
-            if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.WINNER) {
-                winnerScene();
-            } else {
-                showLoading();
-            }
+            showLoading();
         }
     }
 
@@ -3982,11 +4019,7 @@ public class GuiActionPhaseController implements Initializable {
             MessageMethod messageMethod = new ChooseStudentsFromCloud();
             ((ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(1).getId());
             GUIController.getInstance().write(messageMethod);
-            if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.WINNER) {
-                winnerScene();
-            } else {
-                showLoading();
-            }
+            showLoading();
         }
     }
 
@@ -4000,11 +4033,7 @@ public class GuiActionPhaseController implements Initializable {
             MessageMethod messageMethod = new ChooseStudentsFromCloud();
             ((ChooseStudentsFromCloud)messageMethod).setCloud(game.getClouds().get(2).getId());
             GUIController.getInstance().write(messageMethod);
-            if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.WINNER) {
-                winnerScene();
-            } else {
-                showLoading();
-            }
+            showLoading();
         }
     }
 
@@ -4033,29 +4062,7 @@ public class GuiActionPhaseController implements Initializable {
      * go to winner scene
      * @throws IOException
      */
-    public void winnerScene() throws IOException{
-        stage = new Stage();
-        GUIController.getInstance().getStage().close();
-        GUIController.setStage(stage);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/winner-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.setTitle("Eriantys");
-        stage.show();
-
-        GuiWinnerController winnerController = fxmlLoader.getController();
-        winnerController.resize(stage);
-
-        Winner message = new Winner();
-        GUIController.getInstance().write(message);
-
-        if (game.getCurrentPlayer().getIsWinner()) {
-            winnerController.setWinnerText();
-        } else {
-            winnerController.setLoserText();
-        }
-    }
 
     /**
      * go to expertCard scene

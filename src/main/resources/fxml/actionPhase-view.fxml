@@ -161,9 +161,18 @@
                   <Image url="@../Graphical_Assets/reameB_2.png" />
                </image>
             </ImageView>
-            <Button layoutX="1108.0" layoutY="513.0" mnemonicParsing="false" text="Play" />
-            <Button fx:id="expertCardButton" layoutX="1108.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#clickPlayExpertCard" text="Play ExpertCard" />
-            <Button fx:id="finishExpertMove" layoutX="1108.0" layoutY="653.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" text="finishExpertMove" />
+            <Button layoutX="1110.0" layoutY="513.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Play">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="14.0" />
+               </font></Button>
+            <Button fx:id="expertCardButton" layoutX="1110.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#clickPlayExpertCard" prefHeight="35.0" prefWidth="150.0" text="Play Expert Card">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="14.0" />
+               </font></Button>
+            <Button fx:id="finishExpertMove" layoutX="1110.0" layoutY="647.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="35.0" prefWidth="150.0" text="Finish Expert Move">
+               <font>
+                  <Font name="Book Antiqua Bold Italic" size="14.0" />
+               </font></Button>
             <ImageView fx:id="greenLine" fitHeight="32.0" fitWidth="281.0" layoutX="108.0" layoutY="497.0" onMouseClicked="#clickOnGreenLine" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="redLine" fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="534.0" onMouseClicked="#clickOnRedLine" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="yellowLine" fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="574.0" onMouseClicked="#clickOnYellowLine" pickOnBounds="true" preserveRatio="true" />
@@ -505,7 +514,7 @@
             <ImageView fx:id="tower1Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower5Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower6Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="communication" layoutX="602.0" layoutY="565.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="495.7294921875">
+            <Text fx:id="communication" layoutX="602.0" layoutY="532.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="495.7294921875">
                <font>
                   <Font size="31.0" />
                </font>
@@ -524,7 +533,7 @@
             <ImageView fx:id="deny1Island12" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="426.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny1Island11" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="392.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny1Island10" fitHeight="23.0" fitWidth="23.0" layoutX="1254.0" layoutY="290.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="deny1Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="178.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny4Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="178.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny1Island8" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="121.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny1Island7" fitHeight="23.0" fitWidth="23.0" layoutX="705.0" layoutY="121.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny1Island6" fitHeight="23.0" fitWidth="23.0" layoutX="503.0" layoutY="121.0" onMouseClicked="#clickIsland3" pickOnBounds="true" preserveRatio="true" />
@@ -552,7 +561,7 @@
             <ImageView fx:id="deny4Island10" fitHeight="23.0" fitWidth="23.0" layoutX="1254.0" layoutY="215.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny2Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny3Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="deny4Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="deny1Island9" fitHeight="23.0" fitWidth="23.0" layoutX="1087.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny2Island8" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="96.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny3Island8" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="71.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny4Island8" fitHeight="23.0" fitWidth="23.0" layoutX="900.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" />
@@ -565,6 +574,18 @@
             <ImageView fx:id="deny2Island5" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="153.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny3Island5" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="128.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="deny4Island5" fitHeight="23.0" fitWidth="23.0" layoutX="329.0" layoutY="103.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island6" fitHeight="23.0" fitWidth="23.0" layoutX="371.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island7" fitHeight="23.0" fitWidth="23.0" layoutX="573.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island8" fitHeight="23.0" fitWidth="23.0" layoutX="768.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island9" fitHeight="23.0" fitWidth="23.0" layoutX="955.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island10" fitHeight="23.0" fitWidth="23.0" layoutX="1122.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island11" fitHeight="23.0" fitWidth="23.0" layoutX="955.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island12" fitHeight="23.0" fitWidth="23.0" layoutX="768.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island1" fitHeight="23.0" fitWidth="23.0" layoutX="573.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island2" fitHeight="23.0" fitWidth="23.0" layoutX="371.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island3" fitHeight="23.0" fitWidth="23.0" layoutX="197.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island4" fitHeight="23.0" fitWidth="23.0" layoutX="32.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="tower7Island5" fitHeight="23.0" fitWidth="23.0" layoutX="199.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

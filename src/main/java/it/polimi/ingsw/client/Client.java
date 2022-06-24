@@ -5,6 +5,7 @@ import it.polimi.ingsw.client.view.CLI;
 import it.polimi.ingsw.client.view.gui.controllers.GUIController;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.player.Player;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -153,6 +154,13 @@ public class Client {
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
                                     System.out.println("Client received Game.");
+                                    for(Player p : game.getPlayerList()){
+                                        if(p.getIsWinner()){
+                                            GUIController.getInstance().setClientState(ClientState.WINNER);
+                                            GUIController.getInstance().chooseScene();
+                                            return;
+                                        }
+                                    }
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
                                         GUIController.getInstance().setClientState(ClientState.PLAYING);
                                         GUIController.getInstance().chooseScene();

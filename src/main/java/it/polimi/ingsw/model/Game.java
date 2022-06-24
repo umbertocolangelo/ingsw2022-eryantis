@@ -249,9 +249,6 @@ public class Game implements GameInterface, Serializable {
         for (Player p : playerList) {
             if (p.getSchool().getTowerTable()!=null && p.getSchool().getTowerTable().numOfTowers()==0) {
                 p.isWinner();
-                for (Player player : playerList) {
-                    player.setPlayerPhase(PlayerPhase.WINNER);
-                }
                 deleteGame();
                 propertyChange.firePropertyChange("winner", null, p);
                 return;
@@ -317,9 +314,6 @@ public class Game implements GameInterface, Serializable {
 
             if(winner!=null) {
                 winner.isWinner();
-                for (Player player : playerList) {
-                    player.setPlayerPhase(PlayerPhase.WINNER);
-                }
                 deleteGame();
                 propertyChange.firePropertyChange("winner", null, winner);
             }

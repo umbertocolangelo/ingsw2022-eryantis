@@ -26,12 +26,12 @@
                   <Font name="Book Antiqua Bold Italic" size="40.0" />
                </font>
             </Label>
-            <Label fx:id="winner3" layoutX="505.0" layoutY="404.0" text="No one is on your level !">
+            <Label fx:id="winner3" layoutX="505.0" layoutY="404.0" text="No one is at your level !">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="loser1" layoutX="114.0" layoutY="296.0" text="Oooh no, what a pity ! Player Name was a real strategist this time and won the game ...">
+            <Label fx:id="loser1" layoutX="114.0" layoutY="296.0" text="Oh nooo ! Unfortunantely you have lost the game ...">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="28.0" />
                </font>

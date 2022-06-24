@@ -248,8 +248,18 @@ public class GUIController {
                             }
                         });
                         break;
+                    case WINNER: //winner in client state
+                        GuiWinnerController winnerController = new GuiWinnerController();
+                        Platform.runLater(() -> {
+                            try {
+                                winnerController.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        break;
                     case PLAYING:
-                        if (client.getGame().getCurrentRound().getId() != null) {
+                        if (client.getGame().getCurrentRound().getId()!=null) {
                             if (client.getGame().getCurrentRound().getId() == 0 || client.getGame().getCurrentRound().getId() == 3 || client.getGame().getCurrentRound().getId() == 2) {
                                 GuiChooseExpertCardController cardController = new GuiChooseExpertCardController();
                                 Platform.runLater(() -> {
@@ -347,16 +357,6 @@ public class GUIController {
                                     Platform.runLater(() -> {
                                         try {
                                             movingMotherNatureController.refresh();
-                                        } catch (IOException e) {
-                                            e.printStackTrace();
-                                        }
-                                    });
-                                    break;
-                                case WINNER:
-                                    GuiActionPhaseController winnerController = new GuiActionPhaseController();
-                                    Platform.runLater(() -> {
-                                        try {
-                                            winnerController.winnerScene();
                                         } catch (IOException e) {
                                             e.printStackTrace();
                                         }

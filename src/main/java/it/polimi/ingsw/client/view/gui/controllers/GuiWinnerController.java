@@ -1,15 +1,21 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
+import it.polimi.ingsw.message.Winner;
+import it.polimi.ingsw.model.player.Player;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class GuiWinnerController {
 
     @FXML
     private AnchorPane scenePane;
+
     /**
      * Text field
      */
@@ -49,6 +55,29 @@ public class GuiWinnerController {
         winner1.setVisible(false);
         winner2.setVisible(false);
         winner3.setVisible(false);
+    }
+
+    public void show() throws IOException {
+        stage = new Stage();
+        GUIController.getInstance().getStage().close();
+        GUIController.setStage(stage);
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/winner-view.fxml"));
+        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        stage.setScene(scene);
+        stage.setTitle("Eriantys");
+        stage.show();
+
+        GuiWinnerController winnerController = fxmlLoader.getController();
+        winnerController.resize(stage);
+
+        for (Player p : GUIController.getInstance().getClient().getGame().getPlayerList()) {
+            if (p.getIsWinner() && p.getName().equals(GUIController.getInstance().getClient().getNamePlayer())) {
+                winnerController.setWinnerText();
+                return;
+            }
+        }
+        winnerController.setLoserText();
     }
 
     /**
