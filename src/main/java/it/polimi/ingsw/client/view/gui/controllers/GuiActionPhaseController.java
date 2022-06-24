@@ -121,6 +121,20 @@ public class GuiActionPhaseController implements Initializable {
      */
     private String denyPath = "file:src/main/resources/Graphical_Assets/deny_token.png";
 
+    /**
+     * Paths to assistantCards image files
+     */
+    private String card1Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (1).png";
+    private String card2Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (2).png";
+    private String card3Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (3).png";
+    private String card4Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (4).png";
+    private String card5Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (5).png";
+    private String card6Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (6).png";
+    private String card7Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (7).png";
+    private String card8Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (8).png";
+    private String card9Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (9).png";
+    private String card10Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (10).png";
+
 
     /**
      * AnchorPane reference
@@ -1278,6 +1292,9 @@ public class GuiActionPhaseController implements Initializable {
     @FXML
     private ImageView yellowLine;
 
+    @FXML
+    private ImageView playedAssistantCard;
+
     /**
      * Shadows
      */
@@ -1517,6 +1534,11 @@ public class GuiActionPhaseController implements Initializable {
             }
             islandNum++;
         }
+
+        //show played assistant card
+        int num = Integer.parseInt(game.getCurrentPlayer().getCardPlayed().getId())-15;
+        showAssistantCard(num);
+
     }
 
     /**
@@ -1863,8 +1885,39 @@ public class GuiActionPhaseController implements Initializable {
         }
     }
 
-    private void updatePosition(Integer islandNum, Integer islandIndex, Integer groupSize) {
-
+    private void showAssistantCard(int num) {
+        switch (num) {
+            case 1 -> {
+                playedAssistantCard.setImage(new Image(card1Path));
+            }
+            case 2 -> {
+                playedAssistantCard.setImage(new Image(card2Path));
+            }
+            case 3 -> {
+                playedAssistantCard.setImage(new Image(card3Path));
+            }
+            case 4 -> {
+                playedAssistantCard.setImage(new Image(card4Path));
+            }
+            case 5 -> {
+                playedAssistantCard.setImage(new Image(card5Path));
+            }
+            case 6 -> {
+                playedAssistantCard.setImage(new Image(card6Path));
+            }
+            case 7 -> {
+                playedAssistantCard.setImage(new Image(card7Path));
+            }
+            case 8 -> {
+                playedAssistantCard.setImage(new Image(card8Path));
+            }
+            case 9 -> {
+                playedAssistantCard.setImage(new Image(card9Path));
+            }
+            case 10 -> {
+                playedAssistantCard.setImage(new Image(card10Path));
+            }
+        }
     }
 
     /**

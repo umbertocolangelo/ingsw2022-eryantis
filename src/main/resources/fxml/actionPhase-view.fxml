@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -164,15 +165,24 @@
             <Button layoutX="1110.0" layoutY="513.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="150.0" text="Play">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button fx:id="expertCardButton" layoutX="1110.0" layoutY="580.0" mnemonicParsing="false" onMouseClicked="#clickPlayExpertCard" prefHeight="35.0" prefWidth="150.0" text="Play Expert Card">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <Button fx:id="finishExpertMove" layoutX="1110.0" layoutY="647.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="35.0" prefWidth="150.0" text="Finish Expert Move">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />
-               </font></Button>
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <ImageView fx:id="greenLine" fitHeight="32.0" fitWidth="281.0" layoutX="108.0" layoutY="497.0" onMouseClicked="#clickOnGreenLine" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="redLine" fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="534.0" onMouseClicked="#clickOnRedLine" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="yellowLine" fitHeight="32.0" fitWidth="281.0" layoutX="109.0" layoutY="574.0" onMouseClicked="#clickOnYellowLine" pickOnBounds="true" preserveRatio="true" />
@@ -514,9 +524,9 @@
             <ImageView fx:id="tower1Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower5Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower6Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="communication" layoutX="602.0" layoutY="532.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="495.7294921875">
+            <Text fx:id="communication" layoutX="796.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
                <font>
-                  <Font size="31.0" />
+                  <Font name="Book Antiqua" size="12.0" />
                </font>
             </Text>
             <ImageView fx:id="tower2" fitHeight="53.0" fitWidth="32.0" layoutX="517.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true" />
@@ -586,6 +596,7 @@
             <ImageView fx:id="tower7Island3" fitHeight="23.0" fitWidth="23.0" layoutX="197.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island4" fitHeight="23.0" fitWidth="23.0" layoutX="32.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island5" fitHeight="23.0" fitWidth="23.0" layoutX="199.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fx:id="playedAssistantCard" fitHeight="170.0" fitWidth="133.0" layoutX="609.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </children>

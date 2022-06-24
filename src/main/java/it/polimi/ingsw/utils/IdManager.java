@@ -54,7 +54,7 @@ public class IdManager implements Serializable {
      * @return the unique instance of IdManager
      */
     public static IdManager getInstance(){
-        if(instance==null) {
+        if (instance==null) {
             instance = new IdManager();
         }
         return instance;
