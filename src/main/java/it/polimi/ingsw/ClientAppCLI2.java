@@ -10,6 +10,7 @@ public class ClientAppCLI2 {
         CLIController CLIController =new CLIController();
         CLIController.setClient(client);
         client.setController(CLIController);
+        client.setIsCli();
         CLIController.startClient();
     }
 

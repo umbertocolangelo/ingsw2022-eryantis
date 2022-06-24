@@ -221,44 +221,52 @@ public class CLIController implements Runnable {
     }
 
     public void startClient() {
-
-
-                //final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
-                // try {
-                Thread t1 = null;
-                try {
-                    t1 = new Thread(client.run());
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-                t1.start();
+        System.out.println("Insert 1 if you want to change the ip address, 0 if you dont");
+        input = stdIn.nextLine();
+        while ( !(input.equals("0") || input.equals("1"))) {
+            System.out.println("You inserted a wrong value ");
+            input = stdIn.nextLine();
+        }
+        if(input.equals("1")){
+            System.out.println("Insert the ip address");
+            input = stdIn.nextLine();
+            while (!input.matches( "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$")){
+                System.out.println("You inserted a wrong value ");
+                input = stdIn.nextLine();
             }
+            client.setIp(input);
+            System.out.println("Insert the port");
+            input = stdIn.nextLine();
+           while (!input.matches(".*\\d.*") || input.length()>5){
+               System.out.println("You inserted a wrong or too high value ");
+                input = stdIn.nextLine();
+            }
+           client.setPort(Integer.parseInt(input));
+        }
+        Thread t1 = null;
+        try {
+            t1 = new Thread(client.run());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        t1.start();
+    }
 
 
     public void connectionRefuse() {
-
-                System.out.println("The connection has been refused, write 0 if you want to try again or 1 to close the app");
-                input = stdIn.nextLine();
-                while ( !(input.equals("0") || input.equals("1"))) {
-                    System.out.println("You inserted a wrong value ");
-                    input = stdIn.nextLine();
-                }
-                if(input.equals("1"))
-                    return;
-                else {
-                    Thread t1 = null;
-                    try {
-                        t1 = new Thread(client.run());
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-
-                    t1.start();
-                }
-            }
+        System.out.println("The connection has been refused, write 0 if you want to try again or 1 to close the app");
+        input = stdIn.nextLine();
+        while ( !(input.equals("0") || input.equals("1"))) {
+            System.out.println("You inserted a wrong value ");
+            input = stdIn.nextLine();
+        }
+        if(input.equals("1"))
+            return;
+        else {
+            startClient();
+        }
+    }
 
 
 
