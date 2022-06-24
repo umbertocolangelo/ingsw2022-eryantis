@@ -29,6 +29,13 @@ public class GuiPortIpController implements Initializable {
     @FXML
     private TextField ip;
 
+    @FXML
+    private Text currentIp;
+
+    @FXML
+    private Text currentPort;
+
+
     /**
      * Reference to the stage
      */
@@ -45,8 +52,11 @@ public class GuiPortIpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        currentIp.setText("Your current target ip is " + GUIController.getInstance().getClient().getIp());
+        currentPort.setText("Your current target port is " + GUIController.getInstance().getClient().getPort());
         if(GUIController.getInstance().getConnectionRefuse())
             connection.setText("Connection refused, click next to try again");
+
     }
 
     /**

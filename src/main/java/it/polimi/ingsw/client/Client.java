@@ -366,8 +366,27 @@ public class Client {
         this.port=port;
     }
 
+    /**
+     *
+     */
     public void setIsGui(){
         this.isCli=false;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getIp(){
+        return this.ip;
+    }
+
+    /**
+     *
+     * @return
+     */
+    public Integer getPort(){
+        return this.port;
     }
 
 }

@@ -46,7 +46,7 @@
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
             </TextField>
-            <Label layoutX="482.0" layoutY="271.0" prefHeight="40.0" prefWidth="316.0" text="Insert the port" textAlignment="CENTER">
+            <Label layoutX="537.0" layoutY="269.0" prefHeight="40.0" prefWidth="316.0" text="Insert the port" textAlignment="CENTER">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="27.0" />
                </font>
@@ -55,6 +55,16 @@
                <font>
                   <Font size="36.0" />
                </font></Text>
+            <Text fx:id="currentIp" layoutX="125.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="198.7294921875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
+            <Text fx:id="currentPort" layoutX="125.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="198.7294921875">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>

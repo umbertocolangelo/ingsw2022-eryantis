@@ -221,7 +221,7 @@ public class CLIController implements Runnable {
     }
 
     public void startClient() {
-        System.out.println("Insert 1 if you want to change the ip address, 0 if you dont");
+        System.out.println("Insert 1 if you want to change the ip address, 0 if you dont\nYour target ip address is " + client.getIp() + " and your target port is " + client.getPort().toString());
         input = stdIn.nextLine();
         while ( !(input.equals("0") || input.equals("1"))) {
             System.out.println("You inserted a wrong value ");
