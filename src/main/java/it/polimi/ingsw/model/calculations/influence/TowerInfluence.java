@@ -81,7 +81,7 @@ public class TowerInfluence implements InfluenceCalculator, Serializable {
         }
 
         if(winner!=null && island.getInfluenceColor()!=winner.getPlayerColor()){    //if towers have to be mover
-            manager.applyInfluence(oldWinner, winner, (Island) island); // apply changes
+            manager.applyInfluence(oldWinner, winner, island); // apply changes
         }
 
     }

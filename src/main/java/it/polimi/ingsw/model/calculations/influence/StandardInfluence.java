@@ -21,7 +21,6 @@ public class StandardInfluence implements InfluenceCalculator, Serializable {
      * @param manager references the InfluenceManager
      */
     public StandardInfluence(Collection<Player> playerList, InfluenceManager manager) {
-        this.motherNature = motherNature;
         this.players = new ArrayList<Player>(playerList);
         this.manager = manager;
     }
@@ -36,10 +35,6 @@ public class StandardInfluence implements InfluenceCalculator, Serializable {
      */
     private InfluenceManager manager;
 
-    /**
-     * References motherNature instance
-     */
-    private MotherNature motherNature;
 
     /**
      * Calculates the influence with the standard method
@@ -85,14 +80,8 @@ public class StandardInfluence implements InfluenceCalculator, Serializable {
             }
         }
 
-        if(winner!=null){    //if towers have to be mover
-
-            if(island.getInfluenceColor()!=null) { // if someone has control over the island
-                if (island.getInfluenceColor() != winner.getPlayerColor()) {
-                    manager.applyInfluence(oldWinner, winner, (Island) island); // apply changes
-                }
-            }
-            manager.applyInfluence(oldWinner, winner, (Island) island); // apply changes
+        if(winner!=null && island.getInfluenceColor()!=winner.getPlayerColor()){    //if towers have to be mover
+            manager.applyInfluence(oldWinner, winner, island); // apply changes
         }
 
     }

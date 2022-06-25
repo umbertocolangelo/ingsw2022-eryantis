@@ -111,16 +111,20 @@ public class InfluenceManager implements Serializable {
         Collection<Tower> towers = island.getTowers();
         Integer numOfTowers = island.numOfTowers();
 
-        if(island.numOfTowers()==0){ // if no one had the island before the calculus
+        // if no one had the island before the calculus
+
+        if(island.numOfTowers()==0){
             island.addTower(newPlayer.getSchool().getTowerTable().getTowers().get(0));
             return;
         }
 
-        for(Tower tower : towers){  // removes the current tower
+        // if the newPlayer takes control over the oldPlayer
+
+        for(Tower tower : towers){  // remove the current towers
             oldPlayer.getSchool().getTowerTable().addTower(tower);
         }
 
-        for(Integer place = 0; place < numOfTowers; place++){
+        for(Integer place = 0; place < numOfTowers; place++){ // add the new towers
             Tower tower = newPlayer.getSchool().getTowerTable().getTowers().get(0);
             if(tower != null){
                 island.addTower(tower);

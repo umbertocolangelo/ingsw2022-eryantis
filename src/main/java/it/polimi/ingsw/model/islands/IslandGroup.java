@@ -2,6 +2,8 @@ package it.polimi.ingsw.model.islands;
 
 import it.polimi.ingsw.model.enumerations.Color;
 import it.polimi.ingsw.model.enumerations.PlayerColor;
+import it.polimi.ingsw.model.objectTypes.FixedObject;
+import it.polimi.ingsw.model.objectTypes.FixedObjectTower;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.pawns.Tower;
 
@@ -11,7 +13,7 @@ import java.util.*;
 /**
  *
  */
-public class IslandGroup implements IslandInterface, Serializable {
+public class IslandGroup implements IslandInterface, Serializable, FixedObjectTower {
 
     /**
      * Default constructor
@@ -145,6 +147,7 @@ public class IslandGroup implements IslandInterface, Serializable {
         for (Island island: islandGroup) {
             if (island.getTowers().get(0)==tower) {
                 island.removeTower(tower);
+                return;
             }
         }
     }

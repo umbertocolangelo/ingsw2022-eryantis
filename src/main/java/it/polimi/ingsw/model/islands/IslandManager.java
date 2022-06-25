@@ -42,15 +42,15 @@ public class IslandManager implements Serializable {
      * Next island on which motherNature has to set position
      * @return
      */
-    public IslandInterface nextIsland(Integer assistantCardValue) {
+    public IslandInterface nextIsland(Integer jumps) {
         IslandInterface position = null;
         for (int i=0; i<islands.size(); i++) {
             if (islands.get(i).equals(motherNature.getIsland())) {
-                if (i+assistantCardValue>=islands.size()) {
-                    position = islands.get(i+assistantCardValue-islands.size()); //circular list
+                if (i+jumps>=islands.size()) {
+                    position = islands.get(i+jumps-islands.size()); //circular list
                 }
                 else {
-                    position = islands.get(i+assistantCardValue);
+                    position = islands.get(i+jumps);
                 }
             }
         }
