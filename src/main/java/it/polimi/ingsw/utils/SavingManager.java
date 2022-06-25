@@ -78,10 +78,12 @@ public class SavingManager implements Serializable{
     public Boolean deleteSavedGame(String path) {
         File file = new File(path);
         try {
-            Files.deleteIfExists(file.toPath());
-            return true;
+            if(Files.deleteIfExists(file.toPath())){
+                return true;
+            }
         } catch (IOException e) {
-            return false;
+                return false;
         }
+        return false;
     }
 }

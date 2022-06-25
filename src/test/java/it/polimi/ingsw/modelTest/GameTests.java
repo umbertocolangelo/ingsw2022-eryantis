@@ -535,5 +535,35 @@ public class GameTests {
         game.expertIngressHallSwap(student1.getId(), student.getId());
         assertTrue(player1.getSchool().getIngress().getStudents().contains(student1) && !player1.getSchool().getIngress().getStudents().contains(student) && player1.getSchool().getHall().getLine(Color.YELLOW).getStudents().contains(student) && !player1.getSchool().getHall().getLine(Color.RED).getStudents().contains(student1));
     }
+
+
+    /**
+     * Testing deleteGame method
+     */
+    @Test
+    public void deleteGameTest() {
+        Player player1 = new Player("a");
+        Player player2 = new Player("b");
+        Game game= new Game();
+        LinkedList <Player> list = new LinkedList<>();
+        list.add(player1);
+        list.add(player2);
+        game.setPlayerList(list);
+        game.initializeGame();
+        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
+        game.saveGame();
+        // remove all the assistant cards
+        for (Player p : list){
+            for(AssistantCard c : AssistantCard.values() ){
+                p.playAssistantCard(c);
+            }
+        }
+        player1.resetAssistantCard();
+        player2.resetAssistantCard();
+    }
+
+
+
 }
 

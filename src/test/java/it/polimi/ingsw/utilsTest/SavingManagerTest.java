@@ -70,8 +70,8 @@ public class SavingManagerTest {
 
         Game game = new Game();
         game.saveGame();
-        SavingManager.getInstance().deleteSavedGame("eriantys.save");
-        File f = new File("eriantys.save");
+        System.out.println(SavingManager.getInstance().deleteSavedGame("eriantys"));
+        File f = new File("eriantys");
         assertTrue(!f.exists());
     }
 
