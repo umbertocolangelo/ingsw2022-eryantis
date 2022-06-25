@@ -2917,7 +2917,12 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showText(){
         if (game.getCurrentRound().getId()==null) {
-            communication.setText("Normal round");
+            if (GUIController.getInstance().getIdExpertCardPlayed()!=null) {
+                if (GUIController.getInstance().getIdExpertCardPlayed().equals("40") || GUIController.getInstance().getIdExpertCardPlayed().equals("42")) {
+                    communication.setText("You selected a card that needs an island as parameter, pick an island");
+                }
+            }else
+                communication.setText("Normal round");
         } else {
             switch (game.getCurrentRound().getId()) {
                 case 0:
@@ -2935,11 +2940,7 @@ public class GuiActionPhaseController implements Initializable {
             }
         }
 
-        if (GUIController.getInstance().getIdExpertCardPlayed()!=null) {
-            if (GUIController.getInstance().getIdExpertCardPlayed().equals("40") || GUIController.getInstance().getIdExpertCardPlayed().equals("42")) {
-                communication.setText("You selected a card that needs an island as parameter, pick an island");
-            }
-        }
+
 
     }
 
@@ -2955,7 +2956,7 @@ public class GuiActionPhaseController implements Initializable {
                 student4Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(3).getColor()));
             }
             if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
-                setShadow(cloud1);
+                cloud1.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
             }
         }
         if (!game.getClouds().get(1).getStudents().isEmpty()) {
@@ -2966,7 +2967,7 @@ public class GuiActionPhaseController implements Initializable {
                 student4Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(3).getColor()));
             }
             if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
-                setShadow(cloud2);
+                cloud2.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
             }
         }
         if (game.getPlayerList().size()==3) {
@@ -2976,7 +2977,7 @@ public class GuiActionPhaseController implements Initializable {
                 student3Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(2).getColor()));
                 student4Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(3).getColor()));
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
-                    setShadow(cloud3);
+                    cloud3.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
                 }
             }
         } else {
@@ -3881,23 +3882,7 @@ public class GuiActionPhaseController implements Initializable {
         actionController.resize(stage);
     }
 
-    /**
-     *
-     * @throws IOException
-     */
-    public void sceneStudentOnCard() throws IOException {
-        stage = new Stage();
-        GUIController.getInstance().getStage().close();
-        GUIController.setStage(stage);
 
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/studentsOnCard-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.show();
-
-        GuiChooseStudentsOnCardController studentsController = fxmlLoader.getController();
-        studentsController.resize(stage);
-    }
 
     /**
      * Click on ingress 1
