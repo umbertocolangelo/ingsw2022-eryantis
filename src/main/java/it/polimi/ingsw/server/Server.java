@@ -256,13 +256,15 @@ public class Server {
      * @return the thread used
      */
     public Thread modifyGame(Object object) {
-        Thread t = new Thread(() -> {
-            if (object instanceof MessageMethod && playingConnection.size()==numberOfPlayer) {
-               ((MessageMethod) object).apply(game);
-            }
-        });
-        t.start();
-        return t;
+        synchronized (game) {
+            Thread t = new Thread(() -> {
+                if (object instanceof MessageMethod && playingConnection.size() == numberOfPlayer) {
+                    ((MessageMethod) object).apply(game);
+                }
+            });
+            t.start();
+            return t;
+        }
     }
 
     /**
