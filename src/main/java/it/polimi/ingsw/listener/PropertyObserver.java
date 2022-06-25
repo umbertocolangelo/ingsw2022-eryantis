@@ -40,7 +40,7 @@ public class PropertyObserver implements PropertyChangeListener {
         System.out.println("Old value   " + evt.getPropertyName());
         System.out.println("Value changed   " + evt.getOldValue());
         System.out.println("New value    " + evt.getNewValue());
-        if(!evt.getPropertyName().equals("winner")){game.saveGame();}
+        if(!game.isEnded()){game.saveGame();}else{game.deleteGame();}
         server.sendGame();
     }
 

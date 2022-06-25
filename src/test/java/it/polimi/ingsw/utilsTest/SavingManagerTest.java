@@ -34,7 +34,7 @@ public class SavingManagerTest {
         File f = new File("eriantys-A-B.save");
         assertTrue(f.exists() && !f.isDirectory());
         // delete the file for convenience
-        SavingManager.getInstance().deleteSavedGame("eriantys-A-B.save");
+        SavingManager.getInstance().deleteSavedGame("eriantys_exp-A-B.save");
     }
 
     /**
@@ -55,11 +55,11 @@ public class SavingManagerTest {
         LinkedList<String> playerNames = new LinkedList<String>();
         playerNames.add("One");
         playerNames.add("Two");
-        Game gameLoaded = SavingManager.getInstance().loadGame(playerNames);
+        Game gameLoaded = SavingManager.getInstance().loadGame(playerNames, true);
         gameLoaded.setInstances();
         assertTrue(gameLoaded.getPlayerList().get(0).getName().equals("One"));
         // delete the file for convenience
-        SavingManager.getInstance().deleteSavedGame("eriantys-One-Two.save");
+        SavingManager.getInstance().deleteSavedGame("eriantys_exp-One-Two.save");
     }
 
     /**

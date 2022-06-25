@@ -553,14 +553,7 @@ public class GameTests {
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
         game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
         game.saveGame();
-        // remove all the assistant cards
-        for (Player p : list){
-            for(AssistantCard c : AssistantCard.values() ){
-                p.playAssistantCard(c);
-            }
-        }
-        player1.resetAssistantCard();
-        player2.resetAssistantCard();
+        game.deleteGame();
     }
 
 

@@ -52,11 +52,17 @@ public class SavingManager implements Serializable{
      * @param playerNames contains the names of the players
      * @return the loaded instance of Game, return null if not present
      */
-    public Game loadGame(LinkedList<String> playerNames){
+    public Game loadGame(LinkedList<String> playerNames, Boolean expertMode){
         Game game;
         java.util.Collections.sort(playerNames); // sorts the playerNames list alphabetically
 
         String path = "eriantys";
+
+        if(expertMode){ // specifies the mode
+            path = path + "_exp";
+        }else{
+            path = path + "_cls";
+        }
         for(String name : playerNames){
             path = path + "-" + name;
         }

@@ -134,6 +134,11 @@ public class Game implements GameInterface, Serializable {
     private String path = "eriantys";
 
     /**
+     * True if the game is ended, false otherwise
+     */
+    private Boolean isEnded = false;
+
+    /**
      * Adds a listener to the game
      * @param listener is the listener set
      */
@@ -153,9 +158,16 @@ public class Game implements GameInterface, Serializable {
         }
         java.util.Collections.sort(playerNames); // sorts the playerNames list alphabetically
 
-        for(String name : playerNames){
+        if(expertMode){ // specifies the mode
+            path = path + "_exp";
+        }else{
+            path = path + "_cls";
+        }
+
+        for(String name : playerNames){ // specifies the player names
             path = path + "-" + name;
         }
+
         path = path + ".save";
 
         System.out.println(path);
@@ -249,7 +261,7 @@ public class Game implements GameInterface, Serializable {
         for (Player p : playerList) {
             if (p.getSchool().getTowerTable()!=null && p.getSchool().getTowerTable().numOfTowers()==0) {
                 p.isWinner();
-                deleteGame();
+                isEnded=true;
                 propertyChange.firePropertyChange("winner", null, p);
                 return;
             }
@@ -310,7 +322,7 @@ public class Game implements GameInterface, Serializable {
 
             if(winner!=null) {
                 winner.isWinner();
-                deleteGame();
+                isEnded=true;
                 propertyChange.firePropertyChange("winner", null, winner);
             }
         }
@@ -722,6 +734,13 @@ public class Game implements GameInterface, Serializable {
      */
     public void setInstances(){
         IdManager.setInstance(idManager);
+    }
+
+    /**
+     * Sets isEnded attribute to true
+     */
+    public Boolean isEnded(){
+        return this.isEnded;
     }
 
 }

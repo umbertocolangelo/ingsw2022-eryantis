@@ -175,7 +175,7 @@ public class Server {
                 playerNames.add(p.getName());
             }
 
-            loadedGame = SavingManager.getInstance().loadGame(playerNames);
+            loadedGame = SavingManager.getInstance().loadGame(playerNames, gameMode);
 
             // if a matching save is present
             if (loadedGame!=null) {
