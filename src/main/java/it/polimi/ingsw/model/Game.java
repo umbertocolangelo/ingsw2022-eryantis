@@ -560,6 +560,7 @@ public class Game implements GameInterface, Serializable {
             if(((IngressHallSwapActionRound)currentRound).getStudent()==2) {
                 finishExpertMove();
             }
+            professorManager.checkProfessor(currentPlayer);
             propertyChange.firePropertyChange("expert IngressHallSwap", studentHallId, studentIngressId);
         }
     }
