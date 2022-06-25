@@ -6,7 +6,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiWinnerController">
    <children>
       <AnchorPane fx:id="scenePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0">
@@ -31,14 +30,14 @@
                   <Font name="Book Antiqua Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="loser1" layoutX="114.0" layoutY="296.0" text="Oh nooo ! Unfortunantely you have lost the game ...">
+            <Label fx:id="loser1" layoutX="270.0" layoutY="282.0" text="Oh nooo ! Unfortunantely you have lost the game ...">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="28.0" />
+                  <Font name="Book Antiqua Bold" size="36.0" />
                </font>
             </Label>
             <Label fx:id="loser2" layoutX="263.0" layoutY="342.0" text="But don't worry, play again to improve your skills and prove you are the best !" textAlignment="CENTER">
                <font>
-                  <Font name="Book Antiqua Italic" size="24.0" />
+                  <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
          </children>

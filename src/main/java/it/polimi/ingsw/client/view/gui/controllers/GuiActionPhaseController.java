@@ -1191,8 +1191,12 @@ public class GuiActionPhaseController implements Initializable {
     private ImageView tower7Island12;
 
     /**
-     * Third cloud ImageView reference
+     * Clouds ImageView references
      */
+    @FXML
+    private ImageView cloud1;
+    @FXML
+    private ImageView cloud2;
     @FXML
     private ImageView cloud3;
 
@@ -2950,6 +2954,9 @@ public class GuiActionPhaseController implements Initializable {
             if (game.getPlayerList().size()==3) {
                 student4Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(3).getColor()));
             }
+            if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
+                setShadow(cloud1);
+            }
         }
         if (!game.getClouds().get(1).getStudents().isEmpty()) {
             student1Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(0).getColor()));
@@ -2958,6 +2965,9 @@ public class GuiActionPhaseController implements Initializable {
             if (game.getPlayerList().size()==3) {
                 student4Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(3).getColor()));
             }
+            if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
+                setShadow(cloud2);
+            }
         }
         if (game.getPlayerList().size()==3) {
             if (!game.getClouds().get(2).getStudents().isEmpty()) {
@@ -2965,6 +2975,9 @@ public class GuiActionPhaseController implements Initializable {
                 student2Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(1).getColor()));
                 student3Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(2).getColor()));
                 student4Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(3).getColor()));
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
+                    setShadow(cloud3);
+                }
             }
         } else {
             cloud3.setImage(null);
@@ -2981,50 +2994,86 @@ public class GuiActionPhaseController implements Initializable {
             case "26":
                 motherNature1.setImage(new Image(motherNaturePath));
                 idIsland = 26;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature1);
+                }
                 break;
             case "27":
                 motherNature2.setImage(new Image(motherNaturePath));
                 idIsland = 27;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature2);
+                }
                 break;
             case "28":
                 motherNature3.setImage(new Image(motherNaturePath));
                 idIsland = 28;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature3);
+                }
                 break;
             case "29":
                 motherNature4.setImage(new Image(motherNaturePath));
                 idIsland = 29;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature4);
+                }
                 break;
             case "30":
                 motherNature5.setImage(new Image(motherNaturePath));
-                idIsland=30;
+                idIsland = 30;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature5);
+                }
                 break;
             case "31":
                 motherNature6.setImage(new Image(motherNaturePath));
                 idIsland = 31;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature6);
+                }
                 break;
             case "32":
                 motherNature7.setImage(new Image(motherNaturePath));
                 idIsland = 32;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature7);
+                }
                 break;
             case "33":
                 motherNature8.setImage(new Image(motherNaturePath));
                 idIsland = 33;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature8);
+                }
                 break;
             case "34":
                 motherNature9.setImage(new Image(motherNaturePath));
                 idIsland = 34;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature9);
+                }
                 break;
             case "35":
                 motherNature10.setImage(new Image(motherNaturePath));
                 idIsland = 35;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature10);
+                }
                 break;
             case "36":
                 motherNature11.setImage(new Image(motherNaturePath));
                 idIsland = 36;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature11);
+                }
                 break;
             case "37":
                 motherNature12.setImage(new Image(motherNaturePath));
                 idIsland = 37;
+                if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
+                    setShadow(motherNature12);
+                }
                 break;
         }
     }
