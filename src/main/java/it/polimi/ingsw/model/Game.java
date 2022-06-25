@@ -255,13 +255,9 @@ public class Game implements GameInterface, Serializable {
             }
         }
 
-        // If there are 3 island groups
+        // If assistant cards finished or there are only three island groups left
 
-          //TODO
-
-        // If assistant cards finished
-
-        if (playerList.get(0).getAssistantCard().isEmpty() && playerList.get(0).getCardPlayed()==null) { // if the players have played all the assistant cards
+        if ((playerList.get(0).getAssistantCard().isEmpty() && playerList.get(0).getCardPlayed()==null) || islandManager.getNumOfGroups()==3) {
 
             Player winner = playerList.get(0);
             int minTower = winner.getSchool().getTowerTable().numOfTowers();
