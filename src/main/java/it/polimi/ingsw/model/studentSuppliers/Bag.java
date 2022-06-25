@@ -113,33 +113,18 @@ public class Bag implements Serializable {
     }
 
     /**
-     * @param island
-     */
-    public void addStudentsOnIsland(Island island) {
-        island.addStudent(newStudent());
-    }
-
-    /**
      * @param cloud
      */
     public void addStudentsOnCloud(Cloud cloud) {
         if (isThreePlayers) {
             for (int i=0; i<4; i++) {
-                cloud.addStudent(newStudent());
+                if(!isEmpty()){cloud.addStudent(newStudent());}
             }
-        }
-        else {
+        }else{
             for (int i=0; i<3; i++) {
-                cloud.addStudent(newStudent());
+                if(!isEmpty()){cloud.addStudent(newStudent());}
             }
         }
-    }
-
-    /**
-     * @param ingress
-     */
-    public void addStudentOnIngress(Ingress ingress) {
-        ingress.addStudent(newStudent());
     }
 
     /**
@@ -162,15 +147,6 @@ public class Bag implements Serializable {
             case PINK:
                 pinkStudentsNum--;
         }
-    }
-
-    /**
-     * @param expertCard
-     */
-    public void addStudentOnCard(ExpertCard expertCard) {
-        /**
-         * To implement when there are experts card
-         */
     }
 
     /**

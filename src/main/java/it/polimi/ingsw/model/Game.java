@@ -267,9 +267,9 @@ public class Game implements GameInterface, Serializable {
             }
         }
 
-        // If assistant cards finished or there are only three island groups left
+        // If assistant cards finished or there are only three island groups left or the bag is empty
 
-        if ((playerList.get(0).getAssistantCard().isEmpty() && playerList.get(0).getCardPlayed()==null) || islandManager.getNumOfGroups()==3) {
+        if ((playerList.get(0).getAssistantCard().isEmpty() && playerList.get(0).getCardPlayed()==null) || islandManager.getNumOfGroups()==3 || bag.isEmpty()) {
 
             Player winner = playerList.get(0);
             int minTower = winner.getSchool().getTowerTable().numOfTowers();
@@ -531,7 +531,7 @@ public class Game implements GameInterface, Serializable {
         if (this.currentRound.expertStudentToIsland(student, island)) {
             island.addStudent(student);
             FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
-            expertCard.addStudent(this.bag.newStudent());
+            if(!bag.isEmpty()){expertCard.addStudent(this.bag.newStudent());}
             propertyChange.firePropertyChange("expert moveStudentToIsland", island, student);
 
         }
@@ -581,7 +581,7 @@ public class Game implements GameInterface, Serializable {
         if (this.currentRound.expertStudentToHall(student)) {
             currentPlayer.getSchool().getHall().addStudent(student);
             FixedObjectStudent expertCard = (FixedObjectStudent) cardManager.getCurrentCard();
-            expertCard.addStudent(this.bag.newStudent());
+            if(!bag.isEmpty()){expertCard.addStudent(this.bag.newStudent());}
             professorManager.checkProfessor(currentPlayer);
             propertyChange.firePropertyChange("expert moveStudentToHall", this.currentPlayer.getSchool().getHall(), student);
         }
