@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -55,6 +57,17 @@ public class GuiLoginController implements Initializable {
      * @param mouseEvent
      */
     public void onStartClick(MouseEvent mouseEvent) throws IOException {
+        sendName();
+    }
+
+    public void onKeyPressed(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            sendName();
+        }
+
+    }
+
+    private void sendName() throws IOException {
         if (insertName.getText().matches(".*\\d.*")) {
             equalName.setText("The username contains numbers, it not possible to enter numbers");
         } else if (insertName.getText().isEmpty()) {
@@ -75,9 +88,6 @@ public class GuiLoginController implements Initializable {
 
             GUIController.getInstance().write(insertName.getText());
 
-          //  if (GUIController.getInstance().getEqual() == false) {
-            //    GUIController.getInstance().receiveMessage();
-            //}
         }
     }
 
