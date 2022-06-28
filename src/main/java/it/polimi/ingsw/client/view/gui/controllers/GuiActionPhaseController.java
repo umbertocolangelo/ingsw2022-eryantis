@@ -1899,10 +1899,6 @@ public class GuiActionPhaseController implements Initializable {
         }
     }
 
-    /**
-     * shows the assistant card played in the pianification phase
-     * @param num
-     */
     private void showAssistantCard(int num) {
         switch (num) {
             case 1 -> {
@@ -2454,9 +2450,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2493,9 +2487,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2532,9 +2524,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2571,9 +2561,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2610,9 +2598,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2649,9 +2635,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2688,9 +2672,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2727,9 +2709,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2766,9 +2746,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2805,9 +2783,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2844,9 +2820,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2883,9 +2857,7 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if (studentsIsland.size()==count+1) {
-                return;
-            }
+            if(studentsIsland.size()==count+1){return;}
             count++;
         }
     }
@@ -2946,36 +2918,16 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * show moves tips based on player phase
      */
-    private void showTextPhase() {
-        if (game.getCurrentRound().getId()==null) {
-            switch (game.getCurrentPlayer().getPlayerPhase()) {
-                case MOVING_STUDENTS -> {
-                    communicationPlayerPhase.setText("Move a student to your hall or to an island");
-                    break;
-                }
-                case MOVING_MOTHERNATURE -> {
-                    communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
-                    break;
-                }
-                case CHOOSING_CLOUD -> {
-                    communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
-                    break;
-                }
+    private void showTextPhase(){
+        switch(game.getCurrentPlayer().getPlayerPhase()) {
+            case MOVING_STUDENTS -> {
+                communicationPlayerPhase.setText("Move a student to your hall or to an island");
             }
-        } else {
-            switch (game.getCurrentRound().getId()) {
-                case 0:
-                    communicationPlayerPhase.setText("Choose the student from your ingress you want to swap with the one selected from the expert card");
-                    break;
-                case 1:
-                    communicationPlayerPhase.setText("Choose a student from your ingress and swap it with one from your hall, even if it has a different color");
-                    break;
-                case 2:
-                    communicationPlayerPhase.setText("Choose a student to add to your hall");
-                    break;
-                case 3:
-                    communicationPlayerPhase.setText("Choose a student to add to an island");
-                    break;
+            case MOVING_MOTHERNATURE -> {
+                communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
+            }
+            case CHOOSING_CLOUD -> {
+                communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
             }
         }
     }
@@ -2990,23 +2942,26 @@ public class GuiActionPhaseController implements Initializable {
                     communication.setText("You selected a card that needs an island as parameter, pick an island");
                 }
             }else
-                communication.setText("ACTION ROUND");
+                communication.setText("Normal round");
         } else {
             switch (game.getCurrentRound().getId()) {
                 case 0:
-                    communication.setText("INGRESS/CARD SWAP ROUND");
+                    communication.setText("You are in student on island round");
                     break;
                 case 1:
-                    communication.setText("INGRESS/HALL SWAP ROUND");
+                    communication.setText("You are in ingress Hall swap");
                     break;
                 case 2:
-                    communication.setText("STUDENT TO HALL ROUND");
+                    communication.setText("You are in studentOn Island round");
                     break;
                 case 3:
-                    communication.setText("STUDENT TO ISLAND ROUND");
+                    communication.setText("You are in student on card round");
                     break;
             }
         }
+
+
+
     }
 
     /**
@@ -3304,7 +3259,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(26,idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(26,idIsland) && calculateJumps(26,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(26, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3344,7 +3299,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(27,idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(27,idIsland) && calculateJumps(27,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(27, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3384,7 +3339,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue() >= calculateJumps(28, idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue() >= calculateJumps(28, idIsland) && calculateJumps(28,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(28, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3424,7 +3379,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(29,idIsland) ) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(29,idIsland) && calculateJumps(29,idIsland)!=0) {
                MessageMethod movingMotherNature = new MovingMotherNature();
                ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(29, idIsland));
                GUIController.getInstance().write(movingMotherNature);
@@ -3464,7 +3419,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue() >= calculateJumps(30, idIsland) ) {
+            } else if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue() >= calculateJumps(30, idIsland) && calculateJumps(30,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(30, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3504,7 +3459,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(31,idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(31,idIsland) && calculateJumps(31,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(31, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3545,7 +3500,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
 
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(32,idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(32,idIsland) && calculateJumps(32,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(32, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3585,7 +3540,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(33,idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(33,idIsland) && calculateJumps(33,idIsland)!=0) {
                 MessageMethod movingMotherNature= new MovingMotherNature();
                 ((MovingMotherNature)movingMotherNature).setJumps(calculateJumps(33,idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3625,7 +3580,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(34,idIsland)) {
+             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(34,idIsland) && calculateJumps(34,idIsland)!=0){
                  MessageMethod movingMotherNature = new MovingMotherNature();
                  ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(34, idIsland));
                  GUIController.getInstance().write(movingMotherNature);
@@ -3665,7 +3620,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(35,idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(35,idIsland) && calculateJumps(35,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(35, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3705,7 +3660,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(36, idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(36, idIsland) && calculateJumps(36,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(36, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
@@ -3745,7 +3700,7 @@ public class GuiActionPhaseController implements Initializable {
                 GUIController.getInstance().setCardNeedIsland(false);
                 GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().write(messageMethod);
-            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(37,idIsland)) {
+            } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayed().getValue()>=calculateJumps(37,idIsland) && calculateJumps(37,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
                 ((MovingMotherNature) movingMotherNature).setJumps(calculateJumps(37, idIsland));
                 GUIController.getInstance().write(movingMotherNature);
