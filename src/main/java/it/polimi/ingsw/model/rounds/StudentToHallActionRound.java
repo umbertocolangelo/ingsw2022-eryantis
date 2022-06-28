@@ -117,7 +117,7 @@ public class StudentToHallActionRound implements RoundInterface, Serializable {
      */
     @Override
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     /**

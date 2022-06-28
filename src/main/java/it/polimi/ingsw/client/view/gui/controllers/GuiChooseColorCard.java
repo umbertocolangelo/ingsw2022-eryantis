@@ -4,6 +4,7 @@ import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.PlayExpertCard;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -20,6 +21,11 @@ public class GuiChooseColorCard implements Initializable {
      */
     @FXML
     private AnchorPane scenePane;
+
+    /**
+     * Shadows
+     */
+    private ImageView lastLight = null;
 
     /**
      *
@@ -81,7 +87,6 @@ public class GuiChooseColorCard implements Initializable {
                     GUIController.getInstance().write(messageMethod);
                     break;
             }
-
         }
     }
 
@@ -90,6 +95,7 @@ public class GuiChooseColorCard implements Initializable {
      * @param mouseEvent
      */
     public void clickOnBlue(MouseEvent mouseEvent) {
+        setShadow(colorBlue);
         color = "8";
     }
 
@@ -98,6 +104,7 @@ public class GuiChooseColorCard implements Initializable {
      * @param mouseEvent
      */
     public void clickOnRed(MouseEvent mouseEvent) {
+        setShadow(colorRed);
         color = "10";
     }
 
@@ -106,6 +113,7 @@ public class GuiChooseColorCard implements Initializable {
      * @param mouseEvent
      */
     public void clickOnYellow(MouseEvent mouseEvent) {
+        setShadow(colorYellow);
         color = "7";
     }
 
@@ -114,6 +122,7 @@ public class GuiChooseColorCard implements Initializable {
      * @param mouseEvent
      */
     public void clickOnGreen(MouseEvent mouseEvent) {
+        setShadow(colorGreen);
         color = "9";
     }
 
@@ -122,6 +131,7 @@ public class GuiChooseColorCard implements Initializable {
      * @param mouseEvent
      */
     public void clickOnPink(MouseEvent mouseEvent) {
+        setShadow(colorPink);
         color = "11";
     }
 
@@ -129,12 +139,13 @@ public class GuiChooseColorCard implements Initializable {
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {
@@ -149,5 +160,17 @@ public class GuiChooseColorCard implements Initializable {
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
+    }
+
+    /**
+     * Sets shadows on images
+     * @param setImage
+     */
+    private void setShadow(ImageView setImage) {
+        setImage.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
+        if (lastLight!=null && !lastLight.equals(setImage)) {
+            lastLight.setEffect(null);
+        }
+        lastLight = setImage;
     }
 }

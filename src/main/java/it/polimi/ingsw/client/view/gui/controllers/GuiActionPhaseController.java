@@ -1899,6 +1899,10 @@ public class GuiActionPhaseController implements Initializable {
         }
     }
 
+    /**
+     * shows the assistant card played in the pianification phase
+     * @param num
+     */
     private void showAssistantCard(int num) {
         switch (num) {
             case 1 -> {
@@ -2942,16 +2946,36 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * show moves tips based on player phase
      */
-    private void showTextPhase(){
-        switch(game.getCurrentPlayer().getPlayerPhase()) {
-            case MOVING_STUDENTS -> {
-                communicationPlayerPhase.setText("Move a student to your hall or to an island");
+    private void showTextPhase() {
+        if (game.getCurrentRound().getId()==null) {
+            switch (game.getCurrentPlayer().getPlayerPhase()) {
+                case MOVING_STUDENTS -> {
+                    communicationPlayerPhase.setText("Move a student to your hall or to an island");
+                    break;
+                }
+                case MOVING_MOTHERNATURE -> {
+                    communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
+                    break;
+                }
+                case CHOOSING_CLOUD -> {
+                    communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
+                    break;
+                }
             }
-            case MOVING_MOTHERNATURE -> {
-                communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
-            }
-            case CHOOSING_CLOUD -> {
-                communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
+        } else {
+            switch (game.getCurrentRound().getId()) {
+                case 0:
+                    communicationPlayerPhase.setText("Choose the student from your ingress you want to swap with the one selected from the expert card");
+                    break;
+                case 1:
+                    communicationPlayerPhase.setText("Choose a student from your ingress and swap it with one from your hall, even if it has a different color");
+                    break;
+                case 2:
+                    communicationPlayerPhase.setText("Choose a student to add to your hall");
+                    break;
+                case 3:
+                    communicationPlayerPhase.setText("Choose a student to add to an island");
+                    break;
             }
         }
     }
@@ -2966,20 +2990,20 @@ public class GuiActionPhaseController implements Initializable {
                     communication.setText("You selected a card that needs an island as parameter, pick an island");
                 }
             }else
-                communication.setText("Normal round");
+                communication.setText("ACTION ROUND");
         } else {
             switch (game.getCurrentRound().getId()) {
                 case 0:
-                    communication.setText("You are in student on island round");
+                    communication.setText("INGRESS/CARD SWAP ROUND");
                     break;
                 case 1:
-                    communication.setText("You are in ingress Hall swap");
+                    communication.setText("INGRESS/HALL SWAP ROUND");
                     break;
                 case 2:
-                    communication.setText("You are in studentOn Island round");
+                    communication.setText("STUDENT TO HALL ROUND");
                     break;
                 case 3:
-                    communication.setText("You are in student on card round");
+                    communication.setText("STUDENT TO ISLAND ROUND");
                     break;
             }
         }

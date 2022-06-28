@@ -228,12 +228,15 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     public void onClickStudentCard1(MouseEvent mouseEvent) {
         switch (game.getCardManager().getCurrentCard().getId()) {
             case "48":
+                setShadow(studentCard1);
                 ((StudentToHall)messageMethodHall).setStudentToHall(((StudentToHallCard)expertCard).getStudents().get(0).getId());
                 break;
             case "38":
+                setShadow(studentCard1);
                 ((StudentToIsland)messageMethodIsland).setStudent(((StudentToIslandCard)expertCard).getStudents().get(0).getId());
                 break;
             case "44":
+                setShadow(studentCard1);
                 ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(0).getId());
                 break;
         }
@@ -246,12 +249,15 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     public void onClickStudentCard2(MouseEvent mouseEvent) {
         switch (game.getCardManager().getCurrentCard().getId()) {
             case "48":
+                setShadow(studentCard2);
                 ((StudentToHall)messageMethodHall).setStudentToHall(((StudentToHallCard)expertCard).getStudents().get(1).getId());
                 break;
             case "38":
+                setShadow(studentCard2);
                 ((StudentToIsland)messageMethodIsland).setStudent(((StudentToIslandCard)expertCard).getStudents().get(1).getId());
                 break;
             case "44":
+                setShadow(studentCard2);
                 ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(1).getId());
                 break;
         }
@@ -264,12 +270,15 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     public void onClickStudentCard3(MouseEvent mouseEvent) {
         switch (game.getCardManager().getCurrentCard().getId()) {
             case "48":
+                setShadow(studentCard3);
                 ((StudentToHall)messageMethodHall).setStudentToHall(((StudentToHallCard)expertCard).getStudents().get(2).getId());
                 break;
             case "38":
+                setShadow(studentCard3);
                 ((StudentToIsland)messageMethodIsland).setStudent(((StudentToIslandCard)expertCard).getStudents().get(2).getId());
                 break;
             case "44":
+                setShadow(studentCard3);
                 ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(2).getId());
                 break;
         }
@@ -282,12 +291,15 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     public void onClickStudentCard4(MouseEvent mouseEvent) {
         switch (idExpertCard) {
             case "48":
+                setShadow(studentCard4);
                 ((StudentToHall)messageMethodHall).setStudentToHall(((StudentToHallCard)expertCard).getStudents().get(3).getId());
                 break;
             case "38":
+                setShadow(studentCard4);
                 ((StudentToIsland)messageMethodIsland).setStudent(((StudentToIslandCard)expertCard).getStudents().get(3).getId());
                 break;
             case "44":
+                setShadow(studentCard4);
                 ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(3).getId());
                 break;
         }
@@ -299,7 +311,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      */
     public void onClickStudentCard5(MouseEvent mouseEvent) {
         if (idExpertCard=="44") {
-            studentCard5.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
+            setShadow(studentCard5);
             ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(4).getId());
         }
     }
@@ -310,6 +322,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      */
     public void onClickStudentCard6(MouseEvent mouseEvent) {
         if (idExpertCard=="44") {
+            setShadow(studentCard6);
             ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(5).getId());
         }
     }
