@@ -275,7 +275,7 @@ public class CLI {
                 } else {
                     System.out.println(index + ": Cloud");
                     for (Student student: cloud.getStudents()) {
-                        System.out.print(student.getColor() + "    Student ");
+                        System.out.print(student.getColor() + " Student   ");
                     }
                 }
                 System.out.println("\n");

@@ -115,16 +115,16 @@ public class CLIController implements Runnable {
                 setClientState(ClientState.SLEEPING);
                 break;
             case SLEEPING:
-                System.out.println("Waiting for other players");
+                System.out.println("\n\nWaiting for other players . . .");
                 break;
             case CLIENTLOST:
-                t0=cli.clientLost(client.getNamePLayerLost());
+                t0 = cli.clientLost(client.getNamePLayerLost());
                 break;
             case CONNECTIONLOST:
-                t0=cli.connectionLost();
+                t0 = cli.connectionLost();
                 break;
             case PLAYERPLUS:
-                t0=cli.playerIsPlus();
+                t0 = cli.playerIsPlus();
                 break;
             case LOAD:
                 System.out.println("A previously saved game has been found, insert 1 to load it or insert 0 to start a new game");
