@@ -5,6 +5,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -32,6 +33,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
             </ImageView>
             <ImageView fx:id="wizard2" fitHeight="200.0" fitWidth="140.0" layoutX="465.0" layoutY="111.0" onMouseClicked="#onWizardClick2">
                <image>
@@ -40,6 +44,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
             </ImageView>
             <ImageView fx:id="wizard3" fitHeight="200.0" fitWidth="140.0" layoutX="672.0" layoutY="111.0" onMouseClicked="#onWizardClick3">
                <image>
@@ -48,6 +55,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
             </ImageView>
             <ImageView fx:id="wizard4" fitHeight="200.0" fitWidth="140.0" layoutX="888.0" layoutY="111.0" onMouseClicked="#onWizardClick4">
                <image>
@@ -56,6 +66,9 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
+               <effect>
+                  <InnerShadow blurType="ONE_PASS_BOX" />
+               </effect>
             </ImageView>
             <Button fx:id="next" layoutX="540.0" layoutY="573.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="200.0" text="NEXT">
                <font>

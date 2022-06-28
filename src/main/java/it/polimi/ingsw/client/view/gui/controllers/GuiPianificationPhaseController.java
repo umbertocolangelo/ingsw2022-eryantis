@@ -236,44 +236,44 @@ public class GuiPianificationPhaseController implements Initializable {
         Game game = GUIController.getInstance().getClient().getGame();
 
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.ONE_CARD)) {
-            card1.setVisible(false);
-            card1.setDisable(false);
+            card1.setMouseTransparent(true);
+            card1.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.TWO_CARD)) {
-            card2.setVisible(false);
-            card2.setDisable(false);
+            card2.setMouseTransparent(true);
+            card2.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.THREE_CARD)) {
-            card3.setVisible(false);
-            card3.setDisable(false);
+            card3.setMouseTransparent(true);
+            card3.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.FOUR_CARD)) {
-            card4.setVisible(false);
-            card4.setDisable(false);
+            card4.setMouseTransparent(true);
+            card4.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.FIVE_CARD)) {
-            card5.setVisible(false);
-            card5.setDisable(false);
+            card5.setMouseTransparent(true);
+            card5.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SIX_CARD)) {
-            card6.setVisible(false);
-            card6.setDisable(false);
+            card6.setMouseTransparent(true);
+            card6.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.SEVEN_CARD)) {
-            card7.setVisible(false);
-            card7.setDisable(false);
+            card7.setMouseTransparent(true);
+            card7.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.EIGHT_CARD)) {
-            card8.setVisible(false);
-            card8.setDisable(false);
+            card8.setMouseTransparent(true);
+            card8.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.NINE_CARD)) {
-            card9.setVisible(false);
-            card9.setDisable(false);
+            card9.setMouseTransparent(true);
+            card9.setOpacity(0.23);
         }
         if (!game.getCurrentPlayer().getAssistantCard().contains(AssistantCard.TEN_CARD)) {
-            card10.setVisible(false);
-            card10.setDisable(false);
+            card10.setMouseTransparent(true);
+            card10.setOpacity(0.23);
         }
     }
 

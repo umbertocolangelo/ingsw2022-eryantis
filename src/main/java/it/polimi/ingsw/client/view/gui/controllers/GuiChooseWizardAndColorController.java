@@ -215,20 +215,20 @@ public class GuiChooseWizardAndColorController implements Initializable {
         Game game = GUIController.getInstance().getClient().getGame();
         ((SetUpRound)game.getCurrentRound()).getplayerColor();
         if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.GREEN_WIZARD)) {
-            wizard1.setDisable(false);
-            wizard1.setImage(null);
+            wizard1.setMouseTransparent(true);
+            wizard1.setOpacity(0.23);
         }
         if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.YELLOW_WIZARD)) {
-            wizard2.setImage(null);
-            wizard2.setVisible(false);
+            wizard2.setMouseTransparent(true);
+            wizard2.setOpacity(0.23);
         }
         if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.PURPLE_WIZARD)) {
-            wizard3.setImage(null);
-            wizard3.setVisible(false);
+            wizard2.setMouseTransparent(true);
+            wizard2.setOpacity(0.23);
         }
         if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.BLUE_WIZARD)){
-            wizard4.setVisible(false);
-            wizard4.setImage(null);
+            wizard3.setMouseTransparent(true);
+            wizard3.setOpacity(0.23);
         }
         if (!((SetUpRound)game.getCurrentRound()).getplayerColor().contains(PlayerColor.WHITE)){
             white.setDisable(false);
