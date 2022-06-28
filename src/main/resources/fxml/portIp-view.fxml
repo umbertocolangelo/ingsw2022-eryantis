@@ -29,15 +29,15 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="startGame" layoutX="522.0" layoutY="565.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="45.0" prefWidth="250.0" text="TRY TO CONNECT">
+            <Button fx:id="startGame" layoutX="547.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="35.0" prefWidth="200.0" text="TRY TO CONNECT">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="24.0" />
+                  <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="525.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER">
+            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="497.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font name="Book Antiqua Bold" size="18.0" />
                </font></Label>
@@ -51,7 +51,7 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <Text fx:id="connection" layoutX="315.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="650.0">
+            <Text fx:id="connection" fill="RED" layoutX="315.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="650.0">
                <font>
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font></Text>

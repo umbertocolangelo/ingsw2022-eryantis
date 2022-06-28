@@ -19,9 +19,9 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <Label fx:id="label" layoutX="427.0" layoutY="637.0" prefHeight="42.0" prefWidth="425.0">
+            <Label fx:id="label" layoutX="427.0" layoutY="637.0" prefHeight="42.0" prefWidth="425.0" textFill="RED">
                <font>
-                  <Font size="28.0" />
+                  <Font name="Book Antiqua Bold" size="24.0" />
                </font></Label>
             <Label layoutX="190.0" layoutY="178.0" text="Select the number of players : ">
                <font>
@@ -71,7 +71,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <Button layoutX="568.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="35.0" prefWidth="125.0" text="START">
+            <Button layoutX="540.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="35.0" prefWidth="200.0" text="START">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>

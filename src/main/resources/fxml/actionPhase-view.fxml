@@ -1369,7 +1369,7 @@
             <ImageView fx:id="tower6Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
             <Text fx:id="communication" layoutX="775.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
                <font>
-                  <Font name="Book Antiqua" size="12.0" />
+                  <Font name="Book Antiqua" size="14.0" />
                </font>
             </Text>
             <ImageView fx:id="tower2" fitHeight="53.0" fitWidth="32.0" layoutX="517.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true" />
@@ -1440,9 +1440,9 @@
             <ImageView fx:id="tower7Island4" fitHeight="23.0" fitWidth="23.0" layoutX="32.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island5" fitHeight="23.0" fitWidth="23.0" layoutX="199.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="playedAssistantCard" fitHeight="170.0" fitWidth="133.0" layoutX="609.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="communicationPlayerPhase" layoutX="775.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
+            <Text fx:id="communicationPlayerPhase" layoutX="775.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
                <font>
-                  <Font name="Book Antiqua" size="12.0" />
+                  <Font name="Book Antiqua" size="14.0" />
                </font>
             </Text>
          </children>

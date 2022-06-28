@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -22,6 +23,11 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class GuiChooseStudentsOnCardController implements Initializable {
+
+    /**
+     * Shadows
+     */
+    private ImageView lastLight = null;
 
     /**
      * References to paths of student images
@@ -123,7 +129,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     }
 
     /**
-     *
+     * Initialize the scene
      * @param url
      * @param resourceBundle
      */
@@ -136,7 +142,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
         } else if (game.getCardManager().getCurrentCard().getId().equals(game.getCardManager().getDeck().get(1).getId())) {
             expertCard = game.getCardManager().getDeck().get(1);
         } else {
-            expertCard=game.getCardManager().getDeck().get(2);
+            expertCard = game.getCardManager().getDeck().get(2);
         }
         switch (game.getCardManager().getCurrentCard().getId()) {
             case "48":
@@ -167,14 +173,14 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     }
 
     /**
-     *
+     * Click on next button
      * @param mouseEvent
      * @throws IOException
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
         switch (game.getCardManager().getCurrentCard().getId()) {
             case "38":
-                                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed("");
                 GUIController.getInstance().setStudentToIsland(messageMethodIsland);
                 changeToAction();
                 break;
@@ -188,7 +194,6 @@ public class GuiChooseStudentsOnCardController implements Initializable {
                 GUIController.getInstance().write(messageMethodHall);
                 break;
         }
-
     }
 
     /**
@@ -294,6 +299,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      */
     public void onClickStudentCard5(MouseEvent mouseEvent) {
         if (idExpertCard=="44") {
+            studentCard5.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
             ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(4).getId());
         }
     }
@@ -303,13 +309,13 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      * @param mouseEvent
      */
     public void onClickStudentCard6(MouseEvent mouseEvent) {
-        if(idExpertCard=="44") {
+        if (idExpertCard=="44") {
             ((IngressCardSwap)messageMethodSwap).setStudentCard(((IngressCardSwapCard)expertCard).getStudents().get(5).getId());
         }
     }
 
     /**
-     * Click on student card 7
+     * Click on finish move button
      * @param mouseEvent
      */
     public void clickFinishExpertMove(MouseEvent mouseEvent) {
@@ -321,12 +327,13 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {
@@ -341,6 +348,18 @@ public class GuiChooseStudentsOnCardController implements Initializable {
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
+    }
+
+    /**
+     * Sets shadows on images
+     * @param setImage
+     */
+    private void setShadow(ImageView setImage) {
+        setImage.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
+        if (lastLight!=null && !lastLight.equals(setImage)) {
+            lastLight.setEffect(null);
+        }
+        lastLight = setImage;
     }
 
 }

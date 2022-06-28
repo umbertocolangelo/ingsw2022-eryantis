@@ -14,7 +14,6 @@ public class GuiConnectionLost {
     @FXML
     private AnchorPane scenePane;
 
-
     /**
      *
      */
@@ -27,18 +26,22 @@ public class GuiConnectionLost {
 
     public void connectionLost() throws IOException {
         stage = GUIController.getInstance().getStage();
+
         double x = stage.getX();
         double y = stage.getY();
         double width = stage.getWidth();
         double height = stage.getHeight();
+
         stage = new Stage();
         GUIController.getInstance().getStage().close();
         GUIController.setStage(stage);
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/connectionLost-view.fxml"));
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
+
         GuiConnectionLost controller = fxmlLoader.getController();
         controller.resize(stage);
         stage.setWidth(width);
@@ -51,12 +54,13 @@ public class GuiConnectionLost {
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {

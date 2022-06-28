@@ -103,7 +103,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="next" layoutX="577.0" layoutY="636.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="150.0" text="NEXT">
+            <Button fx:id="next" layoutX="540.0" layoutY="633.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="200.0" text="NEXT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
@@ -111,7 +111,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Text fx:id="label" layoutX="401.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="477.7294921875">
+            <Text fx:id="label" fill="RED" layoutX="401.0" layoutY="593.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="477.7294921875">
                <font>
                   <Font name="Book Antiqua Bold" size="18.0" />
                </font>

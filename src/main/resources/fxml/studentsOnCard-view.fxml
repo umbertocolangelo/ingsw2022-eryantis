@@ -16,7 +16,7 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="next" layoutX="1005.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="45.0" prefWidth="225.0" text="NEXT">
+            <Button fx:id="next" layoutX="1020.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="200.0" text="NEXT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
@@ -49,7 +49,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <Button fx:id="finishExpertMove" layoutX="1007.0" layoutY="569.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="45.0" prefWidth="225.0" text="FINISH EXPERT MOVE">
+            <Button fx:id="finishExpertMove" layoutX="1007.0" layoutY="579.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="45.0" prefWidth="225.0" text="FINISH EXPERT MOVE">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>

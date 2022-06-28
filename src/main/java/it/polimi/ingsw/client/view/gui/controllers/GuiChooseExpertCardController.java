@@ -187,7 +187,7 @@ public class GuiChooseExpertCardController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
-        if(idExpert!=null) {
+        if (idExpert!=null) {
             switch (idExpert) {
                 case "38":
                     MessageMethod messageMethod38 = new PlayExpertCard();
@@ -259,10 +259,10 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     public void clickOnExpert1(MouseEvent mouseEvent) throws IOException {
        if (game.getCardManager().getDeck().get(0).getCost()>game.getCurrentPlayer().getCoins()) {
-           coins.setText("You cannot afford this card");
+           coins.setText("You can not afford this card");
        } else {
            idExpert = game.getCardManager().getDeck().get(0).getId();
-           setShadow(expertCard1);
+           expertCard1.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
        }
     }
 
@@ -272,11 +272,10 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     public void clickOnExpert2(MouseEvent mouseEvent) {
         if (game.getCardManager().getDeck().get(1).getCost()>game.getCurrentPlayer().getCoins()) {
-            coins.setText("You cannot afford this card");
+            coins.setText("You can not afford this card");
         } else {
             idExpert = game.getCardManager().getDeck().get(1).getId();
-            coins.setText("Click on card 2");
-            setShadow(expertCard2);
+            expertCard1.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
         }
     }
 
@@ -287,11 +286,10 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     public void clickOnExpert3(MouseEvent mouseEvent) throws IOException {
         if (game.getCardManager().getDeck().get(2).getCost()>game.getCurrentPlayer().getCoins()) {
-            coins.setText("You cannot afford this card");
+            coins.setText("You can not afford this card");
         } else {
             idExpert = game.getCardManager().getDeck().get(2).getId();
-            coins.setText("Click on card 3");
-            setShadow(expertCard3);
+            expertCard1.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
         }
     }
 
@@ -465,12 +463,13 @@ public class GuiChooseExpertCardController implements Initializable {
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {

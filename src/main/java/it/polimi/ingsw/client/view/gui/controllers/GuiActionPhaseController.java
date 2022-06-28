@@ -2450,7 +2450,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2487,7 +2489,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2524,7 +2528,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2561,7 +2567,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2598,7 +2606,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2635,7 +2645,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2672,7 +2684,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2709,7 +2723,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2746,7 +2762,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2783,7 +2801,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2820,7 +2840,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2857,7 +2879,9 @@ public class GuiActionPhaseController implements Initializable {
             studentsIsland.get(count).setImage(getImageStudent(student.getColor()));
             studentsIsland.get(count).setX(studentsIsland.get(count).getX() + x);
             studentsIsland.get(count).setY(studentsIsland.get(count).getY() + y);
-            if(studentsIsland.size()==count+1){return;}
+            if (studentsIsland.size()==count+1) {
+                return;
+            }
             count++;
         }
     }
@@ -2959,9 +2983,6 @@ public class GuiActionPhaseController implements Initializable {
                     break;
             }
         }
-
-
-
     }
 
     /**

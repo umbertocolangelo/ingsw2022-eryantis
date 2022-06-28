@@ -57,7 +57,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="next" layoutX="578.0" layoutY="571.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="125.0" text="NEXT">
+            <Button fx:id="next" layoutX="540.0" layoutY="573.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="200.0" text="NEXT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
@@ -97,9 +97,9 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <Text fx:id="wizardColor" layoutX="219.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="842.7294921875">
+            <Text fx:id="wizardColor" fill="#f70505" layoutX="219.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="842.7294921875">
                <font>
-                  <Font size="33.0" />
+                  <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Text>
          </children>

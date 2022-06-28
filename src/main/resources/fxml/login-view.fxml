@@ -18,7 +18,7 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="insertName" alignment="CENTER" layoutX="530.0" layoutY="351.0" onKeyPressed="#onKeyPressed" prefHeight="47.0" prefWidth="220.0" promptText="username">
+            <TextField fx:id="insertName" alignment="CENTER" layoutX="490.0" layoutY="353.0" onKeyPressed="#onKeyPressed" prefHeight="47.0" prefWidth="300.0" promptText="username">
                <font>
                   <Font name="Book Antiqua Italic" size="24.0" />
                </font>
@@ -28,7 +28,7 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="startGame" layoutX="573.0" layoutY="426.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="35.0" prefWidth="125.0" text="NEXT">
+            <Button fx:id="startGame" layoutX="540.0" layoutY="483.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="35.0" prefWidth="200.0" text="NEXT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
@@ -36,7 +36,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="535.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER">
+            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="285.0" layoutY="573.0" prefHeight="31.0" prefWidth="709.0" textAlignment="CENTER" textFill="RED">
                <font>
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font></Label>
