@@ -110,6 +110,16 @@ public class Server {
     private Boolean finishedTimeout=false;
 
     /**
+     *
+     */
+    private Boolean stillSolo=true;
+
+    /**
+     *
+     */
+    private Boolean isTimeout=false;
+
+    /**
      * Default constructor
      * @throws IOException
      */
@@ -130,7 +140,10 @@ public class Server {
                     clientConnection.send(new ClientLost(c.getName()));
                 finishedTimeout=false;
             }else{
+
                 persistence(c);
+                if(playingConnection.size()==2)
+                    timeout(c);
                System.out.println("Il player e uscito");
             }
         } else {
@@ -155,7 +168,38 @@ public class Server {
         }
     }
 
-    private void persistence(SocketClientConnection c){
+    private synchronized void timeout(SocketClientConnection c)
+    {   isTimeout=true;
+        playingConnection.getFirst().send(new SoloPlayer());
+        new Thread(time());
+
+    }
+
+
+    /**
+     * If we lost the connection client
+     * @return thread
+     */
+    public Thread time() {
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(100000);
+                setConnection();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+        t.start();
+        return t;
+    }
+
+    private void setConnection(){
+        if(stillSolo)
+        playingConnection.getFirst().send("You are the winner");
+    }
+
+    private  synchronized void  persistence(SocketClientConnection c){
+
         LinkedList<Player> playerLinkedList = game.getPlayerList();
         LinkedList<Player> playerOrdered=game.getOrderedPlayerList();
         playingConnection.remove(c);
@@ -187,30 +231,55 @@ public class Server {
             }
         }
         if(c.getName().equals(game.getCurrentPlayer().getName())){
-            if(!game.getOrderedPlayerList().isEmpty())
-            game.setCurrentPlayer(game.getOrderedPlayerList().getFirst());
+            if(game.getPlayerList().getLast().getCardPlayed()!=null && game.getCurrentPlayer().getPlayerPhase().equals(PlayerPhase.CHOOSING_ASSISTANT))
+
+
+
+            if(!game.getOrderedPlayerList().isEmpty()) {
+                game.setCurrentPlayer(game.getOrderedPlayerList().getFirst());
+               game.newActionRound();
+            }
             else
                 game.setCurrentPlayer(game.getPlayerList().getFirst());
-            sendGame();
+
         }
+
+        game.setIsThree(false);
+        sendGame();
     }
 
 
     public void insertPlayer(SocketClientConnection c){
-
+        LinkedList<Player> players=game.getPlayerList();
         playingConnection.add(c);
         if(c.getName().equals(namePlayerMissing)) {
-            game.getPlayerList().add(referencePlayerMissing);
+            players.addLast(referencePlayerMissing);
+            game.setPlayerList(players);
             referencePlayerMissing=null;
         }
         else {
-            game.getPlayerList().add(referencePlayerMissing2);
-            referencePlayerMissing2=null;
+           players.addLast(referencePlayerMissing2);
+           game.setPlayerList(players);
+           referencePlayerMissing2=null;
         }
         if(referencePlayerMissing==null && referencePlayerMissing2==null)
             playerMissing=false;
-        c.send(game);
+        if(players.size()==3)
+            game.setIsThree(true);
+        if(isTimeout) {
+            isTimeout=false;
+
+            game.setCurrentPlayer(game.getPlayerList().getFirst());
+            game.newGame();
+            isTimeout=false;
+            sendGame();
+        }
+        else
+            c.send(game);
+
     }
+
+
 
     public Boolean checkName(String name ){
         return (name.equals(namePlayerMissing)|| name.equals(namePlayerMissing2));
@@ -349,7 +418,7 @@ public class Server {
     public Thread modifyGame(Object object) {
         synchronized (game) {
             Thread t = new Thread(() -> {
-                if (object instanceof MessageMethod && (playingConnection.size() == numberOfPlayer || playerMissing)) {
+                if (object instanceof MessageMethod ) {
                     ((MessageMethod) object).apply(game);
                 }
             });
@@ -462,6 +531,14 @@ public class Server {
 
     public Player getReferencePlayerMissing2() {
         return referencePlayerMissing2;
+    }
+
+    public Boolean getTimeout() {
+        return isTimeout;
+    }
+
+    public void setIsStillSolo(Boolean b){
+        this.stillSolo=b;
     }
 }
 

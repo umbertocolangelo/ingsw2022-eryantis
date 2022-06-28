@@ -117,11 +117,11 @@ public class SocketClientConnection implements Runnable {
     /**
       *Calls close connection and closes the connection also in the server
      */
-    public void close() {
+    public synchronized void  close() {
         if(playerIsPlus)
             send(new PlayerIsPlus());
         if (!hasBeenDisconnected) {
-            if (isFirst)
+            if (isFirst && !server.getPlayingConnection().isEmpty())
                 server.setNumberOfPlayer(0);
             closeConnection();
 
@@ -173,7 +173,11 @@ public class SocketClientConnection implements Runnable {
             name = read;
             send(new SetName(name));
 
-            if(server.getPlayerMissing() && server.checkName(name)){
+            if((server.getPlayerMissing() || server.getTimeout()) && server.checkName(name) ){
+                if(server.getTimeout()) {
+                    server.setIsStillSolo(false);
+
+                }
                 server.insertPlayer(this);
             }else {
                 if (isFirst) {

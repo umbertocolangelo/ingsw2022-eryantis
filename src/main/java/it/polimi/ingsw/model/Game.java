@@ -398,6 +398,13 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
+     *
+     */
+    public void setIsThree(Boolean is){
+        this.isThree=is;
+    }
+
+    /**
      * @param studentId is the id of the student on the ingress
      * @param islandId is the id of the island where the student is moved
      */
@@ -440,7 +447,6 @@ public class Game implements GameInterface, Serializable {
     public void playAssistantCard(String assistantId) {
         AssistantCard assistantCard=IdManager.getInstance().getAssistantCard(assistantId);
         if (this.currentRound.playAssistantCard(assistantCard, this.currentPlayer)) {
-
             System.out.println("Assistant card played");
 
             if (playerList.indexOf(currentPlayer) < playerList.size() - 1 && orderedPLayerList.isEmpty()) {
@@ -593,7 +599,7 @@ public class Game implements GameInterface, Serializable {
     public void chooseCloud(String cloudId) {
         Cloud cloud = IdManager.getInstance().getCloud(cloudId);
         if (this.currentRound.chooseCloud(cloud)) {
-            while (cloud.getStudents().size()!=0) {
+            while (currentPlayer.getSchool().getIngress().getStudents().size()<9 && isThree || currentPlayer.getSchool().getIngress().getStudents().size()<7 &&!isThree ) {
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
             }
             this.currentRound.checkRoundEnded();
@@ -743,4 +749,20 @@ public class Game implements GameInterface, Serializable {
         return this.isEnded;
     }
 
+    /**
+     *
+     */
+    public void newActionRound(){
+        this.currentRound=new ActionRound(this,isThree);
+        studentsMoved=0;
+    }
+
+    public void newGame(){
+        for(Player player:playerList) {
+            player.setAssistantCard(null);
+            player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+        }
+        studentsMoved=0;
+        this.currentRound=new PianificationRound(this);
+    }
 }

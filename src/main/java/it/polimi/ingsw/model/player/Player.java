@@ -124,6 +124,12 @@ public class Player implements Serializable {
     }
 
     /**
+     *
+     */
+    public void setAssistantCard(AssistantCard a){
+         this.playedCard=a;
+    }
+    /**
      * @return  The value of the card that this player played.
      */
     public Integer getCardPlayedValue() {
