@@ -2,11 +2,14 @@ package it.polimi.ingsw.server;
 
 
 import it.polimi.ingsw.message.*;
+import it.polimi.ingsw.model.enumerations.PlayerPhase;
+import it.polimi.ingsw.model.player.Player;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.util.NoSuchElementException;
 
 
@@ -57,6 +60,10 @@ public class SocketClientConnection implements Runnable {
      * Keep the reference to the active status
      */
     private boolean active = true;
+    /**
+     * Set true if we are still in the deck phase
+     */
+    private Boolean stillInLobby=false;
 
     /**
      * Default constructor
@@ -96,7 +103,9 @@ public class SocketClientConnection implements Runnable {
      * This method is needed when we want to close the connection, closes the socket and sets active to false
      */
     public synchronized void closeConnection() {
-        send(new ConnectionLost());
+        if(!playerIsPlus) {
+            send(new ConnectionLost());
+        }
         try {
             socket.close();
         } catch (IOException e) {
@@ -115,9 +124,17 @@ public class SocketClientConnection implements Runnable {
             if (isFirst)
                 server.setNumberOfPlayer(0);
             closeConnection();
-            if (server.getSemaphore().availablePermits() == 0)
+
                 server.getSemaphore().release();
             System.out.println("Unregistering client ...");
+            if(!server.getPlayingConnection().isEmpty()){
+                for(Player player: server.getGame().getPlayerList())
+                    if(player.getPlayerPhase().equals(PlayerPhase.SET_UP_PHASE))
+                        stillInLobby=true;
+                if (server.getPlayingConnection().size()>1 && !stillInLobby){
+                    server.setPlayerMissing(true);
+                }
+            }
             server.deregisterConnection(this);
             System.out.println("Done!");
         }
@@ -156,17 +173,19 @@ public class SocketClientConnection implements Runnable {
             name = read;
             send(new SetName(name));
 
-            if (isFirst) {
-                System.out.println("Sending is first");
-                send(new IsFirst());
-                IsFirst isFirst = (IsFirst) in.readObject();
-                System.out.println();
-                server.setGameMode(isFirst.getGameMode());
-                server.setNumberOfPlayer(isFirst.getPlayersNumber());
-
+            if(server.getPlayerMissing() && server.checkName(name)){
+                server.insertPlayer(this);
+            }else {
+                if (isFirst) {
+                    System.out.println("Sending is first");
+                    send(new IsFirst());
+                    IsFirst isFirst = (IsFirst) in.readObject();
+                    System.out.println();
+                    server.setGameMode(isFirst.getGameMode());
+                    server.setNumberOfPlayer(isFirst.getPlayersNumber());
+                }
+                server.lobby(this, name);
             }
-
-            server.lobby(this, name);
 
             while (isActive()) {
                 Object object = in.readObject();
@@ -185,6 +204,10 @@ public class SocketClientConnection implements Runnable {
                     t1.join();
                 }
             }
+        } catch (SocketTimeoutException e) {
+            System.out.println("Timeout expired");
+            server.setFinishedTimeout(true);
+
         } catch (IOException | NoSuchElementException e) {
             System.err.println("Error! " + e.getMessage());
         } catch (ClassNotFoundException e) {

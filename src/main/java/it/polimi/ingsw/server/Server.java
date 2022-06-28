@@ -4,6 +4,7 @@ package it.polimi.ingsw.server;
 import it.polimi.ingsw.listener.PropertyObserver;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.enumerations.PlayerPhase;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.utils.SavingManager;
 
@@ -80,6 +81,33 @@ public class Server {
      * Holds the loaded instance of Game if present
      */
     private Game loadedGame;
+    /**
+     *
+     */
+    private Boolean playerMissing=false;
+    /**
+     *
+     */
+    private String namePlayerMissing=null;
+
+    /**
+     *
+     */
+    private Player referencePlayerMissing;
+    /**
+     *
+     */
+    private String namePlayerMissing2=null;
+
+    /**
+     *
+     */
+    private Player referencePlayerMissing2;
+
+    /**
+     *
+     */
+    private Boolean finishedTimeout=false;
 
     /**
      * Default constructor
@@ -97,8 +125,13 @@ public class Server {
         c.setHasBeenDisconnected(true);
         socketConnections.remove(c);
         if (!playingConnection.isEmpty() && !c.getPlayerIsPlus()) {
-            for (SocketClientConnection clientConnection : playingConnection) {
-                clientConnection.send(new ClientLost(clientConnection.getName()));
+            if(!playerMissing || finishedTimeout) {
+                for (SocketClientConnection clientConnection : playingConnection)
+                    clientConnection.send(new ClientLost(c.getName()));
+                finishedTimeout=false;
+            }else{
+                persistence(c);
+               System.out.println("Il player e uscito");
             }
         } else {
             if (waitingConnection.contains(c)) {
@@ -122,6 +155,67 @@ public class Server {
         }
     }
 
+    private void persistence(SocketClientConnection c){
+        LinkedList<Player> playerLinkedList = game.getPlayerList();
+        LinkedList<Player> playerOrdered=game.getOrderedPlayerList();
+        playingConnection.remove(c);
+        if(namePlayerMissing==null)
+        namePlayerMissing=c.getName();
+        else
+            namePlayerMissing2=c.getName();
+        for(Player playerLooking: game.getPlayerList()){
+            if(playerLooking.getName().equals(c.getName()))
+              if(referencePlayerMissing==null)
+                  referencePlayerMissing=playerLooking;
+            else
+                referencePlayerMissing2=playerLooking;
+        }
+        if (referencePlayerMissing2==null) {
+            playerLinkedList.remove(referencePlayerMissing);
+            game.setPlayerList(playerLinkedList);
+            if(!game.getOrderedPlayerList().isEmpty()){
+                playerOrdered.remove(referencePlayerMissing);
+                game.setOrderedPlayerList(playerOrdered);
+            }
+        }
+        else {
+            playerLinkedList.remove(referencePlayerMissing2);
+            game.setPlayerList(playerLinkedList);
+            if(!game.getOrderedPlayerList().isEmpty()){
+                playerOrdered.remove(referencePlayerMissing2);
+                game.setOrderedPlayerList(playerOrdered);
+            }
+        }
+        if(c.getName().equals(game.getCurrentPlayer().getName())){
+            if(!game.getOrderedPlayerList().isEmpty())
+            game.setCurrentPlayer(game.getOrderedPlayerList().getFirst());
+            else
+                game.setCurrentPlayer(game.getPlayerList().getFirst());
+            sendGame();
+        }
+    }
+
+
+    public void insertPlayer(SocketClientConnection c){
+
+        playingConnection.add(c);
+        if(c.getName().equals(namePlayerMissing)) {
+            game.getPlayerList().add(referencePlayerMissing);
+            referencePlayerMissing=null;
+        }
+        else {
+            game.getPlayerList().add(referencePlayerMissing2);
+            referencePlayerMissing2=null;
+        }
+        if(referencePlayerMissing==null && referencePlayerMissing2==null)
+            playerMissing=false;
+        c.send(game);
+    }
+
+    public Boolean checkName(String name ){
+        return (name.equals(namePlayerMissing)|| name.equals(namePlayerMissing2));
+    }
+
     /**
      * The connection try to create a game, if we have the number of connection equal to the number of player we create a game
      * @param c         The socketConnection which is currently running
@@ -130,9 +224,7 @@ public class Server {
      * @throws ClassNotFoundException
      * @throws InterruptedException     Thrown when the modifyGame doesn't end
      */
-    public synchronized void lobby(SocketClientConnection c, String name)
-            throws IOException, ClassNotFoundException, InterruptedException {
-
+    public synchronized void lobby(SocketClientConnection c, String name) throws IOException, ClassNotFoundException, InterruptedException {
         if (name!=null) {
             waitingConnection.add(c);
             System.out.println("New client");
@@ -202,12 +294,10 @@ public class Server {
                 System.out.println("Ready for the new connection - " + connections);
                 SocketClientConnection socketConnection = new SocketClientConnection(newSocket, this);
                 socketConnections.add(socketConnection);
-
                 Thread t0 = new Thread(socketConnection);
                 t0.start();
-
-            } catch(SocketTimeoutException e) {
-                System.out.println("### Timed out after 5 seconds.");
+            } catch(SocketTimeoutException ste) {
+                ste.getMessage();
             }catch (IOException e) {
                 e.printStackTrace();
             }
@@ -243,6 +333,7 @@ public class Server {
         }
     }
 
+
     /**
      * @return reference to the game
      */
@@ -258,7 +349,7 @@ public class Server {
     public Thread modifyGame(Object object) {
         synchronized (game) {
             Thread t = new Thread(() -> {
-                if (object instanceof MessageMethod && playingConnection.size() == numberOfPlayer) {
+                if (object instanceof MessageMethod && (playingConnection.size() == numberOfPlayer || playerMissing)) {
                     ((MessageMethod) object).apply(game);
                 }
             });
@@ -346,9 +437,32 @@ public class Server {
      * @return playingConnection list
      */
     public LinkedList<SocketClientConnection> getPlayingConnection() {
-        return this.waitingConnection;
+        return this.playingConnection;
     }
 
+    public void setPlayerMissing(Boolean playerMissing) {
+        this.playerMissing = playerMissing;
+    }
+
+    public Boolean getPlayerMissing(){
+        return this.playerMissing;
+    }
+
+    public String getNamePlayerMissing() {
+        return namePlayerMissing;
+    }
+
+    public void setFinishedTimeout(Boolean timeout){
+        this.finishedTimeout=timeout;
+    }
+
+    public String getNamePlayerMissing2() {
+        return namePlayerMissing2;
+    }
+
+    public Player getReferencePlayerMissing2() {
+        return referencePlayerMissing2;
+    }
 }
 
 
