@@ -175,6 +175,16 @@ public class GUIController {
             @Override
             public void run() {
                 switch (clientState) {
+                    case CONNECTIONLOST:
+                    GuiConnectionLost connectionLost = new GuiConnectionLost();
+                    Platform.runLater(() -> {
+                        try {
+                            connectionLost.connectionLost();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    });
+                    break;
                     case CLIENTLOST:
                         nameClientLost = client.getNamePLayerLost();
                         GuiLoadingController loadingController = new GuiLoadingController();

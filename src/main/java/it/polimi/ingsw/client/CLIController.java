@@ -120,6 +120,9 @@ public class CLIController implements Runnable {
             case CLIENTLOST:
                 t0=cli.clientLost(client.getNamePLayerLost());
                 break;
+            case CONNECTIONLOST:
+                t0=cli.connectionLost();
+                break;
             case PLAYERPLUS:
                 t0=cli.playerIsPlus();
                 break;

@@ -96,7 +96,7 @@ public class SocketClientConnection implements Runnable {
      * This method is needed when we want to close the connection, closes the socket and sets active to false
      */
     public synchronized void closeConnection() {
-        send("We lost your Connection");
+        send(new ConnectionLost());
         try {
             socket.close();
         } catch (IOException e) {

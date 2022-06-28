@@ -94,6 +94,18 @@ public class CLI {
     }
 
 
+    /**
+     * If we lost the connection client
+     * @return thread
+     */
+    public Thread connectionLost() {
+
+        Thread t = new Thread(() -> {
+            System.out.println("The server lost your connection");
+        });
+        t.start();
+        return t;
+    }
 
     /**
      * If we lost the connection from a client

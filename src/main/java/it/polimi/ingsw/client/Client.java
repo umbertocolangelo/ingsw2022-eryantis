@@ -132,7 +132,10 @@ public class Client {
                             inputObject = socketIn.readObject();
                             System.out.println("Received something: " + inputObject);
                             if (!isCli) {
-                                if (inputObject instanceof ClientLost) {
+                                if (inputObject instanceof ConnectionLost) {
+                                    GUIController.getInstance().setClientState(ClientState.CONNECTIONLOST);
+                                    GUIController.getInstance().chooseScene();
+                                }else if (inputObject instanceof ClientLost) {
                                     GUIController.getInstance().setClientState(ClientState.CLIENTLOST);
                                     GUIController.getInstance().chooseScene();
                                 }else if (inputObject instanceof SetUp) {
@@ -167,7 +170,10 @@ public class Client {
                                     }
                                 }
                             } else {
-                                if (inputObject instanceof String) {
+                                if (inputObject instanceof ConnectionLost) {
+                                   cliController.setClientState(ClientState.CONNECTIONLOST);
+                                   cliController.run();
+                                }else if (inputObject instanceof String) {
                                     System.out.println((String) inputObject);
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
