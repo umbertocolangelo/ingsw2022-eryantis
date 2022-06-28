@@ -114,7 +114,7 @@ public class CLI {
     public Thread clientLost(String nameClientLost) {
 
         Thread t = new Thread(() -> {
-            System.out.println("The player "+ nameClientLost + "has been disconnected");
+            System.out.println("The player "+ nameClientLost + " has been disconnected");
 
         });
         t.start();

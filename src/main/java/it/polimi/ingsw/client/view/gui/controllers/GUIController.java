@@ -539,6 +539,14 @@ public class GUIController {
         return this.nameClientLost;
     }
 
+    /**
+     *
+     * @param name
+     */
+    public void setNameClientLost(String name) {
+         this.nameClientLost= name;
+    }
+
 
     /**
      *

@@ -3,6 +3,7 @@ package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.view.CLI;
 import it.polimi.ingsw.client.view.gui.controllers.GUIController;
+import it.polimi.ingsw.client.view.gui.controllers.GuiConnectionLost;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.player.Player;
@@ -136,6 +137,7 @@ public class Client {
                                     GUIController.getInstance().setClientState(ClientState.CONNECTIONLOST);
                                     GUIController.getInstance().chooseScene();
                                 }else if (inputObject instanceof ClientLost) {
+                                    namePLayerLost = ((ClientLost) inputObject).getNamePlayerLost();
                                     GUIController.getInstance().setClientState(ClientState.CLIENTLOST);
                                     GUIController.getInstance().chooseScene();
                                 }else if (inputObject instanceof SetUp) {
