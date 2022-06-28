@@ -275,7 +275,7 @@ public class GuiChooseExpertCardController implements Initializable {
             coins.setText("You can not afford this card");
         } else {
             idExpert = game.getCardManager().getDeck().get(1).getId();
-            expertCard1.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
+            expertCard2.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
         }
     }
 
@@ -289,7 +289,7 @@ public class GuiChooseExpertCardController implements Initializable {
             coins.setText("You can not afford this card");
         } else {
             idExpert = game.getCardManager().getDeck().get(2).getId();
-            expertCard1.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
+            expertCard3.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
         }
     }
 

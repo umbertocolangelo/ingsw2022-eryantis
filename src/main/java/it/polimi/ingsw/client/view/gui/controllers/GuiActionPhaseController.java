@@ -2919,15 +2919,32 @@ public class GuiActionPhaseController implements Initializable {
      * show moves tips based on player phase
      */
     private void showTextPhase(){
-        switch(game.getCurrentPlayer().getPlayerPhase()) {
-            case MOVING_STUDENTS -> {
-                communicationPlayerPhase.setText("Move a student to your hall or to an island");
+        if (game.getCurrentRound().getId()==null) {
+            switch (game.getCurrentPlayer().getPlayerPhase()) {
+                case MOVING_STUDENTS -> {
+                    communicationPlayerPhase.setText("Move a student to your hall or to an island");
+                }
+                case MOVING_MOTHERNATURE -> {
+                    communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
+                }
+                case CHOOSING_CLOUD -> {
+                    communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
+                }
             }
-            case MOVING_MOTHERNATURE -> {
-                communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
-            }
-            case CHOOSING_CLOUD -> {
-                communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
+        } else {
+            switch (game.getCurrentRound().getId()) {
+                case 0:
+                    communicationPlayerPhase.setText("Choose a student from your ingress to swap with the one selected from the expert card, or click on FINISH EXPERT MOVE to go back at the action phase");
+                    break;
+                case 1:
+                    communicationPlayerPhase.setText("Choose a student from your ingress to swap with one from your hall (even if it has a different color), or click on FINISH EXPERT MOVE to go back at the action phase");
+                    break;
+                case 2:
+                    communicationPlayerPhase.setText("Add the chosen student from the expert card to your hall, or click on FINISH EXPERT MOVE to go back at the action phase");
+                    break;
+                case 3:
+                    communicationPlayerPhase.setText("Add the chosen student from the expert card to an island, or click on FINISH EXPERT MOVE to go back at the action phase");
+                    break;
             }
         }
     }
@@ -2942,26 +2959,23 @@ public class GuiActionPhaseController implements Initializable {
                     communication.setText("You selected a card that needs an island as parameter, pick an island");
                 }
             }else
-                communication.setText("Normal round");
+                communication.setText("ACTION ROUND");
         } else {
             switch (game.getCurrentRound().getId()) {
                 case 0:
-                    communication.setText("You are in student on island round");
+                    communication.setText("INGRESS/CARD SWAP ROUND");
                     break;
                 case 1:
-                    communication.setText("You are in ingress Hall swap");
+                    communication.setText("INGRESS/HALL SWAP ROUND");
                     break;
                 case 2:
-                    communication.setText("You are in studentOn Island round");
+                    communication.setText("STUDENT TO HALL ROUND");
                     break;
                 case 3:
-                    communication.setText("You are in student on card round");
+                    communication.setText("STUDENT TO ISLAND ROUND");
                     break;
             }
         }
-
-
-
     }
 
     /**
