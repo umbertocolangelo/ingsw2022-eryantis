@@ -53,11 +53,17 @@
             </Button>
             <Text fx:id="coins" layoutX="99.0" layoutY="610.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="397.7294921875">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Text>
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font name="Book Antiqua" size="12.0" />
+               </font></Text>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+               <font>
+                  <Font name="Book Antiqua" size="12.0" />
+               </font></Text>
             <Text fx:id="costCard1" layoutX="235.0" layoutY="480.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="127.0">
                <font>
                   <Font name="Book Antiqua Bold" size="24.0" />
@@ -65,7 +71,7 @@
             </Text>
             <Text fx:id="costCard2" layoutX="557.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="127.0">
                <font>
-                  <Font size="24.0" />
+                  <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Text>
             <Text fx:id="costCard3" layoutX="868.0" layoutY="479.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="127.0">

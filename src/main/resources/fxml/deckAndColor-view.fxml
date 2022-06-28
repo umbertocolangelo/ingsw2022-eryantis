@@ -57,7 +57,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button fx:id="next" layoutX="578.0" layoutY="571.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="125.0" text="Next">
+            <Button fx:id="next" layoutX="578.0" layoutY="571.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="125.0" text="NEXT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>

@@ -30,7 +30,7 @@
                   <Font name="Book Antiqua Bold Italic" size="25.0" />
                </font>
             </Label>
-            <Label fx:id="loser1" layoutX="270.0" layoutY="282.0" text="Oh nooo ! Unfortunantely you have lost the game ...">
+            <Label fx:id="loser1" layoutX="270.0" layoutY="282.0" text="Oh nooo ! Unfortunately you have lost the game ...">
                <font>
                   <Font name="Book Antiqua Bold" size="36.0" />
                </font>

@@ -21,7 +21,7 @@
             </ImageView>
             <TextField fx:id="ip" alignment="CENTER" layoutX="537.0" layoutY="192.0" prefHeight="45.0" prefWidth="220.0" promptText="ip">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="24.0" />
+                  <Font name="Book Antiqua Italic" size="24.0" />
                </font>
             </TextField>
             <Label layoutX="582.0" layoutY="139.0" prefHeight="40.0" prefWidth="150.0" text="Insert the ip" textAlignment="CENTER">
@@ -37,13 +37,13 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="535.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER">
+            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="525.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER">
                <font>
-                  <Font size="20.0" />
+                  <Font name="Book Antiqua Bold" size="18.0" />
                </font></Label>
             <TextField fx:id="port" alignment="CENTER" layoutX="522.0" layoutY="334.0" prefHeight="45.0" prefWidth="250.0" promptText="port">
                <font>
-                  <Font name="Book Antiqua Bold Italic" size="24.0" />
+                  <Font name="Book Antiqua Italic" size="24.0" />
                </font>
             </TextField>
             <Label layoutX="574.0" layoutY="283.0" prefHeight="40.0" prefWidth="165.0" text="Insert the port" textAlignment="CENTER">
@@ -51,18 +51,18 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <Text fx:id="connection" layoutX="332.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="650.0">
+            <Text fx:id="connection" layoutX="315.0" layoutY="471.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="650.0">
                <font>
-                  <Font size="36.0" />
+                  <Font name="Book Antiqua Bold" size="24.0" />
                </font></Text>
             <Text fx:id="currentIp" layoutX="125.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="198.7294921875">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Book Antiqua" size="14.0" />
                </font>
             </Text>
             <Text fx:id="currentPort" layoutX="125.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="198.7294921875">
                <font>
-                  <Font size="22.0" />
+                  <Font name="Book Antiqua" size="14.0" />
                </font>
             </Text>
          </children>

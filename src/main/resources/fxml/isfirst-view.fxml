@@ -71,7 +71,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <Button layoutX="568.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="35.0" prefWidth="125.0" text="Start">
+            <Button layoutX="568.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="35.0" prefWidth="125.0" text="START">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>

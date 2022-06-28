@@ -1,16 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiConnectionLost">
+<AnchorPane prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiConnectionLost">
    <children>
       <AnchorPane fx:id="scenePane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="720.0" prefWidth="1280.0" style="-fx-background-image: url('/Graphical_Assets/Eriantys_slider.jpg');">
          <children>
@@ -19,9 +15,9 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <Text fx:id="clientLost" layoutX="260.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The server lost your connection" textAlignment="CENTER" wrappingWidth="742.7294921875">
+            <Text fx:id="clientLost" layoutX="269.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The server lost your connection" textAlignment="CENTER" wrappingWidth="742.7294921875">
                <font>
-                  <Font size="60.0" />
+                  <Font name="Book Antiqua Bold" size="36.0" />
                </font>
             </Text>
          </children>

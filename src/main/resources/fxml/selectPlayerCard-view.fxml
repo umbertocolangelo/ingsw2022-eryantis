@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-
 
 <AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.polimi.ingsw.client.view.gui.controllers.GuiSelectPlayerCard">
    <children>
@@ -17,19 +17,40 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <Button fx:id="selectPlayer" layoutX="1013.0" layoutY="572.0" mnemonicParsing="false" onMouseClicked="#clickSelectPlayer" prefHeight="51.0" prefWidth="204.0" text="Select Player">
+            <Button fx:id="selectPlayer" layoutX="540.0" layoutY="502.0" mnemonicParsing="false" onMouseClicked="#clickSelectPlayer" prefHeight="35.0" prefWidth="200.0" text="SELECT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </Button>
-            <Label fx:id="coinsLabel" layoutX="79.0" layoutY="506.0" prefHeight="74.0" prefWidth="350.0" text="Select a player!">
+            <Label fx:id="coinsLabel" layoutX="519.0" layoutY="78.0" prefHeight="74.0" prefWidth="242.0" text="Select a player">
                <font>
-                  <Font size="34.0" />
+                  <Font name="Book Antiqua Bold" size="36.0" />
                </font>
             </Label>
-            <Button fx:id="player1" layoutX="151.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer0" prefHeight="90.0" prefWidth="226.0" text="Button" />
-            <Button fx:id="player3" layoutX="527.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer2" prefHeight="90.0" prefWidth="226.0" text="Button" />
-            <Button fx:id="player2" layoutX="900.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer1" prefHeight="90.0" prefWidth="226.0" text="Button" />
+            <Button fx:id="player1" layoutX="151.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer0" prefHeight="90.0" prefWidth="226.0" text="Button">
+               <font>
+                  <Font name="Book Antiqua" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="player3" layoutX="527.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer2" prefHeight="90.0" prefWidth="226.0" text="Button">
+               <font>
+                  <Font name="Book Antiqua" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="player2" layoutX="900.0" layoutY="228.0" mnemonicParsing="false" onMouseClicked="#clickPlayer1" prefHeight="90.0" prefWidth="226.0" text="Button">
+               <font>
+                  <Font name="Book Antiqua" size="14.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </AnchorPane>
    </children>
