@@ -11,6 +11,7 @@ import it.polimi.ingsw.model.pawns.Tower;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.effect.DropShadow;
@@ -1427,18 +1428,25 @@ public class GuiActionPhaseController implements Initializable {
      * @throws IOException
      */
     public void changeScene() throws IOException {
+        stage = GUIController.getInstance().getStage();
+        double x = stage.getX();
+        double y = stage.getY();
+        double width = stage.getWidth();
+        double height = stage.getHeight();
         stage = new Stage();
         GUIController.getInstance().getStage().close();
         GUIController.setStage(stage);
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/pianificationPhase-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-
         GuiPianificationPhaseController pianificationController = fxmlLoader.getController();
         pianificationController.resize(stage);
+        stage.setWidth(width);
+        stage.setHeight(height);
+        stage.setX(x);
+        stage.setY(y);
     }
 
     /**
@@ -3880,18 +3888,25 @@ public class GuiActionPhaseController implements Initializable {
      * @throws IOException
      */
     public void refresh() throws IOException {
+        stage = GUIController.getInstance().getStage();
+        double x = stage.getX();
+        double y = stage.getY();
+        double width = stage.getWidth();
+        double height = stage.getHeight();
         stage = new Stage();
         GUIController.getInstance().getStage().close();
         GUIController.setStage(stage);
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-
         GuiActionPhaseController actionController = fxmlLoader.getController();
         actionController.resize(stage);
+        stage.setWidth(width);
+        stage.setHeight(height);
+        stage.setX(x);
+        stage.setY(y);
     }
 
 
@@ -4160,16 +4175,15 @@ public class GuiActionPhaseController implements Initializable {
      * @throws IOException
      */
     public void showLoading() throws IOException{
-        stage = new Stage();
-        GUIController.getInstance().getStage().close();
-        GUIController.setStage(stage);
-
+        stage = GUIController.getInstance().getStage();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/loading-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        scene = new Scene(fxmlLoader.load());
+        double width = stage.getWidth();
+        double height = stage.getHeight();
         stage.setScene(scene);
-        stage.setTitle("Eriantys");
+        stage.setWidth(width);
+        stage.setHeight(height);
         stage.show();
-
         GuiLoadingController loadingController = fxmlLoader.getController();
         loadingController.resize(stage);
 
@@ -4189,15 +4203,15 @@ public class GuiActionPhaseController implements Initializable {
      */
     public void clickPlayExpertCard(MouseEvent mouseEvent) throws IOException {
         if (game.getGameMode()==true && game.getCardManager().getCurrentCard()==null && !GUIController.getInstance().getCardNeedIsland()) {
-            stage = new Stage();
-            GUIController.getInstance().getStage().close();
-            GUIController.setStage(stage);
-
+            stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/expertCard-view.fxml"));
-            scene = new Scene(fxmlLoader.load(), 1280, 720);
+            scene = new Scene(fxmlLoader.load());
+            double width = stage.getWidth();
+            double height = stage.getHeight();
             stage.setScene(scene);
+            stage.setWidth(width);
+            stage.setHeight(height);
             stage.show();
-
             GuiChooseExpertCardController expertController = fxmlLoader.getController();
             expertController.resize(stage);
         }
@@ -4217,23 +4231,23 @@ public class GuiActionPhaseController implements Initializable {
      * Window resize
      */
     public void resize(Stage stage) {
-        double height = stage.getHeight();
-        double width = stage.getWidth();
-
+        double height = stage.getScene().getHeight();
+        double width = stage.getScene().getWidth();
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
+
         //horizontal listener
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            double scaleX = newVal.doubleValue()/width;
+        stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleX = (newVal.doubleValue()/width);
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
 
         //vertical listener
-        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
-            double scaleY = newVal.doubleValue()/height;
+        stage.getScene().heightProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleY = (newVal.doubleValue()/height);
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });

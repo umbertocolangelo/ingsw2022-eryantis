@@ -195,17 +195,25 @@ public class GuiChooseStudentsOnCardController implements Initializable {
      * go to actionPhase scene
      */
     public void changeToAction() throws IOException {
+        stage = GUIController.getInstance().getStage();
+        double x = stage.getX();
+        double y = stage.getY();
+        double width = stage.getWidth();
+        double height = stage.getHeight();
         stage = new Stage();
         GUIController.getInstance().getStage().close();
         GUIController.setStage(stage);
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/actionPhase-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
+        scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
+        stage.setTitle("Eriantys");
         stage.show();
-
         GuiActionPhaseController actionController = fxmlLoader.getController();
         actionController.resize(stage);
+        stage.setWidth(width);
+        stage.setHeight(height);
+        stage.setX(x);
+        stage.setY(y);
     }
 
     /**
@@ -308,39 +316,28 @@ public class GuiChooseStudentsOnCardController implements Initializable {
         GUIController.getInstance().write(new RoundEnd());
     }
 
-    /**
-     * Refresh the scene
-     * @throws IOException
-     */
-    public void refresh() throws IOException {
-        stage = GUIController.getInstance().getStage();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/studentsOnCard-view.fxml"));
-        scene = new Scene(fxmlLoader.load(), 1280, 720);
-        stage.setScene(scene);
-        stage.show();
-    }
 
     /**
      * Window resize
      */
     public void resize(Stage stage) {
-        double height = stage.getHeight();
-        double width = stage.getWidth();
-
+        double height = stage.getScene().getHeight();
+        double width = stage.getScene().getWidth();
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
+
         //horizontal listener
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            double scaleX = newVal.doubleValue()/width;
+        stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleX = (newVal.doubleValue()/width);
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
 
         //vertical listener
-        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
-            double scaleY = newVal.doubleValue()/height;
+        stage.getScene().heightProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleY = (newVal.doubleValue()/height);
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });

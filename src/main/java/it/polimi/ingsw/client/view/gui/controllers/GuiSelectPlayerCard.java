@@ -93,23 +93,23 @@ public class GuiSelectPlayerCard implements Initializable {
      * Window resize
      */
     public void resize(Stage stage) {
-        double height = stage.getHeight();
-        double width = stage.getWidth();
-
+        double height = stage.getScene().getHeight();
+        double width = stage.getScene().getWidth();
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
 
+
         //horizontal listener
-        stage.widthProperty().addListener((obs, oldVal, newVal) -> {
-            double scaleX = newVal.doubleValue()/width;
+        stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleX = (newVal.doubleValue()/width);
             scenePane.setScaleX(scaleX);
             scenePane.setTranslateX(scenePane.getTranslateX() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
 
         //vertical listener
-        stage.heightProperty().addListener((obs, oldVal, newVal) -> {
-            double scaleY = newVal.doubleValue()/height;
+        stage.getScene().heightProperty().addListener((obs, oldVal, newVal) -> {
+            double scaleY = (newVal.doubleValue()/height);
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
