@@ -141,7 +141,7 @@ public class Server {
                 finishedTimeout=false;
             }else{
 
-                persistence(c);
+                resilience(c);
                 if(playingConnection.size()==2)
                     timeout(c);
                System.out.println("Il player e uscito");
@@ -198,7 +198,7 @@ public class Server {
         playingConnection.getFirst().send("You are the winner");
     }
 
-    private  synchronized void  persistence(SocketClientConnection c){
+    private synchronized void resilience(SocketClientConnection c){
 
         LinkedList<Player> playerLinkedList = game.getPlayerList();
         LinkedList<Player> playerOrdered=game.getOrderedPlayerList();
