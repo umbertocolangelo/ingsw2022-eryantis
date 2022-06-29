@@ -262,10 +262,10 @@ public class GUIController {
                         });
                         break;
                     case LOAD:
-                        GuiLoadGameController loadController = new GuiLoadGameController();
+                        GuiWaitingController waitingController = new GuiWaitingController();
                         Platform.runLater(() -> {
                             try {
-                                loadController.show();
+                                waitingController.showLoadGame();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

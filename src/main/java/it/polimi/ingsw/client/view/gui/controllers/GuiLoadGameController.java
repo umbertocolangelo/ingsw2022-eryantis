@@ -1,11 +1,8 @@
-
 package it.polimi.ingsw.client.view.gui.controllers;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -14,12 +11,11 @@ import java.io.IOException;
 
 public class GuiLoadGameController {
 
+    /**
+     *
+     */
     @FXML
-    private AnchorPane scenePane;
-    @FXML
-    private Button loadButton;
-    @FXML
-    private Button newButton;
+    public AnchorPane scenePane;
 
     /**
      * Reference to the stage
@@ -35,7 +31,7 @@ public class GuiLoadGameController {
      * Shows the scene
      * @throws IOException
      */
-    public void show() throws IOException {
+    public void showScene() throws IOException {
         stage = GUIController.getInstance().getStage();
         double x = stage.getX();
         double y = stage.getY();

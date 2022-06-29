@@ -66,10 +66,6 @@ public class GuiLoadingController {
         });
     }
 
-    public void resume(Stage stage){
-        //TODO ?
-    }
-
     /**
      * Sets the label text and position when is not the player turn
      */
