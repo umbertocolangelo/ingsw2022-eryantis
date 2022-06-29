@@ -145,6 +145,7 @@ public class GUIController {
      */
     public static void setStage(Stage stage) {
         GUIController.stage = stage;
+        stage.setOnCloseRequest(e -> System.exit(0));
     }
 
     /**
