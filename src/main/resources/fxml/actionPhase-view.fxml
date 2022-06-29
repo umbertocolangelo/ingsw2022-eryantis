@@ -947,10 +947,6 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="student10Island2" fitHeight="23.0" fitWidth="23.0" layoutX="398.0" layoutY="426.0" onMouseClicked="#clickIsland2" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
             <ImageView fx:id="student11Island2" fitHeight="23.0" fitWidth="23.0" layoutX="423.0" layoutY="426.0" onMouseClicked="#clickIsland2" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -1367,11 +1363,6 @@
             <ImageView fx:id="tower1Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="392.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower5Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower6Island3" fitHeight="23.0" fitWidth="23.0" layoutX="174.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="communication" layoutX="775.0" layoutY="539.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
-               <font>
-                  <Font name="Book Antiqua" size="14.0" />
-               </font>
-            </Text>
             <ImageView fx:id="tower2" fitHeight="53.0" fitWidth="32.0" layoutX="517.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower3" fitHeight="53.0" fitWidth="32.0" layoutX="473.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower4" fitHeight="53.0" fitWidth="32.0" layoutX="517.0" layoutY="531.0" pickOnBounds="true" preserveRatio="true" />
@@ -1435,14 +1426,23 @@
             <ImageView fx:id="tower7Island11" fitHeight="23.0" fitWidth="23.0" layoutX="955.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island12" fitHeight="23.0" fitWidth="23.0" layoutX="768.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island1" fitHeight="23.0" fitWidth="23.0" layoutX="573.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fx:id="tower7Island2" fitHeight="23.0" fitWidth="23.0" layoutX="371.0" layoutY="311.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island3" fitHeight="23.0" fitWidth="23.0" layoutX="197.0" layoutY="277.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island4" fitHeight="23.0" fitWidth="23.0" layoutX="32.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="tower7Island5" fitHeight="23.0" fitWidth="23.0" layoutX="199.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true" />
             <ImageView fx:id="playedAssistantCard" fitHeight="170.0" fitWidth="133.0" layoutX="609.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true" />
-            <Text fx:id="communicationPlayerPhase" layoutX="775.0" layoutY="575.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="295.7294921875">
+            <ImageView fx:id="chatbackground" fitHeight="170.0" fitWidth="253.0" layoutX="784.0" layoutY="513.0">
+               <image>
+                  <Image url="@../Graphical_Assets/chat_background.jpg" />
+               </image>
+            </ImageView>
+            <Text fx:id="communicationPlayerPhase" layoutX="802.0" layoutY="585.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="217.3294677734375">
                <font>
                   <Font name="Book Antiqua" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="communication" layoutX="802.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="217.3294677734375">
+               <font>
+                  <Font name="Book Antiqua Bold" size="14.0" />
                </font>
             </Text>
          </children>
