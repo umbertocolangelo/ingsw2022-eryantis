@@ -2982,30 +2982,41 @@ public class GuiActionPhaseController implements Initializable {
      * shows the cloud on the screen
      */
     private void showClouds(){
-        if (!game.getClouds().get(0).getStudents().isEmpty()) {
+        if (!game.getClouds().get(0).getStudents().isEmpty()) { // if the cloud contains students
             student1Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(0).getColor()));
             student2Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(1).getColor()));
             student3Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(2).getColor()));
-            if (game.getPlayerList().size()==3) {
+            if (game.getIsThree()) {
                 student4Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(3).getColor()));
             }
             if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
                 cloud1.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
             }
+        }else{ // else make the cloud not clickable
+            cloud1.setMouseTransparent(true);
+            student1Cloud1.setMouseTransparent(true);
+            student2Cloud1.setMouseTransparent(true);
+            student3Cloud1.setMouseTransparent(true);
+            student4Cloud1.setMouseTransparent(true);
         }
-        if (!game.getClouds().get(1).getStudents().isEmpty()) {
+        if (!game.getClouds().get(1).getStudents().isEmpty()) { // if the cloud contains students
             student1Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(0).getColor()));
             student2Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(1).getColor()));
             student3Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(2).getColor()));
-            if (game.getPlayerList().size()==3) {
+            if (game.getIsThree()) {
                 student4Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(3).getColor()));
             }
             if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
                 cloud2.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
             }
-        }
-        if (game.getPlayerList().size()==3) {
-            if (!game.getClouds().get(2).getStudents().isEmpty()) {
+        }else{ // else make the cloud not clickable
+            cloud2.setMouseTransparent(true);
+            student1Cloud2.setMouseTransparent(true);
+            student2Cloud2.setMouseTransparent(true);
+            student3Cloud2.setMouseTransparent(true);
+            student4Cloud2.setMouseTransparent(true);}
+        if (game.getIsThree()) { // if the mode is for 3 players
+            if (!game.getClouds().get(2).getStudents().isEmpty()) { // if the cloud contains students
                 student1Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(0).getColor()));
                 student2Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(1).getColor()));
                 student3Cloud3.setImage(getImageStudent(game.getClouds().get(2).getStudents().get(2).getColor()));
@@ -3013,9 +3024,19 @@ public class GuiActionPhaseController implements Initializable {
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
                     cloud3.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
                 }
-            }
-        } else {
+            }else{ // else make the cloud not clickable
+                cloud3.setMouseTransparent(true);
+                student1Cloud3.setMouseTransparent(true);
+                student2Cloud3.setMouseTransparent(true);
+                student3Cloud3.setMouseTransparent(true);
+                student4Cloud3.setMouseTransparent(true);}
+        } else { // else do not show the third cloud
             cloud3.setImage(null);
+            cloud3.setMouseTransparent(true);
+            student1Cloud3.setMouseTransparent(true);
+            student2Cloud3.setMouseTransparent(true);
+            student3Cloud3.setMouseTransparent(true);
+            student4Cloud3.setMouseTransparent(true);
         }
 
     }

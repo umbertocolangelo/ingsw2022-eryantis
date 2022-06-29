@@ -398,10 +398,18 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     *
+     * Sets the number of players
+     * @param isThree indicates if the game is for 3 players (true) or 2 (false)
      */
-    public void setIsThree(Boolean is){
-        this.isThree=is;
+    public void setIsThree(Boolean isThree){
+        this.isThree=isThree;
+    }
+
+    /**
+     * @return true if the game is for three players
+     */
+    public Boolean getIsThree(){
+        return isThree;
     }
 
     /**
