@@ -9,7 +9,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GuiClientLost implements Initializable {
+public class GuiClientLostController implements Initializable {
 
     @FXML
     public AnchorPane scenePane;
