@@ -13,6 +13,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.RadioButton;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -125,6 +127,25 @@ public class GuiChooseWizardAndColorController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
+        checkWizardAndColor();
+    }
+
+    /**
+     * Enter key is pressed
+     * @param keyEvent
+     * @throws IOException
+     */
+    public void onKeyPressed(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            checkWizardAndColor();
+        }
+    }
+
+    /**
+     * Checks if wizard and color are valid and changes scene
+     * @throws IOException
+     */
+    private void checkWizardAndColor() throws IOException {
         if (wizard==null || color==null) {
             wizardColor.setText("You must select the wizard and the player color");
         } else {

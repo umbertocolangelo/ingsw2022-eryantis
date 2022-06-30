@@ -201,7 +201,7 @@ public class GUIController {
                         GuiPortIpController starting = new GuiPortIpController();
                         Platform.runLater(() -> {
                             try {
-                                starting.waiting();
+                                starting.loading();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -217,16 +217,18 @@ public class GUIController {
                             }
                         });
                         break;
+                    case EQUALNAME:
+                        setEqual();
                     case LOGIN:
-                    GuiPortIpController start = new GuiPortIpController();
-                    Platform.runLater(() -> {
-                        try {
-                            start.login();
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                        GuiPortIpController start = new GuiPortIpController();
+                        Platform.runLater(() -> {
+                            try {
+                                start.login();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
                     });
-                    break;
+                        break;
                     case ISFIRST:
                         setIsFirst();
                         System.out.println("isFirst");
@@ -262,20 +264,10 @@ public class GUIController {
                         });
                         break;
                     case LOAD:
-                        GuiWaitingController waitingController = new GuiWaitingController();
+                        GuiLoadGameController loadGameController = new GuiLoadGameController();
                         Platform.runLater(() -> {
                             try {
-                                waitingController.showLoadGame();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
-                        break;
-                    case EQUALNAME:
-                        GuiLoginController controllerEqual = new GuiLoginController();
-                        Platform.runLater(() -> {
-                            try {
-                                controllerEqual.changeSceneEqual();
+                                loadGameController.showScene();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

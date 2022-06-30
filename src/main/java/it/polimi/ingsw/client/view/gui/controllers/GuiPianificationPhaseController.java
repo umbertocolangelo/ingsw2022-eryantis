@@ -10,6 +10,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.Color;
@@ -167,6 +169,25 @@ public class GuiPianificationPhaseController implements Initializable {
      * @param mouseEvent
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
+        checkAssistantCard();
+    }
+
+    /**
+     * Enter key is pressed
+     * @param keyEvent
+     * @throws IOException
+     */
+    public void onKeyPressed(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            checkAssistantCard();
+        }
+    }
+
+    /**
+     * Checks if the assistant card is valid and changes scene
+     * @throws IOException
+     */
+    private void checkAssistantCard() throws IOException {
         if (assistantCard==null) {
             label.setText("You must select an assistant card");
         } else {

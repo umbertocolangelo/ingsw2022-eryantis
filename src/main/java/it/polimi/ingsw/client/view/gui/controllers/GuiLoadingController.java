@@ -95,5 +95,4 @@ public class GuiLoadingController {
         stage.setX(x);
         stage.setY(y);
     }
-
 }

@@ -22,7 +22,7 @@
                   <Font name="Book Antiqua Bold" size="30.0" />
                </font>
             </Label>
-            <Button layoutX="540.0" layoutY="515.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="35.0" prefWidth="200.0" text="NEXT">
+            <Button layoutX="540.0" layoutY="515.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#onClickEvent" prefHeight="35.0" prefWidth="200.0" text="NEXT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>

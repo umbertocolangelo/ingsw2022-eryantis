@@ -48,21 +48,30 @@ public class GuiLoginController implements Initializable {
     private Scene scene;
 
     /**
-     * click on start button
+     * Click on start button
      * @param mouseEvent
      */
     public void onStartClick(MouseEvent mouseEvent) throws IOException {
-        sendName();
+        checkName();
     }
 
+    /**
+     * Enter key is pressed
+     * @param keyEvent
+     * @throws IOException
+     */
     public void onKeyPressed(KeyEvent keyEvent) throws IOException {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
-            sendName();
+            checkName();
         }
 
     }
 
-    private void sendName() throws IOException {
+    /**
+     * Checks if the name is valid and changes scene
+     * @throws IOException
+     */
+    private void checkName() throws IOException {
         if (insertName.getText().matches(".*\\d.*")) {
             equalName.setText("The username contains numbers, it not possible to enter numbers");
         } else if (insertName.getText().isEmpty()) {
@@ -138,32 +147,6 @@ public class GuiLoginController implements Initializable {
         stage.show();
         GuiIsFirstController firstController = fxmlLoader.getController();
         firstController.resize(stage);
-        stage.setWidth(width);
-        stage.setHeight(height);
-        stage.setX(x);
-        stage.setY(y);
-    }
-
-    /**
-     *
-     * @throws IOException
-     */
-    public void changeSceneEqual() throws IOException {
-        GUIController.getInstance().setEqual();
-        stage = GUIController.getInstance().getStage();
-        double x = stage.getX();
-        double y = stage.getY();
-        double width = stage.getWidth();
-        double height = stage.getHeight();
-        stage = new Stage();
-        GUIController.getInstance().getStage().close();
-        GUIController.setStage(stage);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/login-view.fxml"));
-        scene = new Scene(fxmlLoader.load());
-        stage.setScene(scene);
-        stage.setTitle("Eriantys");
-        stage.show();
-        resize(stage);
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setX(x);

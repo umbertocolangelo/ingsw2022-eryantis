@@ -6,6 +6,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
@@ -30,13 +32,6 @@ public class GuiPortIpController implements Initializable {
     @FXML
     private TextField ip;
 
-    @FXML
-    private Text currentIp;
-
-    @FXML
-    private Text currentPort;
-
-
     /**
      * Reference to the stage
      */
@@ -53,11 +48,11 @@ public class GuiPortIpController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        currentIp.setText("Your current target ip is " + GUIController.getInstance().getClient().getIp());
-        currentPort.setText("Your current target port is " + GUIController.getInstance().getClient().getPort());
-        if(GUIController.getInstance().getConnectionRefuse())
-            connection.setText("Connection refused, click next to try again");
-
+        if(GUIController.getInstance().getConnectionRefuse()){
+            connection.setText("Connection refused");
+            GUIController.getInstance().getClient().setPort(65432);
+            GUIController.getInstance().getClient().setIp("localhost");
+        }
     }
 
     /**
@@ -65,23 +60,50 @@ public class GuiPortIpController implements Initializable {
      * @param mouseEvent
      */
     public void onClickEvent(MouseEvent mouseEvent) throws IOException {
-        if (port != null && ip != null) {
-            if ((port.getText().matches(".*\\d.*") && port.getText().length()<6) && (ip.getText().matches( "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$") || ip.getText().equals("localhost"))) {
-                GUIController.getInstance().getClient().setPort(Integer.parseInt(port.getText()));
-                GUIController.getInstance().getClient().setIp(ip.getText());
+        checkPortAndIp();
+    }
+
+    /**
+     * Enter key is pressed
+     * @param keyEvent
+     * @throws IOException
+     */
+    public void onKeyPressed(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            checkPortAndIp();
+        }
+    }
+
+    /**
+     * Checks if the port and ip are valid and changes scene
+     * @throws IOException
+     */
+    private void checkPortAndIp() throws IOException{
+        if (!port.getText().isEmpty() || !ip.getText().isEmpty()) { // if one input field is not empty
+            if (!port.getText().isEmpty() && !ip.getText().isEmpty()) { // if the input fields are not empty
+                if ((port.getText().matches(".*\\d.*") && port.getText().length() < 6) && (ip.getText().matches("^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$") || ip.getText().equals("localhost"))) {
+                    GUIController.getInstance().getClient().setPort(Integer.parseInt(port.getText()));
+                    GUIController.getInstance().getClient().setIp(ip.getText());
+                } else {
+                    // bad inputs passed
+                    connection.setText("You inserted a wrong value");
+                    return;
+                }
+            }else{
+                connection.setText("Please insert both ip and port values");
+                return;
             }
         }
         if (!GUIController.getInstance().getConnectionTrue()) {
             GUIController.getInstance().startClient();
-            waiting();
+            loading();
         } else {
             connection.setText("Connection established, waiting for other players");
         }
-
     }
 
     /**
-     *
+     * Show portIp-view
      * @throws IOException
      */
     public void refresh() throws IOException {
@@ -107,7 +129,7 @@ public class GuiPortIpController implements Initializable {
     }
 
     /**
-     *
+     * Show login-view scene
      * @throws IOException
      */
     public void login() throws IOException {
@@ -133,10 +155,10 @@ public class GuiPortIpController implements Initializable {
     }
 
     /**
-     *
+     * Show loading screen
      * @throws IOException
      */
-    public void waiting() throws IOException {
+    public void loading() throws IOException {
         stage = GUIController.getInstance().getStage();
         double x = stage.getX();
         double y = stage.getY();

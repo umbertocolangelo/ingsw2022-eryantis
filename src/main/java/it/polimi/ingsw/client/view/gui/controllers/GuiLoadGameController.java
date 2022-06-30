@@ -45,7 +45,8 @@ public class GuiLoadGameController {
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-        resize(stage);
+        GuiLoadGameController controller = fxmlLoader.getController();
+        controller.resize(stage);
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setX(x);

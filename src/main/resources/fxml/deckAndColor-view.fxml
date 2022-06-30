@@ -26,7 +26,7 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <ImageView fx:id="wizard1" fitHeight="200.0" fitWidth="140.0" layoutX="263.0" layoutY="111.0" onMouseClicked="#onWizardClick1" preserveRatio="true">
+            <ImageView fx:id="wizard1" fitHeight="200.0" fitWidth="140.0" layoutX="263.0" layoutY="111.0" onKeyPressed="#onKeyPressed" onMouseClicked="#onWizardClick1" preserveRatio="true">
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/retro/CarteTOT_back_1@3x.png" />
                </image>
@@ -37,7 +37,7 @@
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </ImageView>
-            <ImageView fx:id="wizard2" fitHeight="200.0" fitWidth="140.0" layoutX="465.0" layoutY="111.0" onMouseClicked="#onWizardClick2">
+            <ImageView fx:id="wizard2" fitHeight="200.0" fitWidth="140.0" layoutX="465.0" layoutY="111.0" onKeyPressed="#onKeyPressed" onMouseClicked="#onWizardClick2">
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/retro/CarteTOT_back_11@3x.png" />
                </image>
@@ -48,7 +48,7 @@
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </ImageView>
-            <ImageView fx:id="wizard3" fitHeight="200.0" fitWidth="140.0" layoutX="672.0" layoutY="111.0" onMouseClicked="#onWizardClick3">
+            <ImageView fx:id="wizard3" fitHeight="200.0" fitWidth="140.0" layoutX="672.0" layoutY="111.0" onKeyPressed="#onKeyPressed" onMouseClicked="#onWizardClick3">
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/retro/CarteTOT_back_21@3x.png" />
                </image>
@@ -59,7 +59,7 @@
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </ImageView>
-            <ImageView fx:id="wizard4" fitHeight="200.0" fitWidth="140.0" layoutX="888.0" layoutY="111.0" onMouseClicked="#onWizardClick4">
+            <ImageView fx:id="wizard4" fitHeight="200.0" fitWidth="140.0" layoutX="888.0" layoutY="111.0" onKeyPressed="#onKeyPressed" onMouseClicked="#onWizardClick4">
                <image>
                   <Image url="@../Graphical_Assets/Assistenti/retro/CarteTOT_back_31@3x.png" />
                </image>
@@ -70,7 +70,7 @@
                   <InnerShadow blurType="ONE_PASS_BOX" />
                </effect>
             </ImageView>
-            <Button fx:id="next" layoutX="540.0" layoutY="573.0" mnemonicParsing="false" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="200.0" text="NEXT">
+            <Button fx:id="next" layoutX="540.0" layoutY="573.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#onNextClick" prefHeight="35.0" prefWidth="200.0" text="NEXT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>
@@ -83,7 +83,7 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <RadioButton fx:id="white" layoutX="590.0" layoutY="414.0" mnemonicParsing="false" onMouseClicked="#onColorClick1" text="White">
+            <RadioButton fx:id="white" layoutX="590.0" layoutY="414.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#onColorClick1" text="White">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
@@ -94,7 +94,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <RadioButton fx:id="black" layoutX="590.0" layoutY="459.0" mnemonicParsing="false" onMouseClicked="#onColorClick2" text="Black" toggleGroup="$c">
+            <RadioButton fx:id="black" layoutX="590.0" layoutY="459.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#onColorClick2" text="Black" toggleGroup="$c">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
@@ -102,7 +102,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <RadioButton fx:id="grey" layoutX="590.0" layoutY="504.0" mnemonicParsing="false" onMouseClicked="#onColorClick3" text="Grey" toggleGroup="$c">
+            <RadioButton fx:id="grey" layoutX="590.0" layoutY="504.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#onColorClick3" text="Grey" toggleGroup="$c">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
