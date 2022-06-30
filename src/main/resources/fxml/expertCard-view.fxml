@@ -73,51 +73,27 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Text>
-            <ImageView fx:id="studentCard1" fitHeight="45.0" fitWidth="45.0" layoutX="223.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="card1student15" fitHeight="45.0" fitWidth="45.0" layoutX="223.0" layoutY="204.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="studentCard3" fitHeight="45.0" fitWidth="45.0" layoutX="223.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="card1student3" fitHeight="45.0" fitWidth="45.0" layoutX="223.0" layoutY="284.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="studentCard5" fitHeight="45.0" fitWidth="45.0" layoutX="223.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="card1student1" fitHeight="45.0" fitWidth="45.0" layoutX="223.0" layoutY="364.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="studentCard2" fitHeight="45.0" fitWidth="45.0" layoutX="310.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="card1student6" fitHeight="45.0" fitWidth="45.0" layoutX="310.0" layoutY="204.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="studentCard4" fitHeight="45.0" fitWidth="45.0" layoutX="310.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="card1student4" fitHeight="45.0" fitWidth="45.0" layoutX="310.0" layoutY="284.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
-            <ImageView fx:id="studentCard6" fitHeight="45.0" fitWidth="45.0" layoutX="310.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="studentCard21" fitHeight="45.0" fitWidth="45.0" layoutX="537.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="studentCard211" fitHeight="45.0" fitWidth="45.0" layoutX="537.0" layoutY="248.0" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="studentCard2111" fitHeight="45.0" fitWidth="45.0" layoutX="537.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="studentCard21111" fitHeight="45.0" fitWidth="45.0" layoutX="640.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="studentCard211111" fitHeight="45.0" fitWidth="45.0" layoutX="640.0" layoutY="263.0" pickOnBounds="true" preserveRatio="true">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></ImageView>
-            <ImageView fx:id="studentCard2111111" fitHeight="45.0" fitWidth="45.0" layoutX="640.0" layoutY="181.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="card1student2" fitHeight="45.0" fitWidth="45.0" layoutX="310.0" layoutY="364.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
@@ -126,6 +102,66 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Text>
+            <ImageView fx:id="card2student5" fitHeight="45.0" fitWidth="45.0" layoutX="546.0" layoutY="204.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card2student3" fitHeight="45.0" fitWidth="45.0" layoutX="546.0" layoutY="284.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card2student1" fitHeight="45.0" fitWidth="45.0" layoutX="546.0" layoutY="364.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card2student6" fitHeight="45.0" fitWidth="45.0" layoutX="633.0" layoutY="204.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card2student4" fitHeight="45.0" fitWidth="45.0" layoutX="633.0" layoutY="284.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card2student2" fitHeight="45.0" fitWidth="45.0" layoutX="633.0" layoutY="364.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card3student5" fitHeight="45.0" fitWidth="45.0" layoutX="866.0" layoutY="204.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card3student3" fitHeight="45.0" fitWidth="45.0" layoutX="866.0" layoutY="284.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card3student1" fitHeight="45.0" fitWidth="45.0" layoutX="866.0" layoutY="364.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card3student6" fitHeight="45.0" fitWidth="45.0" layoutX="953.0" layoutY="204.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card3student4" fitHeight="45.0" fitWidth="45.0" layoutX="953.0" layoutY="284.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <ImageView fx:id="card3student2" fitHeight="45.0" fitWidth="45.0" layoutX="953.0" layoutY="364.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
          </children>
       </AnchorPane>
    </children>

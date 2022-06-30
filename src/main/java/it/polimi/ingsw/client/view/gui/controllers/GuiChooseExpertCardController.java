@@ -3,6 +3,10 @@ package it.polimi.ingsw.client.view.gui.controllers;
 import it.polimi.ingsw.message.MessageMethod;
 import it.polimi.ingsw.message.PlayExpertCard;
 import it.polimi.ingsw.model.Game;
+import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
+import it.polimi.ingsw.model.expertCards.deck.StudentToHallCard;
+import it.polimi.ingsw.model.expertCards.deck.StudentToIslandCard;
+import it.polimi.ingsw.model.pawns.Student;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +22,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.LinkedList;
 import java.util.ResourceBundle;
 
 public class GuiChooseExpertCardController implements Initializable {
@@ -52,6 +57,31 @@ public class GuiChooseExpertCardController implements Initializable {
      *
      */
     private Scene scene;
+
+    /**
+     * Path to yellow student image file
+     */
+    private String yellowStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_yellow.png";
+
+    /**
+     * Path to red student image file
+     */
+    private String redStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_red.png";
+
+    /**
+     * Path to blue student image file
+     */
+    private String blueStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_blue.png";
+
+    /**
+     * Path to green student image file
+     */
+    private String greenStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_green.png";
+
+    /**
+     * Path to pink student image file
+     */
+    private String pinkStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
 
     /**
      *
@@ -136,6 +166,43 @@ public class GuiChooseExpertCardController implements Initializable {
 
     @FXML
     private Text costCard3;
+
+    @FXML
+    private ImageView card1student1;
+    @FXML
+    private ImageView card1student2;
+    @FXML
+    private ImageView card1student3;
+    @FXML
+    private ImageView card1student4;
+    @FXML
+    private ImageView card1student5;
+    @FXML
+    private ImageView card1student6;
+    @FXML
+    private ImageView card2student1;
+    @FXML
+    private ImageView card2student2;
+    @FXML
+    private ImageView card2student3;
+    @FXML
+    private ImageView card2student4;
+    @FXML
+    private ImageView card2student5;
+    @FXML
+    private ImageView card2student6;
+    @FXML
+    private ImageView card3student1;
+    @FXML
+    private ImageView card3student2;
+    @FXML
+    private ImageView card3student3;
+    @FXML
+    private ImageView card3student4;
+    @FXML
+    private ImageView card3student5;
+    @FXML
+    private ImageView card3student6;
 
     /**
      * go back to action phase
@@ -279,10 +346,11 @@ public class GuiChooseExpertCardController implements Initializable {
      * @param id
      * @param expertCard
      */
-    public void setImageExpertCard(String id, ImageView expertCard){
+    public void setImageExpertCard(String id, ImageView expertCard, int position){
         switch (id) {
             case"38":
                 expertCard.setImage(new Image(cardOnePath));
+                showStudents(position,((StudentToIslandCard) game.getCardManager().getDeck().get(position-1)).getStudents());
                 break;
             case"39":
                 expertCard.setImage(new Image(cardTwoPath));
@@ -301,6 +369,7 @@ public class GuiChooseExpertCardController implements Initializable {
                 break;
             case"44":
                 expertCard.setImage(new Image(cardSevenPath));
+                showStudents(position,((IngressCardSwapCard) game.getCardManager().getDeck().get(position-1)).getStudents());
                 break;
             case"45":
                 expertCard.setImage(new Image(cardEightPath));
@@ -313,11 +382,71 @@ public class GuiChooseExpertCardController implements Initializable {
                 break;
             case"48":
                 expertCard.setImage(new Image(cardElevenPath));
+                showStudents(position,((StudentToHallCard) game.getCardManager().getDeck().get(position-1)).getStudents());
                 break;
             case"49":
                 expertCard.setImage(new Image(cardTwelvePath));
                 break;
         }
+    }
+
+    private void showStudents(int position, LinkedList<Student> students){
+        LinkedList<ImageView> images = new LinkedList<>();
+        switch (position){
+            case 1:
+                images.add(card1student1);
+                images.add(card1student2);
+                images.add(card1student3);
+                images.add(card1student4);
+                images.add(card1student5);
+                images.add(card1student6);
+                break;
+            case 2:
+                images.add(card2student1);
+                images.add(card2student2);
+                images.add(card2student3);
+                images.add(card2student4);
+                images.add(card2student5);
+                images.add(card2student6);
+                break;
+            case 3:
+                images.add(card3student1);
+                images.add(card3student2);
+                images.add(card3student3);
+                images.add(card3student4);
+                images.add(card3student5);
+                images.add(card3student6);
+                break;
+        }
+        for(int i = 0; i<students.size(); i++){
+            images.get(i).setImage(getImageStudent(students.get(i)));
+        }
+    }
+
+
+    /**
+     * @param student whose image is returned
+     * @return a new Image object of student
+     */
+    private Image getImageStudent(Student student) {
+        switch (student.getColor()) {
+            case RED -> {
+                return new Image(redStudentPath);
+            }
+            case GREEN -> {
+                return new Image(greenStudentPath);
+            }
+            case BLUE -> {
+                return new Image(blueStudentPath);
+            }
+            case PINK -> {
+                return new Image(pinkStudentPath);
+            }
+            case YELLOW -> {
+                return new Image(yellowStudentPath);
+            }
+        }
+        return null;
     }
 
     /**
@@ -327,9 +456,9 @@ public class GuiChooseExpertCardController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         game = GUIController.getInstance().getClient().getGame();
-        setImageExpertCard(game.getCardManager().getDeck().get(0).getId(),expertCard1);
-        setImageExpertCard(game.getCardManager().getDeck().get(1).getId(),expertCard2);
-        setImageExpertCard(game.getCardManager().getDeck().get(2).getId(),expertCard3);
+        setImageExpertCard(game.getCardManager().getDeck().get(0).getId(),expertCard1, 1);
+        setImageExpertCard(game.getCardManager().getDeck().get(1).getId(),expertCard2,2);
+        setImageExpertCard(game.getCardManager().getDeck().get(2).getId(),expertCard3,3);
         coins.setText("You have " + game.getCurrentPlayer().getCoins() + " coins");
         costCard1.setText("Cost: " + game.getCardManager().getDeck().get(0).getCost());
         costCard2.setText("Cost: " + game.getCardManager().getDeck().get(1).getCost());
