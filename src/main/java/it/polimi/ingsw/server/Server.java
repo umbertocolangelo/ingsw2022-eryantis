@@ -142,7 +142,7 @@ public class Server {
             }else{
 
                 persistence(c);
-                if(playingConnection.size()==2)
+                if(playingConnection.size()==1)
                     timeout(c);
                System.out.println("Il player e uscito");
             }
@@ -231,19 +231,18 @@ public class Server {
             }
         }
         if(c.getName().equals(game.getCurrentPlayer().getName())){
-            if(game.getPlayerList().getLast().getCardPlayed()!=null && game.getCurrentPlayer().getPlayerPhase().equals(PlayerPhase.CHOOSING_ASSISTANT))
-
-
-
-            if(!game.getOrderedPlayerList().isEmpty()) {
-                game.setCurrentPlayer(game.getOrderedPlayerList().getFirst());
+             if(game.getOrderedPlayerList().size() ==playerLinkedList.size() || playerLinkedList.getLast().getCardPlayed()!=null) {
+                //game.setCurrentPlayer(game.getOrderedPlayerList().getFirst());
                game.newActionRound();
             }
             else
-                game.setCurrentPlayer(game.getPlayerList().getFirst());
-
+                for(Player player:playerLinkedList) {
+                    if (player.getCardPlayed()==null) {
+                        game.setCurrentPlayer(player);
+                        break;
+                    }
+                }
         }
-
         game.setIsThree(false);
         sendGame();
     }
@@ -255,12 +254,16 @@ public class Server {
         if(c.getName().equals(namePlayerMissing)) {
             players.addLast(referencePlayerMissing);
             game.setPlayerList(players);
+            referencePlayerMissing.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+            referencePlayerMissing.setAssistantCard(null);
             referencePlayerMissing=null;
         }
         else {
            players.addLast(referencePlayerMissing2);
            game.setPlayerList(players);
-           referencePlayerMissing2=null;
+           referencePlayerMissing2.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+           referencePlayerMissing2.setAssistantCard(null);
+            referencePlayerMissing2=null;
         }
         if(referencePlayerMissing==null && referencePlayerMissing2==null)
             playerMissing=false;
@@ -268,7 +271,6 @@ public class Server {
             game.setIsThree(true);
         if(isTimeout) {
             isTimeout=false;
-
             game.setCurrentPlayer(game.getPlayerList().getFirst());
             game.newGame();
             isTimeout=false;

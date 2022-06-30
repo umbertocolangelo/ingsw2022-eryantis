@@ -448,7 +448,7 @@ public class Game implements GameInterface, Serializable {
         AssistantCard assistantCard=IdManager.getInstance().getAssistantCard(assistantId);
         if (this.currentRound.playAssistantCard(assistantCard, this.currentPlayer)) {
             System.out.println("Assistant card played");
-
+                currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
             if (playerList.indexOf(currentPlayer) < playerList.size() - 1 && orderedPLayerList.isEmpty()) {
                 System.out.println("Modify current player in game");
                 this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
@@ -599,7 +599,10 @@ public class Game implements GameInterface, Serializable {
     public void chooseCloud(String cloudId) {
         Cloud cloud = IdManager.getInstance().getCloud(cloudId);
         if (this.currentRound.chooseCloud(cloud)) {
-            while (currentPlayer.getSchool().getIngress().getStudents().size()<9 && isThree || currentPlayer.getSchool().getIngress().getStudents().size()<7 &&!isThree ) {
+            while (currentPlayer.getSchool().getIngress().getStudents().size()<9 && isThree || currentPlayer.getSchool().getIngress().getStudents().size()<7 &&!isThree)
+            {
+                if(cloud.getStudents().size()==0)
+                    break;
                 this.currentPlayer.getSchool().getIngress().addStudent(cloud.getStudents().getLast());
             }
             this.currentRound.checkRoundEnded();
@@ -762,6 +765,7 @@ public class Game implements GameInterface, Serializable {
             player.setAssistantCard(null);
             player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
         }
+        orderedPLayerList=new LinkedList<>();
         studentsMoved=0;
         this.currentRound=new PianificationRound(this);
     }

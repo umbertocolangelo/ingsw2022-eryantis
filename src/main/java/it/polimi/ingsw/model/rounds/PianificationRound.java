@@ -48,7 +48,7 @@ public class PianificationRound implements RoundInterface, Serializable {
      *Check if all the player played the card and if so create the actionRound
      */
     public Boolean checkRoundEnded() {
-        if(assistantCards.size()==this.game.getPlayerList().size()) {
+        if(playerListOrdered.size()==this.game.getPlayerList().size()) {
             this.game.setPlayerList(playerListOrdered);
             this.game.setOrderedPlayerList(playerListOrdered);
             assistantCards=new ArrayList<>();

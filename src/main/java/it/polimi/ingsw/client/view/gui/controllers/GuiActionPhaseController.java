@@ -2986,7 +2986,7 @@ public class GuiActionPhaseController implements Initializable {
             student1Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(0).getColor()));
             student2Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(1).getColor()));
             student3Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(2).getColor()));
-            if (game.getPlayerList().size()==3) {
+            if (game.getClouds().getFirst().getStudents().size()==4) {
                 student4Cloud1.setImage(getImageStudent(game.getClouds().get(0).getStudents().get(3).getColor()));
             }
             if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
@@ -2996,8 +2996,9 @@ public class GuiActionPhaseController implements Initializable {
         if (!game.getClouds().get(1).getStudents().isEmpty()) {
             student1Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(0).getColor()));
             student2Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(1).getColor()));
+            if(game.getClouds().getLast().getStudents().size()==4)
             student3Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(2).getColor()));
-            if (game.getPlayerList().size()==3) {
+            if (game.getClouds().get(1).getStudents().size()==4) {
                 student4Cloud2.setImage(getImageStudent(game.getClouds().get(1).getStudents().get(3).getColor()));
             }
             if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
