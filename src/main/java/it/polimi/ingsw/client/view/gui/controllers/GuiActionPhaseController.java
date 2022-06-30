@@ -4245,17 +4245,25 @@ public class GuiActionPhaseController implements Initializable {
      */
     public void clickPlayExpertCard(MouseEvent mouseEvent) throws IOException {
         if (game.getGameMode()==true && game.getCardManager().getCurrentCard()==null && !GUIController.getInstance().getCardNeedIsland()) {
-            stage = (Stage)((Node) mouseEvent.getSource()).getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/expertCard-view.fxml"));
-            scene = new Scene(fxmlLoader.load());
+            stage = GUIController.getInstance().getStage();
+            double x = stage.getX();
+            double y = stage.getY();
             double width = stage.getWidth();
             double height = stage.getHeight();
+            stage = new Stage();
+            GUIController.getInstance().getStage().close();
+            GUIController.setStage(stage);
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/expertCard-view.fxml"));
+            scene = new Scene(fxmlLoader.load());
             stage.setScene(scene);
-            stage.setWidth(width);
-            stage.setHeight(height);
+            stage.setTitle("Eriantys");
             stage.show();
             GuiChooseExpertCardController expertController = fxmlLoader.getController();
             expertController.resize(stage);
+            stage.setWidth(width);
+            stage.setHeight(height);
+            stage.setX(x);
+            stage.setY(y);
         }
     }
 
