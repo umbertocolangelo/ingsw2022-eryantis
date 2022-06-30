@@ -31,7 +31,6 @@ import java.util.ResourceBundle;
 
 public class GuiActionPhaseController implements Initializable {
 
-
     /**
      * Path to island A image file
      */
@@ -135,7 +134,6 @@ public class GuiActionPhaseController implements Initializable {
     private String card8Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (8).png";
     private String card9Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (9).png";
     private String card10Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (10).png";
-
 
     /**
      * AnchorPane reference
@@ -1566,7 +1564,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island1);
         denyTokens.add(deny4Island1);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1584,7 +1582,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island2);
         denyTokens.add(deny4Island2);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1602,7 +1600,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island3);
         denyTokens.add(deny4Island3);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1620,7 +1618,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island4);
         denyTokens.add(deny4Island4);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1638,7 +1636,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island5);
         denyTokens.add(deny4Island5);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1656,7 +1654,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island6);
         denyTokens.add(deny4Island6);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1674,7 +1672,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island7);
         denyTokens.add(deny4Island7);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1692,7 +1690,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island8);
         denyTokens.add(deny4Island8);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1710,7 +1708,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island9);
         denyTokens.add(deny4Island9);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1746,7 +1744,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island11);
         denyTokens.add(deny4Island11);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1763,7 +1761,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny3Island12);
         denyTokens.add(deny4Island12);
 
-        for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
+        for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
             denyTokens.get(denyNum).setImage(new Image(denyPath));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
@@ -1899,6 +1897,10 @@ public class GuiActionPhaseController implements Initializable {
         }
     }
 
+    /**
+     * shows the assistant card played in the previous pianification phase
+     * @param num
+     */
     private void showAssistantCard(int num) {
         switch (num) {
             case 1 -> {
@@ -2920,24 +2922,53 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showTextPhase(){
         if (game.getCurrentRound().getId()==null) {
-            switch (game.getCurrentPlayer().getPlayerPhase()) {
-                case MOVING_STUDENTS -> {
-                    communicationPlayerPhase.setText("Move a student to your hall or to an island");
+            if (GUIController.getInstance().getIdExpertCardPlayed()!=null) {
+                switch (GUIController.getInstance().getIdExpertCardPlayed()) {
+                    case "39" -> {
+                        communicationPlayerPhase.setText("Now you control the professor even if you have the same number of students of your opponents");
+                    }
+                    case "40" -> {
+                        communicationPlayerPhase.setText("Choose an island on which calculate influence just like Mother Nature is on it");
+                    }
+                    case "41" -> {
+                        communicationPlayerPhase.setText("You have up to 2 more jumps available for Mother Nature");
+                    }
+                    case "42" -> {
+                        communicationPlayerPhase.setText("Choose an island on which put a deny that will stop a calculate of the influence on it");
+                    }
+                    case "43" -> {
+                        communicationPlayerPhase.setText("Towers will not be considered in the influence calculation");
+                    }
+                    case "45" -> {
+                        communicationPlayerPhase.setText("You have 2 additional point in the influence calculation");
+                    }
+                    case "46" -> {
+                        communicationPlayerPhase.setText("Students of the chosen color will not be considered in the influence calculation");
+                    }
+                    case "49" -> {
+                        communicationPlayerPhase.setText("At every player will be removed from their hall up to 3 students (if available) of the chosen color");
+                    }
                 }
-                case MOVING_MOTHERNATURE -> {
-                    communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
-                }
-                case CHOOSING_CLOUD -> {
-                    communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
+            } else {
+                switch (game.getCurrentPlayer().getPlayerPhase()) {
+                    case MOVING_STUDENTS -> {
+                        communicationPlayerPhase.setText("Move a student to your hall or to an island");
+                    }
+                    case MOVING_MOTHERNATURE -> {
+                        communicationPlayerPhase.setText("Choose the island on which you want to move Mother Nature to");
+                    }
+                    case CHOOSING_CLOUD -> {
+                        communicationPlayerPhase.setText("Choose the cloud with the students you want in your ingress");
+                    }
                 }
             }
         } else {
             switch (game.getCurrentRound().getId()) {
                 case 0:
-                    communicationPlayerPhase.setText("Choose a student from your ingress to swap with the one selected from the expert card, or click on FINISH EXPERT MOVE to go back at the action phase");
+                    communicationPlayerPhase.setText("Choose up to 3 students (one by one) from your ingress to swap with the one selected from the expert card, or click on FINISH EXPERT MOVE to go back at the action phase");
                     break;
                 case 1:
-                    communicationPlayerPhase.setText("Choose a student from your ingress to swap with one from your hall (even if it has a different color), or click on FINISH EXPERT MOVE to go back at the action phase");
+                    communicationPlayerPhase.setText("Choose up to 2 students (one by one) from your ingress to swap with the ones from your hall (even if it has a different color), or click on FINISH EXPERT MOVE to go back at the action phase");
                     break;
                 case 2:
                     communicationPlayerPhase.setText("Add the chosen student from the expert card to your hall, or click on FINISH EXPERT MOVE to go back at the action phase");
@@ -2955,11 +2986,10 @@ public class GuiActionPhaseController implements Initializable {
     private void showText(){
         if (game.getCurrentRound().getId()==null) {
             if (GUIController.getInstance().getIdExpertCardPlayed()!=null) {
-                if (GUIController.getInstance().getIdExpertCardPlayed().equals("40") || GUIController.getInstance().getIdExpertCardPlayed().equals("42")) {
-                    communication.setText("You selected a card that needs an island as parameter, pick an island");
-                }
-            }else
+                communication.setText("ACTION ROUND WITH AN EXPERT CARD ACTIVE");
+            } else {
                 communication.setText("ACTION ROUND");
+            }
         } else {
             switch (game.getCurrentRound().getId()) {
                 case 0:

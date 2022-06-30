@@ -46,12 +46,13 @@ public class HallBagSwapCard implements ExpertCard, Serializable {
     public void apply(Color color) {
         incrementCost();
         ArrayList<Player> players = cardManager.getPlayerList();
-        System.out.println( cardManager.getPlayerList());
-        for(Player player : players){
-            LinkedList<Student> students=player.getSchool().getHall().getLine(color).getStudents();
-            for (int i=0 ; i<3 ;i++){
-                if(!students.isEmpty()){
-                    player.getSchool().getHall().getLine(color).removeStudent(students.removeLast());}
+        System.out.println(cardManager.getPlayerList());
+        for(Player player : players) {
+            LinkedList<Student> students = player.getSchool().getHall().getLine(color).getStudents();
+            for (int i=0 ; i<3 ;i++) {
+                if (!students.isEmpty()) {
+                    player.getSchool().getHall().getLine(color).removeStudent(students.removeLast());
+                }
                 cardManager.getBag().reinsertStudent(color);
             }
         }
