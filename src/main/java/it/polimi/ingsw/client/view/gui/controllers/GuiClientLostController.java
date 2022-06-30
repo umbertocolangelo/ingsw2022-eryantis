@@ -23,7 +23,7 @@ public class GuiClientLostController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clientLost.setText("The player " + GUIController.getInstance().getClient().getNamePLayerLost() + " has been disconnected\n Game finished");
+        clientLost.setText("The player " + GUIController.getInstance().getNameClientLost() + " has been disconnected\n Game finished");
     }
 
     /**

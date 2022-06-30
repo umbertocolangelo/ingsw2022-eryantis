@@ -124,17 +124,8 @@ public class SocketClientConnection implements Runnable {
             if (isFirst && !server.getPlayingConnection().isEmpty())
                 server.setNumberOfPlayer(0);
             closeConnection();
-
                 server.getSemaphore().release();
             System.out.println("Unregistering client ...");
-            if(!server.getPlayingConnection().isEmpty()){
-                for(Player player: server.getGame().getPlayerList())
-                    if(player.getPlayerPhase().equals(PlayerPhase.SET_UP_PHASE))
-                        stillInLobby=true;
-                if (server.getPlayingConnection().size()>1 && !stillInLobby){
-                    server.setPlayerMissing(true);
-                }
-            }
             server.deregisterConnection(this);
             System.out.println("Done!");
         }
@@ -154,7 +145,7 @@ public class SocketClientConnection implements Runnable {
             server.getSemaphore().acquire();
 
             //If there are no player waiting in the lobby set this client connection as first
-            if (server.getWaitingConnection().isEmpty() && server.getPlayingConnection().isEmpty()){
+            if (server.getWaitingConnection().isEmpty() && server.getPlayingConnection().isEmpty()) {
                 isFirst = true;
             }
 
@@ -173,46 +164,35 @@ public class SocketClientConnection implements Runnable {
             name = read;
             send(new SetName(name));
 
-            if((server.getPlayerMissing() || server.getTimeout()) && server.checkName(name) ){
-                if(server.getTimeout()) {
-                    server.setIsStillSolo(false);
-
-                }
-                server.insertPlayer(this);
-            }else {
-                if (isFirst) {
-                    System.out.println("Sending is first");
-                    send(new IsFirst());
-                    IsFirst isFirst = (IsFirst) in.readObject();
-                    System.out.println();
-                    server.setGameMode(isFirst.getGameMode());
-                    server.setNumberOfPlayer(isFirst.getPlayersNumber());
-                }
-                server.lobby(this, name);
+            if (isFirst) {
+                System.out.println("Sending is first");
+                send(new IsFirst());
+                IsFirst isFirst = (IsFirst) in.readObject();
+                System.out.println();
+                server.setGameMode(isFirst.getGameMode());
+                server.setNumberOfPlayer(isFirst.getPlayersNumber());
             }
+            server.lobby(this, name);
+
 
             while (isActive()) {
                 Object object = in.readObject();
                 if (object instanceof MessageMethod) {
-                    Thread t1 = new Thread( server.modifyGame(object));
+                    Thread t1 = new Thread(server.modifyGame(object));
                     t1.join();
                     System.out.println(object);
                 }
                 if ((object instanceof IsFirst)) {
-                    server.setGameMode(((IsFirst)object).getGameMode());
-                    server.setNumberOfPlayer(((IsFirst)object).getPlayersNumber());
-                    server.lobby(this,null);
+                    server.setGameMode(((IsFirst) object).getGameMode());
+                    server.setNumberOfPlayer(((IsFirst) object).getPlayersNumber());
+                    server.lobby(this, null);
                 }
                 if ((object instanceof String)) {
                     Thread t1 = new Thread(server.loadGame((String) object));
                     t1.join();
                 }
             }
-        } catch (SocketTimeoutException e) {
-            System.out.println("Timeout expired");
-            server.setFinishedTimeout(true);
-
-        } catch (IOException | NoSuchElementException e) {
+        } catch (IOException e ){
             System.err.println("Error! " + e.getMessage());
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
