@@ -1250,6 +1250,8 @@ public class GuiActionPhaseController implements Initializable {
     private Text communication;
     @FXML
     private Text communicationPlayerPhase;
+    @FXML
+    private Text coinsText;
 
     /**
      * finish expert move Button reference
@@ -1528,6 +1530,7 @@ public class GuiActionPhaseController implements Initializable {
         showTextPhase();
         showProfessors();
         showTowerTable();
+        if(game.getGameMode()){showCoins();}
 
         // show of islands and relative students and towers
         LinkedList<IslandInterface> islandList = game.getIslandManager().getIslands();
@@ -3042,6 +3045,15 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     /**
+     * shows the number of coins on the screen
+     */
+    private void showCoins(){
+        if(game.getCurrentPlayer().getCoins()!=null){
+            coinsText.setText("COINS: " + game.getCurrentPlayer().getCoins());
+        }
+    }
+
+    /**
      * shows mother nature on the screen
      */
     private void showMotherNature() {
@@ -4231,12 +4243,6 @@ public class GuiActionPhaseController implements Initializable {
         stage.setX(x);
         stage.setY(y);
     }
-
-    /**
-     * go to winner scene
-     * @throws IOException
-     */
-
 
     /**
      * go to expertCard scene

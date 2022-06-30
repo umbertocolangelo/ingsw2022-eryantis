@@ -234,21 +234,14 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Button layoutX="1086.0" layoutY="518.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="175.0" text="PLAY">
+            <Button fx:id="expertCardButton" layoutX="1074.0" layoutY="581.0" mnemonicParsing="false" onMouseClicked="#clickPlayExpertCard" prefHeight="35.0" prefWidth="175.0" text="PLAY EXPERT CARD">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="expertCardButton" layoutX="1086.0" layoutY="581.0" mnemonicParsing="false" onMouseClicked="#clickPlayExpertCard" prefHeight="35.0" prefWidth="175.0" text="PLAY EXPERT CARD">
-               <font>
-                  <Font name="Book Antiqua Bold Italic" size="14.0" />
-               </font>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="finishExpertMove" layoutX="1086.0" layoutY="648.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="35.0" prefWidth="175.0" text="FINISH EXPERT MOVE">
+            <Button fx:id="finishExpertMove" layoutX="1074.0" layoutY="648.0" mnemonicParsing="false" onMouseClicked="#clickFinishExpertMove" prefHeight="35.0" prefWidth="175.0" text="FINISH EXPERT MOVE">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="14.0" />
                </font>
@@ -1443,6 +1436,11 @@
             <Text fx:id="communication" layoutX="802.0" layoutY="547.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="217.3294677734375">
                <font>
                   <Font name="Book Antiqua Bold" size="14.0" />
+               </font>
+            </Text>
+            <Text fx:id="coinsText" layoutX="1101.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="118.5999755859375">
+               <font>
+                  <Font name="Book Antiqua Bold" size="20.0" />
                </font>
             </Text>
          </children>
