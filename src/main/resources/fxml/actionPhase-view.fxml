@@ -1438,7 +1438,7 @@
                   <Font name="Book Antiqua Bold" size="14.0" />
                </font>
             </Text>
-            <Text fx:id="coinsText" layoutX="1101.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="118.5999755859375">
+            <Text fx:id="coinsText" layoutX="1101.0" layoutY="548.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="118.5999755859375">
                <font>
                   <Font name="Book Antiqua Bold" size="20.0" />
                </font>

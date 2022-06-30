@@ -113,45 +113,27 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     private String cardTwelvePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front11.jpg";
 
-    /**
-     *
-     */
     @FXML
     private ImageView expertCard1;
 
-    /**
-     *
-     */
     @FXML
     private ImageView expertCard2;
 
-    /**
-     *
-     */
     @FXML
     private ImageView expertCard3;
 
-    /**
-     *
-     */
     @FXML
     private Text coins;
 
-    /**
-     *
-     */
+    @FXML
+    private Text communication;
+
     @FXML
     private Text costCard1;
 
-    /**
-     *
-     */
     @FXML
     private Text costCard2;
 
-    /**
-     *
-     */
     @FXML
     private Text costCard3;
 
@@ -258,10 +240,10 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     public void clickOnExpert1(MouseEvent mouseEvent) throws IOException {
        if (game.getCardManager().getDeck().get(0).getCost()>game.getCurrentPlayer().getCoins()) {
-           coins.setText("You can not afford this card");
+           communication.setText("You can not afford this card");
        } else {
            idExpert = game.getCardManager().getDeck().get(0).getId();
-           expertCard1.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
+           setShadow(expertCard1);
        }
     }
 
@@ -271,10 +253,10 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     public void clickOnExpert2(MouseEvent mouseEvent) {
         if (game.getCardManager().getDeck().get(1).getCost()>game.getCurrentPlayer().getCoins()) {
-            coins.setText("You can not afford this card");
+            communication.setText("You can not afford this card");
         } else {
             idExpert = game.getCardManager().getDeck().get(1).getId();
-            expertCard2.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
+            setShadow(expertCard2);
         }
     }
 
@@ -285,10 +267,10 @@ public class GuiChooseExpertCardController implements Initializable {
      */
     public void clickOnExpert3(MouseEvent mouseEvent) throws IOException {
         if (game.getCardManager().getDeck().get(2).getCost()>game.getCurrentPlayer().getCoins()) {
-            coins.setText("You can not afford this card");
+            communication.setText("You can not afford this card");
         } else {
             idExpert = game.getCardManager().getDeck().get(2).getId();
-            expertCard3.setEffect(new DropShadow(30, javafx.scene.paint.Color.BLUE));
+            setShadow(expertCard3);
         }
     }
 

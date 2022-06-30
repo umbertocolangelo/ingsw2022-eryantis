@@ -12,7 +12,7 @@
    <children>
       <AnchorPane fx:id="scenePane" prefHeight="720.0" prefWidth="1280.0">
          <children>
-            <ImageView fitHeight="720.0" fitWidth="1280.0" layoutY="-2.0" opacity="0.4">
+            <ImageView fitHeight="720.0" fitWidth="1280.0" opacity="0.4">
                <image>
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
@@ -26,16 +26,10 @@
                </cursor>
             </Button>
             <ImageView fx:id="expertCard1" fitHeight="267.0" fitWidth="192.0" layoutX="202.0" layoutY="159.0" onMouseClicked="#clickOnExpert1" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-128.png" />
-               </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
             <ImageView fx:id="expertCard2" fitHeight="267.0" fitWidth="192.0" layoutX="524.0" layoutY="159.0" onMouseClicked="#clickOnExpert2" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../../../../../../../../opt/JavaFXSceneBuilder2.0/app/fxml-128.png" />
-               </image>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
@@ -127,6 +121,11 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
+            <Text fx:id="communication" fill="RED" layoutX="441.0" layoutY="541.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="397.7294921875">
+               <font>
+                  <Font name="Book Antiqua Bold" size="24.0" />
+               </font>
+            </Text>
          </children>
       </AnchorPane>
    </children>
