@@ -6,7 +6,6 @@ import it.polimi.ingsw.model.Game;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
@@ -399,7 +398,7 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-        GuiChooseColorCard studentsController = fxmlLoader.getController();
+        GuiChooseColorCardController studentsController = fxmlLoader.getController();
         studentsController.resize(stage);
         stage.setWidth(width);
         stage.setHeight(height);
@@ -451,7 +450,7 @@ public class GuiChooseExpertCardController implements Initializable {
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-        GuiSelectPlayerCard studentsController = fxmlLoader.getController();
+        GuiSelectPlayerCardController studentsController = fxmlLoader.getController();
         studentsController.resize(stage);
         stage.setWidth(width);
         stage.setHeight(height);

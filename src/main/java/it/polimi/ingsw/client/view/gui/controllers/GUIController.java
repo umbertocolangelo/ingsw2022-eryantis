@@ -145,6 +145,7 @@ public class GUIController {
      */
     public static void setStage(Stage stage) {
         GUIController.stage = stage;
+        stage.setOnCloseRequest(e -> System.exit(0));
     }
 
     /**
@@ -176,7 +177,7 @@ public class GUIController {
             public void run() {
                 switch (clientState) {
                     case CONNECTIONLOST:
-                    GuiConnectionLost connectionLost = new GuiConnectionLost();
+                    GuiConnectionLostController connectionLost = new GuiConnectionLostController();
                     Platform.runLater(() -> {
                         try {
                             connectionLost.connectionLost();
@@ -206,7 +207,7 @@ public class GUIController {
                             }
                         });
                         break;
-                    case CONNECTIONREFUSE:
+                    case CONNECTIONREFUSED:
                         GuiPortIpController startController = new GuiPortIpController();
                         Platform.runLater(() -> {
                             try {
@@ -228,7 +229,7 @@ public class GUIController {
                     break;
                     case ISFIRST:
                         setIsFirst();
-                        System.out.println("IsFirst");
+                        System.out.println("isFirst");
                         GuiLoginController controller = new GuiLoginController();
                         Platform.runLater(() -> {
                             try {
@@ -238,11 +239,33 @@ public class GUIController {
                             }
                         });
                         break;
-                    case LOAD:
-                        GuiLoadGameController loadController = new GuiLoadGameController();
+                    case PLAYERPLUS:
+                        System.out.println("isPlus");
+                        GuiPlayerPlusController plusController = new GuiPlayerPlusController();
                         Platform.runLater(() -> {
                             try {
-                                loadController.show();
+                                plusController.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        break;
+                    case PLAYERSOLO:
+                        System.out.println("isSolo");
+                        GuiPlayerSoloController soloController = new GuiPlayerSoloController();
+                        Platform.runLater(() -> {
+                            try {
+                                soloController.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        break;
+                    case LOAD:
+                        GuiWaitingController waitingController = new GuiWaitingController();
+                        Platform.runLater(() -> {
+                            try {
+                                waitingController.showLoadGame();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
@@ -258,11 +281,23 @@ public class GUIController {
                             }
                         });
                         break;
-                    case WINNER: //winner in client state
+                    case WINNER:
+                        System.out.println("Winner");
                         GuiWinnerController winnerController = new GuiWinnerController();
                         Platform.runLater(() -> {
                             try {
                                 winnerController.show();
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+                        });
+                        break;
+                    case WINNERSOLO:
+                        System.out.println("WinnerSolo");
+                        GuiWinnerSoloController winnerSoloController = new GuiWinnerSoloController();
+                        Platform.runLater(() -> {
+                            try {
+                                winnerSoloController.show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

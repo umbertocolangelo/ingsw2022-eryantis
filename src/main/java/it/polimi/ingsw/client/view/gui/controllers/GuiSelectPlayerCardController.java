@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class GuiSelectPlayerCard implements Initializable {
+public class GuiSelectPlayerCardController implements Initializable {
 
     @FXML
     private AnchorPane scenePane;

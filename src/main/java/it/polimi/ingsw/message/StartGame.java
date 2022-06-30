@@ -25,6 +25,7 @@ public class StartGame implements Serializable, MessageMethod {
     @Override
     public void apply(Game game) {
         game.setPlayerList(players);
+        if(players.size()==3){game.setIsThree(true);}
         if (gameMode==false) {
             game.setNormalMode();
         }

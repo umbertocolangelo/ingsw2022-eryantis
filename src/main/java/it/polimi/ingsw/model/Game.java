@@ -237,12 +237,9 @@ public class Game implements GameInterface, Serializable {
     public void setPlayerList(LinkedList<Player> players) {
         this.playerList = players;
         if(players.size()==3) {
-            isThree = true;
-            for(Player p : players) {
+            for (Player p : players) {
                 p.setThreePlayers();
             }
-        } else {
-            isThree = false;
         }
     }
 
@@ -398,10 +395,18 @@ public class Game implements GameInterface, Serializable {
     }
 
     /**
-     *
+     * Sets the number of players
+     * @param isThree indicates if the game is for 3 players (true) or 2 (false)
      */
-    public void setIsThree(Boolean is){
-        this.isThree=is;
+    public void setIsThree(Boolean isThree){
+        this.isThree=isThree;
+    }
+
+    /**
+     * @return true if the game is for three players
+     */
+    public Boolean getIsThree(){
+        return isThree;
     }
 
     /**

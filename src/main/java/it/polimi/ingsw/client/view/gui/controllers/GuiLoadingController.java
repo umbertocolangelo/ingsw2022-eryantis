@@ -46,10 +46,10 @@ public class GuiLoadingController {
     public void resize(Stage stage) {
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {
@@ -64,12 +64,6 @@ public class GuiLoadingController {
             scenePane.setScaleY(scaleY);
             scenePane.setTranslateY(scenePane.getTranslateY() + (newVal.doubleValue()-oldVal.doubleValue())/2);
         });
-    }
-
-    public void resume(Stage stage){
-
-
-
     }
 
     /**
@@ -94,8 +88,8 @@ public class GuiLoadingController {
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-        GuiClientLost guiClientLost = fxmlLoader.getController();
-        guiClientLost.resize(stage);
+        GuiClientLostController guiClientLostController = fxmlLoader.getController();
+        guiClientLostController.resize(stage);
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setX(x);

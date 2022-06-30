@@ -56,13 +56,6 @@ public class ActionRound implements RoundInterface, Serializable {
 
     /**
      *
-     */
-    private void checkWinner() {
-        // TODO implement here
-    }
-
-    /**
-     *
      * @return boolean  Check if the round ended end if we all the player played so create pianification
      */
     @Override

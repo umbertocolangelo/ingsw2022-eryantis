@@ -1,6 +1,5 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
-import it.polimi.ingsw.message.IsFirst;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,22 +8,25 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class GuiConnectionLost {
+public class GuiPlayerSoloController {
 
     @FXML
     private AnchorPane scenePane;
 
     /**
-     *
+     * Reference to stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to scene
      */
     private Scene scene;
 
-    public void connectionLost() throws IOException {
+    /**
+     * shows the scene
+     */
+    public void show() throws IOException {
         stage = GUIController.getInstance().getStage();
 
         double x = stage.getX();
@@ -35,15 +37,14 @@ public class GuiConnectionLost {
         stage = new Stage();
         GUIController.getInstance().getStage().close();
         GUIController.setStage(stage);
-
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/connectionLost-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/playerSolo-view.fxml"));
         scene = new Scene(fxmlLoader.load());
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
 
-        GuiConnectionLost controller = fxmlLoader.getController();
-        controller.resize(stage);
+        GuiPlayerSoloController guiPlayerSoloController = fxmlLoader.getController();
+        guiPlayerSoloController.resize(stage);
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setX(x);
@@ -54,7 +55,6 @@ public class GuiConnectionLost {
      * Window resize
      */
     public void resize(Stage stage) {
-
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
 
@@ -77,3 +77,4 @@ public class GuiConnectionLost {
         });
     }
 }
+

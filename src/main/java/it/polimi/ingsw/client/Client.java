@@ -3,7 +3,6 @@ package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.view.CLI;
 import it.polimi.ingsw.client.view.gui.controllers.GUIController;
-import it.polimi.ingsw.client.view.gui.controllers.GuiConnectionLost;
 import it.polimi.ingsw.message.*;
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.player.Player;
@@ -238,7 +237,7 @@ public class Client {
                         System.out.println(e.getMessage());
                         if(!isCli) {
                             GUIController.getInstance().setConnectionRefuse(true);
-                            GUIController.getInstance().setClientState(ClientState.CONNECTIONREFUSE);
+                            GUIController.getInstance().setClientState(ClientState.CONNECTIONREFUSED);
                             GUIController.getInstance().chooseScene();
                             return;
                         }else{
