@@ -104,9 +104,7 @@ public class Server {
             if (waitingConnection.contains(c)) {
                 waitingConnection.remove(c);
             }
-            if (c.getPlayerIsPlus()) {
-                System.out.println("The game has already started, please try later");
-            } else if (numberOfPlayer==0 && !socketConnections.isEmpty()) {
+          if (numberOfPlayer==0 && !socketConnections.isEmpty()) {
                 Boolean thereIsAFirst = false;
                 //Check if there is a player that already received a first and in this case do not set a new first
                 for (SocketClientConnection d: socketConnections) {
@@ -175,7 +173,7 @@ public class Server {
                 playerNames.add(p.getName());
             }
 
-          //  loadedGame = SavingManager.getInstance().loadGame(playerNames);
+            loadedGame = SavingManager.getInstance().loadGame(playerNames,gameMode);
 
             // if a matching save is present
             if (loadedGame!=null) {
@@ -344,7 +342,7 @@ public class Server {
      * @return playingConnection list
      */
     public LinkedList<SocketClientConnection> getPlayingConnection() {
-        return this.waitingConnection;
+        return this.playingConnection;
     }
 
 }

@@ -129,7 +129,7 @@ public class Client {
                     try {
                         while (isActive()) {
                             inputObject = socketIn.readObject();
-                            System.out.println("Received something: " + inputObject);
+                          //  System.out.println("Received something: " + inputObject);
                             if (!isCli) {
                                 if (inputObject instanceof ConnectionLost) {
                                     GUIController.getInstance().setClientState(ClientState.CONNECTIONLOST);
@@ -147,16 +147,19 @@ public class Client {
                                 }else if (inputObject instanceof EqualName) {
                                     GUIController.getInstance().setClientState(ClientState.EQUALNAME);
                                     GUIController.getInstance().chooseScene();
-                                } else if (inputObject instanceof IsFirst) {
-                                    System.out.println("isFirst");
+                                }else if (inputObject instanceof PlayerIsPlus) {
+                                    GUIController.getInstance().setClientState(ClientState.PLAYERPLUS);
+                                    GUIController.getInstance().chooseScene();
+                                }else if (inputObject instanceof IsFirst) {
+                                    //System.out.println("isFirst");
                                     GUIController.getInstance().setClientState(ClientState.ISFIRST);
                                     new Thread(GUIController.getInstance().chooseScene());
                                 } else if (inputObject instanceof SetName) {
-                                    System.out.println("setName");
+                                  //  System.out.println("setName");
                                     namePlayer = ((SetName) inputObject).getName();
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
-                                    System.out.println("Client received Game.");
+                                   // System.out.println("Client received Game.");
                                     for (Player p : game.getPlayerList()) {
                                         if (p.getIsWinner()) {
                                             GUIController.getInstance().setClientState(ClientState.WINNER);
@@ -173,11 +176,14 @@ public class Client {
                                 if (inputObject instanceof ConnectionLost) {
                                    cliController.setClientState(ClientState.CONNECTIONLOST);
                                    cliController.run();
+                                }else if (inputObject instanceof PlayerIsPlus) {
+                                    cliController.setClientState(ClientState.PLAYERPLUS);
+                                    cliController.run();
                                 }else if (inputObject instanceof String) {
                                     System.out.println((String) inputObject);
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
-                                    System.out.println("Client received Game");
+                                 //   System.out.println("Client received Game");
 
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
                                         cliController.setClientState(ClientState.PLAYING);
