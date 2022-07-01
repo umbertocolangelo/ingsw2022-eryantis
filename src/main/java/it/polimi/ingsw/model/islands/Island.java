@@ -154,15 +154,15 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     /**
      * Adds one deny token to the island
      */
-    public void setDeny() { denyTokens++; }
+    public void setDeny() { this.denyTokens++; }
 
     /**
      * Returns the deny token
      * @return the number of denyTokens on the island
      */
-    public Integer getDeny(){
-        return denyTokens;
-    };
+    public Integer getDeny() {
+        return this.denyTokens;
+    }
 
     /**
      * Removes one deny token from the island

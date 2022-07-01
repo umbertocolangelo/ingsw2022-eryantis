@@ -265,7 +265,7 @@ public class CLI {
     public Thread movingMotherNature() {
 
         Thread t = new Thread(() -> {
-            Boolean again=true;
+            Boolean again = true;
             showSchool();
             System.out.println("\n");
             showIsland();
@@ -281,7 +281,9 @@ public class CLI {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!\nHow many jumps do you want Mother Nature to do? (you have from 1 to " + client.getGame().getCurrentPlayer().getCardPlayedValue() + " jumps available)");
                     input = scanner.nextLine();
                 }
-                else again=false;
+                else {
+                    again = false;
+                }
             }
 
             MessageMethod messageMethod = new MovingMotherNature();
@@ -490,7 +492,7 @@ public class CLI {
                 messageMethod = new RoundEnd();
             }
             else {
-                Boolean again=true;
+                Boolean again = true;
                 messageMethod = new IngressCardSwap();
                 System.out.println("Select the student from your Ingress: \n");
                 showSchool();
@@ -504,14 +506,16 @@ public class CLI {
                         System.out.println("Ops! You entered a wrong or too high value, choose again!");
                         input = scanner.nextLine();
                     }
-                    else again=false;
+                    else {
+                        again = false;
+                    }
                 }
                 ((IngressCardSwap)messageMethod).setStudentIngress(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get( Integer.parseInt(input)).getId());
                 System.out.println("Select a student from the Card: \n");
                 for (int i=0; i<((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size()-1; i++) {
                     System.out.println("Student " + ((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
                 }
-                again=true;
+                again = true;
                 input = scanner.nextLine();
                 while (again) {
                     while ((input=="" ||  !input.matches("[0-9]+"))) {
@@ -522,7 +526,9 @@ public class CLI {
                         System.out.println("Ops! You entered a wrong or too high value, choose again!");
                         input = scanner.nextLine();
                     }
-                    else again=false;
+                    else {
+                        again = false;
+                    }
                 }
                 ((IngressCardSwap)messageMethod).setStudentCard(((IngressCardSwapCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get( Integer.parseInt(input)).getId());
             }
@@ -545,13 +551,13 @@ public class CLI {
             input = scanner.nextLine();
             while(!(input.equals("0") || input.equals("1"))) {
                 System.out.println("You entered a wrong value, insert again.");
-                input=scanner.nextLine();
+                input = scanner.nextLine();
             }
-            if(input.equals("0")) {
+            if (input.equals("0")) {
                 messageMethod = new RoundEnd();
             }
             else {
-                Boolean again=true;
+                Boolean again = true;
                 messageMethod = new IngressHallSwap();
                 System.out.println("Select the student from your Ingress: \n");
                 showSchool();
@@ -565,7 +571,9 @@ public class CLI {
                         System.out.println("Ops! You entered a wrong or too high value, choose again!");
                         input = scanner.nextLine();
                     }
-                    else again=false;
+                    else {
+                        again = false;
+                    }
                 }
                 ((IngressHallSwap)messageMethod).setStudentIngress(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get( Integer.parseInt(input)).getId());
                 System.out.println("Select a student from your Hall \n");
@@ -605,7 +613,9 @@ public class CLI {
                         System.out.println("Ops! You entered a wrong or too high value, choose again!");
                         input = scanner.nextLine();
                     }
-                    else again=false;
+                    else {
+                        again = false;
+                    }
                 }
                 ((IngressHallSwap)messageMethod).setStudentHall(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(Color.getColor(Integer.parseInt(input))).getStudents().get(Integer.parseInt(input1)).getId());
             }
@@ -636,7 +646,9 @@ public class CLI {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!");
                     input = scanner.nextLine();
                 }
-                else again=false;
+                else {
+                    again = false;
+                }
             }
             MessageMethod messageMethod = new StudentToHall();
             ((StudentToHall)messageMethod).setStudentToHall(((StudentToHallCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(Integer.parseInt(input)).getId());
@@ -657,7 +669,7 @@ public class CLI {
             for (int i=0; i<((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().size()-1; i++) {
                 System.out.println("Student " + ((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(i).getColor() + " Number " + i + "\n");
             }
-            Boolean again=true;
+            Boolean again = true;
             input = scanner.nextLine();
             while (again) {
                 while ((input=="" ||  !input.matches("[0-9]+"))) {
@@ -668,7 +680,9 @@ public class CLI {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!");
                     input = scanner.nextLine();
                 }
-                else again=false;
+                else {
+                    again = false;
+                }
             }
             MessageMethod messageMethod = new StudentToIsland();
             ((StudentToIsland)messageMethod).setStudent(((StudentToIslandCard) client.getGame().getCardManager().getCurrentCard()).getStudents().get(Integer.parseInt(input)).getId());
@@ -676,7 +690,7 @@ public class CLI {
             System.out.println("On which island do you want to put the student?");
             showIsland();
             System.out.println("On which island do you want to move the student to?");
-            again=true;
+            again = true;
             input = scanner.nextLine();
             while (again) {
                 while ((input=="" ||  !input.matches("[0-9]+"))) {
@@ -687,7 +701,9 @@ public class CLI {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!");
                     input = scanner.nextLine();
                 }
-                else again=false;
+                else {
+                    again = false;
+                }
             }
             ((StudentToIsland)messageMethod).setIsland(client.getGame().getIslandManager().getIslands().get(Integer.parseInt(input)).getId());
             CLIController.write(messageMethod);
@@ -703,7 +719,16 @@ public class CLI {
     private void showIsland(){
         int ind0 = 0;
         for (IslandInterface islandInterface: client.getGame().getIslandManager().getIslands()) { // for every islandInterface element
-            if (islandInterface.getTowers()==null) {
+            if (islandInterface.getTowers()==null && islandInterface.getDeny()>0) {
+                System.out.print("\n" + ind0 + ": Island with " + islandInterface.getDeny() + "deny token(s)" + "\nCurrent students:  ");
+                for (int k=0;k<islandInterface.getStudents().size();k++) {
+                    System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
+                }
+                System.out.println("\nNo tower");
+                if (islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId()) {
+                    System.out.println("MotherNature is here !");
+                }
+            } else if (islandInterface.getTowers()==null && islandInterface.getDeny()==0){
                 System.out.print("\n" + ind0 + ": Island " + "\nCurrent students:  ");
                 for (int k=0;k<islandInterface.getStudents().size();k++) {
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "   ");
@@ -713,8 +738,12 @@ public class CLI {
                     System.out.println("MotherNature is here !");
                 }
             } else {
-                if (!islandInterface.isGrouped()) { // if the islandInterface element is an Island
-                    System.out.print("\n" + ind0 + ": Island " + "\nCurrent students: ");
+                if (!islandInterface.isGrouped() && islandInterface.getDeny()>0) { // if the islandInterface element is an Island
+                    System.out.print("\n" + ind0 + ": Island with " + islandInterface.getDeny() + "deny token(s)" + "\nCurrent students:  ");
+                } else if (!islandInterface.isGrouped() && islandInterface.getDeny()==0) {
+                    System.out.print("\n" + ind0 + ": Island " + "\nCurrent students:  ");
+                } else if (islandInterface.isGrouped() && islandInterface.getDeny()>0) {
+                    System.out.print("\n" + ind0 + ": Group of island with " + islandInterface.getDeny() + "deny token(s)" + "\nCurrent students:  ");
                 } else {
                     System.out.print("\n" + ind0 + ": Group of island " + "\nCurrent students: ");
                 }
