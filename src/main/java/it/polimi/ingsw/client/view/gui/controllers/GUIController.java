@@ -1,5 +1,6 @@
 package it.polimi.ingsw.client.view.gui.controllers;
 
+import it.polimi.ingsw.client.CLIController;
 import it.polimi.ingsw.client.Client;
 import it.polimi.ingsw.client.ClientState;
 import it.polimi.ingsw.message.IngressCardSwap;
@@ -263,7 +264,6 @@ public class GUIController {
                         });
                         break;
                     case WINNER:
-                        System.out.println("Winner");
                         GuiWinnerController winnerController = new GuiWinnerController();
                         Platform.runLater(() -> {
                             try {
@@ -279,7 +279,6 @@ public class GUIController {
                                 GuiChooseExpertCardController cardController = new GuiChooseExpertCardController();
                                 Platform.runLater(() -> {
                                     try {
-                                      //  System.out.println("Change scene normal");
                                         cardController.sceneStudentOnCard();
                                     } catch (IOException e) {
                                         e.printStackTrace();
@@ -299,12 +298,10 @@ public class GUIController {
                             switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
                                 //change scene from login to deck/color phase
                                 case SET_UP_PHASE:
-                                   // System.out.println("Setup");
                                     GuiLoginController controllerLogin = new GuiLoginController();
                                     if (!isFirst) {
                                         Platform.runLater(() -> {
                                             try {
-                                               // System.out.println("Change scene normal");
                                                 controllerLogin.changeScene();
                                             } catch (IOException e) {
                                                 e.printStackTrace();
@@ -314,7 +311,6 @@ public class GUIController {
                                         GuiIsFirstController controllerFirst = new GuiIsFirstController();
                                         Platform.runLater(() -> {
                                             try {
-                                               // System.out.println("Change scene not normal");
                                                 controllerFirst.changeScene();
                                             } catch (IOException e) {
                                                 e.printStackTrace();

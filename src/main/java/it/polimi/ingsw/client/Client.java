@@ -128,7 +128,6 @@ public class Client {
                     try {
                         while (isActive()) {
                             inputObject = socketIn.readObject();
-                          //  System.out.println("Received something: " + inputObject);
                             if (!isCli) {
                                 if (inputObject instanceof ConnectionLost) {
                                     GUIController.getInstance().setClientState(ClientState.CONNECTIONLOST);
@@ -150,15 +149,12 @@ public class Client {
                                     GUIController.getInstance().setClientState(ClientState.PLAYERPLUS);
                                     GUIController.getInstance().chooseScene();
                                 }else if (inputObject instanceof IsFirst) {
-                                    //System.out.println("isFirst");
                                     GUIController.getInstance().setClientState(ClientState.ISFIRST);
                                     new Thread(GUIController.getInstance().chooseScene());
                                 } else if (inputObject instanceof SetName) {
-                                  //  System.out.println("setName");
                                     namePlayer = ((SetName) inputObject).getName();
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
-                                   // System.out.println("Client received Game.");
                                     for (Player p : game.getPlayerList()) {
                                         if (p.getIsWinner()) {
                                             GUIController.getInstance().setClientState(ClientState.WINNER);
@@ -182,16 +178,21 @@ public class Client {
                                     System.out.println((String) inputObject);
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
-                                 //   System.out.println("Client received Game");
-
-                                    if (game.getCurrentPlayer().getName().equals(namePlayer)) {
+                                    for (Player p : game.getPlayerList()) {
+                                        if (p.getIsWinner()) {
+                                            cliController.setClientState(ClientState.WINNER);
+                                            cliController.run();
+                                            return;
+                                        }
+                                    }
+                                    if (game.getCurrentPlayer().getName().equals(namePlayer) && cliController.getClientState()!=ClientState.WINNER) {
                                         cliController.setClientState(ClientState.PLAYING);
                                         cliController.run();
                                     }
                                 } else if (inputObject instanceof SetUp) {
                                     cliController.setClientState(ClientState.LOGIN);
                                     cliController.run();
-                                }else if (inputObject instanceof EqualName) {
+                                } else if (inputObject instanceof EqualName) {
                                     cliController.setClientState(ClientState.EQUALNAME);
                                     cliController.run();
                                 }else if (inputObject instanceof LoadGame) {
@@ -202,7 +203,7 @@ public class Client {
                                 } else if (inputObject instanceof IsFirst) {
                                     cliController.setClientState(ClientState.ISFIRST);
                                     cliController.run();
-                                }else if (inputObject instanceof PlayerIsPlus) {
+                                } else if (inputObject instanceof PlayerIsPlus) {
                                     cliController.setClientState(ClientState.PLAYERPLUS);
                                     cliController.run();
                                 } else if (inputObject instanceof ClientLost) {

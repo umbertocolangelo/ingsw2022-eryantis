@@ -1,7 +1,9 @@
 package it.polimi.ingsw.client;
 
 import it.polimi.ingsw.client.view.CLI;
+import it.polimi.ingsw.client.view.gui.controllers.GUIController;
 import it.polimi.ingsw.message.IsFirst;
+import it.polimi.ingsw.model.player.Player;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -133,11 +135,13 @@ public class CLIController implements Runnable {
                 setClientState(ClientState.SLEEPING);
                 break;
             case WINNER:
-                if (client.getGame().getCurrentPlayer().getIsWinner()) {
-                    System.out.println("Congratulations " + client.getNamePlayer() + " ! You are the winner of this magic game !\nNo one is on your level :)");
-                }
-                else {
-                    System.out.println("Oh noo! Unfortunately you have lost the game ...\nBut don't worry, play again to improve your skills and prove you are the best !");
+                for (Player p : this.getClient().getGame().getPlayerList()) {
+                    if (p.getIsWinner() && p.getName().equals(client.getNamePlayer())) {
+                        System.out.println("\n\n\n\n\n\nCongratulations " + client.getNamePlayer() + " ! You are the winner of this magic game !\nNo one is on your level :)");
+                        return;
+                    } else {
+                        System.out.println("\n\n\n\n\n\nOh noo! Unfortunately you have lost the game ...\nBut don't worry, play again to improve your skills and prove you are the best !");
+                    }
                 }
             case PLAYING:
                 for (int i = 0; i < 50; i++) {
@@ -188,6 +192,14 @@ public class CLIController implements Runnable {
      */
     public void setClientState(ClientState clientState) {
         this.clientState = clientState;
+    }
+
+    /**
+     * Returns client state
+     * @return ClientState
+     */
+    public ClientState getClientState() {
+        return this.clientState;
     }
 
     /**
