@@ -296,7 +296,7 @@ public class Server {
     }
 
     /**
-     *
+     * Create a new game
      * @throws InterruptedException
      */
     private void createGame() throws InterruptedException{
