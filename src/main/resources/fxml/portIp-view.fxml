@@ -19,7 +19,7 @@
                   <Image url="@../Graphical_Assets/Eriantys_slider.jpg" />
                </image>
             </ImageView>
-            <TextField fx:id="ip" alignment="CENTER" layoutX="537.0" layoutY="192.0" prefHeight="45.0" prefWidth="220.0" promptText="ip">
+            <TextField fx:id="ip" alignment="CENTER" layoutX="537.0" layoutY="192.0" onKeyPressed="#onKeyPressed" prefHeight="45.0" prefWidth="220.0" promptText="localhost">
                <font>
                   <Font name="Book Antiqua Italic" size="24.0" />
                </font>
@@ -29,7 +29,16 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <Button fx:id="startGame" layoutX="547.0" layoutY="547.0" mnemonicParsing="false" onMouseClicked="#onClickEvent" prefHeight="35.0" prefWidth="200.0" text="TRY TO CONNECT">
+            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="497.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER" textFill="RED">
+               <font>
+                  <Font name="Book Antiqua Bold" size="18.0" />
+               </font></Label>
+            <TextField fx:id="port" alignment="CENTER" layoutX="522.0" layoutY="334.0" onKeyPressed="#onKeyPressed" prefHeight="45.0" prefWidth="250.0" promptText="65432">
+               <font>
+                  <Font name="Book Antiqua Italic" size="24.0" />
+               </font>
+            </TextField>
+            <Button fx:id="startGame" layoutX="547.0" layoutY="547.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#onClickEvent" prefHeight="35.0" prefWidth="200.0" text="TRY TO CONNECT">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
@@ -37,15 +46,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Label fx:id="equalName" alignment="TOP_CENTER" layoutX="324.0" layoutY="497.0" prefHeight="30.0" prefWidth="631.0" textAlignment="CENTER" textFill="RED">
-               <font>
-                  <Font name="Book Antiqua Bold" size="18.0" />
-               </font></Label>
-            <TextField fx:id="port" alignment="CENTER" layoutX="522.0" layoutY="334.0" prefHeight="45.0" prefWidth="250.0" promptText="port">
-               <font>
-                  <Font name="Book Antiqua Italic" size="24.0" />
-               </font>
-            </TextField>
             <Label layoutX="574.0" layoutY="283.0" prefHeight="40.0" prefWidth="165.0" text="Insert the port" textAlignment="CENTER">
                <font>
                   <Font name="Book Antiqua Bold" size="24.0" />
@@ -55,16 +55,6 @@
                <font>
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font></Text>
-            <Text fx:id="currentIp" layoutX="125.0" layoutY="225.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="198.7294921875">
-               <font>
-                  <Font name="Book Antiqua" size="14.0" />
-               </font>
-            </Text>
-            <Text fx:id="currentPort" layoutX="125.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="198.7294921875">
-               <font>
-                  <Font name="Book Antiqua" size="14.0" />
-               </font>
-            </Text>
          </children>
       </AnchorPane>
    </children>

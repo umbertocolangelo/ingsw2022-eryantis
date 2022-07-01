@@ -6,6 +6,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -22,7 +24,7 @@ public class GuiIsFirstController {
     /**
      * Reference to the number of players selected
      */
-    private Integer numOfPLayers = null;
+    private Integer numOfPlayers = null;
 
     /**
      * Reference to selected mode
@@ -42,10 +44,29 @@ public class GuiIsFirstController {
     /**
      * Click on start button
      * @param mouseEvent
+     * @throws IOException
      */
     public void onStartClick(MouseEvent mouseEvent) throws IOException {
+        checkPlayersAndMode();
+    }
 
-        if (numOfPLayers==null || expertModeOrClassic==null) {
+    /**
+     * Enter key is pressed
+     * @param keyEvent
+     * @throws IOException
+     */
+    public void onKeyPressed(KeyEvent keyEvent) throws IOException {
+        if (keyEvent.getCode().equals(KeyCode.ENTER)) {
+            checkPlayersAndMode();
+        }
+    }
+
+    /**
+     * Checks if number of players and mode are valid and changes scene
+     * @throws IOException
+     */
+    private void checkPlayersAndMode() throws IOException {
+        if (numOfPlayers==null || expertModeOrClassic==null) {
             label.setText("You must select both the options");
             return;
         }
@@ -71,7 +92,7 @@ public class GuiIsFirstController {
         stage.setY(y);
         IsFirst isFirst = new IsFirst();
         isFirst.setGameMode(expertModeOrClassic);
-        isFirst.setPlayers(numOfPLayers);
+        isFirst.setPlayers(numOfPlayers);
         GUIController.getInstance().write(isFirst);
     }
 
@@ -105,14 +126,14 @@ public class GuiIsFirstController {
      * Click on two players game
      */
     public void twoPlayers(MouseEvent mouseEvent) {
-        numOfPLayers = 2;
+        numOfPlayers = 2;
     }
 
     /**
      * Click on three players game
      */
     public void threePlayers(MouseEvent mouseEvent) {
-        numOfPLayers = 3;
+        numOfPlayers = 3;
     }
 
     /**

@@ -12,7 +12,7 @@ import java.io.IOException;
 public class GuiLoadGameController {
 
     /**
-     *
+     * Reference to the anchor pane
      */
     @FXML
     public AnchorPane scenePane;
@@ -20,12 +20,12 @@ public class GuiLoadGameController {
     /**
      * Reference to the stage
      */
-    Scene scene;
+    private Scene scene;
 
     /**
      * Reference to the scene
      */
-    Stage stage;
+    private Stage stage;
 
     /**
      * Shows the scene
@@ -45,7 +45,8 @@ public class GuiLoadGameController {
         stage.setScene(scene);
         stage.setTitle("Eriantys");
         stage.show();
-        resize(stage);
+        GuiLoadGameController controller = fxmlLoader.getController();
+        controller.resize(stage);
         stage.setWidth(width);
         stage.setHeight(height);
         stage.setX(x);
@@ -110,12 +111,13 @@ public class GuiLoadGameController {
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {

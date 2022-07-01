@@ -86,8 +86,15 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     private  String idExpertCard;
 
 
+    /**
+     * Reference to the scene
+     */
     @FXML
     private AnchorPane scenePane;
+
+    /**
+     * Reference to the students of the selected card
+     */
     @FXML
     private ImageView expertCardId;
     @FXML
@@ -104,6 +111,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     private ImageView studentCard6;
 
     /**
+     * Gets students color
      * @param student
      * @return
      */
@@ -334,7 +342,6 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     public void clickFinishExpertMove(MouseEvent mouseEvent) {
         GUIController.getInstance().write(new RoundEnd());
     }
-
 
     /**
      * Window resize

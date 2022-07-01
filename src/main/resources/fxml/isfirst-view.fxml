@@ -28,7 +28,7 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <RadioButton fx:id="twoPlayers" layoutX="628.0" layoutY="180.0" mnemonicParsing="false" onMouseClicked="#twoPlayers" prefHeight="31.0" prefWidth="110.0" text="2">
+            <RadioButton fx:id="twoPlayers" layoutX="628.0" layoutY="180.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#twoPlayers" prefHeight="31.0" prefWidth="110.0" text="2">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
@@ -39,7 +39,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <RadioButton fx:id="threePlayers" layoutX="628.0" layoutY="222.0" mnemonicParsing="false" onMouseClicked="#threePlayers" prefHeight="31.0" prefWidth="110.0" text="3" toggleGroup="$players">
+            <RadioButton fx:id="threePlayers" layoutX="628.0" layoutY="222.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#threePlayers" prefHeight="31.0" prefWidth="110.0" text="3" toggleGroup="$players">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
@@ -52,7 +52,7 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Label>
-            <RadioButton fx:id="classicMode" layoutX="628.0" layoutY="381.0" mnemonicParsing="false" onMouseClicked="#classicGame" prefHeight="31.0" prefWidth="110.0" text="Classic">
+            <RadioButton fx:id="classicMode" layoutX="628.0" layoutY="381.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#classicGame" prefHeight="31.0" prefWidth="110.0" text="Classic">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
@@ -63,7 +63,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <RadioButton fx:id="expertMode" layoutX="628.0" layoutY="430.0" mnemonicParsing="false" onMouseClicked="#expertGame" prefHeight="31.0" prefWidth="110.0" text="Expert" toggleGroup="$mode">
+            <RadioButton fx:id="expertMode" layoutX="628.0" layoutY="430.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#expertGame" prefHeight="31.0" prefWidth="110.0" text="Expert" toggleGroup="$mode">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="18.0" />
                </font>
@@ -71,7 +71,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </RadioButton>
-            <Button layoutX="540.0" layoutY="561.0" mnemonicParsing="false" onMouseClicked="#onStartClick" prefHeight="35.0" prefWidth="200.0" text="START">
+            <Button layoutX="540.0" layoutY="561.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseClicked="#onStartClick" prefHeight="35.0" prefWidth="200.0" text="START">
                <font>
                   <Font name="Book Antiqua Bold Italic" size="24.0" />
                </font>

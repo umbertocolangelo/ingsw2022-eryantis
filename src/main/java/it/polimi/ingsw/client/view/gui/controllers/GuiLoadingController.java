@@ -10,35 +10,25 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class GuiLoadingController {
-    /**
-     *
-     */
-    private Scene scene;
 
     /**
-     *
+     * Reference to the anchor pane
      */
     @FXML
     public AnchorPane scenePane;
 
-    /**
-     *
-     */
     @FXML
     private Label loadingIndicator;
 
-
     /**
-     *
+     * Reference to the stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to the scene
      */
-    public GuiLoadingController() {
-
-    }
+    private Scene scene;
 
     /**
      * Window resize
@@ -74,6 +64,10 @@ public class GuiLoadingController {
         loadingIndicator.setLayoutX(432);
     }
 
+    /**
+     *
+     * @throws IOException
+     */
     public void clientLost() throws IOException {
         stage = GUIController.getInstance().getStage();
         double x = stage.getX();
@@ -95,5 +89,4 @@ public class GuiLoadingController {
         stage.setX(x);
         stage.setY(y);
     }
-
 }

@@ -20,8 +20,10 @@ public class EqualStrategy implements ProfessorStrategy, Serializable {
      * @return true if the number of students in the current player line is greater or equal than the compared player line
      */
     public Boolean compare(Integer a, Integer b, Color color) {
-        if(a > b){return true;};
-        if(a == b && Professor.getProfessor(color).getPosition()!=null){
+        if (a > b) {
+            return true;
+        }
+        if (a == b && Professor.getProfessor(color).getPosition()!=null) {
             return true;
         }
         return false;
