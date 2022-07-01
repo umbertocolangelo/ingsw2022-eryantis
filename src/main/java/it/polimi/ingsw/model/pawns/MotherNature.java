@@ -6,7 +6,9 @@ import it.polimi.ingsw.model.objectTypes.PlaceableObject;
 
 import java.io.Serializable;
 
-
+/**
+ * Class used to represent the mother nature pawn
+ */
 public class MotherNature implements PlaceableObject, Serializable {
 
     /**

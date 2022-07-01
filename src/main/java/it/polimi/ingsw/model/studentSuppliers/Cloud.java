@@ -7,7 +7,9 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 import java.util.*;
 
-
+/**
+ * Class used to represent the game's clouds
+ */
 public class Cloud implements FixedObjectStudent, Serializable {
 
     /**

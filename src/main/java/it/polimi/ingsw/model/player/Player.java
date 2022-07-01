@@ -10,7 +10,9 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 import java.util.*;
 
-
+/**
+ * Class used to represent a player in the game
+ */
 public class Player implements Serializable {
 
     /**

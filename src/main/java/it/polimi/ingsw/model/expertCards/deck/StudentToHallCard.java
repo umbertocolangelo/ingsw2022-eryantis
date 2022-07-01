@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
- * card #11
+ * Expert card n.11, that enables a player to transfer a student from this card to his hall
  */
 public class StudentToHallCard implements ExpertCard, FixedObjectStudent, Serializable {
 

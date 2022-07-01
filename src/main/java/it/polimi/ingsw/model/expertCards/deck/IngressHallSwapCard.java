@@ -6,7 +6,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * card #10
+ * Expert card n.10, that enables a player to swap up to two students between his ingress and hall
  */
 public class IngressHallSwapCard implements ExpertCard, Serializable {
 

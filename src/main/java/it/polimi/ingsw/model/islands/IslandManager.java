@@ -6,7 +6,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
- *
+ * Class used to manage islands, island groups and their composition
  */
 public class IslandManager implements Serializable {
 

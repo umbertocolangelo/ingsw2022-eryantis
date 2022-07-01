@@ -1,17 +1,19 @@
 package it.polimi.ingsw.model.objectTypes;
 
-
+/**
+ * Interface used to represent placeable objects (pawns) that can stay on a fixed object
+ */
 public interface PlaceableObject {
 
     /**
      * @return fixed object position
      */
-    public FixedObject getPosition();
+    FixedObject getPosition();
 
     /**
      * sets position
      * @param position FixedObject
      */
-    public void setPosition(FixedObject position);
+    void setPosition(FixedObject position);
 
 }

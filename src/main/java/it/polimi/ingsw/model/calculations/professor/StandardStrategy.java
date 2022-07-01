@@ -4,6 +4,9 @@ import it.polimi.ingsw.model.enumerations.Color;
 
 import java.io.Serializable;
 
+/**
+ * Standard strategy pattern of professor calculus
+ */
 public class StandardStrategy implements ProfessorStrategy, Serializable {
 
     /**

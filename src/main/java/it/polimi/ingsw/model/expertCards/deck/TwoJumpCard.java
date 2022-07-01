@@ -6,7 +6,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * card #4
+ * Expert card n.4, that enables a player to make move mother nature up to two islands more
  */
 public class TwoJumpCard implements ExpertCard, Serializable {
 

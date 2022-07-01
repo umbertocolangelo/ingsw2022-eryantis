@@ -9,7 +9,10 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
-
+/**
+ * Interface used to define every method for which a round can answer (with a boolean) to express the possibility of making
+ * a specific action in the game
+ */
 public interface RoundInterface {
 
     /**

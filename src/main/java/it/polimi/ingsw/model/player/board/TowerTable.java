@@ -8,7 +8,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
- * 
+ * Class used to represent the tower section of the school board
  */
 public class TowerTable implements FixedObjectTower, Serializable {
 

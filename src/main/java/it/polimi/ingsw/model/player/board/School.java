@@ -4,7 +4,9 @@ import it.polimi.ingsw.model.enumerations.PlayerColor;
 
 import java.io.Serializable;
 
-
+/**
+ * Class used to represent the school board
+ */
 public class  School implements Serializable {
 
     /**

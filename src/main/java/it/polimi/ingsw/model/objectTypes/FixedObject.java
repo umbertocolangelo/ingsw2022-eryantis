@@ -1,7 +1,7 @@
 package it.polimi.ingsw.model.objectTypes;
 
 /**
- * Fixed Object
+ * Interface used to represent an object on witch placeable object (pawns) can stay
  */
 public interface FixedObject  {
 

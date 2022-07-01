@@ -11,7 +11,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
+/**
+ * State pattern of calculus used to give a player two more points in the influence calculus
+ */
 public class TwoPointsInfluence implements InfluenceCalculator, Serializable {
 
     /**

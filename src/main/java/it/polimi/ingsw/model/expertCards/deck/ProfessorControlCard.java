@@ -7,7 +7,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * card #2
+ * Expert card n.2, that enables a player to gain control of a professor if the owner of the professor has the same students as him
  */
 public class ProfessorControlCard implements ExpertCard, Serializable {
 

@@ -9,7 +9,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * card #3
+ * Expert card n.3, that triggers the immediate influence calculus on an island choose by the player
  */
 public class IslandInfluenceCard implements ExpertCard, Serializable {
 

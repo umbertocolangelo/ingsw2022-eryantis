@@ -8,7 +8,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * card #9
+ * Expert card n.9, that enables the calculus of influence without considering the students of a specific color
  */
 public class ColorInfluenceCard implements ExpertCard, Serializable {
 
@@ -33,7 +33,7 @@ public class ColorInfluenceCard implements ExpertCard, Serializable {
     private Integer cost = 3;
 
     /**
-     * Reference to card maanager
+     * Reference to card manager
      */
     private CardManager manager;
 

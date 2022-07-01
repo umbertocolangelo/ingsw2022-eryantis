@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
- * card #7
+ * Expert card n.7, that enables to swap up to three students from this card with students on the ingress of a player
  */
 public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Serializable {
 

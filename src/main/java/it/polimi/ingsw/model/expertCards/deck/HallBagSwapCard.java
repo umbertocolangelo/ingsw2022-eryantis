@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 
 /**
- * card #12
+ * Expert card n.12, that forces every player to put back in the bag three students of a specific color from their ingress
  */
 public class HallBagSwapCard implements ExpertCard, Serializable {
 

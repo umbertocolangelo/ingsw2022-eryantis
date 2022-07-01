@@ -6,6 +6,9 @@ import it.polimi.ingsw.model.pawns.Student;
 import java.io.Serializable;
 import java.util.*;
 
+/**
+ * Class used to represent the ingress of the school board
+ */
 public class Ingress implements FixedObjectStudent, Serializable {
 
     /**

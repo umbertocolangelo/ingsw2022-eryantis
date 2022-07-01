@@ -11,6 +11,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Class used to manage the influence calculus and its states
+ */
 public class InfluenceManager implements Serializable {
 
     /**

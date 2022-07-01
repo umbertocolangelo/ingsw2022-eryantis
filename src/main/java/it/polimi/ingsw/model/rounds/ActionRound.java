@@ -15,7 +15,9 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 import java.io.Serializable;
 import java.util.LinkedList;
 
-
+/**
+ * Class used to represent the game's action round
+ */
 public class ActionRound implements RoundInterface, Serializable {
 
     /**

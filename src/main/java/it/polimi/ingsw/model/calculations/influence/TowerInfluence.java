@@ -10,7 +10,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
+/**
+ * State pattern of calculus used to ignore the towers in the influence calculus
+ */
 public class TowerInfluence implements InfluenceCalculator, Serializable {
     /**
      * Default constructor

@@ -13,6 +13,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
+/**
+ * Class used to represent the game's pianification round
+ */
 public class PianificationRound implements RoundInterface, Serializable {
 
 

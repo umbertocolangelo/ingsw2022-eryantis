@@ -11,6 +11,9 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 import java.io.Serializable;
 import java.util.LinkedList;
 
+/**
+ * Class used to represent the round used to manage the choice of color and wizard by the player
+ */
 public class SetUpRound implements  RoundInterface, Serializable {
 
     /**

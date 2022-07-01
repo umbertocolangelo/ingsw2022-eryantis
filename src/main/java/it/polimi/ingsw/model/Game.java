@@ -25,7 +25,9 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.LinkedList;
 
-
+/**
+ * Class used to represent a match instance
+ */
 public class Game implements Serializable {
 
     /**

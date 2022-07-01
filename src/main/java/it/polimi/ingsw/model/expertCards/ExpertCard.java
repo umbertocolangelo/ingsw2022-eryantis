@@ -3,6 +3,9 @@ package it.polimi.ingsw.model.expertCards;
 import it.polimi.ingsw.model.pawns.Student;
 
 
+/**
+ * Interface of expert cards
+ */
 public interface ExpertCard {
 
     /**

@@ -12,7 +12,9 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.io.Serializable;
 
-
+/**
+ * Class used to represent the round used to manage the actions a player can make after playing the expert card n.10
+ */
 public class IngressHallSwapActionRound implements RoundInterface, Serializable {
 
     /**

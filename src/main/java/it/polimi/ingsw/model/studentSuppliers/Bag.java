@@ -9,7 +9,9 @@ import it.polimi.ingsw.model.player.board.Ingress;
 import java.io.Serializable;
 import java.util.Random;
 
-
+/**
+ * Class used to represent the bag containing all the student pawns
+ */
 public class Bag implements Serializable {
 
     /**

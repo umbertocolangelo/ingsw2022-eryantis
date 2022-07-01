@@ -6,7 +6,9 @@ import it.polimi.ingsw.model.objectTypes.PlaceableObject;
 
 import java.io.Serializable;
 
-
+/**
+ * Class used to represent the tower pawn
+ */
 public class Tower implements PlaceableObject, Serializable {
 
     /**

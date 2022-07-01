@@ -10,7 +10,9 @@ import it.polimi.ingsw.model.player.Player;
 import java.io.Serializable;
 import java.util.*;
 
-
+/**
+ * Class used to represent a line containing students of a specific color in a school hall
+ */
 public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializable {
 
     /**

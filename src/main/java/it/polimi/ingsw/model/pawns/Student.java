@@ -8,7 +8,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * 
+ * Class used to represent the student pawn
  */
 public class Student implements PlaceableObject, Serializable {
 

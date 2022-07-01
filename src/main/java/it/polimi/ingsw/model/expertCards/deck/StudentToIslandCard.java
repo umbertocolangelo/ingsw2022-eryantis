@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 /**
- * card #1
+ * Expert card n.1, that enables a player to transfer a student from this card to an island
  */
 public class StudentToIslandCard implements ExpertCard, FixedObjectStudent , Serializable {
 

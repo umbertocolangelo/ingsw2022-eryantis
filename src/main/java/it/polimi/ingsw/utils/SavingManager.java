@@ -6,6 +6,9 @@ import java.io.*;
 import java.nio.file.Files;
 import java.util.LinkedList;
 
+/**
+ * Class used to manage the saving and loading of matches
+ */
 public class SavingManager implements Serializable{
 
     /**

@@ -7,7 +7,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * card #6
+ * Expert card n.6, that enables the calculus of influence without considering the towers present on the island
  */
 public class TowerInfluenceCard implements ExpertCard, Serializable {
 

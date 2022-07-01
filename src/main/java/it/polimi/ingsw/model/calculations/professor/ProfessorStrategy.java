@@ -2,6 +2,9 @@ package it.polimi.ingsw.model.calculations.professor;
 
 import it.polimi.ingsw.model.enumerations.Color;
 
+/**
+ * Interface of the strategy patterns of professor calculus
+ */
 public interface ProfessorStrategy {
 
     /**

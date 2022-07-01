@@ -11,7 +11,9 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 import java.util.*;
 
-
+/**
+ * Class used to manage the expert cards
+ */
 public class CardManager implements Serializable {
 
     /**

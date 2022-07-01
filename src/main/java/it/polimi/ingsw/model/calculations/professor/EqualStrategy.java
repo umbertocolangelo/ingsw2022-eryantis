@@ -5,6 +5,9 @@ import it.polimi.ingsw.model.pawns.Professor;
 
 import java.io.Serializable;
 
+/**
+ * Equal strategy pattern of professor calculus
+ */
 public class EqualStrategy implements ProfessorStrategy, Serializable {
 
     /**

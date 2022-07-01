@@ -11,6 +11,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * State pattern of calculus used to ignore a specific color in the influence calculus
+ */
 public class ColorInfluence implements InfluenceCalculator, Serializable {
 
     /**

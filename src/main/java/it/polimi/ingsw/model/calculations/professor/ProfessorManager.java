@@ -9,6 +9,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Class used to manage the professor calculus and its strategies
+ */
 public class ProfessorManager implements Serializable {
 
     /**

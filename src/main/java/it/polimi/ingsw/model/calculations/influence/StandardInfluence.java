@@ -11,7 +11,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-
+/**
+ * State pattern of calculus used to calculate the influence in a standard way
+ */
 public class StandardInfluence implements InfluenceCalculator, Serializable {
 
     /**

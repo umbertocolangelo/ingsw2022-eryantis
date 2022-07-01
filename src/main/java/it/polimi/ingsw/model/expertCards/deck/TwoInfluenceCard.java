@@ -8,7 +8,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * card #8
+ * Expert card n.8, that grants to a player two additional points in the influence calculus
  */
 public class TwoInfluenceCard implements ExpertCard, Serializable {
 

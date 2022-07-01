@@ -14,7 +14,9 @@ import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * class used to track objects that helps the communication between server and client
+ */
 public class IdManager implements Serializable {
 
     /**

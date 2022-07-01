@@ -7,7 +7,9 @@ import it.polimi.ingsw.model.pawns.Tower;
 
 import java.util.LinkedList;
 
-
+/**
+ * Interface of islands and island groups
+ */
 public interface IslandInterface {
 
     /**

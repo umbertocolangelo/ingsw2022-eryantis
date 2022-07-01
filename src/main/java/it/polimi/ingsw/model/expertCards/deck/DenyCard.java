@@ -8,7 +8,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 
 /**
- * card #5
+ * Expert card n.5, that enables the placement of a deny token on an island to prevent the influence calculus
  */
 public class DenyCard implements ExpertCard, Serializable {
 
