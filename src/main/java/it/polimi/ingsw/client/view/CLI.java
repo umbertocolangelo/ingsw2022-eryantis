@@ -300,7 +300,7 @@ public class CLI {
 
     /**
      * Get the thread to choose to play or not an expert card
-     * @return
+     * @return the Thread to run
      */
     public Thread choosingExpertCardOrMoving() {
 

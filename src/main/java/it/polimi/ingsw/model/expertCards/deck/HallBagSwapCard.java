@@ -26,17 +26,17 @@ public class HallBagSwapCard implements ExpertCard, Serializable {
     }
 
     /**
-     *
+     * Reference to card manager
      */
     private CardManager cardManager;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 3;
 
     /**
-     * 
+     * card id
      */
     private String id;
 
@@ -59,22 +59,21 @@ public class HallBagSwapCard implements ExpertCard, Serializable {
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     *
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {

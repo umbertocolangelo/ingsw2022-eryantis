@@ -21,22 +21,22 @@ public class ProfessorControlCard implements ExpertCard, Serializable {
     }
 
     /**
-     * 
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 2;
 
     /**
-     *
+     * Reference to card manager
      */
     private CardManager manager;
 
     /**
-     * 
+     * appliance of the card effect
      */
     public void apply() {
         manager.getProfessorManager().setEqualCheck();
@@ -51,20 +51,18 @@ public class ProfessorControlCard implements ExpertCard, Serializable {
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     *
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {
         return this.id;
     }
-
 
 }

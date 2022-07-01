@@ -28,22 +28,22 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent , Ser
     }
 
     /**
-     * 
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 1;
 
     /**
-     *
+     * Reference to card manager
      */
     private CardManager manager;
 
     /**
-     *
+     * list of the students on the card
      */
     private LinkedList<Student> students;
 
@@ -55,21 +55,21 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent , Ser
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {
@@ -77,6 +77,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent , Ser
     }
 
     /**
+     * add students on the card
      * @param student
      */
     public void addStudent(Student student) {
@@ -91,21 +92,22 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent , Ser
     }
 
     /**
-     * @param student is removed by the card
+     * remove a student from the card
+     * @param student
      */
     public void removeStudent(Student student) {
         students.remove(student);
     }
 
     /**
-     * @return
+     * @return list of the students of the card
      */
     public LinkedList<Student> getStudents() {
         return new LinkedList<Student>(this.students);
     }
 
     /**
-     * @return
+     * @return number of the students of the card
      */
     public Integer numOfStudents() {
         return this.students.size();

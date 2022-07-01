@@ -23,17 +23,17 @@ public class IslandInfluenceCard implements ExpertCard, Serializable {
     }
 
     /**
-     * 
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 3;
 
     /**
-     *
+     * Reference to card manager
      */
     private CardManager manager;
 
@@ -46,22 +46,21 @@ public class IslandInfluenceCard implements ExpertCard, Serializable {
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     *
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {

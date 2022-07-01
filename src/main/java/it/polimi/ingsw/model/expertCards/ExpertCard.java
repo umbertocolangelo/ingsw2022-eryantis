@@ -8,12 +8,12 @@ import it.polimi.ingsw.model.pawns.Student;
 public interface ExpertCard {
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost();
-    
+
     /**
-     *
+     * @return card id
      */
     public String getId();
 

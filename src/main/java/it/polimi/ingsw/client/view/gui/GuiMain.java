@@ -31,7 +31,7 @@ public class GuiMain extends Application {
     }
 
     /**
-     *
+     *Start the application
      */
     public void launchApp() {
         launch();

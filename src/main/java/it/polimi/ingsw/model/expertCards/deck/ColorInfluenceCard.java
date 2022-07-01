@@ -22,22 +22,22 @@ public class ColorInfluenceCard implements ExpertCard, Serializable {
     }
 
     /**
-     * 
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 3;
 
     /**
-     *
+     * Reference to card maanager
      */
     private CardManager manager;
 
     /**
-     *
+     * Applies the effect of the card
      */
     public void apply(Color color) {
         manager.getInfluenceManager().setColorInfluence(color);
@@ -59,12 +59,11 @@ public class ColorInfluenceCard implements ExpertCard, Serializable {
     }
 
     /**
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {
         return this.id;
     }
-
 
 }

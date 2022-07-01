@@ -19,15 +19,14 @@ public class TwoJumpCard implements ExpertCard, Serializable {
     }
 
     /**
-     * 
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 1;
-
 
     /**
      * this appliance enables to move motherNature up to 2 more position and sets the new motherNature position
@@ -37,22 +36,21 @@ public class TwoJumpCard implements ExpertCard, Serializable {
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     public void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     *
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {

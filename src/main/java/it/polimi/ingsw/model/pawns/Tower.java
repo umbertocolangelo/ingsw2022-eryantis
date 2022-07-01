@@ -19,41 +19,44 @@ public class Tower implements PlaceableObject, Serializable {
     }
 
     /**
-     *
+     * tower position
      */
     private FixedObject position;
 
     /**
-     * 
+     * tower color
      */
     private PlayerColor color;
 
     /**
-     *
+     * tower id
      */
     private String id;
 
     /**
-     * @return color
+     * @return tower color
      */
     public PlayerColor getColor() {
         return this.color;
     }
 
+    /**
+     * @return tower position
+     */
     public FixedObject getPosition() {
         return this.position;
     }
 
     /**
+     * sets tower position
      * @param position
-     * @return
      */
     public void setPosition(FixedObject position) {
         this.position = position;
     }
 
     /**
-     *
+     * @return tower id
      */
     public String getId() { return this.id; }
 

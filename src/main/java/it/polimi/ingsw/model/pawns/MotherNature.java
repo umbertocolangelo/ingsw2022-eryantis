@@ -18,52 +18,52 @@ public class MotherNature implements PlaceableObject, Serializable {
     }
 
     /**
-     * 
+     * mother nature id
      */
     private String id;
 
     /**
-     *
+     * position of mother nature
      */
     private FixedObject position;
 
-
     /**
-     * 
+     * island on which mother nature is located
      */
     private IslandInterface island;
 
     /**
-     * @return the Island/IslandGroup MotherNature is currently on
+     * Returns the island on which MotherNature is currently on
+     * @return IslandInterface
      */
     public IslandInterface getIsland() {
         return this.island;
     }
 
     /**
-     *  Sets the current position of MotherNature on a specific Island
+     * Sets the current position of MotherNature on a specific Island
      */
     public void setIsland(IslandInterface island) {
         this.island=island;
     }
 
     /**
-     * @return
+     * @return mother nature position
      */
     public FixedObject getPosition(){
         return this.position;
     }
 
     /**
+     * sets mother nature position
      * @param position
-     * @return
      */
     public void setPosition(FixedObject position) {
         this.position = position;
     }
 
     /**
-     * @return id
+     * @return mother nature id
      */
     public String getId() { return this.id; }
 

@@ -68,7 +68,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
      * Removes one deny token from the IslandGroup
      */
     public void removeDeny() {
-        if(denyTokens>0){
+        if (denyTokens>0) {
             denyTokens--;
         }
     }
@@ -78,21 +78,23 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     public Integer numOfTowers() { return this.islandGroup.size(); }
 
     /**
-     * @return
+     * returns the dominant color on the island group
+     * @return PlayerColor
      */
     public PlayerColor getInfluenceColor() {
         return this.islandGroup.get(0).getInfluenceColor();
     }
 
     /**
-     * @return copy of islandGroup linkedlist
+     * @return copy of islandGroup linked list
      */
     public LinkedList<Island> getIslandGroupElements() {
         return new LinkedList<>(this.islandGroup);
     }
 
     /**
-     * @return LinkedList<Tower>        Return the LinkedList of every Towers in this islandGroup
+     * Return the LinkedList of every Towers in this islandGroup
+     * @return LinkedList<Tower>
      */
     public LinkedList<Tower> getTowers() {
         LinkedList<Tower> towerList = new LinkedList<>();
@@ -108,18 +110,17 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     public void setIsGrouped() {}
 
     /**
-     * @return
+     * @return isGrouped
      */
     public Boolean isGrouped() { return true; }
 
     /**
-     * @return
+     * @return group size
      */
     public Integer getSize() { return this.islandGroup.size(); }
 
     /**
-     *
-     * @return
+     * @return id of group first island
      */
     @Override
     public String getId() {
@@ -127,12 +128,12 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
-     *
+     * add a tower on the group
      * @param tower is the tower to add
      */
     public void addTower(Tower tower) {
         for (Island island: islandGroup) {
-            if(island.getTowers()==null) {
+            if (island.getTowers()==null) {
                 island.addTower(tower);
                 return;
             }
@@ -140,8 +141,8 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
-     *
-     * @param tower is the tower to remove in the correct island in islandGroup
+     * remove the tower in the correct island in islandGroup
+     * @param tower
      */
     public void removeTower(Tower tower) {
         for (Island island: islandGroup) {
@@ -153,7 +154,8 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
-     *
+     * students on the island group
+     * @return LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
         LinkedList<Student> students = new LinkedList<>();

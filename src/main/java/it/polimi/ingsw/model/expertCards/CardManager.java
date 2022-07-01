@@ -29,7 +29,7 @@ public class CardManager implements Serializable {
     }
 
     /**
-     *  Keep the reference to the InfluenceManager
+     * Keep the reference to the InfluenceManager
      */
     private InfluenceManager influenceManager;
 
@@ -54,12 +54,12 @@ public class CardManager implements Serializable {
     private ExpertCard currentCard;
 
     /**
-     *
+     * Reference of the professor manager
      */
     private ProfessorManager professorManager;
 
     /**
-     *
+     * Reference of the island manager
      */
     private IslandManager islandManager;
 
@@ -71,52 +71,58 @@ public class CardManager implements Serializable {
     }
 
     /**
-     * @return ExpertCard     Return the current card
+     * @return current current expert card
      */
     public ExpertCard getCurrentCard(){
         return this.currentCard;
     }
 
     /**
-     *
+     * reset current card to null
      */
     public void resetCurrentCard() { this.currentCard = null; }
 
     /**
-     * @return MotherNature     Return the reference to motherNature
+     * Reference to influence manager
+     * @return influence manager
      */
     public InfluenceManager getInfluenceManager() {
         return this.influenceManager;
     }
 
     /**
-     * @return ProfessorManager     Return the reference to professorManager
+     * Reference to professor manager
+     * @return professor manager
      */
     public ProfessorManager getProfessorManager() { return this.professorManager; }
 
     /**
-     * @return IslandManager        Return the reference to islandManager
+     * Reference to island manager
+     * @return island manager
      */
     public IslandManager getIslandManager() {
         return this.islandManager;
     }
 
     /**
-     * @return  Player      Return an array of the players.
+     * player list
+     * @return array list of the players
      */
     public ArrayList<Player> getPlayerList() {
         return new ArrayList<>(playerList);
     }
 
     /**
-     * @return Bag          Return a reference to the bag
+     * Reference to the bag
+     * @return bag
      */
     public Bag getBag() {
         return this.bag;
     }
 
     /**
-     * @return  ArrayList<ExpertCard>   Return the three ExpertCards for the game
+     * Return the three ExpertCards for the game
+     * @return ArrayList<ExpertCard>
      */
     private LinkedList<ExpertCard> getThreeExpertCards() {
         LinkedList<ExpertCard> expertCards = new LinkedList<ExpertCard>();
@@ -145,7 +151,7 @@ public class CardManager implements Serializable {
     public LinkedList<ExpertCard> getDeck() {return this.expertCards;}
 
     /**
-     *
+     * sets expert cards
      */
     public void setExpertCards(ExpertCard expertCard) {
         this.expertCards.add(expertCard);

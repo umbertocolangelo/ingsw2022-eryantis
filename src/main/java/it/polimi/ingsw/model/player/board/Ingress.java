@@ -6,9 +6,6 @@ import it.polimi.ingsw.model.pawns.Student;
 import java.io.Serializable;
 import java.util.*;
 
-/**
- * 
- */
 public class Ingress implements FixedObjectStudent, Serializable {
 
     /**
@@ -19,50 +16,47 @@ public class Ingress implements FixedObjectStudent, Serializable {
     }
 
     /**
-     * 
+     * ingress id
      */
     private String id;
 
     /**
-     * 
+     * max num of students in the ingress
      */
     private Integer maxStudentsNum;
 
     /**
-     * 
+     * list of the students in the ingress
      */
-    private Boolean isFourPlayers=false;
+    private LinkedList<Student> students = new LinkedList<>();
 
     /**
-     * 
-     */
-    private LinkedList<Student> students=new LinkedList<>();
-
-    /**
-     * @return LinkedList<Student>      Return a LinkedList of students that are in this ingress
+     * Return the list of students in this ingress
+     * @return LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
-
         return new LinkedList<>(this.students);
     }
 
     /**
-     * @param student       Remove the student from the Ingress
+     * Remove the student from the ingress
+     * @param student
      */
     public void removeStudent(Student student) {
-        if(this.students.contains(student)){
-            //remove il fixed object
+        if (this.students.contains(student)) {
+            //remove the fixed object
             student.setPosition(this);
             students.remove(students.indexOf(student));
         }
     }
 
     /**
-     * @param student       Add the student to the ingress
+     * Add the student to the ingress
+     * @param student
      */
     public void addStudent(Student student) {
         if (!this.students.contains(student)) {
-            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+            if (student.getPosition()!=null) {        // if the student was on a FixedObject, this object is updated
                 FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
                 position.removeStudent(student);
             }
@@ -72,10 +66,10 @@ public class Ingress implements FixedObjectStudent, Serializable {
     }
 
     /**
-     * @return  Integer     Return the number of the students
+     * Returns the number of the students
+     * @return Integer
      */
     public Integer numOfStudents() {
-
         return this.students.size();
     }
 

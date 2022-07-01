@@ -92,7 +92,7 @@ public class IslandManager implements Serializable {
     }
 
     /**
-     * @return number of islandGroup in islands linkedlist
+     * @return number of islandGroup in islands linked list
      */
     public Integer getNumOfGroups() {
         numOfGroups = 0;
@@ -157,8 +157,7 @@ public class IslandManager implements Serializable {
 
     /**
      * updates islands linked list after an island join, replacing islands.get(curr) and its right element with newGroup
-     *
-     * @param curr is the old IslandInterface element in islands linkedlist
+     * @param curr is the old IslandInterface element in islands linked list
      */
     private void islandsUpdate(Integer curr) {
         IslandGroup newGroup = new IslandGroup();

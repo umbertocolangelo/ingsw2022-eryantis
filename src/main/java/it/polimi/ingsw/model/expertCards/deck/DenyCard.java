@@ -17,33 +17,34 @@ public class DenyCard implements ExpertCard, Serializable {
      */
     public DenyCard(CardManager cardManager) {
         this.id = "42";
-        this.manager=cardManager;
+        this.manager = cardManager;
         IdManager.getInstance().addExpertCard(this);
         cardManager.getInfluenceManager().setDenyCard(this);
     }
 
     /**
-     * 
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 2;
 
     /**
-     *
+     * Reference to card manager
      */
     private CardManager manager;
 
     /**
-     * 
+     * Reference to deny tokens
      */
     private Integer denyTokens = 4;
 
     /**
-     * @param island
+     * Applies the effect of the card
+     * @param island to deny
      */
     public void apply(Island island) {
         if (denyTokens>0) {
@@ -61,27 +62,26 @@ public class DenyCard implements ExpertCard, Serializable {
     }
 
     /**
-     *
+     * @return deny tokens
      */
     public Integer getDenyTokens() {return this.denyTokens;}
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     *
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {

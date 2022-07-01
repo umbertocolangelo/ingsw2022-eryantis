@@ -16,27 +16,27 @@ public class TowerInfluenceCard implements ExpertCard, Serializable {
      */
     public TowerInfluenceCard(CardManager cardManager) {
         this.id = "43";
-        this.manager=cardManager;
+        this.manager = cardManager;
         IdManager.getInstance().addExpertCard(this);
     }
 
     /**
-     * 
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 3;
 
     /**
-     *
+     * Reference to card manager
      */
     private CardManager manager;
 
     /**
-     * 
+     * appliance of the card effect
      */
     public void apply() {
         manager.getInfluenceManager().setTowerInfluence();
@@ -44,22 +44,21 @@ public class TowerInfluenceCard implements ExpertCard, Serializable {
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     *
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     *
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {

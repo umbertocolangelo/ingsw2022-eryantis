@@ -22,12 +22,12 @@ public class Professor implements PlaceableObject, Serializable {
         }
         return professors[color.ordinal()];
     }
+
     /**
      * Private constructor
      */
     private Professor(Color color) {
-            this.color=color;
-
+        this.color = color;
     }
 
     /**
@@ -41,12 +41,12 @@ public class Professor implements PlaceableObject, Serializable {
     private FixedObject position;
 
     /**
-     * 
+     * professor color
      */
     private Color color;
 
     /**
-     * 
+     * professor id
      */
     private String id;
 
@@ -65,15 +65,15 @@ public class Professor implements PlaceableObject, Serializable {
     }
 
     /**
+     * sets professor position
      * @param position
-     * @return
      */
     public void setPosition(FixedObject position) {
         this.position = position;
     }
 
     /**
-     *
+     * @return professor id
      */
     public String getId() { return this.id; }
 
