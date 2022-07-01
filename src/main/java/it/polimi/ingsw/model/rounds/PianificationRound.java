@@ -23,36 +23,38 @@ public class PianificationRound implements RoundInterface, Serializable {
      * Default constructor
      */
     public PianificationRound(Game game) {
-        for(Player player: game.getPlayerList())
+        for (Player player: game.getPlayerList()) {
             player.resetAssistantCard();
-        this.game=game;
+        }
+        this.game = game;
         game.checkWinner();
     }
 
     /**
-     *  Contains the player list with the player sorted;
+     * Contains the player list with the player sorted;
      */
-    private LinkedList<Player> playerListOrdered=new LinkedList<>();
+    private LinkedList<Player> playerListOrdered = new LinkedList<>();
 
     /**
-     *  Contains the player list with the player sorted;
+     * Contains the player list with the player sorted;
      */
     private Game game;
 
     /**
-     *  Contains the played assistantCards card sorted;
+     * Contains the played assistantCards card sorted;
      */
     private ArrayList<AssistantCard> assistantCards=new ArrayList<AssistantCard>();
 
     /**
-     *Check if all the player played the card and if so create the actionRound
+     * Check if all the player played the card and if so create the actionRound
+     * @return Boolean
      */
     public Boolean checkRoundEnded() {
-        if(playerListOrdered.size()==this.game.getPlayerList().size()) {
+        if (playerListOrdered.size()==this.game.getPlayerList().size()) {
             this.game.setPlayerList(playerListOrdered);
             this.game.setOrderedPlayerList(playerListOrdered);
-            assistantCards=new ArrayList<>();
-            playerListOrdered=new LinkedList<>();
+            assistantCards = new ArrayList<>();
+            playerListOrdered = new LinkedList<>();
             this.game.getCardManager().setCurrentCard(null);
             this.game.setActionRoundState();
             return true;
@@ -61,58 +63,59 @@ public class PianificationRound implements RoundInterface, Serializable {
     }
 
     /**
-     * @param student
-     * @return
+     * returns the possibility of moving student to hall
+     * @param student Student
+     * @return Boolean
      */
     public Boolean moveStudentIngressToHall(Student student) {
-        // TODO implement here
         return null;
     }
 
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility of moving student to island
+     * @param student Student
+     * @param island Island
+     * @return Boolean
      */
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
-        // TODO implement here
         return null;
     }
 
     /**
-     * @param jumps
-     * @return
+     * returns the possibility of moving mother nature
+     * @param jumps Integer
+     * @return Boolean
      */
     public Boolean moveMotherNature(Integer jumps) {
-
         return null;
     }
 
 
     /**
-     * @param assistantCard         A string that represent the id of the card;
-     * @return boolean              Return true if the card is not already played and false if the card is already played
+     * returns the possibility of playing an assistant card
+     * @param assistantCard         id of the card;
+     * @return Boolean              true if the card is not already played and false if the card is already played
      */
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player) {
-        if(player.getPlayerPhase()!= PlayerPhase.CHOOSING_ASSISTANT)
+        if (player.getPlayerPhase()!= PlayerPhase.CHOOSING_ASSISTANT) {
             return false;
+        }
 
-        if(assistantCards.isEmpty()){
+        if (assistantCards.isEmpty()) {
             playerListOrdered.add(player);
             assistantCards.add(assistantCard);
             game.getCurrentPlayer().playAssistantCard(assistantCard);
             return true;
         }
-        for(int i=0;i<assistantCards.size();i++) {
+        for (int i=0;i<assistantCards.size();i++) {
             if (assistantCards.get(i).getNum()==(assistantCard.getNum())) { // if the current player plays a card already played
-                if(playerListOrdered.size()==2 && player.getAssistantCard().size()==2){ // if two players have already played a card and the current player has two cards
-                    if(player.getAssistantCard().contains(assistantCards.get(0)) && player.getAssistantCard().contains(assistantCards.get(1))){
+                if (playerListOrdered.size()==2 && player.getAssistantCard().size()==2) { // if two players have already played a card and the current player has two cards
+                    if (player.getAssistantCard().contains(assistantCards.get(0)) && player.getAssistantCard().contains(assistantCards.get(1))) {
                         playerListOrdered.add(player);
                         assistantCards.add(assistantCard);
                         game.getCurrentPlayer().playAssistantCard(assistantCard);
                         return true;
                     }
-
                 }
                 return false;
             }
@@ -132,101 +135,97 @@ public class PianificationRound implements RoundInterface, Serializable {
         checkRoundEnded();
 
         return true;
-
-        /**
-         * Manaca l'eccezzione se sono rimaste solo carte uguali da giocare
-         * E' piu comodo tenere play assistant card qui piuttosto che in game
-         */
     }
 
     /**
-     * @param expertCard
-     * @return
+     * returns the possibility of playing an expert card
+     * @param expertCard ExpertCard
+     * @return Boolean
      */
     public Boolean playExpertCard(ExpertCard expertCard) {
         return null;
     }
 
-
     /**
-     *
-     * @param game
-     * @param color
+     * returns the possibility of choosing deck and color
+     * @param player current player
+     * @param color player color
+     * @param wizard wizard
+     * @return Boolean
      */
-    public void expertMoveStudentToBag(Game game, Color color) {
-        // TODO implement here
-    }
-
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
     }
 
+    /**
+     * @return round id
+     */
     @Override
     public Integer getId() {
         return null;
     }
 
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility of playing student to island expert card
+     * @param student Student
+     * @param island Island
+     * @return Boolean
      */
     public Boolean expertStudentToIsland(Student student, Island island) {
-        // TODO implement here
         return null;
     }
 
     /**
-     * @param studentCard
-     * @param Ingress
-     * @return
+     * returns the possibility of playing ingress card swap expert card
+     * @param studentCard Student
+     * @param Ingress Ingress
+     * @return Boolean
      */
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress) {
-        // TODO implement here
         return null;
     }
 
     /**
-     *
-     * @return
+     * returns if the round has terminated
+     * @return Boolean
      */
-
     public Boolean finishExpertMove() {
         return null;
     }
 
     /**
-     * @param student
-     * @param student1
+     * returns the possibility of playing ingress hall swap expert card
+     * @param studentIngress Student
+     * @param studentHall Student
+     * @return Booolean
      */
     @Override
-    public Boolean expertIngressHallSwap(Student student, Student student1) {
-
+    public Boolean expertIngressHallSwap(Student studentIngress, Student studentHall) {
         return null;
     }
 
-
     /**
-     * @param student
-     * @return
+     * returns the possibility of playing student to hall expert card
+     * @param student Student
+     * @return Boolean
      */
     public Boolean expertStudentToHall(Student student) {
-        // TODO implement here
         return null;
     }
 
     /**
-     * @param cloud
-     * @return
+     * returns the possibility of choosing a cloud at the end of action round
+     * @param cloud Cloud
+     * @return Boolean
      */
     public Boolean chooseCloud(Cloud cloud) {
-        // TODO implement here
         return null;
     }
 
     /**
-     * @return  ArrayList<Player>       Return the number of the cards selected;
+     * Return the number of the cards selected
+     * @return ArrayList<Player>
      */
     public ArrayList<Player> getPlayerListOrdered() {
         return new ArrayList<Player>(this.playerListOrdered);

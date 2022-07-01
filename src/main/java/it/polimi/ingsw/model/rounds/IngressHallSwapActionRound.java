@@ -30,24 +30,28 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     private Game game;
 
     /**
-     * Id to know which round we are
+     * id to know which round we are
      */
     private Integer id = 1;
 
     /**
-     *
+     * number of students moved
      */
-    Integer studentsMoved=0;
+    private Integer studentsMoved = 0;
 
-
+    /**
+     * returns if the round has terminated
+     * @return Boolean
+     */
     @Override
     public Boolean checkRoundEnded() {
         return null;
     }
 
     /**
-     * @param student
-     * @return
+     * returns the possibility of moving student to hall
+     * @param student Student
+     * @return Boolean
      */
     @Override
     public Boolean moveStudentIngressToHall(Student student) {
@@ -55,9 +59,10 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     }
 
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility of moving student to island
+     * @param student Student
+     * @param island Island
+     * @return Boolean
      */
     @Override
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
@@ -65,8 +70,9 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     }
 
     /**
-     * @param jumps
-     * @return
+     * returns the possibility of moving mother nature
+     * @param jumps Integer
+     * @return Boolean
      */
     @Override
     public Boolean moveMotherNature(Integer jumps) {
@@ -74,9 +80,10 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     }
 
     /**
-     * @param assistantCard
-     * @param player
-     * @return
+     * returns the possibility of playing an assistant card
+     * @param assistantCard AssistantCard
+     * @param player current player
+     * @return Boolean
      */
     @Override
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player) {
@@ -84,29 +91,40 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     }
 
     /**
-     * @param expertCard
-     * @return
+     * returns the possibility of playing an expert card
+     * @param expertCard ExpertCard
+     * @return Boolean
      */
     @Override
     public Boolean playExpertCard(ExpertCard expertCard) {
         return null;
     }
 
-
+    /**
+     * returns the possibility of choosing color and deck
+     * @param player current player
+     * @param color PlayerColor
+     * @param wizard Wizard
+     * @return Boolean
+     */
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
     }
 
+    /**
+     * @return round id
+     */
     @Override
     public Integer getId() {
-        return id;
+        return this.id;
     }
 
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility of playing expert card student to island
+     * @param student Student
+     * @param island Island
+     * @return Boolean
      */
     @Override
     public Boolean expertStudentToIsland(Student student, Island island) {
@@ -114,9 +132,10 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     }
 
     /**
-     * @param studentCard
-     * @param Ingress
-     * @return
+     * returns the possibility of playing expert card ingress card swap
+     * @param studentCard Student
+     * @param Ingress Ingress
+     * @return Boolean
      */
     @Override
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress) {
@@ -124,44 +143,48 @@ public class IngressHallSwapActionRound implements RoundInterface, Serializable 
     }
 
     /**
-     *Called by the controller if he wants to terminate the move
+     * Called by the controller if the player wants to terminate the move
      * @return
      */
-
     public Boolean finishExpertMove() {
         return true;
     }
 
     /**
-     * @param studentHall       The student present in the hall
-     * @param studentIngress    The student present in the Ingress
-     * @return                  True if the move is possible
+     * returns the possibility of playing expert card ingress hall swap
+     * @param studentHall The student present in the hall
+     * @param studentIngress The student present in the Ingress
+     * @return True if the move is possible
      */
     @Override
     public Boolean expertIngressHallSwap(Student studentHall, Student studentIngress) {
         studentsMoved++;
-    return true;
+        return true;
     }
 
     /**
-     * @param student
-     * @return
+     * returns the possibility of playing expert card student to hall
+     * @param student Student
+     * @return Boolean
      */
     @Override
     public Boolean expertStudentToHall(Student student) {
         return null;
     }
 
-
     /**
-     * @param cloud
-     * @return
+     * returns the possibility of choosing the cloud at the end of action round
+     * @param cloud Cloud
+     * @return Boolean
      */
     @Override
     public Boolean chooseCloud(Cloud cloud) {
         return null;
     }
 
+    /**
+     * @return students moved
+     */
     public Integer getStudent(){
         return studentsMoved;
     }

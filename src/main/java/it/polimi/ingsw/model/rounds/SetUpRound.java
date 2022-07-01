@@ -12,64 +12,61 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 public class SetUpRound implements  RoundInterface, Serializable {
+
     /**
-     *
-     * @param game Pass the referement of game
+     * Default constructor
+     * @param game
      */
     public SetUpRound(Game game) {
-        this.game=game;
-
-        for (Wizard c : Wizard.values())
-            wizards.add(c);
-        for (PlayerColor c: PlayerColor.values())
+        this.game = game;
+        for (Wizard w : Wizard.values()) {
+            wizards.add(w);
+        }
+        for (PlayerColor c : PlayerColor.values()) {
             colors.add(c);
+        }
     }
+
     /**
-     *
+     * wizards list
      */
-    private LinkedList<Wizard> wizards=new LinkedList<>();
+    private LinkedList<Wizard> wizards = new LinkedList<>();
 
     /**
-     *
+     * player colors list
      */
-    private LinkedList<PlayerColor> colors=new LinkedList<>();
-
+    private LinkedList<PlayerColor> colors = new LinkedList<>();
 
     /**
-     *
+     * reference to game
      */
     private Game game;
+
     /**
-     *
+     * ordered player list
      */
-    private LinkedList<Player> playersList=new LinkedList<Player>();
+    private LinkedList<Player> playersListOrdered = new LinkedList<>();
+
     /**
-     * Card played
-     */
-    private LinkedList<AssistantCard> assistantCards=new LinkedList<>();
-    /**
-     *
-     */
-    private LinkedList<Player> playersListOrdered=new LinkedList<>();
-    /**
-     *
-     * @return
+     * check if the round has terminated
+     * @return Boolean
      */
     @Override
     public Boolean checkRoundEnded() {
         if (playersListOrdered.size()==game.getPlayerList().size()) {
             System.out.println("Finisco set round");
-            for (Player player : playersListOrdered)
+            for (Player player : playersListOrdered) {
                 player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
+            }
             this.game.setPianificationRoundState();
         }
         return true;
     }
 
-
     /**
-     * @param student
-     * @return
+     * returns the possibility to move a student from ingress to hall
+     * @param student Student
+     * @return Boolean
      */
     @Override
     public Boolean moveStudentIngressToHall(Student student) {
@@ -77,9 +74,10 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility to move a student from ingress to island
+     * @param student Student
+     * @param island Island
+     * @return Boolean
      */
     @Override
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
@@ -87,8 +85,9 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param jumps
-     * @return
+     * returns the possibility to move mother nature
+     * @param jumps Integer
+     * @return Boolean
      */
     @Override
     public Boolean moveMotherNature(Integer jumps) {
@@ -96,9 +95,10 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param assistantCard
-     * @param player
-     * @return
+     * returns the possibility to play an assistant card
+     * @param assistantCard AssistantCard
+     * @param player Player
+     * @return Boolean
      */
     @Override
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player) {
@@ -106,8 +106,9 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param expertCard
-     * @return
+     * returns the possibility to play an expert card
+     * @param expertCard ExpertCard
+     * @return Boolean
      */
     @Override
     public Boolean playExpertCard(ExpertCard expertCard) {
@@ -115,9 +116,10 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility to play student to island expert card
+     * @param student Student
+     * @param island Island
+     * @return Boolean
      */
     @Override
     public Boolean expertStudentToIsland(Student student, Island island) {
@@ -125,9 +127,10 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param studentCard
-     * @param Ingress
-     * @return
+     * returns the possibility to play ingress card swap expert card
+     * @param studentCard Student
+     * @param Ingress Student
+     * @return Boolean
      */
     @Override
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress) {
@@ -135,7 +138,8 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @return
+     * true if the player wants to terminate the effect of an expert card
+     * @return Boolean
      */
     @Override
     public Boolean finishExpertMove() {
@@ -143,9 +147,10 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param studentHall
-     * @param studentIngress
-     * @return
+     * returns the possibility to play ingress hall swap expert card
+     * @param studentHall Student
+     * @param studentIngress Student
+     * @return Boolean
      */
     @Override
     public Boolean expertIngressHallSwap(Student studentHall, Student studentIngress) {
@@ -153,8 +158,9 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param student
-     * @return
+     * returns the possibility to play student to hall expert card
+     * @param student Student
+     * @return Boolean
      */
     @Override
     public Boolean expertStudentToHall(Student student) {
@@ -162,28 +168,26 @@ public class SetUpRound implements  RoundInterface, Serializable {
     }
 
     /**
-     * @param cloud
-     * @return
+     * returns the possibility to choose a cloud at the end of action round
+     * @param cloud Cloud
+     * @return Boolean
      */
     @Override
     public Boolean chooseCloud(Cloud cloud) {
         return null;
     }
 
-    private void expertMoveStudentToBag(Game game, Color color) {
-
-    }
-
     /**
-     *
+     * returns the possibility to choose color and deck
      * @param player        The player who is choosing
      * @param color         The color we want
      * @param wizard        The wizard we want
      * @return              True if the parameters are acceptable, false instead
      */
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
-        if ( player.getPlayerPhase() != PlayerPhase.SET_UP_PHASE)
+        if ( player.getPlayerPhase() != PlayerPhase.SET_UP_PHASE) {
             return false;
+        }
         wizards.remove(wizard);
         colors.remove(color);
         playersListOrdered.add(player);
@@ -192,15 +196,24 @@ public class SetUpRound implements  RoundInterface, Serializable {
         return true;
     }
 
+    /**
+     * @return round id
+     */
     @Override
     public Integer getId() {
         return null;
     }
 
-    public LinkedList<PlayerColor> getplayerColor(){
+    /**
+     * @return player colors available
+     */
+    public LinkedList<PlayerColor> getPlayerColor(){
         return this.colors;
     }
 
+    /**
+     * @return wizards available
+     */
     public LinkedList<Wizard> getWizards(){
         return this.wizards;
     }

@@ -22,23 +22,23 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * Id to know which round we are
+     * round id
      */
     private Integer id = 0;
 
     /**
-     * Numeber of students moved
+     * Number of students moved
      */
     private Integer studentsMoved = 0;
 
     /**
-     * Reference to Game
+     * Reference to game
      */
     private Game game;
 
     /**
-     *
-     * @return
+     * if the round has terminated
+     * @return Boolean
      */
     @Override
     public Boolean checkRoundEnded() {
@@ -46,8 +46,9 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param student
-     * @return
+     * returns the possibility of moving the student from ingress to hall
+     * @param student Student
+     * @return Boolean
      */
     @Override
     public Boolean moveStudentIngressToHall(Student student) {
@@ -55,9 +56,10 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility of moving the student from ingress to island
+     * @param student in the ingress
+     * @param island where to put the student on
+     * @return Boolean
      */
     @Override
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
@@ -65,8 +67,9 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param jumps
-     * @return
+     * returns the possibility of moving mother nature
+     * @param jumps Integer
+     * @return  Boolean
      */
     @Override
     public Boolean moveMotherNature(Integer jumps) {
@@ -74,9 +77,10 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param assistantCard
-     * @param player
-     * @return
+     * returns the possibility of playing an assistant card
+     * @param assistantCard AssistantCard
+     * @param player Player
+     * @return Boolean
      */
     @Override
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player) {
@@ -84,8 +88,9 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param expertCard
-     * @return
+     * returns the possibility of playing an expert card
+     * @param expertCard ExpertCard
+     * @return Boolean
      */
     @Override
     public Boolean playExpertCard(ExpertCard expertCard) {
@@ -93,9 +98,10 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility of playing expert card student to island
+     * @param student Student
+     * @param island Island
+     * @return Boolean
      */
     @Override
     public Boolean expertStudentToIsland(Student student, Island island) {
@@ -103,9 +109,10 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param studentCard       The student present on the Card
-     * @param Ingress           The student present in the ingress
-     * @return                  True if the students is moved
+     * returns the possibility of playing expert card ingress card swap
+     * @param studentCard The student present on the Card
+     * @param Ingress The student present in the ingress
+     * @return True if the students is moved
      */
     @Override
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress) {
@@ -114,7 +121,7 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     *Called by the controller if he wants to terminate the move
+     * Called by the controller if the player wants to terminate the move
      * @return
      */
     public Boolean finishExpertMove() {
@@ -123,17 +130,20 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param student
-     * @param student1
+     * returns the possibility of playing expert card ingress hall swap
+     * @param studentIngress Student
+     * @param studentHall Student
+     * @return Boolean
      */
     @Override
-    public Boolean expertIngressHallSwap(Student student, Student student1) {
+    public Boolean expertIngressHallSwap(Student studentIngress, Student studentHall) {
         return null;
     }
 
     /**
-     * @param student
-     * @return
+     * returns the possibility of playing expert card student to hall
+     * @param student Student
+     * @return Boolean
      */
     @Override
     public Boolean expertStudentToHall(Student student) {
@@ -141,8 +151,9 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     * @param cloud
-     * @return
+     * returns the possibility of choosing the cloud at the end of action phase
+     * @param cloud Cloud
+     * @return Boolean
      */
     @Override
     public Boolean chooseCloud(Cloud cloud) {
@@ -150,11 +161,11 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     *
-     * @param player
-     * @param color
-     * @param wizard
-     * @return
+     * returns the possibility of choosing color and deck
+     * @param player current player
+     * @param color PlayerColor
+     * @param wizard Wizard
+     * @return Boolean
      */
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
@@ -162,8 +173,7 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     *
-     * @return
+     * @return round id
      */
     @Override
     public Integer getId() {
@@ -171,8 +181,7 @@ public class IngressCardSwapActionRound  implements RoundInterface, Serializable
     }
 
     /**
-     *
-     * @return
+     * @return students moved
      */
     public Integer getStudentsMoved() {
         return this.studentsMoved;

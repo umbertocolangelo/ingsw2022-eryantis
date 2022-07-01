@@ -13,95 +13,105 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
  * 
  */
 public interface RoundInterface {
-    /**
-     *
-     */
-    public Boolean  checkRoundEnded();
 
     /**
-     * @param student
-     * @return
+     * returns true if the round has terminated
+     */
+    public Boolean checkRoundEnded();
+
+    /**
+     * returns true if is possible to move a student from ingress to hall
+     * @param student student
+     * @return boolean
      */
     public Boolean moveStudentIngressToHall(Student student);
 
     /**
-     * @param student 
-     * @param island 
-     * @return
+     * returns true if is possible to move a student from ingress to island
+     * @param student student
+     * @param island island
+     * @return boolean
      */
     public Boolean moveStudentIngressToIsland(Student student, Island island);
 
     /**
-     * @param jumps 
-     * @return
+     * returns true if is possible to move mother nature
+     * @param jumps integer
+     * @return boolean
      */
     public Boolean moveMotherNature(Integer jumps);
 
     /**
-     * @param assistantCard
-     * @param player
-     * @return
+     * returns true if is possible to play an assistant card
+     * @param assistantCard assistant card
+     * @param player player
+     * @return boolean
      */
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player);
 
     /**
-     * @param expertCard
-     * @return
+     * returns true if is possible to play an expert card
+     * @param expertCard expert card
+     * @return boolean
      */
     public Boolean playExpertCard(ExpertCard expertCard);
 
-
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns true if is possible to play student to island expert card
+     * @param student student
+     * @param island island
+     * @return boolean
      */
     public Boolean expertStudentToIsland(Student student, Island island);
 
     /**
-     * @param studentCard
-     * @param Ingress
-     * @return
+     * returns true if is possible to play ingress card swop expert card
+     * @param studentCard student
+     * @param Ingress student
+     * @return boolean
      */
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress);
 
     /**
-     *
-     * @return
+     * returns true if the player wants to terminate an expert card effect
+     * @return boolean
      */
     public Boolean finishExpertMove();
 
-
     /**
-     * @param studentHall
-     * @param studentIngress
-     * @return
+     * returns true if is possible to play ingress hall swap expert card
+     * @param studentHall student
+     * @param studentIngress student
+     * @return boolean
      */
     public Boolean expertIngressHallSwap(Student studentHall, Student studentIngress);
 
     /**
-     * @param student
-     * @return
+     * returns true if is possible to play student to hall expert card
+     * @param student student
+     * @return boolean
      */
     public Boolean expertStudentToHall(Student student);
 
     /**
-     * @param cloud
-     * @return
+     * returns true if is possible to choose a cloud at the end of action round
+     * @param cloud cloud
+     * @return boolean
      */
     public Boolean chooseCloud(Cloud cloud);
 
     /**
-     *
-     *
-     * @param player
-     * @param color
-     * @param wizard
-     * @return
+     * returns true if is possible to choose a color and deck
+     * @param player player
+     * @param color color
+     * @param wizard wizard
+     * @return boolean
      */
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard);
 
+    /**
+     * @return round id
+     */
     Integer getId();
-
 
 }

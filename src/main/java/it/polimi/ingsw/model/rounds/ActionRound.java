@@ -21,33 +21,29 @@ import java.util.LinkedList;
 public class ActionRound implements RoundInterface, Serializable {
 
     /**
-     * Every time is called he set the current player, the player phase e change the player ing from the orderedlist
+     * Every time is called he set the current player, the player phase e change the player ing from the ordered list
      */
     public ActionRound(Game game, Boolean isThreePlayers) {
-        this.game=game;
+        this.game = game;
         this.game.setCurrentPlayer(this.game.getOrderedPlayerList().getFirst());
-        this.currentPlayer=this.game.getCurrentPlayer();
+        this.currentPlayer = this.game.getCurrentPlayer();
         this.currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
     }
+
     /**
      * Keep the track if we already played a card in this round
      */
-    private Boolean cardAlreadyPlayed=false;
+    private Boolean cardAlreadyPlayed = false;
 
     /**
-     *Keep the reference to the current player
+     * Keep the reference to the current player
      */
     private Player currentPlayer;
 
     /**
-     *Keep track of the number of students moved
+     * Keep track of the number of students moved
      */
     private Integer studentsMoved = 0;
-
-    /**
-     *
-     */
-    private MotherNature motherNature;
 
     /**
      * Keep the reference to mother nature
@@ -55,24 +51,24 @@ public class ActionRound implements RoundInterface, Serializable {
     private Game game;
 
     /**
-     *
-     * @return boolean  Check if the round ended end if we all the player played so create pianification
+     * Check if the round ended end if all the players have played and then creates pianification phase
+     * @return Boolean
      */
     @Override
     public Boolean checkRoundEnded() {
-        if(this.game.getOrderedPlayerList().isEmpty()) {
-            for(Cloud d: game.getClouds())
-            game.getBag().addStudentsOnCloud(d);
-            for(int i=0;i<game.getPlayerList().size();i++){
+        if (this.game.getOrderedPlayerList().isEmpty()) {
+            for (Cloud d: game.getClouds()) {
+                game.getBag().addStudentsOnCloud(d);
+            }
+            for (int i=0;i<game.getPlayerList().size();i++) {
                 this.game.getPlayerList().get(i).setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
             }
             game.getCardManager().resetCurrentCard();
             this.game.setCurrentPlayer(game.getPlayerList().getFirst());
             this.game.setPianificationRoundState();
-
             return true;
         }
-        if(this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD){
+        if (this.currentPlayer.getPlayerPhase()==PlayerPhase.CHOOSING_CLOUD) {
             this.game.setActionRoundState();
             game.getCardManager().resetCurrentCard();
             return true;
@@ -81,148 +77,164 @@ public class ActionRound implements RoundInterface, Serializable {
     }
 
     /**
+     * True if the student is moved correctly, false if it's not possible to move
      * @param student   The student present in the hall that has to be moved
-     * @return boolean  True if the student is moved correctly, false if it's not possible to move
+     * @return boolean
      */
     public Boolean moveStudentIngressToHall(Student student) {
-        if(this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS ||
-                !this.currentPlayer.getSchool().getIngress().getStudents().contains(student) ||
-                this.currentPlayer.getSchool().getHall().getLine(student.getColor()).getStudents().size()==10){
-            return false;}
+        if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student) || this.currentPlayer.getSchool().getHall().getLine(student.getColor()).getStudents().size()==10) {
+            return false;
+        }
         return true;
     }
 
     /**
-     * @param student       Student in the ingress
-     * @param island        Island we want to put the student
-     * @return              True if it's not his last move
+     * True if it's not his last move
+     * @param student in the ingress
+     * @param island where to put the student on
+     * @return Boolean
      */
     public Boolean moveStudentIngressToIsland(Student student, Island island) {
-        if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student))
+        if (this.currentPlayer.getPlayerPhase() != PlayerPhase.MOVING_STUDENTS || !this.currentPlayer.getSchool().getIngress().getStudents().contains(student)) {
             return false;
+        }
         return true;
     }
 
     /**
+     * true if it is moving mother nature phase
      * @param jumps
-     * @return
+     * @return Boolean
      */
     public Boolean moveMotherNature(Integer jumps) {
-       if(currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps || jumps<1)
-        return false;
-       else{
+       if (currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps || jumps<1) {
+           return false;
+       } else {
            return true;
        }
     }
 
     /**
+     * returns the possibility of playing an assistant card
      * @param assistantCard
-     * @return
+     * @return Boolean
      */
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player) {
         return null;
     }
 
     /**
-     *
-     * @param expertCard        We receive the expertCard and called the method needed for each expertCard
-     * @return
+     * returns the possibility of playing an expert card
+     * @param expertCard
+     * @return Boolean
      */
     public Boolean playExpertCard(ExpertCard expertCard) {
-        if(expertCard.getCost()>currentPlayer.getCoins() || cardAlreadyPlayed) // If the current player can't play the card
+        if (expertCard.getCost()>currentPlayer.getCoins() || cardAlreadyPlayed) { // if the current player can't play the card
             return false;
-        cardAlreadyPlayed=true;
+        }
+        cardAlreadyPlayed = true;
         return true;
     }
 
-
+    /**
+     * returns the possibility of choosing color and deck
+     * @param player current
+     * @param color chosen
+     * @param wizard chosen
+     * @return Boolean
+     */
     @Override
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard) {
         return null;
     }
 
+    /**
+     * @return action round id
+     */
     @Override
     public Integer getId() {
         return null;
     }
 
-
     /**
-     * @param student
-     * @param island
-     * @return
+     * returns the possibility of playing the expert card student to island
+     * @param student Student
+     * @param island Island
+     * @return Boolean
      */
     public Boolean expertStudentToIsland(Student student, Island island) {
-        // TODO implement here
         return null;
     }
 
     /**
-     * @param studentCard
-     * @param Ingress
-     * @return
+     * returns the possibility of playing the expert card ingress card swap
+     * @param studentCard Student
+     * @param Ingress Student
+     * @return Boolean
      */
     public Boolean expertIngressCardSwap(Student studentCard, Student Ingress) {
         return false;
     }
 
     /**
-     *
-     * @return
+     * if the player wants to terminate an expert card effect
+     * @return Boolean
      */
-
     public Boolean finishExpertMove() {
         return null;
     }
 
     /**
-     * @param studentHall
-     * @param studentIngress
-     * @return
+     * returns the possibility of playing the expert card ingress hall swap
+     * @param studentHall Student
+     * @param studentIngress Student
+     * @return Boolean
      */
     public Boolean expertIngressHallSwap(Student studentHall, Student studentIngress) {
-     return false;
+        return false;
     }
 
-
-
     /**
-     * @param student
-     * @return
+     * returns the possibility of playing the expert card student to hall
+     * @param student Student
+     * @return Boolean
      */
     public Boolean expertStudentToHall(Student student) {
        return false;
     }
 
     /**
-     * @param cloud     The cloud chose from the
-     * @return          True if we can make the move
+     * returns the possibility of choosing students from the clouds at the end of the action round
+     * @param cloud Cloud
+     * @return Boolean
      */
     public Boolean chooseCloud(Cloud cloud) {
-        if (this.currentPlayer.getPlayerPhase() != PlayerPhase.CHOOSING_CLOUD)
+        if (this.currentPlayer.getPlayerPhase() != PlayerPhase.CHOOSING_CLOUD) {
             return false;
-        if (cloud.getStudents().size() == 0)
+        }
+        if (cloud.getStudents().size() == 0) {
             return false;
-        LinkedList<Player> players=this.game.getOrderedPlayerList();
+        }
+        LinkedList<Player> players = this.game.getOrderedPlayerList();
         players.removeFirst();
         this.game.setOrderedPlayerList(players);
         return true;
     }
 
-
     /**
      * Return the number of the students moved
+     * @return Integer
      */
-    public Integer getStudentsMoved(){
+    public Integer getStudentsMoved() {
         return this.studentsMoved;
     }
-
 
     /**
      * Checks if the player has already played an expert card
      * @return true if the player has already played an expert card
      */
     public Boolean getCardAlreadyPlayed(){
-        return cardAlreadyPlayed;
+        return this.cardAlreadyPlayed;
     }
+
 }
