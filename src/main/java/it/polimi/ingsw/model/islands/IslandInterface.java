@@ -52,7 +52,7 @@ public interface IslandInterface {
 
     /**
      * Return the LinkedList of Towers
-     * @return LinkedList<Tower>
+     * @return the list of the towers
      */
     public LinkedList<Tower> getTowers();
 

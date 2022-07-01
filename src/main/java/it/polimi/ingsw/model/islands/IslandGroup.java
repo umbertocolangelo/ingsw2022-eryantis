@@ -94,7 +94,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
 
     /**
      * Return the LinkedList of every Towers in this islandGroup
-     * @return LinkedList<Tower>
+     * @return the list of the tower
      */
     public LinkedList<Tower> getTowers() {
         LinkedList<Tower> towerList = new LinkedList<>();
@@ -155,7 +155,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
 
     /**
      * students on the island group
-     * @return LinkedList<Student>
+     * @return the students present on the island group
      */
     public LinkedList<Student> getStudents() {
         LinkedList<Student> students = new LinkedList<>();

@@ -12,7 +12,7 @@ public interface PlaceableObject {
 
     /**
      * @param position
-     * @return
+     * @return the position of The Placeable Object
      */
     public void setPosition(FixedObject position);
 
