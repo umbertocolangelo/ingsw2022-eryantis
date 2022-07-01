@@ -1,6 +1,5 @@
 package it.polimi.ingsw.modelTest.studentsSuppliers;
 
-
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
@@ -15,9 +14,15 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Bag class
+ */
 public class BagTest {
 
-        @Test
+    /**
+     * Test of newStudent method
+     */
+    @Test
     public  void newStudent() {
         Bag bag = new Bag(false);
         Student student=bag.newStudent();
@@ -25,6 +30,9 @@ public class BagTest {
 
     }
 
+    /**
+     * Test of addStudentOnCloud method
+     */
     @Test
     public void addStudentOnCloud(){
         Bag bag = new Bag(false);

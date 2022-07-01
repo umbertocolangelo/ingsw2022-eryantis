@@ -8,9 +8,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Cloud class
+ */
 public class CloudTest {
+
     /**
-     * Test addStudent function
+     * Test of addStudent method
      */
     @Test
     public void addStudentTest(){
@@ -21,9 +25,8 @@ public class CloudTest {
     }
 
     /**
-     * Test removeStudent function
+     * Test of removeStudent method
      */
-
     @Test
     public void removeStudent(){
         Cloud cloud= new Cloud();
@@ -36,7 +39,7 @@ public class CloudTest {
     }
 
     /**
-     * Test getStudent function
+     * Test of getStudent method
      */
     @Test
     public void getStudentsTest(){
@@ -49,7 +52,7 @@ public class CloudTest {
     }
 
     /**
-     * Test numOfStudent function
+     * Test of numOfStudent method
      */
     @Test
     public void numOfStudent(){

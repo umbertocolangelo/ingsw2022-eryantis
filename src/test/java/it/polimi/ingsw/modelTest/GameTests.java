@@ -21,9 +21,14 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Game class
+ */
 public class GameTests {
 
-
+    /**
+     * Test of expertStudentToIsland method
+     */
     @Test
     public void expertStudentToIslandTest() {
         Game game = new Game();
@@ -48,7 +53,7 @@ public class GameTests {
     }
 
     /**
-     * Testing expertStudentToHall method
+     * Test of expertStudentToHall method
      */
     @Test
     public void expertStudentToHallTest(){
@@ -80,7 +85,7 @@ public class GameTests {
     }
 
     /**
-     * Testing the chooseColorAndDeck method
+     * Test of chooseColorAndDeck method
      */
     @Test
     public void chooseColorAndDeckTest(){
@@ -101,7 +106,7 @@ public class GameTests {
 
 
     /**
-     * Testing getPlayerOrdered method
+     * Test of getPlayerOrdered method
      */
     @Test
     public void getPlayerListOrderedTest() {
@@ -126,7 +131,7 @@ public class GameTests {
     }
 
     /**
-     * Testing playAssistantCard method
+     * Test of playAssistantCard method
      */
     @Test
     public void playAssistantCardTest() {
@@ -151,7 +156,7 @@ public class GameTests {
     }
 
     /**
-     * Testing moveMotherNature method
+     * Test of moveMotherNature method
      */
     @Test
     public void moveMotherNatureTest(){
@@ -181,7 +186,7 @@ public class GameTests {
 
 
     /**
-     * Testing moveIngressToHall method
+     * Test of moveIngressToHall method
      */
     @Test
     public void moveIngressToHallTest() {
@@ -203,7 +208,7 @@ public class GameTests {
     }
 
     /**
-     * Testing moveIngressToIsland method
+     * Test of moveIngressToIsland method
      */
     @Test
     public void moveIngressToIslandTest() {
@@ -226,7 +231,7 @@ public class GameTests {
     }
 
     /**
-     * Testing chooseCloud method
+     * Test of chooseCloud method
      */
     @Test
     public void chooseCloudTest() {
@@ -263,7 +268,7 @@ public class GameTests {
     }
 
     /**
-     * Testing expertMoveToBag method
+     * Test of expertMoveToBag method
      */
     @Test
     public void expertMoveToBagFunction() {
@@ -487,7 +492,7 @@ public class GameTests {
     }
 
     /**
-     * Testing expertIngressCardSwap function
+     * Test of expertIngressCardSwap method
      */
     @Test
     public void  expertIngressCardSwapTest(){
@@ -514,7 +519,7 @@ public class GameTests {
     }
 
     /**
-     * Testing expertHallIngressSwap function
+     * Test of expertHallIngressSwap method
      */
     @Test
     public void expertHallIngressSwapTest() {
@@ -550,7 +555,7 @@ public class GameTests {
 
 
     /**
-     * Testing deleteGame method
+     * Test of deleteGame method
      */
     @Test
     public void deleteGameTest() {
@@ -569,7 +574,7 @@ public class GameTests {
     }
 
     /**
-     * Tests the saveGame method
+     * Test of saveGame method
      */
     @Test
     public void saveGameTest(){
@@ -607,7 +612,6 @@ public class GameTests {
         // delete the file for convenience
         SavingManager.getInstance().deleteSavedGame("eriantys_cls-A-B-C.save");
     }
-
 
 }
 
