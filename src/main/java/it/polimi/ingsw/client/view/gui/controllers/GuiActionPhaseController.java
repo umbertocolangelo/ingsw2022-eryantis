@@ -2982,7 +2982,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showText(){
         if (game.getCurrentRound().getId()==null) {
-            if (GUIController.getInstance().getIdExpertCardPlayed()!=null) {
+            if (game.getCardManager().getCurrentCard()!=null) {
                 communication.setText("ACTION ROUND WITH AN EXPERT CARD ACTIVE");
             } else {
                 communication.setText("ACTION ROUND");
@@ -3297,7 +3297,7 @@ public class GuiActionPhaseController implements Initializable {
      */
     public void clickIsland1(MouseEvent mouseEvent) {
 
-        if(isDisabled.contains(1)) {
+        if (isDisabled.contains(1)) {
             return;
         }
 

@@ -440,12 +440,11 @@ public class GUIController {
      * Set the id of the expert card played
      */
     public void setIdExpertCardPlayed() {
-        if (this.getClient().getGame().getCardManager().getCurrentCard()!=null) {
+        if (client.getGame().getCardManager().getCurrentCard()!=null) {
             this.idExpertCardPlayed = client.getGame().getCardManager().getCurrentCard().getId();
         } else {
             this.idExpertCardPlayed = null;
         }
-
     }
 
     /**

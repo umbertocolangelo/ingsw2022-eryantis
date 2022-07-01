@@ -19,7 +19,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
      */
     public IngressCardSwapCard(CardManager cardManager) {
         this.id = "44";
-        this.manager=cardManager;
+        this.manager = cardManager;
         IdManager.getInstance().addExpertCard(this);
         students = new LinkedList<Student>();
         for (int i=0; i<6; i++) {
@@ -38,7 +38,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     private Integer cost = 1;
 
     /**
-     *
+     * list of the students on the card
      */
     private LinkedList<Student> students;
 
@@ -48,7 +48,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     private CardManager manager;
 
     /**
-     *
+     * Appliance of the effect of the card
      */
     public void apply() {
         incrementCost();
