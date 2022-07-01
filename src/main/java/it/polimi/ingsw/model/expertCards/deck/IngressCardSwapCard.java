@@ -28,7 +28,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     }
 
     /**
-     * 
+     * Keep the reference to the id
      */
     private String id;
 

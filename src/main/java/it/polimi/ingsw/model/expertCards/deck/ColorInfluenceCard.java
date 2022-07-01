@@ -22,12 +22,12 @@ public class ColorInfluenceCard implements ExpertCard, Serializable {
     }
 
     /**
-     * 
+     * Keep the reference to the id
      */
     private String id;
 
     /**
-     *
+     *K
      */
     private Integer cost = 3;
 

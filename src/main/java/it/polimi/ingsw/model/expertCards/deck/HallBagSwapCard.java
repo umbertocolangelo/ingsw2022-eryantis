@@ -36,7 +36,7 @@ public class HallBagSwapCard implements ExpertCard, Serializable {
     private Integer cost = 3;
 
     /**
-     * 
+     * Keep the reference to the id
      */
     private String id;
 
