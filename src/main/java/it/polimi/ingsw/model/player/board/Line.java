@@ -19,33 +19,28 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializa
      * Default constructor
      */
     public Line(Color color) {
-        this.color=color;
-
+        this.color = color;
     }
+
     /**
-     *
+     * line color
      */
     private Color color;
 
     /**
-     * 
+     * students in the line
      */
-    private LinkedList<Student> students=new LinkedList<>();
+    private LinkedList<Student> students = new LinkedList<>();
 
     /**
-     * 
+     * number of students in the line
      */
     private Integer studentsNum;
 
     /**
-     * 
+     * professor of the line
      */
     private Professor professor;
-
-    /**
-     * 
-     */
-    private Player player;
 
     /**
      * @return boolean true if the number of students make gain a coin and return true
@@ -53,14 +48,13 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializa
     public boolean checkCoin() {
         if(students.size()==3 || students.size()==6 || students.size()==9){
             return true;
-        }
-        else{
+        } else {
             return false;
         }
     }
 
     /**
-     *
+     * @return color of the line
      */
     public Color getColor() {
         return this.color;
@@ -68,11 +62,12 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializa
 
 
     /**
-     * @param student       Add the student to the LinkedList
+     * Add the student to student list of the line
+     * @param student
      */
     public void addStudent(Student student) {
-        if(student.getColor().equals(this.getColor())) {
-            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+        if (student.getColor().equals(this.getColor())) {
+            if (student.getPosition()!=null) {        // if the student was on a FixedObject, this object is updated
                 FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
                 position.removeStudent(student);
             }
@@ -82,57 +77,61 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializa
     }
 
     /**
-     * @param student       Remove the student from the students list
+     * Remove the student from the students list
+     * @param student
      */
     public void removeStudent(Student student) {
         this.students.remove(students.indexOf(student));
     }
 
     /**
-     * @return LinkedList<Student>      Return LinkedList<Student>
+     * returns students in the line
+     * @return LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
        return new LinkedList<>(this.students);
     }
 
     /**
-     * @return int          Return the number of students
+     * Number of students
+     * @return Integer
      */
     public Integer numOfStudents() {
         return this.students.size();
     }
 
     /**
-     * @param professor     Add the professor to the Line
+     * Add the professor to the Line
+     * @param professor
      */
     public void addProfessor(Professor professor) {
-        if(professor.getColor().equals(this.getColor())) {
-            if(professor.getPosition()!=null){        // If the professor was on a FixedObject, this object is updated
+        if (professor.getColor().equals(this.getColor())) {
+            if (professor.getPosition()!=null) {        // if the professor was on a FixedObject, this object is updated
                 FixedObjectProfessor position = (FixedObjectProfessor) professor.getPosition();
                 position.removeProfessor(professor);
             }
             professor.setPosition(this);
-            this.professor=professor;
+            this.professor = professor;
         }
     }
 
     /**
-     * @param professor         Remove the professor from the line
+     * Remove the professor from the line
+     * @param professor
      */
     public void removeProfessor(Professor professor) {
-        this.professor=null;
+        this.professor = null;
     }
 
     /**
      * @return true if the professor is present on the line, else returns false
      */
     public Boolean isProfessor() {
-        if(this.professor!=null){
+        if (this.professor!=null) {
             return true;
-           }
-        else{
+        } else {
             return false;
-             }
+        }
     }
 
 }

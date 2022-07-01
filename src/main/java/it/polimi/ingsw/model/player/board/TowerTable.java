@@ -13,18 +13,17 @@ import java.util.LinkedList;
 public class TowerTable implements FixedObjectTower, Serializable {
 
     /**
-     *
+     * list of towers
      */
-    private LinkedList<Tower> towers= new LinkedList<Tower>();
+    private LinkedList<Tower> towers = new LinkedList<Tower>();
 
     /**
-     *
+     * true if is a three player game, else false
      */
     private Boolean isThreePlayers;
 
-
     /**
-     * Create the towers in the TowerTable and define their color;
+     * Create the towers in the TowerTable and define their color
      */
     public TowerTable(PlayerColor color, Boolean isThreePlayers) {
         if (isThreePlayers) {
@@ -43,13 +42,13 @@ public class TowerTable implements FixedObjectTower, Serializable {
         this.isThreePlayers = isThreePlayers;
     }
 
-
     /**
-     * @param tower         Add tower to the LinkedList
+     * Add tower to the LinkedList
+     * @param tower
      */
     public void addTower(Tower tower) {
-        if( (isThreePlayers && towers.size()<6) || (towers.size()<8 && !isThreePlayers)){
-            if(tower.getPosition()!=null){        // If the tower was on a FixedObject, this object is updated
+        if ((isThreePlayers && towers.size()<6) || (towers.size()<8 && !isThreePlayers)){
+            if (tower.getPosition()!=null) {        // If the tower was on a FixedObject, this object is updated
                 FixedObjectTower position = (FixedObjectTower) tower.getPosition();
                 position.removeTower(tower);
             }
@@ -66,14 +65,16 @@ public class TowerTable implements FixedObjectTower, Serializable {
     }
 
     /**
-     * @return  LinkedList<Tower>       Return the list of the towers
+     * Return the list of the towers
+     * @return LinkedList<Tower>
      */
     public LinkedList<Tower> getTowers() {
         return  new LinkedList<>(this.towers);
     }
 
     /**
-     * @return      Integer             Return the number of the towers present on this TowerTable
+     * Return the number of the towers present on this TowerTable
+     * @return Integer
      */
     public Integer numOfTowers() {
         return this.towers.size();

@@ -7,49 +7,50 @@ import java.io.Serializable;
 /**
  * 
  */
-public class School implements Serializable {
+public class  School implements Serializable {
 
     /**
      * Default constructor
      */
     public School(PlayerColor color, Boolean isThreePlayers) {
-        this.towerTable=new TowerTable(color,isThreePlayers);
-        this.ingress =new Ingress();
+        this.towerTable = new TowerTable(color,isThreePlayers);
+        this.ingress = new Ingress();
     }
 
     /**
-     * 
+     * reference to ingress
      */
     private Ingress ingress;
 
     /**
-     * 
+     * reference to hall
      */
-    private Hall hall=new Hall();
+    private Hall hall = new Hall();
 
     /**
-     * 
+     * reference to tower table
      */
     private TowerTable towerTable;
 
     /**
-     * @return Ingress      Return the ingress of this school
+     * Return the ingress of this school
+     * @return Ingress
      */
     public Ingress getIngress() {
        return this.ingress;
-
     }
 
     /**
-     * @return Hall     Return th Hall of this school
+     * Return th Hall of this school
+     * @return Hall
      */
     public Hall getHall() {
-
         return this.hall;
     }
 
     /**
-     * @return TowerTable       Return the TowerTable of this school
+     * Return the TowerTable of this school
+     * @return TowerTable
      */
     public TowerTable getTowerTable() {
         return this.towerTable;

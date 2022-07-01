@@ -23,9 +23,12 @@ public class Player implements Serializable {
         this.id = idCounter.toString();
         IdManager.getInstance().addPlayer(this);
         idCounter++;
-        if(idCounter==4){idCounter=1;}
-        for (AssistantCard a: AssistantCard.values())
-           assistantCards.add(a);
+        if (idCounter==4) {
+            idCounter = 1;
+        }
+        for (AssistantCard a: AssistantCard.values()) {
+            assistantCards.add(a);
+        }
     }
 
     /**
@@ -34,22 +37,22 @@ public class Player implements Serializable {
     private static Integer idCounter = 1;
 
     /**
-     * 
+     * player id
      */
     private String id;
 
     /**
-     *  Name of the player
+     * Name of the player
      */
     private String name;
 
     /**
-     *  Which wizard the player chose
+     * wizard chosen by the player
      */
     private Wizard wizard;
 
     /**
-     *  The player color
+     * player color
      */
     private PlayerColor color;
 
@@ -64,12 +67,12 @@ public class Player implements Serializable {
     private ArrayList<AssistantCard> assistantCards = new ArrayList<AssistantCard>();
 
     /**
-     *  The card that the player played
+     * The card that the player played
      */
     private AssistantCard playedCard;
 
     /**
-     *  Represent the number of coin own by this player
+     * number of coins owned
      */
     private Integer coins = 0;
 
@@ -84,7 +87,7 @@ public class Player implements Serializable {
     private Integer cardValue;
 
     /**
-     * The phase where this player is.
+     * The phase where this player is
      */
     private PlayerPhase phase;
 
@@ -94,14 +97,16 @@ public class Player implements Serializable {
     private Boolean isWinner = false;
 
     /**
-     * @return  String        The name of this player
+     * The name of this player
+     * @return String
      */
     public String getName() {
         return this.name;
     }
 
     /**
-     * @return      The wizard tht the player chose
+     * The wizard chosen by the player
+     * @return Wizard
      */
     public Wizard getWizard() {
         return this.wizard;
@@ -110,12 +115,12 @@ public class Player implements Serializable {
     /**
      * Sets isThreePlayers to true (called if the current game is for 3 players)
      */
-    public void setThreePlayers(){
+    public void setThreePlayers() {
         isThreePlayers = true;
     }
 
     /**
-     * When the player plays the card, that card is  removed;
+     * Sets the parameters of the assistant card played and removes that card from the list
      */
     public void playAssistantCard(AssistantCard card) {
         this.cardValue = card.getValue();
@@ -124,34 +129,35 @@ public class Player implements Serializable {
     }
 
     /**
-     *
+     * sets current assistant card
      */
-    public void setAssistantCard(AssistantCard a){
+    public void setAssistantCard(AssistantCard a) {
          this.playedCard=a;
     }
     /**
-     * @return  The value of the card that this player played.
+     * @return the value of the card played
      */
     public Integer getCardPlayedValue() {
         return this.cardValue;
     }
 
     /**
-     * @return  The card that the player played
+     * @return the card played
      */
     public AssistantCard getCardPlayed() {
         return this.playedCard;
     }
 
     /**
-     * @return      The school of this player
+     * The school of the player
+     * @return School
      */
     public School getSchool() {
         return this.school;
     }
 
     /**
-     * @return the number of coins of this player
+     * @return the number of coins of the player
      */
     public Integer getCoins() {
         return this.coins;
@@ -159,9 +165,9 @@ public class Player implements Serializable {
 
     /**
      * @return a copy of the deck of this player
-   */
+     */
     public ArrayList<AssistantCard>getPlayedCards() {
-         return new ArrayList<AssistantCard>(this.assistantCards);
+         return new ArrayList<>(this.assistantCards);
     }
 
     /**
@@ -184,10 +190,11 @@ public class Player implements Serializable {
      * @return true if the deck doesn't contain any cards, otherwise return false.
      */
     public Boolean isDeckEnded() {
-       if(this.assistantCards.size()==0)
+       if (this.assistantCards.size()==0) {
            return true;
-       else
+       } else {
            return false;
+       }
     }
 
     /**
@@ -195,7 +202,7 @@ public class Player implements Serializable {
      * @param value is the number of coins to be added or subtracted
      */
     public void setCoin(Integer value) {
-        this.coins=coins+value;
+        this.coins = coins + value;
     }
 
     /**
@@ -210,7 +217,7 @@ public class Player implements Serializable {
      * @param phase is the phase the player will be set to
      */
     public void setPlayerPhase(PlayerPhase phase) {
-        this.phase=phase;
+        this.phase = phase;
     }
 
     /**
@@ -224,19 +231,18 @@ public class Player implements Serializable {
      * Sets the player as winner
      */
     public void isWinner() {
-        isWinner = true;
+        this.isWinner = true;
     }
 
     /**
-     *
-     * @return if this player is the Winner
+     * @return true if this player is the Winner
      */
     public Boolean getIsWinner() {
         return this.isWinner;
     }
 
     /**
-     *
+     * sets the wizard for the player
      * @param wizard
      */
     public void setWizard(Wizard wizard){
@@ -244,7 +250,7 @@ public class Player implements Serializable {
     }
 
     /**
-     * @return the id of the player
+     * @return player id
      */
     public String getId() { return this.id; }
 
