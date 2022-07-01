@@ -21,106 +21,113 @@ public class Bag implements Serializable {
     }
 
     /**
-     *  Number of yellowStudents presents on the board
+     * number of yellowStudents presents on the board
      */
-    private Integer yellowStudentsNum=0;
+    private Integer yellowStudentsNum = 0;
 
     /**
-     * Number of blueStudents presents on the board
+     * number of blueStudents presents on the board
      */
-    private Integer blueStudentsNum=0;
+    private Integer blueStudentsNum = 0;
 
     /**
-     * 
+     * number of greenStudents presents on the board
      */
-    private Integer greenStudentsNum=0;
+    private Integer greenStudentsNum = 0;
 
     /**
-     * 
+     * number of redStudents presents on the board
      */
-    private Integer redStudentsNum=0;
+    private Integer redStudentsNum = 0;
 
     /**
-     * 
+     * number of pinkStudents presents on the board
      */
-    private Integer pinkStudentsNum=0;
+    private Integer pinkStudentsNum = 0;
 
     /**
-     *
+     * true if is a three player game
      */
     private Boolean isThreePlayers;
 
     /**
-     * 
+     * bag id
      */
     private String id;
 
     /**
-     * @return  student         Create a new student, use a fanction that return a random color, check if its not been created all the students of that color, if it isnt than create the student
+     * Create a new student, use a function that return a random color, check if have not been created all the students of that color, than create the student
+     * @return Student
      */
     public Student newStudent() {
-        if(isEmpty()){return null;} //if the bag is empty
-        Color c;
-        while(true) {
-            c = randomEnum(Color.class);
-            if(checkNumOfStudents(c))
-                break;
+        if (isEmpty()) { //if the bag is empty
+            return null;
         }
-        Student student= new Student(c);
+        Color c;
+        while (true) {
+            c = randomEnum(Color.class);
+            if (checkNumOfStudents(c)) {
+                break;
+            }
+        }
+        Student student = new Student(c);
         addStudentsNumbers(c);
 
         return student;
     }
 
     /**
-     *
+     * A random object that is contained in the enum
      * @param clazz class
-     * @param <T>   Enumeration
-     * @return  A random object that is contain in the enumen
+     * @param <T> Enumeration
+     * @return object of T type
      */
-
-    public static <T extends Enum<?>> T randomEnum(Class<T> clazz){
+    public static <T extends Enum<?>> T randomEnum(Class<T> clazz) {
         Random rand = new Random();
         int x = rand.nextInt(clazz.getEnumConstants().length);
         return clazz.getEnumConstants()[x];
     }
 
     /**
-     * @return boolean      Check if the number of students of the color c is arrived at the maximum
+     * Check if the number of students of the color c is arrived at the maximum
+     * @return Boolean
      */
     public boolean checkNumOfStudents(Color c){
-        if((greenStudentsNum<26 && c.equals(Color.GREEN)) || (yellowStudentsNum<26 && c.equals(Color.YELLOW)) || (redStudentsNum<26 && c.equals(Color.RED)) || (blueStudentsNum <26 && c.equals(Color.BLUE)) || pinkStudentsNum <26 && c.equals(Color.PINK)){
+        if ((greenStudentsNum<26 && c.equals(Color.GREEN)) || (yellowStudentsNum<26 && c.equals(Color.YELLOW)) || (redStudentsNum<26 && c.equals(Color.RED)) || (blueStudentsNum <26 && c.equals(Color.BLUE)) || pinkStudentsNum <26 && c.equals(Color.PINK)){
             return true;
-        }else{
+        } else {
             return false;
         }
     }
 
     /**
-     * @param color         Increase the number of student present in the game
+     * Increase the number of student present in the game
+     * @param color Color
      */
     public void addStudentsNumbers(Color color) {
-        if(color.equals(Color.RED))
+        if (color.equals(Color.RED)) {
             redStudentsNum++;
-        else if(color.equals(Color.PINK))
+        } else if (color.equals(Color.PINK)) {
             pinkStudentsNum++;
-        else if(color.equals(Color.BLUE))
+        } else if (color.equals(Color.BLUE)) {
             blueStudentsNum++;
-        else if(color.equals(Color.YELLOW))
+        } else if (color.equals(Color.YELLOW)) {
             yellowStudentsNum++;
-        else if(color.equals(Color.GREEN))
+        } else if (color.equals(Color.GREEN)) {
             greenStudentsNum++;
+        }
     }
 
     /**
-     * @param cloud
+     * refill the cloud with students
+     * @param cloud Cloud
      */
     public void addStudentsOnCloud(Cloud cloud) {
         if (isThreePlayers) {
             for (int i=0; i<4; i++) {
                 if(!isEmpty()){cloud.addStudent(newStudent());}
             }
-        }else{
+        } else {
             for (int i=0; i<3; i++) {
                 if(!isEmpty()){cloud.addStudent(newStudent());}
             }
@@ -128,10 +135,11 @@ public class Bag implements Serializable {
     }
 
     /**
-     * @param color
+     * reinsert student of the chosen color in the bag
+     * @param color Color
      */
     public void reinsertStudent(Color color) {
-        switch (color){
+        switch (color) {
             case YELLOW:
                 yellowStudentsNum--;
                 break;
@@ -153,8 +161,8 @@ public class Bag implements Serializable {
      * Check if the bag is empty
      * @return true if the bag is empty
      */
-    public boolean isEmpty(){
-        if(greenStudentsNum==26 && yellowStudentsNum==26 && redStudentsNum==26 && blueStudentsNum==26 && pinkStudentsNum==26 ){
+    public boolean isEmpty() {
+        if (greenStudentsNum==26 && yellowStudentsNum==26 && redStudentsNum==26 && blueStudentsNum==26 && pinkStudentsNum==26 ) {
             return true;
         }
         return false;

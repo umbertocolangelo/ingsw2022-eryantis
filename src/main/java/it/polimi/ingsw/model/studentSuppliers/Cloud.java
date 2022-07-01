@@ -20,7 +20,7 @@ public class Cloud implements FixedObjectStudent, Serializable {
         IdManager.getInstance().addCloud(this);
         idCounter++;
         if (idCounter==53) {
-            idCounter=50;
+            idCounter = 50;
         }
     }
 
@@ -30,18 +30,18 @@ public class Cloud implements FixedObjectStudent, Serializable {
     private static Integer idCounter = 50;
 
     /**
-     * 
+     * cloud id
      */
     private String id;
 
     /**
-     * 
+     * list of the students on the cloud
      */
     private LinkedList<Student> students = new LinkedList<Student>();
 
-
     /**
-     * @param student
+     * add the student to the students list
+     * @param student Student
      */
     public void addStudent(Student student) {
         student.setPosition(this);
@@ -49,6 +49,7 @@ public class Cloud implements FixedObjectStudent, Serializable {
     }
 
     /**
+     * remove the student from its list
      * @param student
      */
     public void removeStudent(Student student) {
@@ -56,19 +57,19 @@ public class Cloud implements FixedObjectStudent, Serializable {
     }
 
     /**
-     * @return
+     * @return list of students on the cloud
      */
     public LinkedList<Student> getStudents() {
         return new LinkedList<>(this.students);
     }
 
     /**
-     * @return
+     * @return number of students on the cloud
      */
     public Integer numOfStudents() { return this.students.size(); }
 
     /**
-     * @return
+     * @return cloud id
      */
     public String getId() { return this.id; }
 
