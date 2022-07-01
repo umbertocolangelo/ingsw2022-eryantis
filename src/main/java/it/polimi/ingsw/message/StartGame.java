@@ -29,9 +29,8 @@ public class StartGame implements Serializable, MessageMethod {
         if (gameMode==false) {
             game.setNormalMode();
         }
-        //TODO
         for (int i =0; i<game.getPlayerList().size(); i++) {
-            game.getPlayerList().get(i).setCoin(5);
+            game.getPlayerList().get(i).setCoin(1);
         }
         game.initializeGame();
     }

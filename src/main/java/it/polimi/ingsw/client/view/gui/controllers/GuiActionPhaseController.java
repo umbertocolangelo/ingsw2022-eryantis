@@ -3315,7 +3315,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(26,idIsland) && calculateJumps(26,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3357,7 +3357,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(27,idIsland) && calculateJumps(27,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3399,7 +3399,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue() >= calculateJumps(28, idIsland) && calculateJumps(28,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3441,7 +3441,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(29,idIsland) && calculateJumps(29,idIsland)!=0) {
                MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3483,7 +3483,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase() == PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue() >= calculateJumps(30, idIsland) && calculateJumps(30,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3525,7 +3525,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(31,idIsland) && calculateJumps(31,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3567,7 +3567,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
 
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(32,idIsland) && calculateJumps(32,idIsland)!=0) {
@@ -3610,7 +3610,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(33,idIsland) && calculateJumps(33,idIsland)!=0) {
                 MessageMethod movingMotherNature= new MovingMotherNature();
@@ -3652,7 +3652,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
              } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(34,idIsland) && calculateJumps(34,idIsland)!=0){
                  MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3694,7 +3694,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(35,idIsland) && calculateJumps(35,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3736,7 +3736,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(36, idIsland) && calculateJumps(36,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();
@@ -3778,7 +3778,7 @@ public class GuiActionPhaseController implements Initializable {
                         break;
                 }
                 GUIController.getInstance().setCardNeedIsland(false);
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethod);
             } else if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE && game.getCurrentPlayer().getCardPlayedValue()>=calculateJumps(37,idIsland) && calculateJumps(37,idIsland)!=0) {
                 MessageMethod movingMotherNature = new MovingMotherNature();

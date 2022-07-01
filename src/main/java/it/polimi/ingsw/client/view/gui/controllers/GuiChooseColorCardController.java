@@ -75,13 +75,13 @@ public class GuiChooseColorCardController implements Initializable {
             MessageMethod messageMethod = new PlayExpertCard();
             switch (GUIController.getInstance().getIdExpertCardPlayed()) {
                 case "46":
-                    GUIController.getInstance().setIdExpertCardPlayed("");
+                    GUIController.getInstance().setIdExpertCardPlayed();
                     ((PlayExpertCard) messageMethod).setExpertCard("46");
                     ((PlayExpertCard) messageMethod).setParameter(color);
                     GUIController.getInstance().write(messageMethod);
                     break;
                 case "49":
-                    GUIController.getInstance().setIdExpertCardPlayed("");
+                    GUIController.getInstance().setIdExpertCardPlayed();
                     ((PlayExpertCard) messageMethod).setExpertCard("49");
                     ((PlayExpertCard) messageMethod).setParameter(color);
                     GUIController.getInstance().write(messageMethod);

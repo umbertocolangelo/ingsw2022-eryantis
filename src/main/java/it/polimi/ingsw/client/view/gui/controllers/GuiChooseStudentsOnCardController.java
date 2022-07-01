@@ -188,17 +188,17 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
         switch (game.getCardManager().getCurrentCard().getId()) {
             case "38":
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().setStudentToIsland(messageMethodIsland);
                 changeToAction();
                 break;
             case "44":
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().setMessageMethodIngressCard(messageMethodSwap);
                 changeToAction();
                 break;
             case "48":
-                GUIController.getInstance().setIdExpertCardPlayed("");
+                GUIController.getInstance().setIdExpertCardPlayed();
                 GUIController.getInstance().write(messageMethodHall);
                 break;
         }
