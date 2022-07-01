@@ -3675,7 +3675,7 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     /**
-     *
+     * Click on island 10
      * @param mouseEvent
      */
     public void clickIsland10(MouseEvent mouseEvent) {
@@ -4262,7 +4262,7 @@ public class GuiActionPhaseController implements Initializable {
 
     /**
      * go to loading scene
-     * @throws IOException
+     * @throws IOException exception
      */
     public void showLoading() throws IOException{
         stage = GUIController.getInstance().getStage();
@@ -4328,6 +4328,7 @@ public class GuiActionPhaseController implements Initializable {
 
     /**
      * Window resize
+     * @param stage Stage
      */
     public void resize(Stage stage) {
 

@@ -20,7 +20,6 @@ import java.util.concurrent.TimeUnit;
 
 public class Client {
 
-
     /**
      * name of the player lost
      */
@@ -88,8 +87,8 @@ public class Client {
 
     /**
      * The ip address and the port
-     * @param ip
-     * @param port
+     * @param ip String
+     * @param port Integer
      */
     public Client(String ip, int port) {
         this.ip = ip;
@@ -106,7 +105,7 @@ public class Client {
 
     /**
      * Set the active variable
-     * @param active
+     * @param active Boolean
      */
     public synchronized void setActive(Boolean active) {
         this.active = active;
@@ -226,8 +225,8 @@ public class Client {
 
     /**
      * When the client is running start the thread for reading and wait until that thread die
-     * @throws IOException
-     * @return
+     * @throws IOException exception
+     * @return runnable thread
      */
     public Runnable run() throws IOException {
         Thread t = new Thread(new Runnable() {
@@ -339,7 +338,7 @@ public class Client {
 
     /**
      * sets the name of the player lost
-     * @param namePLayerLost
+     * @param namePLayerLost String
      */
     public void setNamePLayerLost(String namePLayerLost) {
         this.namePLayerLost = namePLayerLost;
@@ -354,7 +353,7 @@ public class Client {
 
     /**
      * sets the cli controller
-     * @param CLIController
+     * @param CLIController CLIController
      */
     public void setController(CLIController CLIController) {
         this.cliController = CLIController;
@@ -362,7 +361,7 @@ public class Client {
 
     /**
      * sets ip address
-     * @param ip
+     * @param ip String
      */
     public void setIp(String ip){
         this.ip = ip;
@@ -370,7 +369,7 @@ public class Client {
 
     /**
      * Sets port address
-     * @param port
+     * @param port Integer
      */
     public void setPort(Integer port){
         this.port = port;

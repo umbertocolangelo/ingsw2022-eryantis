@@ -10,9 +10,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * 
- */
+
 public class TowerInfluence implements InfluenceCalculator, Serializable {
     /**
      * Default constructor

@@ -1,18 +1,16 @@
 package it.polimi.ingsw.model.objectTypes;
 
-/**
- * 
- */
+
 public interface PlaceableObject {
 
     /**
-     * @return
+     * @return fixed object position
      */
     public FixedObject getPosition();
 
     /**
-     * @param position
-     * @return
+     * sets position
+     * @param position FixedObject
      */
     public void setPosition(FixedObject position);
 

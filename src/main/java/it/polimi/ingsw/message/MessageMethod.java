@@ -6,7 +6,7 @@ public interface MessageMethod {
 
     /**
      * Applies the changes to the model
-     * @param game
+     * @param game Game
      */
     public void apply(Game game);
 

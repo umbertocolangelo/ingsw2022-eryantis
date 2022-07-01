@@ -13,9 +13,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
-/**
- *
- */
 public class PianificationRound implements RoundInterface, Serializable {
 
 
@@ -225,7 +222,7 @@ public class PianificationRound implements RoundInterface, Serializable {
 
     /**
      * Return the number of the cards selected
-     * @return ArrayList<Player>
+     * @return ArrayList
      */
     public ArrayList<Player> getPlayerListOrdered() {
         return new ArrayList<Player>(this.playerListOrdered);

@@ -25,9 +25,7 @@ import java.io.Serializable;
 import java.util.Collections;
 import java.util.LinkedList;
 
-/**
- *
- */
+
 public class Game implements Serializable {
 
     /**
@@ -467,9 +465,10 @@ public class Game implements Serializable {
 
     /**
      * @param expertId is the id of the expert card to play
+     * @param object type of object used with the expert card
      */
     public void playExpertCard(String expertId, String object) {
-        ExpertCard expertCard= IdManager.getInstance().getExpertCard(expertId);
+        ExpertCard expertCard = IdManager.getInstance().getExpertCard(expertId);
 
         if (!expertMode) {
             return;
@@ -672,6 +671,7 @@ public class Game implements Serializable {
 
     /**
      * Set the orderedPlayerList
+     * @param playerList LinkedList
      */
     public void setOrderedPlayerList(LinkedList<Player> playerList) {
         this.orderedPLayerList = playerList;
@@ -686,6 +686,7 @@ public class Game implements Serializable {
 
     /**
      * Return the PlayerList
+     * @return LinkedList
      */
     public LinkedList<Player> getPlayerList() {
         return this.playerList;
@@ -751,6 +752,7 @@ public class Game implements Serializable {
 
     /**
      * Sets isEnded attribute to true
+     * @return Boolean
      */
     public Boolean isEnded(){
         return this.isEnded;

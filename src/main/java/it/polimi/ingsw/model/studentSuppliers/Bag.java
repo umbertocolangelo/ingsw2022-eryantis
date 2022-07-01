@@ -8,13 +8,13 @@ import it.polimi.ingsw.model.player.board.Ingress;
 
 import java.io.Serializable;
 import java.util.Random;
-/**
- * 
- */
+
+
 public class Bag implements Serializable {
 
     /**
      * Default constructor
+     * @param isThreePlayers Boolean
      */
     public Bag(Boolean isThreePlayers) {
         this.isThreePlayers = isThreePlayers;
@@ -90,9 +90,10 @@ public class Bag implements Serializable {
 
     /**
      * Check if the number of students of the color c is arrived at the maximum
+     * @param c Color
      * @return Boolean
      */
-    public boolean checkNumOfStudents(Color c){
+    public Boolean checkNumOfStudents(Color c){
         if ((greenStudentsNum<26 && c.equals(Color.GREEN)) || (yellowStudentsNum<26 && c.equals(Color.YELLOW)) || (redStudentsNum<26 && c.equals(Color.RED)) || (blueStudentsNum <26 && c.equals(Color.BLUE)) || pinkStudentsNum <26 && c.equals(Color.PINK)){
             return true;
         } else {

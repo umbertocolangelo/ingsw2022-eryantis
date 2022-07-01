@@ -15,13 +15,13 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 import java.io.Serializable;
 import java.util.LinkedList;
 
-/**
- * 
- */
+
 public class ActionRound implements RoundInterface, Serializable {
 
     /**
      * Every time is called he set the current player, the player phase e change the player ing from the ordered list
+     * @param game The reference to game
+     * @param isThreePlayers true if we are in three players, false otherwise.
      */
     public ActionRound(Game game, Boolean isThreePlayers) {
         this.game = game;
@@ -103,8 +103,8 @@ public class ActionRound implements RoundInterface, Serializable {
 
     /**
      * true if it is moving mother nature phase
-     * @param jumps
-     * @return Boolean
+     * @param jumps the jumps we want to make
+     * @return Boolean true if the move is possible, false otherwise.
      */
     public Boolean moveMotherNature(Integer jumps) {
        if (currentPlayer.getPlayerPhase()!=PlayerPhase.MOVING_MOTHERNATURE || currentPlayer.getCardPlayedValue()<jumps || jumps<1) {
@@ -116,7 +116,8 @@ public class ActionRound implements RoundInterface, Serializable {
 
     /**
      * returns the possibility of playing an assistant card
-     * @param assistantCard
+     * @param assistantCard AssistantCard
+     * @param player Player
      * @return Boolean
      */
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player) {
@@ -125,7 +126,7 @@ public class ActionRound implements RoundInterface, Serializable {
 
     /**
      * returns the possibility of playing an expert card
-     * @param expertCard
+     * @param expertCard ExpertCard
      * @return Boolean
      */
     public Boolean playExpertCard(ExpertCard expertCard) {

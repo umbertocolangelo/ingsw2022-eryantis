@@ -13,7 +13,7 @@ public class ChoosingAssistant implements MessageMethod, Serializable {
 
     /**
      * Applies the change to the model
-     * @param game
+     * @param game Game
      */
     @Override
     public void apply(Game game) {
@@ -22,7 +22,7 @@ public class ChoosingAssistant implements MessageMethod, Serializable {
 
     /**
      * Sets the assistant card chosen
-     * @param assistantCard
+     * @param assistantCard String
      */
     public void setAssistantCard(String assistantCard){
         this.assistantCard = assistantCard;

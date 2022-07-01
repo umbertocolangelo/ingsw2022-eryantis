@@ -12,9 +12,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 
-/**
- *
- */
+
 public class Island implements FixedObjectStudent, FixedObjectTower, IslandInterface, Serializable {
 
     /**
@@ -91,7 +89,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
 
     /**
      * Reference to the linked list of students
-     * @return LinkedList<Student>
+     * @return the list of the students
      */
     public LinkedList<Student> getStudents() {
         return new LinkedList<Student>(this.students);
@@ -121,12 +119,14 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
 
     /**
      * Remove tower from the LinkedList
+     * @param tower Tower
      */
     public void removeTower(Tower tower) {
         this.towers.remove(0);
     }
 
     /**
+     * Returns the LinkedList of the towers
      * @return linked list of towers
      */
     public LinkedList<Tower> getTowers() {
@@ -138,7 +138,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
 
     /**
      * Return the number of student by color
-     * @param color
+     * @param color Color
      * @return Integer
      */
     public Integer numOfStudents(Color color) {
@@ -157,6 +157,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     public void setDeny() { denyTokens++; }
 
     /**
+     * Returns the deny token
      * @return the number of denyTokens on the island
      */
     public Integer getDeny(){
@@ -185,6 +186,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
+     * Returns the influence color
      * @return current influenceColor
      */
     public PlayerColor getInfluenceColor() {
@@ -203,6 +205,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
+     * Returns if the island is grouped
      * @return current isGrouped status
      */
     public Boolean isGrouped () {
@@ -210,12 +213,13 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
+     * Returns island size
      * @return size
      */
     public Integer getSize() { return this.size; }
 
     /**
-     * island elements
+     * Returns island elements
      * @return LinkedList of islands
      */
     public LinkedList<Island> getIslandGroupElements() {
@@ -225,14 +229,15 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
-     * @return island id
+     * Returns island id
+     * @return String
      */
     public String getId() {
         return this.id;
     }
 
     /**
-     * sets id
+     * Sets island id
      */
     public void setId(String id) {
         this.id = id;

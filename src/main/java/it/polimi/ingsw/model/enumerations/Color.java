@@ -14,10 +14,19 @@ public enum Color implements Serializable {
     RED("RED", "10"),
     PINK("PINK", "11");
 
+    /**
+     * Reference to text
+     */
     private final String text;
 
+    /**
+     * Reference to color id
+     */
     private final String id;
 
+    /**
+     * Reference to map
+     */
     private static final Map<Integer, Color> COLORBYNUMBER = new HashMap<>();
 
     /**

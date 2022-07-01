@@ -4,9 +4,7 @@ import it.polimi.ingsw.model.enumerations.PlayerColor;
 
 import java.io.Serializable;
 
-/**
- * 
- */
+
 public class  School implements Serializable {
 
     /**

@@ -11,14 +11,13 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * 
- */
 public class ColorInfluence implements InfluenceCalculator, Serializable {
 
     /**
      * Default constructor
-     * @param manager references the InfluenceManageerreg
+     * @param playerList PlayerList
+     * @param manager InfluenceManager
+     * @param color Color
      */
     public ColorInfluence(Collection<Player> playerList, InfluenceManager manager, Color color) {
         this.players = new ArrayList<Player>(playerList);

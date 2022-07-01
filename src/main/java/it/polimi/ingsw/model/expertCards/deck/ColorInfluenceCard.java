@@ -14,6 +14,7 @@ public class ColorInfluenceCard implements ExpertCard, Serializable {
 
     /**
      * Default constructor
+     * @param cardManager CardManager
      */
     public ColorInfluenceCard(CardManager cardManager) {
         this.id = "46";
@@ -38,6 +39,7 @@ public class ColorInfluenceCard implements ExpertCard, Serializable {
 
     /**
      * Applies the effect of the card
+     * @param color Color
      */
     public void apply(Color color) {
         manager.getInfluenceManager().setColorInfluence(color);

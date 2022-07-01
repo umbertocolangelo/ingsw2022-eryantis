@@ -9,20 +9,19 @@ import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
-/**
- * 
- */
+
 public interface RoundInterface {
 
     /**
      * returns true if the round has terminated
+     * @return boolean
      */
     public Boolean checkRoundEnded();
 
     /**
      * returns true if is possible to move a student from ingress to hall
      * @param student student
-     * @return boolean
+     * @return boolean true if the move can be done, false otherwise
      */
     public Boolean moveStudentIngressToHall(Student student);
 
@@ -110,7 +109,8 @@ public interface RoundInterface {
     public Boolean chooseColorAndDeck(Player player, PlayerColor color, Wizard wizard);
 
     /**
-     * @return round id
+     *
+     * @return int The id of the round
      */
     Integer getId();
 

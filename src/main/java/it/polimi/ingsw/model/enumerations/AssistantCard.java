@@ -17,14 +17,26 @@ public enum AssistantCard implements Serializable {
     NINE_CARD(5, 9, "24"),
     TEN_CARD(5, 10, "25");
 
+    /**
+     * Reference to card value
+     */
     private final int value;
-    private final int num;
-    private final String id;
-
 
     /**
+     * Reference to card num
+     */
+    private final int num;
+
+    /**
+     * Rference to card id
+     */
+    private final String id;
+
+    /**
+     * Default constructor
      * @param value is the value of MotherNature jumps allowed by the card
-     * @param num
+     * @param num Integer
+     * @param id String
      */
     AssistantCard(int value, int num, String id) {
         this.value = value;

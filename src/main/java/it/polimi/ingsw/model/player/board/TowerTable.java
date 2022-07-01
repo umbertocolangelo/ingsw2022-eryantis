@@ -66,7 +66,7 @@ public class TowerTable implements FixedObjectTower, Serializable {
 
     /**
      * Return the list of the towers
-     * @return LinkedList<Tower>
+     * @return LinkedList
      */
     public LinkedList<Tower> getTowers() {
         return  new LinkedList<>(this.towers);

@@ -14,7 +14,6 @@ public class GuiMain extends Application {
     /**
      * @param stage
      * @throws IOException
-     * @throws InterruptedException
      */
     @Override
     public void start(Stage stage) throws IOException {

@@ -6,9 +6,7 @@ import it.polimi.ingsw.model.objectTypes.PlaceableObject;
 
 import java.io.Serializable;
 
-/**
- * 
- */
+
 public class Tower implements PlaceableObject, Serializable {
 
     /**

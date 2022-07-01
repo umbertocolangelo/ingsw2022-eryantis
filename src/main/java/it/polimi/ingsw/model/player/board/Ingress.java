@@ -32,7 +32,7 @@ public class Ingress implements FixedObjectStudent, Serializable {
 
     /**
      * Return the list of students in this ingress
-     * @return LinkedList<Student>
+     * @return LinkedList
      */
     public LinkedList<Student> getStudents() {
         return new LinkedList<>(this.students);
