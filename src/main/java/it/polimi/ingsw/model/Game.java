@@ -28,7 +28,7 @@ import java.util.LinkedList;
 /**
  *
  */
-public class Game implements GameInterface, Serializable {
+public class Game implements Serializable {
 
     /**
      * Built already the instance of the Rounds
@@ -41,7 +41,7 @@ public class Game implements GameInterface, Serializable {
     /**
      * Stores the reference of the PropertyChangeSupport
      */
-    private final PropertyChangeSupport propertyChange= new PropertyChangeSupport(this);
+    private final PropertyChangeSupport propertyChange = new PropertyChangeSupport(this);
 
     /**
      * Stores the instance of idManager for save/load purposes
@@ -51,12 +51,12 @@ public class Game implements GameInterface, Serializable {
     /**
      * Stores the clouds instances
      */
-    private LinkedList<Cloud> clouds=new LinkedList<>();
+    private LinkedList<Cloud> clouds = new LinkedList<>();
 
     /**
      * Keep track of the order in every  round, dynamically change itself, collect the first who became the current player and at the end of his turn gets removed from the list, start a new pianification round when the list is empty
      */
-    private LinkedList <Player> orderedPLayerList= new LinkedList<>();
+    private LinkedList<Player> orderedPLayerList = new LinkedList<>();
 
     /**
      * This list contains the order set for all the game, it's needed for play assistant card
@@ -66,7 +66,7 @@ public class Game implements GameInterface, Serializable {
     /**
      * Stores the instance of mother nature
      */
-    private MotherNature motherNature=new MotherNature();
+    private MotherNature motherNature = new MotherNature();
 
     /**
      * Keep track of the round which is currently on
@@ -126,7 +126,7 @@ public class Game implements GameInterface, Serializable {
     /**
      * Contains the number of students moved by the current player in his action round
      */
-    private Integer studentsMoved=0;
+    private Integer studentsMoved = 0;
 
     /**
      * Contains the path of the game save
@@ -176,11 +176,12 @@ public class Game implements GameInterface, Serializable {
 
         // clouds
 
-        for(int i = 0; i< playerList.size(); i++) {
-            Cloud cloud=new Cloud();
+        for (int i = 0; i< playerList.size(); i++) {
+            Cloud cloud = new Cloud();
             this.clouds.add(cloud);
-            for(int j=0;(isThree && j<4) || (!isThree && j<3);j++)
+            for (int j=0; (isThree && j<4) || (!isThree && j<3); j++) {
                 this.clouds.get(i).addStudent(this.bag.newStudent());
+            }
         }
 
         // generate random numbers within 1 to 12
@@ -190,7 +191,7 @@ public class Game implements GameInterface, Serializable {
         this.motherNature.setIsland(islandManager.getIslands().get(rand));
         Island island = (Island) this.islandManager.nextIsland(6);
 
-        for(int i =0;i<12;i++) {
+        for (int i =0;i<12;i++) {
             if (!(islandManager.getIslands().get(i)==this.motherNature.getIsland()|| (islandManager.getIslands().get(i)==island))) {
                 Island island1 = (Island) islandManager.getIslands().get(i);
                 island1.addStudent(this.bag.newStudent());
@@ -199,12 +200,11 @@ public class Game implements GameInterface, Serializable {
 
         for (Player player : playerList) {
             player.setPlayerPhase(PlayerPhase.SET_UP_PHASE);
-
         }
-        professorManager= new ProfessorManager(playerList);
-        influenceManager= new InfluenceManager(motherNature, playerList);
+        professorManager = new ProfessorManager(playerList);
+        influenceManager = new InfluenceManager(motherNature, playerList);
         cardManager = new CardManager(influenceManager,islandManager,professorManager, playerList,bag);
-        this.currentPlayer=playerList.getFirst();
+        this.currentPlayer = playerList.getFirst();
         propertyChange.firePropertyChange("Initialize game",null,null);
 
     }
@@ -236,7 +236,7 @@ public class Game implements GameInterface, Serializable {
      */
     public void setPlayerList(LinkedList<Player> players) {
         this.playerList = players;
-        if(players.size()==3) {
+        if (players.size()==3) {
             for (Player p : players) {
                 p.setThreePlayers();
             }
@@ -273,7 +273,9 @@ public class Game implements GameInterface, Serializable {
             LinkedList<Player> tiePlayers = new LinkedList<Player>(); // if there is a tie, stores the players with same number of towers
 
             for (Player player : playerList) {
-                if (player==winner) {continue;}
+                if (player==winner) {
+                    continue;
+                }
                 if (player.getSchool().getTowerTable().numOfTowers()<minTower) { // if this player has placed more towers
                     winner = player;
                     minTower = winner.getSchool().getTowerTable().numOfTowers();
@@ -281,18 +283,18 @@ public class Game implements GameInterface, Serializable {
                     continue;
                 }
                 if (player.getSchool().getTowerTable().numOfTowers()==minTower) {
-                    if(tiePlayers.isEmpty()){
+                    if (tiePlayers.isEmpty()) {
                         tiePlayers.add(player);
                         tiePlayers.add(winner);
-                    }else{
+                    } else {
                         tiePlayers.add(player);
                     }
-                    winner=null;
+                    winner = null;
                 }
 
             }
 
-            if(winner==null) { // if there is a tie between two players the winner is based on the professors owned
+            if (winner==null) { // if there is a tie between two players the winner is based on the professors owned
                 int maxProfCount = 0;
                 for (Player player : tiePlayers) {
                     int profCount = 0;
@@ -319,7 +321,7 @@ public class Game implements GameInterface, Serializable {
 
             if(winner!=null) {
                 winner.isWinner();
-                isEnded=true;
+                isEnded = true;
                 propertyChange.firePropertyChange("winner", null, winner);
             }
         }
@@ -337,7 +339,7 @@ public class Game implements GameInterface, Serializable {
      * @param player is the player set as current player
      */
     public void setCurrentPlayer(Player player) {
-        this.currentPlayer=player;
+        this.currentPlayer = player;
     }
 
     /**
@@ -399,7 +401,7 @@ public class Game implements GameInterface, Serializable {
      * @param isThree indicates if the game is for 3 players (true) or 2 (false)
      */
     public void setIsThree(Boolean isThree){
-        this.isThree=isThree;
+        this.isThree = isThree;
     }
 
     /**
@@ -452,15 +454,12 @@ public class Game implements GameInterface, Serializable {
     public void playAssistantCard(String assistantId) {
         AssistantCard assistantCard=IdManager.getInstance().getAssistantCard(assistantId);
         if (this.currentRound.playAssistantCard(assistantCard, this.currentPlayer)) {
-            System.out.println("Assistant card played");
-                currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
-            if (playerList.indexOf(currentPlayer) < playerList.size() - 1 && orderedPLayerList.isEmpty()) {
-                System.out.println("Modify current player in game");
+            currentPlayer.setPlayerPhase(PlayerPhase.MOVING_STUDENTS);
+            if (playerList.indexOf(currentPlayer)<playerList.size()-1 && orderedPLayerList.isEmpty()) {
                 this.currentPlayer = playerList.get((playerList.indexOf(currentPlayer) + 1));
             }
             propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
         } else {
-            System.out.println("Assistant card already played");
             propertyChange.firePropertyChange("Play assistant card", null, assistantCard);
         }
 
@@ -757,21 +756,4 @@ public class Game implements GameInterface, Serializable {
         return this.isEnded;
     }
 
-    /**
-     *
-     */
-    public void newActionRound(){
-        this.currentRound=new ActionRound(this,isThree);
-        studentsMoved=0;
-    }
-
-    public void newGame(){
-        for(Player player:playerList) {
-            player.setAssistantCard(null);
-            player.setPlayerPhase(PlayerPhase.CHOOSING_ASSISTANT);
-        }
-        orderedPLayerList=new LinkedList<>();
-        studentsMoved=0;
-        this.currentRound=new PianificationRound(this);
-    }
 }
