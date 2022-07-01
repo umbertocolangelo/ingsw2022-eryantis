@@ -38,10 +38,11 @@ To run the server you must run AM29-server.jar
 
 ## Overall Coverage Summary
 
-| Package     | Class, % |       Line, %       |
-|:------------|:---------|:-------------------:|
-| all classes | 46%      |  20% 
-| model       | 100%     |  82% 
+| Package     | Class % | Line % |
+|:------------|:--------|:------:|
+| all classes | 46%     |  20%   |
+| model       | 100%    |  82%   |
+
 ## Group components
 - [_Roberto Cialini_](https://github.com/RobertoCialini)
 - [_Umberto Colangelo_](https://github.com/umbertocolangelo)
