@@ -3,7 +3,7 @@ package it.polimi.ingsw.model.enumerations;
 import java.io.Serializable;
 
 /**
- * 
+ * This enum contains all the possible assistant cards
  */
 public enum AssistantCard implements Serializable {
     ONE_CARD(1, 1, "16"),
@@ -33,22 +33,22 @@ public enum AssistantCard implements Serializable {
     }
 
     /**
-     * @return
+     * @return value
      */
     public int getValue() {
-        return value;
+        return this.value;
     }
 
     /**
-     * @return
+     * @return num
      */
     public int getNum() {
-        return num;
+        return this.num;
     }
 
     /**
-     *
+     * @return card id
      */
-    public String getId() { return id; }
+    public String getId() { return this.id; }
 
 }

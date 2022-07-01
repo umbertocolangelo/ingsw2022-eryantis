@@ -41,7 +41,6 @@ public enum Color implements Serializable {
 
     /**
      * Returns the text of the color.
-     *
      * @return a String containing the text of the color.
      */
     @Override
@@ -58,7 +57,7 @@ public enum Color implements Serializable {
     }
 
     /**
-     *
+     * @return color id
      */
-    public String getId() { return id; }
+    public String getId() { return this.id; }
 }

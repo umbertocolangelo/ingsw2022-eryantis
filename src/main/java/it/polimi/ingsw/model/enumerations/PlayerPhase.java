@@ -3,7 +3,7 @@ package it.polimi.ingsw.model.enumerations;
 import java.io.Serializable;
 
 /**
- * 
+ * This enum contains all the possible player phase
  */
 public enum PlayerPhase implements Serializable {
     SET_UP_PHASE,
