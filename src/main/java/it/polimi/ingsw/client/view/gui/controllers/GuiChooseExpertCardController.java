@@ -210,6 +210,7 @@ public class GuiChooseExpertCardController implements Initializable {
     /**
      * go back to action phase
      * @param mouseEvent
+     * @throws IOException
      */
     public void onBackClick(MouseEvent mouseEvent) throws IOException {
         stage = GUIController.getInstance().getStage();
@@ -236,6 +237,7 @@ public class GuiChooseExpertCardController implements Initializable {
     /**
      * choose the selected card
      * @param mouseEvent
+     * @throws IOException
      */
     public void onNextClick(MouseEvent mouseEvent) throws IOException {
         if (idExpert!=null) {
