@@ -10,9 +10,9 @@ import java.util.Scanner;
 public class CLIController implements Runnable {
 
     /**
-     *
+     * Boolean connection true
      */
-    private Boolean connectionTrue=false;
+    private Boolean connectionTrue = false;
 
     /**
      * Represent the Thread that will modify the game
@@ -20,32 +20,32 @@ public class CLIController implements Runnable {
     private Thread t0;
 
     /**
-     *Get the input from the keyboard
+     * Get the input from the keyboard
      */
     private Scanner stdIn;
 
     /**
-     *
+     * Boolean is active
      */
     private Boolean isActive = false;
 
     /**
-     *Keep the reference from Client
+     * Keep the reference from Client
      */
     private Client client;
 
     /**
-     *The string we get from the Scanner
+     * The string we get from the Scanner
      */
     private String input;
 
     /**
-     *The clientState where the controller is now
+     * The clientState where the controller is now
      */
     private ClientState clientState = ClientState.SLEEPING;
 
     /**
-     *The CLI
+     * Reference to the CLI
      */
     private CLI cli;
 
@@ -54,10 +54,7 @@ public class CLIController implements Runnable {
      * Keep the reference to the client
      */
     public CLIController() {
-       // this.client =client;
-        this.stdIn =new Scanner(System.in);
-
-
+        this.stdIn = new Scanner(System.in);
     }
 
     /**
@@ -82,23 +79,22 @@ public class CLIController implements Runnable {
                 System.out.println("Decide the number of players, 2 or 3");
                 String message = stdIn.nextLine();
                 while(!(message.equals("2") || message.equals("3"))) {
-                        System.out.println("You must select 2 or 3! Please try again");
+                    System.out.println("You must select 2 or 3! Please try again");
                     message = stdIn.nextLine(); // Read user input
                 }
-                IsFirst isFirst=new IsFirst();
+                IsFirst isFirst = new IsFirst();
                 isFirst.setPlayers(Integer.parseInt(message));
                 System.out.println("Number of players selected "+ Integer.parseInt(message));
                 System.out.println("Decide the gameMode, 1 for expert and 0 for normal");
                 message = stdIn.nextLine(); // Read user input
 
-                while(!(message.equals("0") || message.equals("1"))) {
+                while (!(message.equals("0") || message.equals("1"))) {
                     System.out.println("You must select 0 or 1 ");
                     message = stdIn.nextLine(); // Read user input
                 }
-                if(message.equals("1")) {
+                if (message.equals("1")) {
                     isFirst.setGameMode(true);
-                }
-                else {
+                } else {
                     isFirst.setGameMode(false);
                 }
                 System.out.println("Game mode selected ");
@@ -195,7 +191,7 @@ public class CLIController implements Runnable {
     }
 
     /**
-     *
+     * Go to the different cli threads for expert cards that needs parameters
      */
     private void checkRound() {
         if (client.getGame().getCurrentRound().getId()==null) {
@@ -219,73 +215,93 @@ public class CLIController implements Runnable {
         }
     }
 
+    /**
+     * Sets the client
+     * @param client
+     */
     public void setClient(Client client) {
         this.client = client;
     }
 
+    /**
+     * sets client first interactions
+     */
     public void startClient() {
         System.out.println("Insert 1 if you want to change the ip address, 0 if you dont\nYour target ip address is " + client.getIp() + " and your target port is " + client.getPort().toString());
         input = stdIn.nextLine();
-        while ( !(input.equals("0") || input.equals("1"))) {
+        while (!(input.equals("0") || input.equals("1"))) {
             System.out.println("You inserted a wrong value ");
             input = stdIn.nextLine();
         }
-        if(input.equals("1")){
+        if (input.equals("1")) {
             System.out.println("Insert the ip address");
             input = stdIn.nextLine();
-            while (!input.matches( "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$")){
+            while (!input.matches( "^([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])\\." + "([01]?\\d\\d?|2[0-4]\\d|25[0-5])$")) {
                 System.out.println("You inserted a wrong value ");
                 input = stdIn.nextLine();
             }
             client.setIp(input);
             System.out.println("Insert the port");
             input = stdIn.nextLine();
-           while (!input.matches(".*\\d.*") || input.length()>5){
-               System.out.println("You inserted a wrong or too high value ");
+            while (!input.matches(".*\\d.*") || input.length()>5) {
+                System.out.println("You inserted a wrong or too high value ");
                 input = stdIn.nextLine();
             }
-           client.setPort(Integer.parseInt(input));
+            client.setPort(Integer.parseInt(input));
         }
         Thread t1 = null;
         try {
             t1 = new Thread(client.run());
-
         } catch (IOException e) {
             e.printStackTrace();
         }
         t1.start();
     }
 
-
+    /**
+     * Connection refused texts
+     */
     public void connectionRefuse() {
         System.out.println("The connection has been refused, write 0 if you want to try again or 1 to close the app");
         input = stdIn.nextLine();
-        while ( !(input.equals("0") || input.equals("1"))) {
+        while (!(input.equals("0") || input.equals("1"))) {
             System.out.println("You inserted a wrong value ");
             input = stdIn.nextLine();
         }
-        if(input.equals("1"))
+        if (input.equals("1")) {
             return;
-        else {
+        } else {
             startClient();
         }
     }
 
-
-
+    /**
+     * @return conntectionTrue boolean
+     */
     public Boolean getConnectionTrue() {
-        return connectionTrue;
+        return this.connectionTrue;
     }
 
+    /**
+     * Sets connectionTrue boolean
+     */
     public void setConnectionTrue(Boolean connectionTrue) {
         this.connectionTrue = connectionTrue;
     }
 
-    public Client getCLient(){
+    /**
+     * @return this client
+     */
+    public Client getClient(){
         return this.client;
     }
 
+    /**
+     * Sets cli
+     * @param cli
+     */
     public void setCli(CLI cli) {
         this.cli = cli;
     }
+
 }

@@ -7,16 +7,17 @@ import java.io.Serializable;
 public class IngressHallSwap implements Serializable,MessageMethod {
 
     /**
-     *
+     * Reference to ingress student
      */
     private String studentIngress;
 
     /**
-     *
+     * Reference to hall student
      */
     private String studentHall;
 
     /**
+     * Appliance of the changes to the model
      * @param game
      */
     @Override
@@ -39,4 +40,5 @@ public class IngressHallSwap implements Serializable,MessageMethod {
     public void setStudentHall(String studentHall){
         this.studentHall = studentHall;
     }
+
 }

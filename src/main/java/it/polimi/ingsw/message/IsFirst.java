@@ -5,12 +5,12 @@ import java.io.Serializable;
 public class IsFirst implements Serializable {
 
     /**
-     *
+     * Reference to player num
      */
     public Integer playersNumber;
 
     /**
-     *
+     * Reference to expert or classic mode
      */
     public Boolean gameMode = true;
 
@@ -37,6 +37,9 @@ public class IsFirst implements Serializable {
         return this.playersNumber;
     }
 
+    /**
+     * @return game mode
+     */
     public Boolean getGameMode(){
         return this.gameMode;
     }

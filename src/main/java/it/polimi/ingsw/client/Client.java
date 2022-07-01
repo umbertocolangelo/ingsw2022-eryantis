@@ -22,7 +22,7 @@ public class Client {
 
 
     /**
-     *
+     * name of the player lost
      */
     private String namePLayerLost;
 
@@ -86,7 +86,6 @@ public class Client {
      */
     private Boolean isCli = true;
 
-
     /**
      * The ip address and the port
      * @param ip
@@ -114,7 +113,7 @@ public class Client {
     }
 
     /**
-     *
+     * semaphore
      */
     private Semaphore semaphore = new Semaphore(0);
 
@@ -130,7 +129,7 @@ public class Client {
                     try {
                         while (isActive()) {
                             inputObject = socketIn.readObject();
-                            System.out.println("Received something: " + inputObject);
+                          //  System.out.println("Received something: " + inputObject);
                             if (!isCli) {
                                 if (inputObject instanceof ConnectionLost) {
                                     GUIController.getInstance().setClientState(ClientState.CONNECTIONLOST);
@@ -148,18 +147,21 @@ public class Client {
                                 }else if (inputObject instanceof EqualName) {
                                     GUIController.getInstance().setClientState(ClientState.EQUALNAME);
                                     GUIController.getInstance().chooseScene();
-                                } else if (inputObject instanceof IsFirst) {
-                                    System.out.println("isFirst");
+                                }else if (inputObject instanceof PlayerIsPlus) {
+                                    GUIController.getInstance().setClientState(ClientState.PLAYERPLUS);
+                                    GUIController.getInstance().chooseScene();
+                                }else if (inputObject instanceof IsFirst) {
+                                    //System.out.println("isFirst");
                                     GUIController.getInstance().setClientState(ClientState.ISFIRST);
                                     new Thread(GUIController.getInstance().chooseScene());
                                 } else if (inputObject instanceof SetName) {
-                                    System.out.println("setName");
+                                  //  System.out.println("setName");
                                     namePlayer = ((SetName) inputObject).getName();
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
-                                    System.out.println("Client received Game.");
-                                    for(Player p : game.getPlayerList()){
-                                        if(p.getIsWinner()){
+                                   // System.out.println("Client received Game.");
+                                    for (Player p : game.getPlayerList()) {
+                                        if (p.getIsWinner()) {
                                             GUIController.getInstance().setClientState(ClientState.WINNER);
                                             GUIController.getInstance().chooseScene();
                                             return;
@@ -174,11 +176,14 @@ public class Client {
                                 if (inputObject instanceof ConnectionLost) {
                                    cliController.setClientState(ClientState.CONNECTIONLOST);
                                    cliController.run();
+                                }else if (inputObject instanceof PlayerIsPlus) {
+                                    cliController.setClientState(ClientState.PLAYERPLUS);
+                                    cliController.run();
                                 }else if (inputObject instanceof String) {
                                     System.out.println((String) inputObject);
                                 } else if (inputObject instanceof Game) {
                                     game = (Game) inputObject;
-                                    System.out.println("Client received Game");
+                                 //   System.out.println("Client received Game");
 
                                     if (game.getCurrentPlayer().getName().equals(namePlayer)) {
                                         cliController.setClientState(ClientState.PLAYING);
@@ -210,14 +215,12 @@ public class Client {
                                 }
                             }
                         }
-
                     } catch (Exception e) {
                         setActive(false);
                     }
                 }
             }
         });
-      //  t.start();
         return t;
     }
 
@@ -233,47 +236,39 @@ public class Client {
                 try {
                     try {
                         socket = new Socket(ip, port);
-                      }catch (ConnectException e){
+                    } catch(ConnectException e){
                         System.out.println(e.getMessage());
-                        if(!isCli) {
+                        if (!isCli) {
                             GUIController.getInstance().setConnectionRefuse(true);
                             GUIController.getInstance().setClientState(ClientState.CONNECTIONREFUSED);
                             GUIController.getInstance().chooseScene();
                             return;
-                        }else{
+                        } else {
                             cliController.connectionRefuse();
                             return;
                         }
-
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
 
                     System.out.println("Connection established.");
                     socketIn = new ObjectInputStream(socket.getInputStream());
                     socketOut = new ObjectOutputStream(socket.getOutputStream());
                     stdin = new Scanner(System.in);
-                    if(!isCli) {
+                    if (!isCli) {
                         GUIController.getInstance().setConnectionTrue(true);
                         GUIController.getInstance().setClientState(ClientState.WAITING);
                         GUIController.getInstance().chooseScene();
-                    }else{
+                    } else {
                         CLI cli = new CLI(Client.this, cliController);
                         cliController.setCli(cli);
                     }
-                   // if(CLIController!=null)
-                     //   CLIController.setClient(Client.this);
-                    //GUIController.getInstance().setClient(Client.this);
                     Thread t0 = new Thread(asyncReadFromSocket(socketIn));
-                   final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
+                    final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
                     executor.submit(new Thread(asyncReadFromSocket(socketIn)));
                     executor.awaitTermination(1, TimeUnit.DAYS);
-                 //t0.join();
-                 //  semaphore.acquire();
 
-              //  } catch (NoSuchElementException e) {
                     System.out.println("Connection closed from the client side");
-
                 } catch (UnknownHostException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
@@ -294,7 +289,6 @@ public class Client {
                 }
             }
         });
-      //  t.start();
         return t;
     }
 
@@ -307,8 +301,7 @@ public class Client {
     }
 
     /**
-     *
-     * @return
+     * @return player name
      */
     public String getNamePlayer() {
         return this.namePlayer;
@@ -323,8 +316,7 @@ public class Client {
     }
 
     /**
-     *
-     * @return
+     * @return input stream
      */
     public ObjectInputStream getOut() {
         return this.socketIn;
@@ -339,15 +331,14 @@ public class Client {
     }
 
     /**
-     *
-     * @return
+     * @return name of the palyer lost
      */
     public String getNamePLayerLost() {
         return this.namePLayerLost;
     }
 
     /**
-     *
+     * sets the name of the player lost
      * @param namePLayerLost
      */
     public void setNamePLayerLost(String namePLayerLost) {
@@ -361,36 +352,46 @@ public class Client {
         this.isCli = true;
     }
 
+    /**
+     * sets the cli controller
+     * @param CLIController
+     */
     public void setController(CLIController CLIController) {
         this.cliController = CLIController;
     }
 
+    /**
+     * sets ip address
+     * @param ip
+     */
     public void setIp(String ip){
-        this.ip=ip;
-    }
-
-    public void setPort(Integer port){
-        this.port=port;
+        this.ip = ip;
     }
 
     /**
-     *
+     * Sets port address
+     * @param port
+     */
+    public void setPort(Integer port){
+        this.port = port;
+    }
+
+    /**
+     * sets if the game is played by gui or by cli
      */
     public void setIsGui(){
-        this.isCli=false;
+        this.isCli = false;
     }
 
     /**
-     *
-     * @return
+     * @return ip address
      */
     public String getIp(){
         return this.ip;
     }
 
     /**
-     *
-     * @return
+     * @return port address
      */
     public Integer getPort(){
         return this.port;

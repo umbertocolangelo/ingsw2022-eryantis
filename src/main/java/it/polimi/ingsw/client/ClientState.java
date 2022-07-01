@@ -15,7 +15,5 @@ public enum ClientState {
     CONNECTIONREFUSED,
     WAITING,
     CONNECTIONLOST,
-    PLAYERSOLO,
-    WINNERSOLO
 
 }

@@ -12,7 +12,7 @@ public class IngressCardSwap implements Serializable, MessageMethod {
     private String studentCard;
 
     /**
-     * Student in the hall slected
+     * Student in the hall selcted
      */
     private String studentHall;
 

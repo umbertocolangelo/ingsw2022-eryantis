@@ -34,13 +34,13 @@ public class ProfessorManager implements Serializable {
      */
     public void checkProfessor(Player currentPlayer){
 
-        for(Color color : Color.values()){  //For each color
+        for (Color color : Color.values()) {  //For each color
 
             Professor currentProfessor = Professor.getProfessor(color);
             Line currentPlayerLine = currentPlayer.getSchool().getHall().getLine(color);
 
-            if(currentProfessor.getPosition()==null){  //If the professor has no position yet
-                if(currentPlayerLine.numOfStudents() > 0){
+            if (currentProfessor.getPosition()==null) {  //If the professor has no position yet
+                if (currentPlayerLine.numOfStudents() > 0) {
                     currentPlayerLine.addProfessor(currentProfessor);
                     continue;
                 }
@@ -48,13 +48,10 @@ public class ProfessorManager implements Serializable {
 
             int max = maxStudentNum(currentPlayer, color);
 
-            if(strategy.compare(currentPlayerLine.numOfStudents(),max,color)){    //If the currentPlayer should have the professor
-                //System.out.println(currentPlayer.getName()+" takes the "+color+" professor");
+            if (strategy.compare(currentPlayerLine.numOfStudents(),max,color)) {    //If the currentPlayer should have the professor
                 currentPlayerLine.addProfessor(currentProfessor);
             }
-
         }
-
     }
 
     /**
@@ -65,9 +62,11 @@ public class ProfessorManager implements Serializable {
      */
     private int maxStudentNum(Player currentPlayer, Color color){
         int max = 0;
-        for(Player player : players){
-            if(player==currentPlayer){continue;}       //Do not consider the current player in the comparison
-            if(max<player.getSchool().getHall().getLine(color).numOfStudents()){
+        for (Player player : players) {
+            if (player==currentPlayer) { //Do not consider the current player in the comparison
+                continue;
+            }
+            if (max<player.getSchool().getHall().getLine(color).numOfStudents()) {
                 max = player.getSchool().getHall().getLine(color).numOfStudents();
             }
         }
@@ -78,19 +77,19 @@ public class ProfessorManager implements Serializable {
      *  Sets the strategy to the standard one (StandardStrategy)
      */
     public void setStandardCheck(){
-        strategy = new StandardStrategy();
+        this.strategy = new StandardStrategy();
     }
 
     /**
      *  Sets the strategy to EqualStrategy after the relative expert card use
      */
     public void setEqualCheck(){
-        strategy = new EqualStrategy();
+        this.strategy = new EqualStrategy();
     }
 
     /**
      * only used in tests
      */
-    public ProfessorStrategy getStrategy() {return this.strategy;}
+    public ProfessorStrategy getStrategy() { return this.strategy; }
 }
 

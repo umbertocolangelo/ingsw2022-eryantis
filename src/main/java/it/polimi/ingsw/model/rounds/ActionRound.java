@@ -60,7 +60,7 @@ public class ActionRound implements RoundInterface, Serializable {
      */
     @Override
     public Boolean checkRoundEnded() {
-        if(this.game.getOrderedPlayerList().isEmpty() || game.getOrderedPlayerList().getLast().getCardPlayed()==null) {
+        if(this.game.getOrderedPlayerList().isEmpty()) {
             for(Cloud d: game.getClouds())
             game.getBag().addStudentsOnCloud(d);
             for(int i=0;i<game.getPlayerList().size();i++){

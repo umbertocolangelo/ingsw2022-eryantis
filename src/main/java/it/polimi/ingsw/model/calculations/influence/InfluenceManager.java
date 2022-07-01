@@ -47,8 +47,8 @@ public class InfluenceManager implements Serializable {
      * Starts the influence calculus (after mother nature is moved) by calling the calculateInfluence() method in the current Influence state
      */
     public void calculateInfluence() {
-        if(denyCard!=null){
-            if(!checkDeny(motherNature.getIsland())){
+        if (denyCard!=null) {
+            if (!checkDeny(motherNature.getIsland())) {
                 influence.calculateInfluence(motherNature.getIsland());
             }
             return;
@@ -63,8 +63,8 @@ public class InfluenceManager implements Serializable {
      */
 
     public void calculateInfluence(IslandInterface island){
-        if(denyCard!=null){
-            if(!checkDeny(island)){
+        if (denyCard!=null) {
+            if (!checkDeny(island)) {
                 influence.calculateInfluence(island);
             }
             return;
@@ -72,7 +72,6 @@ public class InfluenceManager implements Serializable {
         influence.calculateInfluence(island);
         setStandardInfluence();
     }
-
 
     /**
      * Sets the influence to ignore a specific student Color in the influence calculus
@@ -86,7 +85,7 @@ public class InfluenceManager implements Serializable {
      *  Sets the influence state to ignore towers in the influence calculus
      */
     public void setTowerInfluence() {
-        influence = new TowerInfluence(players,this);
+        this.influence = new TowerInfluence(players,this);
     }
 
     /**
@@ -101,7 +100,7 @@ public class InfluenceManager implements Serializable {
      * @param player indicates
      */
     public void setTwoPointsInfluence(Player player){
-        influence = new TwoPointsInfluence(players, this, player);
+        this.influence = new TwoPointsInfluence(players, this, player);
     }
 
     /**
@@ -112,21 +111,19 @@ public class InfluenceManager implements Serializable {
         Integer numOfTowers = island.numOfTowers();
 
         // if no one had the island before the calculus
-
-        if(island.numOfTowers()==0){
+        if (island.numOfTowers()==0) {
             island.addTower(newPlayer.getSchool().getTowerTable().getTowers().get(0));
             return;
         }
 
         // if the newPlayer takes control over the oldPlayer
-
-        for(Tower tower : towers){  // remove the current towers
+        for (Tower tower : towers) {  // remove the current towers
             oldPlayer.getSchool().getTowerTable().addTower(tower);
         }
 
-        for(Integer place = 0; place < numOfTowers; place++){ // add the new towers
+        for (Integer place = 0; place < numOfTowers; place++) { // add the new towers
             Tower tower = newPlayer.getSchool().getTowerTable().getTowers().get(0);
-            if(tower != null){
+            if (tower != null) {
                 island.addTower(tower);
                 continue;
             }
@@ -140,7 +137,7 @@ public class InfluenceManager implements Serializable {
      * @param card
      */
     public void setDenyCard(DenyCard card){
-        denyCard = card;
+        this.denyCard = card;
     }
 
     /**
@@ -149,7 +146,7 @@ public class InfluenceManager implements Serializable {
      * @return
      */
     private boolean checkDeny(IslandInterface island){
-        if(island.getDeny()!=0){
+        if (island.getDeny()!=0) {
             denyCard.addToken();
             island.removeDeny();
             return true;

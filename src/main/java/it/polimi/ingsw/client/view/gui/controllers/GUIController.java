@@ -231,7 +231,7 @@ public class GUIController {
                         break;
                     case ISFIRST:
                         setIsFirst();
-                        System.out.println("isFirst");
+                       // System.out.println("isFirst");
                         GuiLoginController controller = new GuiLoginController();
                         Platform.runLater(() -> {
                             try {
@@ -242,7 +242,7 @@ public class GUIController {
                         });
                         break;
                     case PLAYERPLUS:
-                        System.out.println("isPlus");
+                        //System.out.println("isPlus");
                         GuiPlayerPlusController plusController = new GuiPlayerPlusController();
                         Platform.runLater(() -> {
                             try {
@@ -279,7 +279,7 @@ public class GUIController {
                                 GuiChooseExpertCardController cardController = new GuiChooseExpertCardController();
                                 Platform.runLater(() -> {
                                     try {
-                                        System.out.println("Change scene normal");
+                                      //  System.out.println("Change scene normal");
                                         cardController.sceneStudentOnCard();
                                     } catch (IOException e) {
                                         e.printStackTrace();
@@ -299,12 +299,12 @@ public class GUIController {
                             switch (client.getGame().getCurrentPlayer().getPlayerPhase()) {
                                 //change scene from login to deck/color phase
                                 case SET_UP_PHASE:
-                                    System.out.println("Setup");
+                                   // System.out.println("Setup");
                                     GuiLoginController controllerLogin = new GuiLoginController();
                                     if (!isFirst) {
                                         Platform.runLater(() -> {
                                             try {
-                                                System.out.println("Change scene normal");
+                                               // System.out.println("Change scene normal");
                                                 controllerLogin.changeScene();
                                             } catch (IOException e) {
                                                 e.printStackTrace();
@@ -314,7 +314,7 @@ public class GUIController {
                                         GuiIsFirstController controllerFirst = new GuiIsFirstController();
                                         Platform.runLater(() -> {
                                             try {
-                                                System.out.println("Change scene not normal");
+                                               // System.out.println("Change scene not normal");
                                                 controllerFirst.changeScene();
                                             } catch (IOException e) {
                                                 e.printStackTrace();

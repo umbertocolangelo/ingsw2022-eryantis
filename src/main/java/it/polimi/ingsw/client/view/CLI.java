@@ -93,7 +93,6 @@ public class CLI {
 
     }
 
-
     /**
      * If we lost the connection client
      * @return thread
@@ -300,7 +299,7 @@ public class CLI {
     }
 
     /**
-     *
+     * Get the thread to choose to play or not an expert card
      * @return
      */
     public Thread choosingExpertCardOrMoving() {
@@ -338,7 +337,7 @@ public class CLI {
     }
 
     /**
-     *
+     * Get the thread to choose the group of students you want among the available clouds
      * @return
      */
     public Thread playExpertCard() {
@@ -429,7 +428,7 @@ public class CLI {
     }
 
     /**
-     *
+     * Get the thread of ingress card swap
      * @return
      */
     public Thread ingressCardSwap() {
@@ -473,7 +472,7 @@ public class CLI {
     }
 
     /**
-     *
+     * Get the thread of ingress hall swap
      * @return
      */
     public Thread ingressHallSwap() {
@@ -504,8 +503,9 @@ public class CLI {
                     for (int i = 0; i < client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().size();i++) {
                         System.out.print("Student " +  client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getColor() + " Number " + i + "\n");
                     }
-                    if (!client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().isEmpty())
-                    System.out.println("\n");
+                    if (!client.getGame().getCurrentPlayer().getSchool().getHall().getLine(c).getStudents().isEmpty()) {
+                        System.out.println("\n");
+                    }
                 }
 
                 System.out.println("Select the color of the line, YELLOW=0  BLUE=1  GREEN=2  RED=3  PINK=4 \n");
@@ -532,14 +532,13 @@ public class CLI {
                 ((IngressHallSwap)messageMethod).setStudentHall(client.getGame().getCurrentPlayer().getSchool().getHall().getLine(Color.getColor(Integer.parseInt(input))).getStudents().get(Integer.parseInt(input1)).getId());
             }
             CLIController.write(messageMethod);
-
         });
         t.start();
         return t;
     }
 
     /**
-     *
+     * Get the thread of student to hall card
      * @return
      */
     public Thread studentToHall() {
@@ -563,7 +562,7 @@ public class CLI {
     }
 
     /**
-     *
+     * Get the thread of student to island card
      * @return
      */
     public Thread studentToIsland() {
@@ -598,7 +597,7 @@ public class CLI {
     }
 
     /**
-     *
+     * Get the thread of show islands
      */
     private void showIsland(){
         int ind0 = 0;
@@ -618,15 +617,16 @@ public class CLI {
                 } else {
                     System.out.print("\n" + ind0 + ": Group of island " + "\nCurrent students: ");
                 }
-                for(int k=0; k<islandInterface.getStudents().size(); k++) {
+                for (int k=0; k<islandInterface.getStudents().size(); k++) {
                     System.out.print(islandInterface.getStudents().get(k).getColor() + "    " );
                 }
                 System.out.print("\n");
-                if(islandInterface.isGrouped()) {
+                if (islandInterface.isGrouped()) {
                     System.out.println("Towers: " + islandInterface.getTowers().get(0).getColor() + "     number of Towers: " + islandInterface.getTowers().size());
                 } else {
-                    for (Tower h : islandInterface.getTowers())
+                    for (Tower h : islandInterface.getTowers()) {
                         System.out.println("Towers: " + islandInterface.getTowers().get(0).getColor() + "     number of Towers: " + islandInterface.getTowers().size());
+                    }
                 }
                 if (islandInterface.getId()==client.getGame().getMotherNature().getIsland().getId()) {
                     System.out.println("MotherNature is here !");
@@ -637,7 +637,7 @@ public class CLI {
     }
 
     /**
-     *
+     * Get the thread of show school
      */
     private void showSchool() {
         for (Color c :Color.values()) {
@@ -659,7 +659,7 @@ public class CLI {
     }
 
     /**
-     *
+     * Get the thread of go back
      */
     private void goBack() {
         Thread d;
