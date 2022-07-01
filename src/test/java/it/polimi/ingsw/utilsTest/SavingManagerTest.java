@@ -22,19 +22,13 @@ public class SavingManagerTest {
     @Test
     public void saveGameTest(){
 
-        Game gameSaved = new Game();
+        Game game = new Game();
         LinkedList<Player> players = new LinkedList<>();
-        players.add(new Player("B"));
-        players.add(new Player("A"));
-        players.get(0).setPlayerColor(PlayerColor.WHITE);
-        players.get(1).setPlayerColor(PlayerColor.BLACK);
-        gameSaved.setPlayerList(players);
-        gameSaved.initializeGame();
-        gameSaved.saveGame();
-        File f = new File("eriantys-A-B.save");
-        assertTrue(f.exists() && !f.isDirectory());
+        SavingManager.getInstance().saveGame(game,"test.save");
+        File f = new File("test.save");
+        assertTrue(f.exists() && !f.isDirectory()); // checks the save file is created correctly
         // delete the file for convenience
-        SavingManager.getInstance().deleteSavedGame("eriantys_exp-A-B.save");
+        SavingManager.getInstance().deleteSavedGame("test.save");
     }
 
     /**

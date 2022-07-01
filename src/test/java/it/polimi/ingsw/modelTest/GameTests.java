@@ -13,8 +13,10 @@ import it.polimi.ingsw.model.player.Player;
 import it.polimi.ingsw.model.rounds.PianificationRound;
 import it.polimi.ingsw.model.studentSuppliers.Bag;
 import it.polimi.ingsw.utils.IdManager;
+import it.polimi.ingsw.utils.SavingManager;
 import org.junit.jupiter.api.Test;
 
+import java.io.File;
 import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -240,14 +242,24 @@ public class GameTests {
         game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        game.getCurrentPlayer().getSchool().getIngress().removeStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0));
+        game.getCurrentPlayer().getSchool().getIngress().removeStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0));
+        game.getCurrentPlayer().getSchool().getIngress().removeStudent(game.getCurrentPlayer().getSchool().getIngress().getStudents().get(0));
+        LinkedList<Student> students0 = game.getClouds().get(0).getStudents();
+        LinkedList<Student> students1 = game.getClouds().get(1).getStudents();
+        game.chooseCloud(game.getClouds().get(0).getId());
+        assertTrue(game.getClouds().get(0).getStudents().size()==3); // no student has to be moved
         game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
-        LinkedList<Student> students = game.getClouds().get(0).getStudents();
         game.chooseCloud(game.getClouds().get(0).getId());
         game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
         game.chooseCloud(game.getClouds().get(1).getId());
-        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(0)));
-        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(1)));
-        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(2)));
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students0.get(0))); // all the students have to be moved for the first player
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students0.get(1)));
+        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students0.get(2)));
+        if(game.getCurrentPlayer()==player){game.setCurrentPlayer(player1);}else{game.setCurrentPlayer(player);}
+        assertTrue(!game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students1.get(0))); //no student have to be moved for the second player cause is ingress is full
+        assertTrue(!game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students1.get(1)));
+        assertTrue(!game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students1.get(2)));
     }
 
     /**
@@ -556,6 +568,45 @@ public class GameTests {
         game.deleteGame();
     }
 
+    /**
+     * Tests the saveGame method
+     */
+    @Test
+    public void saveGameTest(){
+
+        // for two players in expert mode
+        Game gameSaved = new Game();
+        LinkedList<Player> players = new LinkedList<>();
+        players.add(new Player("B"));
+        players.add(new Player("A"));
+        players.get(0).setPlayerColor(PlayerColor.WHITE);
+        players.get(1).setPlayerColor(PlayerColor.BLACK);
+        gameSaved.setPlayerList(players);
+        gameSaved.initializeGame();
+        gameSaved.saveGame();
+        File f = new File("eriantys_exp-A-B.save");
+        assertTrue(f.exists() && !f.isDirectory()); // checks the save file is created correctly
+        // delete the file for convenience
+        SavingManager.getInstance().deleteSavedGame("eriantys_exp-A-B.save");
+
+        // for three players in classic/normal mode
+        gameSaved = new Game();
+        players = new LinkedList<>();
+        players.add(new Player("C"));
+        players.add(new Player("B"));
+        players.add(new Player("A"));
+        players.get(0).setPlayerColor(PlayerColor.WHITE);
+        players.get(1).setPlayerColor(PlayerColor.BLACK);
+        players.get(2).setPlayerColor(PlayerColor.GREY);
+        gameSaved.setPlayerList(players);
+        gameSaved.setNormalMode();
+        gameSaved.initializeGame();
+        gameSaved.saveGame();
+        f = new File("eriantys_cls-A-B-C.save");
+        assertTrue(f.exists() && !f.isDirectory()); // checks the save file is created correctly
+        // delete the file for convenience
+        SavingManager.getInstance().deleteSavedGame("eriantys_cls-A-B-C.save");
+    }
 
 
 }
