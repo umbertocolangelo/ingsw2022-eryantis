@@ -162,7 +162,7 @@ public class CLI {
                     input = scanner.nextLine();
                 }
                 if (Integer.parseInt(input)>client.getGame().getCurrentPlayer().getAssistantCard().size()-1){
-                    System.out.println("Ops! You entered a wrong or too high value, choose again!\nOn which island do you want to move the student to?");
+                    System.out.println("Ops! You entered a wrong or too high value, choose again!\nWhich assistant card do you want to play in this turn?");
                     input = scanner.nextLine();
                 } else {
                     again = false;
