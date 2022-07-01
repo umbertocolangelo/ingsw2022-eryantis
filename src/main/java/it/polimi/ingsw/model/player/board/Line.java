@@ -10,9 +10,7 @@ import it.polimi.ingsw.model.player.Player;
 import java.io.Serializable;
 import java.util.*;
 
-/**
- * 
- */
+
 public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializable {
 
     /**

@@ -4,9 +4,7 @@ import it.polimi.ingsw.model.pawns.Student;
 
 import java.util.*;
 
-/**
- * 
- */
+
 public interface FixedObjectStudent extends FixedObject {
 
     /**

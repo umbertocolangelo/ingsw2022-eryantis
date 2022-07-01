@@ -12,9 +12,7 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.io.Serializable;
 
-/**
- * 
- */
+
 public class IngressHallSwapActionRound implements RoundInterface, Serializable {
 
     /**

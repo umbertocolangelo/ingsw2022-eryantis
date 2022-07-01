@@ -12,9 +12,7 @@ import java.io.Serializable;
 import java.util.LinkedList;
 
 
-/**
- *
- */
+
 public class Island implements FixedObjectStudent, FixedObjectTower, IslandInterface, Serializable {
 
     /**

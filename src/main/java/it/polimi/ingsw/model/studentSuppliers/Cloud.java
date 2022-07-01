@@ -7,9 +7,7 @@ import it.polimi.ingsw.utils.IdManager;
 import java.io.Serializable;
 import java.util.*;
 
-/**
- * 
- */
+
 public class Cloud implements FixedObjectStudent, Serializable {
 
     /**

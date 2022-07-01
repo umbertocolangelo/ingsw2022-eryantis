@@ -8,9 +8,8 @@ import it.polimi.ingsw.model.player.board.Ingress;
 
 import java.io.Serializable;
 import java.util.Random;
-/**
- * 
- */
+
+
 public class Bag implements Serializable {
 
     /**

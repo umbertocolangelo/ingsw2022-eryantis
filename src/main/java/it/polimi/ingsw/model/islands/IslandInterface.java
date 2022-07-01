@@ -7,9 +7,7 @@ import it.polimi.ingsw.model.pawns.Tower;
 
 import java.util.LinkedList;
 
-/**
- *
- */
+
 public interface IslandInterface {
 
     /**

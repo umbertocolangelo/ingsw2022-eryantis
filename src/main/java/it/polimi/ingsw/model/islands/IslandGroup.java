@@ -10,9 +10,6 @@ import it.polimi.ingsw.model.pawns.Tower;
 import java.io.Serializable;
 import java.util.*;
 
-/**
- *
- */
 public class IslandGroup implements IslandInterface, Serializable, FixedObjectTower {
 
     /**

@@ -11,9 +11,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * 
- */
 public class ColorInfluence implements InfluenceCalculator, Serializable {
 
     /**

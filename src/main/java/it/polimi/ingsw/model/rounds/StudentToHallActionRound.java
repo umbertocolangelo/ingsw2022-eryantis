@@ -13,9 +13,7 @@ import it.polimi.ingsw.model.studentSuppliers.Cloud;
 
 import java.io.Serializable;
 
-/**
- * 
- */
+
 public class StudentToHallActionRound implements RoundInterface, Serializable {
 
     /**
