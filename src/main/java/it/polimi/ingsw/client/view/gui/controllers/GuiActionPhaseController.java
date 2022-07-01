@@ -2262,10 +2262,6 @@ public class GuiActionPhaseController implements Initializable {
      */
     private void showTowersIsland9(int index, double x, double y) {
 
-        if (game.getIslandManager().getIslands().size()==8) {
-            return;
-        }
-
         towers.clear();
         towers.add(tower1Island9);
         towers.add(tower2Island9);
