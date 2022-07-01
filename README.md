@@ -28,11 +28,16 @@ After the download you can start the game with jars. To use the jars you must co
 ## JAR execution
 After the jar are compiled there are two different kinds of executable for the client side.
 
-###CLI
+CLI
+
 To run the game with CLI you must run AM29-clientCLI.jar
-###GUI
+
+GUI
+
 To run the game with Gui you must run the AM29-clientGUI.jar
-###Server
+
+Server
+
 To run the server you must run AM29-server.jar
 ### Test
 
