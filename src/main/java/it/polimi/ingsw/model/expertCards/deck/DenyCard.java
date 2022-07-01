@@ -2,7 +2,7 @@ package it.polimi.ingsw.model.expertCards.deck;
 
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.ExpertCard;
-import it.polimi.ingsw.model.islands.Island;
+import it.polimi.ingsw.model.islands.IslandInterface;
 import it.polimi.ingsw.utils.IdManager;
 
 import java.io.Serializable;
@@ -47,7 +47,7 @@ public class DenyCard implements ExpertCard, Serializable {
      * Applies the effect of the card
      * @param island to deny
      */
-    public void apply(Island island) {
+    public void apply(IslandInterface island) {
         if (denyTokens>0) {
             island.setDeny();
             this.denyTokens = denyTokens-1;

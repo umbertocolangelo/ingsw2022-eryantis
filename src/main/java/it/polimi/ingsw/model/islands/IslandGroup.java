@@ -20,11 +20,6 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
-     * Stores the number of denyTokens on the IslandGroup
-     */
-    private Integer denyTokens = 0;
-
-    /**
      * linked list of island in the same group
      */
     private LinkedList<Island> islandGroup = new LinkedList<Island>();
@@ -56,20 +51,29 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     /**
      * Adds one deny token to the IslandGroup
      */
-    public void setDeny() { denyTokens++; }
+    public void setDeny() { islandGroup.get(0).setDeny(); }
 
     /**
      * Return the deny token
      * @return the number of denyTokens on the IslandGroup
      */
-    public Integer getDeny() { return denyTokens; }
+    public Integer getDeny() {
+        int denyNum = 0;
+        for (Island island: islandGroup) {
+            denyNum = denyNum + island.getDeny();
+        }
+        return denyNum;
+    }
 
     /**
      * Removes one deny token from the IslandGroup
      */
     public void removeDeny() {
-        if (denyTokens>0) {
-            denyTokens--;
+        for (Island island: islandGroup) {
+            if(island.getDeny()>0){
+                island.removeDeny();
+                return;
+            }
         }
     }
     /**
