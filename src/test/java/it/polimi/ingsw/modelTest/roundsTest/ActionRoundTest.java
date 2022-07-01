@@ -96,30 +96,21 @@ public class ActionRoundTest {
 
     @Test
     public void chooseCloudTest() {
-        Player player = new Player("elena");
-        Player player1 = new Player("vittorio");
+        Player player = new Player("A");
+        Player player1 = new Player("B");
         Game game= new Game();
-        LinkedList <Player> lista=new LinkedList<>();
-        lista.add(player1);
-        lista.add(player);
-        game.setPlayerList(lista);
+        LinkedList <Player> list = new LinkedList<>();
+        list.add(player1);
+        list.add(player);
+        game.setPlayerList(list);
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
         game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
-        System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
+        assertTrue(!game.getCurrentRound().chooseCloud(game.getClouds().get(0))); // the round has to refuse the action
         game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
-        System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
-        LinkedList<Student> students = game.getClouds().get(0).getStudents();
-        game.chooseCloud(game.getClouds().get(0).getId());
-        game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
-        System.out.println(game.getCurrentPlayer().getName() + "chooses cloud");
-        game.chooseCloud(game.getClouds().get(1).getId());
-        System.out.println(game.getCurrentPlayer().getName() + "is the current player");
-        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(0)));
-        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(1)));
-        assertTrue(game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(students.get(2)));
+        assertTrue(game.getCurrentRound().chooseCloud(game.getClouds().get(0))); // the round has to permit the action
     }
 
     /**
