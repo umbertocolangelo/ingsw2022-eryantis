@@ -11,7 +11,7 @@ public class SavingManager implements Serializable{
     /**
      * Default constructor
      */
-    public SavingManager(){
+    public SavingManager() {
 
     }
 
@@ -25,7 +25,7 @@ public class SavingManager implements Serializable{
      * @return the unique instance of SavingManager
      */
     public static SavingManager getInstance(){
-        if(instance==null){
+        if (instance==null) {
             instance = new SavingManager();
         }
         return instance;
@@ -37,7 +37,7 @@ public class SavingManager implements Serializable{
      * @param path is the path the game will be saved to
      * @return true if succeeded
      */
-    public Boolean saveGame(Game game, String path){
+    public Boolean saveGame(Game game, String path) {
         try (FileOutputStream fileOutputStream = new FileOutputStream(new File(path))) {
             ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
             objectOutputStream.writeObject(game);
@@ -52,8 +52,8 @@ public class SavingManager implements Serializable{
      * @param playerNames contains the names of the players
      * @return the loaded instance of Game, return null if not present
      */
-    public Game loadGame(LinkedList<String> playerNames, Boolean expertMode){
-        Game game;
+    public Game loadGame(LinkedList<String> playerNames, Boolean expertMode) {
+
         java.util.Collections.sort(playerNames); // sorts the playerNames list alphabetically
 
         String path = "eriantys";
@@ -84,11 +84,11 @@ public class SavingManager implements Serializable{
     public Boolean deleteSavedGame(String path) {
         File file = new File(path);
         try {
-            if(Files.deleteIfExists(file.toPath())){
+            if (Files.deleteIfExists(file.toPath())) {
                 return true;
             }
         } catch (IOException e) {
-                return false;
+            return false;
         }
         return false;
     }

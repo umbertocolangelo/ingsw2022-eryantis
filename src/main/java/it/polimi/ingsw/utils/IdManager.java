@@ -17,19 +17,22 @@ import java.util.Map;
 
 public class IdManager implements Serializable {
 
+    /**
+     * Default constructor
+     */
     public IdManager() {
 
         // Adds the enumerations to idMap
-        for(Color color : Color.values()){
+        for (Color color : Color.values()) {
             addColor(color);
         }
-        for(PlayerColor playerColor : PlayerColor.values()){
+        for (PlayerColor playerColor : PlayerColor.values()) {
             addPlayerColor(playerColor);
         }
-        for(AssistantCard card : AssistantCard.values()){
+        for (AssistantCard card : AssistantCard.values()) {
             addAssistantCard(card);
         }
-        for(Wizard wizard : Wizard.values()){
+        for (Wizard wizard : Wizard.values()) {
             addWizard(wizard);
         }
     }
@@ -47,7 +50,7 @@ public class IdManager implements Serializable {
     /**
      * Stores the current available id
      */
-    Integer studentId = 53;
+    private Integer studentId = 53;
 
     /**
      *
@@ -69,63 +72,72 @@ public class IdManager implements Serializable {
     }
 
     /**
-     * @param player
+     * add the player to the map in id manager
+     * @param player Player
      */
     public void addPlayer(Player player) {
         idMap.put(player.getId(), player);
     }
 
     /**
-     * @param playerColor
+     * add the player color to the map in id manager
+     * @param playerColor PlayerColor
      */
     public void addPlayerColor(PlayerColor playerColor) {
         idMap.put(playerColor.getId(), playerColor);
     }
 
     /**
-     * @param color
+     * add the color to the map in id manager
+     * @param color Color
      */
     public void addColor(Color color) {
         idMap.put(color.getId(), color);
     }
 
     /**
-     * @param wizard
+     * add the wizard to the map in id manager
+     * @param wizard Wizard
      */
     public void addWizard(Wizard wizard) {
         idMap.put(wizard.getId(), wizard);
     }
 
     /**
-     * @param assistantCard
+     * add the assistant card to the map in id manager
+     * @param assistantCard AssistantCard
      */
     public void addAssistantCard(AssistantCard assistantCard) {
         idMap.put(assistantCard.getId(), assistantCard);
     }
 
     /**
-     * @param island
+     * add the island to the map in id manager
+     * @param island Island
      */
     public void addIsland(Island island) {
         idMap.put(island.getId(), island);
     }
 
     /**
-     * @param expertCard
+     * add the expert card to the map in id manager
+     * @param expertCard ExpertCard
      */
     public void addExpertCard(ExpertCard expertCard) {
         idMap.put(expertCard.getId(), expertCard);
     }
 
     /**
-     * @param cloud
+     * add the cloud to the map in id manager
+     * @param cloud Cloud
      */
     public void addCloud(Cloud cloud) {
         idMap.put(cloud.getId(), cloud);
     }
 
     /**
-     * @param student
+     * add the student to the map in id manager
+     * @param student Student
      */
     public void addStudent(Student student) {
         student.setId(studentId.toString());
@@ -134,118 +146,118 @@ public class IdManager implements Serializable {
     }
 
     /**
-     * @param id
-     * @return
+     * returns the player with that id from the map
+     * @param id String
+     * @return Player
      */
     public Player getPlayer(String id) {
         if (Integer.parseInt(id)>0 && Integer.parseInt(id)<4) {
             return (Player) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     /**
-     * @param id
-     * @return
+     * returns the player color with that id from the map
+     * @param id String
+     * @return PlayerColor
      */
     public PlayerColor getPlayerColor(String id) {
         if(Integer.parseInt(id)>3 && Integer.parseInt(id)<7) {
             return (PlayerColor) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     /**
-     * @param id
-     * @return
+     * returns the color with that id from the map
+     * @param id String
+     * @return Color
      */
     public Color getColor(String id) {
         if (Integer.parseInt(id)>6 && Integer.parseInt(id)<12) {
             return (Color) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     /**
-     * @param id
-     * @return
+     * returns the wizard with that id from the map
+     * @param id String
+     * @return Wizard
      */
     public Wizard getWizard(String id) {
         if (Integer.parseInt(id)>11 && Integer.parseInt(id)<16) {
             return (Wizard) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     /**
-     * @param id
-     * @return
+     * returns the assistant card with that id from the map
+     * @param id String
+     * @return AssistantCard
      */
     public AssistantCard getAssistantCard(String id) {
         if (Integer.parseInt(id)>15 && Integer.parseInt(id)<26) {
             return (AssistantCard) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     /**
-     * @param id
-     * @return
+     * returns the island with that id from the map
+     * @param id String
+     * @return Island
      */
     public Island getIsland(String id) {
         if (Integer.parseInt(id)>25 && Integer.parseInt(id)<38) {
             return (Island) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     /**
-     * @param id
-     * @return
+     * returns the expert card with that id from the map
+     * @param id String
+     * @return ExpertCard
      */
     public ExpertCard getExpertCard(String id) {
         if (Integer.parseInt(id)>37 && Integer.parseInt(id)<50) {
             return (ExpertCard) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     /**
-     * @param id
-     * @return
+     * returns the cloud with that id from the map
+     * @param id String
+     * @return Cloud
      */
     public Cloud getCloud(String id) {
         if (Integer.parseInt(id)>49 && Integer.parseInt(id)<53) {
             return (Cloud) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
 
     /**
-     * @param id
-     * @return
+     * returns the student with that id from the map
+     * @param id String
+     * @return Student
      */
     public Student getStudent(String id) {
         if (Integer.parseInt(id)>52) {
             return (Student) idMap.get(id);
-        }
-        else {
+        } else {
             return null;
         }
     }
