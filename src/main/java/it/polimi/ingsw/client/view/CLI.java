@@ -157,15 +157,14 @@ public class CLI {
             }
             input = scanner.nextLine();
             while (again) {
-                while (input == "" || !input.matches("[0-9]+") || Integer.parseInt(input) > client.getGame().getCurrentPlayer().getAssistantCard().size() - 1) {
+                while (input == "" || !input.matches("[0-9]+")) {
                     System.out.println("You entered a wrong or too high value, please try again.");
                     input = scanner.nextLine();
                 }
                 if (Integer.parseInt(input)>client.getGame().getCurrentPlayer().getAssistantCard().size()-1){
                     System.out.println("Ops! You entered a wrong or too high value, choose again!\nOn which island do you want to move the student to?");
                     input = scanner.nextLine();
-                }
-                else {
+                } else {
                     again = false;
                 }
             }
