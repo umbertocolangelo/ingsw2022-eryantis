@@ -63,6 +63,7 @@ public class IslandGroupTest {
     @Test
     public void setDeny() {
         IslandGroup islandGroup = new IslandGroup();
+        islandGroup.addIslandInterface(new Island());
         islandGroup.setDeny();
         assertTrue(islandGroup.getDeny() == 1); // check that deny token is added
     }
@@ -73,6 +74,7 @@ public class IslandGroupTest {
     @Test
     public void removeDeny() {
         IslandGroup islandGroup = new IslandGroup();
+        islandGroup.addIslandInterface(new Island());
         islandGroup.removeDeny();
         assertTrue(islandGroup.getDeny() == 0); // check that minimum number of deny tokens is 0
         islandGroup.setDeny();
