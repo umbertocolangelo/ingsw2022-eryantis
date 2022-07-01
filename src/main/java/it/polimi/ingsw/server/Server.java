@@ -104,8 +104,9 @@ public class Server {
             if (waitingConnection.contains(c)) {
                 waitingConnection.remove(c);
             }
-          if (numberOfPlayer==0 && !socketConnections.isEmpty()) {
+            if (numberOfPlayer==0 && !socketConnections.isEmpty()) {
                 Boolean thereIsAFirst = false;
+
                 //Check if there is a player that already received a first and in this case do not set a new first
                 for (SocketClientConnection d: socketConnections) {
                     if (d.getIsFirst()) {
@@ -143,7 +144,7 @@ public class Server {
                 return;
             }
 
-        //We enter here only if we need to set again the message isFirst
+        //enters here only if we need to set again the message isFirst
         }else if (waitingConnection.size()>numberOfPlayer) {
             while (waitingConnection.size()>numberOfPlayer) {
                 waitingConnection.getLast().setPlayerIsPlus(true);
@@ -151,7 +152,7 @@ public class Server {
             }
         }
 
-        //If socket enter here we start the game, switching from waiting connection to playing connection
+        //If socket enters here the game starts, switching from waiting connection to playing connection
         if (waitingConnection.size()==numberOfPlayer) {
             SocketClientConnection c1 = waitingConnection.get(0);
             SocketClientConnection c2 = waitingConnection.get(1);
@@ -204,9 +205,9 @@ public class Server {
                 Thread t0 = new Thread(socketConnection);
                 t0.start();
 
-            } catch(SocketTimeoutException e) {
-                System.out.println("### Timed out after 5 seconds.");
-            }catch (IOException e) {
+            } catch (SocketTimeoutException e) {
+                System.out.println("### Time out after 5 seconds.");
+            } catch (IOException e) {
                 e.printStackTrace();
             }
         }
@@ -220,7 +221,7 @@ public class Server {
         if (isFirst) {
             return false;
         }
-        for (int i = 0; i<socketConnections.size()-1; i++) {
+        for (int i=0; i<socketConnections.size()-1; i++) {
             if (socketConnections.get(i).getName() == null) {
                 return false;
             }
@@ -236,8 +237,8 @@ public class Server {
      */
     public void sendGame() {
         System.out.println("Sending game to clients");
-            for (SocketClientConnection c : playingConnection) {
-                c.send(game);
+        for (SocketClientConnection c : playingConnection) {
+            c.send(game);
         }
     }
 
@@ -269,9 +270,8 @@ public class Server {
      * @return the thread used
      */
     public Thread loadGame(String choice){
-        Server server = this;
         Thread t;
-        if(choice.equals("1")){
+        if (choice.equals("1")) {
             t = new Thread(() -> {
                game = loadedGame;
                propertyObserver = new PropertyObserver(game,this);
@@ -280,7 +280,7 @@ public class Server {
                playingConnection.addAll(waitingConnection);
                sendGame();
             });
-        }else{
+        } else {
             t = new Thread(() -> {
                 try {
                     createGame();

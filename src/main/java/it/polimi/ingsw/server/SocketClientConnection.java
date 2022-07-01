@@ -17,17 +17,17 @@ import java.util.NoSuchElementException;
 public class SocketClientConnection implements Runnable {
 
     /**
-     *Set true if we close the connection, useful if we want to avoid close the connection twice
+     * Set true if we close the connection, useful if we want to avoid close the connection twice
      */
-    private Boolean hasBeenDisconnected=false;
+    private Boolean hasBeenDisconnected = false;
 
     /**
-     *True if the player is more than the player selected in isfirst
+     * True if the player is more than the game mode selected
      */
-    private Boolean playerIsPlus=false;
+    private Boolean playerIsPlus = false;
 
     /**
-     *
+     * True if the player is the first to connect at the game
      */
     private Boolean isFirst = false;
 
@@ -60,6 +60,7 @@ public class SocketClientConnection implements Runnable {
      * Keep the reference to the active status
      */
     private boolean active = true;
+
     /**
      * Set true if we are still in the deck phase
      */
@@ -103,28 +104,30 @@ public class SocketClientConnection implements Runnable {
      * This method is needed when we want to close the connection, closes the socket and sets active to false
      */
     public synchronized void closeConnection() {
-        if(!playerIsPlus) {
+        if (!playerIsPlus) {
             send(new ConnectionLost());
         }
         try {
             socket.close();
         } catch (IOException e) {
-            System.err.println("Error when closing socket!");
+            System.err.println("Error when closing the socket!");
         }
         active = false;
     }
 
     /**
-      *Calls close connection and closes the connection also in the server
+     * Calls close connection and closes the connection also in the server
      */
-    public synchronized void  close() {
-        if(playerIsPlus)
+    public synchronized void close() {
+        if (playerIsPlus) {
             send(new PlayerIsPlus());
+        }
         if (!hasBeenDisconnected) {
-            if (isFirst && !server.getPlayingConnection().isEmpty())
+            if (isFirst && !server.getPlayingConnection().isEmpty()) {
                 server.setNumberOfPlayer(0);
+            }
             closeConnection();
-                server.getSemaphore().release();
+            server.getSemaphore().release();
             System.out.println("Unregistering client ...");
             server.deregisterConnection(this);
             System.out.println("Done!");
@@ -174,7 +177,6 @@ public class SocketClientConnection implements Runnable {
             }
             server.lobby(this, name);
 
-
             while (isActive()) {
                 Object object = in.readObject();
                 if (object instanceof MessageMethod) {
@@ -209,8 +211,7 @@ public class SocketClientConnection implements Runnable {
     public String getName() {
         if (name!=null) {
             return this.name;
-        }
-        else {
+        } else {
             return null;
         }
     }
@@ -226,7 +227,7 @@ public class SocketClientConnection implements Runnable {
      * set isFirst
      */
     public void setIsFirst(){
-        isFirst=true;
+        isFirst = true;
     }
 
     /**
@@ -238,7 +239,7 @@ public class SocketClientConnection implements Runnable {
     }
 
     /**
-     *
+     * Returns true if the player connected makes the player list bigger than the game mode selected
      * @return playerIsPlus
      */
     public Boolean getPlayerIsPlus() {
@@ -254,11 +255,10 @@ public class SocketClientConnection implements Runnable {
     }
 
     /**
-     *
      * @return if player has been disconnected
      */
     public Boolean getHasBeenDisconnected() {
-        return hasBeenDisconnected;
+        return this.hasBeenDisconnected;
     }
 
     /**
@@ -268,4 +268,5 @@ public class SocketClientConnection implements Runnable {
     public void setHasBeenDisconnected(Boolean hasBeenDisconnected) {
         this.hasBeenDisconnected = hasBeenDisconnected;
     }
+
 }
