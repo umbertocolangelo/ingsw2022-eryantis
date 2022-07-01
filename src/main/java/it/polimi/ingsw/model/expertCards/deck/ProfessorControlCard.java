@@ -21,7 +21,7 @@ public class ProfessorControlCard implements ExpertCard, Serializable {
     }
 
     /**
-     * 
+     * Keep the reference to the id
      */
     private String id;
 

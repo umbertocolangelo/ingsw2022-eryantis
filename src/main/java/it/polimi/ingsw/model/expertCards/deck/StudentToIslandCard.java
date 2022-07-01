@@ -28,7 +28,7 @@ public class StudentToIslandCard implements ExpertCard, FixedObjectStudent , Ser
     }
 
     /**
-     * 
+     * Keep the reference to the id
      */
     private String id;
 

@@ -54,12 +54,12 @@ public class CardManager implements Serializable {
     private ExpertCard currentCard;
 
     /**
-     *
+     * Keep the reference to the ProfessorManager
      */
     private ProfessorManager professorManager;
 
     /**
-     *
+     * Keep the reference to the IslandManger
      */
     private IslandManager islandManager;
 

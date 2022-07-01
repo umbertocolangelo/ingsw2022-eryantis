@@ -24,7 +24,7 @@ public class IngressHallSwapCard implements ExpertCard, Serializable {
     private Integer cost = 1;
 
     /**
-     * 
+     * Keep the reference to the id
      */
     private String id;
 

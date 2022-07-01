@@ -28,7 +28,7 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent, Serial
     }
 
     /**
-     * 
+     * Keep the reference to the id
      */
     private String id;
 
