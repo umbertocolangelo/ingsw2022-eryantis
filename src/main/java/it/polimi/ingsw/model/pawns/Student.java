@@ -31,10 +31,9 @@ public class Student implements PlaceableObject, Serializable {
     private Color color;
 
     /**
-     * 
+     * student id
      */
-    private  String id;
-
+    private String id;
 
     /**
      * @return the color of the student
@@ -51,20 +50,24 @@ public class Student implements PlaceableObject, Serializable {
     }
 
     /**
+     * sets student position
      * @param position
-     * @return
      */
     public void setPosition(FixedObject position) {
         this.position = position;
     }
 
     /**
-     * @return id
+     * @return student id
      */
     public String getId() { return id; }
 
-
+    /**
+     * sets student id
+     * @param id
+     */
     public void setId(String id) {
         this.id = id;
     }
+
 }
