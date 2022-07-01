@@ -142,10 +142,12 @@ public class CLI {
     public Thread choosingAssistant() {
 
         Thread t = new Thread(() -> {
+            Boolean again = true;
             Integer index = 0;
-            for(Player player:client.getGame().getPlayerList()){
-                if(!(player.getName().equals(client.getNamePlayer())) && player.getCardPlayed()!=null)
+            for (Player player : client.getGame().getPlayerList()){
+                if (!(player.getName().equals(client.getNamePlayer())) && player.getCardPlayed()!=null) {
                     System.out.println("Player " + client.getNamePlayer() + " played the card " + player.getCardPlayed());
+                }
             }
             System.out.println("\nAll right! Now pick the assistant card to use in this turn.");
 
@@ -154,9 +156,18 @@ public class CLI {
                 index++;
             }
             input = scanner.nextLine();
-            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>client.getGame().getCurrentPlayer().getAssistantCard().size()-1) {
-                System.out.println("You entered a wrong or too high value, please try again.");
-                input = scanner.nextLine();
+            while (again) {
+                while (input == "" || !input.matches("[0-9]+") || Integer.parseInt(input) > client.getGame().getCurrentPlayer().getAssistantCard().size() - 1) {
+                    System.out.println("You entered a wrong or too high value, please try again.");
+                    input = scanner.nextLine();
+                }
+                if (Integer.parseInt(input)>client.getGame().getCurrentPlayer().getAssistantCard().size()-1){
+                    System.out.println("Ops! You entered a wrong or too high value, choose again!\nOn which island do you want to move the student to?");
+                    input = scanner.nextLine();
+                }
+                else {
+                    again = false;
+                }
             }
             MessageMethod messageMethod = new ChoosingAssistant();
             ((ChoosingAssistant) messageMethod).setAssistantCard(client.getGame().getCurrentPlayer().getAssistantCard().get(Integer.parseInt(input)).getId());
@@ -174,7 +185,7 @@ public class CLI {
     public Thread movingStudentsFromIngress() {
 
         Thread t = new Thread(( ) -> {
-            Boolean again=true;
+            Boolean again = true;
             String input1;
             String input2;
             showIsland();
@@ -187,11 +198,13 @@ public class CLI {
                     System.out.println("Ops! You entered a wrong or too high value, choose again!\nOn which island do you want to move the student to?");
                     input = scanner.nextLine();
                 }
-                if( Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1){
+                if(Integer.parseInt(input)>client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().size()-1){
                     System.out.println("Ops! You entered a wrong or too high value, choose again!\nOn which island do you want to move the student to?");
                     input = scanner.nextLine();
                 }
-                else again=false;
+                else {
+                    again = false;
+                }
             }
             System.out.println("Where do you want to move this student? 0 Hall 1 Island");
             input1 = scanner.nextLine();
@@ -218,7 +231,9 @@ public class CLI {
                         System.out.println("Ops! You entered a wrong or too high value, choose again!\nOn which island do you want to move the student to?");
                         input1 = scanner.nextLine();
                     }
-                    else again=false;
+                    else {
+                        again = false;
+                    }
                 }
                 MessageMethod islandMessageMethod = new MovingStudentFromIngressToIsland();
                 ((MovingStudentFromIngressToIsland) islandMessageMethod).setStudent(client.getGame().getCurrentPlayer().getSchool().getIngress().getStudents().get(Integer.parseInt(input)).getId());
