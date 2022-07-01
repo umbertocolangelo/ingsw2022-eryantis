@@ -15,10 +15,13 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of CardManager class
+ */
 public class CardManagerTest {
 
     /**
-     * Test the getMotherNature method
+     * Test of getMotherNature method
      */
     @Test
     public void getInfluenceManager() {
@@ -30,11 +33,11 @@ public class CardManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        assertTrue(cardManager.getInfluenceManager() == influenceManager);
+        assertTrue(cardManager.getInfluenceManager() == influenceManager); // check that influence manager is returned
     }
 
     /**
-     * Test setCurrentCard method
+     * Test of setCurrentCard method
      */
     @Test
     public void setCurrentCardTest() {
@@ -48,12 +51,12 @@ public class CardManagerTest {
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
         ExpertCard expertCard = cardManager.getDeck().get(0);
         cardManager.setCurrentCard(expertCard);
-        assertTrue(cardManager.getCurrentCard() == expertCard);
+        assertTrue(cardManager.getCurrentCard() == expertCard); // check that the card is assigned
 
     }
 
     /**
-     * Test getProfessorManager
+     * Test of getProfessorManager method
      */
     @Test
     public void getProfessorManager() {
@@ -65,7 +68,7 @@ public class CardManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        assertTrue(cardManager.getProfessorManager()==professorManager);
+        assertTrue(cardManager.getProfessorManager()==professorManager); // check that ProfessorManager is returned
     }
 
     /**
@@ -83,14 +86,13 @@ public class CardManagerTest {
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
         ExpertCard expertCard = cardManager.getDeck().get(0);
         cardManager.setCurrentCard(expertCard);
-        assertTrue(cardManager.getCurrentCard() == expertCard);
+        assertTrue(cardManager.getCurrentCard() == expertCard); // check that the current car is returned
 
     }
 
     /**
-     * Test the gePlayerList method
+     * Test of getPlayerList method
      */
-
     @Test
     public void getPlayerListTest() {
         LinkedList<Player> players = new LinkedList<>();
@@ -101,7 +103,7 @@ public class CardManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        assertTrue(cardManager.getPlayerList().get(0).getName() == "vittorio");
+        assertTrue(cardManager.getPlayerList().get(0).getName() == "vittorio"); // check that the player list is returned
     }
 
     /**
@@ -117,17 +119,15 @@ public class CardManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-        assertTrue(cardManager.getBag() == bag);
+        assertTrue(cardManager.getBag() == bag); // check that the bag is returned
     }
 
 
     /**
      * Test getThreeExpertCards method
      */
-
     @Test
     public void getThreeExpertCardTest() {
-
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
         players.get(0).setPlayerColor(PlayerColor.WHITE);
@@ -137,8 +137,10 @@ public class CardManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
-
-        assertTrue(cardManager.getDeck().size()==3);
+        assertTrue(cardManager.getDeck().size()==3); // check that three cards are returned
+        assertTrue(cardManager.getDeck().get(0).getId()!=cardManager.getDeck().get(1).getId()); // check that the cards are different from each other
+        assertTrue(cardManager.getDeck().get(1).getId()!=cardManager.getDeck().get(2).getId());
+        assertTrue(cardManager.getDeck().get(0).getId()!=cardManager.getDeck().get(2).getId());
 
     }
 }

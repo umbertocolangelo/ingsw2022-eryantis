@@ -17,10 +17,13 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of StudentToHall class
+ */
 public class StudentToHallCardTest {
 
     /**
-     * Test apply
+     * Test of apply method
      */
     @Test
     public void applyTest() {
@@ -34,6 +37,6 @@ public class StudentToHallCardTest {
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
         StudentToHallCard studentToHallCard = new StudentToHallCard(cardManager);
         studentToHallCard.apply();
-        assertTrue(studentToHallCard.getCost()==3);
+        assertTrue(studentToHallCard.getCost()==3); // check that cost is incremented
     }
 }

@@ -19,12 +19,14 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of InfluenceManager class
+ */
 public class InfluenceManagerTest {
 
     /**
-     * resets the position of the professors
+     * resets the position of the professors before each test
      */
-
     @BeforeEach
     public void resetProfessorPosition() {
         for (Color color : Color.values()) {

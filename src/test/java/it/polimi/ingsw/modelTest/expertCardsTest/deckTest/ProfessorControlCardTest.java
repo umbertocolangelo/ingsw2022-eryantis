@@ -1,6 +1,7 @@
 package it.polimi.ingsw.modelTest.expertCardsTest.deckTest;
 
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
+import it.polimi.ingsw.model.calculations.professor.EqualStrategy;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.deck.ProfessorControlCard;
@@ -15,15 +16,18 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of ProfessorControlCard class
+ */
 public class ProfessorControlCardTest {
 
     /**
-     * Test apply
+     * Test of apply method
      */
     @Test
     public void applyTest() {
         LinkedList<Player> players = new LinkedList<>();
-        players.add(new Player("vittorio"));
+        players.add(new Player("a"));
         Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
@@ -32,9 +36,8 @@ public class ProfessorControlCardTest {
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
         ProfessorControlCard professorControlCard = new ProfessorControlCard(cardManager);
         cardManager.getProfessorManager().setStandardCheck();
-        System.out.println(cardManager.getProfessorManager().getStrategy());
         professorControlCard.apply();
-        System.out.println(cardManager.getProfessorManager().getStrategy());
-        assertTrue(professorControlCard.getCost()==3);
+        assertTrue(professorManager.getStrategy() instanceof EqualStrategy); // check that equal strategy is applied
+        assertTrue(professorControlCard.getCost()==3); // check that cost incremented
     }
 }

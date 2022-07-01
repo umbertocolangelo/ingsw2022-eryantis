@@ -2,6 +2,7 @@ package it.polimi.ingsw.modelTest.expertCardsTest.deckTest;
 
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
+import it.polimi.ingsw.model.enumerations.AssistantCard;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.deck.IslandInfluenceCard;
 import it.polimi.ingsw.model.expertCards.deck.TwoJumpCard;
@@ -25,14 +26,12 @@ public class TwoJumpCardTest {
     public void applyTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-        Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
         ProfessorManager professorManager = new ProfessorManager(players);
-        CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
         TwoJumpCard twoJumpCard = new TwoJumpCard();
         twoJumpCard.apply();
-        assertTrue(twoJumpCard.getCost()==2);
+        assertTrue(twoJumpCard.getCost()==2); // check that cost is incremented
     }
 }

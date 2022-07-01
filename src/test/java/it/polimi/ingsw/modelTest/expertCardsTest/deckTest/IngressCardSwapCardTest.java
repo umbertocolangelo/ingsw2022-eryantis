@@ -14,10 +14,13 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of IngressCardSwapCard class
+ */
 public class IngressCardSwapCardTest {
 
     /**
-     * Test apply
+     * Test of apply method
      */
     @Test
     public void applyTest() {

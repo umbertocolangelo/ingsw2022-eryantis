@@ -14,12 +14,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 import java.util.Collection;
 
+/**
+ * Test of ProfessorManager class
+ */
 public class ProfessorMangerTest {
 
     /**
      * resets the position of the professors
-      */
-
+     */
     @BeforeEach
     public void resetProfessorPosition(){
         for(Color color : Color.values()){

@@ -1,6 +1,7 @@
 package it.polimi.ingsw.modelTest.expertCardsTest.deckTest;
 
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
+import it.polimi.ingsw.model.calculations.influence.TwoPointsInfluence;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.deck.IslandInfluenceCard;
@@ -16,10 +17,13 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of TwoInfluenceCard class
+ */
 public class TwoInfluenceCardTest {
 
     /**
-     * Test apply
+     * Test of apply method
      */
     @Test
     public void applyTest() {
@@ -33,9 +37,8 @@ public class TwoInfluenceCardTest {
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
         TwoInfluenceCard twoInfluenceCard = new TwoInfluenceCard(cardManager);
         cardManager.getInfluenceManager().setStandardInfluence();
-        System.out.println(cardManager.getInfluenceManager().getInfluence());
         twoInfluenceCard.apply(players.get(0));
-        System.out.println(cardManager.getInfluenceManager().getInfluence());
-        assertTrue(twoInfluenceCard.getCost()==3);
+        assertTrue(cardManager.getInfluenceManager().getInfluence() instanceof TwoPointsInfluence); // check that two points influence is applied
+        assertTrue(twoInfluenceCard.getCost()==3); // check that cost is incremented
     }
 }

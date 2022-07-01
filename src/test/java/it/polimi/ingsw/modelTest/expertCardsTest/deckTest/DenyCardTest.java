@@ -16,10 +16,13 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of DenyCard classs
+ */
 public class DenyCardTest {
 
     /**
-     * Test apply
+     * Test of apply method
      */
     @Test
     public void applyTest() {
@@ -34,13 +37,13 @@ public class DenyCardTest {
         DenyCard denyCard = new DenyCard(cardManager);
         Island island = new Island();
         denyCard.apply(island);
-        assertTrue(denyCard.getCost()==3);
-        assertTrue(island.getDeny()==1);
-        assertTrue(denyCard.getDenyTokens()==3);
+        assertTrue(denyCard.getCost()==3); // check that cost is incremented
+        assertTrue(island.getDeny()==1); // check that deny token is applied
+        assertTrue(denyCard.getDenyTokens()==3); // check that deny token is removed from the card
 
         denyCard.apply(island);
-        assertTrue(denyCard.getCost()==4);
-        assertTrue(island.getDeny()==2);
-        assertTrue(denyCard.getDenyTokens()==2);
+        assertTrue(denyCard.getCost()==4); // check that cost is incremented
+        assertTrue(island.getDeny()==2); // check that deny token is applied
+        assertTrue(denyCard.getDenyTokens()==2); // check that deny token is removed from the card
     }
 }

@@ -4,8 +4,14 @@ import it.polimi.ingsw.model.enumerations.Color;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Color class
+ */
 public class ColorTest {
 
+    /**
+     * test of getColor method
+     */
     @Test
     public void getColorTest(){
         assertTrue(Color.getColor(0)==Color.YELLOW);

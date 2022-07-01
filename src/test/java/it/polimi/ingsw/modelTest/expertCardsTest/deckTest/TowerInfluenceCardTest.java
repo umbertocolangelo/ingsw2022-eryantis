@@ -1,6 +1,7 @@
 package it.polimi.ingsw.modelTest.expertCardsTest.deckTest;
 
 import it.polimi.ingsw.model.calculations.influence.InfluenceManager;
+import it.polimi.ingsw.model.calculations.influence.TowerInfluence;
 import it.polimi.ingsw.model.calculations.professor.ProfessorManager;
 import it.polimi.ingsw.model.expertCards.CardManager;
 import it.polimi.ingsw.model.expertCards.deck.IslandInfluenceCard;
@@ -16,6 +17,9 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of towerInfluenceCard class
+ */
 public class TowerInfluenceCardTest {
 
     /**
@@ -33,9 +37,8 @@ public class TowerInfluenceCardTest {
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
         TowerInfluenceCard towerInfluenceCard = new TowerInfluenceCard(cardManager);
         cardManager.getInfluenceManager().setStandardInfluence();
-        System.out.println(cardManager.getInfluenceManager().getInfluence());
         towerInfluenceCard.apply();
-        System.out.println(cardManager.getInfluenceManager().getInfluence());
-        assertTrue(towerInfluenceCard.getCost()==4);
+        assertTrue(cardManager.getInfluenceManager().getInfluence() instanceof TowerInfluence); // check that tower influence is applied
+        assertTrue(towerInfluenceCard.getCost()==4); // check that cost is incremented
     }
 }

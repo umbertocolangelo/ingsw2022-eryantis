@@ -17,19 +17,24 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of HallBagSwapCard class
+ */
 public class HallBagSwapCardTest {
 
     /**
-     * Test apply
+     * Test of apply method
      */
     @Test
     public void applyTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
-
         Bag bag = new Bag(false);
         MotherNature motherNature = new MotherNature();
         players.get(0).setPlayerColor(PlayerColor.WHITE);
+        players.get(0).getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED)); // 4 students in ingress
+        players.get(0).getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
+        players.get(0).getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         players.get(0).getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
         InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
         IslandManager islandManager = new IslandManager(motherNature);
@@ -37,7 +42,8 @@ public class HallBagSwapCardTest {
         CardManager cardManager = new CardManager(influenceManager, islandManager, professorManager, players, bag);
         HallBagSwapCard hallBagSwapCard = new HallBagSwapCard(cardManager);
         hallBagSwapCard.apply(Color.RED);
-        assertTrue(hallBagSwapCard.getCost() == 4);
+        assertTrue(hallBagSwapCard.getCost() == 4); // check that cost is incremented
+        assertTrue(players.get(0).getSchool().getHall().getLine(Color.RED).getStudents().size()==1); // check that students are removed
     }
 
 }
