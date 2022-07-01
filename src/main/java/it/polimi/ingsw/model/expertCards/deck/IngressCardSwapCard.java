@@ -81,7 +81,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
      * @param student
      */
     public void addStudent(Student student) {
-        if (!this.students.contains(student)) {
+        if (!this.students.contains(student) && students.size()<7) {
             if (student.getPosition()!=null) {        // If the student was on a FixedObject, this object is updated
                 FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
                 position.removeStudent(student);
