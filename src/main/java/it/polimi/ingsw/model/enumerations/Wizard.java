@@ -3,7 +3,7 @@ package it.polimi.ingsw.model.enumerations;
 import java.io.Serializable;
 
 /**
- * 
+ * This enum contains all the possible wizards
  */
 public enum Wizard implements Serializable {
     GREEN_WIZARD("GREEN", "12"),
@@ -12,16 +12,18 @@ public enum Wizard implements Serializable {
     PURPLE_WIZARD("PURPLE", "15");
 
     /**
-     *
+     * Wizard id
      */
     private final String id;
 
     /**
-     *
+     * Reference to text
      */
     private final String text;
 
     /**
+     * Default constructor
+     * @param text
      * @param id
      */
     Wizard(String text, String id) {
@@ -30,12 +32,12 @@ public enum Wizard implements Serializable {
     }
 
     /**
-     *
+     * @return wizard id
      */
     public String getId() { return this.id; }
 
     /**
-     *
+     * @return wizard color
      */
     public String getColor() { return this.text; }
 
