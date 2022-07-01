@@ -28,10 +28,10 @@ import java.util.ResourceBundle;
 public class GuiChooseExpertCardController implements Initializable {
 
     /**
-     *
+     * Reference to the anchor pane to resize
      */
     @FXML
-    AnchorPane scenePane;
+    private AnchorPane scenePane;
 
     /**
      * Keep the reference to the last image light up
@@ -54,7 +54,7 @@ public class GuiChooseExpertCardController implements Initializable {
     private Stage stage;
 
     /**
-     *
+     * Reference to the scene
      */
     private Scene scene;
 
@@ -84,89 +84,92 @@ public class GuiChooseExpertCardController implements Initializable {
     private String pinkStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
 
     /**
-     *
+     * Path to card 1 image file
      */
     private String cardOnePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front1.jpg";
 
     /**
-     *
+     * Path to card 2 image file
      */
     private String cardTwoPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front12.jpg";
 
     /**
-     *
+     * Path to card 3 image file
      */
     private String cardThreePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front2.jpg";
 
     /**
-     *
+     * Path to card 4 image file
      */
     private String cardFourPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front3.jpg";
 
     /**
-     *
+     * Path to card 5 image file
      */
     private String cardFivePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front4.jpg";
 
     /**
-     *
+     * Path to card 6 image file
      */
     private String cardSixPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front5.jpg";
 
     /**
-     *
+     * Path to card 7 image file
      */
     private String cardSevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front6.jpg";
 
     /**
-     *
+     * Path to card 8 image file
      */
     private String cardEightPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front7.jpg";
 
     /**
-     *
+     * Path to card 9 image file
      */
     private String cardNinePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front8.jpg";
 
     /**
-     *
+     * Path to card 10 image file
      */
     private String cardTenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front9.jpg";
 
     /**
-     *
+     * Path to card 11 image file
      */
     private String cardElevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front10.jpg";
 
     /**
-     *
+     * Path to card 12 image file
      */
     private String cardTwelvePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front11.jpg";
 
+    /**
+     * Reference to the three expert card showed
+     */
     @FXML
     private ImageView expertCard1;
-
     @FXML
     private ImageView expertCard2;
-
     @FXML
     private ImageView expertCard3;
 
+    /**
+     * Reference to the texts
+     */
     @FXML
     private Text coins;
-
     @FXML
     private Text communication;
-
     @FXML
     private Text costCard1;
-
     @FXML
     private Text costCard2;
-
     @FXML
     private Text costCard3;
 
+    /**
+     * Reference to the students on the cards
+     */
     @FXML
     private ImageView card1student1;
     @FXML
@@ -302,7 +305,7 @@ public class GuiChooseExpertCardController implements Initializable {
     }
 
     /**
-     * Click on the first (of the three) expert card randomly choose for the game
+     * Click on the first expert card randomly choose for the game
      * @param mouseEvent
      */
     public void clickOnExpert1(MouseEvent mouseEvent) throws IOException {
@@ -315,7 +318,7 @@ public class GuiChooseExpertCardController implements Initializable {
     }
 
     /**
-     * Click on the second (of the three) expert card randomly choose for the game
+     * Click on the second expert card randomly choose for the game
      * @param mouseEvent
      */
     public void clickOnExpert2(MouseEvent mouseEvent) {
@@ -328,7 +331,7 @@ public class GuiChooseExpertCardController implements Initializable {
     }
 
     /**
-     * Click on the third (of the three) expert card randomly choose for the game
+     * Click on the third expert card randomly choose for the game
      * @param mouseEvent
      * @throws IOException
      */
@@ -390,6 +393,11 @@ public class GuiChooseExpertCardController implements Initializable {
         }
     }
 
+    /**
+     * Shows students on the cards
+     * @param position
+     * @param students
+     */
     private void showStudents(int position, LinkedList<Student> students){
         LinkedList<ImageView> images = new LinkedList<>();
         switch (position){
@@ -423,8 +431,8 @@ public class GuiChooseExpertCardController implements Initializable {
         }
     }
 
-
     /**
+     * Sets students images
      * @param student whose image is returned
      * @return a new Image object of student
      */
@@ -450,6 +458,7 @@ public class GuiChooseExpertCardController implements Initializable {
     }
 
     /**
+     * Initialize the scene
      * @param url
      * @param resourceBundle
      */

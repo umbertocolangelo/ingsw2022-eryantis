@@ -55,6 +55,7 @@ public class GuiPlayerPlusController {
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
 

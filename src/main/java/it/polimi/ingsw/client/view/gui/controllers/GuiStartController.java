@@ -18,9 +18,6 @@ public class GuiStartController {
     @FXML
     private AnchorPane scenePane;
 
-    @FXML
-    private Text connection;
-
     /**
      * Reference to the stage
      */
@@ -30,7 +27,6 @@ public class GuiStartController {
      * Reference to the scene
      */
     private Scene scene;
-
 
     /**
      * Click on start button
@@ -52,17 +48,17 @@ public class GuiStartController {
         }
     }
 
-
     /**
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {

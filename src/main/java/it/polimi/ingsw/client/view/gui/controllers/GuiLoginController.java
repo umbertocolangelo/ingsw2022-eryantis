@@ -19,31 +19,20 @@ import java.util.ResourceBundle;
 
 public class GuiLoginController implements Initializable {
 
-    /**
-     *
-     */
     @FXML
-    AnchorPane scenePane;
+    private AnchorPane scenePane;
+    @FXML
+    private TextField insertName;
+    @FXML
+    private Label equalName;
 
     /**
-     *
-     */
-    @FXML
-    TextField insertName;
-
-    /**
-     *
-     */
-    @FXML
-    Label equalName;
-
-    /**
-     *
+     * Reference to the stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to the scene
      */
     private Scene scene;
 
@@ -64,7 +53,6 @@ public class GuiLoginController implements Initializable {
         if (keyEvent.getCode().equals(KeyCode.ENTER)) {
             checkName();
         }
-
     }
 
     /**
@@ -97,12 +85,11 @@ public class GuiLoginController implements Initializable {
             stage.setX(x);
             stage.setY(y);
             GUIController.getInstance().write(insertName.getText());
-
         }
     }
 
     /**
-     *
+     * Change scene by guiController
      * @throws IOException
      */
     public void changeScene() throws IOException {
@@ -128,7 +115,7 @@ public class GuiLoginController implements Initializable {
     }
 
     /**
-     *
+     * go to isFirst scene
      * @throws IOException
      */
     public void changeSceneIsFirst() throws IOException {
@@ -170,12 +157,13 @@ public class GuiLoginController implements Initializable {
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {

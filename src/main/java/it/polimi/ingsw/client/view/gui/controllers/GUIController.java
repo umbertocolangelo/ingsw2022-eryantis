@@ -252,17 +252,6 @@ public class GUIController {
                             }
                         });
                         break;
-                    case PLAYERSOLO:
-                        System.out.println("isSolo");
-                        GuiPlayerSoloController soloController = new GuiPlayerSoloController();
-                        Platform.runLater(() -> {
-                            try {
-                                soloController.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
-                        break;
                     case LOAD:
                         GuiLoadGameController loadGameController = new GuiLoadGameController();
                         Platform.runLater(() -> {
@@ -279,17 +268,6 @@ public class GUIController {
                         Platform.runLater(() -> {
                             try {
                                 winnerController.show();
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        });
-                        break;
-                    case WINNERSOLO:
-                        System.out.println("WinnerSolo");
-                        GuiWinnerSoloController winnerSoloController = new GuiWinnerSoloController();
-                        Platform.runLater(() -> {
-                            try {
-                                winnerSoloController.show();
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }

@@ -30,12 +30,14 @@ import java.util.ResourceBundle;
 public class GuiChooseWizardAndColorController implements Initializable {
 
     /**
-     *
+     * Reference to the scene
      */
-    private LinkedList<Wizard> wizards = new LinkedList<>();
-
     @FXML
     private AnchorPane scenePane;
+
+    /**
+     * Reference to wizard and color choice
+     */
     @FXML
     private ImageView wizard1;
     @FXML
@@ -269,12 +271,13 @@ public class GuiChooseWizardAndColorController implements Initializable {
      * Window resize
      */
     public void resize(Stage stage) {
+
         double height = stage.getScene().getHeight();
         double width = stage.getScene().getWidth();
+
         //stage min sizes
         stage.setMinHeight(450);
         stage.setMinWidth(800);
-
 
         //horizontal listener
         stage.getScene().widthProperty().addListener((obs, oldVal, newVal) -> {

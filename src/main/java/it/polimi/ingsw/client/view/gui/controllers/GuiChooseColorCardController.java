@@ -17,7 +17,7 @@ import java.util.ResourceBundle;
 public class GuiChooseColorCardController implements Initializable {
 
     /**
-     *
+     * Reference to the anchor pane to resize
      */
     @FXML
     private AnchorPane scenePane;
@@ -28,7 +28,7 @@ public class GuiChooseColorCardController implements Initializable {
     private ImageView lastLight = null;
 
     /**
-     *
+     * Reference to color to send at the model
      */
     private String color;
 
@@ -53,7 +53,7 @@ public class GuiChooseColorCardController implements Initializable {
     private String pinkPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
 
     /**
-     *
+     * Initialize the scene
      * @param url
      * @param resourceBundle
      */
@@ -67,7 +67,7 @@ public class GuiChooseColorCardController implements Initializable {
     }
 
     /**
-     *
+     * Click on select color button
      * @param mouseEvent
      */
     public void clickSelectColor(MouseEvent mouseEvent) {

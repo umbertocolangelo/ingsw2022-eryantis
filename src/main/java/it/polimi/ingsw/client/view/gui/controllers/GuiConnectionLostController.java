@@ -14,15 +14,19 @@ public class GuiConnectionLostController {
     private AnchorPane scenePane;
 
     /**
-     *
+     * Reference to the stage
      */
     private Stage stage;
 
     /**
-     *
+     * Reference to the scene
      */
     private Scene scene;
 
+    /**
+     * shows connection lost scene
+     * @throws IOException
+     */
     public void connectionLost() throws IOException {
         stage = GUIController.getInstance().getStage();
 
