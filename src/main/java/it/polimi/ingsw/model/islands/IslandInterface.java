@@ -19,44 +19,45 @@ public interface IslandInterface {
     public Integer numOfStudents(Color color);
 
     /**
-     *
+     * set deny token
      */
     public void setDeny();
 
     /**
-     *
+     * get deny token
      */
     public Integer getDeny();
 
     /**
-     *
+     * remove deny token
      */
     public void removeDeny();
 
     /**
-     * @return
+     * @return num of towers
      */
     public Integer numOfTowers();
 
     /**
-     *
-     * @param tower is the tower to add
+     * add a tower
+     * @param tower
      */
-
     public void addTower(Tower tower);
 
     /**
-     * @return
+     * dominant player color
+     * @return player color
      */
     public PlayerColor getInfluenceColor();
 
     /**
-     * @return LinkedList<Tower>        Return the LinkedList of Towers
+     * Return the LinkedList of Towers
+     * @return LinkedList<Tower>
      */
     public LinkedList<Tower> getTowers();
 
     /**
-     *
+     * sets isGrouped to true
      */
     public void setIsGrouped();
 
@@ -72,18 +73,17 @@ public interface IslandInterface {
     public Integer getSize();
 
     /**
-     *
-     * @return
+     * @return island interface id
      */
     public String getId();
 
     /**
-     *
+     * @return island interface elements
      */
     public LinkedList<Island> getIslandGroupElements();
 
     /**
-     *
+     * @return island interface students
      */
     public LinkedList<Student> getStudents();
 

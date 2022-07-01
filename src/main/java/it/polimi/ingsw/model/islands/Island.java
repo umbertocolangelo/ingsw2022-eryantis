@@ -24,7 +24,9 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
         this.id = idCounter.toString();
         IdManager.getInstance().addIsland(this);
         idCounter++;
-        if(idCounter==38){idCounter=26;}
+        if (idCounter==38) {
+            idCounter = 26;
+        }
     }
 
     /**
@@ -33,22 +35,22 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     private static Integer idCounter = 26;
 
     /**
-     *
+     * island id
      */
     private String id;
 
     /**
-     *
+     * list of the students on the island
      */
     private LinkedList<Student> students = new LinkedList<Student>();
 
     /**
-     *
+     * list of the towers on the island
      */
     private LinkedList<Tower> towers = new LinkedList<Tower>();
 
     /**
-     *
+     * true if is part of a group
      */
     private Boolean isGrouped = false;
 
@@ -58,17 +60,17 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     private Integer denyTokens = 0;
 
     /**
-     *
+     * island size
      */
     private Integer size = 1;
 
     /**
-     * @param student   Add the student to the LinkedList
+     * Add the student to the LinkedList
+     * @param student
      */
-
     public void addStudent(Student student) {
         if (!this.students.contains(student)) {
-            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+            if (student.getPosition()!=null) {        // If the student was on a FixedObject, this object is updated
                 FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
                 position.removeStudent(student);
             }
@@ -78,7 +80,8 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
-     * @param student       Remove the student from the LinkedList
+     * Remove the student from the LinkedList
+     * @param student
      */
     public void removeStudent(Student student) {
         if (this.students.contains(student)) {
@@ -87,25 +90,27 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
-     * @return LinkedList<Student>      Return the LinkedList<Student>
+     * Reference to the linked list of students
+     * @return LinkedList<Student>
      */
     public LinkedList<Student> getStudents() {
         return new LinkedList<Student>(this.students);
     }
 
     /**
-     * @return Integer      Return the Number of student
+     * @return number of students on the island
      */
     public Integer numOfStudents() {
         return this.students.size();
     }
 
     /**
-     * @param tower     Add Tower to the LinkedList
+     * Add tower to the LinkedList
+     * @param tower
      */
     public void addTower(Tower tower) {
-        if(towers.size()==0) {
-            if (tower.getPosition() != null) {        // If the tower was on a FixedObject, this object is updated
+        if (towers.size()==0) {
+            if (tower.getPosition()!=null) {        // If the tower was on a FixedObject, this object is updated
                 FixedObjectTower position = (FixedObjectTower) tower.getPosition();
                 position.removeTower(tower);
             }
@@ -115,15 +120,14 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
-     *    Remove tower from the LinkedList
+     * Remove tower from the LinkedList
      */
     public void removeTower(Tower tower) {
         this.towers.remove(0);
-
     }
 
     /**
-     * @return LinkedList<Tower>        Return the LinkedList of Towers
+     * @return linked list of towers
      */
     public LinkedList<Tower> getTowers() {
         if (this.towers.isEmpty())
@@ -133,14 +137,14 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
+     * Return the number of student by color
      * @param color
-     * @return Integer      Return the number of student who by color
+     * @return Integer
      */
     public Integer numOfStudents(Color color) {
         int counter = 0;
-        for (Student s: students )
-        {
-            if(s.getColor()==color){
+        for (Student s: students ) {
+            if (s.getColor()==color) {
                 counter++;
             }
         }
@@ -163,19 +167,19 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
      * Removes one deny token from the island
      */
     public void removeDeny() {
-        if(denyTokens>0){
+        if (denyTokens>0) {
             denyTokens--;
         }
     }
 
     /**
-     * @return Integer      Return the number of towers
+     * Return the number of towers
+     * @return Integer
      */
     public Integer numOfTowers() {
-        if(this.towers.isEmpty()) {
+        if (this.towers.isEmpty()) {
             return 0;
-        }
-        else {
+        } else {
             return 1;
         }
     }
@@ -192,7 +196,7 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
-     *
+     * sets isGrouped
      */
     public void setIsGrouped() {
         this.isGrouped = true;
@@ -211,7 +215,8 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     public Integer getSize() { return this.size; }
 
     /**
-     *
+     * island elements
+     * @return LinkedList of islands
      */
     public LinkedList<Island> getIslandGroupElements() {
         LinkedList<Island> list = new LinkedList<>();
@@ -220,14 +225,14 @@ public class Island implements FixedObjectStudent, FixedObjectTower, IslandInter
     }
 
     /**
-     *
+     * @return island id
      */
     public String getId() {
         return this.id;
     }
 
     /**
-     *
+     * sets id
      */
     public void setId(String id) {
         this.id = id;
