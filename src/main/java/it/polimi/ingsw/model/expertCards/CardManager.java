@@ -16,6 +16,11 @@ public class CardManager implements Serializable {
 
     /**
      * Constructor who receive the reference to motherNature, Players list, professorManager, islandManager and the Bag
+     * @param influenceManager InfluenceManager
+     * @param islandManager IslandManager
+     * @param professorManager ProfessorManager
+     * @param playerList LinkedList
+     * @param bag Bag
      */
     public CardManager(InfluenceManager influenceManager, IslandManager islandManager, ProfessorManager professorManager, LinkedList<Player> playerList, Bag bag) {
         this.influenceManager = influenceManager;
@@ -63,6 +68,7 @@ public class CardManager implements Serializable {
 
     /**
      * Set the current card
+     * @param expertCard ExpertCard
      */
     public void setCurrentCard(ExpertCard expertCard) {
         this.currentCard = expertCard;
@@ -150,6 +156,7 @@ public class CardManager implements Serializable {
 
     /**
      * sets expert cards
+     * @param expertCard ExpertCard
      */
     public void setExpertCards(ExpertCard expertCard) {
         this.expertCards.add(expertCard);
@@ -158,8 +165,9 @@ public class CardManager implements Serializable {
 
     /**
      * debugging only
+     * @param id String
      */
-    public void setDeck(String id){
+    public void setDeck(String id) {
        ExpertCard expertCard= IdManager.getInstance().getExpertCard(id);
        expertCards.add(0,expertCard);
        expertCards.removeLast();

@@ -11,7 +11,7 @@ public class ClientLost implements Serializable {
 
     /**
      * Default constructor
-     * @param namePlayerLost
+     * @param namePlayerLost String
      */
     public ClientLost(String namePlayerLost){
         this.namePlayerLost = namePlayerLost;
@@ -26,7 +26,7 @@ public class ClientLost implements Serializable {
 
     /**
      * Sets playerLost name
-     * @param namePlayerLost
+     * @param namePlayerLost String
      */
     public void setNamePlayerLost(String namePlayerLost) {
         this.namePlayerLost = namePlayerLost;

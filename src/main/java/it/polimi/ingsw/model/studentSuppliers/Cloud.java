@@ -48,7 +48,7 @@ public class Cloud implements FixedObjectStudent, Serializable {
 
     /**
      * remove the student from its list
-     * @param student
+     * @param student Student
      */
     public void removeStudent(Student student) {
         this.students.remove(this.students.indexOf(student));

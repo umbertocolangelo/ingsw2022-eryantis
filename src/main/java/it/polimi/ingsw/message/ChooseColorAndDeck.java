@@ -17,8 +17,8 @@ public class ChooseColorAndDeck implements MessageMethod, Serializable {
     private String wizard;
 
     /**
-     * This apply calls the method chooseColorAndDeck on game
-     * @param game
+     * This applies calls the method chooseColorAndDeck on game
+     * @param game Game
      */
     public void apply(Game game) {
         game.chooseColorAndDeck(playerColor, wizard);
@@ -26,7 +26,7 @@ public class ChooseColorAndDeck implements MessageMethod, Serializable {
 
     /**
      * Set the playerColor
-     * @param playerColor
+     * @param playerColor String
      */
     public void setPlayerColor(String playerColor) {
         this.playerColor = playerColor;
@@ -34,7 +34,7 @@ public class ChooseColorAndDeck implements MessageMethod, Serializable {
 
     /**
      * Set the Wizard
-     * @param wizard
+     * @param wizard String
      */
     public void setWizard(String wizard) { this.wizard = wizard; }
 

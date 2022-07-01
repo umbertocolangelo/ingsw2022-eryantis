@@ -116,7 +116,8 @@ public class ActionRound implements RoundInterface, Serializable {
 
     /**
      * returns the possibility of playing an assistant card
-     * @param assistantCard
+     * @param assistantCard AssistantCard
+     * @param player Player
      * @return Boolean
      */
     public Boolean playAssistantCard(AssistantCard assistantCard, Player player) {
@@ -125,7 +126,7 @@ public class ActionRound implements RoundInterface, Serializable {
 
     /**
      * returns the possibility of playing an expert card
-     * @param expertCard
+     * @param expertCard ExpertCard
      * @return Boolean
      */
     public Boolean playExpertCard(ExpertCard expertCard) {

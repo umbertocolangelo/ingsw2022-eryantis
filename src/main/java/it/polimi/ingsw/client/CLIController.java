@@ -217,7 +217,7 @@ public class CLIController implements Runnable {
 
     /**
      * Sets the client
-     * @param client
+     * @param client Client
      */
     public void setClient(Client client) {
         this.client = client;
@@ -284,6 +284,7 @@ public class CLIController implements Runnable {
 
     /**
      * Sets connectionTrue boolean
+     * @param connectionTrue Boolean
      */
     public void setConnectionTrue(Boolean connectionTrue) {
         this.connectionTrue = connectionTrue;
@@ -298,7 +299,7 @@ public class CLIController implements Runnable {
 
     /**
      * Sets cli
-     * @param cli
+     * @param cli CLI
      */
     public void setCli(CLI cli) {
         this.cli = cli;

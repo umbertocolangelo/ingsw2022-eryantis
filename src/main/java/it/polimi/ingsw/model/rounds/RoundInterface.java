@@ -14,6 +14,7 @@ public interface RoundInterface {
 
     /**
      * returns true if the round has terminated
+     * @return boolean
      */
     public Boolean checkRoundEnded();
 

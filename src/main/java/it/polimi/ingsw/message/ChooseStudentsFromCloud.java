@@ -13,7 +13,7 @@ public class ChooseStudentsFromCloud implements MessageMethod, Serializable {
 
     /**
      * Applies the change at the model
-     * @param game
+     * @param game Game
      */
     public void apply(Game game) {
         game.chooseCloud(cloud);
@@ -21,7 +21,7 @@ public class ChooseStudentsFromCloud implements MessageMethod, Serializable {
 
     /**
      * Sets the cloud chosen
-     * @param cloud
+     * @param cloud String
      */
     public void setCloud(String cloud) {
         this.cloud = cloud;

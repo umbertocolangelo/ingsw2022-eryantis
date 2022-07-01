@@ -338,7 +338,7 @@ public class CLI {
 
     /**
      * Get the thread to choose the group of students you want among the available clouds
-     * @return
+     * @return thread
      */
     public Thread playExpertCard() {
 
@@ -429,7 +429,7 @@ public class CLI {
 
     /**
      * Get the thread of ingress card swap
-     * @return
+     * @return thread
      */
     public Thread ingressCardSwap() {
         Thread t = new Thread(() -> {
@@ -473,7 +473,7 @@ public class CLI {
 
     /**
      * Get the thread of ingress hall swap
-     * @return
+     * @return thread
      */
     public Thread ingressHallSwap() {
         Thread t = new Thread(() -> {
@@ -539,7 +539,7 @@ public class CLI {
 
     /**
      * Get the thread of student to hall card
-     * @return
+     * @return thread
      */
     public Thread studentToHall() {
         Thread t = new Thread(() -> {
@@ -563,7 +563,7 @@ public class CLI {
 
     /**
      * Get the thread of student to island card
-     * @return
+     * @return thread
      */
     public Thread studentToIsland() {
         Thread t = new Thread(() -> {

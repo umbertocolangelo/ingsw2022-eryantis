@@ -30,6 +30,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     private LinkedList<Island> islandGroup = new LinkedList<Island>();
 
     /**
+     * Add an island interface element to the island group
      * @param islandInterface indicates the new Island element of this islandGroup
      */
     public void addIslandInterface(IslandInterface islandInterface) {
@@ -40,6 +41,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
+     * Return the number of students in the group
      * @param color of student
      * @return this color number of students on the group
      */
@@ -57,6 +59,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     public void setDeny() { denyTokens++; }
 
     /**
+     * Return the deny token
      * @return the number of denyTokens on the IslandGroup
      */
     public Integer getDeny() { return denyTokens; }
@@ -70,12 +73,13 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
         }
     }
     /**
+     * Returns the number of towers
      * @return towers number of the group
      */
     public Integer numOfTowers() { return this.islandGroup.size(); }
 
     /**
-     * returns the dominant color on the island group
+     * Returns the dominant color on the island group
      * @return PlayerColor
      */
     public PlayerColor getInfluenceColor() {
@@ -83,6 +87,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
+     * Returns the island interface element of the group
      * @return copy of islandGroup linked list
      */
     public LinkedList<Island> getIslandGroupElements() {
@@ -107,17 +112,20 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     public void setIsGrouped() {}
 
     /**
+     * Returns true
      * @return isGrouped
      */
     public Boolean isGrouped() { return true; }
 
     /**
-     * @return group size
+     * Returns group size
+     * @return Integer
      */
     public Integer getSize() { return this.islandGroup.size(); }
 
     /**
-     * @return id of group first island
+     * Returns id of group first island
+     * @return String
      */
     @Override
     public String getId() {
@@ -125,7 +133,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
-     * add a tower on the group
+     * Add a tower on the group
      * @param tower is the tower to add
      */
     public void addTower(Tower tower) {
@@ -138,7 +146,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
-     * remove the tower in the correct island in islandGroup
+     * Remove the tower in the correct island in islandGroup
      * @param tower
      */
     public void removeTower(Tower tower) {
@@ -151,7 +159,7 @@ public class IslandGroup implements IslandInterface, Serializable, FixedObjectTo
     }
 
     /**
-     * students on the island group
+     * Students on the island group
      * @return the students present on the island group
      */
     public LinkedList<Student> getStudents() {

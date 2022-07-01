@@ -84,7 +84,7 @@ public class Line implements FixedObjectStudent, FixedObjectProfessor, Serializa
 
     /**
      * returns students in the line
-     * @return LinkedList<Student>
+     * @return LinkedList
      */
     public LinkedList<Student> getStudents() {
        return new LinkedList<>(this.students);

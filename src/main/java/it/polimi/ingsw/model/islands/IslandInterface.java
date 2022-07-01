@@ -17,21 +17,22 @@ public interface IslandInterface {
     public Integer numOfStudents(Color color);
 
     /**
-     * set deny token
+     * Set deny token
      */
     public void setDeny();
 
     /**
-     * get deny token
+     * Get deny token
      */
     public Integer getDeny();
 
     /**
-     * remove deny token
+     * Remove deny token
      */
     public void removeDeny();
 
     /**
+     * Return the number of towers
      * @return num of towers
      */
     public Integer numOfTowers();
@@ -60,28 +61,32 @@ public interface IslandInterface {
     public void setIsGrouped();
 
     /**
+     * True if island interface element is grouped
      * @return current isGrouped status
      */
     public Boolean isGrouped();
 
     /**
      * used only in tests
-     * @return IslandInterface element size;
+     * @return IslandInterface element size
      */
     public Integer getSize();
 
     /**
-     * @return island interface id
+     * Returns island interface id
+     * @return String
      */
     public String getId();
 
     /**
-     * @return island interface elements
+     * Returns island interface elements
+     * @return LinkedList
      */
     public LinkedList<Island> getIslandGroupElements();
 
     /**
-     * @return island interface students
+     * returns island interface students
+     * @return LinkedList
      */
     public LinkedList<Student> getStudents();
 

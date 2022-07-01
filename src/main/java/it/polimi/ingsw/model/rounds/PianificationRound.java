@@ -222,7 +222,7 @@ public class PianificationRound implements RoundInterface, Serializable {
 
     /**
      * Return the number of the cards selected
-     * @return ArrayList<Player>
+     * @return ArrayList
      */
     public ArrayList<Player> getPlayerListOrdered() {
         return new ArrayList<Player>(this.playerListOrdered);
