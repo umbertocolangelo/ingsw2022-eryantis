@@ -236,7 +236,7 @@ public class GuiChooseWizardAndColorController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         Game game = GUIController.getInstance().getClient().getGame();
-        ((SetUpRound)game.getCurrentRound()).getplayerColor();
+        ((SetUpRound)game.getCurrentRound()).getPlayerColor();
         if (!((SetUpRound)game.getCurrentRound()).getWizards().contains(Wizard.GREEN_WIZARD)) {
             wizard1.setMouseTransparent(true);
             wizard1.setOpacity(0.23);
@@ -253,15 +253,15 @@ public class GuiChooseWizardAndColorController implements Initializable {
             wizard3.setMouseTransparent(true);
             wizard3.setOpacity(0.23);
         }
-        if (!((SetUpRound)game.getCurrentRound()).getplayerColor().contains(PlayerColor.WHITE)){
+        if (!((SetUpRound)game.getCurrentRound()).getPlayerColor().contains(PlayerColor.WHITE)){
             white.setDisable(false);
             white.setVisible(false);
         }
-        if (!((SetUpRound)game.getCurrentRound()).getplayerColor().contains(PlayerColor.BLACK)) {
+        if (!((SetUpRound)game.getCurrentRound()).getPlayerColor().contains(PlayerColor.BLACK)) {
             black.setVisible(false);
             black.setDisable(false);
         }
-        if (!((SetUpRound)game.getCurrentRound()).getplayerColor().contains(PlayerColor.GREY)) {
+        if (!((SetUpRound)game.getCurrentRound()).getPlayerColor().contains(PlayerColor.GREY)) {
             grey.setVisible(false);
             grey.setDisable(false);
         }

@@ -75,17 +75,17 @@ public class CLI {
             ((ChooseColorAndDeck) messageMethod).setWizard(((SetUpRound) client.getGame().getCurrentRound()).getWizards().get(Integer.parseInt(input)).getId());
             System.out.println("Pick the color\n");
             index=0;
-            for(PlayerColor color : ((SetUpRound) client.getGame().getCurrentRound()).getplayerColor()) {
+            for(PlayerColor color : ((SetUpRound) client.getGame().getCurrentRound()).getPlayerColor()) {
                 System.out.println(color + "  PlayerColor " + index);
                 index++;
             }
             input = scanner.nextLine();
-            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().size()-1) {
+            while (input=="" || !input.matches("[0-9]+") || Integer.parseInt(input)>((SetUpRound) client.getGame().getCurrentRound()).getPlayerColor().size()-1) {
                     System.out.println("You entered a wrong or too high value, please try again.");
                     input = scanner.nextLine();
             }
-            System.out.println("Color selected " + ((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)) + "\n");
-            ((ChooseColorAndDeck) messageMethod).setPlayerColor(((SetUpRound) client.getGame().getCurrentRound()).getplayerColor().get(Integer.parseInt(input)).getId());
+            System.out.println("Color selected " + ((SetUpRound) client.getGame().getCurrentRound()).getPlayerColor().get(Integer.parseInt(input)) + "\n");
+            ((ChooseColorAndDeck) messageMethod).setPlayerColor(((SetUpRound) client.getGame().getCurrentRound()).getPlayerColor().get(Integer.parseInt(input)).getId());
             CLIController.write(messageMethod);
         });
         t.start();
