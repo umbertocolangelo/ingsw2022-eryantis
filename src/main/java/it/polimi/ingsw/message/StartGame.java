@@ -30,9 +30,10 @@ public class StartGame implements Serializable, MessageMethod {
             game.setNormalMode();
         }
         for (int i =0; i<game.getPlayerList().size(); i++) {
-            game.getPlayerList().get(i).setCoin(1);
+            game.getPlayerList().get(i).setCoin(15);
         }
         game.initializeGame();
+        game.getCardManager().setDeck("42");
     }
 
     /**
