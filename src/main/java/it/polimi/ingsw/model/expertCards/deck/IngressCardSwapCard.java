@@ -22,7 +22,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
         this.manager=cardManager;
         IdManager.getInstance().addExpertCard(this);
         students = new LinkedList<Student>();
-        for (int i=0; i<7; i++) {
+        for (int i=0; i<6; i++) {
             addStudent(manager.getBag().newStudent());
         }
     }

@@ -73,7 +73,7 @@
                   <Font name="Book Antiqua Bold" size="24.0" />
                </font>
             </Text>
-            <ImageView fx:id="card1student15" fitHeight="45.0" fitWidth="45.0" layoutX="223.0" layoutY="204.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="card1student5" fitHeight="45.0" fitWidth="45.0" layoutX="223.0" layoutY="204.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></ImageView>
