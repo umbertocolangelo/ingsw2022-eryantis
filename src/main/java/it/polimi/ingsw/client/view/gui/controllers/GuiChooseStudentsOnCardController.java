@@ -32,18 +32,18 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     /**
      * References to paths of student images
      */
-    private String yellowPath = "file:src/main/resources/Graphical_Assets/pawns/student_yellow.png";
-    private String redPath = "file:src/main/resources/Graphical_Assets/pawns/student_red.png";
-    private String bluePath = "file:src/main/resources/Graphical_Assets/pawns/student_blue.png";
-    private String greenPath = "file:src/main/resources/Graphical_Assets/pawns/student_green.png";
-    private String pinkPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
+    private String yellowPath = "/Graphical_Assets/pawns/student_yellow.png";
+    private String redPath = "/Graphical_Assets/pawns/student_red.png";
+    private String bluePath = "/Graphical_Assets/pawns/student_blue.png";
+    private String greenPath = "/Graphical_Assets/pawns/student_green.png";
+    private String pinkPath = "/Graphical_Assets/pawns/student_pink.png";
 
     /**
      * References to paths of StudentOnCard expert cards
      */
-    private String cardOnePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front1.jpg"; //StudentOnIsland
-    private String cardElevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front10.jpg"; //Student to hall
-    private String cardSevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front6.jpg"; //Ingress cardSwap
+    private String cardOnePath = "/Graphical_Assets/Personaggi/CarteTOT_front1.jpg"; //StudentOnIsland
+    private String cardElevenPath = "/Graphical_Assets/Personaggi/CarteTOT_front10.jpg"; //Student to hall
+    private String cardSevenPath = "/Graphical_Assets/Personaggi/CarteTOT_front6.jpg"; //Ingress cardSwap
 
     /**
      * Keep the reference to game
@@ -118,19 +118,19 @@ public class GuiChooseStudentsOnCardController implements Initializable {
     public Image getColorStudent(Student student) {
         switch (student.getColor()) {
             case RED -> {
-                return new Image(redPath);
+                return new Image(getClass().getResourceAsStream(redPath));
             }
             case GREEN -> {
-                return new Image(greenPath);
+                return new Image(getClass().getResourceAsStream(greenPath));
             }
             case BLUE -> {
-                return new Image(bluePath);
+                return new Image(getClass().getResourceAsStream(bluePath));
             }
             case PINK -> {
-                return new Image(pinkPath);
+                return new Image(getClass().getResourceAsStream(pinkPath));
             }
             case YELLOW -> {
-                return  new Image(yellowPath);
+                return  new Image(getClass().getResourceAsStream(yellowPath));
             }
         }
         return null;
@@ -154,14 +154,14 @@ public class GuiChooseStudentsOnCardController implements Initializable {
         }
         switch (game.getCardManager().getCurrentCard().getId()) {
             case "48":
-                expertCardId.setImage(new Image(cardElevenPath));
+                expertCardId.setImage(new Image(getClass().getResourceAsStream(cardElevenPath)));
                 studentCard1.setImage(getColorStudent(((StudentToHallCard)expertCard).getStudents().get(0)));
                 studentCard2.setImage(getColorStudent(((StudentToHallCard)expertCard).getStudents().get(1)));
                 studentCard3.setImage(getColorStudent(((StudentToHallCard)expertCard).getStudents().get(2)));
                 studentCard4.setImage(getColorStudent(((StudentToHallCard)expertCard).getStudents().get(3)));
                 break;
             case"38":
-                expertCardId.setImage(new Image(cardOnePath));
+                expertCardId.setImage(new Image(getClass().getResourceAsStream(cardOnePath)));
                 studentCard1.setImage(getColorStudent(((StudentToIslandCard)expertCard).getStudents().get(0)));
                 studentCard2.setImage(getColorStudent(((StudentToIslandCard)expertCard).getStudents().get(1)));
                 studentCard3.setImage(getColorStudent(((StudentToIslandCard)expertCard).getStudents().get(2)));
@@ -169,7 +169,7 @@ public class GuiChooseStudentsOnCardController implements Initializable {
                 break;
             case "44":
                 //It is necessary because this card lasts more than one turn
-                expertCardId.setImage(new Image(cardSevenPath));
+                expertCardId.setImage(new Image(getClass().getResourceAsStream(cardSevenPath)));
                 studentCard1.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(0)));
                 studentCard2.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(1)));
                 studentCard3.setImage(getColorStudent(((IngressCardSwapCard)expertCard).getStudents().get(2)));

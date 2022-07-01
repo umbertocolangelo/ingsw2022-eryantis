@@ -61,87 +61,87 @@ public class GuiChooseExpertCardController implements Initializable {
     /**
      * Path to yellow student image file
      */
-    private String yellowStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_yellow.png";
+    private String yellowStudentPath = "/Graphical_Assets/pawns/student_yellow.png";
 
     /**
      * Path to red student image file
      */
-    private String redStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_red.png";
+    private String redStudentPath = "/Graphical_Assets/pawns/student_red.png";
 
     /**
      * Path to blue student image file
      */
-    private String blueStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_blue.png";
+    private String blueStudentPath = "/Graphical_Assets/pawns/student_blue.png";
 
     /**
      * Path to green student image file
      */
-    private String greenStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_green.png";
+    private String greenStudentPath = "/Graphical_Assets/pawns/student_green.png";
 
     /**
      * Path to pink student image file
      */
-    private String pinkStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
+    private String pinkStudentPath = "/Graphical_Assets/pawns/student_pink.png";
 
     /**
      * Path to card 1 image file
      */
-    private String cardOnePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front1.jpg";
+    private String cardOnePath = "/Graphical_Assets/Personaggi/CarteTOT_front1.jpg";
 
     /**
      * Path to card 2 image file
      */
-    private String cardTwoPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front12.jpg";
+    private String cardTwoPath = "/Graphical_Assets/Personaggi/CarteTOT_front12.jpg";
 
     /**
      * Path to card 3 image file
      */
-    private String cardThreePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front2.jpg";
+    private String cardThreePath = "/Graphical_Assets/Personaggi/CarteTOT_front2.jpg";
 
     /**
      * Path to card 4 image file
      */
-    private String cardFourPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front3.jpg";
+    private String cardFourPath = "/Graphical_Assets/Personaggi/CarteTOT_front3.jpg";
 
     /**
      * Path to card 5 image file
      */
-    private String cardFivePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front4.jpg";
+    private String cardFivePath = "/Graphical_Assets/Personaggi/CarteTOT_front4.jpg";
 
     /**
      * Path to card 6 image file
      */
-    private String cardSixPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front5.jpg";
+    private String cardSixPath = "/Graphical_Assets/Personaggi/CarteTOT_front5.jpg";
 
     /**
      * Path to card 7 image file
      */
-    private String cardSevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front6.jpg";
+    private String cardSevenPath = "/Graphical_Assets/Personaggi/CarteTOT_front6.jpg";
 
     /**
      * Path to card 8 image file
      */
-    private String cardEightPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front7.jpg";
+    private String cardEightPath = "/Graphical_Assets/Personaggi/CarteTOT_front7.jpg";
 
     /**
      * Path to card 9 image file
      */
-    private String cardNinePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front8.jpg";
+    private String cardNinePath = "/Graphical_Assets/Personaggi/CarteTOT_front8.jpg";
 
     /**
      * Path to card 10 image file
      */
-    private String cardTenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front9.jpg";
+    private String cardTenPath = "/Graphical_Assets/Personaggi/CarteTOT_front9.jpg";
 
     /**
      * Path to card 11 image file
      */
-    private String cardElevenPath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front10.jpg";
+    private String cardElevenPath = "/Graphical_Assets/Personaggi/CarteTOT_front10.jpg";
 
     /**
      * Path to card 12 image file
      */
-    private String cardTwelvePath = "file:src/main/resources/Graphical_Assets/Personaggi/CarteTOT_front11.jpg";
+    private String cardTwelvePath = "/Graphical_Assets/Personaggi/CarteTOT_front11.jpg";
 
     /**
      * Reference to the three expert card showed
@@ -353,43 +353,43 @@ public class GuiChooseExpertCardController implements Initializable {
     public void setImageExpertCard(String id, ImageView expertCard, int position){
         switch (id) {
             case"38":
-                expertCard.setImage(new Image(cardOnePath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardOnePath)));
                 showStudents(position,((StudentToIslandCard) game.getCardManager().getDeck().get(position-1)).getStudents());
                 break;
             case"39":
-                expertCard.setImage(new Image(cardTwoPath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardTwoPath)));
                 break;
             case"40":
-                expertCard.setImage(new Image(cardThreePath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardThreePath)));
                 break;
             case"41":
-                expertCard.setImage(new Image(cardFourPath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardFourPath)));
                 break;
             case"42":
-                expertCard.setImage(new Image(cardFivePath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardFivePath)));
                 break;
             case"43":
-                expertCard.setImage(new Image(cardSixPath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardSixPath)));
                 break;
             case"44":
-                expertCard.setImage(new Image(cardSevenPath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardSevenPath)));
                 showStudents(position,((IngressCardSwapCard) game.getCardManager().getDeck().get(position-1)).getStudents());
                 break;
             case"45":
-                expertCard.setImage(new Image(cardEightPath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardEightPath)));
                 break;
             case"46":
-                expertCard.setImage(new Image(cardNinePath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardNinePath)));
                 break;
             case"47":
-                expertCard.setImage(new Image(cardTenPath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardTenPath)));
                 break;
             case"48":
-                expertCard.setImage(new Image(cardElevenPath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardElevenPath)));
                 showStudents(position,((StudentToHallCard) game.getCardManager().getDeck().get(position-1)).getStudents());
                 break;
             case"49":
-                expertCard.setImage(new Image(cardTwelvePath));
+                expertCard.setImage(new Image(getClass().getResourceAsStream(cardTwelvePath)));
                 break;
         }
     }
@@ -440,19 +440,19 @@ public class GuiChooseExpertCardController implements Initializable {
     private Image getImageStudent(Student student) {
         switch (student.getColor()) {
             case RED -> {
-                return new Image(redStudentPath);
+                return new Image(getClass().getResourceAsStream(redStudentPath));
             }
             case GREEN -> {
-                return new Image(greenStudentPath);
+                return new Image(getClass().getResourceAsStream(greenStudentPath));
             }
             case BLUE -> {
-                return new Image(blueStudentPath);
+                return new Image(getClass().getResourceAsStream(blueStudentPath));
             }
             case PINK -> {
-                return new Image(pinkStudentPath);
+                return new Image(getClass().getResourceAsStream(pinkStudentPath));
             }
             case YELLOW -> {
-                return new Image(yellowStudentPath);
+                return new Image(getClass().getResourceAsStream(yellowStudentPath));
             }
         }
         return null;

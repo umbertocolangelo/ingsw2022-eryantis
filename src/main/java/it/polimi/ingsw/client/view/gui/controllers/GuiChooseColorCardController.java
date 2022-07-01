@@ -46,11 +46,11 @@ public class GuiChooseColorCardController implements Initializable {
     /**
      * Reference to paths of students images
      */
-    private String yellowPath = "file:src/main/resources/Graphical_Assets/pawns/student_yellow.png";
-    private String redPath = "file:src/main/resources/Graphical_Assets/pawns/student_red.png";
-    private String bluePath = "file:src/main/resources/Graphical_Assets/pawns/student_blue.png";
-    private String greenPath = "file:src/main/resources/Graphical_Assets/pawns/student_green.png";
-    private String pinkPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
+    private String yellowPath = "/Graphical_Assets/pawns/student_yellow.png";
+    private String redPath = "/Graphical_Assets/pawns/student_red.png";
+    private String bluePath = "/Graphical_Assets/pawns/student_blue.png";
+    private String greenPath = "/Graphical_Assets/pawns/student_green.png";
+    private String pinkPath = "/Graphical_Assets/pawns/student_pink.png";
 
     /**
      * Initialize the scene
@@ -59,11 +59,11 @@ public class GuiChooseColorCardController implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        colorBlue.setImage(new Image(bluePath));
-        colorGreen.setImage(new Image(greenPath));
-        colorPink.setImage(new Image(pinkPath));
-        colorYellow.setImage(new Image(yellowPath));
-        colorRed.setImage(new Image(redPath));
+        colorBlue.setImage(new Image(getClass().getResourceAsStream(bluePath)));
+        colorGreen.setImage(new Image(getClass().getResourceAsStream(greenPath)));
+        colorPink.setImage(new Image(getClass().getResourceAsStream(pinkPath)));
+        colorYellow.setImage(new Image(getClass().getResourceAsStream(yellowPath)));
+        colorRed.setImage(new Image(getClass().getResourceAsStream(redPath)));
     }
 
     /**

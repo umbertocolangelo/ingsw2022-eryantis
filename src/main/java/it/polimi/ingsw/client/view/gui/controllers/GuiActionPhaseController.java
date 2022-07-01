@@ -34,106 +34,106 @@ public class GuiActionPhaseController implements Initializable {
     /**
      * Path to island A image file
      */
-    private String islandAPath = "file:src/main/resources/Graphical_Assets/reameB_1.png";
+    private String islandAPath = "/Graphical_Assets/reameB_1.png";
 
     /**
      * Path to island B image file
      */
-    private String islandBPath = "file:src/main/resources/Graphical_Assets/reameB_1.2.png";
+    private String islandBPath = "/Graphical_Assets/reameB_1.2.png";
 
     /**
      * Path to island C image file
      */
-    private String islandCPath = "file:src/main/resources/Graphical_Assets/pawns/reameB_1.3.png";
+    private String islandCPath = "/Graphical_Assets/pawns/reameB_1.3.png";
 
     /**
      * Path to mother nature image file
      */
-    private String motherNaturePath = "file:src/main/resources/Graphical_Assets/pawns/mothernature.png";
+    private String motherNaturePath = "/Graphical_Assets/pawns/mothernature.png";
 
     /**
      * Path to yellow student image file
      */
-    private String yellowStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_yellow.png";
+    private String yellowStudentPath = "/Graphical_Assets/pawns/student_yellow.png";
 
     /**
      * Path to red student image file
      */
-    private String redStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_red.png";
+    private String redStudentPath = "/Graphical_Assets/pawns/student_red.png";
 
     /**
      * Path to blue student image file
      */
-    private String blueStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_blue.png";
+    private String blueStudentPath = "/Graphical_Assets/pawns/student_blue.png";
 
     /**
      * Path to green student image file
      */
-    private String greenStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_green.png";
+    private String greenStudentPath = "/Graphical_Assets/pawns/student_green.png";
 
     /**
      * Path to pink student image file
      */
-    private String pinkStudentPath = "file:src/main/resources/Graphical_Assets/pawns/student_pink.png";
+    private String pinkStudentPath = "/Graphical_Assets/pawns/student_pink.png";
 
     /**
      * Path to yellow professor image file
      */
-    private String yellowProfessorPath = "file:src/main/resources/Graphical_Assets/pawns/professor_yellow.png";
+    private String yellowProfessorPath = "/Graphical_Assets/pawns/professor_yellow.png";
 
     /**
      * Path to red professor image file
      */
-    private String redProfessorPath = "file:src/main/resources/Graphical_Assets/pawns/professor_red.png";
+    private String redProfessorPath = "/Graphical_Assets/pawns/professor_red.png";
 
     /**
      * Path to green professor image file
      */
-    private String greenProfessorPath = "file:src/main/resources/Graphical_Assets/pawns/professor_green.png";
+    private String greenProfessorPath = "/Graphical_Assets/pawns/professor_green.png";
 
     /**
      * Path to pink professor image file
      */
-    private String pinkProfessorPath = "file:src/main/resources/Graphical_Assets/pawns/professor_pink.png";
+    private String pinkProfessorPath = "/Graphical_Assets/pawns/professor_pink.png";
 
     /**
      * Path to blue professor image file
      */
-    private String blueProfessorPath = "file:src/main/resources/Graphical_Assets/pawns/professor_blue.png";
+    private String blueProfessorPath = "/Graphical_Assets/pawns/professor_blue.png";
 
     /**
      * Path to black tower image file
      */
-    private String blackTowerPath = "file:src/main/resources/Graphical_Assets/pawns/tower_black.png";
+    private String blackTowerPath = "/Graphical_Assets/pawns/tower_black.png";
 
     /**
      * Path to white tower image file
      */
-    private String whiteTowerPath = "file:src/main/resources/Graphical_Assets/pawns/tower_white.png";
+    private String whiteTowerPath = "/Graphical_Assets/pawns/tower_white.png";
 
     /**
      * Path to grey tower image file
      */
-    private String greyTowerPath = "file:src/main/resources/Graphical_Assets/pawns/tower_grey.png";
+    private String greyTowerPath = "/Graphical_Assets/pawns/tower_grey.png";
 
     /**
      * Path to deny token image file
      */
-    private String denyPath = "file:src/main/resources/Graphical_Assets/deny_token.png";
+    private String denyPath = "/Graphical_Assets/deny_token.png";
 
     /**
      * Paths to assistantCards image files
      */
-    private String card1Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (1).png";
-    private String card2Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (2).png";
-    private String card3Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (3).png";
-    private String card4Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (4).png";
-    private String card5Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (5).png";
-    private String card6Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (6).png";
-    private String card7Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (7).png";
-    private String card8Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (8).png";
-    private String card9Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (9).png";
-    private String card10Path = "file:src/main/resources/Graphical_Assets/Assistenti/2x/Assistente (10).png";
+    private String card1Path = "/Graphical_Assets/Assistenti/2x/Assistente (1).png";
+    private String card2Path = "/Graphical_Assets/Assistenti/2x/Assistente (2).png";
+    private String card3Path = "/Graphical_Assets/Assistenti/2x/Assistente (3).png";
+    private String card4Path = "/Graphical_Assets/Assistenti/2x/Assistente (4).png";
+    private String card5Path = "/Graphical_Assets/Assistenti/2x/Assistente (5).png";
+    private String card6Path = "/Graphical_Assets/Assistenti/2x/Assistente (6).png";
+    private String card7Path = "/Graphical_Assets/Assistenti/2x/Assistente (7).png";
+    private String card8Path = "/Graphical_Assets/Assistenti/2x/Assistente (8).png";
+    private String card9Path = "/Graphical_Assets/Assistenti/2x/Assistente (9).png";
+    private String card10Path = "/Graphical_Assets/Assistenti/2x/Assistente (10).png";
 
     /**
      * AnchorPane reference
@@ -1454,19 +1454,19 @@ public class GuiActionPhaseController implements Initializable {
     public Image getImageStudent(Color color) {
         switch (color) {
             case RED -> {
-                return new Image(redStudentPath);
+                return new Image(getClass().getResourceAsStream(redStudentPath));
             }
             case GREEN -> {
-               return new Image(greenStudentPath);
+               return new Image(getClass().getResourceAsStream(greenStudentPath));
             }
             case BLUE -> {
-               return new Image(blueStudentPath);
+               return new Image(getClass().getResourceAsStream(blueStudentPath));
             }
             case PINK -> {
-               return new Image(pinkStudentPath);
+               return new Image(getClass().getResourceAsStream(pinkStudentPath));
             }
             case YELLOW -> {
-               return new Image(yellowStudentPath);
+               return new Image(getClass().getResourceAsStream(yellowStudentPath));
             }
         }
         return null;
@@ -1479,19 +1479,19 @@ public class GuiActionPhaseController implements Initializable {
     public Image getImageProfessor(Color color) {
         switch (color) {
             case RED -> {
-                return new Image(redProfessorPath);
+                return new Image(getClass().getResourceAsStream(redProfessorPath));
             }
             case GREEN -> {
-                return new Image(greenProfessorPath);
+                return new Image(getClass().getResourceAsStream(greenProfessorPath));
             }
             case BLUE -> {
-                return new Image(blueProfessorPath);
+                return new Image(getClass().getResourceAsStream(blueProfessorPath));
             }
             case PINK -> {
-                return new Image(pinkProfessorPath);
+                return new Image(getClass().getResourceAsStream(pinkProfessorPath));
             }
             case YELLOW -> {
-                return new Image(yellowProfessorPath);
+                return new Image(getClass().getResourceAsStream(yellowProfessorPath));
             }
         }
         return null;
@@ -1543,7 +1543,6 @@ public class GuiActionPhaseController implements Initializable {
             } else {
                 // do not show island with that index and make it not clickable
                 disableIsland(islandNum);
-                //updatePosition(islandNum-1, islandIndex);
             }
             islandNum++;
         }
@@ -1566,7 +1565,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island1);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1584,7 +1583,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island2);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1602,7 +1601,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island3);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1638,7 +1637,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island5);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1656,7 +1655,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island6);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1674,7 +1673,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island7);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1692,7 +1691,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island8);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1710,7 +1709,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island9);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1728,7 +1727,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island10);
 
         for(int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1746,7 +1745,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island11);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1763,7 +1762,7 @@ public class GuiActionPhaseController implements Initializable {
         denyTokens.add(deny4Island12);
 
         for (int denyNum = 0; denyNum < game.getIslandManager().getIslands().get(islandIndex).getDeny(); denyNum++) {
-            denyTokens.get(denyNum).setImage(new Image(denyPath));
+            denyTokens.get(denyNum).setImage(new Image(getClass().getResourceAsStream(denyPath)));
             denyTokens.get(denyNum).setX(denyTokens.get(denyNum).getX() + x);
             denyTokens.get(denyNum).setY(denyTokens.get(denyNum).getY() + y);
         }
@@ -1905,34 +1904,34 @@ public class GuiActionPhaseController implements Initializable {
     private void showAssistantCard(int num) {
         switch (num) {
             case 1 -> {
-                playedAssistantCard.setImage(new Image(card1Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card1Path)));
             }
             case 2 -> {
-                playedAssistantCard.setImage(new Image(card2Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card2Path)));
             }
             case 3 -> {
-                playedAssistantCard.setImage(new Image(card3Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card3Path)));
             }
             case 4 -> {
-                playedAssistantCard.setImage(new Image(card4Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card4Path)));
             }
             case 5 -> {
-                playedAssistantCard.setImage(new Image(card5Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card5Path)));
             }
             case 6 -> {
-                playedAssistantCard.setImage(new Image(card6Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card6Path)));
             }
             case 7 -> {
-                playedAssistantCard.setImage(new Image(card7Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card7Path)));
             }
             case 8 -> {
-                playedAssistantCard.setImage(new Image(card8Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card8Path)));
             }
             case 9 -> {
-                playedAssistantCard.setImage(new Image(card9Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card9Path)));
             }
             case 10 -> {
-                playedAssistantCard.setImage(new Image(card10Path));
+                playedAssistantCard.setImage(new Image(getClass().getResourceAsStream(card10Path)));
             }
         }
     }
@@ -1959,15 +1958,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -1999,15 +1998,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2039,15 +2038,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch(tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2079,15 +2078,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2119,15 +2118,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2159,15 +2158,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2199,15 +2198,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2239,15 +2238,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2279,15 +2278,15 @@ public class GuiActionPhaseController implements Initializable {
         for(Tower tower : game.getIslandManager().getIslands().get(index).getTowers()){
             switch(tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2319,15 +2318,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2359,15 +2358,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2399,15 +2398,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getIslandManager().getIslands().get(index).getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -2880,15 +2879,15 @@ public class GuiActionPhaseController implements Initializable {
         for (Tower tower : game.getCurrentPlayer().getSchool().getTowerTable().getTowers()) {
             switch (tower.getColor()) {
                 case WHITE -> {
-                    towers.get(count).setImage(new Image(whiteTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(whiteTowerPath)));
                     break;
                 }
                 case BLACK -> {
-                    towers.get(count).setImage(new Image(blackTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(blackTowerPath)));
                     break;
                 }
                 case GREY -> {
-                    towers.get(count).setImage(new Image(greyTowerPath));
+                    towers.get(count).setImage(new Image(getClass().getResourceAsStream(greyTowerPath)));
                     break;
                 }
             }
@@ -3069,84 +3068,84 @@ public class GuiActionPhaseController implements Initializable {
         MotherNature motherNature = game.getMotherNature();
         switch (motherNature.getIsland().getId()) {
             case "26":
-                motherNature1.setImage(new Image(motherNaturePath));
+                motherNature1.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 26;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature1);
                 }
                 break;
             case "27":
-                motherNature2.setImage(new Image(motherNaturePath));
+                motherNature2.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 27;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature2);
                 }
                 break;
             case "28":
-                motherNature3.setImage(new Image(motherNaturePath));
+                motherNature3.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 28;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature3);
                 }
                 break;
             case "29":
-                motherNature4.setImage(new Image(motherNaturePath));
+                motherNature4.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 29;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature4);
                 }
                 break;
             case "30":
-                motherNature5.setImage(new Image(motherNaturePath));
+                motherNature5.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 30;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature5);
                 }
                 break;
             case "31":
-                motherNature6.setImage(new Image(motherNaturePath));
+                motherNature6.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 31;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature6);
                 }
                 break;
             case "32":
-                motherNature7.setImage(new Image(motherNaturePath));
+                motherNature7.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 32;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature7);
                 }
                 break;
             case "33":
-                motherNature8.setImage(new Image(motherNaturePath));
+                motherNature8.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 33;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature8);
                 }
                 break;
             case "34":
-                motherNature9.setImage(new Image(motherNaturePath));
+                motherNature9.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 34;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature9);
                 }
                 break;
             case "35":
-                motherNature10.setImage(new Image(motherNaturePath));
+                motherNature10.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 35;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature10);
                 }
                 break;
             case "36":
-                motherNature11.setImage(new Image(motherNaturePath));
+                motherNature11.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 36;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature11);
                 }
                 break;
             case "37":
-                motherNature12.setImage(new Image(motherNaturePath));
+                motherNature12.setImage(new Image(getClass().getResourceAsStream(motherNaturePath)));
                 idIsland = 37;
                 if (game.getCurrentPlayer().getPlayerPhase()==PlayerPhase.MOVING_MOTHERNATURE) {
                     setShadow(motherNature12);
@@ -3173,19 +3172,19 @@ public class GuiActionPhaseController implements Initializable {
         for (int i = 0; i < game.getCurrentPlayer().getSchool().getIngress().getStudents().size(); i++) {
             switch (game.getCurrentPlayer().getSchool().getIngress().getStudents().get(i).getColor()) {
                 case RED -> {
-                    studentsIngress.get(i).setImage(new Image(redStudentPath));
+                    studentsIngress.get(i).setImage(new Image(getClass().getResourceAsStream(redStudentPath)));
                 }
                 case GREEN -> {
-                    studentsIngress.get(i).setImage(new Image(greenStudentPath));
+                    studentsIngress.get(i).setImage(new Image(getClass().getResourceAsStream(greenStudentPath)));
                 }
                 case BLUE -> {
-                    studentsIngress.get(i).setImage(new Image(blueStudentPath));
+                    studentsIngress.get(i).setImage(new Image(getClass().getResourceAsStream(blueStudentPath)));
                 }
                 case PINK -> {
-                    studentsIngress.get(i).setImage(new Image(pinkStudentPath));
+                    studentsIngress.get(i).setImage(new Image(getClass().getResourceAsStream(pinkStudentPath)));
                 }
                 case YELLOW -> {
-                    studentsIngress.get(i).setImage(new Image(yellowStudentPath));
+                    studentsIngress.get(i).setImage(new Image(getClass().getResourceAsStream(yellowStudentPath)));
                 }
             }
         }
