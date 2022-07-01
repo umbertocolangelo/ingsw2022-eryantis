@@ -7,10 +7,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Student class
+ */
 public class StudentTest {
 
     /**
-     * Tests the GetColorTest() method
+     * Test of getColorTest method
      */
     @Test
     public void GetColorTest()
@@ -20,7 +23,7 @@ public class StudentTest {
     }
 
     /**
-     * Tests the GetPosition() method
+     * Test of getPosition method
      */
     @Test
     public void GetPositionTest()
@@ -30,7 +33,7 @@ public class StudentTest {
     }
 
     /**
-     * Tests the SetPosition() method
+     * Test of setPosition method
      */
     @Test
     public void setPositionTest()
@@ -41,6 +44,9 @@ public class StudentTest {
         assertTrue(student.getPosition()==island);
     }
 
+    /**
+     * Test of getId method
+     */
     @Test
     public void getIdTest(){
         Student student = new Student(Color.YELLOW);

@@ -9,10 +9,13 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assumptions.assumeTrue;
 
+/**
+ * Test of Tower class
+ */
 public class TowerTest {
 
     /**
-     * Tests the GetColorTest() method
+     * Test of getColor method
      */
     @Test
     public void getColorTest()
@@ -22,7 +25,7 @@ public class TowerTest {
     }
 
     /**
-     * Tests the GetPosition() method
+     * Test of getPosition method
      */
     @Test
     public void getPositionTest()
@@ -32,7 +35,7 @@ public class TowerTest {
     }
 
     /**
-     * Tests the SetPosition() method
+     * Test of setPosition method
      */
     @Test
     public void setPositionTest()

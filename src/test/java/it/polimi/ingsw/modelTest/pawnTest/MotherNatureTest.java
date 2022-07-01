@@ -7,8 +7,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of MotherNature class
+ */
 public class MotherNatureTest {
 
+    /**
+     * Test of getIsland method
+     */
     @Test
     public void getIslandTest()
     {
@@ -18,6 +24,9 @@ public class MotherNatureTest {
         assertTrue(motherNature.getIsland()==island);
     }
 
+    /**
+     * Test of setIsland method
+     */
     @Test
     public void setIslandTest()
     {

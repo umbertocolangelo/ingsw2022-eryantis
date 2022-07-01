@@ -9,10 +9,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Island class
+ */
 public class IslandTest {
 
-    /**T
-     * Testing addStudent
+    /**
+     * Test of addStudent method
       */
     @Test
     public void addStudentTest(){
@@ -28,8 +31,8 @@ public class IslandTest {
         assertTrue(island1.getStudents().contains(student)); //Checks that island1 contains student
     }
 
-    /**T
-     * Testing removeStudent
+    /**
+     * Test of removeStudent method
      */
     @Test
     public void removeStudentTest(){
@@ -42,10 +45,9 @@ public class IslandTest {
 
     }
 
-    /**T
-     * Testing getStudent
+    /**
+     * Test of getStudent method
      */
-
     @Test
     public void getStudentTest(){
         Island island= new Island();
@@ -54,10 +56,9 @@ public class IslandTest {
         assertTrue(island.getStudents().contains(student) && island.getStudents().size()==1);
     }
 
-    /**T
-     * Testing numOfStudent
+    /**
+     * Test of numOfStudent method
      */
-
     @Test
     public void numOfStudentsTest(){
         Island island= new Island();
@@ -66,6 +67,9 @@ public class IslandTest {
         assertTrue(island.getStudents().size()==1);
     }
 
+    /**
+     * Test of addTower method
+     */
     @Test
     public void addTowerTest(){
         Island island= new Island();
@@ -74,6 +78,9 @@ public class IslandTest {
         assertTrue(island.getTowers().contains(tower));
     }
 
+    /**
+     * Test of removeTower method
+     */
     @Test
     public void removeTowerTest(){
         Island island= new Island();
@@ -84,6 +91,9 @@ public class IslandTest {
         assertTrue(island.getTowers()==null);
     }
 
+    /**
+     * Test of getTowers method
+     */
     @Test
     public void getTowersTest(){
         Island island= new Island();
@@ -92,6 +102,9 @@ public class IslandTest {
         assertTrue(island.getTowers().contains(tower) && island.getTowers().size()==1);
     }
 
+    /**
+     * Test of numOfStudentsByColor method
+     */
     @Test
     public void numOfStudentsByColorTest(){
         Island island= new Island();
@@ -104,6 +117,9 @@ public class IslandTest {
         assertTrue(island.numOfStudents(Color.RED)==3);
     }
 
+    /**
+     * Test of setDeny method
+     */
     @Test
     public void setDenyTest(){
         Island island=new Island();
@@ -112,6 +128,9 @@ public class IslandTest {
 
     }
 
+    /**
+     * Test of removeDeny method
+     */
     @Test
     public void removeDenyTest(){
         Island island=new Island();
@@ -120,6 +139,9 @@ public class IslandTest {
         assertTrue(island.getDeny()==0);
     }
 
+    /**
+     * Test of numOfTowers method
+     */
     @Test
     public void numOfTowersTest(){
         Island island=new Island();
@@ -129,6 +151,9 @@ public class IslandTest {
         assertTrue(island.numOfTowers()==1);
     }
 
+    /**
+     * Test of influenceColor method
+     */
     @Test
     public void influenceColorTest(){
         Island island = new Island();

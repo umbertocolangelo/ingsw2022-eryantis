@@ -24,12 +24,6 @@ public class TwoJumpCardTest {
      */
     @Test
     public void applyTest() {
-        LinkedList<Player> players = new LinkedList<>();
-        players.add(new Player("vittorio"));
-        MotherNature motherNature = new MotherNature();
-        InfluenceManager influenceManager = new InfluenceManager(motherNature, players);
-        IslandManager islandManager = new IslandManager(motherNature);
-        ProfessorManager professorManager = new ProfessorManager(players);
         TwoJumpCard twoJumpCard = new TwoJumpCard();
         twoJumpCard.apply();
         assertTrue(twoJumpCard.getCost()==2); // check that cost is incremented

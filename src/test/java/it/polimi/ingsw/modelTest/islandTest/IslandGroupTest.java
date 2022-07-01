@@ -12,10 +12,13 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of IslandGroup class
+ */
 public class IslandGroupTest {
 
     /**
-     * Testing addIsland
+     * Test of addIsland method
      */
     @Test
     public void addIslandInterface() {
@@ -28,14 +31,14 @@ public class IslandGroupTest {
         islandGroup1.addIslandInterface(island2);
         islandGroup.addIslandInterface(island);
         islandGroup.addIslandInterface(islandGroup1);
-        assertTrue(islandGroup.getIslandGroupElements().contains(island));
+        assertTrue(islandGroup.getIslandGroupElements().contains(island)); //check that islands are added to the group
         assertTrue(islandGroup.getIslandGroupElements().contains(island1));
         assertTrue(islandGroup.getIslandGroupElements().contains(island2));
         assertTrue(islandGroup.getIslandGroupElements().get(2)==island2);
     }
 
     /**
-     * Testing numOfStudents
+     * Test of NumOfStudents method
      */
     @Test
     public void numOfStudents() {
@@ -50,36 +53,36 @@ public class IslandGroupTest {
         island2.addStudent(student3);
         islandGroup.addIslandInterface(island1);
         islandGroup.addIslandInterface(island2);
-        assertTrue(islandGroup.numOfStudents(Color.YELLOW) == 2);
+        assertTrue(islandGroup.numOfStudents(Color.YELLOW) == 2); // check that students from single islands are returned by the group
         assertTrue(islandGroup.numOfStudents(Color.RED) == 1);
     }
 
     /**
-     * Testing setDeny
+     * Test of setDeny method
      */
     @Test
     public void setDeny() {
         IslandGroup islandGroup = new IslandGroup();
         islandGroup.setDeny();
-        assertTrue(islandGroup.getDeny() == 1);
+        assertTrue(islandGroup.getDeny() == 1); // check that deny token is added
     }
 
     /**
-     * Testing removeDeny
+     * Test of removeDeny method
      */
     @Test
     public void removeDeny() {
         IslandGroup islandGroup = new IslandGroup();
         islandGroup.removeDeny();
-        assertTrue(islandGroup.getDeny() == 0);
+        assertTrue(islandGroup.getDeny() == 0); // check that minimum number of deny tokens is 0
         islandGroup.setDeny();
-        assertTrue(islandGroup.getDeny() == 1);
+        assertTrue(islandGroup.getDeny() == 1); // check that deny token is added
         islandGroup.removeDeny();
-        assertTrue(islandGroup.getDeny() == 0);
+        assertTrue(islandGroup.getDeny() == 0); // check that deny token is removed
     }
 
     /**
-     * Testing numOfTowers
+     * Test of numOfTowers method
      */
     @Test
     public void numOfTowers() {
@@ -90,11 +93,11 @@ public class IslandGroupTest {
         islandGroup.addIslandInterface(island1);
         islandGroup.addIslandInterface(island3);
         islandGroup.addIslandInterface(island2);
-        assertTrue(islandGroup.numOfTowers() == 3);
+        assertTrue(islandGroup.numOfTowers() == 3); // check the number of towers
     }
 
     /**
-     * Testing numOfTowers
+     * Test of getInfluenceColor method
      */
     @Test
     public void getInfluenceColor() {
@@ -107,12 +110,11 @@ public class IslandGroupTest {
         island2.addTower(tower2);
         islandGroup.addIslandInterface(island1);
         islandGroup.addIslandInterface(island2);
-        assertTrue(islandGroup.getInfluenceColor().equals(PlayerColor.WHITE));
-        assertTrue(!islandGroup.getInfluenceColor().equals(PlayerColor.GREY));
+        assertTrue(islandGroup.getInfluenceColor().equals(PlayerColor.WHITE)); // check that right player color is returned
     }
 
     /**
-     * Testing getTower
+     * Test of getTower method
      */
     @Test
     public void getTowerTest() {
@@ -125,12 +127,12 @@ public class IslandGroupTest {
         island2.addTower(tower2);
         islandGroup.addIslandInterface(island1);
         islandGroup.addIslandInterface(island2);
-        assertTrue(islandGroup.getTowers().contains(tower1));
+        assertTrue(islandGroup.getTowers().contains(tower1)); // check that the list returned contains the towers
         assertTrue(islandGroup.getTowers().contains(tower2));
     }
 
     /**
-     * Testing addTower
+     * Test of addTower method
      */
     @Test
     public void addTowerTest() {
@@ -143,7 +145,7 @@ public class IslandGroupTest {
         islandGroup.addIslandInterface(island2);
         islandGroup.addTower(tower1);
         islandGroup.addTower(tower2);
-        assertTrue(island1.getTowers().contains(tower1));
+        assertTrue(island1.getTowers().contains(tower1)); // check that the list returned contains the towers
         assertTrue(island2.getTowers().contains(tower2));
     }
 
@@ -162,7 +164,7 @@ public class IslandGroupTest {
         islandGroup.addIslandInterface(island1);
         islandGroup.addIslandInterface(island2);
         islandGroup.removeTower(tower1);
-        assertTrue(island1.getTowers()==null);
+        assertTrue(island1.getTowers()==null); // check that towers are effectively removed
     }
 
 }

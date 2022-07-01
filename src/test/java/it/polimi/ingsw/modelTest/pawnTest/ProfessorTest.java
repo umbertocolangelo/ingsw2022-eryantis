@@ -8,8 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Professor class
+ */
 public class ProfessorTest {
 
+    /**
+     * resets the position of the professors before each test
+     */
     @BeforeEach
     public void resetProfessorPosition(){
         for(Color color : Color.values()){
@@ -18,7 +24,7 @@ public class ProfessorTest {
     }
 
     /**
-     * Tests the GetColorTest() method
+     * Test of getColorTest method
      */
     @Test
     public void getColorTest()
@@ -29,7 +35,7 @@ public class ProfessorTest {
 
 
     /**
-     * Tests the getProfessor() method
+     * Test of getProfessor method
      */
     @Test
     public void getProfessorTest()
@@ -43,7 +49,7 @@ public class ProfessorTest {
     }
 
     /**
-     * Tests the getPosition() method
+     * Tests the getPosition method
      */
     @Test
     public void getPositionTest()
@@ -53,7 +59,7 @@ public class ProfessorTest {
     }
 
     /**
-     * Tests the setPosition() method
+     * Tests the setPosition method
      */
     @Test
     public void setPositionTest()

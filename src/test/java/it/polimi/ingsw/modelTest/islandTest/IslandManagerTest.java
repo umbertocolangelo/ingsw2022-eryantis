@@ -1,4 +1,3 @@
-
 package it.polimi.ingsw.modelTest.islandTest;
 
 import it.polimi.ingsw.model.Game;
@@ -15,13 +14,16 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of IslandManager class
+ */
 public class IslandManagerTest {
 
-    /**T
-     * Testing checkGroup
+    /**
+     * Test of checkGroup method
      */
     @Test
-    public void checkGroup() {
+    public void checkGroupTest() {
         LinkedList<Player> players = new LinkedList<>();
         players.add(new Player("vittorio"));
         MotherNature motherNature = new MotherNature();
@@ -30,8 +32,6 @@ public class IslandManagerTest {
         Tower tower1 = new Tower(PlayerColor.WHITE);
         Tower tower2 = new Tower(PlayerColor.WHITE);
         Tower tower3 = new Tower(PlayerColor.BLACK);
-        //game.getIslandManager().getIslands().get(0).addTower(tower1);
-        //game.getIslandManager().getIslands().get(1).addTower(tower2);
         game.getIslandManager().getIslands().get(2).addTower(new Tower(PlayerColor.WHITE));
         game.getIslandManager().getIslands().get(3).addTower(new Tower(PlayerColor.WHITE));
         game.getIslandManager().getIslands().get(4).addTower(tower3);
@@ -63,15 +63,15 @@ public class IslandManagerTest {
 
     }
 
-    /**T
-     * Testing getNumOfGroups
+    /**
+     * Test of getNumOfGroups method
      */
     @Test
-    public void getNumOfGroups() {
+    public void getNumOfGroupsTest() {
         MotherNature motherNature = new MotherNature();
         IslandManager islandManager = new IslandManager(motherNature);
         islandManager.getNumOfGroups();
-        assertTrue(islandManager.getNumOfGroups()==0);
+        assertTrue(islandManager.getNumOfGroups()==0); // check that there are no groups
         islandManager.getIslands().get(5).setIsGrouped();
         islandManager.getNumOfGroups();
         assertTrue(islandManager.getNumOfGroups()==0);
@@ -80,10 +80,10 @@ public class IslandManagerTest {
     }
 
     /**T
-     * Testing setNewGroup
+     * Test of setNewGroup method
      */
     @Test
-    public void setNewGroup() {
+    public void setNewGroupTest() {
         MotherNature motherNature = new MotherNature();
         IslandManager islandManager = new IslandManager(motherNature);
         IslandGroup islandGroup = new IslandGroup();
@@ -133,11 +133,11 @@ public class IslandManagerTest {
          */
     }
 
-    /**T
-     * Testing rightIsland
+    /**
+     * Test of rightIsland method
      */
     @Test
-    public void rightIsland() {
+    public void rightIslandTest() {
         MotherNature motherNature = new MotherNature();
         IslandManager islandManager = new IslandManager(motherNature);
         assertTrue(islandManager.rightIslandTest(islandManager.getIslands().get(0)).equals(islandManager.getIslands().get(1)));
@@ -148,11 +148,11 @@ public class IslandManagerTest {
         System.out.println(islandManager.rightIslandTest(islandManager.getIslands().get(10)));
     }
 
-    /**T
-     * Testing leftIsland
+    /**
+     * Test of leftIsland method
      */
     @Test
-    public void leftIsland() {
+    public void leftIslandTest() {
         MotherNature motherNature = new MotherNature();
         IslandManager islandManager = new IslandManager(motherNature);
         assertTrue(islandManager.leftIslandTest(islandManager.getIslands().get(0)).equals(islandManager.getIslands().get(11)));
@@ -161,11 +161,11 @@ public class IslandManagerTest {
         assertTrue(islandManager.leftIslandTest(islandManager.getIslands().get(0)).equals(islandManager.getIslands().get(10)));
     }
 
-    /**T
-     * Testing islandsUpdate
+    /**
+     * Test of islandsUpdate method
      */
     @Test
-    public void islandUpdate() {
+    public void islandUpdateTest() {
         MotherNature motherNature = new MotherNature();
         IslandManager islandManager = new IslandManager(motherNature);
         System.out.println(islandManager.getIslands().size());
@@ -208,7 +208,7 @@ public class IslandManagerTest {
     }
 
     /**
-     * Testing nextIsland
+     * Test of nextIsland method
      */
     @Test
     public void nextIslandTest() {
@@ -217,10 +217,10 @@ public class IslandManagerTest {
         IslandManager islandManager = new IslandManager(motherNature);
         motherNature.setIsland(islandManager.getIslands().get(0));
         motherNature.setIsland(islandManager.nextIsland(5));
-        assertTrue(motherNature.getIsland()==islandManager.getIslands().get(5));
+        assertTrue(motherNature.getIsland()==islandManager.getIslands().get(5)); // check that mother nature is positioned on the correct island
         motherNature.setIsland(islandManager.getIslands().get(10));
         motherNature.setIsland(islandManager.nextIsland(4));
-        assertTrue(motherNature.getIsland()==islandManager.getIslands().get(2));
+        assertTrue(motherNature.getIsland()==islandManager.getIslands().get(2)); // check correct mother nature position after a complete cycle
 
     }
 

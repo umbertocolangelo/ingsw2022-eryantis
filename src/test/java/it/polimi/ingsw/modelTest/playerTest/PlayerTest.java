@@ -9,23 +9,24 @@ import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Player class
+ */
 public class PlayerTest {
-    /**
-     * Test getPlayerCards function
-     */
 
+    /**
+     * Test of getPlayerCards method
+     */
     @Test
     public void getPlayerCardsTest() {
         Player player = new Player("vittorio");
         ArrayList<AssistantCard> assist = player.getPlayedCards();
-
-
         assertTrue(assist.get(0).name() == "ONE_CARD" && assist.get(9).name() == "TEN_CARD");
     }
-    /**
-     * Test playAssistantCard function
-     */
 
+    /**
+     * Test of playAssistantCard method
+     */
     @Test
     public void playAssistantCardTest() {
         Player player = new Player("vittorio");
@@ -36,14 +37,11 @@ public class PlayerTest {
         AssistantCard assist2 = AssistantCard.FIVE_CARD;
         player.playAssistantCard(assist2);
         assertTrue(player.getPlayedCards().size() == 7);
-
-
     }
 
     /**
-     * Test playAssistantCardValue function
+     * Test of playAssistantCardValue method
      */
-
     @Test
     public void getPlayedCardValue() {
         Player player = new Player("vittorio");
@@ -53,9 +51,8 @@ public class PlayerTest {
     }
 
     /**
-     * Test playAssistantCard function
+     * Test of playAssistantCard method
      */
-
     @Test
     public void getPlayedValue() {
         Player player = new Player("vittorio");
@@ -65,7 +62,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test getName function
+     * Test of getName method
      */
     @Test
     public void getNameTest() {
@@ -74,7 +71,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test getWizard function
+     * Test of getWizard method
      */
     @Test
     public void getWizardTest() {
@@ -83,7 +80,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test geSchool function
+     * Test of geSchool method
      */
     @Test
     public void getSchoolTest() {
@@ -94,7 +91,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test geCoins function
+     * Test of geCoins method
      */
     @Test
     public void getCoinsTest() {
@@ -104,7 +101,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test setPlayerColor function
+     * Test of setPlayerColor method
      */
     @Test
     public void setPlayerColorTest() {
@@ -115,7 +112,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test getPlayerColor function
+     * Test of getPlayerColor method
      */
     @Test
     public void getPlayerColorTest() {
@@ -125,7 +122,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test isDeckEnded function
+     * Test of isDeckEnded method
      */
     @Test
     public void isDeckEndedTest() {
@@ -155,7 +152,7 @@ public class PlayerTest {
     }
 
     /**
-     * Test addCoin function
+     * Test of addCoin method
      */
     @Test
     public void addCoinsTest() {

@@ -9,10 +9,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-
+/**
+ * Test of Hall class
+ */
 public class HallTest {
+
     /**
-     * Test the getLine function
+     * Test the getLine method
      */
     @Test
     public void getLineTest(){
@@ -22,6 +25,9 @@ public class HallTest {
         }
     }
 
+    /**
+     * Test of addStudent method
+     */
     @Test
     public void addStudentTest(){
         Hall hall = new Hall();

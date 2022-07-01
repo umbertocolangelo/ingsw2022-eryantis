@@ -8,7 +8,14 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Line class
+ */
 public class LineTest {
+
+    /**
+     * Test of getColor method
+     */
     @Test
     public void getColorTest(){
         Line line = new Line(Color.RED);
@@ -17,7 +24,7 @@ public class LineTest {
     }
 
     /**
-     *Test the addStudent function
+     * Test of addStudent method
      */
     @Test
     public void addStudentTest(){
@@ -39,7 +46,7 @@ public class LineTest {
     }
 
     /**
-     * Test the removeStudent function
+     * Test of removeStudent method
      */
     @Test
     public void removeStudentTest(){
@@ -52,7 +59,7 @@ public class LineTest {
     }
 
     /**
-     * Test the getStudent function
+     * Test of getStudent method
      */
     @Test
     public void getStudent(){
@@ -63,7 +70,7 @@ public class LineTest {
     }
 
     /**
-     * Test the numOfStudent function
+     * Test of numOfStudent method
      */
     @Test
     public void numOfStudent(){
@@ -74,7 +81,7 @@ public class LineTest {
     }
 
     /**
-     * Test the addProfessor function
+     * Test of addProfessor method
      */
     @Test
     public void addProfessor() {
@@ -86,7 +93,7 @@ public class LineTest {
 
 
     /**
-     * Test the removeProfessor function
+     * Test of removeProfessor method
      */
     @Test
     public void removeProfessor(){
@@ -101,7 +108,7 @@ public class LineTest {
     }
 
     /**
-     * Test the isProfessor function
+     * Test of isProfessor method
      */
     @Test
     public void isProfessor(){

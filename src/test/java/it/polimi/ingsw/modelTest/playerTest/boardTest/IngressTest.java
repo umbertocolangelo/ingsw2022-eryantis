@@ -8,10 +8,13 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of Ingress method
+ */
 public class IngressTest {
 
     /**
-     * Test on getStudent function.
+     * Test of getStudent method
      */
     @Test
     public void getStudentsTest() {
@@ -23,7 +26,7 @@ public class IngressTest {
     }
 
     /**
-     * Test on removeStudent function.
+     * Test of removeStudent method
      */
     @Test
     public void addStudentTest() {
@@ -41,7 +44,7 @@ public class IngressTest {
     }
 
     /**
-     * Test on removeStudent function.
+     * Test of removeStudent method
      */
     @Test
     public void removeStudentTest() {
@@ -55,9 +58,8 @@ public class IngressTest {
     }
 
     /**
-     * Test on numOfStudents.
+     * Test of numOfStudents method
      */
-
     @Test
     public void numOfStudentsTest() {
         Ingress ingress = new Ingress();
@@ -66,21 +68,6 @@ public class IngressTest {
         ingress.addStudent(student);
         ingress.addStudent(student1);
         assertTrue(ingress.numOfStudents()==2);
-
-    }
-
-    /**
-     *
-     */
-    @Test
-    public void test(){
-        Ingress ingress = new Ingress();
-        Student student = new Student(Color.RED);
-        Student student1 = new Student(Color.RED);
-        Cloud cloud=new Cloud();
-        cloud.addStudent(student);
-        ingress.addStudent(cloud.getStudents().get(0));
-        System.out.println(cloud.getStudents().size());
 
     }
 }
