@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class StudentToHall implements Serializable, MessageMethod {
 
     /**
-     * Student selectd
+     * Student selected
      */
     private String studentToHall;
 
