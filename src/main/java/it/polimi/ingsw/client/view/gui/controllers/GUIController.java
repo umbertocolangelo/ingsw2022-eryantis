@@ -449,6 +449,13 @@ public class GUIController {
     }
 
     /**
+     * Set the id of the expert card played
+     */
+    public void setIdExpertCardPlayed(String id){
+        this.idExpertCardPlayed = id;
+    }
+
+    /**
      * Get the type of message method to send at the model
      * @return IngressCardSwap
      */

@@ -254,7 +254,7 @@ public class GuiChooseExpertCardController implements Initializable {
                     GUIController.getInstance().write(messageMethod39);
                     break;
                 case "40":
-                    GUIController.getInstance().setIdExpertCardPlayed();
+                    GUIController.getInstance().setIdExpertCardPlayed("40");
                     GUIController.getInstance().setCardNeedIsland(true);
                     sceneAction();
                     break;
@@ -264,7 +264,7 @@ public class GuiChooseExpertCardController implements Initializable {
                     GUIController.getInstance().write(messageMethod41);
                     break;
                 case "42":
-                    GUIController.getInstance().setIdExpertCardPlayed();
+                    GUIController.getInstance().setIdExpertCardPlayed("42");
                     GUIController.getInstance().setCardNeedIsland(true);
                     sceneAction();
                     break;
