@@ -15,14 +15,14 @@ import java.net.ConnectException;
 public class GUIController {
 
     /**
-     *
+     * reference to connection true
      */
-    private Boolean connectionTrue=false;
+    private Boolean connectionTrue = false;
 
     /**
-     *
+     * Reference to connection refused
      */
-    private Boolean connectionRefuse=false;
+    private Boolean connectionRefuse = false;
 
     /**
      * Reference to the name of the client lost
@@ -89,9 +89,7 @@ public class GUIController {
     private ClientState clientState;
 
     /**
-     * static reference to controller handler
-     *
-     * @param client
+     * Static reference to controller handler
      */
     private static GUIController GUIController;
 
@@ -104,7 +102,6 @@ public class GUIController {
 
     /**
      * Gives controller handler instance
-     *
      * @return the instance of the controller handler
      */
     public static GUIController getInstance() {
@@ -123,7 +120,6 @@ public class GUIController {
 
     /**
      * Get client reference
-     *
      * @return
      */
     public Client getClient() {
@@ -132,7 +128,6 @@ public class GUIController {
 
     /**
      * Get stage reference
-     *
      * @return
      */
     public Stage getStage() {
@@ -141,7 +136,6 @@ public class GUIController {
 
     /**
      * Get stage reference
-     *
      * @param stage
      */
     public static void setStage(Stage stage) {
@@ -151,7 +145,6 @@ public class GUIController {
 
     /**
      * Set client state
-     *
      * @param clientState
      */
     public void setClientState(ClientState clientState) {
@@ -160,7 +153,6 @@ public class GUIController {
 
     /**
      * Set client
-     *
      * @param client
      */
     public void setClient(Client client) {
@@ -169,7 +161,6 @@ public class GUIController {
 
     /**
      * Set the correct scene in the gui
-     *
      * @throws IOException
      */
     public Thread chooseScene() throws IOException {
@@ -385,7 +376,6 @@ public class GUIController {
 
     /**
      * This method write to the server socket synchronized with the read
-     *
      * @param object the object we need to send
      */
     public void write(Object object) {
@@ -416,8 +406,7 @@ public class GUIController {
 
     /**
      * Get equal name boolean
-     *
-     * @return
+     * @return Boolean
      */
     public Boolean getEqual() {
         return this.equal;
@@ -425,8 +414,7 @@ public class GUIController {
 
     /**
      * Get the selected assistant card
-     *
-     * @return
+     * @return Boolean
      */
     public Boolean getCardPlayed() {
         return this.cardPlayed;
@@ -434,8 +422,7 @@ public class GUIController {
 
     /**
      * Set the assistant card played
-     *
-     * @param cardPlayed
+     * @param cardPlayed Boolean
      */
     public void setCardPlayed(Boolean cardPlayed) {
         this.cardPlayed = cardPlayed;
@@ -443,8 +430,7 @@ public class GUIController {
 
     /**
      * Get the id of the expert card played
-     *
-     * @return
+     * @return Boolean
      */
     public String getIdExpertCardPlayed() {
         return this.idExpertCardPlayed;
@@ -452,17 +438,19 @@ public class GUIController {
 
     /**
      * Set the id of the expert card played
-     *
-     * @param idExpertCardPlayed
      */
-    public void setIdExpertCardPlayed(String idExpertCardPlayed) {
-        this.idExpertCardPlayed = idExpertCardPlayed;
+    public void setIdExpertCardPlayed() {
+        if (this.getClient().getGame().getCardManager().getCurrentCard()!=null) {
+            this.idExpertCardPlayed = client.getGame().getCardManager().getCurrentCard().getId();
+        } else {
+            this.idExpertCardPlayed = null;
+        }
+
     }
 
     /**
      * Get the type of message method to send at the model
-     *
-     * @return
+     * @return IngressCardSwap
      */
     public IngressCardSwap getMessageMethod() {
         return this.messageMethodIngressCard;
@@ -470,8 +458,7 @@ public class GUIController {
 
     /**
      * Set the type of message method to send at the model
-     *
-     * @param messageMethod
+     * @param messageMethod IngressCardSwap
      */
     public void setMessageMethodIngressCard(IngressCardSwap messageMethod) {
         this.messageMethodIngressCard = messageMethod;
@@ -479,8 +466,7 @@ public class GUIController {
 
     /**
      * Get finished turn boolean
-     *
-     * @return
+     * @return Boolean
      */
     public Boolean getFinishTurn() {
         return this.finishTurn;
@@ -488,8 +474,7 @@ public class GUIController {
 
     /**
      * Set finished turn boolean
-     *
-     * @param finishTurn
+     * @param finishTurn Boolean
      */
     public void setFinishTurn(Boolean finishTurn) {
         this.finishTurn = finishTurn;
@@ -497,8 +482,7 @@ public class GUIController {
 
     /**
      * Get the student of studentToIsland expert card effect
-     *
-     * @return
+     * @return StudentToIsland
      */
     public StudentToIsland getStudentToIsland() {
         return this.studentToIsland;
@@ -506,8 +490,7 @@ public class GUIController {
 
     /**
      * Get the student studentToIsland expert card effect
-     *
-     * @param studentToIsland
+     * @param studentToIsland StudentToIsland
      */
     public void setStudentToIsland(StudentToIsland studentToIsland) {
         this.studentToIsland = studentToIsland;
@@ -515,8 +498,7 @@ public class GUIController {
 
     /**
      * Get if is needed an island because of an expert card effect
-     *
-     * @return
+     * @return Boolean
      */
     public Boolean getCardNeedIsland() {
         return this.cardNeedIsland;
@@ -524,8 +506,7 @@ public class GUIController {
 
     /**
      * Set if is needed an island because of an expert card effect
-     *
-     * @param cardNeedIsland
+     * @param cardNeedIsland Boolean
      */
     public void setCardNeedIsland(Boolean cardNeedIsland) {
         this.cardNeedIsland = cardNeedIsland;
@@ -533,51 +514,53 @@ public class GUIController {
 
     /**
      * Get the name of the client lost
-     *
-     * @return
+     * @return String
      */
     public String getNameClientLost() {
         return this.nameClientLost;
     }
 
     /**
-     *
-     * @param name
-     */
-    public void setNameClientLost(String name) {
-         this.nameClientLost= name;
-    }
-
-
-    /**
-     *
+     * Starts the client
+     * @throws ConnectException
+     * @throws IOException
      */
     public void startClient() throws ConnectException,IOException {
-       // Client client = new Client("localhost", 65432);
-
-            //final ScheduledThreadPoolExecutor executor = new ScheduledThreadPoolExecutor(128);
-       // try {
-            Thread t1 = new Thread(client.run());
-
-           t1.start();
-
+        Thread t1 = new Thread(client.run());
+        t1.start();
     }
 
-
+    /**
+     * Return if connection is refused
+     * @return Boolean
+     */
     public Boolean getConnectionRefuse() {
-        return connectionRefuse;
+        return this.connectionRefuse;
     }
 
+    /**
+     * Sets if the connection is refused
+     * @param connectionRefuse Boolean
+     */
     public void setConnectionRefuse(Boolean connectionRefuse) {
         this.connectionRefuse = connectionRefuse;
     }
 
+    /**
+     * Returns connection true
+     * @return Boolean
+     */
     public Boolean getConnectionTrue() {
-        return connectionTrue;
+        return this.connectionTrue;
     }
 
+    /**
+     * Sets connection true
+     * @param connectionTrue Boolean
+     */
     public void setConnectionTrue(Boolean connectionTrue) {
         this.connectionTrue = connectionTrue;
     }
+
 }
 
