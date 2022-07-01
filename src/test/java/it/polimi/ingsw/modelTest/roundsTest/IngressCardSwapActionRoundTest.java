@@ -1,6 +1,5 @@
 package it.polimi.ingsw.modelTest.roundsTest;
 
-
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.*;
 import it.polimi.ingsw.model.expertCards.deck.IngressCardSwapCard;
@@ -12,11 +11,14 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of IngressCardSwapCardActionRound class
+ */
 public class IngressCardSwapActionRoundTest {
-    /**
-     * Testing expertIngressCardSwap function
-     */
 
+    /**
+     * Test of expertIngressCardSwap method
+     */
     @Test
     public void  expertIngressCardSwapTest(){
         Player player = new Player("elena");
@@ -26,16 +28,12 @@ public class IngressCardSwapActionRoundTest {
         lista.add(player1);
         lista.add(player);
         game.setPlayerList(lista);
-
         game.initializeGame();
-        System.out.println("First player is " + game.getCurrentPlayer().getName());
         game.chooseColorAndDeck(PlayerColor.GREY.getId(), Wizard.BLUE_WIZARD.getId());
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
-        System.out.println("First player is " + game.getCurrentPlayer().getName());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         IngressCardSwapCard ingressCardSwapCard=new IngressCardSwapCard(game.getCardManager());
-        System.out.println("First player is " + game.getCurrentPlayer().getName());
         game.getCurrentPlayer().setCoin(5);
         game.playExpertCard(ingressCardSwapCard.getId(),null);
         Student student1=new Student(Color.RED);
@@ -44,6 +42,6 @@ public class IngressCardSwapActionRoundTest {
         System.out.println(player1);
         game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
         game.expertIngressCardSwap(student1.getId(),student.getId());
-        assertTrue( game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(student1));
+        assertTrue( game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(student1)); // check that round has permitted the action
     }
 }

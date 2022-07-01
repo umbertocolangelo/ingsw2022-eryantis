@@ -12,7 +12,14 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of StudentToIslandActionRound class
+ */
 public class StudentToIslandActionRoundTest {
+
+    /**
+     * Test of expertStudentToIsland method
+     */
     @Test
     public void expertStudentToIslandTest() {
         Game game = new Game();
@@ -20,7 +27,6 @@ public class StudentToIslandActionRoundTest {
         Player player1 = new Player("one");
         lista.add(player1);
         lista.add(new Player("two"));
-
         game.setPlayerList(lista);
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
@@ -37,7 +43,7 @@ public class StudentToIslandActionRoundTest {
         Island island = new Island();
         System.out.println(game.getCardManager().getCurrentCard());
         game.expertStudentToIsland(student.getId(),island.getId());
-        assertTrue(island.getStudents().contains(student));
+        assertTrue(island.getStudents().contains(student)); // check that round has permitted the action
     }
 
 }

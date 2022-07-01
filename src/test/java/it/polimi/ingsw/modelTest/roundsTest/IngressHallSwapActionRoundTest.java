@@ -15,9 +15,13 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of IngressHallSwapActionRound class
+ */
 public class IngressHallSwapActionRoundTest {
+
     /**
-     * Testing expertHallIngressSwap function
+     * Test of expertHallIngressSwap method
      */
     @Test
     public void expertHallIngressSwapTest() {
@@ -38,7 +42,6 @@ public class IngressHallSwapActionRoundTest {
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
-        Bag bag=new Bag(false);
         IngressHallSwapCard ingressCardSwapCard = new IngressHallSwapCard();
         player1.setCoin(5);
         game.playExpertCard(ingressCardSwapCard.getId(),null);
@@ -48,6 +51,7 @@ public class IngressHallSwapActionRoundTest {
         player1.getSchool().getHall().getLine(Color.RED).addStudent(student1);
         player1.getSchool().getIngress().addStudent(student);
         game.expertIngressHallSwap(student1.getId(), student.getId());
+        // check that round has permitted the action
         assertTrue(player1.getSchool().getIngress().getStudents().contains(student1) && !player1.getSchool().getIngress().getStudents().contains(student) && player1.getSchool().getHall().getLine(Color.YELLOW).getStudents().contains(student) && !player1.getSchool().getHall().getLine(Color.RED).getStudents().contains(student1));
     }
 }

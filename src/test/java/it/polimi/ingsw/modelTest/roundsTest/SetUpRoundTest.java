@@ -10,12 +10,18 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of SetUpRound class
+ */
 public class SetUpRoundTest {
 
+    /**
+     * Test of chooseColorAndDeck method
+     */
     @Test
     public void chooseColorAndDeckTest(){
-        Player player = new Player("vittorio");
-        Player player1=new Player("elena");
+        Player player = new Player("a");
+        Player player1=new Player("b");
         Game game = new Game();
         game.setCurrentPlayer(player);
         LinkedList<Player> lista=new LinkedList<>();
@@ -23,10 +29,7 @@ public class SetUpRoundTest {
         lista.add(player1);
         game.setPlayerList(lista);
         game.initializeGame();
-        game.chooseColorAndDeck( PlayerColor.WHITE.getId(), Wizard.BLUE_WIZARD.getId());
-        assertTrue(player.getPlayerColor()==PlayerColor.WHITE && player.getWizard()== Wizard.BLUE_WIZARD);
-        game.chooseColorAndDeck( PlayerColor.BLACK.getId(), Wizard.GREEN_WIZARD.getId());
-        assertTrue(player1.getPlayerColor()==PlayerColor.BLACK && player1.getWizard()== Wizard.GREEN_WIZARD);
+        assertTrue(game.getCurrentRound().chooseColorAndDeck(player, PlayerColor.WHITE, Wizard.BLUE_WIZARD)); // check that round permits the action
     }
 
 

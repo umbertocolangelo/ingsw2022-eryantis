@@ -2,6 +2,7 @@ package it.polimi.ingsw.modelTest.roundsTest;
 
 import it.polimi.ingsw.model.Game;
 import it.polimi.ingsw.model.enumerations.*;
+import it.polimi.ingsw.model.expertCards.deck.DenyCard;
 import it.polimi.ingsw.model.islands.Island;
 import it.polimi.ingsw.model.pawns.Student;
 import it.polimi.ingsw.model.player.Player;
@@ -12,10 +13,13 @@ import java.util.LinkedList;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * Test of ActionRound class
+ */
 public class ActionRoundTest {
 
     /**
-     * Testing moveIngressToHall function
+     * Test of moveIngressToHall method
      */
     @Test
     public void moveIngressToHallTest() {
@@ -31,15 +35,13 @@ public class ActionRoundTest {
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
+        assertTrue(!game.getCurrentRound().moveStudentIngressToHall(student)); // check that round refuses action
         game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
-        System.out.println(game.getCurrentPlayer().getSchool().getIngress().numOfStudents());
-        game.moveStudentIngressToHall(student.getId());
-        System.out.println(game.getOrderedPlayerList());
-        assertTrue( game.getCurrentPlayer().getSchool().getHall().getLine(student.getColor()).getStudents().contains(student) );
+        assertTrue(game.getCurrentRound().moveStudentIngressToHall(student)); // check that round permits the action
     }
 
     /**
-     *
+     * Test of moveMotherNature method
      */
     @Test
     public void moveMotherNatureTest(){
@@ -60,15 +62,14 @@ public class ActionRoundTest {
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.setCurrentPlayer(player);
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
+        assertTrue(!game.getCurrentRound().moveMotherNature(1)); // check that round refuses the action
         player.setPlayerPhase(PlayerPhase.MOVING_MOTHERNATURE);
-        game.initializeGame();
-        Island island= (Island) game.getMotherNature().getIsland();
-        game.moveMotherNature(1);
-        assertTrue((Island) game.getMotherNature().getIsland()==island);
+        assertTrue(!game.getCurrentRound().moveMotherNature(5)); // check that round refuses the action
+        assertTrue(!game.getCurrentRound().moveMotherNature(2)); // check that round permits the action
     }
 
     /**
-     * Testing moveIngressToIsland function
+     * Test of moveIngressToIsland method
      */
     @Test
     public void moveIngressToIslandTest() {
@@ -85,13 +86,15 @@ public class ActionRoundTest {
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
         Student student = new Student(Color.RED);
+        // check that round refuses the action
+        assertTrue(!game.getCurrentRound().moveStudentIngressToIsland(student,(Island)game.getIslandManager().getIslands().get(0)));
         game.getCurrentPlayer().getSchool().getIngress().addStudent(student);
-        game.moveStudentIngressToIsland(student.getId(),"30");
-        assertTrue( IdManager.getInstance().getIsland("30").getStudents().contains(student) && !game.getCurrentPlayer().getSchool().getIngress().getStudents().contains(student));
+        // check that round permits the action
+        assertTrue(game.getCurrentRound().moveStudentIngressToIsland(student,(Island)game.getIslandManager().getIslands().get(0)));
     }
 
     /**
-     * Testing chooseCloud function
+     * Test of chooseCloud method
      */
 
     @Test
@@ -108,19 +111,18 @@ public class ActionRoundTest {
         game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
         game.playAssistantCard(AssistantCard.TWO_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
-        assertTrue(!game.getCurrentRound().chooseCloud(game.getClouds().get(0))); // the round has to refuse the action
+        assertTrue(!game.getCurrentRound().chooseCloud(game.getClouds().get(0))); // check that round refuses the action
         game.getCurrentPlayer().setPlayerPhase(PlayerPhase.CHOOSING_CLOUD);
-        assertTrue(game.getCurrentRound().chooseCloud(game.getClouds().get(0))); // the round has to permit the action
+        assertTrue(game.getCurrentRound().chooseCloud(game.getClouds().get(0))); // check that round permits the action
     }
 
     /**
-     * Testing expertMoveToBag function
+     * Test of playExpertCard method
      */
 
     @Test
-    public void expertMoveToBagFunction() {
+    public void playExpertCard() {
         Player player = new Player("vittorio");
-
         Game game = new Game();
         LinkedList<Player> lista=new LinkedList<>();
         lista.add(player);
@@ -128,19 +130,13 @@ public class ActionRoundTest {
         game.setPlayerList(lista);
         game.initializeGame();
         game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.GREEN_WIZARD.getId());
-        game.chooseColorAndDeck(PlayerColor.WHITE.getId(),Wizard.BLUE_WIZARD.getId());
+        game.chooseColorAndDeck(PlayerColor.BLACK.getId(),Wizard.BLUE_WIZARD.getId());
         game.playAssistantCard(AssistantCard.ONE_CARD.getId());
         game.playAssistantCard(AssistantCard.THREE_CARD.getId());
-        player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
-        player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
-        player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
-        player.getSchool().getHall().getLine(Color.RED).addStudent(new Student(Color.RED));
-        //game.setCurrentPlayer(player);
+        game.getCurrentPlayer().setCoin(0);
+        assertTrue(!game.getCurrentRound().playExpertCard(new DenyCard(game.getCardManager()))); // check that round refuses the action
         game.getCurrentPlayer().setCoin(5);
-        game.playExpertCard(IdManager.getInstance().getExpertCard("49").getId(), Color.RED.getId());
-        System.out.println(player.getSchool().getHall().getLine(Color.RED).getStudents().size());
-        assertTrue(player.getSchool().getHall().getLine(Color.RED).getStudents().size() == 1);
-
+        assertTrue(game.getCurrentRound().playExpertCard(new DenyCard(game.getCardManager()))); // check that round permits the action
     }
 
 }
