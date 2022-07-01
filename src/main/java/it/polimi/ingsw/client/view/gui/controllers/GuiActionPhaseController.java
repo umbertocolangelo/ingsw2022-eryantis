@@ -3675,7 +3675,7 @@ public class GuiActionPhaseController implements Initializable {
     }
 
     /**
-     *
+     * Click on island 10
      * @param mouseEvent
      */
     public void clickIsland10(MouseEvent mouseEvent) {

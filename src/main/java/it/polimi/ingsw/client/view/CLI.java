@@ -108,6 +108,7 @@ public class CLI {
 
     /**
      * If we lost the connection from a client
+     * @param nameClientLost String
      * @return thread
      */
     public Thread clientLost(String nameClientLost) {

@@ -14,6 +14,7 @@ public class DenyCard implements ExpertCard, Serializable {
 
     /**
      * Default constructor
+     * @param cardManager CardManager
      */
     public DenyCard(CardManager cardManager) {
         this.id = "42";

@@ -7,7 +7,7 @@ import java.util.*;
 public interface FixedObjectTower extends FixedObject{
 
     /**
-     * @param tower the tower we wan to add
+     * @param tower the tower we want to add
      */
     public void addTower(Tower tower);
 

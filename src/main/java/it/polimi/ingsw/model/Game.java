@@ -670,6 +670,7 @@ public class Game implements Serializable {
 
     /**
      * Set the orderedPlayerList
+     * @param playerList LinkedList
      */
     public void setOrderedPlayerList(LinkedList<Player> playerList) {
         this.orderedPLayerList = playerList;
@@ -684,6 +685,7 @@ public class Game implements Serializable {
 
     /**
      * Return the PlayerList
+     * @return LinkedList
      */
     public LinkedList<Player> getPlayerList() {
         return this.playerList;
@@ -749,6 +751,7 @@ public class Game implements Serializable {
 
     /**
      * Sets isEnded attribute to true
+     * @return Boolean
      */
     public Boolean isEnded(){
         return this.isEnded;

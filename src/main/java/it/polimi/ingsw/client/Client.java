@@ -225,7 +225,7 @@ public class Client {
 
     /**
      * When the client is running start the thread for reading and wait until that thread die
-     * @throws IOException
+     * @throws IOException exception
      * @return runnable thread
      */
     public Runnable run() throws IOException {
