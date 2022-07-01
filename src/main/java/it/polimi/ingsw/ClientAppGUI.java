@@ -5,7 +5,7 @@ import it.polimi.ingsw.client.view.gui.GuiMain;
 import it.polimi.ingsw.client.view.gui.controllers.GUIController;
 
 /**
- * Gui1 main
+ * Client app gui
  */
 public class ClientAppGUI {
 

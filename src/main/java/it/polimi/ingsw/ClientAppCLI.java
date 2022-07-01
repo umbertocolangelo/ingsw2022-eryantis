@@ -4,7 +4,7 @@ import it.polimi.ingsw.client.CLIController;
 import it.polimi.ingsw.client.Client;
 
 /**
- * Cli1 main
+ * Client app cli
  */
 public class ClientAppCLI {
 

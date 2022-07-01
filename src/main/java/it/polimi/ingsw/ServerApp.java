@@ -5,8 +5,7 @@ import it.polimi.ingsw.server.Server;
 import java.io.IOException;
 
 /**
- * Hello world!
- *
+ * Server app
  */
 public class ServerApp {
 
