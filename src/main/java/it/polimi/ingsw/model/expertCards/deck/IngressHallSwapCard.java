@@ -19,38 +19,38 @@ public class IngressHallSwapCard implements ExpertCard, Serializable {
     }
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 1;
 
     /**
-     * Keep the reference to the id
+     * card id
      */
     private String id;
 
     /**
-     * 
+     * appliance of the effect of the card
      */
     public void apply() {
         incrementCost();
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {

@@ -28,49 +28,48 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent, Serial
     }
 
     /**
-     * Keep the reference to the id
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 2;
 
     /**
-     *
+     * list of the student of the card
      */
     private LinkedList<Student> students;
 
     /**
-     *
+     * Reference to card manager
      */
     private CardManager manager;
 
     /**
-     * 
+     * appliance of the card effect
      */
     public void apply() {
         incrementCost();
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     *
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {
@@ -78,11 +77,12 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent, Serial
     }
 
     /**
+     * add students to the card
      * @param student
      */
     public void addStudent(Student student) {
         if (!this.students.contains(student)) {
-            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+            if (student.getPosition()!=null) {         // If the student was on a FixedObject, this object is updated
                 FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
                 position.removeStudent(student);
             }
@@ -92,6 +92,7 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent, Serial
     }
 
     /**
+     * remove the students from the card
      * @param student
      */
     public void removeStudent(Student student) {
@@ -99,14 +100,14 @@ public class StudentToHallCard implements ExpertCard, FixedObjectStudent, Serial
     }
 
     /**
-     * @return
+     * @return list of the students of the card
      */
     public LinkedList<Student> getStudents() {
         return new LinkedList<>(this.students);
     }
 
     /**
-     * @return
+     * @return number of the students of the card
      */
     public Integer numOfStudents() {
         return this.students.size();

@@ -28,12 +28,12 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     }
 
     /**
-     * Keep the reference to the id
+     * card id
      */
     private String id;
 
     /**
-     *
+     * card cost
      */
     private Integer cost = 1;
 
@@ -43,7 +43,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     private LinkedList<Student> students;
 
     /**
-     *
+     * Reference to card manager
      */
     private CardManager manager;
 
@@ -55,34 +55,34 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     }
 
     /**
-     * @return
+     * @return card cost
      */
     public Integer getCost() {
         return this.cost;
     }
 
     /**
-     * 
+     * increments card cost
      */
     private void incrementCost() {
         cost = cost + 1;
     }
 
     /**
-     * @return
+     * @return card id
      */
     @Override
     public String getId() {
         return this.id;
     }
 
-
     /**
+     * add student to this card
      * @param student
      */
     public void addStudent(Student student) {
         if (!this.students.contains(student)) {
-            if(student.getPosition()!=null){        // If the student was on a FixedObject, this object is updated
+            if (student.getPosition()!=null) {        // If the student was on a FixedObject, this object is updated
                 FixedObjectStudent position = (FixedObjectStudent) student.getPosition();
                 position.removeStudent(student);
             }
@@ -92,6 +92,7 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     }
 
     /**
+     * remove student from this card
      * @param student
      */
     public void removeStudent(Student student) {
@@ -99,14 +100,14 @@ public class IngressCardSwapCard implements ExpertCard, FixedObjectStudent, Seri
     }
 
     /**
-     * @return
+     * @return students of this card
      */
     public LinkedList<Student> getStudents() {
         return new LinkedList<>(this.students);
     }
 
     /**
-     * @return
+     * @return num of students of this card
      */
     public Integer numOfStudents() {
         return this.students.size();
