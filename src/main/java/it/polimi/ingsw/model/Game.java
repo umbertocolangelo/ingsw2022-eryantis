@@ -465,9 +465,10 @@ public class Game implements Serializable {
 
     /**
      * @param expertId is the id of the expert card to play
+     * @param object type of object used with the expert card
      */
     public void playExpertCard(String expertId, String object) {
-        ExpertCard expertCard= IdManager.getInstance().getExpertCard(expertId);
+        ExpertCard expertCard = IdManager.getInstance().getExpertCard(expertId);
 
         if (!expertMode) {
             return;

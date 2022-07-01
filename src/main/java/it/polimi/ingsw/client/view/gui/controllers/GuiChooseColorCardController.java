@@ -137,6 +137,7 @@ public class GuiChooseColorCardController implements Initializable {
 
     /**
      * Window resize
+     * @param stage Stage
      */
     public void resize(Stage stage) {
 
