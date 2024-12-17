@@ -2,12 +2,12 @@
 
 ![alt text](src/main/resources/Graphical_Assets/Eriantys_slider.jpg)
 
-Implementation of the game table [Eriantys], a strategic board game created by Cranio Creations, where players compete to gain control over magical islands by deploying students, using professors' abilities, and leveraging unique character cards. The game features various elements such as magical creatures, islands to conquer, and special powers to outmaneuver opponents.This digital version introduces a multiplayer online feature supporting up to three players, incorporates game-saving capabilities, and ensures resilience, allowing players to disconnect and reconnect without disrupting the game's continuity. Developed as part of a bachelor's thesis, this adaptation encompasses a detailed implementation that spans a graphical user interface (GUI), a command-line interface (CLI), and network functionalities via sockets, providing an immersive digital experience of Eriantys.
-[Eriantys]:(https://www.craniocreations.it/prodotto/eriantys/).
+Implementation of the game table Eriantys, a strategic board game created by Cranio Creations, where players compete to gain control over magical islands by deploying students, using professors' abilities, and leveraging unique character cards. The game features various elements such as magical creatures, islands to conquer, and special powers to outmaneuver opponents.This digital version introduces a multiplayer online feature supporting up to three players, incorporates game-saving capabilities, and ensures resilience, allowing players to disconnect and reconnect without disrupting the game's continuity. Developed as part of a bachelor's thesis, this adaptation encompasses a detailed implementation that spans a graphical user interface (GUI), a command-line interface (CLI), and network functionalities via sockets, providing an immersive digital experience of Eriantys.
+(https://www.craniocreations.it/prodotto/eriantys/)
 
-[Professor]: 
+Professor: 
 
-[Grade]: 30/30 cum laude
+Grade: 30/30 cum laude
 
 ## Documentation
 
